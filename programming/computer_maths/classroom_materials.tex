@@ -1,0 +1,679 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  showstringspaces=false,
+  frame=single,
+  breaklines=true
+}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{计算机数学基础}}}
+\author{编程背后的数学}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{写在前面}
+
+数学和编程是密不可分的。你可能在学校里学过一些数学，但没想过它们和编程有什么关系。这个模块会把\textbf{对编程最有用的数学知识}挑出来，用代码来理解数学，用数学来优化代码。
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{本章内容} & \textbf{用在编程的哪里} \\ \hline
+二进制与位运算 & 数据存储、权限系统、性能优化 \\ \hline
+布尔代数 & 条件判断、搜索过滤 \\ \hline
+集合论 & 数据处理、去重、数据库查询 \\ \hline
+模运算 & 哈希函数、加密、循环调度 \\ \hline
+组合数学 & 算法复杂度分析、概率算法 \\ \hline
+图论基础 & 地图导航、社交网络、推荐系统 \\ \hline
+逻辑与证明 & 程序正确性、调试思维 \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{第一课：二进制——计算机的母语}
+
+\subsection*{为什么是二进制？}
+
+计算机内部有数十亿个微小开关（晶体管），每个开关只有两种状态：\textbf{开（1）}或\textbf{关（0）}。所以计算机只懂二进制。
+
+\subsection*{十进制 vs 二进制}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{十进制} & \textbf{二进制} & \textbf{解释} \\ \hline
+0 & 0 & $0 \times 2^0 = 0$ \\ \hline
+1 & 1 & $1 \times 2^0 = 1$ \\ \hline
+2 & 10 & $1 \times 2^1 + 0 \times 2^0 = 2$ \\ \hline
+3 & 11 & $1 \times 2^1 + 1 \times 2^0 = 3$ \\ \hline
+4 & 100 & $1 \times 2^2 + 0 + 0 = 4$ \\ \hline
+5 & 101 & $1 \times 2^2 + 0 + 1 = 5$ \\ \hline
+8 & 1000 & $1 \times 2^3 = 8$ \\ \hline
+15 & 1111 & $1+2+4+8 = 15$ \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{规律：} 从右往左，每一位代表 $2^0, 2^1, 2^2, 2^3 \dots$
+
+\subsection*{二进制转十进制}
+
+\textbf{方法：} 把每一位的值（0或1）乘以 $2^{\text{位置}}$，然后加起来。
+
+\begin{lstlisting}[language=Python]
+def binary_to_decimal(bin_str):
+    """把二进制字符串转十进制，如 '1011' → 11"""
+    result = 0
+    for i, digit in enumerate(reversed(bin_str)):
+        if digit == '1':
+            result += 2 ** i
+    return result
+
+print(binary_to_decimal("1011"))  # 11
+print(binary_to_decimal("1111"))  # 15
+\end{lstlisting}
+
+\subsection*{十进制转二进制}
+
+\textbf{方法：} 不断除以 2，余数倒着读。
+
+\begin{lstlisting}[language=Python]
+def decimal_to_binary(n):
+    """把十进制转二进制字符串，如 11 → '1011'"""
+    if n == 0:
+        return "0"
+    result = ""
+    while n > 0:
+        result = str(n % 2) + result
+        n = n // 2
+    return result
+
+for n in [0, 1, 2, 5, 10, 15, 42]:
+    print(f"{n:3d} → {decimal_to_binary(n)}")
+\end{lstlisting}
+
+\subsection*{位运算——让程序飞起来}
+
+位运算直接操作二进制位，比普通数学运算快得多。
+
+\begin{lstlisting}[language=Python]
+a = 5   # 二进制 0101
+b = 3   # 二进制 0011
+
+print(a & b)   # 按位与 AND → 0001 = 1
+print(a | b)   # 按位或 OR  → 0111 = 7
+print(a ^ b)   # 按位异或 XOR → 0110 = 6
+print(~a)      # 按位取反 NOT → -(5+1) = -6
+print(a << 1)  # 左移1位 → 1010 = 10（相当于 ×2）
+print(a >> 1)  # 右移1位 → 0010 = 2（相当于 ÷2）
+\end{lstlisting}
+
+\textbf{实用技巧：}
+\begin{itemize}
+  \item \texttt{n \& 1} 判断奇偶（比 \texttt{n \% 2} 快）：结果为 1 是奇数，0 是偶数
+  \item \texttt{n << 1} 相当于 \texttt{n * 2}
+  \item \texttt{n >> 1} 相当于 \texttt{n // 2}
+  \item 用位运算实现权限系统：每个 bit 代表一个权限
+\end{itemize}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 把二进制 \texttt{11010} 转十进制，把十进制 \texttt{27} 转二进制
+  \item 用 Python 验证：\texttt{5 \& 3} 的结果和手动计算是否一致
+  \item 用位运算判断一个数是否是 2 的幂（提示：2 的幂的二进制只有一个 1）
+  \item \textbf{[扩展]} 实现一个简单的权限系统：读取=1，写入=2，执行=4，用 \texttt{|} 组合权限，用 \texttt{\&} 检查权限
+\end{enumerate}
+
+\section*{第二课：八进制与十六进制}
+
+二进制写起来太长了（比如 255 是 11111111），所以程序员常用\textbf{八进制}（每 3 位二进制一组）和\textbf{十六进制}（每 4 位一组）。
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{十进制} & \textbf{二进制} & \textbf{八进制} & \textbf{十六进制} \\ \hline
+0 & 0000 & 0 & 0 \\ \hline
+1 & 0001 & 1 & 1 \\ \hline
+10 & 1010 & 12 & A \\ \hline
+15 & 1111 & 17 & F \\ \hline
+16 & 10000 & 20 & 10 \\ \hline
+255 & 11111111 & 377 & FF \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{十六进制在编程中到处可见：}
+\begin{itemize}
+  \item 颜色：\texttt{\#FF5733}（红色=FF, 绿色=57, 蓝色=33）
+  \item 内存地址：\texttt{0x7ffd5e3a}
+  \item Unicode 字符：\texttt{U+4E2D}（"中"字）
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+# Python 中的进制表示
+print(0b1010)     # 二进制 → 10
+print(0o12)       # 八进制 → 10
+print(0xA)        # 十六进制 → 10
+
+# 进制转换
+print(bin(42))     # '0b101010'
+print(oct(42))     # '0o52'
+print(hex(42))     # '0x2a'
+print(int("FF", 16))  # 255
+\end{lstlisting}
+
+\section*{第三课：日常生活中的数学概念映射}
+
+当你学编程时，很多概念其实就是你熟悉的数学概念的"另一种说法"：
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{数学} & \textbf{编程} \\ \hline
+函数 $f(x) = x + 1$ & \texttt{def f(x): return x + 1} \\ \hline
+集合 $\{1, 2, 3\}$ & \texttt{\{1, 2, 3\}} \\ \hline
+不等式 $x > 0$ & \texttt{x > 0} \\ \hline
+求和 $\sum_{i=1}^{n} i$ & \texttt{sum(range(1, n+1))} \\ \hline
+数列 $a_1, a_2, \dots, a_n$ & \texttt{lst[0], lst[1], ..., lst[n-1]} \\ \hline
+坐标 $(x, y)$ & \texttt{(x, y)} 元组 \\ \hline
+逻辑与/或/非 ($\land, \lor, \lnot$) & \texttt{and, or, not} \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{第四课：模运算——时钟算术}
+
+\subsection*{什么是模运算？}
+
+模运算就是\textbf{求余数}。生活中处处是模运算：现在是 10 点，过 5 小时是几点？$10 + 5 = 15 \equiv 3 \pmod{12}$。
+
+\begin{lstlisting}[language=Python]
+# Python 中的模运算
+print(17 % 5)    # 2 (17÷5=3 余 2)
+print(20 % 7)    # 6 (20÷7=2 余 6)
+print(-3 % 7)    # 4 (Python 特殊：结果总为正)
+\end{lstlisting}
+
+\subsection*{模运算的应用}
+
+\textbf{1. 判断整除}
+
+\begin{lstlisting}[language=Python]
+def is_even(n):   return n % 2 == 0
+def is_odd(n):    return n % 2 == 1
+def is_leap_year(y): return (y % 4 == 0 and y % 100 != 0) or (y % 400 == 0)
+
+print(is_leap_year(2024))  # True
+print(is_leap_year(2100))  # False
+\end{lstlisting}
+
+\textbf{2. 循环调度}
+
+\begin{lstlisting}[language=Python]
+# 轮流分配给 3 个玩家
+players = ["小明", "小红", "小刚"]
+for round in range(10):
+    player = players[round % 3]
+    print(f"第{round+1}轮：{player}的回合")
+\end{lstlisting}
+
+\textbf{3. 哈希函数}
+
+\begin{lstlisting}[language=Python]
+# 简单的哈希：把字符串映射到 0-99
+def simple_hash(text):
+    total = 0
+    for ch in text:
+        total += ord(ch)
+    return total % 100
+
+print(simple_hash("hello"))    # 某个 0-99 的数
+print(simple_hash("world"))    # 不同的数
+\end{lstlisting}
+
+\textbf{4. 大数计算}（计算机竞赛常用）
+
+\begin{lstlisting}[language=Python]
+# 计算 2^1000 的最后三位
+print(pow(2, 1000, 1000))  # 376（快速幂 + 模运算）
+# 比先算 2^1000 再 % 1000 快无数倍
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 今天是星期三，100 天后是星期几？
+  \item 写一个函数判断一个年份是否是闰年
+  \item \textbf{[扩展]} 实现循环队列：用模运算实现固定大小数组的循环读写
+\end{enumerate}
+
+\section*{第五课：布尔代数——逻辑运算}
+
+\subsection*{基本逻辑门}
+
+布尔代数只有三个基本运算，但可以组合出任何逻辑：
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{A} & \textbf{B} & \textbf{A AND B} & \textbf{A OR B} & \textbf{NOT A} \\ \hline
+0 & 0 & 0 & 0 & 1 \\ \hline
+0 & 1 & 0 & 1 & 1 \\ \hline
+1 & 0 & 0 & 1 & 0 \\ \hline
+1 & 1 & 1 & 1 & 0 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{用 Python 验证}
+
+\begin{lstlisting}[language=Python]
+# 真值表验证
+for a in [True, False]:
+    for b in [True, False]:
+        print(f"{a:5} AND {b:5} = {a and b:5}")
+        
+# XOR（异或）：两个相同为假，不同为真
+def xor(a, b):
+    return (a and not b) or (not a and b)
+
+print(xor(True, False))   # True
+print(xor(True, True))    # False
+\end{lstlisting}
+
+\subsection*{德摩根定律——简化条件}
+
+\[
+\lnot (A \land B) = \lnot A \lor \lnot B
+\]
+\[
+\lnot (A \lor B) = \lnot A \land \lnot B
+\]
+
+\textbf{编程中的应用：}
+
+\begin{lstlisting}[language=Python]
+# 原始条件：不在 x>0 且 y>0 范围内
+if not (x > 0 and y > 0):
+    print("至少有一个不大于0")
+
+# 用德摩根简化后
+if x <= 0 or y <= 0:
+    print("至少有一个不大于0")
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写出 XOR 的真值表
+  \item 用德摩根定律简化：\texttt{not (score >= 60 or grade == "F")}
+  \item \textbf{[扩展]} 只用 AND 和 NOT 实现 OR 的功能
+\end{enumerate}
+
+\section*{第六课：集合论——并集、交集、差集}
+
+\subsection*{集合在编程中的对应}
+
+数学中的集合论直接对应 Python 的 \texttt{set} 类型。
+
+\begin{lstlisting}[language=Python]
+A = {1, 2, 3, 4, 5}
+B = {4, 5, 6, 7, 8}
+
+print(A | B)   # 并集：{1,2,3,4,5,6,7,8}
+print(A & B)   # 交集：{4, 5}
+print(A - B)   # 差集（A有B没有）：{1, 2, 3}
+print(A ^ B)   # 对称差（不同时有）：{1,2,3,6,7,8}
+\end{lstlisting}
+
+\subsection*{编程中的实际应用}
+
+\begin{lstlisting}[language=Python]
+# 场景：找出同时选了 Python 和 C++ 课的学生
+python_students = {"小明", "小红", "小刚", "小李"}
+cpp_students = {"小红", "小刚", "小王", "小赵"}
+
+both = python_students & cpp_students
+only_python = python_students - cpp_students
+all_students = python_students | cpp_students
+
+print(f"都选的：{both}")
+print(f"只选Python的：{only_python}")
+print(f"总共学生：{len(all_students)}人")
+
+# 子集判断
+print({1, 2}.issubset({1, 2, 3}))   # True
+print({1, 2, 3}.issuperset({1, 2})) # True
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 有 3 个列表：\texttt{A = [1,2,3,4,5]}, \texttt{B = [4,5,6,7]}, \texttt{C = [1,3,5,7]}，找出只出现在一个列表中的元素
+  \item 用集合判断两个字符串是否有相同字母
+  \item \textbf{[扩展]} 用集合实现搜索引擎的"与或非"查询
+\end{enumerate}
+
+\section*{第七课：组合数学——数一数有多少种可能}
+
+\subsection*{加法原理和乘法原理}
+
+\begin{itemize}
+  \item \textbf{加法原理：} 做一件事有 3 种方法，做另一件事有 4 种方法，总共 3+4=7 种
+  \item \textbf{乘法原理：} 第一件事有 3 种选法，第二件有 4 种，总共 3×4=12 种
+\end{itemize}
+
+\subsection*{排列与组合}
+
+\begin{lstlisting}[language=Python]
+import math
+from itertools import permutations, combinations
+
+# 排列：从 3 个元素中选 2 个，考虑顺序
+items = ['A', 'B', 'C']
+print(list(permutations(items, 2)))
+# [('A','B'), ('A','C'), ('B','A'), ('B','C'), ('C','A'), ('C','B')]
+# 公式：P(3,2) = 3!/1! = 6
+
+# 组合：从 3 个中选 2 个，不考虑顺序
+print(list(combinations(items, 2)))
+# [('A','B'), ('A','C'), ('B','C')]
+# 公式：C(3,2) = 3!/(2!×1!) = 3
+
+# Python 数学库直接算
+print(math.perm(5, 3))     # 60
+print(math.comb(5, 3))     # 10
+\end{lstlisting}
+
+\subsection*{实用场景}
+
+\textbf{密码强度评估：}
+
+\begin{lstlisting}[language=Python]
+import math
+
+# 6 位纯数字密码
+digits = 10 ** 6
+print(f"6位数字密码：{digits:,} 种组合")
+
+# 8 位混合密码（大小写+数字+符号=94个字符）
+chars = 94 ** 8
+print(f"8位混合密码：{chars:,} 种组合")
+
+# 从 50 人中选 3 人做班委
+print(f"选班委方案：{math.comb(50, 3):,} 种")
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 4 位数字 PIN 码有多少种可能？
+  \item 从 10 本不同的书中选 3 本，有多少种选法？
+  \item \textbf{[扩展]} 写一个程序生成 ${}_6\text{C}_3$ 的所有组合，输出到文件
+\end{enumerate}
+
+\section*{第八课：图论基础——连接的世界}
+
+\subsection*{图的基本概念}
+
+图由\textbf{顶点}（Vertex）和\textbf{边}（Edge）组成。
+
+\begin{lstlisting}[language=Python]
+# 用邻接表表示图
+graph = {
+    "北京": ["天津", "石家庄", "上海"],
+    "天津": ["北京", "唐山"],
+    "石家庄": ["北京", "太原"],
+    "上海": ["北京", "杭州", "南京"],
+    "太原": ["石家庄"],
+    "唐山": ["天津"],
+    "杭州": ["上海"],
+    "南京": ["上海"]
+}
+
+# 顶点数
+print(f"顶点数：{len(graph)}")
+
+# 边数
+edges = sum(len(neighbors) for neighbors in graph.values()) // 2
+print(f"边数：{edges}")
+
+# 每个顶点的度（连接数）
+for city, neighbors in graph.items():
+    print(f"{city}：{len(neighbors)} 条连接")
+\end{lstlisting}
+
+\subsection*{树——没有环的图}
+
+树是图的一种特殊情况：没有环，且所有顶点都连通。
+
+\textbf{文件系统就是一棵树：}
+
+\begin{lstlisting}[language=Python]
+# 用嵌套字典表示树
+file_system = {
+    "name": "/",
+    "type": "dir",
+    "children": [
+        {"name": "home", "type": "dir", "children": [
+            {"name": "user", "type": "dir", "children": [
+                {"name": "documents", "type": "dir", "children": [
+                    {"name": "readme.md", "type": "file", "size": 1024}
+                ]}
+            ]}
+        ]},
+        {"name": "usr", "type": "dir", "children": [
+            {"name": "bin", "type": "dir", "children": []}
+        ]}
+    ]
+}
+
+def count_files(node):
+    if node["type"] == "file":
+        return 1
+    return sum(count_files(child) for child in node["children"])
+
+print(f"文件数：{count_files(file_system)}")
+\end{lstlisting}
+
+\subsection*{图论的经典问题}
+
+\textbf{最短路径：} 用 Dijkstra 算法（在 ds-algo 模块中有实现）
+
+\textbf{最小生成树：} 用 Kruskal 或 Prim 算法
+
+\textbf{拓扑排序：} 先修课程安排
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 画一个 5 个顶点的完全图（每两个顶点之间都有边），有几条边？
+  \item 用邻接表表示一个社交网络（5个人，好友关系自己定义）
+  \item \textbf{[扩展]} 计算任意两个城市之间的最短路径（用 BFS 或 Dijkstra）
+\end{enumerate}
+
+\section*{第九课：数列与求和}
+
+\subsection*{等差数列}
+
+\begin{lstlisting}[language=Python]
+# 1 + 2 + 3 + ... + 100
+# 公式：S = n * (a1 + an) / 2
+def arithmetic_sum(a1, an, n):
+    return n * (a1 + an) // 2
+
+print(arithmetic_sum(1, 100, 100))  # 5050
+
+# 用循环验证
+print(sum(range(1, 101)))  # 5050
+\end{lstlisting}
+
+\subsection*{等比数列}
+
+\begin{lstlisting}[language=Python]
+# 1 + 2 + 4 + 8 + ... + 2^n
+# 公式：a1 * (q^n - 1) / (q - 1)
+def geometric_sum(a1, q, n):
+    return a1 * (q ** n - 1) // (q - 1)
+
+print(geometric_sum(1, 2, 10))  # 1023
+# 验证：1+2+4+8+16+32+64+128+256+512 = 1023
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 计算 1 到 1000 所有奇数的和
+  \item 二分查找最多能查多少次？$2^k \ge n$，解出 $k$——这和什么数列有关？
+  \item \textbf{[扩展]} 等比数列求和公式推导：为什么 $\frac{a_1(q^n-1)}{q-1}$？
+\end{enumerate}
+
+\section*{第十课：矩阵——表格化的数据}
+
+矩阵在 AI/机器学习、图形学、游戏开发中无处不在。
+
+\begin{lstlisting}[language=Python]
+# 用嵌套列表表示矩阵
+def create_matrix(rows, cols, default=0):
+    return [[default] * cols for _ in range(rows)]
+
+def matrix_add(A, B):
+    """矩阵加法"""
+    rows, cols = len(A), len(A[0])
+    C = create_matrix(rows, cols)
+    for i in range(rows):
+        for j in range(cols):
+            C[i][j] = A[i][j] + B[i][j]
+    return C
+
+def matrix_multiply(A, B):
+    """矩阵乘法"""
+    rows, cols = len(A), len(B[0])
+    common = len(A[0])
+    C = create_matrix(rows, cols)
+    for i in range(rows):
+        for j in range(cols):
+            for k in range(common):
+                C[i][j] += A[i][k] * B[k][j]
+    return C
+
+# 图像：每个像素是 RGB 三通道 → 就是一个三维矩阵
+# 神经网络：权重就是矩阵，前向传播就是矩阵乘法
+\end{lstlisting}
+
+\section*{第十一课：概率初步——不确定性的数学}
+
+\subsection*{随机事件}
+
+\begin{lstlisting}[language=Python]
+import random
+
+# 抛硬币
+def flip_coin():
+    return "正面" if random.random() < 0.5 else "反面"
+
+# 模拟 10000 次
+results = {"正面": 0, "反面": 0}
+for _ in range(10000):
+    results[flip_coin()] += 1
+print(f"正面：{results['正面']/10000:.2%}")
+print(f"反面：{results['反面']/10000:.2%}")
+\end{lstlisting}
+
+\subsection*{期望值}
+
+\begin{lstlisting}[language=Python]
+# 掷骰子的期望值
+sides = [1, 2, 3, 4, 5, 6]
+expected = sum(sides) / len(sides)
+print(f"骰子期望值：{expected}")  # 3.5
+
+# 模拟验证
+rolls = [random.randint(1, 6) for _ in range(100000)]
+print(f"模拟平均：{sum(rolls) / len(rolls):.2f}")
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 模拟两个骰子之和的概率分布
+  \item 写一个程序验证"生日悖论"：23 人中至少两人同一天生日的概率 > 50\%
+  \item \textbf{[扩展]} 用蒙特卡洛方法估算 $\pi$
+\end{enumerate}
+
+\section*{第十二课：综合——用数学优化程序}
+
+\subsection*{案例：判断质数}
+
+\begin{lstlisting}[language=Python]
+# 方法 1：朴素（O(n)）
+def is_prime_naive(n):
+    if n < 2:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+# 方法 2：优化（O(√n)）
+def is_prime_fast(n):
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    # 只需检查到 √n
+    i = 3
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 2  # 跳过偶数
+    return True
+
+# 性能对比
+import time
+for n in [1000003, 1000033, 1000037]:
+    start = time.time()
+    r1 = is_prime_naive(n)
+    t1 = time.time() - start
+    
+    start = time.time()
+    r2 = is_prime_fast(n)
+    t2 = time.time() - start
+    
+    print(f"{n}: 朴素={t1:.4f}s, 优化={t2:.4f}s, 快了{t1/t2:.0f}倍")
+\end{lstlisting}
+
+\subsection*{案例：二分查找的数学原理}
+
+每次查找排除一半数据。$n$ 个元素，需要 $\lceil \log_2 n \rceil$ 次。
+
+\begin{lstlisting}[language=Python]
+import math
+
+for n in [10, 100, 1000, 10000, 100000]:
+    times = math.ceil(math.log2(n))
+    print(f"n={n:6d}: 最多{times:3d}次查找, 而线性查找最多{n}次")
+\end{lstlisting}
+
+\subsection*{跨模块关联}
+
+\begin{itemize}
+  \item 本模块的\textbf{二进制和位运算}与 \texttt{python-to-cpp/} 中的内存管理和指针密切相关
+  \item 本模块的\textbf{图论}与 \texttt{ds-algo/} 中的 BFS/DFS 完全对应
+  \item 本模块的\textbf{矩阵和概率}是 \texttt{ai-intro/} 中神经网络的数学基础
+  \item 本模块的\textbf{集合论}对应 Python 中的 \texttt{set} 类型（见 \texttt{python/}）
+  \item 本模块的\textbf{模运算}在 \texttt{ds-algo/} 的哈希表和循环队列中用到
+\end{itemize}
+
+\end{document}

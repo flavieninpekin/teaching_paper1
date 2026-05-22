@@ -1,0 +1,140 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{../../teaching-style}
+
+\begin{document}
+\pagestyle{empty}
+
+\maintitle{立体几何}
+\begin{center}
+  \large 高学段
+\end{center}
+\vspace{0.3cm}
+
+\chaptertitle{第一章\quad 空间点线面的位置关系}
+
+\sectiontitle{1.1\quad 四个公理}
+
+\knowbox{
+\textbf{公理1}：如果一条直线上的两点在一个平面内，那么这条直线在此平面内。\\
+\textbf{公理2}：过不在同一直线上的三点，有且只有一个平面。\\
+\textbf{公理3}：如果两个不重合的平面有一个公共点，那么它们有且只有一条过该点的公共直线。\\
+\textbf{公理4}：平行于同一直线的两条直线互相平行（空间平行线的传递性）。\\
+\textbf{推论}：两条相交直线确定一个平面；两条平行直线确定一个平面。}
+
+\sectiontitle{1.2\quad 空间中的角与距离}
+
+\knowbox{
+\textbf{异面直线所成角}：平移至相交后所成的锐角或直角。\\
+\textbf{线面角}：直线与其在平面内的投影所成的锐角。\\
+\textbf{二面角}：从一条棱出发的两个半平面所组成的图形。\\
+\textbf{点到平面的距离}：过点作平面的垂线，垂线段长度。}
+
+\sectiontitle{习题1}
+
+\begin{exercise}
+\item 判断：过空间一点与已知直线垂直的直线有几条？
+\item 判断：过空间一点与已知平面垂直的直线有几条？
+\item 正方体$ABCD-A_1B_1C_1D_1$中，求$AB$与$CC_1$所成角的大小。
+\item 正方体$ABCD-A_1B_1C_1D_1$中，求$A_1B$与平面$ABCD$所成角的正弦值。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第二章\quad 平行与垂直}
+
+\sectiontitle{2.1\quad 平行关系的判定与性质}
+
+\knowbox{
+\textbf{线面平行}判定：$a\parallel b$，$b\subset\alpha$，$a\not\subset\alpha\Rightarrow a\parallel\alpha$。\\
+\textbf{线面平行}性质：$a\parallel\alpha$，$a\subset\beta$，$\alpha\cap\beta=b\Rightarrow a\parallel b$。\\
+\textbf{面面平行}判定：$a,b\subset\alpha$，$a\cap b=P$，$a\parallel\beta,b\parallel\beta\Rightarrow\alpha\parallel\beta$。\\
+\textbf{面面平行}性质：$\alpha\parallel\beta$，$\gamma\cap\alpha=a$，$\gamma\cap\beta=b\Rightarrow a\parallel b$。}
+
+\sectiontitle{2.2\quad 垂直关系的判定与性质}
+
+\knowbox{
+\textbf{线面垂直}判定：$l\perp a$，$l\perp b$，$a\cap b=P$，$a,b\subset\alpha\Rightarrow l\perp\alpha$。\\
+\textbf{线面垂直}性质：$l\perp\alpha$，$m\subset\alpha\Rightarrow l\perp m$。\\
+\textbf{面面垂直}判定：$l\perp\alpha$，$l\subset\beta\Rightarrow\alpha\perp\beta$。\\
+\textbf{面面垂直}性质：$\alpha\perp\beta$，$\alpha\cap\beta=l$，$a\subset\alpha$，$a\perp l\Rightarrow a\perp\beta$。\\
+\textbf{三垂线定理}：平面内的一条直线，如果和一条斜线在平面内的射影垂直，则它也垂直于这条斜线。}
+
+\sectiontitle{习题2}
+
+\begin{exercise}
+\item 求证：垂直于同一平面的两条直线平行。
+\item 求证：如果一条直线垂直于两个平行平面中的一个，则它也垂直于另一个。
+\item 正方体$ABCD-A_1B_1C_1D_1$中，求证：$AC\perp$平面$BDD_1B_1$。
+\item 正三棱锥$P-ABC$中，$AB=PA$，求侧面$PAB$与底面$ABC$所成二面角的余弦值。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第三章\quad 向量法解立体几何}
+
+\sectiontitle{3.1\quad 空间直角坐标系与向量坐标}
+
+\knowbox{
+建立空间直角坐标系$Oxyz$，每个点有坐标$(x,y,z)$。\\
+$\overrightarrow{AB}=(x_2-x_1,y_2-y_1,z_2-z_1)$。\\
+模长：$|\vec a|=\sqrt{x^2+y^2+z^2}$。\\
+数量积：$\vec a\cdot\vec b=x_1x_2+y_1y_2+z_1z_2$。}
+
+\sectiontitle{3.2\quad 用向量法求角与距离}
+
+\knowbox{
+\textbf{线线角}：$\cos\theta=\dfrac{|\vec u\cdot\vec v|}{|\vec u||\vec v|}$（$\vec u,\vec v$为方向向量）。\\
+\textbf{线面角}：$\sin\theta=\dfrac{|\vec u\cdot\vec n|}{|\vec u||\vec n|}$（$\vec u$方向向量，$\vec n$法向量）。\\
+\textbf{二面角}：$\cos\theta=\dfrac{|\vec n_1\cdot\vec n_2|}{|\vec n_1||\vec n_2|}$（两个法向量的夹角或其补角）。\\
+\textbf{点到平面距离}：$d=\dfrac{|\overrightarrow{AP}\cdot\vec n|}{|\vec n|}$（$A$为平面内一点，$P$为平面外一点，$\vec n$为法向量）。\\
+\textbf{点到直线距离}：$d=\dfrac{|\overrightarrow{AP}\times\vec u|}{|\vec u|}$（$\vec u$为直线方向向量）。}
+
+\sectiontitle{习题3}
+
+\begin{exercise}
+\item 已知$A(1,0,1)$，$B(2,1,0)$，$C(0,1,2)$，求$\overrightarrow{AB}$和$\overrightarrow{AC}$的数量积。
+\item 求平面$ABC$的一个法向量，其中$A(1,0,0)$，$B(0,2,0)$，$C(0,0,3)$。
+\item 正方体$ABCD-A_1B_1C_1D_1$棱长为$2$，建立坐标系，求$A_1$到平面$AB_1D_1$的距离。
+\item 正四棱柱$ABCD-A_1B_1C_1D_1$中，$AB=2$，$AA_1=4$，求$A_1C$与$BD_1$所成角的余弦值。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第四章\quad 多面体与旋转体}
+
+\sectiontitle{4.1\quad 棱柱、棱锥与棱台}
+
+\knowbox{
+\textbf{棱柱}：$V=Sh$（$S$底面积，$h$高），侧面积$=$各侧面面积之和。\\
+\textbf{棱锥}：$V=\dfrac13Sh$。\\
+\textbf{棱台}：$V=\dfrac13h(S_1+S_2+\sqrt{S_1S_2})$（$S_1,S_2$上下底面积）。\\
+\textbf{正多面体}：每个面都是相同正多边形的凸多面体。\\
+欧拉定理：$V-E+F=2$（顶点数-棱数+面数$=2$）。}
+
+\sectiontitle{4.2\quad 圆柱、圆锥、圆台与球}
+
+\knowbox{
+\textbf{圆柱}：$V=\pi r^2h$，$S_侧=2\pi rh$。\\
+\textbf{圆锥}：$V=\dfrac13\pi r^2h$，$S_侧=\pi rl$（$l$母线长）。\\
+\textbf{圆台}：$V=\dfrac13\pi h(r_1^2+r_2^2+r_1r_2)$，$S_侧=\pi(r_1+r_2)l$。\\
+\textbf{球}：$V=\dfrac43\pi R^3$，$S=4\pi R^2$。}
+
+\sectiontitle{4.3\quad 截面与展开图}
+
+\knowbox{
+\textbf{截面}：用平面截立体所得的平面图形。\\
+常见截面：正方体截面可以是三角形、四边形、五边形、六边形（最多六边形）。\\
+\textbf{展开图}：将立体表面展开成平面图形。\\
+常用于计算最短路径（如蚂蚁爬行问题）。}
+
+\sectiontitle{习题4}
+
+\begin{exercise}
+\item 正四棱柱底面边长为$3$，高为$5$，求体积和对角线长。
+\item 圆锥底面半径$3$，母线长$5$，求体积和侧面积。
+\item 球的半径为$6$，求表面积和体积。
+\item 正四面体棱长为$a$，求体积。
+\item 在棱长为$2$的正方体表面，一只蚂蚁从$A$到$C_1$沿表面爬行的最短路径长。
+\end{exercise}
+
+\end{document}

@@ -1,0 +1,207 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{../../teaching-style}
+
+\begin{document}
+\pagestyle{empty}
+
+\maintitle{数论基础}
+\begin{center}
+  \large 低学段
+\end{center}
+\vspace{0.3cm}
+
+\chaptertitle{第一章\quad 整除}
+
+\sectiontitle{1.1\quad 整除的定义与性质}
+
+\knowbox{
+若整数$a$除以整数$b(b\neq0)$的商是整数且余数为$0$，则称$b$整除$a$，记作$b\mid a$。\\
+性质：若$a\mid b$且$b\mid c$，则$a\mid c$。\\
+若$a\mid b$且$a\mid c$，则$a\mid(b\pm c)$。}
+
+\sectiontitle{1.2\quad 整除特征}
+
+\knowbox{
+\begin{tabular}{c|l}
+除数 & 特征\\ \hline
+$2$ & 末位是偶数\\
+$3$或$9$ & 各位数字之和能被$3$或$9$整除\\
+$4$ & 末两位能被$4$整除\\
+$5$ & 末位是$0$或$5$\\
+$8$ & 末三位能被$8$整除\\
+$11$ & 奇数位与偶数位数字和的差能被$11$整除
+\end{tabular}}
+
+\sectiontitle{习题1}
+
+\begin{exercise}
+\item 判断下列各数能否被$2$、$3$、$5$、$9$整除：$12345$、$67890$、$123456$、$987654$。
+\item 在$□$中填上合适的数字，使$12□4$能被$3$整除。
+\item 四位数$3□5□$同时被$2$、$3$、$5$整除，求这个四位数。
+\item 判断$123456789$能否被$11$整除。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第二章\quad 质数与合数}
+
+\sectiontitle{2.1\quad 质数与合数的概念}
+
+\knowbox{
+\textbf{质数}：大于$1$的自然数，只有$1$和它本身两个因数。\\
+\textbf{合数}：大于$1$的自然数，除了$1$和它本身还有别的因数。\\
+\textbf{注意}：$1$既不是质数也不是合数；$2$是最小的质数（也是唯一的偶质数）。}
+
+\sectiontitle{2.2\quad 质因数分解}
+
+\knowbox{
+\textbf{质因数分解}：把一个合数写成质因数相乘的形式。\\
+用短除法分解，如$360=2^3\times3^2\times5$。\\
+任何合数都可以唯一地分解为质因数的乘积（算术基本定理）。}
+
+\sectiontitle{习题2}
+
+\begin{exercise}
+\item 在$1\~20$中，哪些是质数？哪些是合数？
+\item 分解质因数：
+  \begin{subexercise}
+    \item $72$
+    \item $84$
+    \item $225$
+    \item $1001$
+  \end{subexercise}
+\item 两个质数的和为$20$，积为$91$，求这两个质数。
+\item $A=2^3\times3^2\times5$，$A$有多少个因数？
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第三章\quad 约数与倍数}
+
+\sectiontitle{3.1\quad 最大公因数（GCD）}
+
+\knowbox{
+\textbf{公因数}：几个数共有的因数。\\
+\textbf{最大公因数}：公因数中最大的一个。\\
+求法：短除法或质因数分解法（取公共质因数的最低次幂相乘）。\\
+互质数：公因数只有$1$的两个数。}
+
+\sectiontitle{3.2\quad 最小公倍数（LCM）}
+
+\knowbox{
+\textbf{公倍数}：几个数共有的倍数。\\
+\textbf{最小公倍数}：公倍数中最小的一个。\\
+求法：短除法或质因数分解法（取所有质因数的最高次幂相乘）。\\
+对于正整数$a$、$b$：$ab=\text{GCD}(a,b)\times\text{LCM}(a,b)$。}
+
+\sectiontitle{习题3}
+
+\begin{exercise}
+\item 求$12$和$18$的所有公因数，以及GCD和LCM。
+\item 求GCD和LCM：
+  \begin{subexercise}
+    \item $24$和$36$
+    \item $45$和$75$
+    \item $28$和$42$
+    \item $12$、$18$和$24$
+  \end{subexercise}
+\item 两个数的积是$288$，GCD是$6$，求LCM。
+\item 一包糖果，每人分$4$块多$2$块，每人分$5$块也少$3$块，这包糖果至少有多少块？
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第四章\quad 同余初步}
+
+\sectiontitle{4.1\quad 带余除法与同余}
+
+\knowbox{
+带余除法：$a=bq+r$（$0\le r<b$），$q$为商，$r$为余数。\\
+同余：若$a$和$b$除以$m$的余数相同，则称$a\equiv b\pmod m$。\\
+同余的性质：\\
+若$a\equiv b\pmod m$，$c\equiv d\pmod m$，则：\\
+$a\pm c\equiv b\pm d\pmod m$\\
+$ac\equiv bd\pmod m$\\
+$a^n\equiv b^n\pmod m$}
+
+\sectiontitle{4.2\quad 剩余类与剩余系}
+
+\knowbox{
+按除以$m$的余数分类，将整数分成$m$类（$0,1,2,\dots,m-1$），每类叫一个\textbf{剩余类}。\\
+从每个剩余类中各取一个数组成的集合叫\textbf{完全剩余系}。\\
+应用：利用余数分类解决周期问题。}
+
+\sectiontitle{习题4}
+
+\begin{exercise}
+\item $37$除以$5$的余数是多少？$37\equiv?\pmod5$？
+\item 计算$23+47\pmod7$。
+\item 今天是星期一，$100$天后是星期几？
+\item $2023^{2024}$除以$5$的余数是多少？
+\item 三个连续自然数的积一定能被$6$整除，请证明。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第五章\quad 不定方程}
+
+\sectiontitle{5.1\quad 简单二元一次不定方程}
+
+\knowbox{
+形如$ax+by=c$（$a$、$b$、$c$为整数，$a\neq0$，$b\neq0$）的方程叫二元一次不定方程。\\
+有整数解的条件：$\text{GCD}(a,b)\mid c$。\\
+求解步骤：先找一组特解，再用通解公式：\\
+$x=x_0+\dfrac{b}{\text{GCD}(a,b)}t$，$y=y_0-\dfrac{a}{\text{GCD}(a,b)}t$（$t$为整数）。}
+
+\sectiontitle{习题5}
+
+\begin{exercise}
+\item 求$3x+5y=23$的所有非负整数解。
+\item 小明买了$2$元一支和$5$元一支的两种笔共花了$29$元，两种笔各买了几支？（列出所有可能）
+\item 大车每辆载$6$吨，小车每辆载$4$吨，共运$38$吨货物，大车小车各几辆？（全部可能）
+\item 证明：$2x+4y=9$没有整数解。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第六章\quad 进位制与完全平方数}
+
+\sectiontitle{6.1\quad 进位制}
+
+\knowbox{
+\textbf{十进制}：$1234=1\times10^3+2\times10^2+3\times10+4$\\
+\textbf{二进制}：$1011_2=1\times2^3+0\times2^2+1\times2+1=11_{10}$\\
+\textbf{n进制}：用$0,1,\dots,n-1$表示，逢$n$进一。\\
+进制转换：$n$进制$\rightarrow$十进制按权展开；十进制$\rightarrow$$n$进制用除$n$取余法。}
+
+\sectiontitle{6.2\quad 完全平方数}
+
+\knowbox{
+\textbf{完全平方数}：能写成某个整数的平方的数。\\
+性质：\\
+1. 完全平方数的末位只能是$0$、$1$、$4$、$5$、$6$、$9$。\\
+2. 完全平方数除以$3$的余数只能是$0$或$1$。\\
+3. 完全平方数除以$4$的余数只能是$0$或$1$。\\
+4. 完全平方数的因数个数是奇数。}
+
+\sectiontitle{6.3\quad 高斯函数}
+
+\knowbox{$[x]$表示不超过$x$的最大整数。如$[3.14]=3$，$[-2.5]=-3$。}
+
+\sectiontitle{习题6}
+
+\begin{exercise}
+\item 把$10110_2$转化为十进制。
+\item 把$47$转化为二进制。
+\item 判断下列数是否为完全平方数：$256$、$400$、$500$、$625$。
+\item 已知$n$是完全平方数，$n$除以$3$余$1$，$n$除以$4$余$1$，求$n$的最小可能值。
+\item 计算：
+  \begin{subexercise}
+    \item $[5.7]+[-3.2]$
+    \item $[\sqrt{50}]$
+    \item $[\log_2 100]$
+  \end{subexercise}
+\item 求$1$到$100$中完全平方数的个数。
+\end{exercise}
+
+\end{document}

@@ -1,0 +1,377 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,amsmath}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\definecolor{defblue}{RGB}{0,80,160}\definecolor{thinkorange}{RGB}{230,120,20}
+\definecolor{formulared}{RGB}{180,30,50}\definecolor{funboxbg}{RGB}{245,248,252}
+\definecolor{examplebg}{RGB}{255,250,240}\definecolor{practicegreen}{RGB}{40,130,70}
+
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{thinkorange}{【 想一想 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.3cm}}
+\newenvironment{definition}[1]{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{\textcolor{defblue}{【 #1 】}}}{\vspace{0.1cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{example}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{examplebg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{orange!80!black}{【 例题 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{practice}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{practicegreen}{【 练一练 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textcolor{blue!70!black}{\textbf{【插图位置】}}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}
+\newcommand{\formula}[1]{\begin{center}\textcolor{formulared}{\large\boxed{#1}}\end{center}}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{物理6 · 电磁、波与近代物理}}}
+\author{}\date{}
+
+\begin{document}
+\maketitle\thispagestyle{empty}
+\section*{\textcolor{blue!70!black}{致同学}}
+这是物理系列的最后一本。我们将从电场出发，一路走到光的波粒二象性和原子核。这是经典物理的终点，也是现代物理的起点。前面的力学、电学基础在这一本中将交汇并升华。
+
+\newpage
+\section{\textcolor{orange!80!black}{第一课\quad 静电场——"场"的思维}}
+
+\subsection*{库仑定律——电荷之间的力}
+
+\formula{F = k\frac{Q_1 Q_2}{r^2}}
+
+$k = 9.0\times10^9\ \text{N·m}^2/\text{C}^2$。和万有引力公式形似——但静电力比引力强大得多（两个质子之间的静电力是引力的约$10^{36}$倍）。
+
+\subsection*{电场与电场强度}
+
+"场"是法拉第引入的伟大概念——电荷在周围空间建立了\textbf{电场}，其他电荷在电场中受力的作用。这替代了"超距作用"的古老观念。
+
+\formula{E = \frac{F}{q} \qquad (\text{定义式})}
+
+单位：N/C。电场强度是矢量——正电荷受力方向即该点电场方向。
+
+\textbf{点电荷的电场：}$E = k\dfrac{Q}{r^2}$。电场线从正电荷出发、到负电荷终止（或延伸到无穷远）。
+
+\begin{figplaceholder}
+此处插入正负点电荷的电场线分布图（见 figure/requirements/book6-ch1.txt 插图1）
+\end{figplaceholder}
+
+\begin{example}
+两个点电荷 $Q_1=+2\times10^{-6}\ \text{C}$ 和 $Q_2=-2\times10^{-6}\ \text{C}$ 相距$0.1\ \text{m}$。求中点处的电场强度。
+
+\textbf{解：}中点到每个电荷的距离 $r=0.05\ \text{m}$。\\
+$E_1 = kQ_1/r^2 = 9\times10^9\times2\times10^{-6}/0.0025 = 7.2\times10^6\ \text{N/C}$（向右）。\\
+$E_2$ 同样大小——负电荷在中点产生的 $E$ 也向右（指向负电荷）。\\
+合电场 = $2E_1 = 1.44\times10^7\ \text{N/C}$，方向向右。
+\end{example}
+
+\begin{practice}
+1. 库仑定律公式 $F =$\_\_\_\_\_；电场强度定义式 $E =$\_\_\_\_\_。\\
+2. （判断）电场线是真实存在的线。（\quad）\\
+3. 点电荷的电场强度 $E$ 跟距离的\_\_\_\_\_方成\_\_\_\_\_比。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第二课\quad 电势与电势能}}
+
+\subsection*{电势能}
+
+静电力做功与路径无关（保守力）。电势能 $E_p = k\dfrac{Qq}{r}$（两点电荷系统，取无穷远为零势能）。
+
+\subsection*{电势与电势差}
+
+\formula{\varphi = \frac{E_p}{q} \qquad U_{AB} = \varphi_A - \varphi_B}
+
+电势单位：伏特（V）——和电压同一单位，不是巧合。电场力做功与电势差的关系：
+
+\formula{W_{AB} = qU_{AB}}
+
+这是一个非常实用的公式：电荷在电场中从A移到B，电场力做的功 = 电量 × 两点间的电势差。
+
+\subsection*{匀强电场中电势差与场强的关系}
+
+\formula{U = Ed}
+
+$d$ 是沿电场方向的距离。场强可以看作"电势的陡度"——电势随距离下降的速率。
+
+\begin{example}
+两块平行金属板相距$2\ \text{cm}$，电势差$200\ \text{V}$。板间电场强度多大？一个电子（$e = 1.6\times10^{-19}\ \text{C}$）从负极飞到正极，电场力做多少功？
+
+\textbf{解：}$E = U/d = 200/0.02 = 1.0\times10^4\ \text{V/m}$。\\
+$W = eU = 1.6\times10^{-19} \times 200 = 3.2\times10^{-17}\ \text{J}$。
+\end{example}
+
+\begin{practice}
+1. 电场力做功与电势差的关系：$W =$\_\_\_\_\_。\\
+2. （填空）匀强电场中 $U =$\_\_\_\_\_，场强越大，电势随距离\_\_\_\_\_得越快。\\
+3. 顺着电场线方向，电势逐渐\_\_\_\_\_（升高/降低）。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第三课\quad 电容器与带电粒子运动}}
+
+\subsection*{电容器——"电荷的仓库"}
+
+两个彼此绝缘的金属板靠近放置就成了\textbf{电容器}。电容 $C$ 衡量电容器储存电荷的能力：
+
+\formula{C = \frac{Q}{U}}
+
+单位：法拉（F）。$1\ \text{F}$ 非常大——常用 $\mu\text{F}$、$\text{pF}$。
+
+\textbf{平行板电容器：}$C = \dfrac{\varepsilon S}{4\pi k d}$——面积越大、间距越小、介质介电常数越大，电容越大。
+
+\subsection*{带电粒子在电场中的运动}
+
+电子在匀强电场中受恒定的电场力 $F = eE$。这和平抛运动完全类似——电场力替代了重力：
+\begin{itemize}
+  \item 初速平行于电场：匀加速（或匀减速）直线运动。
+  \item 初速垂直于电场：类平抛运动（垂直方向匀速 + 沿电场方向匀加速）。
+\end{itemize}
+
+这是示波器和老式电视机显像管的基本原理。
+
+\begin{example}
+一个电子（$m=9.1\times10^{-31}\ \text{kg}$）以$v_0=3\times10^6\ \text{m/s}$垂直射入匀强电场 $E=2\times10^4\ \text{N/C}$。求电子的加速度。
+
+\textbf{解：}$a = F/m = eE/m = 1.6\times10^{-19}\times2\times10^4 / 9.1\times10^{-31} \approx 3.5\times10^{15}\ \text{m/s}^2$——巨大的加速度（电子极轻）。
+\end{example}
+
+\begin{practice}
+1. 电容定义式 $C =$\_\_\_\_\_。\\
+2. （判断）平行板电容器的电容与带电量有关。（\quad）\\
+3. 电子垂直射入匀强电场后做\_\_\_\_\_运动。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第四课\quad 闭合电路欧姆定律}}
+
+\subsection*{电动势——电源的"泵"}
+
+\textbf{电动势} $E$ 是电源将其他形式能量转化为电能的本领，单位也是伏特（V）。电动势不等于端电压——电源有内阻 $r$，工作时一部分电压降在了内阻上。
+
+\subsection*{闭合电路欧姆定律}
+
+\formula{I = \frac{E}{R + r}}
+
+其中 $R$ 是外电路总电阻，$r$ 是电源内阻。端电压（路端电压）：
+
+\formula{U = E - Ir}
+
+外电阻 $R$ 增大时——$I$ 减小——$Ir$ 减小——$U$ 增大（端电压逼近电动势）。$R \to \infty$（断路）时 $U = E$。$R = 0$（短路）时 $I = E/r$（极大，危险）。
+
+\subsection*{电源的输出功率}
+
+当 $R = r$（外阻等于内阻）时，电源的输出功率\textbf{最大}。这个结论在电路设计中有重要应用。
+
+\begin{example}
+一个电池 $E=12\ \text{V}$，$r=2\ \Omega$，外接 $R=4\ \Omega$。求电流和端电压。
+
+\textbf{解：}$I = E/(R+r) = 12/6 = 2\ \text{A}$。\\
+$U = IR = 2\times4 = 8\ \text{V}$（或 $U = E - Ir = 12 - 4 = 8\ \text{V}$）。
+\end{example}
+
+\begin{practice}
+1. 闭合电路欧姆定律：$I =$\_\_\_\_\_。\\
+2. $R=r$时电源输出功率\_\_\_\_\_（最大/最小）。\\
+3. （填空）外电路断路时，端电压\_\_\_\_\_电动势；短路时，电流\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第五课\quad 磁场与安培力}}
+
+\subsection*{磁场的描述}
+
+磁感应强度 $B$（单位：特斯拉 T）——描述磁场强弱和方向。$1\ \text{T}$ 已经是很强的磁场（地球磁场约$5\times10^{-5}\ \text{T}$）。
+
+\subsection*{安培力——磁场对通电导线的作用}
+
+\begin{definition}{安培力}
+通电直导线在磁场中受到的力：\\
+$F = BIL\sin\theta$，其中 $\theta$ 为电流方向与磁场方向的夹角。
+\end{definition}
+
+方向用\textbf{左手定则}判断：伸开左手，让磁感线穿入手心，四指指向电流方向，大拇指所指就是安培力方向。当 $I \perp B$ 时，$F = BIL$（最大）。
+
+\begin{example}
+一根长$L=0.5\ \text{m}$的直导线，通有$I=3\ \text{A}$的电流，置于$B=0.4\ \text{T}$的磁场中且电流与磁场垂直。安培力多大？
+
+\textbf{解：}$F = BIL = 0.4 \times 3 \times 0.5 = 0.6\ \text{N}$。
+\end{example}
+
+\begin{practice}
+1. 安培力公式 $F =$\_\_\_\_\_，方向用\_\_\_\_\_定则判断。\\
+2. 电流与磁场平行时，安培力为\_\_\_\_\_。\\
+3. 磁感应强度的单位是\_\_\_\_\_（符号\_\_\_\_\_）。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第六课\quad 洛伦兹力与带电粒子在磁场中的运动}}
+
+\subsection*{洛伦兹力}
+
+运动电荷在磁场中受到的力：
+
+\formula{F = qvB\sin\theta}
+
+方向用左手定则判断（注意：负电荷受力方向与正电荷相反）。洛伦兹力\textbf{永不做功}——它始终与速度方向垂直，只改变方向不改变速率。
+
+\subsection*{带电粒子在匀强磁场中的圆周运动}
+
+当 $v \perp B$ 时，洛伦兹力提供向心力：
+
+\formula{qvB = m\frac{v^2}{r} \quad \rightarrow \quad r = \frac{mv}{qB}}
+
+\textbf{周期：}$T = \dfrac{2\pi m}{qB}$——\textbf{周期与速度无关！}这个性质是回旋加速器的基本原理。无论粒子速度多大，只要 $B$ 不变，转一圈的时间恒定。
+
+\begin{example}
+一个质子（$m=1.67\times10^{-27}\ \text{kg}$，$q=1.6\times10^{-19}\ \text{C}$）以$v=1\times10^6\ \text{m/s}$垂直射入$B=0.5\ \text{T}$的磁场。轨道半径多大？
+
+\textbf{解：}$r = mv/(qB) = 1.67\times10^{-27}\times10^6 / (1.6\times10^{-19}\times0.5) \approx 0.021\ \text{m} = 2.1\ \text{cm}$。
+\end{example}
+
+\begin{practice}
+1. 洛伦兹力公式 $F =$\_\_\_\_\_；洛伦兹力对运动电荷\_\_\_\_\_（做/不做）功。\\
+2. 带电粒子垂直射入匀强磁场，轨道半径 $r =$\_\_\_\_\_。\\
+3. （判断）粒子速度越大，在磁场中转一圈的时间越长。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第七课\quad 电磁感应}}
+
+\subsection*{法拉第电磁感应定律}
+
+物理3中已学基础。高中深化——感应电动势的大小：
+
+\formula{E = n\frac{\Delta\Phi}{\Delta t}}
+
+$n$ 是线圈匝数，$\Phi = BS$ 是磁通量（磁感应强度 × 垂直于磁场的面积）。磁通量的变化越快，感应电动势越大。
+
+\subsection*{楞次定律——"来拒去留"}
+
+\begin{definition}{楞次定律}
+感应电流的方向，总是使感应电流所产生的磁通量\textbf{阻碍}引起感应电流的磁通量的变化。
+\end{definition}
+
+简单口诀：\textbf{增反减同}——原磁通增大，感应磁场与其相反；原磁通减小，感应磁场与其相同。
+
+楞次定律的本质是\textbf{能量守恒}——如果感应电流的方向是"助长"磁场变化而非"阻碍"，就会产生正反馈→能量凭空产生→违背能量守恒。
+
+\subsection*{导体切割磁感线}
+
+直导体垂直切割磁感线：$E = BLv$。这是发电机的基本公式——$B$强、$L$长、$v$快，发的电压就大。
+
+\begin{example}
+一根$L=0.2\ \text{m}$的导体在$B=0.5\ \text{T}$的磁场中以$v=10\ \text{m/s}$垂直切割磁感线。感应电动势多大？
+
+\textbf{解：}$E = BLv = 0.5 \times 0.2 \times 10 = 1\ \text{V}$。
+\end{example}
+
+\begin{practice}
+1. 法拉第电磁感应定律：$E =$\_\_\_\_\_。\\
+2. （填空）楞次定律口诀：\_\_\_\_\_反\_\_\_\_\_同。\\
+3. 导体垂直切割磁感线的感应电动势 $E =$\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第八课\quad 交变电流与变压器}}
+
+\subsection*{交变电流}
+
+线圈在匀强磁场中匀速转动——产生\textbf{正弦式交变电流}。我国电网频率为50 Hz（每秒方向改变100次）。
+
+\textbf{有效值：}交流电的热效应等效于多大的直流电。$U_{\text{有效}} = U_{\text{max}}/\sqrt{2}$，$I_{\text{有效}} = I_{\text{max}}/\sqrt{2}$。家用220V是有效值——峰值约311V。
+
+\subsection*{变压器}
+
+\formula{\frac{U_1}{U_2} = \frac{n_1}{n_2} \qquad \frac{I_1}{I_2} = \frac{n_2}{n_1}}
+
+升压变压器（$n_2 > n_1$）——电压升高、电流减小。高压输电的原理就在这里：$P = UI$不变，电压升高→电流减小→输电线上的热损耗 $I^2R$ 减小。
+
+\begin{example}
+一个理想变压器原线圈$n_1=500$匝，副线圈$n_2=100$匝。原线圈接$U_1=220\ \text{V}$交流电。副线圈输出电压多大？
+
+\textbf{解：}$U_2 = U_1 \times n_2/n_1 = 220 \times 100/500 = 44\ \text{V}$。这是降压变压器。
+\end{example}
+
+\begin{practice}
+1. 我国交流电网频率\_\_\_\_\_Hz，家用电压220V是\_\_\_\_\_值。\\
+2. 变压器公式：$\dfrac{U_1}{U_2} =$\_\_\_\_\_。\\
+3. （填空）高压输电——升高电压可以\_\_\_\_\_电流，从而\_\_\_\_\_线路热损耗。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第九课\quad 机械振动与机械波}}
+
+\subsection*{简谐运动}
+
+弹簧振子、单摆（小角度）都是简谐运动。回复力与位移成正比且方向相反：$F = -kx$。
+
+\formula{T = 2\pi\sqrt{\frac{m}{k}} \quad \text{（弹簧振子）} \qquad T = 2\pi\sqrt{\frac{L}{g}} \quad \text{（单摆）}}
+
+单摆周期与摆锤质量无关——伽利略在教堂里观察到吊灯的摆动就发现了这个规律。
+
+\subsection*{机械波}
+
+波是振动在介质中的传播。波传播的是\textbf{振动形式和能量}，介质中的质点本身不随波迁移。
+
+\formula{v = \lambda f = \frac{\lambda}{T}}
+
+波长 $\lambda$、频率 $f$、波速 $v$ 是描述波的三个关键量。波从一种介质进入另一种介质——频率不变，波速和波长改变。
+
+\subsection*{波的干涉与衍射}
+
+两列波相遇叠加——加强和减弱的区域交替出现——\textbf{干涉}。波绕过障碍物继续传播——\textbf{衍射}。干涉和衍射是波特有的现象，是判断"某现象是不是波"的依据。
+
+\begin{example}
+声波在空气中$v=340\ \text{m/s}$，频率$f=680\ \text{Hz}$。波长多大？
+
+\textbf{解：}$\lambda = v/f = 340/680 = 0.5\ \text{m}$。
+\end{example}
+
+\begin{practice}
+1. 单摆周期公式 $T =$\_\_\_\_\_，与摆锤质量\_\_\_\_\_（有关/无关）。\\
+2. 波速公式：$v =$\_\_\_\_\_。\\
+3. （判断）波传播时，介质中的质点随波一起前进。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第十课\quad 近代物理精选}}
+
+\subsection*{光的波粒二象性——光电效应}
+
+1905年，爱因斯坦提出：光可以看作一粒粒的"光子"，每个光子的能量 $E = h\nu$（$h=6.63\times10^{-34}\ \text{J·s}$为普朗克常数）。
+
+\textbf{光电效应：}光照射金属表面，电子被"打"出来。光电效应方程：
+
+\formula{E_k = h\nu - W_0}
+
+$W_0$ 是金属的逸出功（电子要逃出金属所需要的最低能量）。光的强度只影响被打出的电子数量，光的频率才决定电子的最大动能——这是经典波动理论完全无法解释的。爱因斯坦凭着这个解释获得了1921年诺贝尔物理学奖。
+
+\subsection*{原子结构}
+
+卢瑟福$\alpha$粒子散射实验——原子内部有一个极小的带正电的\textbf{原子核}，核外电子绕行。
+
+玻尔模型：电子只能在特定的"轨道"上运行（能级），从一个能级跳到另一个能级时吸收或放出光子。
+
+\subsection*{核反应与质能方程}
+
+爱因斯坦的质能方程：
+
+\formula{E = mc^2}
+
+核裂变（重原子核分裂）和核聚变（轻原子核合并）都会放出巨大的能量——因为生成物的总质量略小于反应物的总质量，亏损的质量按 $E=mc^2$ 转化成了能量。太阳的能量来源就是氢核聚变为氦核的过程。核电站则利用铀的受控裂变——和启蒙本"蒸汽与核电站"那一课呼应。
+
+\begin{example}
+太阳每秒辐射约$3.8\times10^{26}\ \text{J}$的能量。每秒亏损多少质量？
+
+\textbf{解：}$m = E/c^2 = 3.8\times10^{26} / (3\times10^8)^2 \approx 4.2\times10^9\ \text{kg}$。太阳每秒"烧掉"超过四百万吨质量——但在太阳的总质量面前微乎其微。
+\end{example}
+
+\begin{thinkbox}
+从牛顿的苹果到爱因斯坦的光电效应，物理学的历程是一部不断追问"为什么"的历史。你在这六本物理书中走过的路——从 $v=s/t$ 到 $E=mc^2$——人类用了三百多年。你今天学到的一切，曾是历史上最聪明的头脑穷尽一生才弄清楚的问题。而你，只用了六本书的时间。这大概就是站在巨人肩膀上的意义。
+\end{thinkbox}
+
+\begin{practice}
+1. 光电效应方程：$E_k =$\_\_\_\_\_。\\
+2. （填空）$E=mc^2$ 中，$E$ 表示\_\_\_\_\_，$m$ 表示\_\_\_\_\_。\\
+3. 太阳的能量来源于\_\_\_\_\_变。\\
+4. （判断）同一金属，用红光和紫光照射——只要光强足够大，红光也能打出光电子。（\quad）
+\end{practice}
+
+\vspace{0.5cm}
+\begin{center}\rule{0.7\textwidth}{1pt}\vspace{0.4cm}
+{\large\textcolor{blue!70!black}{\textbf{—— 物理系列（6本）完 ——}}}
+\vspace{0.3cm}\textcolor{gray}{\small 后续系列：化学4本 · 生物4本 · 地理2本 · 拓展3本}
+\end{center}
+\end{document}

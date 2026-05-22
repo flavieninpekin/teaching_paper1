@@ -1,0 +1,415 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{计算思维与计算机基础}}}
+\author{从 Scratch 到文本编程的桥梁}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{写在前面}
+
+你已经很熟悉 Scratch 了——知道怎么让小猫走路、怎么判断得分、怎么用循环简化代码。现在我们要做一件更重要的事：\textbf{学会"像程序员一样思考"}。
+
+这不是学一门新语言，而是学一种新的思维方式。学会了它，以后学任何编程语言（Python、C++、Java……）都会很快。因为所有语言的底层逻辑是相通的。
+
+\section*{第一课：什么是计算思维？}
+
+计算机非常非常快，但它有一个致命的弱点：\textbf{它不会自己思考}。你让它做什么，它就做什么，一步都不会多，一步都不会少。
+
+所以，你要学会用计算机能理解的方式来描述问题。这就是\textbf{计算思维}。它包含四个核心步骤：
+
+\begin{center}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{步骤} & \textbf{名字} & \textbf{简单来说} \\ \hline
+1 & 分解 & 把一个大问题拆成很多小问题 \\ \hline
+2 & 模式识别 & 找出这些小题的相同之处 \\ \hline
+3 & 抽象 & 去掉无关的细节，只保留重要的 \\ \hline
+4 & 算法设计 & 一步一步写出解决方案 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{生活中的例子：做西红柿炒鸡蛋}
+
+\begin{itemize}
+  \item \textbf{分解：} 做这道菜需要——准备食材、切西红柿、打鸡蛋、炒、装盘。五个小问题。
+  \item \textbf{模式识别：} 切西红柿和切别的菜差不多，打鸡蛋和做蛋花汤一样——你已经会了。
+  \item \textbf{抽象：} "好吃的西红柿炒鸡蛋"太模糊了。具体一点：2 个西红柿、2 个鸡蛋、盐适量、炒 3 分钟。
+  \item \textbf{算法设计：}
+  \begin{enumerate}
+    \item 把西红柿切成小块
+    \item 把鸡蛋打散加盐
+    \item 锅里倒油烧热
+    \item 倒入蛋液炒熟盛出
+    \item 炒西红柿到出汁
+    \item 倒回鸡蛋翻炒均匀
+    \item 出锅
+  \end{enumerate}
+\end{itemize}
+
+看，你每天都在做"算法"！编程就是把生活中的算法翻译成计算机能听懂的语言。
+
+\section*{第二课：分解——大事化小}
+
+分解是最重要的一步。大问题看起来吓人，但拆成小问题之后，每个小问题都很简单。
+
+\subsection*{练习：拆解一个游戏}
+
+假设你想做一个"接水果"游戏（类似 Scratch 里常见的项目）。先别急着写代码，先拆：
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{子问题} & \textbf{描述} \\ \hline
+1 & 水果从屏幕顶部掉下来 \\ \hline
+2 & 玩家用鼠标/键盘控制碗左右移动 \\ \hline
+3 & 水果碰到碗，得分加 1 \\ \hline
+4 & 水果碰到地面，游戏结束 \\ \hline
+5 & 显示当前得分 \\ \hline
+6 & 随机出现不同种类的水果，不同分数 \\ \hline
+\end{tabular}
+\end{center}
+
+拆完以后，每个小题都很容易解决——甚至有些你已经知道怎么做了！
+
+\subsection*{家庭作业：拆解你的一天}
+
+把"准备上学"这个过程分解成至少 5 个步骤。写下来。想一想：哪些步骤可以同时做（并行）？哪些必须按顺序来？
+
+\section*{第三课：模式识别——找规律}
+
+计算机最擅长的事情就是\textbf{重复做同样的事}。如果你能找出规律，就可以让计算机帮你做。
+
+\subsection*{练习：找规律}
+
+下面这些 Scratch 项目，有什么共同点？
+
+\begin{itemize}
+  \item 接苹果游戏
+  \item 打地鼠游戏
+  \item 躲避障碍物游戏
+\end{itemize}
+
+\textbf{答案：} 它们都有"得分"、"生命值"、"游戏结束条件"。模式就是：\textbf{玩家操作 → 即时反馈 → 累加结果 → 结束条件触发}。
+
+一旦识别出这个模式，你就可以用同一套"模板"做出很多不同的游戏。
+
+\subsection*{另一个例子：画图形}
+
+如果让你用 Scratch 画一个正方形，你会让角色：移动→右转 90 度→移动→右转 90 度→移动→右转 90 度→移动。
+
+模式就是："移动 + 右转 90 度"重复 4 次。用循环就搞定了。
+
+\section*{第四课：抽象——抓住重点}
+
+抽象的意思是\textbf{去掉不重要的细节，只保留核心信息}。
+
+\subsection*{例子：描述一个人}
+
+\noindent
+\textbf{不抽象：} 小明，10 岁，穿蓝色 T 恤，球鞋，今天早上吃的面包，喜欢踢足球，养了一只叫"旺财"的狗，数学考了 95 分，最近在看《三体》……
+
+\textbf{抽象后（如果你要做一个足球游戏）：} 角色位置 (x, y)、奔跑速度、体力值。
+
+\textbf{抽象后（如果你要做一个记账程序）：} 姓名、余额、收入记录、支出记录。
+
+同一个现实世界中的人，在不同的程序里需要关注不同的属性。抽象就是\textbf{只选对的有用的信息}。
+
+在 Scratch 里你已经在做抽象了：用"得分"这个变量代表游戏表现，而不是记录"第几次接到水果"——这就是抽象。
+
+\section*{第五课：算法设计——写出步骤}
+
+算法就是\textbf{解决问题的一步步指令}。一个算法要满足三个条件：
+
+\begin{enumerate}
+  \item \textbf{有输入：} 需要哪些数据？
+  \item \textbf{有输出：} 得到什么结果？
+  \item \textbf{步骤有限：} 必须在有限步内结束。
+\end{enumerate}
+
+\subsection*{经典算法：猜数字}
+
+\textbf{游戏规则：} 电脑随机想一个 1--100 之间的数，你来猜，电脑告诉你"大了"或"小了"。
+
+\textbf{你用的算法（二分查找）：}
+\begin{enumerate}
+  \item 猜中间的数（50）
+  \item 如果对了，结束
+  \item 如果大了，在 1--49 中继续猜中间的数
+  \item 如果小了，在 51--100 中继续猜中间的数
+  \item 重复直到猜中
+\end{enumerate}
+
+这个算法最多猜 7 次就能猜中。如果从 1 开始挨个猜，最多要猜 100 次。同一个问题，不同算法的效率差别很大——这就是为什么学好算法很重要。
+
+\subsection*{练习：设计一个算法}
+
+请写出"从一堆书里找到字典"的步骤。可以用文字描述，也可以画流程图。
+
+\section*{第六课：流程图——把算法画出来}
+
+有时候文字描述不够直观，我们可以用\textbf{流程图}（flowchart）来画算法。
+
+常见的图形：
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm]
+
+\node (start) [ellipse, draw, minimum width=2cm] {开始/结束};
+\node (process) [rectangle, draw, below of=start, minimum width=2.5cm] {处理步骤};
+\node (decision) [diamond, draw, below of=process, minimum width=2cm, aspect=1.5] {判断?};
+\node (io) [trapezium, draw, below of=decision, trapezium left angle=70, trapezium right angle=110, minimum width=2cm] {输入/输出};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{图形} & \textbf{名称} & \textbf{用途} \\ \hline
+椭圆 & 起止框 & 表示开始或结束 \\ \hline
+矩形 & 处理框 & 表示一个操作或计算 \\ \hline
+菱形 & 判断框 & 表示条件分支（是/否） \\ \hline
+平行四边形 & 输入/输出框 & 表示输入或输出数据 \\ \hline
+箭头 & 流程线 & 表示执行顺序 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{流程图实例：判断是否该带伞}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, auto]
+
+\node (start) [ellipse, draw] {开始};
+\node (look) [rectangle, draw, below of=start] {看窗外};
+\node (cloud) [diamond, draw, below of=look, aspect=1.5] {天阴吗？};
+\node (rain) [diamond, draw, below of=cloud, aspect=1.5, xshift=-2.5cm] {下雨吗？};
+\node (take) [rectangle, draw, below of=rain] {带伞};
+\node (notake) [rectangle, draw, below of=cloud, xshift=2.5cm] {不用带伞};
+\node (end) [ellipse, draw, below of=take, xshift=2.5cm] {出门};
+
+\draw[->] (start) -- (look);
+\draw[->] (look) -- (cloud);
+\draw[->] (cloud) -- node[above] {是} (rain);
+\draw[->] (cloud) -- node[above] {否} (notake);
+\draw[->] (rain) -- node[left] {是} (take);
+\draw[->] (rain) -- node[above] {否} (notake);
+\draw[->] (take) -- (end);
+\draw[->] (notake) -- (end);
+
+\end{tikzpicture}
+\end{center}
+
+\subsection*{作业：画流程图}
+
+画一个"自动售货机"的流程图：投入硬币 → 选择商品 → 吐出商品 → 找零。
+
+\section*{第七课：伪代码——用中文写程序}
+
+流程图画起来比较慢。还有一种更快的方式：\textbf{伪代码（pseudocode）}。它长得像代码，但用的是你自己的语言。
+
+\subsection*{例子：猜数字游戏伪代码}
+
+\begin{verbatim}
+电脑想一个 1 到 100 之间的随机数，存到 secret 里
+设置 attempts = 0
+
+重复执行：
+    问玩家"猜多少？"，得到 guess
+    attempts = attempts + 1
+    
+    如果 guess == secret:
+        说"猜对了！"
+        结束
+    否则如果 guess > secret:
+        说"太大了"
+    否则:
+        说"太小了"
+    结束如果
+结束重复
+\end{verbatim}
+
+这段"代码"实际上不能运行——但它已经写清楚了全部逻辑。等你学了 Python，只需要把它翻译成 Python 语法就行了。
+
+\subsection*{练习：写伪代码}
+
+用伪代码写出"计算 1 到 100 的和"的算法。
+
+\section*{第八课：计算机是怎么工作的？}
+
+现在我们来聊聊你手中正在使用的这个机器。
+
+\subsection*{二进制——计算机的语言}
+
+计算机不认识"你好"，也不认识数字 42。它只认识\textbf{两种状态}：有电 / 没电。我们用 1 表示有电，0 表示没电。这就是\textbf{二进制}。
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{十进制} & \textbf{二进制} \\ \hline
+0 & 0 \\ \hline
+1 & 1 \\ \hline
+2 & 10 \\ \hline
+3 & 11 \\ \hline
+4 & 100 \\ \hline
+5 & 101 \\ \hline
+10 & 1010 \\ \hline
+255 & 11111111 \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{有趣的事实：} 一个 0 或 1 叫 1 个 \textbf{bit（比特）}。8 个 bit 叫 1 个 \textbf{byte（字节）}。一个英文字母占 1 个 byte，一个中文字占 2--4 个 bytes。你玩的一个 Scratch 作品可能有几百 KB，也就是几十万个字节！
+
+\subsection*{计算机的三大部件}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{部件} & \textbf{简单解释} & \textbf{类比} \\ \hline
+CPU（中央处理器） & 负责"计算"和"做决定" & 大脑 \\ \hline
+内存（RAM） & 临时存储正在运行的程序和数据 & 办公桌 \\ \hline
+硬盘/SSD（存储） & 永久保存文件 & 书柜 \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{办公桌和书柜的比喻：}
+\begin{itemize}
+  \item 你在写作业（CPU 在工作）。
+  \item 你摊开在桌上的课本和作业本——这是内存（正在用的东西）。
+  \item 你书柜里没拿出来的书——这是硬盘（存着但不急着用）。
+  \item 桌子越大，你能同时摊开的东西越多（内存越大，能同时运行更多程序）。
+  \item 书柜越大，你能存的书越多（硬盘越大，能存更多文件）。
+  \item 但你如果桌子太小（内存不够），就得不停地去书柜拿书换书——电脑就会变慢。
+\end{itemize}
+
+\section*{第九课：程序是怎么运行的？}
+
+\subsection*{编译 vs 解释}
+
+把人类写的代码变成计算机能执行的指令，有两种方式：
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{} & \textbf{编译型（C++）} & \textbf{解释型（Python）} \\ \hline
+过程 & 写完→编译器一次性翻译→生成可执行文件→运行 & 写完→解释器一行一行翻译→同时运行 \\ \hline
+速度 & 快（翻译好的文件直接运行） & 慢一点（边翻译边运行） \\ \hline
+修改后 & 需要重新编译 & 直接运行，改完即生效 \\ \hline
+类比 & 翻译整本书再读 & 同声传译 \\ \hline
+\end{tabular}
+\end{center}
+
+你之前在 Scratch 里每次点绿旗——Scratch 会从头到尾执行你的积木。这就是"解释执行"的雏形。Python 也是类似的。而 C++ 需要先"编译"成一个 .exe 文件才能运行。
+
+\section*{第十课：调试思维——Bug 是好朋友}
+
+程序出错了，不叫"失败了"，叫\textbf{出现了一个 bug}。找 bug 和修 bug 是编程中最有价值的部分。
+
+\subsection*{调试四步法}
+
+\begin{enumerate}
+  \item \textbf{复现：} 怎么做才会出 bug？每次都能出现吗？
+  \item \textbf{定位：} bug 在代码的哪一段？用"二分法"——先注释掉一半代码，看 bug 还在不在。
+  \item \textbf{理解：} 这段代码本应该做什么？实际做了什么？
+  \item \textbf{修复：} 改代码 → 测试 → 确认 bug 消失 → 确认没产生新 bug。
+\end{enumerate}
+
+\subsection*{经典 bug 类型（在你未来的编程中一定会遇到）}
+
+\begin{itemize}
+  \item \textbf{语法错误：} 拼写错了、漏了冒号或括号。——编译器/解释器会直接告诉你。
+  \item \textbf{逻辑错误：} 代码能运行，但结果不对。比如把 \texttt{>} 写成了 \texttt{<}。——最难找，因为电脑不会报错。
+  \item \textbf{边界条件错误：} 当输入是 0、负数、空字符串时程序崩溃了。
+  \item \textbf{命名错误：} 变量名打错了。Python 会报 \texttt{NameError}。
+\end{itemize}
+
+\textbf{记住：} 每一个程序员每天都会制造无数个 bug。编程不是"一次写对"，而是"不断调试直到对"。Scratch 里你已经在做了——当小猫没按你想象的方式动，你会检查是哪块积木的问题。这，就是调试。
+
+\section*{总结：下一步做什么？}
+
+你已经学会了：
+\begin{itemize}
+  \item 把大问题拆成小问题（分解）
+  \item 找出规律（模式识别）
+  \item 去掉无关细节（抽象）
+  \item 写出步骤（算法）
+  \item 用流程图和伪代码表达思路
+  \item 计算机怎么工作的
+  \item 程序怎么运行的
+  \item 怎么面对 bug
+\end{itemize}
+
+下一步，你要学 \textbf{Python}——真正的编程语言。你会发现，Python 的语法和你在伪代码里写的几乎一样。因为你已经会用计算思维思考了，剩下的只是学会 Python 的"方言"而已。
+
+\section*{综合练习与答案}
+
+\begin{enumerate}
+  \item \textbf{[分解练习]} 拆解"制作三明治"的过程，写出至少 8 个步骤。哪些步骤可以并行？
+  \item \textbf{[算法设计]} 设计一个算法：给定两个整数 $a$ 和 $b$，输出它们的最大公约数（GCD）。提示：用辗转相除法。
+  \item \textbf{[伪代码]} 写一个伪代码程序：输入一个整数 $n$，输出 $n!$（$n$ 的阶乘）。
+  \item \textbf{[流程图]} 画一个"洗衣机工作流程"的流程图。
+  \item \textbf{[扩展项目]} 选择一个你熟悉的游戏（如跳棋、五子棋），用伪代码写出一套完整的游戏规则算法。
+\end{enumerate}
+
+\subsection*{参考答案}
+
+\textbf{练习 1（三明治）：}
+\begin{enumerate}
+  \item 取出两片面包
+  \item 烤面包（同时可以切蔬菜——并行）
+  \item 洗生菜
+  \item 切西红柿
+  \item 切火腿/芝士
+  \item 在面包上抹酱
+  \item 放上所有食材
+  \item 盖上另一片面包，切开
+\end{enumerate}
+可以并行的步骤：烤面包的同时可以洗切蔬菜。
+
+\textbf{练习 2（最大公约数——辗转相除法）：}
+\begin{verbatim}
+输入 a, b
+当 b != 0:
+    temp = a % b
+    a = b
+    b = temp
+输出 a
+\end{verbatim}
+
+\textbf{练习 3（阶乘伪代码）：}
+\begin{verbatim}
+输入 n
+result = 1
+对于 i 从 1 到 n:
+    result = result * i
+输出 result
+\end{verbatim}
+
+\section*{扩展项目：设计一个自动售货机}
+
+\textbf{需求：} 设计一个自动售货机的控制算法。售货机有 5 种商品（编号 A1--A5），价格分别为 3/5/2/4/6 元。投入硬币后可以选择商品，钱不够时提示，钱多了要找零。
+
+用流程图 + 伪代码完整描述这个算法。完成后，对比 \texttt{python/} 模块中的记账本项目，思考它们用到了哪些相同的计算思维模式（都是"输入→处理→输出"）。
+
+\section*{本模块与其他模块的关联}
+
+\begin{itemize}
+  \item \textbf{Scratch} → 本模块：Scratch 中的积木对应本模块的流程图和伪代码——都是"把逻辑可视化"。从 Scratch 拖积木到本模块画流程图是平滑过渡。
+  \item 本模块 → \textbf{计算机数学基础}：本模块第八课讲了二进制基础，\texttt{computer\_maths/} 模块深入讲解位运算、布尔代数、集合论等，是计算思维的数学深化。
+  \item 本模块 → \textbf{Python 基础}：本模块的伪代码直接对应 Python 语法。每一段伪代码都能翻译成 Python 程序——这就是从思维到实践的桥梁。
+  \item 本模块 → \textbf{数据结构与算法}：本模块的"算法设计"和流程图是 ds-algo 模块中排序、搜索、递归等算法的基础。
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,332 @@
+编程系列 插图需求清单
+======================
+格式：每张图一行 → 插入位置 | 内容描述 | 搜索关键词 / AI 绘图 Prompt
+优先级：H=高 M=中 L=低
+图片规格：矢量图用 PDF，位图用 PNG（≥300dpi）
+
+
+模块：scratch/（家长指南）
+────────────────────────────────────────────────
+[H] scratch/ 第一课 "界面长什么样" 之后
+  → Scratch 界面标注图
+  → 标注 5 区：舞台、角色列表、积木区、脚本区、绿旗/红点
+  → search: Scratch 3.0 interface labeled Chinese
+  → prompt: Scratch 3.0 programming interface screenshot, labeled with 5 areas in Chinese: Stage (舞台), Sprite List (角色列表), Blocks Palette (积木区), Scripts Area (脚本区), Green Flag (绿旗), clean layout, educational
+
+[H] scratch/ 第三课 "积木块颜色" 表格旁边
+  → 9 种积木颜色色块对照图
+  → 深蓝/紫/粉/黄/橙/浅蓝/绿/红/暗红 各一个示例积木
+  → search: Scratch block categories by color
+  → prompt: Scratch 3.0 blocks in 9 color categories Motion dark blue Looks purple Sound pink Events yellow Control orange Sensing light blue Operators green Variables red My Blocks dark red, arranged in a grid with Chinese labels
+
+[M] scratch/ 第九课 "Scratch 到 Python" 对照表旁边
+  → Scratch 积木 vs Python 代码对照图
+  → 左侧拖积木、右侧敲代码，中间箭头连接
+  → search: Scratch to Python transition visual
+  → prompt: split screen comparison, left side shows Scratch blocks dragging, right side shows Python code typing, arrow connecting them, concept mapping visual, educational illustration
+
+[M] scratch/ 第三课 "广播消息" 旁边
+  → 广播消息示意图：角色A发消息，角色B和C收到
+  → search: Scratch broadcast message illustration
+  → prompt: Scratch sprites communication diagram, sprite A sends broadcast message, sprites B and C receive it, arrows showing message flow, cartoon style
+
+
+模块：computational-thinking/（计算思维）
+────────────────────────────────────────────────
+[H] ct/ 第一课 "什么是计算思维" 开头
+  → 计算思维四步法示意图
+  → 分解→模式识别→抽象→算法，每步配小图标
+  → search: computational thinking 4 steps decomposition pattern recognition abstraction algorithm
+  → prompt: computational thinking four steps infographic: Decomposition (分解) breaking puzzle into pieces, Pattern Recognition (模式识别) finding similarities, Abstraction (抽象) focusing on essentials, Algorithm Design (算法设计) step by step arrows, colorful educational diagram, Chinese labels
+
+[H] ct/ 第六课 "流程图" 开头
+  → 流程图基本符号图
+  → 椭圆(起止框)/矩形(处理框)/菱形(判断框)/平行四边形(输入输出框)/箭头
+  → search: flowchart symbols guide Chinese
+  → prompt: flowchart basic symbols with Chinese labels: 起止框 oval shape, 处理框 rectangle, 判断框 diamond, 输入/输出框 parallelogram, 流程线 arrow, clean technical diagram
+
+[H] ct/ 第八课 "二进制" 旁边
+  → 二进制对照表 + 灯泡开关图
+  → 十进制 0-8 ↔ 二进制，配灯泡亮/灭表示 1/0
+  → search: binary numbers light bulbs visual
+  → prompt: binary number representation with light bulbs, bulbs ON (1) and OFF (0), showing decimal 0 to 8 in binary, educational diagram, Chinese labels
+
+[H] ct/ 第八课 "计算机三大部件" 旁边
+  → 计算机三大部件类比图
+  → CPU(大脑)/内存(办公桌)/硬盘(书柜)，配人物写作业场景
+  → search: computer CPU RAM storage analog desk bookshelf
+  → prompt: computer components analogy, CPU as human brain doing homework, RAM as desk with textbooks spread out, Hard Drive as bookshelf, student sitting at desk, educational illustration, Chinese labels
+
+[H] ct/ 第九课 "编译 vs 解释" 旁边
+  → 编译 vs 解释对比流程图
+  → 编译：.cpp→编译器→.exe→运行；解释：.py→解释器一行行→运行
+  → search: compiled vs interpreted language diagram
+  → prompt: side by side comparison, Compiled (编译): source code → compiler → executable → run, Interpreted (解释): source code → interpreter line by line → run, Chinese labels, educational diagram
+
+
+模块：computer_maths/（计算机数学）
+────────────────────────────────────────────────
+[H] cm/ 第一课 "二进制" 开头
+  → 二进制位权重齿轮图
+  → 从右到左 2^0, 2^1, 2^2... 每个位用齿轮大小表示权重
+  → search: binary number place value wheel diagram
+  → prompt: binary place value visualization, gears of increasing size from right to left, labeled 2^0, 2^1, 2^2, 2^3, 2^4, mechanical style, educational diagram, Chinese labels
+
+[H] cm/ 第五课 "布尔代数" 旁边
+  → AND/OR/NOT/XOR 真值表 + 逻辑门符号
+  → 四个基本逻辑门符号和对应的真值表
+  → search: logic gates truth table AND OR NOT XOR
+  → prompt: four basic logic gates with symbols and truth tables: AND gate, OR gate, NOT gate, XOR gate, clean technical diagram, Chinese labels 与/或/非/异或
+
+[H] cm/ 第六课 "集合论" 旁边
+  → 韦恩图：并集/交集/差集/对称差
+  → 四个韦恩图分别展示 A∪B, A∩B, A-B, A△B
+  → search: Venn diagram union intersection difference symmetric difference
+  → prompt: four Venn diagrams showing set operations: Union (并集 A∪B), Intersection (交集 A∩B), Difference (差集 A-B), Symmetric Difference (对称差 A△B), colored regions, Chinese labels, educational
+
+[H] cm/ 第八课 "图论" 旁边
+  → 图的基本概念图：5个顶点的无向图
+  → 标注顶点、边、度，显示一个简单无向图
+  → search: simple undirected graph vertices edges degree
+  → prompt: simple undirected graph with 5 vertices and 6 edges, vertices labeled A through E, one vertex highlighted showing degree 3, edge and vertex labels in Chinese (顶点, 边, 度), clean diagram
+
+[M] cm/ 第九课 "排列组合" 旁边
+  → 排列 vs 组合可视化
+  → 从 A/B/C 中选 2 个，排列 6 种，组合 3 种
+  → search: permutations vs combinations visual ABC
+  → prompt: visual comparison of permutations and combinations, selecting 2 from {A,B,C}, permutations show 6 ordered pairs with arrows, combinations show 3 unordered groups, colorful educational diagram, Chinese labels
+
+
+模块：python/
+────────────────────────────────────────────────
+[H] python/ 第二课 "变量" 旁边
+  → 变量比喻图：带标签的盒子
+  → 盒子上写变量名，里面放对应值（数字/文字/布尔）
+  → search: variable as labeled box programming concept
+  → prompt: programming variable concept illustration, labeled boxes with names like "score" containing number 95, "name" containing text "小明", "is_active" containing boolean True/False switch, colorful educational diagram
+
+[H] python/ 第六课 "列表" 旁边
+  → 列表索引示意图
+  → 连续格子，标注正向索引 0,1,2... 和负向索引 -1,-2,-3...
+  → search: Python list index diagram positive negative
+  → prompt: Python list memory layout, contiguous boxes showing elements, top arrow labels positive indices 0,1,2,3..., bottom arrow labels negative indices -1,-2,-3..., colorful educational diagram
+
+[M] python/ 第七课 "字典" 旁边
+  → 字典键值对映射图
+  → key（钥匙）→ value（值）的箭头映射
+  → search: Python dictionary key value mapping diagram
+  → prompt: Python dictionary concept diagram, keys on left "name", "age", "score" pointing with arrows to values on right "小明", 10, 95, key-value pair mapping, educational illustration, Chinese labels
+
+[H] python/ 总结 旁边
+  → Scratch vs Python 对照挂图
+  → 变量/if/循环/列表/函数 的积木 vs 代码对照
+  → search: Scratch blocks vs Python code comparison chart
+  → prompt: comparison chart Scratch blocks on left vs Python code on right, rows: Variables, if/else, for loop, list, function, bilingual Chinese-English labels, educational poster style
+
+
+模块：ds-algo/（数据结构与算法）
+────────────────────────────────────────────────
+[H] ds/ 第一课 "时间复杂度" 旁边
+  → 大 O 复杂度曲线图
+  → 同一坐标系画 O(1), O(log n), O(n), O(n log n), O(n²), O(2^n)
+  → search: Big O notation complexity comparison chart
+  → prompt: Big O complexity graph, x-axis labeled "输入规模 n", y-axis labeled "运行时间", curves for O(1) flat, O(log n) slow growth, O(n) diagonal, O(n log n), O(n²) parabolic, O(2^n) exponential, color coded legend, Chinese labels
+
+[H] ds/ 第二课 "数组 vs 链表" 旁边
+  → 数组 vs 链表对比图
+  → 数组：连续格子；链表：分散格子 + 箭头连接
+  → search: array vs linked list memory diagram
+  → prompt: side by side comparison, left: Array (数组) contiguous memory blocks in a row, right: Linked List (链表) scattered nodes connected by arrows showing next pointers, labeled in Chinese, educational diagram
+
+[H] ds/ 第三课 "栈与队列" 旁边
+  → 栈（后进先出）vs 队列（先进先出）对比图
+  → 栈：一叠盘子；队列：排队的人
+  → search: stack LIFO vs queue FIFO visual analogy
+  → prompt: visual analogy, Stack (栈) as stack of plates LIFO Last In First Out, Queue (队列) as people排队 FIFO First In First Out, push/pop and enqueue/dequeue operations shown with arrows, Chinese labels
+
+[H] ds/ 第四课 "二叉树" 旁边
+  → 二叉树结构 + 三种遍历顺序图
+  → 一个二叉树上标前序/中序/后序的遍历路径
+  → search: binary tree preorder inorder postorder traversal
+  → prompt: binary tree with root and children, three traversal paths shown in different colors: Preorder (前序 根→左→右) red dotted line, Inorder (中序 左→根→右) blue dashed line, Postorder (后序 左→右→根) green dash-dot line, Chinese labels
+
+[H] ds/ 第五课 "BFS vs DFS" 旁边
+  → BFS（广度优先）vs DFS（深度优先）对比
+  → 同一棵树，BFS 层序扩散，DFS 一条路走到底
+  → search: BFS vs DFS graph traversal comparison
+  → prompt: same graph traversed two ways, BFS (广度优先) shows level-by-level wave expansion in concentric circles, DFS (深度优先) shows deep path with backtracking arrows, comparison diagram, Chinese labels, educational
+
+[H] ds/ 第六课 "排序算法" 旁边
+  → 五种排序算法可视化（同一组数据）
+  → 冒泡/选择/插入/归并/快排 对 [6,3,8,1,5] 的排序过程
+  → search: sorting algorithms visualization comparison
+  → prompt: five sorting algorithms visualizing same unsorted array [6,3,8,1,5], Bubble Sort showing bubbling animation, Selection Sort selecting minimum, Insertion Sort inserting, Merge Sort divide and merge, Quick Sort pivot partition, side by side comparison, Chinese labels
+
+[H] ds/ 第七课 "二分查找" 旁边
+  → 二分查找过程可视化
+  → 有序数组 [1,3,5,7,9,11,13] 中找 7，左右指针逐步缩小
+  → search: binary search animation visualization
+  → prompt: binary search on sorted array [1,3,5,7,9,11,13] searching for value 7, left and right pointers shown moving, mid pointer highlighted, step by step narrowing range, clear educational diagram, Chinese labels
+
+[H] ds/ 第九课 "爬楼梯" 旁边
+  → 爬楼梯 DP 状态转移图
+  → f(n)=f(n-1)+f(n-2) 的递推关系可视化
+  → search: climbing stairs dynamic programming visualization
+  → prompt: climbing stairs problem DP visualization, stairs with 1 or 2 steps at a time, showing f(n)=f(n-1)+f(n-2) recurrence relation, state transition arrows, bottom-up DP table, Chinese labels, educational
+
+
+模块：python-to-cpp/（Python 到 C++）
+────────────────────────────────────────────────
+[H] cpp/ 第十课 "编译过程" 旁边
+  → 编译过程流程图
+  → .cpp→预处理→编译→汇编→链接→.exe
+  → search: C++ compilation process diagram
+  → prompt: C++ compilation pipeline: Source Code (.cpp) → Preprocessing (预处理) → Compilation (编译) → Assembly (汇编) → Linking (链接) → Executable (.exe), each stage with brief description, flow arrows, Chinese labels, technical diagram
+
+[H] cpp/ 第六课 "指针" 旁边
+  → 指针示意图
+  → 变量 x=42 在内存中，指针 p 指向 x
+  → search: C++ pointer memory diagram
+  → prompt: C++ pointer concept visualization, memory cell labeled 'x' containing value 42 at address 0x61ff0c, pointer variable 'p' containing the address pointing to x with arrow, clear labeling in Chinese, educational diagram
+
+[H] cpp/ 第九课 "栈 vs 堆" 旁边
+  → 栈 vs 堆内存结构图
+  → 栈（小/连续/LIFO）vs 堆（大/散落/手动管理）
+  → search: stack vs heap memory layout C++
+  → prompt: memory layout comparison, Stack (栈): small contiguous region with LIFO order showing function frames, Heap (堆): large scattered region with allocated blocks, arrows showing new/delete operations, Chinese labels
+
+[H] cpp/ 总结表 旁边
+  → Python vs C++ 语法对照挂图
+  → 变量/循环/条件/函数/类/IO 的语法对比
+  → search: Python vs C++ syntax comparison poster
+  → prompt: Python vs C++ syntax comparison table, rows for variable declaration, if-else, for loop, while, function, class, print/input, side by side with code examples, bilingual, poster style educational chart
+
+
+模块：web-dev/
+────────────────────────────────────────────────
+[H] web/ 第一课 "Web 怎么工作" 旁边
+  → 浏览器↔服务器↔数据库三层架构图
+  → 用户→浏览器→服务器→数据库的请求响应流程
+  → search: client server database architecture diagram
+  → prompt: three-tier web architecture, User (用户) → Browser (浏览器) sends HTTP request → Server (服务器 Flask) processes → Database (数据库 SQLite) reads/writes, response flows back, clear arrows showing request-response cycle, Chinese labels
+
+[H] web/ 项目一 "HTML" 旁边
+  → HTML 文档结构树
+  → html→head/body→title/style/h1/p/ul/li 的树形结构
+  → search: HTML document tree structure diagram
+  → prompt: HTML document object model tree, root <html> branches to <head> and <body>, head has <title>, body has <h1> <p> <ul> with <li> children, nested tree visualization, Chinese labels
+
+[H] web/ 项目四 "数据库设计" 旁边
+  → 博客项目 ER 图
+  → users / posts / comments 三个表及外键关系
+  → search: blog database ER diagram users posts comments
+  → prompt: entity-relationship diagram for blog system, three tables: users (id, username, password), posts (id, title, content, user_id, created_at), comments (id, post_id, user_id, content, created_at), foreign key relationships shown with connecting lines, Chinese labels
+
+[L] web/ 项目一 "CSS" 旁边
+  → CSS 盒模型图
+  → margin→border→padding→content 从外到内的分层
+  → search: CSS box model diagram
+  → prompt: CSS box model, from outside to inside: margin (外边距) → border (边框) → padding (内边距) → content (内容), each layer in different color, with measurement labels, Chinese labels, educational
+
+
+模块：git-collab/
+────────────────────────────────────────────────
+[H] git/ 第三课 "三区概念" 旁边
+  → Git 三区+工作流图
+  → 工作区→暂存区→仓库，标 add/commit 操作
+  → search: git three areas working directory staging repository
+  → prompt: Git three areas diagram, Working Directory (工作区) with files, Staging Area (暂存区) with selected changes, Repository (仓库) with committed history, arrows labeled 'git add' and 'git commit' connecting them, clear flow, Chinese labels
+
+[H] git/ 第五课 "分支" 旁边
+  → 分支与合并示意图
+  → main 和 feature 分支分叉后合并
+  → search: git branch merge diagram
+  → prompt: Git branching visualization, main branch as straight timeline, feature branch branching off with 2 commits, then merging back to main with merge commit, commit nodes as circles, clear diagram, Chinese labels
+
+[M] git/ 第五课 "合并冲突" 旁边
+  → 合并冲突示意图
+  → 两个分支修改同一行，显示 <<<<<<< ======= >>>>>>>
+  → search: git merge conflict visual
+  → prompt: Git merge conflict illustration, same file opened in editor showing conflict markers: <<<<<<< HEAD on top, ======= divider in middle, >>>>>>> feature-branch on bottom, two branches each claiming different content, Chinese labels
+
+[H] git/ 第七课 "协作工作流" 旁边
+  → GitHub 协作流程图
+  → fork→clone→branch→commit→push→PR→review→merge
+  → search: GitHub collaboration workflow pull request
+  → prompt: GitHub collaboration workflow, flow chart with steps: Fork repository, Clone, Create branch, Commit changes, Push, Open Pull Request, Code Review, Merge to main, arrows connecting steps, Chinese labels, clean diagram
+
+
+模块：ai-intro/
+────────────────────────────────────────────────
+[H] ai/ 第一课 "传统编程 vs 机器学习" 旁边
+  → 传统编程 vs 机器学习对比图
+  → 传统：规则+数据→答案；ML：数据+答案→规则
+  → search: traditional programming vs machine learning diagram
+  → prompt: comparison, Traditional Programming (传统编程): Rules + Data → Answers, Machine Learning (机器学习): Data + Answers → Rules / Model, two parallel flows with different directions, clear visual comparison, Chinese labels
+
+[H] ai/ 第三课 "神经元" 旁边
+  → 人工神经元结构图
+  → 输入→权重→求和→激活函数→输出
+  → search: artificial neuron structure diagram
+  → prompt: artificial neuron (人工神经元) diagram, multiple inputs x₁ x₂ x₃ entering from left, each multiplied by weights w₁ w₂ w₃, summed with bias b, through activation function (激活函数), producing output y on right, biological neuron comparison inset, Chinese labels
+
+[H] ai/ 第三课 "神经网络" 旁边
+  → 神经网络三层结构图
+  → 输入层→隐藏层→输出层，全连接
+  → search: neural network architecture input hidden output layers
+  → prompt: neural network architecture with 3 layers, Input Layer (输入层) 4 nodes, Hidden Layer (隐藏层) 5 nodes, Output Layer (输出层) 2 nodes, fully connected with lines between every node pair, diagram style, Chinese labels
+
+[H] ai/ 第四课 "CNN" 旁边
+  → CNN 层级图：卷积→池化→全连接
+  → 猫图片→边缘检测→形状识别→分类输出
+  → search: CNN convolutional neural network layers visualization
+  → prompt: Convolutional Neural Network (CNN) architecture, input cat image → convolution layer detecting edges → pooling layer reducing size → more convolution layers detecting shapes/eyes/nose → fully connected layer → output "cat" classification, feature maps visualization showing increasingly abstract features, Chinese labels
+
+[H] ai/ 第六课 "强化学习" 旁边
+  → 强化学习循环图
+  → Agent→Action→Environment→Reward→Agent 循环
+  → search: reinforcement learning agent environment loop
+  → prompt: Reinforcement Learning cycle diagram, Agent (智能体) takes Action (动作) in Environment (环境), Environment returns State (状态) and Reward (奖励) to Agent, circular loop with arrows, game controller visual for agent, screen visual for environment, Chinese labels
+
+[M] ai/ 第三课 "MNIST" 旁边
+  → MNIST 手写数字样例
+  → 0-9 手写数字各 2 行，展示多样性
+  → search: MNIST handwritten digits samples
+  → prompt: MNIST dataset samples, 28x28 pixel grayscale handwritten digits 0 through 9, multiple variations of each digit showing different handwriting styles, grid layout, educational reference image
+
+
+模块：capstone/（综合项目）
+────────────────────────────────────────────────
+[M] cap/ 第四课 "看板" 旁边
+  → 项目看板图（Kanban）
+  → To Do / Doing / Done 三列，各列若干卡片
+  → search: Kanban board project management To Do Doing Done
+  → prompt: Kanban project board with 3 columns: To Do (待办), Doing (进行中), Done (已完成), sticky notes in each column describing tasks like "用户注册", "数据库设计", "前端页面", project management visual, Chinese labels
+
+[M] cap/ 第七课 "部署" 旁边
+  → 部署流程图
+  → 本地代码→GitHub→自动部署→上线
+  → search: web deployment pipeline CI CD flow
+  → prompt: deployment pipeline, Local development (本地开发) → git push to GitHub (GitHub仓库) → automatic build and deploy (自动部署) → Live website (上线), cloud server visual, arrows showing continuous deployment flow, Chinese labels
+
+
+模块：overview/（整体大纲）
+────────────────────────────────────────────────
+[H] overview/ 开头
+  → 六年学习路径时间轴
+  → G4→G9 时间轴，每个年级标对应模块，用渐变色或图标
+  → search: 6 year programming learning roadmap timeline
+  → prompt: 6-year learning roadmap timeline from G4 to G9, each year showing programming modules: G4 Scratch, G5 Computational Thinking + Computer Math, G6 Python + Data Structures, G7 Python to C++, G8 Web Dev + Git, G9 AI + Capstone Project, colorful timeline with icons, Chinese labels
+
+[M] overview/ 依赖关系 旁边
+  → 模块依赖关系图
+  → 各模块之间的箭头依赖（谁是谁的前置）
+  → search: programming course dependency graph
+  → prompt: module dependency graph, nodes for each module: Scratch, Computational Thinking, Computer Math, Python, DS-Algo, Python-to-CPP, Web Dev, Git, AI, Capstone, arrows showing prerequisite relationships, directed graph layout, Chinese labels
+
+
+统计
+────
+模块数：11（scratch / ct / cm / python / ds / cpp / web / git / ai / cap / overview）
+总插图数：61张
+优先级分布：H=38, M=15, L=8

@@ -2,49 +2,295 @@
 \usepackage{xcolor}
 \usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
 \usepackage{array}
+\usepackage{multirow}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
 \linespread{1.35}
 
-\title{\textcolor{blue!70!black}{\Huge\textbf{Scratch入门}}}
-\author{}
+\title{\textcolor{blue!70!black}{\Huge\textbf{Scratch 家长指南}}}
+\author{写给不懂编程的家长：了解孩子在学什么、怎么学、如何支持}
 \date{}
 
 \begin{document}
 \maketitle
 \thispagestyle{empty}
 
-\section*{\textcolor{blue!70!black}{什么是Scratch？}}
+\section*{写在前面}
 
-Scratch 是由美国麻省理工学院（MIT）媒体实验室开发的一款\textbf{免费图形化编程工具}，专门面向 8 到 16 岁的青少年。它于 2007 年首次发布，2019 年推出了 Scratch 3.0 版本，全面支持浏览器在线编辑和平板设备。
+这份指南是专门\textbf{写给您（家长）}的，不是给孩子看的。
 
-\textbf{它最大的特点是不用写代码。} 传统的编程需要记住英文单词和复杂的语法规则，比如告诉计算机"如果……就……"要用 \texttt{if} 和冒号。但在 Scratch 里，你只需要像搭积木一样，把彩色的指令块拖到编程区拼在一起就可以了。这些积木块有不同的颜色和形状，拼不上的就说明逻辑不对——这就把注意力从"记单词"转移到了"想逻辑"上。
+您的孩子已经接触 Scratch 一段时间了，但您可能对 Scratch 完全不了解——不知道它长什么样、不知道"积木"是什么意思、也不知道孩子整天在电脑前"玩"到底学了些什么。
 
-\vspace{0.3cm}
-\textbf{Scratch的核心概念：}
+这完全正常。Scratch 是一个面向孩子的图形化编程工具，它把编程变得像搭积木一样直观。您不需要学会编程才能支持孩子，只需要了解一些基本概念，就能和孩子进行有意义的对话。
 
+以下内容不要求您记住所有细节，浏览一遍即可。当孩子和您聊 Scratch 时，您可以回来查阅。
+
+\section*{一、Scratch 到底是什么？}
+
+Scratch 是美国麻省理工学院（MIT）媒体实验室开发的\textbf{免费图形化编程工具}，2007 年发布，全球有数千万青少年在使用。最新版本是 Scratch 3.0（2019 年）。
+
+\textbf{它最大的特点：不用写代码。}
+
+传统编程需要记住英文关键字和语法（比如写 \texttt{if}、\texttt{for}、\texttt{while}），Scratch 把这些命令做成了彩色的"积木块"，孩子只需要用鼠标拖拽积木、拼在一起就可以创建程序。这样做的最大好处是——\textbf{永远不会出现语法错误}。拼不上的积木块根本放不到一起，孩子只需要关注逻辑本身。
+
+Scratch 是孩子从"玩电脑"到"用电脑创造"的第一步。它不是游戏，而是\textbf{创造游戏和动画的工具}。
+
+\section*{二、Scratch 界面长什么样？}
+
+如果孩子打开 Scratch，您会看到这样的布局（可以在线打开 \href{https://scratch.mit.edu}{scratch.mit.edu} 看看，或让孩子打开给您演示）：
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{区域} & \textbf{叫什么} & \textbf{干什么用} \\ \hline
+左上 & 舞台（Stage） & 程序运行的地方，像一个小剧场 \\ \hline
+左中 & 角色列表（Sprite List） & 显示有哪些"演员"（角色）在舞台上 \\ \hline
+中间 & 积木区（Blocks Palette） & 所有可用的积木块，按颜色分类 \\ \hline
+右下 & 脚本区（Scripts Area） & 拖积木到这里拼成程序 \\ \hline
+右上 & 绿旗/红点 & 点击绿旗开始运行，红点停止 \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{简单类比：}
 \begin{itemize}
-  \item \textbf{角色（Sprite）}——程序里的"演员"，可以是一只小猫、一个球、或者任何你画的图案。
-  \item \textbf{舞台（Stage）}——角色表演的地方，相当于一个剧场。
-  \item \textbf{事件（Event）}——程序什么时候开始？点击绿旗？按下键盘？还是碰到另一个角色？
-  \item \textbf{循环（Loop）}——让某段指令反复执行，比如"一直走，碰到边缘就反弹"。
-  \item \textbf{条件判断（Conditional）}——如果……就……，比如"如果碰到了敌人，就消失"。
-  \item \textbf{变量（Variable）}——用来存数或文字的小盒子，比如记录你的得分。
+  \item 舞台 = 剧场舞台
+  \item 角色 = 演员
+  \item 积木 = 剧本里的台词/动作指令
+  \item 脚本区 = 导演的剧本，把指令串起来
+  \item 绿旗 = "开拍！" 红点 = "停！"
 \end{itemize}
 
+\section*{三、积木块有哪些颜色？各代表什么？}
+
+积木按功能分为 9 类，每种颜色代表一类功能。您只需要知道它们的大致分类，就能大概理解孩子在拼什么：
+
 \vspace{0.3cm}
-\textbf{为什么要先学Scratch？}
+\begin{center}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{颜色} & \textbf{类别} & \textbf{举例说明} \\ \hline
+深蓝色 & 运动 & 移动、转向、滑行到某个位置 \\ \hline
+紫色 & 外观 & 切换造型、说话气泡、改变大小 \\ \hline
+粉色 & 声音 & 播放音效、改变音量 \\ \hline
+黄色 & 事件 & 点击绿旗时、按下某个键时……（程序入口） \\ \hline
+橙色 & 控制 & 等待、重复、如果……那么……（核心逻辑） \\ \hline
+浅蓝色 & 侦测 & 碰到边缘了吗？按下鼠标了吗？当前时间？ \\ \hline
+绿色 & 运算 & 加减乘除、随机数、字符串拼接 \\ \hline
+红色 & 变量 & 创建"得分"、"生命值"等可变数据 \\ \hline
+暗红色 & 自制积木 & 让孩子自己定义新的积木（相当于函数） \\ \hline
+\end{tabular}
+\end{center}
 
-因为编程最核心的东西——顺序、分支、循环、变量、事件——在 Scratch 里全都能学到，而且完全不用操心语法错误。等这些概念都掌握了，再切换到 Python 这样的文本语言，区别仅仅是"从拖积木变成敲代码"，底层的思维方式是一样的。全球有数千万学生把 Scratch 作为编程启蒙的第一步。
-
-\vspace{0.3cm}
-\textbf{可以做什么？}
-
+\textbf{对家长而言，最重要的几类：}
 \begin{itemize}
-  \item 制作动画故事（让小猫说话、走路、变魔术）
-  \item 制作小游戏（接苹果、打地鼠、迷宫）
-  \item 制作互动艺术（随鼠标变色的画）
-  \item 甚至做一些简单的物理模拟
+  \item \textbf{黄色（事件）：} 这是程序的"点火开关"。孩子要告诉程序什么时候开始做事。
+  \item \textbf{橙色（控制）：} 这是程序的"大脑"。"重复"让某段逻辑反复执行，"如果……那么"让程序做判断。
+  \item \textbf{红色（变量）：} 这是程序的"记忆"。记录得分、计时、生命值等。
 \end{itemize}
 
-\textbf{学习路径建议：} Scratch ($\rightarrow$) Python ($\rightarrow$) C++。
+\section*{四、孩子通过 Scratch 学了哪些编程概念？}
+
+这是最重要的部分——Scratch 表面上像玩玩具，实际上涵盖了编程的\textbf{全部核心概念}。以下是孩子已经接触到的东西：
+
+\subsection*{1. 顺序执行}
+
+积木从上往下摞，程序就从上往下执行。这是编程最基本的规则。
+
+\textbf{孩子知道：}计算机严格按顺序执行指令，一步接一步。
+
+\subsection*{2. 事件驱动}
+
+"当绿旗被点击"、"当按下空格键"——程序在等待某个事件发生。
+
+\textbf{孩子知道：}程序不是一打开就全部运行，需要"触发条件"。
+
+\subsection*{3. 循环（重复）}
+
+"重复 10 次"、"重复执行"——让一段逻辑反复运行。
+
+\textbf{孩子知道：}计算机擅长做重复的事情，不需要写 100 遍同样的话。
+
+\subsection*{4. 条件判断}
+
+"如果碰到敌人，就消失"——根据不同的情况做不同的事。
+
+\textbf{孩子知道：}程序可以有"分支"，不同的输入导致不同的输出。
+
+\subsection*{5. 变量}
+
+创建一个"得分"变量，值从 0 变成 1、变成 2……
+
+\textbf{孩子知道：}计算机可以存储和修改数据，变量就像带标签的小盒子。
+
+\subsection*{6. 并行执行}
+
+两个角色可以同时运行各自的脚本；一个角色也可以同时运行多段脚本。
+
+\textbf{孩子知道：}计算机可以同时做多件事（实际上是在快速切换）。
+
+\subsection*{7. 消息广播}
+
+一个角色可以"广播"消息，其他角色收到后做相应动作。
+
+\textbf{孩子知道：}程序中不同部分可以互相通信，就像发微信消息。
+
+\subsection*{8. 坐标与角度}
+
+用 x/y 坐标定位角色位置，用 0--360 度控制方向。
+
+\textbf{孩子知道：}编程中经常会用到数学。
+
+\section*{五、孩子能用 Scratch 做什么？}
+
+Scratch 能做远比想象中多的东西。您可能见过孩子做这些类型：
+
+\begin{itemize}
+  \item \textbf{动画故事：} 让小猫走路、说话、变魔术，模拟一个简短的小剧场。
+  \item \textbf{小游戏：} 接苹果（鼠标控制）、打地鼠（点击得分）、迷宫（键盘控制移动）。
+  \item \textbf{互动艺术：} 鼠标移动时画笔颜色变化，画出一幅随机的画。
+  \item \textbf{模拟器：} 模拟物理（重力、弹跳）、模拟生态（动物觅食）。
+  \item \textbf{工具类：} 计时器、计算器、随机抽签器。
+  \item \textbf{音乐创作：} 用 Scratch 编曲，弹钢琴。
+\end{itemize}
+
+如果孩子的作品已经很复杂（比如有多个角色、多页代码、使用变量和条件判断的组合），说明他的 Scratch 基础已经非常扎实，可以进入下一阶段了。
+
+\section*{六、如何判断孩子学得怎么样？}
+
+以下是一个简单的观察清单，您不需要直接测试孩子，而是在看孩子演示作品时留意：
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{能力层次} & \textbf{具体表现} & \textbf{对应阶段} \\ \hline
+L1：模仿 & 能照着教程做出作品 & 入门 \\ \hline
+L2：修改 & 能在别人的作品上改参数、换角色 & 基础 \\ \hline
+L3：创作 & 能自己做一个小游戏或动画 & 熟练 \\ \hline
+L4：调试 & 程序出问题时能自己找到原因并修复 & 进阶 \\ \hline
+L5：抽象 & 能概括出"这种游戏需要哪些元素"，复用代码 & 精通 \\ \hline
+\end{tabular}
+\end{center}
+
+孩子达到 L3--L4 就说明 Scratch 掌握良好，可以准备进入 Python 阶段。如果还在 L1--L2，不必着急——每个孩子节奏不同，多鼓励展示、多提问题即可。
+
+\section*{七、家长可以问什么问题？（对话指南）}
+
+您不需要懂技术，只需要表现出兴趣。以下是一些孩子\underline{\textbf{愿意回答}}的问题：
+
+\textbf{看作品时可以问：}
+\begin{itemize}
+  \item "这个角色是你画的还是从库里选的？"
+  \item "这个游戏怎么才能赢？规则是什么？"
+  \item "如果得分到 10 分会发生什么？"
+  \item "你最喜欢这个作品里的哪一部分？"
+  \item "最难做的是哪块？你是怎么解决的？"
+\end{itemize}
+
+\textbf{聊学习时可以问：}
+\begin{itemize}
+  \item "你今天学了哪种新的积木？"
+  \item "最近有看到什么有趣的 Scratch 作品吗？"
+  \item "你班上有同学也做 Scratch 吗？你们会互相看作品吗？"
+  \item "你觉得 Scratch 最容易和最难的分别是什么？"
+  \item "你知道下一步要学的 Python 和 Scratch 有什么不同吗？"
+\end{itemize}
+
+\textbf{应该避免的问题：}
+\begin{itemize}
+  \item "你做这个有什么用？"（孩子会觉得你在否定他的兴趣）
+  \item "别老玩电脑，去做作业。"（Scratch 就是学习，不是玩游戏）
+  \item "这太简单了吧？"（对大人简单，对孩子的思维要求很高）
+\end{itemize}
+
+\section*{八、怎么看到孩子的作品？}
+
+\textbf{在线版：} 如果孩子在 Scratch 官网（scratch.mit.edu）注册了账号，他发布的作品都在个人主页上。您可以让他给您看主页链接，或者一起坐在电脑前看。
+
+\textbf{离线版：} Scratch 也有离线编辑器。作品默认保存在电脑本地，文件后缀是 .sb3。双击可以打开。
+
+\textbf{建议：} 定期（比如每两周一次）让孩子给家人做一次"作品展示"，5 分钟讲解。这不仅增强自信，还能锻炼表达能力。这也是您了解孩子进步情况的最好机会。
+
+\section*{九、下一步：从 Scratch 到 Python}
+
+当孩子熟练掌握 Scratch 后，自然要过渡到真正的文本编程。下面是 Scratch 概念和 Python 的对应关系，您现在不需要理解，留作参考即可：
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Scratch 积木} & \textbf{Python 对应} \\ \hline
+变量积木（红色） & 变量赋值：\texttt{x = 10} \\ \hline
+"如果……那么"（橙色） & \texttt{if} 语句 \\ \hline
+"重复……次"（橙色） & \texttt{for} 循环 \\ \hline
+"重复执行"（橙色） & \texttt{while True:} 循环 \\ \hline
+"自制积木"（暗红） & \texttt{def} 函数定义 \\ \hline
+"广播消息"（黄色） & 函数调用 / 事件系统 \\ \hline
+运算积木（绿色） & 算术运算符 \texttt{+ - * /} \\ \hline
+"侦测"积木（浅蓝） & 条件判断 / 传感器 API \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{核心信息：} 孩子已有的 Scratch 知识\textbf{全部有用}。学会了"循环"、"条件"、"变量"这些概念，到了 Python 只是换了一种表达方式。您的鼓励和兴趣是这个过渡期最重要的支持。
+
+\section*{十、推荐资源一览}
+
+\begin{itemize}
+  \item \textbf{官网：} \href{https://scratch.mit.edu}{scratch.mit.edu} —— 可以在线编辑、浏览全球作品
+  \item \textbf{官方教程：} scratch.mit.edu/ideas —— 官方入门教程（有中文版）
+  \item \textbf{Scratch Wiki：} en.scratch-wiki.info —— 英文深度资料
+  \item \textbf{社区：} 哔哩哔哩搜索"Scratch教程"有大量免费视频
+\end{itemize}
+
+\section*{附：Scratch 常用术语中英文对照}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{中文} & \textbf{English} \\ \hline
+角色 & Sprite \\ \hline
+舞台 & Stage \\ \hline
+积木 & Block \\ \hline
+脚本 & Script \\ \hline
+造型 & Costume \\ \hline
+背景 & Backdrop \\ \hline
+变量 & Variable \\ \hline
+列表 & List \\ \hline
+广播 & Broadcast \\ \hline
+侦测 & Sensing \\ \hline
+事件 & Event \\ \hline
+绿旗 & Green Flag \\ \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+\textcolor{gray}{\small 您不需要记住这些术语，但如果您偶尔看到孩子说"这个 sprite 会 broadcast 一条消息"，知道他在说什么就足够了。}
+
+\section*{附二：亲子练习建议}
+
+以下练习适合您和孩子一起做，您不需要会编程，只需在旁边提问和鼓励：
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{练习} & \textbf{孩子做的事} & \textbf{您可以问} \\ \hline
+拆解游戏 & 选一个玩过的游戏，列出所有角色和规则 & "这个游戏有哪些角色？怎么才能赢？" \\ \hline
+改参数 & 修改 Scratch 作品中的速度和大小参数 & "数字变大了会怎样？变小呢？" \\ \hline
+讲故事 & 用 Scratch 做一个 1 分钟的动画故事 & "这个故事是什么？角色之间什么关系？" \\ \hline
+找 Bug & 故意制造一个 bug，让孩子修 & "程序哪不对了？你怎么发现问题的？" \\ \hline
+教家长 & 让孩子教您一个 Scratch 功能 & "这一步为什么这么做？" \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{附三：本模块与其他模块的关联}
+
+\begin{itemize}
+  \item 本模块 → \textbf{计算思维与计算机基础}：学会了 Scratch 的积木操作后，下一步是系统学习"像程序员一样思考"——如何分解问题、画流程图、写伪代码。
+  \item 本模块 → \textbf{计算机数学基础}：Scratch 中的"运算"积木（加减乘除、随机数）是计算机数学的起点。二进制、布尔逻辑等概念让孩子理解计算机"为什么会这样工作"。
+  \item 本模块 → \textbf{Python 基础}：Scratch 的每一个核心概念（变量、循环、条件、函数）在 Python 中都有对应，见本指南第九节的对照表。
+  \item 本模块 → \textbf{数据结构与算法}：Scratch 的"列表"就是 Python 列表和 C++ 数组的前身。"重复执行直到"的背后是算法的雏形。
+\end{itemize}
+
+\textbf{给家长的话：} 孩子在本系列中走的每一步，都建立在 Scratch 打下的基础上。当他说"这个 Python 的 for 循环不就是 Scratch 的重复吗？"时，您就知道——他真正理解了。
 
 \end{document}

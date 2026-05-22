@@ -2,43 +2,682 @@
 \usepackage{xcolor}
 \usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
 \usepackage{array}
-\linespread{1.35}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
 
-\title{\textcolor{blue!70!black}{\Huge\textbf{前后端开发入门}}}
-\author{}
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true
+}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{Web 开发入门}}}
+\author{从写代码到做产品——4 个小项目学会建网站}
 \date{}
 
 \begin{document}
 \maketitle
 \thispagestyle{empty}
 
-\section*{\textcolor{blue!70!black}{说明}}
+\section*{写在前面}
 
-本模块以完成一个小项目为主线，介绍网站前后端开发的基本概念。目标：学生能独立搭建一个简单的网页应用（如个人博客或留言板）。
+到目前为止，你写的程序都在命令行里运行——黑底白字，只有你能看见。
 
-\vspace{0.3cm}
+Web 开发让你\textbf{做出真正的产品}——任何人都能通过浏览器访问的网站。这是很多程序员爱上编程的原因：你写的东西，全世界都能用。
 
-\textbf{一、什么是前后端？}
+我们会用 4 个小项目，一步步从纯前端到全栈，做出一个完整的网站。
+
+\subsection*{你需要准备}
 
 \begin{itemize}
-  \item \textbf{前端（Frontend）}：用户看到的页面，负责外观和交互。使用 HTML（结构）+ CSS（样式）+ JavaScript（行为）。
-  \item \textbf{后端（Backend）}：服务器上的程序，负责处理数据和业务逻辑。常用语言包括 Python（Flask/Django）、JavaScript（Node.js）、Java、Go 等。
-  \item \textbf{数据库（Database）}：存储用户数据的地方，比如用户名、密码、文章内容。
+  \item 一个文本编辑器（推荐 VS Code：\url{https://code.visualstudio.com/}）
+  \item Python 已安装（我们用它做后端）
+  \item 一个浏览器（Chrome 或 Edge）
 \end{itemize}
 
-\vspace{0.3cm}
+\section*{第一课：Web 是怎么工作的？}
 
-\textbf{二、小项目路线（初拟）：}
+\subsection*{浏览器 ↔ 服务器}
+
+\begin{verbatim}
+你的电脑                         服务器
+┌─────────┐    发起请求（URL）    ┌─────────┐
+│ 浏览器  │ ──────────────────→  │ 服务器  │
+│         │    返回网页（HTML）   │         │
+│         │ ←──────────────────  │         │
+└─────────┘                      └─────────┘
+\end{verbatim}
 
 \begin{enumerate}
-  \item \textbf{项目一：个人主页}——纯前端，用 HTML + CSS 写一个自我介绍页面
-  \item \textbf{项目二：互动页面}——加上 JavaScript，实现按钮点击、表单验证
-  \item \textbf{项目三：留言板}——引入后端（Python Flask）和数据库（SQLite），实现留言的提交和展示
-  \item \textbf{项目四：简易博客}——综合练习，包含用户登录、文章发布、评论功能
+  \item 你在浏览器里输入 \texttt{www.example.com}
+  \item 浏览器向 example.com 的服务器发送请求
+  \item 服务器处理请求，返回 HTML 文件
+  \item 浏览器把 HTML 渲染成你看到的页面
 \end{enumerate}
 
-\vspace{0.3cm}
+\subsection*{前端 vs 后端 vs 数据库}
 
-\textbf{三、前置要求：} 建议先完成 Python 基础模块，再学习前后端开发。
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{角色} & \textbf{干啥的} \\ \hline
+前端 & 页面长什么样？按钮按了怎么动？——HTML + CSS + JavaScript \\ \hline
+后端 & 数据怎么处理？用户登录对不对？——Python + Flask \\ \hline
+数据库 & 数据存哪儿？用户信息、文章内容——SQLite \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{项目一：个人主页（纯前端）}
+
+\subsection*{HTML——网页的骨架}
+
+HTML 不是编程语言，它是一种\textbf{标记语言}——用标签告诉浏览器"这里是个标题"、"这里是个段落"。
+
+\begin{lstlisting}[language=HTML]
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的个人主页</title>
+</head>
+<body>
+    <h1>你好，我是小明！</h1>
+    <p>我今年 12 岁，喜欢编程和打篮球。</p>
+    
+    <h2>我的爱好</h2>
+    <ul>
+        <li>编程（Scratch + Python）</li>
+        <li>打篮球</li>
+        <li>读科幻小说</li>
+    </ul>
+    
+    <h2>我的作品</h2>
+    <ol>
+        <li>猜数字游戏（Python）</li>
+        <li>简易记账本</li>
+        <li>石头剪刀布</li>
+    </ol>
+    
+    <a href="https://scratch.mit.edu">我的 Scratch 主页</a>
+</body>
+</html>
+\end{lstlisting}
+
+保存为 \texttt{index.html}，双击用浏览器打开——你的第一个网页！
+
+\subsection*{常用 HTML 标签}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{标签} & \textbf{用途} \\ \hline
+\texttt{<h1>} ~ \texttt{<h6>} & 标题（1 最大，6 最小） \\ \hline
+\texttt{<p>} & 段落 \\ \hline
+\texttt{<ul>} / \texttt{<ol>} & 无序列表 / 有序列表 \\ \hline
+\texttt{<li>} & 列表项 \\ \hline
+\texttt{<a href="...">} & 超链接 \\ \hline
+\texttt{<img src="...">} & 图片 \\ \hline
+\texttt{<div>} & 块级容器（用来布局） \\ \hline
+\texttt{<span>} & 行内容器 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{CSS——网页的皮肤}
+
+HTML 决定了内容，CSS 决定内容\textbf{长什么样}。
+
+把样式写在 \texttt{<head>} 里的 \texttt{<style>} 标签中：
+
+\begin{lstlisting}[language=HTML]
+<head>
+    <style>
+        body {
+            font-family: "微软雅黑", sans-serif;
+            background-color: #f5f5f5;
+            margin: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>你好，我是小明！</h1>
+        <p>我今年 12 岁，喜欢编程和打篮球。</p>
+    </div>
+</body>
+\end{lstlisting}
+
+CSS 规则：\texttt{选择器 \{ 属性: 值; \}}
+
+\begin{itemize}
+  \item \texttt{h1} —— 选中所有 h1 标签
+  \item \texttt{.card} —— 选中所有 class="card" 的元素（前面有点号）
+  \item \texttt{\#id} —— 选中 id="xxx" 的元素（前面有井号）
+\end{itemize}
+
+\subsection*{练习：美化你的主页}
+
+给主页添加：
+\begin{itemize}
+  \item 背景色（不要白色，太刺眼）
+  \item 圆角边框
+  \item 字体的颜色和大小
+  \item 鼠标悬停时链接变色
+\end{itemize}
+
+\section*{项目二：互动页面（JavaScript 入门）}
+
+HTML 提供结构，CSS 提供样式，\textbf{JavaScript 提供行为}——让页面"活"起来。
+
+\subsection*{你的第一段 JavaScript}
+
+\begin{lstlisting}[language=HTML]
+<!DOCTYPE html>
+<html>
+<head>
+    <title>互动页面</title>
+</head>
+<body>
+    <h1 id="greeting">你好！</h1>
+    <button onclick="changeName()">点我改名字</button>
+    
+    <script>
+        function changeName() {
+            let name = prompt("你叫什么名字？");
+            if (name) {
+                document.getElementById("greeting").textContent = "你好，" + name + "！";
+            }
+        }
+    </script>
+</body>
+</html>
+\end{lstlisting}
+
+\subsection*{计算器}
+
+\begin{lstlisting}[language=HTML]
+<body>
+    <h2>简易计算器</h2>
+    <input type="number" id="num1" placeholder="第一个数">
+    <input type="number" id="num2" placeholder="第二个数">
+    <button onclick="add()">相加</button>
+    <p>结果：<span id="result">?</span></p>
+    
+    <script>
+        function add() {
+            let a = parseFloat(document.getElementById("num1").value);
+            let b = parseFloat(document.getElementById("num2").value);
+            document.getElementById("result").textContent = a + b;
+        }
+    </script>
+</body>
+\end{lstlisting}
+
+\subsection*{JavaScript 基础语法速览}
+
+\begin{lstlisting}[language=JavaScript]
+// 变量
+let score = 95;              // 类似 Python
+const PI = 3.14;             // 常量（不能改）
+
+// 条件
+if (score >= 60) {
+    console.log("及格");     // 在开发者工具的控制台输出
+} else {
+    console.log("不及格");
+}
+
+// 循环
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// 函数
+function double(n) {
+    return n * 2;
+}
+
+// 箭头函数（Python lambda 的等价物）
+let triple = (n) => n * 3;
+
+// 数组
+let fruits = ["苹果", "香蕉", "橘子"];
+fruits.push("葡萄");
+console.log(fruits.length);    // 4
+fruits.forEach(f => console.log(f));
+\end{lstlisting}
+
+\subsection*{练习：互动升级}
+
+给个人主页添加：
+\begin{itemize}
+  \item 一个按钮"换背景色"——每次点击随机换一种背景色
+  \item 一个输入框，输入名字后页面显示"你好，xxx！"
+\end{itemize}
+
+\section*{项目三：留言板（后端 + 数据库）}
+
+真正的网站需要\textbf{后端}来处理数据。我们用 Python 的 Flask 框架。
+
+\subsection*{安装 Flask}
+
+\begin{lstlisting}[language=bash]
+pip install flask
+\end{lstlisting}
+
+\subsection*{第一个后端程序}
+
+\begin{lstlisting}[language=Python]
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "<h1>我的第一个网站！</h1>"
+
+@app.route("/about")
+def about():
+    return "<p>这是一个用 Flask 做的网站。</p>"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+\end{lstlisting}
+
+保存为 \texttt{app.py}，运行，打开浏览器访问 \texttt{http://127.0.0.1:5000}。
+
+\subsection*{使用 HTML 模板}
+
+把网页内容写在独立的 HTML 文件中。在项目文件夹下创建 \texttt{templates/} 目录。
+
+\texttt{templates/index.html:}
+
+\begin{lstlisting}[language=HTML]
+<!DOCTYPE html>
+<html>
+<head>
+    <title>留言板</title>
+    <style>
+        body { font-family: "微软雅黑"; margin: 40px; background: #f0f0f0; }
+        .message { background: white; padding: 15px; border-radius: 8px; margin: 10px 0; }
+        form { background: white; padding: 20px; border-radius: 8px; }
+        input, textarea { width: 100%; padding: 8px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>留言板</h1>
+    
+    <form action="/add" method="post">
+        <input type="text" name="username" placeholder="你的名字" required>
+        <textarea name="content" rows="3" placeholder="留言内容" required></textarea>
+        <button type="submit">提交留言</button>
+    </form>
+    
+    <h2>已有留言</h2>
+    {% for msg in messages %}
+    <div class="message">
+        <strong>{{ msg.username }}</strong>
+        <p>{{ msg.content }}</p>
+    </div>
+    {% endfor %}
+</body>
+</html>
+\end{lstlisting}
+
+\texttt{app.py:}
+
+\begin{lstlisting}[language=Python]
+from flask import Flask, render_template, request, redirect
+import sqlite3
+import os
+
+app = Flask(__name__)
+
+def init_db():
+    conn = sqlite3.connect("messages.db")
+    c = conn.cursor()
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL,
+            content TEXT NOT NULL
+        )
+    """)
+    conn.commit()
+    conn.close()
+
+def get_messages():
+    conn = sqlite3.connect("messages.db")
+    c = conn.cursor()
+    c.execute("SELECT username, content FROM messages ORDER BY id DESC")
+    rows = c.fetchall()
+    conn.close()
+    return [{"username": r[0], "content": r[1]} for r in rows]
+
+def add_message(username, content):
+    conn = sqlite3.connect("messages.db")
+    c = conn.cursor()
+    c.execute("INSERT INTO messages (username, content) VALUES (?, ?)",
+              (username, content))
+    conn.commit()
+    conn.close()
+
+@app.route("/")
+def index():
+    messages = get_messages()
+    return render_template("index.html", messages=messages)
+
+@app.route("/add", methods=["POST"])
+def add():
+    username = request.form["username"]
+    content = request.form["content"]
+    add_message(username, content)
+    return redirect("/")
+
+if __name__ == "__main__":
+    init_db()
+    app.run(debug=True)
+\end{lstlisting}
+
+\textbf{运行流程：}
+\begin{enumerate}
+  \item 访问首页 → 从数据库读取所有留言 → 渲染 HTML 模板 → 显示在浏览器
+  \item 填写表单提交 → POST 请求到 /add → 写入数据库 → 重定向回首页
+\end{enumerate}
+
+\subsection*{SQLite 是什么？}
+
+SQLite 是一种轻量级数据库。它不需要安装服务器，数据存在一个文件（\texttt{messages.db}）里。
+
+\begin{lstlisting}[language=SQL]
+-- 创建表
+CREATE TABLE messages (id INTEGER, username TEXT, content TEXT);
+
+-- 插入数据
+INSERT INTO messages (username, content) VALUES ('小明', '大家好！');
+
+-- 查询数据
+SELECT username, content FROM messages ORDER BY id DESC;
+\end{lstlisting}
+
+\section*{项目四：简易博客（综合项目）}
+
+把学到的所有东西组合起来，做一个带用户登录的博客系统。
+
+\subsection*{功能需求}
+
+\begin{enumerate}
+  \item 用户注册和登录（不需要密码加密，先做简单的）
+  \item 已登录用户可以发布文章
+  \item 所有用户可以看到文章列表
+  \item 用户可以评论文章
+\end{enumerate}
+
+\subsection*{数据库设计}
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE posts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    user_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+\end{lstlisting}
+
+\subsection*{项目结构}
+
+\begin{verbatim}
+blog/
+├── app.py               # 主程序
+├── templates/
+│   ├── index.html       # 首页（文章列表）
+│   ├── login.html       # 登录页
+│   ├── register.html    # 注册页
+│   ├── create.html      # 写文章页
+│   └── post.html        # 文章详情页
+└── blog.db              # SQLite 数据库
+\end{verbatim}
+
+\subsection*{app.py 核心代码}
+
+\begin{lstlisting}[language=Python]
+from flask import Flask, render_template, request, redirect, session
+import sqlite3
+from functools import wraps
+
+app = Flask(__name__)
+app.secret_key = "your-secret-key"  # 用于加密 session
+
+def get_db():
+    conn = sqlite3.connect("blog.db")
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if "user_id" not in session:
+            return redirect("/login")
+        return f(*args, **kwargs)
+    return decorated_function
+
+@app.route("/")
+def index():
+    conn = get_db()
+    posts = conn.execute("""
+        SELECT posts.*, users.username 
+        FROM posts JOIN users ON posts.user_id = users.id
+        ORDER BY posts.created_at DESC
+    """).fetchall()
+    conn.close()
+    return render_template("index.html", posts=posts)
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        conn = get_db()
+        try:
+            conn.execute("INSERT INTO users (username, password) VALUES (?, ?)",
+                        (username, password))
+            conn.commit()
+        except sqlite3.IntegrityError:
+            return "用户名已存在"
+        finally:
+            conn.close()
+        return redirect("/login")
+    return render_template("register.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        conn = get_db()
+        user = conn.execute("SELECT * FROM users WHERE username=? AND password=?",
+                          (username, password)).fetchone()
+        conn.close()
+        if user:
+            session["user_id"] = user["id"]
+            session["username"] = user["username"]
+            return redirect("/")
+        return "用户名或密码错误"
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
+
+@app.route("/create", methods=["GET", "POST"])
+@login_required
+def create():
+    if request.method == "POST":
+        title = request.form["title"]
+        content = request.form["content"]
+        conn = get_db()
+        conn.execute("INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)",
+                    (title, content, session["user_id"]))
+        conn.commit()
+        conn.close()
+        return redirect("/")
+    return render_template("create.html")
+
+@app.route("/post/<int:post_id>")
+def view_post(post_id):
+    conn = get_db()
+    post = conn.execute("""
+        SELECT posts.*, users.username 
+        FROM posts JOIN users ON posts.user_id = users.id
+        WHERE posts.id=?
+    """, (post_id,)).fetchone()
+    
+    comments = conn.execute("""
+        SELECT comments.*, users.username
+        FROM comments JOIN users ON comments.user_id = users.id
+        WHERE comments.post_id=?
+        ORDER BY comments.created_at
+    """, (post_id,)).fetchall()
+    conn.close()
+    return render_template("post.html", post=post, comments=comments)
+
+@app.route("/comment/<int:post_id>", methods=["POST"])
+@login_required
+def comment(post_id):
+    content = request.form["content"]
+    conn = get_db()
+    conn.execute("INSERT INTO comments (post_id, user_id, content) VALUES (?, ?, ?)",
+                (post_id, session["user_id"], content))
+    conn.commit()
+    conn.close()
+    return redirect(f"/post/{post_id}")
+\end{lstlisting}
+
+\subsection*{扩展练习}
+
+完成基础博客后，尝试添加以下功能：
+\begin{itemize}
+  \item 密码加密（用 \texttt{hashlib} 或 \texttt{werkzeug.security}）
+  \item 编辑和删除自己的文章
+  \item 文章 Markdown 渲染
+  \item 分页展示
+  \item 搜索功能
+\end{itemize}
+
+\section*{总结：全栈路线图}
+
+\begin{verbatim}
+前端                   后端
+HTML 结构        ←→    Python/Flask
+CSS 样式         ←→    路由（URL 处理）
+JavaScript 交互  ←→    数据库读写
+                    ↓
+                SQLite 数据库
+\end{verbatim}
+
+\textbf{你学到了：}
+\begin{itemize}
+  \item 用 HTML + CSS 做静态页面（项目一）
+  \item 用 JavaScript 让页面互动（项目二）
+  \item 用 Flask + SQLite 做后端（项目三）
+  \item 完成一个完整的全栈项目（项目四）
+\end{itemize}
+
+\textbf{下一步方向：}
+\begin{itemize}
+  \item \textbf{前端深入：} JavaScript 框架（Vue / React）
+  \item \textbf{后端深入：} 更强大的框架（Django）、REST API
+  \item \textbf{数据库深入：} MySQL / PostgreSQL、ORM
+  \item \textbf{部署上线：} 把网站部署到服务器上让全世界访问
+\end{itemize}
+
+\section*{综合练习与答案}
+
+\subsection*{基础题}
+
+\begin{enumerate}
+  \item 修改个人主页（项目一），添加一个图片轮播组件（用 JavaScript 实现每隔 3 秒切换一张图）。
+  \item 给留言板添加"删除留言"功能（需要一个确认弹窗）。
+  \item 给博客添加文章分类功能：每篇文章可选一个分类，按分类筛选展示。
+  \item 实现用户头像功能：注册时可以上传头像图片（用 Flask 的 \texttt{request.files}）。
+\end{enumerate}
+
+\section*{扩展项目}
+
+\subsection*{项目一：待办事项应用（Todo App）}
+
+\textbf{功能需求：}
+\begin{enumerate}
+  \item 用户注册/登录
+  \item 添加待办事项（标题 + 截止日期）
+  \item 标记完成/未完成
+  \item 删除待办
+  \item 按状态筛选（全部/进行中/已完成）
+  \item 数据持久化到 SQLite
+\end{enumerate}
+
+\textbf{关联模块：} 本项目是博客项目的简化版，在 \texttt{git-collab/} 模块中可以把这个项目作为 Git 练习——用分支开发不同功能，用 PR 合并。
+
+\subsection*{项目二：天气查询 Web 应用}
+
+\textbf{功能需求：}
+\begin{enumerate}
+  \item 用户输入城市名
+  \item 调用免费天气 API（如 OpenWeatherMap）获取天气数据
+  \item 展示当前温度、湿度、风力
+  \item 展示未来 3 天的天气预报
+\end{enumerate}
+
+\textbf{关联模块：} 本项目引入 API 调用，这是 \texttt{ai-intro/} 模块中调用 AI 模型 API 的前置技能。你在本模块学会的 Flask + 前端渲染技巧可以直接用到 AI 模块的图片分类器 Web 界面中。
+
+\section*{本模块与其他模块的关联}
+
+\begin{itemize}
+  \item \textbf{Python 基础} → 本模块：Web 开发是本系列的"产品化"阶段。你在 \texttt{python/} 模块中学的语法和逻辑被原样用到 Flask 后端的每一行代码中。
+  \item \textbf{数据结构与算法} → 本模块：本模块的留言板项目用 SQL 做查询，背后是数据库索引（一种树结构）和查询优化算法——这些概念在 \texttt{ds-algo/} 模块的树章节和复杂度分析中讲过。
+  \item 本模块 → \textbf{Git 与协作}：本模块的四个项目是 \texttt{git-collab/} 模块的完美实操对象。在开发项目四（博客）时，建议用 Git 分支管理功能开发，并用 GitHub 管理代码。
+  \item 本模块 → \textbf{综合项目实战}：本模块的博客项目可以作为 capstone 项目的基础骨架。capstone 模块要求你独立完成一个完整项目——你现在已经准备好了。
+  \item 本模块 → \textbf{AI 入门}：AI 模块中训练好的模型需要部署到 Web 上才能让别人用。本模块的前后端技能是实现 AI 产品化的关键。
+\end{itemize}
 
 \end{document}

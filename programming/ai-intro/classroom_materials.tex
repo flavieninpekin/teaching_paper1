@@ -2,52 +2,455 @@
 \usepackage{xcolor}
 \usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
 \usepackage{array}
-\linespread{1.35}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true
+}
 
 \title{\textcolor{blue!70!black}{\Huge\textbf{人工智能初步}}}
-\author{}
+\author{让计算机学会"自己思考"}
 \date{}
 
 \begin{document}
 \maketitle
 \thispagestyle{empty}
 
-\section*{\textcolor{blue!70!black}{说明}}
+\section*{写在前面}
 
-本模块以概念介绍和趣味案例为主，不涉及复杂的数学推导。帮助四年级学生建立对人工智能的基本认知框架。
+你可能已经用过很多 AI 产品了：人脸识别解锁手机、智能音箱回答问题、AI 绘画生成图片、ChatGPT 和你聊天……
 
-\vspace{0.3cm}
+但 AI 到底是怎么工作的？它真的"思考"吗？它和普通编程有什么区别？
 
-\textbf{一、机器学习（Machine Learning）}
+这个模块会给你一个清晰的认识：AI 不是什么神秘魔法，而是一种\textbf{让计算机从数据中学习}的技术。你不需要复杂的数学就能理解核心思想。
 
-传统的编程是人告诉计算机每一步怎么做。机器学习反过来——给计算机大量数据，让它自己"学会"怎么做。比如给计算机看一万张猫的图片，它就能学会认出猫来。
+\section*{第一课：传统编程 vs 机器学习}
 
-核心三要素：数据 + 模型 + 学习算法。机器学习分为监督学习（有答案的训练）、无监督学习（没有答案，自己找规律）、半监督学习。
+\subsection*{传统编程}
 
-\vspace{0.3cm}
+\begin{verbatim}
+输入（数据） + 规则（程序） → 输出（答案）
+    2, 3    +   x + y      →   5
+\end{verbatim}
 
-\textbf{二、神经网络（Neural Networks）}
+程序员告诉计算机每一步怎么做。就像你写 Python 的 \texttt{if score >= 60: print("及格")}——你已经把规则写死了。
 
-神经网络是受大脑神经元启发而设计的计算模型。一个神经元接收多个输入，经过"激活函数"后输出结果；大量神经元分层连接，就形成了网络。
+\subsection*{机器学习}
 
+\begin{verbatim}
+输入（数据） + 输出（答案） → 规则（模型）
+  猫的图片   +   "猫"      →   能认出猫的程序
+\end{verbatim}
+
+机器学习反过来：我给你大量数据和答案，你\textbf{自己总结出规则}。
+
+举个例子：
 \begin{itemize}
-  \item 输入层：接收原始数据（如图片的每个像素）
-  \item 隐藏层：提取特征（边缘、形状、纹理）
-  \item 输出层：给出结果（是猫还是狗？）
+  \item \textbf{传统方式：} 你写规则"如果像素 1 是橘色，像素 2 是黑色，像素 3 是尖的……那就是猫"。这几乎不可能。
+  \item \textbf{机器学习：} 你给计算机看 10,000 张标了"猫"或"不是猫"的图片，计算机自己学会识别猫。
 \end{itemize}
 
-\vspace{0.3cm}
+\subsection*{机器学习的三种类型}
 
-\textbf{三、深度学习（Deep Learning）}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{类型} & \textbf{数据} & \textbf{任务} & \textbf{例子} \\ \hline
+监督学习 & 有标签的数据 & 预测标签 & 猫狗识别、房价预测 \\ \hline
+无监督学习 & 无标签的数据 & 发现模式 & 用户分群、新闻聚类 \\ \hline
+强化学习 & 环境反馈（奖励） & 学习策略 & AlphaGo、自动驾驶 \\ \hline
+\end{tabular}
+\end{center}
 
-深度学习就是有很多层的神经网络（"深度"指层数多）。层数越多，模型就越"聪明"，能学到的特征也越抽象。应用举例：人脸识别、语音助手（Siri/小爱同学）、自动驾驶、AI绘画（Midjourney / Stable Diffusion）。
+\section*{第二课：用 Python 做最简单的机器学习}
 
-\vspace{0.3cm}
+我们用一个极其简单的例子来理解机器学习是怎么工作的。
 
-\textbf{四、强化学习（Reinforcement Learning）}
+\subsection*{问题：预测房子价格}
 
-强化学习像训练宠物一样：做对了给奖励，做错了不给。智能体（Agent）在环境中行动，通过不断试错来学习最优策略。
+假设你有一些房价数据：
 
-最著名的例子：AlphaGo 打败世界围棋冠军。它和自己下了上千万盘棋，每一步的目标就是"赢"——这就是它的奖励信号。
+\begin{lstlisting}[language=Python]
+# 面积(㎡) → 价格(万元)
+data = [
+    (50, 150),
+    (80, 240),
+    (100, 300),
+    (120, 360),
+    (150, 450),
+]
+\end{lstlisting}
+
+肉眼一看就能发现规律：价格 = 面积 $\times$ 3。
+
+\begin{lstlisting}[language=Python]
+# 手动找到规律
+def predict(area):
+    return area * 3
+
+print(predict(90))  # 270 万元
+\end{lstlisting}
+
+但机器学习不是靠人肉找规律，而是让计算机\textbf{自动}找到这个规律。
+
+\subsection*{用 scikit-learn 做线性回归}
+
+\begin{lstlisting}[language=Python]
+# pip install scikit-learn
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+# 数据
+areas = np.array([[50], [80], [100], [120], [150]])
+prices = np.array([150, 240, 300, 360, 450])
+
+# 创建并训练模型
+model = LinearRegression()
+model.fit(areas, prices)
+
+# 预测
+print(model.predict([[90]]))   # 约 270
+print(model.predict([[200]]))  # 约 600
+
+# 看模型学到的参数
+print(model.coef_)   # 斜率 ≈ 3
+print(model.intercept_)  # 截距 ≈ 0
+\end{lstlisting}
+
+\textbf{发生了什么？} 模型"看"了数据后，自己算出了 \texttt{价格 = 3 × 面积 + 0}。这就是机器学习——\textbf{从数据中自动发现规律}。
+
+\subsection*{关键术语}
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{术语} & \textbf{解释} \\ \hline
+特征（Feature） & 输入的属性（如面积） \\ \hline
+标签（Label） & 要预测的值（如价格） \\ \hline
+训练（Training） & 用数据让模型学习 \\ \hline
+预测（Prediction） & 用训练好的模型对新数据做推断 \\ \hline
+过拟合（Overfitting） & 死记硬背训练数据，新数据表现差 \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{第三课：神经网络——模拟大脑}
+
+\subsection*{从生物神经元到人工神经元}
+
+\begin{verbatim}
+生物神经元：        人工神经元：
+树突（接收信号）    输入（x₁, x₂, x₃）
+    ↓                   ↓ 乘以权重(w₁, w₂, w₃)
+细胞体（处理）      求和 + 偏置
+    ↓                   ↓
+轴突（输出信号）    激活函数 → 输出
+\end{verbatim}
+
+一个神经元的计算过程：
+
+\begin{lstlisting}[language=Python]
+# 一个最简单的神经元
+def neuron(inputs, weights, bias):
+    # 1. 加权求和
+    total = sum(x * w for x, w in zip(inputs, weights)) + bias
+    # 2. 激活函数（这里用阶跃函数）
+    return 1 if total > 0 else 0
+
+# 例子：判断是否该带伞（温度、湿度、风速）
+inputs = [25, 80, 10]   # 温度25°C, 湿度80%, 风速10km/h
+weights = [-0.5, 1.0, -0.3]
+bias = -30
+
+print(neuron(inputs, weights, bias))  # 1 表示带伞
+\end{lstlisting}
+
+\subsection*{神经网络结构}
+
+\begin{verbatim}
+输入层            隐藏层            输出层
+  [x₁] ─── [n₁] ─── [n₃] ─── [y₁]
+  [x₂] ─── [n₂] ─── [n₄]       
+
+每一层的每个神经元都连接到下一层的所有神经元。
+层数越多 → 网络越"深" → 深度学习
+\end{verbatim}
+
+\subsection*{用 Python 识别手写数字}
+
+我们用 Keras（TensorFlow 的高级 API）来做一个真正的神经网络：
+
+\begin{lstlisting}[language=Python]
+# pip install tensorflow
+import tensorflow as tf
+from tensorflow import keras
+
+# 加载 MNIST 手写数字数据集
+mnist = keras.datasets.mnist
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+
+# 数据预处理
+train_images = train_images / 255.0  # 归一化
+test_images = test_images / 255.0
+
+# 构建神经网络
+model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(28, 28)),     # 输入层：28×28 像素展平
+    keras.layers.Dense(128, activation='relu'),     # 隐藏层：128 个神经元
+    keras.layers.Dense(10, activation='softmax')    # 输出层：10 个数字(0-9)
+])
+
+# 编译
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# 训练
+model.fit(train_images, train_labels, epochs=5)
+
+# 测试
+test_loss, test_acc = model.evaluate(test_images, test_labels)
+print(f"准确率：{test_acc:.2%}")
+
+# 预测
+predictions = model.predict(test_images[:5])
+for i, pred in enumerate(predictions):
+    print(f"第{i+1}张图：模型认为是 {pred.argmax()}")
+\end{lstlisting}
+
+这段代码只有十几行，但已经让一个"人工大脑"学会了识别手写数字，准确率超过 97\%！
+
+\section*{第四课：卷积神经网络（CNN）——让 AI 看懂图片}
+
+普通的神经网络把图片的每个像素当成独立输入，但这样做忽略了图片的空间结构（相邻的像素有关系）。
+
+\textbf{卷积神经网络}用"卷积核"在图片上滑动，提取局部特征。
+
+\begin{verbatim}
+原始图片     第一层卷积        第二层卷积        全连接层     输出
+┌─────┐      ┌─────┐          ┌─────┐          ┌─────┐    ┌───┐
+│     │      │边缘 │          │眼睛/ │          │     │    │猫/│
+│ 猫  │ ──→  │检测  │ ──→    │鼻子  │ ──→      │分类器│ ─→│狗 │
+│ 图片 │      │     │          │      │          │     │    └───┘
+└─────┘      └─────┘          └─────┘          └─────┘
+\end{verbatim}
+
+第一层学到的是简单的边缘和纹理，第二层学到的是形状（眼睛、鼻子），更深层学到的是完整物体的概念。
+
+\subsection*{现实应用：人脸识别}
+
+\begin{enumerate}
+  \item 摄像头拍到你的脸
+  \item CNN 检测到人脸区域
+  \item 提取人脸特征（眼睛间距、鼻梁高度等）
+  \item 和数据库中的特征比对
+  \item 匹配成功 → 解锁手机
+\end{enumerate}
+
+\section*{第五课：大语言模型——ChatGPT 是怎么工作的？}
+
+你可能用过 ChatGPT、文心一言或通义千问。它们属于\textbf{大语言模型（LLM）}。
+
+\subsection*{核心思想}
+
+\begin{itemize}
+  \item \textbf{海量文本训练：} 模型读了几乎整个互联网的文本（书籍、网页、论文……）
+  \item \textbf{预测下一个词：} 训练任务很简单——给你前面几个词，预测下一个最可能是什么
+  \item \textbf{注意力机制：} 模型学会关注输入中的重要部分（就像你读这句话时会重点看某些词）
+\end{itemize}
+
+\subsection*{例子：预测下一个词}
+
+\begin{verbatim}
+输入："今天的天气真"
+模型预测下一个词："好" (概率 80%)
+                  "热" (概率 10%)
+                  "冷" (概率 10%)
+\end{verbatim}
+
+通过不停地预测下一个词，模型就能生成一整段文字。这就是为什么 ChatGPT 能写文章、编代码、回答问题。
+
+\subsection*{局限}
+
+\begin{itemize}
+  \item \textbf{不理解真相：} 模型只是预测"看起来合理的词"，它不知道什么是真的
+  \item \textbf{有偏见：} 训练数据中的偏见会被模型学到
+  \item \textbf{会"幻觉"：} 可能编造看起来合理但错误的事实
+\end{itemize}
+
+\section*{第六课：强化学习——从试错中学习}
+
+强化学习像训练宠物：做对了给奖励，做错了不给。
+
+\subsection*{核心要素}
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{要素} & \textbf{解释} \\ \hline
+Agent（智能体） & 做决策的程序（如游戏玩家） \\ \hline
+Environment（环境） & 智能体所处的世界（如游戏画面） \\ \hline
+Action（动作） & 智能体能做的事（如向左、向右） \\ \hline
+Reward（奖励） & 智能体做对或做错时得到的反馈 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{经典例子：让 AI 学会玩 Flappy Bird}
+
+\begin{verbatim}
+初始状态：小鸟在屏幕中央
+可用动作：跳 / 不跳
+奖励规则：
+  +1  → 通过一根水管
+   0  → 保持飞行
+  -1  → 撞到水管或地面（游戏结束）
+  
+学习目标：获得最多的奖励
+\end{verbatim}
+
+经过几千次"玩游戏 → 死掉 → 重来"的试错，AI 就能学会最佳策略。它可能比人玩得还好。
+
+\subsection*{AlphaGo——强化学习的巅峰}
+
+\begin{itemize}
+  \item AlphaGo 是 DeepMind 开发的围棋 AI
+  \item 先通过人类棋谱学习（监督学习）
+  \item 再自己和自己下了上千万盘（强化学习）
+  \item 2016 年击败世界冠军李世石
+\end{itemize}
+
+\section*{第七课：AI 的伦理与未来}
+
+\subsection*{AI 能做和不能做的事}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{AI 擅长} & \textbf{AI 不擅长} \\ \hline
+模式识别（看图、听声音） & 真正的理解 \\ \hline
+重复性预测 & 创造力（目前） \\ \hline
+处理大量数据 & 常识推理 \\ \hline
+特定领域的优化 & 跨领域迁移 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{AI 带来的问题}
+
+\begin{itemize}
+  \item \textbf{偏见：} 如果训练数据有偏见，AI 也会有偏见
+  \item \textbf{隐私：} 人脸识别可能被滥用
+  \item \textbf{失业：} 某些工作岗位可能被 AI 替代
+  \item \textbf{安全：} AI 可能被用来制造虚假信息
+\end{itemize}
+
+\subsection*{学习 AI 需要什么？}
+
+如果你想深入学习 AI，需要：
+\begin{enumerate}
+  \item \textbf{数学基础：} 线性代数、概率统计、微积分
+  \item \textbf{编程能力：} Python + 数据处理（pandas/numpy）
+  \item \textbf{机器学习理论：} 各种算法和模型
+  \item \textbf{实践项目：} 从简单到复杂的 AI 项目
+\end{enumerate}
+
+\section*{总结：AI 知识图谱}
+
+\begin{verbatim}
+人工智能
+├── 机器学习（从数据中学习）
+│   ├── 监督学习（有标签）
+│   │   ├── 回归（预测数值）
+│   │   └── 分类（预测类别）
+│   ├── 无监督学习（无标签）
+│   │   ├── 聚类（分群）
+│   │   └── 降维
+│   └── 半监督学习
+├── 深度学习（多层神经网络）
+│   ├── 全连接网络
+│   ├── CNN（卷积神经网络 → 图像）
+│   ├── RNN/Transformer（序列 → 语言）
+│   └── 大语言模型（ChatGPT等）
+└── 强化学习（试错学习）
+    ├── 游戏 AI（AlphaGo）
+    └── 机器人控制
+\end{verbatim}
+
+\textbf{下一步：}
+\begin{itemize}
+  \item 深入学习 Python 的机器学习库：scikit-learn、PyTorch
+  \item 参加 Kaggle 竞赛实践
+  \item 学习 AI 背后的数学
+  \item 完成综合项目实战，把 AI 集成到 Web 应用中
+\end{itemize}
+
+\section*{综合练习与答案}
+
+\subsection*{基础题}
+
+\begin{enumerate}
+  \item 用自己的话解释监督学习、无监督学习、强化学习的区别。每种举一个生活中的例子。
+  \item 线性回归的代码（第二课）中，\texttt{model.coef\_} 和 \texttt{model.intercept\_} 分别代表什么？
+  \item 为什么神经网络要有激活函数？如果没有激活函数，多层神经网络和一层有什么区别？
+  \item 强化学习中"探索 vs 利用"的困境是什么？假设你发现了一家很好吃的餐厅，你会每次都去这家还是尝试新餐厅？
+\end{enumerate}
+
+\subsection*{参考答案}
+
+\textbf{练习 1：}
+\begin{itemize}
+  \item \textbf{监督学习：} 相当于有老师批改作业。给计算机"题目+答案"，让它学会做题。例：识别猫狗（给标注好的图片）。
+  \item \textbf{无监督学习：} 没有老师，自己发现规律。例：电商网站把用户分成"喜欢运动的人""喜欢读书的人"等群组。
+  \item \textbf{强化学习：} 像训练宠物，做对了给零食，做错了不给。例：AI 学玩游戏。
+\end{itemize}
+
+\textbf{练习 2：} \texttt{coef\_} 是斜率（权重），\texttt{intercept\_} 是截距（偏置）。在房价例子中，\texttt{coef\_.`3} 表示每平米 3 万元，\texttt{intercept\_.0} 表示没有固定费用。
+
+\textbf{练习 3：} 激活函数引入\textbf{非线性}。如果没有激活函数，多层神经网络无论多少层，本质都等价于一层线性变换——那就处理不了复杂问题（如识别图片、理解语言）。
+
+\textbf{练习 4：} "探索 vs 利用"困境：是一直选择已知的最优方案（利用），还是尝试未知的新方案（探索）？餐厅例子：每次都去好吃的餐厅（利用）保证吃得满意，但可能错过更好的餐厅。AI 在学习初期多探索，后期多利用。
+
+\section*{扩展项目}
+
+\subsection*{项目一：手写数字识别 Web 应用}
+
+把第三课的手写数字识别模型部署到 Web 上：
+
+\begin{enumerate}
+  \item 用 Flask 搭建 Web 服务器
+  \item 前端画布让用户手写数字
+  \item 把图片传给后端模型预测
+  \item 显示识别结果
+\end{enumerate}
+
+\textbf{关联模块：} 本项目综合了 \texttt{python/}（Flask）、\texttt{web-dev/}（前端画布 + 后端 API）、本模块（AI 模型）。这是典型的三层架构：前端（用户交互）→ 后端（业务逻辑）→ AI 模型（核心能力）。
+
+\subsection*{项目二：AI 图片分类器}
+
+用预训练的 ResNet 或 MobileNet 模型（TensorFlow/Keras 自带）做一个图片分类器：
+
+\begin{enumerate}
+  \item 用户上传一张图片
+  \item 模型预测图片内容（猫、狗、桌子、汽车……）
+  \item 显示 Top-3 预测结果及其概率
+\end{enumerate}
+
+\section*{本模块与其他模块的关联}
+
+\begin{itemize}
+  \item \textbf{Python 基础} → 本模块：AI 模块的代码全部用 Python 实现。你在 \texttt{python/} 模块中学会的 numpy 数组操作（虽然本模块没有专门讲，但 scikit-learn 和 TensorFlow 内部大量使用）和函数调用是本模块的基础。
+  \item \textbf{数据结构与算法} → 本模块：神经网络的前向传播本质上是矩阵乘法 + 激活函数映射——这对应 \texttt{computer\_maths/} 模块的矩阵章节和 \texttt{ds-algo/} 模块的函数映射思想。
+  \item \textbf{计算机数学} → 本模块：\texttt{computer\_maths/} 模块的矩阵、概率、图论是 AI 的数学基础。线性回归（本模块第二课）背后的最小二乘法需要概率统计知识。如果你觉得 AI 的数学还不够，回去看 \texttt{computer\_maths/}。
+  \item 本模块 → \textbf{Web 开发}：训练好的模型需要界面才能被用户使用。本模块的扩展项目（识别数字 Web 应用）直接把 AI 模型套上 Web 界面——这正是 \texttt{web-dev/} 模块的应用场景。
+  \item 本模块 → \textbf{综合项目实战}：capstone 模块鼓励你把 AI 集成到项目中。本模块教会你如何训练和调用模型——capstone 教会你如何做好一个完整产品。
+\end{itemize}
 
 \end{document}

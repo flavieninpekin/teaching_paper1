@@ -30,12 +30,20 @@ teaching_paper1/
 │   ├── modern-history/           18世纪以来的近现代史
 │   └── economy-society/          经济与社会引入（故事式）
 │
-└── programming/                  编程系列
-    ├── scratch/                  Scratch图形化编程启蒙
+└── programming/                  编程系列（G4-G9 六年完整路径，10+2个模块）
+    ├── overview.tex              六年整体课程大纲（模块依赖/学习路径）
+    ├── scratch/                  Scratch家长指南（写给不懂编程的家长）
+    ├── computational-thinking/   计算思维与计算机基础
+    ├── computer_maths/           计算机数学基础（二进制/布尔/集合/图论等）
     ├── python/                   Python基础
+    ├── ds-algo/                  数据结构与算法初步
     ├── python-to-cpp/            从Python到C++过渡
+    ├── web-dev/                  前后端开发入门（小项目）
+    ├── git-collab/               版本控制与协作开发（Git）
     ├── ai-intro/                 人工智能初步（ML/DL/NN/RL）
-    └── web-dev/                  前后端开发入门（小项目）
+    ├── capstone/                 综合项目实战
+    └── figure/                   插图资源
+        └── requirements.txt      所有模块插图需求清单（61张图，含插入位置和搜索词）
 
 二、使用说明
 ------------
@@ -48,12 +56,13 @@ teaching_paper1/
 如需生成 docx 文档，可使用各模块下的 generate_docx.py（zuozhuan 已有示例）。
 
 三、设计理念
-------------
+-----------
 
 - "打包式"衔接：将小学与初中知识要点精简整合，减少升学断层
 - 故事与知识并重：低年级以故事引入兴趣，高年级渐进到公式和考点
 - 面向北京体系：对标北京中考（语文/数学/道法/物理计分，历/地/化/生等级考查）
   和高考（3+3 选考模式）
+- 编程六年路线（G4-G9）：详见 programming/overview.tex
 
 四、补充素材需求
 ----------------

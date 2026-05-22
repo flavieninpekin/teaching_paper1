@@ -1,0 +1,529 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\definecolor{defblue}{RGB}{0,80,160}
+\definecolor{thinkorange}{RGB}{230,120,20}
+\definecolor{formulared}{RGB}{180,30,50}
+\definecolor{funboxbg}{RGB}{245,248,252}
+\definecolor{examplebg}{RGB}{255,250,240}
+\definecolor{practicegreen}{RGB}{40,130,70}
+
+\newenvironment{thinkbox}{
+  \vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}
+  \colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}
+  \textbf{\textcolor{thinkorange}{【 想一想 】}}
+}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.3cm}}
+
+\newenvironment{definition}[1]{
+  \vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}
+  \fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}
+  \textbf{\textcolor{defblue}{【 #1 】}}
+}{\vspace{0.1cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+
+\newenvironment{example}{
+  \vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}
+  \colorbox{examplebg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}
+  \textbf{\textcolor{orange!80!black}{【 例题 】}}
+}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+
+\newenvironment{practice}{
+  \vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}
+  \colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}
+  \textbf{\textcolor{practicegreen}{【 练一练 】}}
+}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+
+\newenvironment{figplaceholder}[1]{
+  \vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering
+  \textcolor{blue!70!black}{\textbf{【插图位置】}} \\[0.2cm] #1
+  \end{minipage}}\end{center}\vspace{0.2cm}}
+
+\newcommand{\formula}[1]{\begin{center}\textcolor{formulared}{\large\boxed{#1}}\end{center}}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{物理3 · 电磁入门}}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{\textcolor{blue!70!black}{致同学}}
+
+力学和声光热都是你能"看到"或"感觉到"的物理——推箱子、照镜子、摸热水杯。但从这一本开始，我们要进入一个\textbf{看不见的世界}——电和磁。你看不见电荷的流动，也无法直接"摸"到磁场，但正是这个看不见的世界，驱动着你身边的每一部手机、每一盏灯、每一台电脑。
+
+你需要一点耐心和想象力。准备好了吗？
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第一课\quad 电路基础——电的"高速公路"}}
+
+\subsection*{电路的三要素}
+
+一个最简单的电路需要三样东西：
+
+\textbf{电源}：提供电能的装置。电池（把化学能变成电能）、发电机（把机械能变成电能）都是电源。电源有正极和负极——电流从正极流出，回到负极。
+
+\textbf{用电器}：消耗电能的装置。灯泡、电风扇、手机充电器——都是把电能转化为光能、机械能等其他形式能量的设备。
+
+\textbf{导线和开关}：导线把电源和用电器连成通路，开关控制电路的通断。
+
+\begin{definition}{电路}
+把电源、用电器、开关用导线连接起来组成的\textbf{电流的路径}，叫做\textbf{电路}。电路中有电流通过的条件是：电路是\textbf{通路}（闭合回路），且电路两端有\textbf{电压}。
+\end{definition}
+
+\subsection*{电路的三种状态}
+
+\textbf{通路（闭合电路）}：开关闭合，电路中有电流——灯泡亮了。
+
+\textbf{断路（开路）}：开关断开（或导线断了），电流无法通过——灯泡不亮。
+
+\textbf{短路}：导线直接连接在电源两极上，中间没有经过用电器（或者只有极小的电阻）。短路时电流极大——会烧毁电源甚至引起火灾。\textbf{短路是非常危险的状态，实验和生活中都要严格避免。}
+
+\subsection*{串并联——两种基本连接方式}
+
+\textbf{串联电路}：元件逐个顺次连接。电流只有一条路可以走——一处断开，整条电路都不通（一个灯泡坏了，全灭）。串联电路中\textbf{电流处处相等}。
+
+\textbf{并联电路}：元件并列连接。电流有多条路可以走——一条支路断开，其他支路不受影响（一个灯泡坏了，其他照样亮）。并联电路中各支路两端\textbf{电压相等}。
+
+我们家里的电灯、电视、冰箱都是并联的——所以你关掉客厅的灯，厨房的灯不受影响。
+
+\begin{figplaceholder}
+此处插入串并联电路对比示意图（见 figure/requirements/book3-ch1.txt 插图1）
+\end{figplaceholder}
+
+\subsection*{电路图——工程师的语言}
+
+画实物图太麻烦，所以我们用统一的\textbf{电路符号}来画\textbf{电路图}。你需要记住这些基本符号：
+
+\begin{center}
+\begin{tabular}{|c|c||c|c|}
+\hline
+\textbf{元件} & \textbf{符号} & \textbf{元件} & \textbf{符号} \\
+\hline
+电池 & —|{\scriptsize +}\,|— & 开关 & —\,\,/\,\,— \\
+灯泡 & —×— & 电阻 & —\framebox[12pt]{\rule{0pt}{12pt}}\,— \\
+电流表 & —\textcircled{A}— & 电压表 & —\textcircled{V}— \\
+\hline
+\end{tabular}
+\end{center}
+
+画电路图时要注意：导线横平竖直、元件不要画在拐角处、电路呈长方形框架状。
+
+\begin{thinkbox}
+为什么不能用一根导线直接把电池正负极连起来？这就是短路——电流不经过灯泡（没有电阻限制），直接从正极走导线回负极。根据后面要学的欧姆定律，电流会变成极大——导线瞬间发热发烫，烧毁电池甚至引发火灾。电源短路是所有电路实验的头号禁忌。
+\end{thinkbox}
+
+\begin{practice}
+1. 一个完整的电路由\_\_\_\_\_、\_\_\_\_\_、\_\_\_\_\_和\_\_\_\_\_四部分组成。\\
+2. （判断）并联电路中，一个灯泡坏了，其他灯泡也灭了。（\quad）\\
+3. （选择）家中的电灯和电视机之间的连接方式是（\quad）\\
+\quad A. 一定是串联 \quad B. 一定是并联 \quad C. 可能是串联 \quad D. 不能确定\\
+4. （填空）短路是指导线直接接在\_\_\_\_\_两端，这是\_\_\_\_\_（安全/危险）的。
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第二课\quad 电流与电压}}
+
+\subsection*{电流——电荷的"集体旅行"}
+
+在物理2中我们学过，电的本质是电子的定向流动。当电路接通时，自由电子在电场力的作用下沿着导线定向移动——这就形成了\textbf{电流}。
+
+\begin{definition}{电流}
+单位时间内通过导体横截面的电荷量叫做\textbf{电流}，用 $I$ 表示。\\
+单位：\textbf{安培（A）}，简称"安"。常用单位还有毫安（mA）、微安（$\mu$A）。
+\end{definition}
+
+$1\ \text{A} = 1000\ \text{mA}$，$1\ \text{mA} = 1000\ \mu\text{A}$。手机充电器的输出电流大约1-2A，LED小灯泡的工作电流大约20mA（0.02A）。
+
+\textbf{电流表的使用规则：}
+\begin{enumerate}
+  \item 电流表必须\textbf{串联}在电路中（电流从"+"接线柱流入，从"—"流出，不能接反）。
+  \item 被测电流不能超过电流表的量程（先用大量程试触）。
+  \item \textbf{绝对不允许}把电流表直接接在电源两极上（电流表内阻极小——直接接电源相当于短路，会烧毁电流表）。
+\end{enumerate}
+
+\subsection*{电压——电流的"推动力"}
+
+如果把电流比喻成水管里流动的水，那么\textbf{电压}就是"水压"——是推动电荷流动的原因。
+
+\begin{definition}{电压}
+使电路中形成电流的原因叫做\textbf{电压}，用 $U$ 表示。\\
+单位：\textbf{伏特（V）}，简称"伏"。常用单位还有千伏（kV）、毫伏（mV）。
+\end{definition}
+
+一节干电池的电压约1.5V，手机锂电池约3.7V，家庭电路电压220V，高压输电线路可达几百kV。
+
+\textbf{电压表的使用规则：}
+\begin{enumerate}
+  \item 电压表必须\textbf{并联}在待测电路两端。
+  \item 电流从"+"接线柱流入，从"—"流出。
+  \item 电压表可以直接接在电源两极上（此时测的是电源电压）。
+\end{enumerate}
+
+\textbf{电流表和电压表的对比（非常重要）：}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+& \textbf{电流表} & \textbf{电压表} \\
+\hline
+连接方式 & \textbf{串联} & \textbf{并联} \\
+能否直接接电源 & \textbf{绝对不能！} & 可以（测电源电压） \\
+内阻特点 & 极小（可忽略） & 极大 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{example}
+在如图所示的电路中，判断甲、乙分别是电流表还是电压表。
+
+\textbf{解：} 串联在电路中的是电流表，并联在元件两端的是电压表。记住口诀——"电流表串着走，电压表并着放"。
+\end{example}
+
+\begin{thinkbox}
+电流和电压是初中物理中最容易被混淆的一对概念。一个记住的方法：电流是"已经流起来了"的量（结果），电压是"为什么会流"的量（原因）。就像水在管子里流过——你测到了水流（电流），那是因为上游和下游之间有水位差（电压）。
+\end{thinkbox}
+
+\begin{practice}
+1. （填空）电流的单位是\_\_\_\_\_，电压的单位是\_\_\_\_\_。\\
+2. （选择）关于电压表的使用，下列说法正确的是（\quad）\\
+\quad A. 电压表必须串联在电路中 \quad B. 电压表可以直接接在电源两极\\
+\quad C. 电压表不能直接接在电源两极 \quad D. 电压表内阻很小\\
+3. 一节新干电池的电压约\_\_\_\_\_ V，家庭电路电压为\_\_\_\_\_ V。\\
+4. （判断）电流表可以直接接在电源两端。（\quad）
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第三课\quad 电阻与欧姆定律}}
+
+\subsection*{电阻——"拦路虎"}
+
+水在粗糙水管中流动比在光滑水管中费力——电流也一样。导体对电流的阻碍作用就是\textbf{电阻}。
+
+\begin{definition}{电阻}
+导体对电流阻碍作用的大小叫做\textbf{电阻}，用 $R$ 表示。\\
+单位：\textbf{欧姆（$\Omega$）}。常用单位还有千欧（k$\Omega$）、兆欧（M$\Omega$）。
+\end{definition}
+
+电阻的大小取决于导体的\textbf{材料、长度、横截面积}和\textbf{温度}：
+\begin{itemize}
+  \item 同种材料——越长，电阻越大；越粗（横截面积越大），电阻越小。
+  \item 不同材料——银的电阻最小（但太贵），铜和铝是常用的导电材料。
+  \item 温度——大多数导体的电阻随温度升高而\textbf{增大}（但有些特殊材料不是）。
+\end{itemize}
+
+\textbf{超导现象：}某些材料在极低温度下，电阻会\textbf{完全消失}——一旦在其中激发出电流，即使撤去电源，电流也会永远流下去。这是物理学中最神奇的现象之一。
+
+\subsection*{变阻器——可以调"大小"的电阻}
+
+\textbf{滑动变阻器}是一种可以连续改变电阻大小的元件。它的原理是通过移动滑片来改变接入电路的电阻丝长度。在电路图中，滑动变阻器的符号是一个长方形框加一个斜箭头。
+
+滑动变阻器有两个主要用途：
+\begin{enumerate}
+  \item \textbf{保护电路}——闭合开关前，把滑片调到最大阻值位置，使初始电流最小。
+  \item \textbf{调节电流/电压}——缓慢移动滑片，连续改变电路中的电流和元件两端的电压。
+\end{enumerate}
+
+\subsection*{欧姆定律——电磁学最重要的公式}
+
+1826年，德国物理学家\textbf{欧姆}通过大量实验发现了一个简洁而强大的规律：
+
+\formula{I = \frac{U}{R}}
+
+这就是\textbf{欧姆定律}：\textbf{导体中的电流，跟导体两端的电压成正比，跟导体的电阻成反比。}
+
+变形公式：
+\formula{U = IR \qquad R = \frac{U}{I}}
+
+\textbf{重要提示：}$R = U/I$ 只能用来\textbf{计算}电阻，不能理解为"电阻与电压成正比"——电阻是导体自身的属性，由材料、长度、横截面积和温度决定，和加不加电压、通不通电流\textbf{没有关系}（除非温度变化影响了电阻）。
+
+\begin{figplaceholder}
+此处插入欧姆定律$U$-$I$图像示意图：定值电阻的$U$-$I$过原点直线（见 figure/requirements/book3-ch1.txt 插图2）
+\end{figplaceholder}
+
+\begin{example}
+一个定值电阻两端加6V电压时，通过的电流为0.3A。它的电阻多大？如果电压变为12V，电流变为多大？
+
+\textbf{解：}定值电阻 $R$ 不变。\\
+$R = \dfrac{U_1}{I_1} = \dfrac{6}{0.3} = 20\ \Omega$。\\
+$I_2 = \dfrac{U_2}{R} = \dfrac{12}{20} = 0.6\ \text{A}$。\\
+电压翻倍，电流也翻倍——这是欧姆定律的直接体现（$R$不变时，$I \propto U$）。
+\end{example}
+
+\begin{thinkbox}
+为什么小鸟站在高压线上不会触电？因为小鸟的两只脚踩在同一根高压线上——两只脚之间的电压差极小（几乎没有电流流过小鸟的身体）。但如果小鸟一只脚踩火线、一只脚踩零线（或者踩另一根有电压差的线），电流就会"穿"过它的身体——那可就危险了。人体触电的本质是\textbf{人体成了电路的一部分}，有电流流过了身体。
+\end{thinkbox}
+
+\begin{practice}
+1. （计算）一个电阻为$10\ \Omega$的导体两端加3V电压，通过它的电流多大？\\
+2. （选择）根据 $R=U/I$，下列说法正确的是（\quad）\\
+\quad A. 电压越大电阻越大 \quad B. 电流越小电阻越大\\
+\quad C. 电阻与电压和电流无关 \quad D. 电流为零时电阻为零\\
+3. （填空）滑动变阻器是通过改变接入电路的\_\_\_\_\_来改变电阻的。\\
+4. 长度相同的铜导线，横截面积越大，电阻越\_\_\_\_\_。
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第四课\quad 串并联电路的规律}}
+
+\subsection*{串联电路的"分压"规律}
+
+两个电阻 $R_1$ 和 $R_2$ 串联：
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{物理量} & \textbf{串联规律} \\
+\hline
+电流 $I$ & \textbf{处处相等}：$I = I_1 = I_2$ \\
+电压 $U$ & \textbf{总电压等于各分电压之和}：$U = U_1 + U_2$ \\
+电阻 $R$ & \textbf{总电阻等于各电阻之和}：$R = R_1 + R_2$ \\
+电压分配 & \textbf{电压与电阻成正比}：$\dfrac{U_1}{U_2} = \dfrac{R_1}{R_2}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{串联电阻的分压作用：}串联电路中电阻大的元件分到的电压多——这在电路设计中很重要。如果两个灯泡额定电压不同，直接并联可能烧坏一个，串联后再配合合适的电阻就能正常工作。
+
+\subsection*{并联电路的"分流"规律}
+
+两个电阻 $R_1$ 和 $R_2$ 并联：
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{物理量} & \textbf{并联规律} \\
+\hline
+电压 $U$ & \textbf{各支路电压相等}：$U = U_1 = U_2$ \\
+电流 $I$ & \textbf{总电流等于各支路电流之和}：$I = I_1 + I_2$ \\
+电阻 $R$ & \textbf{总电阻的倒数等于各电阻倒数之和}：$\dfrac{1}{R} = \dfrac{1}{R_1} + \dfrac{1}{R_2}$ \\
+电流分配 & \textbf{电流与电阻成反比}：$\dfrac{I_1}{I_2} = \dfrac{R_2}{R_1}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{重要推论：}并联电路的总电阻\textbf{小于任何一个分电阻}。因为并联相当于"拓宽了电流的通道"——路径多了，总阻力反而小了。
+
+\begin{example}
+两个电阻 $R_1 = 3\ \Omega$ 和 $R_2 = 6\ \Omega$ 并联。总电阻多大？
+
+\textbf{解：}$\dfrac{1}{R} = \dfrac{1}{3} + \dfrac{1}{6} = \dfrac{2}{6} + \dfrac{1}{6} = \dfrac{3}{6} = \dfrac{1}{2}$。\\
+$\therefore R = 2\ \Omega$。
+
+总电阻2$\Omega$，确实小于任何一个分电阻（3$\Omega$和6$\Omega$）。
+\end{example}
+
+\begin{thinkbox}
+一个大电阻和一个小电阻并联——总电阻接近\textbf{小电阻}。一个大电阻和一个小电阻串联——总电阻接近\textbf{大电阻}。记住：并联走"近路"（电流走电阻小的支路多），串联走"远路"（电流必须穿过所有电阻）。
+\end{thinkbox}
+
+\begin{practice}
+1. （计算）$R_1=4\ \Omega$ 和 $R_2=6\ \Omega$ 串联，总电阻多大？若电源电压为5V，电路中的电流多大？\\
+2. （填空）并联电路中各支路的\_\_\_\_\_相等，干路电流等于各\_\_\_\_\_电流之和。\\
+3. （判断）并联电路的总电阻大于任何一个分电阻。（\quad）\\
+4. （选择）在串联电路中，电压的分配与电阻\_\_\_\_\_比（填"正"或"反"）。
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第五课\quad 电功、电功率与焦耳定律}}
+
+\subsection*{电流做了多少"功"？}
+
+电流通过用电器时，电能转化为其他形式的能（光能、热能、机械能等）。电流做的功叫\textbf{电功}。
+
+\formula{W = UIt}
+
+其中 $W$ 是电功（J），$U$ 是电压（V），$I$ 是电流（A），$t$ 是通电时间（s）。
+
+结合欧姆定律，纯电阻电路中还可以写成：$W = I^2Rt = \dfrac{U^2}{R}t$。
+
+\textbf{电功的常用单位：千瓦时（kW·h）}，也就是我们常说的"度"。$1\ \text{kW·h} = 3.6 \times 10^6\ \text{J}$。
+
+\subsection*{电功率——电流做功的快慢}
+
+\formula{P = UI}
+
+电功率的单位是\textbf{瓦特（W）}。常用单位还有千瓦（kW）。灯泡上标"40W"、空调标"2000W"——说的都是电功率。
+
+同样，纯电阻电路中：$P = I^2R = \dfrac{U^2}{R}$。
+
+\textbf{额定功率和实际功率：}用电器铭牌上标的功率是\textbf{额定功率}——在额定电压下正常工作时的功率。如果实际电压不等于额定电压——实际功率不等于额定功率。比如"220V 100W"的灯泡接在110V的电源上，实际功率只有25W（电压减半→纯电阻电路中功率变为1/4）。
+
+\subsection*{焦耳定律——电流的热效应}
+
+电流通过导体时，导体会发热——这就是电流的\textbf{热效应}。电饭煲、电热水壶、电暖器都是靠这个原理工作的。
+
+英国物理学家\textbf{焦耳}发现：
+
+\formula{Q = I^2Rt}
+
+\textbf{焦耳定律：}电流通过导体产生的热量，跟电流的\textbf{二次方}成正比，跟导体的\textbf{电阻}成正比，跟\textbf{通电时间}成正比。
+
+注意：对于纯电阻电路（电能全部转化为内能）——$Q = W$，两个公式算出来一样。但对于电动机这类设备（电能一部分变机械能、一部分变内能）——$Q < W$，只有 $Q = I^2Rt$ 才是正确的热量计算。
+
+\begin{example}
+一个"220V 1000W"的电热水壶，正常工作时电流多大？工作5分钟产生多少热量？
+
+\textbf{解：}$I = \dfrac{P}{U} = \dfrac{1000}{220} \approx 4.55\ \text{A}$。\\
+$t = 5 \times 60 = 300\ \text{s}$。\\
+电热水壶是纯电阻电路，$Q = W = Pt = 1000 \times 300 = 3 \times 10^5\ \text{J}$。相当于把约0.7升水从室温烧到沸腾。
+\end{example}
+
+\begin{thinkbox}
+为什么输电线要用很粗的导线，还要用高压输电？因为输电线也有电阻（虽然很小），电流流过时会发热（$Q=I^2Rt$）。如果电流大一倍——发热变为四倍！减少能量损耗有两种方式：要么减小电阻（加粗导线，但成本高），要么减小电流（用高压输电——功率$P=UI$一定时，$U$越高，$I$越小）。这就是为什么远距离输电要用几十万伏的高压——高压小电流，发热最小。
+\end{thinkbox}
+
+\begin{practice}
+1. （计算）一盏"220V 40W"的电灯正常工作10小时，消耗多少度电？\\
+2. （填空）电功率 $P = \_\_\_\_\_ \times \_\_\_\_\_$。纯电阻电路中，$P$ 还等于\_\_\_\_\_。\\
+3. （选择）关于焦耳定律，下列说法正确的是（\quad）\\
+\quad A. 热量与电流成正比 \quad B. 热量与电流的平方成正比\\
+\quad C. 热量与电阻成反比 \quad D. 热量与通电时间无关\\
+4. （计算）一个电阻$5\ \Omega$的导体，通过2A电流。10秒内产生多少热量？
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第六课\quad 磁现象与电生磁}}
+
+\subsection*{磁体——有两极的"吸铁石"}
+
+能吸引铁、钴、镍等物质的物体叫\textbf{磁体}。磁体上磁性最强的部位叫\textbf{磁极}——每个磁体都有\textbf{北（N）极}和\textbf{南（S）极}。
+
+\textbf{磁极间的相互作用：}同名磁极互相排斥，异名磁极互相吸引。你小时候玩磁铁——把两块磁铁的N极互相靠近，它们会推开彼此——就是这个道理。
+
+\subsection*{磁场——看不见的"力场"}
+
+磁体周围存在\textbf{磁场}。磁场虽然看不见，但我们可以通过\textbf{磁感线}（也叫磁力线）来形象地描述它。磁感线是一些带箭头的曲线：
+\begin{itemize}
+  \item 磁体外部——磁感线从\textbf{N极出发，回到S极}。
+  \item 磁体内部——磁感线从S极到N极（形成闭合曲线）。
+  \item 磁感线的疏密表示磁场的\textbf{强弱}——越密集，磁场越强。
+\end{itemize}
+
+\textbf{注意：磁感线是假想的线，不是真实存在的。}但小磁针实验可以证实它的合理性——在磁场中放一排小磁针，它们N极所指的方向连起来就是磁感线的形状。
+
+\subsection*{电生磁——奥斯特的发现}
+
+1820年，丹麦物理学家\textbf{奥斯特}做了一个改变世界的实验：他在一根通电直导线的旁边放了一个小磁针。通电的一瞬间——磁针偏转了！
+
+这个实验第一次证明了：\textbf{电流周围存在磁场。}
+
+\textbf{通电螺线管（电磁铁）：}把导线绕成螺旋形（螺线管），通电后产生的磁场和条形磁铁的磁场非常相似。如果在螺线管里插入一根铁芯——铁芯被磁化后磁场大大增强——这就是\textbf{电磁铁}。
+
+电磁铁有三条优点：磁性的有无可以控制（通断电）、磁性的强弱可以调节（改变电流大小或线圈匝数）、磁极可以改变（改变电流方向）。
+
+\textbf{电磁铁的应用：}电铃、电磁起重机（废铁厂用来吸废铁的巨型电磁铁）、电磁继电器（用小电流控制大电流电路）、磁悬浮列车。
+
+\begin{figplaceholder}
+此处插入通电螺线管的磁场示意图（右手螺旋定则）（见 figure/requirements/book3-ch1.txt 插图3）
+\end{figplaceholder}
+
+\subsection*{右手螺旋定则（安培定则）}
+
+怎么判断通电螺线管的N极和S极？用\textbf{右手螺旋定则}：
+
+\textbf{用右手握住螺线管，让四指弯曲的方向和螺线管中电流的方向一致——大拇指所指的那端就是螺线管的N极。}
+
+反过来，如果你知道了N极、S极，也可以倒推出电流方向。
+
+\begin{thinkbox}
+电磁铁和永磁体有什么区别？电磁铁可以"开关"——切断电流，磁性就消失。工厂里的电磁起重机通电后吸起几吨废钢铁，搬到指定位置后断电——钢铁哗啦全掉下来。如果用永磁铁，吸上去就扒不下来了！
+\end{thinkbox}
+
+\begin{practice}
+1. （填空）磁体周围存在\_\_\_\_\_，磁感线在磁体外部从\_\_\_\_\_极出发回到\_\_\_\_\_极。\\
+2. （判断）磁感线是真实存在于磁场中的线。（\quad）\\
+3. 奥斯特实验证明了\_\_\_\_\_周围存在磁场。\\
+4. （选择）要增强电磁铁的磁性，可以（\quad）\\
+\quad A. 减小电流 \quad B. 减少线圈匝数 \quad C. 插入铁芯 \quad D. 改变电流方向
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第七课\quad 电动机与发电机}}
+
+\subsection*{磁场对电流的作用——电动机的原理}
+
+通电导线在磁场中会受到力的作用——这个力叫\textbf{安培力}。力的方向可以用\textbf{左手定则}来判断（初中不要求，但原理要懂）：伸开左手，让磁感线穿入手心，四指指向电流方向，大拇指所指的就是导体受力的方向。
+
+\textbf{电动机（马达）}就是利用这个原理：通电线圈在磁场中受力转动。为了让线圈持续转动（而不是转半圈后卡住），电动机里有一对\textbf{电刷}和\textbf{换向器}——在适当的时候改变线圈中电流的方向，让线圈一直往同一个方向转。
+
+从玩具车到电动汽车、从电风扇到洗衣机的滚筒——所有用电驱动的旋转机械，核心都是一台电动机。
+
+\subsection*{电磁感应——发电机的原理}
+
+奥斯特发现了"电生磁"（电能产生磁）。物理学家们自然反着追问：\textbf{磁能不能生电？}
+
+1831年，英国物理学家\textbf{法拉第}经过十年的努力，终于找到了答案——\textbf{可以，但磁必须"动"！}
+
+\begin{definition}{电磁感应}
+闭合电路的一部分导体在磁场中做\textbf{切割磁感线}运动时，导体中就会产生电流。这种现象叫做\textbf{电磁感应}，产生的电流叫做\textbf{感应电流}。
+\end{definition}
+
+\textbf{感应电流产生的条件：}
+\begin{enumerate}
+  \item 电路必须是\textbf{闭合}的
+  \item 部分导体做\textbf{切割磁感线}运动（导体要"割"磁场线，不能"顺着"线动）
+\end{enumerate}
+
+\textbf{发电机}就是根据电磁感应原理制成的。发电机把\textbf{机械能}（转动线圈）转化为\textbf{电能}。火力发电厂用蒸汽驱动汽轮机→汽轮机带动发电机转子旋转→转子（线圈）在磁场中切割磁感线→产生感应电流→送入电网。
+
+不管发电厂烧的是煤、油、铀还是靠水力、风力——最后一步都一样：\textbf{让线圈在磁场中旋转，通过电磁感应发电。}
+
+\begin{figplaceholder}
+此处插入电动机与发电机原理对比示意图（见 figure/requirements/book3-ch1.txt 插图4）
+\end{figplaceholder}
+
+\subsection*{电动机 vs 发电机——对"双胞胎"}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+& \textbf{电动机} & \textbf{发电机} \\
+\hline
+原理 & 磁场对电流的作用 & 电磁感应 \\
+能量转化 & \textbf{电能} $\rightarrow$ \textbf{机械能} & \textbf{机械能} $\rightarrow$ \textbf{电能} \\
+结构核心 & 磁体 + 线圈 + 换向器 & 磁体 + 线圈 + 滑环 \\
+\hline
+\end{tabular}
+\end{center}
+
+它们结构相似，但能量流方向相反——电动机"吃"电、输出旋转；发电机"吃"旋转、输出电。实际上，同一台电机有时可以反过来用：给它的线圈通电它就转（电动机模式），转动它的转子它就发电（发电机模式）。
+
+\begin{thinkbox}
+电和磁是"一对"——电生磁（奥斯特→电动机），磁生电（法拉第→发电机）。两者结合，人类就有了完整的电磁技术体系：发电厂用磁生电原理产电→输送到你家→你用电磁炉（电生磁）做饭→冰箱压缩机里的电动机（电能变动能）在运转。现代生活的几乎一切便利，都建立在"电-磁互转"这四个字上。
+\end{thinkbox}
+
+\begin{practice}
+1. （填空）电动机的工作原理是\_\_\_\_\_；发电机的工作原理是\_\_\_\_\_。\\
+2. （选择）产生感应电流的条件是（\quad）\\
+\quad A. 导体在磁场中运动 \quad B. 闭合电路的一部分导体在磁场中做切割磁感线运动\\
+\quad C. 导体在磁场中静止 \quad D. 电路闭合即可\\
+3. （判断）电动机工作时将机械能转化为电能。（\quad）\\
+4. 奥斯特实验证明了\_\_\_\_\_生\_\_\_\_\_；法拉第实验证明了\_\_\_\_\_生\_\_\_\_\_。\\
+5. （填空）发电机是将\_\_\_\_\_能转化为\_\_\_\_\_能的装置。
+\end{practice}
+
+\vspace{0.5cm}
+
+\begin{center}
+\rule{0.7\textwidth}{1pt}
+\vspace{0.4cm}
+{\large\textcolor{blue!70!black}{\textbf{—— 物理3·电磁入门 完 ——}}}
+\vspace{0.3cm}
+\textcolor{gray}{\small 下一本预告：物理4·力学与运动定律——牛顿定律的深度解析}
+\end{center}
+
+\end{document}
