@@ -1,0 +1,39 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\linespread{1.35}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{从Python到C++}}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{\textcolor{blue!70!black}{说明}}
+
+C++ 是一种更接近计算机底层的高级编程语言，也是信息学竞赛（NOI）的指定语言。从 Python 转到 C++ 需要理解几个关键差异：静态类型 vs 动态类型、手动内存管理、编译 vs 解释。
+
+\textbf{主要内容（初拟）：}
+\begin{enumerate}
+  \item C++ 与 Python 的核心差异总览
+  \item 基本语法对照：变量声明、输入输出
+  \item 数据类型与强制类型转换
+  \item 控制结构（\texttt{if}、\texttt{for}、\texttt{while}）与 Python 的对照
+  \item 数组与指针的初步理解
+  \item 函数与函数重载
+  \item 面向对象初步：类与对象
+  \item 编译与运行：从源代码到可执行文件
+  \item 小项目：将 Python 项目改写为 C++
+\end{enumerate}
+
+\textbf{典型对照示例：}
+\begin{itemize}
+  \item Python: \texttt{x = 5} $\leftrightarrow$ C++: \texttt{int x = 5;}
+  \item Python: \texttt{if x > 0:} $\leftrightarrow$ C++: \texttt{if (x > 0) \{}
+  \item Python: \texttt{print("Hello")} $\leftrightarrow$ C++: \texttt{std::cout << "Hello";}
+\end{itemize}
+
+\end{document}

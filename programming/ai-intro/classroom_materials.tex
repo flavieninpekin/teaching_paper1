@@ -1,0 +1,53 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\linespread{1.35}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{人工智能初步}}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{\textcolor{blue!70!black}{说明}}
+
+本模块以概念介绍和趣味案例为主，不涉及复杂的数学推导。帮助四年级学生建立对人工智能的基本认知框架。
+
+\vspace{0.3cm}
+
+\textbf{一、机器学习（Machine Learning）}
+
+传统的编程是人告诉计算机每一步怎么做。机器学习反过来——给计算机大量数据，让它自己"学会"怎么做。比如给计算机看一万张猫的图片，它就能学会认出猫来。
+
+核心三要素：数据 + 模型 + 学习算法。机器学习分为监督学习（有答案的训练）、无监督学习（没有答案，自己找规律）、半监督学习。
+
+\vspace{0.3cm}
+
+\textbf{二、神经网络（Neural Networks）}
+
+神经网络是受大脑神经元启发而设计的计算模型。一个神经元接收多个输入，经过"激活函数"后输出结果；大量神经元分层连接，就形成了网络。
+
+\begin{itemize}
+  \item 输入层：接收原始数据（如图片的每个像素）
+  \item 隐藏层：提取特征（边缘、形状、纹理）
+  \item 输出层：给出结果（是猫还是狗？）
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{三、深度学习（Deep Learning）}
+
+深度学习就是有很多层的神经网络（"深度"指层数多）。层数越多，模型就越"聪明"，能学到的特征也越抽象。应用举例：人脸识别、语音助手（Siri/小爱同学）、自动驾驶、AI绘画（Midjourney / Stable Diffusion）。
+
+\vspace{0.3cm}
+
+\textbf{四、强化学习（Reinforcement Learning）}
+
+强化学习像训练宠物一样：做对了给奖励，做错了不给。智能体（Agent）在环境中行动，通过不断试错来学习最优策略。
+
+最著名的例子：AlphaGo 打败世界围棋冠军。它和自己下了上千万盘棋，每一步的目标就是"赢"——这就是它的奖励信号。
+
+\end{document}
