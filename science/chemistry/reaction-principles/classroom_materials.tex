@@ -1,0 +1,387 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,amsmath}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+\definecolor{defblue}{RGB}{0,80,160}\definecolor{thinkorange}{RGB}{230,120,20}
+\definecolor{formulared}{RGB}{180,30,50}\definecolor{funboxbg}{RGB}{245,248,252}
+\definecolor{examplebg}{RGB}{255,250,240}\definecolor{practicegreen}{RGB}{40,130,70}
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{thinkorange}{【 想一想 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.3cm}}
+\newenvironment{definition}[1]{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{\textcolor{defblue}{【 #1 】}}}{\vspace{0.1cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{example}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{examplebg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{orange!80!black}{【 例题 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{practice}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{practicegreen}{【 练一练 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newcommand{\formula}[1]{\begin{center}\textcolor{formulared}{\large\boxed{#1}}\end{center}}
+\title{\textcolor{blue!70!black}{\Huge\textbf{化学3 · 化学反应原理}}}
+\author{}\date{}
+\begin{document}\maketitle\thispagestyle{empty}
+\section*{\textcolor{blue!70!black}{致同学}}
+化学1教你"语言"，化学2带你认识"物质"。现在进入化学最核心的"原理"部分——反应为什么发生？反应有多快？反应能进行到什么程度？怎样利用化学反应产生电流？这是高中化学难度最大的一本——四大平衡体系将在这里展开。沉住气，一步一个脚印。
+
+\newpage
+\section{\textcolor{orange!80!black}{第一课\quad 化学反应与能量}}
+
+\subsection*{放热反应与吸热反应}
+\textbf{放热反应}：反应放出热量，生成物的总能量低于反应物。燃烧、中和反应、金属与酸反应都是放热的。
+\textbf{吸热反应}：反应吸收热量，生成物总能量高于反应物。大多数分解反应、CO$_2$与C生成CO是吸热的。
+
+\subsection*{焓变$\Delta H$}
+\formula{\Delta H = H_{\text{生成物}} - H_{\text{反应物}}}
+$\Delta H < 0$——放热反应；$\Delta H > 0$——吸热反应。单位：kJ/mol。
+
+\subsection*{热化学方程式}
+普通化学方程式标注了\textbf{物质的聚集状态}和\textbf{反应热$\Delta H$}——就是热化学方程式。注意：$\Delta H$和化学计量数对应——系数加倍，$\Delta H$加倍。
+
+\subsection*{盖斯定律——"不管步骤只看始终"}
+化学反应的热效应只与\textbf{起始和终了状态}有关，与反应途径无关。就像爬山——不管你走哪条路，从山脚到山顶的高度差不变。盖斯定律可以用来计算难以直接测量的反应热。
+
+\begin{example}
+已知：C(s) + O$_2$(g) $\rightarrow$ CO$_2$(g) $\Delta H_1 = -393.5\ \text{kJ/mol}$\\
+CO(g) + $\frac{1}{2}$O$_2$(g) $\rightarrow$ CO$_2$(g) $\Delta H_2 = -283.0\ \text{kJ/mol}$\\
+求 C(s) + $\frac{1}{2}$O$_2$(g) $\rightarrow$ CO(g) 的$\Delta H$。
+
+\textbf{解：}用盖斯定律——CO$_2$的两条生成途径热量相等：\\
+C$\rightarrow$CO$_2$：$\Delta H_1$。C$\rightarrow$CO$\rightarrow$CO$_2$：$\Delta H + \Delta H_2$。\\
+$\therefore \Delta H_1 = \Delta H + \Delta H_2 \rightarrow \Delta H = -393.5 - (-283.0) = -110.5\ \text{kJ/mol}$。
+\end{example}
+
+\begin{practice}
+1. （判断）$\Delta H > 0$表示放热反应。（\quad）\\
+2. 燃烧反应属于\_\_\_\_\_热反应；碳酸钙分解属于\_\_\_\_\_热反应。\\
+3. 已知 H$_2$ + $\frac{1}{2}$O$_2$ $\rightarrow$ H$_2$O $\Delta H=-286$。2 mol H$_2$完全燃烧的$\Delta H$=$-572$。\\
+4. 盖斯定律的依据是$\Delta H$只与\_\_\_\_\_和\_\_\_\_\_有关。\\
+5. （选择）下列反应中属于放热反应的是（\quad）\\
+\quad A. CaCO$_3$高温分解 \quad B. C+CO$_2$$\rightarrow$2CO \quad C. 中和反应 \quad D. Ba(OH)$_2\cdot$8H$_2$O与NH$_4$Cl反应\\
+6. 热化学方程式必须注明各物质的\_\_\_\_\_。\\
+7. $\Delta H$的单位是\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第二课\quad 化学反应速率}}
+
+\subsection*{速率怎么算？}
+\formula{v = \frac{\Delta c}{\Delta t}}
+单位：mol/(L·s)或mol/(L·min)。$\Delta c$是浓度变化，$t$是时间。
+
+\subsection*{影响速率的因素}
+\textbf{浓度}：反应物浓度越大——分子碰撞机会越多——速率越快。\\
+\textbf{温度}：温度升高——分子动能增加、有效碰撞比例大幅上升——速率显著加快（每升10℃，速率约增2-4倍）。\\
+\textbf{压强（气体）}：压强增大——体积缩小——浓度增大——速率加快。\\
+\textbf{催化剂}：改变反应路径、降低活化能——速率加快（催化剂不改变反应热$\Delta H$，也不改变平衡位置）。
+
+\subsection*{活化能}
+反应物分子必须拥有超过某个"门槛"的能量才能反应——这个门槛就是\textbf{活化能}$E_a$。催化剂通过提供不同的反应路径来降低$E_a$。
+
+\begin{example}
+为什么夏天食物容易变质？变质是微生物引发的化学反应——温度每升高10℃，反应速率约增加2-4倍。夏天30℃比冬天5℃高出25℃——变质速率可能快了几十倍。
+\end{example}
+
+\begin{practice}
+1. 增大反应物浓度，反应速率\_\_\_\_\_（加快/减慢），原因是\_\_\_\_\_。\\
+2. （选择）下列不能改变化学反应速率的是（\quad）A.温度 B.浓度 C.$\Delta H$ D.催化剂\\
+3. 催化剂通过降低\_\_\_\_\_来加快反应速率。\\
+4. 为什么夏天食物比冬天更容易变质？\_\_\_\_\_。\\
+5. （判断）使用催化剂可以增大化学反应的$\Delta H$。（\quad）\\
+6. 对于气体反应，增大压强实质上是增大了\_\_\_\_\_的浓度。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第三课\quad 化学平衡}}
+
+\subsection*{可逆反应与平衡状态}
+很多化学反应是\textbf{可逆}的——正反应和逆反应同时进行。当正反应速率和逆反应速率\textbf{相等}时，体系中各物质的浓度不再改变——达到\textbf{化学平衡状态}。平衡是动态的——正逆反应仍在进行，只是速率相等。
+
+\subsection*{平衡常数$K$}
+对于反应 $a\text{A} + b\text{B} \rightleftharpoons c\text{C} + d\text{D}$：
+\formula{K = \frac{[\text{C}]^c[\text{D}]^d}{[\text{A}]^a[\text{B}]^b}}
+$K$只与\textbf{温度}有关——温度不变，$K$不变。$K$越大，平衡时产物越多。
+
+\subsection*{勒夏特列原理——"你推我，我就躲"}
+\begin{definition}{勒夏特列原理}
+如果一个处于平衡状态的体系受到\textbf{外界条件改变}（浓度、温度、压强）的影响，平衡将向\textbf{减弱这种改变}的方向移动。
+\end{definition}
+
+\textbf{浓度}：增加反应物浓度——平衡向正向移动（"消耗多出来的反应物"）。\\
+\textbf{温度}：升高温度——平衡向\textbf{吸热}方向移动。\\
+\textbf{压强}：增大压强——平衡向\textbf{气体分子总数减少}的方向移动。
+
+\textbf{催化剂}：\textbf{不改变平衡}——它同等加速正逆反应。催化剂只是让你更快到达平衡。
+
+\begin{example}
+N$_2$ + 3H$_2$ $\rightleftharpoons$ 2NH$_3$（放热反应）。增大压强，平衡如何移动？
+
+\textbf{解：}反应物侧气体分子总数 = 1+3 = 4；生成物侧 = 2。增大压强——平衡向分子数少的方向移动——\textbf{正向（生成更多NH$_3$）}。这是工业合成氨的理论基础。
+\end{example}
+
+\begin{practice}
+1. 化学平衡的标志是$v_{\text{正}}$\_\_\_\_\_$v_{\text{逆}}$。\\
+2. （判断）升高温度，化学平衡一定向吸热方向移动。（\quad）\\
+3. 增大一种反应物的浓度，平衡向\_\_\_\_\_方向移动。\\
+4. 对 N$_2$+3H$_2$$\rightleftharpoons$2NH$_3$，增大压强，平衡\_\_\_\_\_（正/逆）向移动。\\
+5. 平衡常数$K$只与\_\_\_\_\_有关。\\
+6. （判断）催化剂能改变化学平衡状态。（\quad）\\
+7. 对于放热反应，升高温度，平衡常数$K$\_\_\_\_\_（增大/减小）。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第四课\quad 水溶液中的离子平衡（一）}}
+
+\subsection*{弱电解质的电离平衡}
+弱酸（如CH$_3$COOH）、弱碱（如NH$_3$·H$_2$O）在水中只有部分电离——存在电离平衡。\\
+\textbf{电离常数$K_a$（酸）或$K_b$（碱）}：衡量弱电解质电离程度的常数。$K_a$越大，酸越强。
+
+\subsection*{水的离子积$K_w$}
+纯水也有极微弱的电离：H$_2$O $\rightleftharpoons$ H$^+$ + OH$^-$。
+\formula{K_w = [\text{H}^+] \times [\text{OH}^-]} = 1.0 \times 10^{-14} \ (\text{常温})}
+在常温下，纯水中[H$^+$] = [OH$^-$] = $10^{-7}$ mol/L。
+
+\subsection*{pH的精确定义}
+\formula{\text{pH} = -\lg[\text{H}^+]}
+[H$^+$] = $10^{-a}$ mol/L 时，pH = a。$\therefore$ pH每差1——[H$^+$]差10倍。
+
+\textbf{溶液pH的计算：}
+\begin{itemize}
+  \item 强酸溶液：[H$^+$] = 酸的浓度 × 每个分子电离出的H$^+$数 $\rightarrow$ 取负对数。
+  \item 强碱溶液：先求[OH$^-$] $\rightarrow$ [H$^+$] = $K_w$/[$OH^-$] $\rightarrow$ pH。
+  \item 酸碱混合：先判断酸过量还是碱过量，再求剩余的[H$^+$]或[OH$^-$]。
+\end{itemize}
+
+\begin{example}
+0.01 mol/L HCl溶液的pH是多少？
+
+\textbf{解：}HCl是强酸，完全电离。[H$^+$] = 0.01 = $10^{-2}$ mol/L。pH = 2。
+\end{example}
+
+\begin{example}
+0.01 mol/L NaOH溶液的pH是多少？
+
+\textbf{解：}[OH$^-$] = $10^{-2}$。[H$^+$] = $10^{-14}/10^{-2} = 10^{-12}$。pH = 12。
+\end{example}
+
+\begin{practice}
+1. 常温下纯水的[H$^+$] = \_\_\_\_\_ mol/L，pH = \_\_\_\_\_。\\
+2. （计算）0.001 mol/L HCl的pH。\\
+3. （计算）0.1 mol/L NaOH的pH。\\
+4. pH=3和pH=5的两种酸溶液等体积混合，pH$\approx$\_\_\_\_\_（提示：混合后[H$^+$]取平均）。\\
+5. 0.01 mol/L H$_2$SO$_4$溶液的pH = \_\_\_\_\_。\\
+6. （判断）pH=7的溶液一定是中性溶液。（\quad）\\
+7. 常温下，某溶液中[H$^+$]=$10^{-4}$ mol/L，则pH=\_\_\_\_\_，该溶液呈\_\_\_\_\_性。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第五课\quad 水溶液中的离子平衡（二）}}
+
+\subsection*{盐类的水解}
+盐电离出的离子和H$^+$或OH$^-$结合生成弱电解质的反应——\textbf{盐类的水解}。
+
+\textbf{强酸弱碱盐（如NH$_4$Cl）}：NH$_4^+$水解结合OH$^-$ $\rightarrow$ 溶液中[H$^+$] > [OH$^-$] $\rightarrow$ 溶液呈\textbf{酸性}。\\
+\textbf{强碱弱酸盐（如Na$_2$CO$_3$）}：CO$_3^{2-}$水解结合H$^+$ $\rightarrow$ 溶液中[OH$^-$] > [H$^+$] $\rightarrow$ 溶液呈\textbf{碱性}。\\
+\textbf{强酸强碱盐（如NaCl）}：不水解 $\rightarrow$ 中性。
+
+\textbf{口诀：谁弱谁水解，越弱越水解，都强不水解。}
+
+\subsection*{沉淀溶解平衡}
+难溶电解质在溶液中存在溶解——沉淀的平衡。如AgCl(s) $\rightleftharpoons$ Ag$^+$ + Cl$^-$。
+
+\textbf{溶度积常数$K_{sp}$：}衡量难溶物溶解能力的常数。$K_{sp}$(AgCl) = [Ag$^+$][Cl$^-$]。
+
+\textbf{沉淀的生成条件：}$Q_c > K_{sp}$（离子积大于溶度积——溶液过饱和$\rightarrow$生成沉淀）。这个原理解释了为什么往NaCl溶液中滴加AgNO$_3$会生成白色AgCl沉淀。
+
+\begin{example}
+为什么Na$_2$CO$_3$（纯碱）溶液显碱性？
+
+\textbf{解：}CO$_3^{2-}$ + H$_2$O $\rightleftharpoons$ HCO$_3^-$ + OH$^-$。水解产生OH$^-$——溶液呈碱性。这就是Na$_2$CO$_3$虽然叫"纯碱"但不是碱——它是\textbf{盐}，水解使其显碱性。
+\end{example}
+
+\begin{practice}
+1. NH$_4$Cl溶液呈\_\_\_\_\_性，因为\_\_\_\_\_水解。\\
+2. （判断）NaCl溶液显中性是因为Na$^+$和Cl$^-$都不水解。（\quad）\\
+3. NaHCO$_3$溶液呈\_\_\_\_\_（酸/碱）性。（提示：HCO$_3^-$的水解强于电离）\\
+4. （选择）下列溶液显碱性的是（\quad）A. NH$_4$Cl \quad B. NaCl \quad C. Na$_2$CO$_3$ \quad D. KNO$_3$\\
+5. 沉淀溶解平衡中，当$Q_c$\_\_\_\_\_$K_{sp}$时，生成沉淀。\\
+6. （判断）盐类的水解反应是吸热过程。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第六课\quad 电化学（一）——原电池}}
+
+\subsection*{化学能 → 电能}
+
+把锌片和铜片插进稀硫酸中，用导线连接——电流表指针偏转！这就是\textbf{原电池}。
+
+\formula{\text{负极（Zn）：} \text{Zn} - 2e^- \rightarrow \text{Zn}^{2+} \quad \text{（氧化，活泼金属失电子）}}
+\formula{\text{正极（Cu）：} 2\text{H}^+ + 2e^- \rightarrow \text{H}_2\uparrow \quad \text{（还原，H$^+$得电子）}}
+
+\textbf{总反应：}Zn + 2H$^+$ $\rightarrow$ Zn$^{2+}$ + H$_2$$\uparrow$。
+
+原电池的本质：\textbf{氧化还原反应在两个电极上分开进行}——电子通过外电路从负极流向正极（做电功），离子通过电解质溶液完成内电路的闭合。
+
+\textbf{日常电池：}干电池（锌锰电池）、锂电池（手机/电动车）、铅蓄电池（汽车电瓶）——都是原电池的不同实现。
+
+\begin{example}
+铜锌原电池中，哪个是负极？电子从哪流到哪？
+
+\textbf{解：}Zn比Cu活泼——Zn失电子为\textbf{负极}。电子从\textbf{Zn（负极）}经外电路流向\textbf{Cu（正极）}。电流方向则相反。
+\end{example}
+
+\begin{practice}
+1. 原电池中，负极发生\_\_\_\_\_反应，电子从\_\_\_\_\_极流出。\\
+2. （选择）在铜锌原电池中，正极反应是（\quad）\\
+\quad A. Zn$\rightarrow$Zn$^{2+}$+2e$^-$  \quad B. Cu$\rightarrow$Cu$^{2+}$+2e$^-$\\
+\quad C. 2H$^+$+2e$^-$$\rightarrow$H$_2$  \quad D. H$_2$$\rightarrow$2H$^+$+2e$^-$\\
+3. 原电池是将\_\_\_\_\_能转化为\_\_\_\_\_能的装置。\\
+4. 在原电池中，电子从\_\_\_\_\_极经外电路流向\_\_\_\_\_极。\\
+5. 写出铜锌原电池的总反应方程式\_\_\_\_\_。\\
+6. （判断）原电池中较活泼的金属一定作负极。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第七课\quad 电化学（二）——电解池}}
+
+\subsection*{电能 → 化学能}
+与原电池相反——电解池用外加电源\textbf{强迫}一个非自发的氧化还原反应发生。
+
+\textbf{电解规律（以惰性电极石墨或铂为例）：}
+\begin{itemize}
+  \item \textbf{阳极（接电源正极）}：阴离子放电。放电顺序：S$^{2-}$ > I$^-$ > Br$^-$ > Cl$^-$ > OH$^-$ > 含氧酸根。
+  \item \textbf{阴极（接电源负极）}：阳离子放电。放电顺序：Ag$^+$ > Cu$^{2+}$ > H$^+$ > … > Na$^+$（H之后的金属离子在水中不放电）。
+\end{itemize}
+
+\textbf{电解NaCl溶液（制氯气和烧碱）：}\\
+阳极：2Cl$^-$ - 2e$^-$ $\rightarrow$ Cl$_2$$\uparrow$。阴极：2H$_2$O + 2e$^-$ $\rightarrow$ H$_2$$\uparrow$ + 2OH$^-$。\\
+总反应：2NaCl + 2H$_2$O $\xrightarrow{\text{电解}}$ 2NaOH + H$_2$$\uparrow$ + Cl$_2$$\uparrow$。这是重要的工业反应。
+
+\subsection*{金属的腐蚀与防护}
+\textbf{电化学腐蚀（主要形式）：}不纯的金属（如含杂质的铁）在潮湿空气中形成无数微小原电池——铁为负极被腐蚀。\\
+\textbf{防护方法：}涂保护层（油漆、镀锌）、改变金属结构（制成合金如不锈钢）、电化学保护（牺牲阳极——连接更活泼的金属如锌块）。
+
+\begin{example}
+电解CuSO$_4$溶液（石墨电极）。写出电极反应。
+
+\textbf{解：}阴极：Cu$^{2+}$ + 2e$^-$ $\rightarrow$ Cu（红色铜镀在电极上）。\\
+阳极（OH$^-$放电）：4OH$^-$ - 4e$^-$ $\rightarrow$ 2H$_2$O + O$_2$$\uparrow$。总反应：2CuSO$_4$ + 2H$_2$O $\xrightarrow{\text{电解}}$ 2Cu + O$_2$$\uparrow$ + 2H$_2$SO$_4$。
+\end{example}
+
+\begin{practice}
+1. 电解池中，阳极接电源\_\_\_\_\_极，发生\_\_\_\_\_反应。\\
+2. （选择）电解NaCl溶液，阳极产物是（\quad）A. H$_2$ B. O$_2$ C. Cl$_2$ D. Na\\
+3. （填空）铁生锈的主要形式是\_\_\_\_\_腐蚀。\\
+4. 写出电解水（加少量NaOH）的电极反应式。\\
+5. 电解精炼铜时，粗铜作\_\_\_\_\_极，精铜作\_\_\_\_\_极。\\
+6. 牺牲阳极保护法中，被保护的金属应连接更\_\_\_\_\_（活泼/不活泼）的金属。\\
+7. （判断）电解池中阳极发生还原反应。（\quad）
+\end{practice}
+
+\vspace{0.5cm}
+\begin{center}\rule{0.7\textwidth}{1pt}\vspace{0.4cm}
+{\large\textcolor{blue!70!black}{\textbf{—— 化学3·化学反应原理 完 ——}}}
+\end{center}
+
+\newpage
+
+\appendix
+\section*{\textcolor{blue!70!black}{附录A\quad 元素周期表}}
+
+\begin{figplaceholder}
+此处插入完整元素周期表（118元素，彩色，含中文名称与相对原子质量）。\\
+本图化学1-4通用（见 figure/requirements/periodic-table.txt）
+\end{figplaceholder}
+
+\subsection*{1-20号元素速查表}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{序数} & \textbf{符号} & \textbf{名称} & \textbf{相对原子质量} & \textbf{常见化合价} \\
+\hline
+1 & H & 氢 & 1.008 & +1 \\
+2 & He & 氦 & 4.003 & 0 \\
+3 & Li & 锂 & 6.941 & +1 \\
+4 & Be & 铍 & 9.012 & +2 \\
+5 & B & 硼 & 10.81 & +3 \\
+6 & C & 碳 & 12.01 & +2,+4,-4 \\
+7 & N & 氮 & 14.01 & -3,+3,+5 \\
+8 & O & 氧 & 16.00 & -2 \\
+9 & F & 氟 & 19.00 & -1 \\
+10 & Ne & 氖 & 20.18 & 0 \\
+11 & Na & 钠 & 22.99 & +1 \\
+12 & Mg & 镁 & 24.31 & +2 \\
+13 & Al & 铝 & 26.98 & +3 \\
+14 & Si & 硅 & 28.09 & +4,-4 \\
+15 & P & 磷 & 30.97 & -3,+3,+5 \\
+16 & S & 硫 & 32.07 & -2,+4,+6 \\
+17 & Cl & 氯 & 35.45 & -1,+1,+5,+7 \\
+18 & Ar & 氩 & 39.95 & 0 \\
+19 & K & 钾 & 39.10 & +1 \\
+20 & Ca & 钙 & 40.08 & +2 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+\textcolor{gray}{\small 注：相对原子质量为近似值，教学用。稀有气体（He/Ne/Ar）化合价为0。}
+
+\newpage
+\section*{\textcolor{defblue}{参考答案}}
+
+\subsection*{第一课}
+1. （×）$\Delta H > 0$表示吸热\\
+2. 放、吸\\
+3. $-572$ kJ/mol（已给出）\\
+4. 起始状态、终了状态\\
+5. C（中和反应）\\
+6. 聚集状态\\
+7. kJ/mol
+
+\subsection*{第二课}
+1. 加快、碰撞机会增加\\
+2. C\\
+3. 活化能（$E_a$）\\
+4. 温度升高，反应速率加快（温度每升10℃速率约增2-4倍）\\
+5. （×）催化剂不改变$\Delta H$\\
+6. 反应物
+
+\subsection*{第三课}
+1. $=$\\
+2. （√）\\
+3. 正反应\\
+4. 正\\
+5. 温度\\
+6. （×）催化剂同等加速正逆反应，不改变平衡\\
+7. 减小
+
+\subsection*{第四课}
+1. $10^{-7}$、7\\
+2. pH = 3\\
+3. pH = 13\\
+4. pH $\approx$ 3.3\\
+5. $\approx1.7$（[H$^+$]=0.02 mol/L，$-\lg0.02\approx1.7$）\\
+6. （×）温度不同时pH=7不一定中性（100℃时中性pH=6）\\
+7. 4、酸
+
+\subsection*{第五课}
+1. 酸、NH$_4^+$\\
+2. （√）\\
+3. 碱\\
+4. C（Na$_2$CO$_3$水解显碱性）\\
+5. $>$\\
+6. （√）
+
+\subsection*{第六课}
+1. 氧化、负\\
+2. C\\
+3. 化学、电\\
+4. 负、正\\
+5. Zn + H$_2$SO$_4$ $\rightarrow$ ZnSO$_4$ + H$_2$$\uparrow$\\
+6. （×）如Mg-Al-NaOH原电池中Al更易与碱反应，Al为负极
+
+\subsection*{第七课}
+1. 正、氧化\\
+2. C\\
+3. 电化学\\
+4. 阴极：2H$_2$O + 2e$^-$ $\rightarrow$ H$_2$$\uparrow$ + 2OH$^-$；阳极：4OH$^-$ $-$ 4e$^-$ $\rightarrow$ 2H$_2$O + O$_2$$\uparrow$\\
+5. 阳、阴\\
+6. 活泼\\
+7. （×）阳极发生氧化反应
+
+\end{document}

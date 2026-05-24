@@ -1,0 +1,554 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,amsmath}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\definecolor{defblue}{RGB}{0,80,160}\definecolor{thinkorange}{RGB}{230,120,20}
+\definecolor{formulared}{RGB}{180,30,50}\definecolor{funboxbg}{RGB}{245,248,252}
+\definecolor{examplebg}{RGB}{255,250,240}\definecolor{practicegreen}{RGB}{40,130,70}
+
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{thinkorange}{【 想一想 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.3cm}}
+\newenvironment{definition}[1]{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{\textcolor{defblue}{【 #1 】}}}{\vspace{0.1cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{example}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{examplebg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{orange!80!black}{【 例题 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{practice}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{practicegreen}{【 练一练 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textcolor{blue!70!black}{\textbf{【插图位置】}}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}
+\newcommand{\formula}[1]{\begin{center}\textcolor{formulared}{\large\boxed{#1}}\end{center}}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{化学1 · 物质构成与化学语言}}}
+\author{}\date{}
+
+\begin{document}
+\maketitle\thispagestyle{empty}
+
+\section*{\textcolor{blue!70!black}{致同学}}
+
+欢迎来到化学的世界。如果说物理研究的是"力和运动"，那么化学研究的就是"物质是怎么构成的、物质之间怎么互相转变"。化学首先是一门语言——你需要学会用化学符号来"说话"和"写字"。这一本就是你的化学语言入门课。
+
+\newpage
+\section{\textcolor{orange!80!black}{第一课\quad 物理变化与化学变化}}
+
+\subsection*{两种"变"}
+
+把一张纸撕碎——纸还是纸，只是形态变了。把一张纸点燃——纸变成了灰和烟，纸不再存在了，变成了全新的物质。前者是\textbf{物理变化}，后者是\textbf{化学变化}。
+
+\begin{definition}{物理变化与化学变化}
+\textbf{物理变化}：没有新物质生成的变化（如冰融化、铁丝弯折、水蒸发）。\\
+\textbf{化学变化}：有\textbf{新物质}生成的变化（如铁生锈、蜡烛燃烧、食物腐败）。
+\end{definition}
+
+\textbf{判断依据：是否有新物质生成。}化学变化常伴随的现象：发光、放热、变色、生成气体、产生沉淀——但这些只是"线索"而非"证据"（电灯发光是物理变化，没有新物质生成）。
+
+\subsection*{物理性质与化学性质}
+
+\textbf{物理性质}：不需要化学变化就能表现出来的性质——颜色、气味、密度、熔点、沸点、导电性。
+
+\textbf{化学性质}：需要化学变化才能表现出来的性质——可燃性、氧化性、酸碱性。
+
+\begin{thinkbox}
+蒸馏水和自来水有什么区别？蒸馏是物理变化——把水烧开变成蒸汽再冷凝回来，去掉了杂质但水还是水。自来水厂的消毒（加氯气）涉及化学变化——氯气和水反应生成了新物质（次氯酸），用来杀菌。
+\end{thinkbox}
+
+\begin{practice}
+1. （判断）下列是物理变化还是化学变化？\\
+\quad ① 玻璃破碎\_\_\_\_\_ ② 铁生锈\_\_\_\_\_ ③ 酒精挥发\_\_\_\_\_ ④ 食物消化\_\_\_\_\_\\
+2. 化学变化的本质特征是\_\_\_\_\_。\\
+3. （选择）下列属于化学性质的是（\quad）\\
+\quad A. 颜色 \quad B. 密度 \quad C. 可燃性 \quad D. 熔点\\
+4. （选择）下列属于物理变化的是（\quad）\\
+\quad A. 煤燃烧 \quad B. 冰融化 \quad C. 食物消化 \quad D. 铁生锈\\
+5. （判断）电灯通电发光放热属于化学变化。（\quad）\\
+6. 酒精挥发是\_\_\_\_\_变化，酒精燃烧是\_\_\_\_\_变化。\\
+7. 化学变化常伴随的现象有\_\_\_\_\_、\_\_\_\_\_、\_\_\_\_\_（任写三种）。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第二课\quad 原子——物质的最小"积木"}}
+
+\subsection*{原子论的提出}
+
+两千多年前，古希腊哲学家\textbf{德谟克利特}提出：如果把一块金子一直切下去，切到再也切不动时——剩下的那个最小的、不可再分的粒子，就是"\textbf{原子}"（atomos，希腊语"不可分割"）。
+
+两千多年后，英国科学家\textbf{道尔顿}把原子论从哲学猜想变成了科学理论：每种元素由一种特定的原子构成；化学反应只是原子的重新组合——原子本身不变。
+
+\subsection*{原子模型的演进}
+
+\textbf{道尔顿模型（1803）}：原子是实心小球，不可再分。
+
+\textbf{汤姆孙模型（1897）}：发现了电子——原子不是实心的，而是均匀分布着正电荷、中间镶嵌着负电子的"葡萄干布丁"模型。
+
+\textbf{卢瑟福模型（1911）}：用$\alpha$粒子轰击金箔——大多数$\alpha$粒子直接穿过去，极少数被弹回来。结论：原子内部有一个极小的、带正电的\textbf{原子核}——原子几乎全是"空"的！核外电子绕核旋转——\textbf{行星模型}。
+
+\textbf{玻尔模型（1913）}：电子只能在特定的"轨道"（能层）上运行，不能随意停在任何位置。从低能级跳到高能级需要吸收能量，跳回来时放出能量（光）。
+
+\textbf{现代量子力学模型（20世纪20年代至今）}：电子不是沿轨道运行的粒子，而是以"电子云"的形式分布在核外——你只能知道电子在某处出现的\textbf{概率}，不能确定它的精确位置。
+
+\begin{figplaceholder}
+此处插入原子模型的演进示意图：道尔顿→汤姆孙→卢瑟福→玻尔→电子云（见 figure/requirements/chem1-ch1.txt 插图1）
+\end{figplaceholder}
+
+\subsection*{原子的结构}
+
+\formula{\text{原子} \begin{cases} \text{原子核} \begin{cases} \text{质子（带正电）} \\ \text{中子（不带电）} \end{cases} \\ \text{核外电子（带负电）} \end{cases}}
+
+\textbf{原子序数 = 质子数 = 核电荷数 = 核外电子数}（原子呈电中性时）。
+
+\textbf{质量数（A）= 质子数（Z）+ 中子数（N）}。
+
+\begin{example}
+碳-12原子：6个质子、6个中子、6个电子。原子序数=6，质量数=12。
+\end{example}
+
+\begin{thinkbox}
+原子核的直径只有整个原子的大约万分之一。如果把一个原子放大到足球场那么大——原子核只有一只蚂蚁大小。在这两者之间，是巨大的"空"——电子就在这片广阔的空间中以概率云的形式存在。所以严格来说，你从来没有真正"摸"到过任何东西——你感受到的"固体"，不过是电子之间的排斥力。
+\end{thinkbox}
+
+\begin{practice}
+1. 原子由\_\_\_\_\_和\_\_\_\_\_构成；原子核由\_\_\_\_\_和\_\_\_\_\_构成。\\
+2. （判断）原子不可再分。（\quad）\\
+3. 氧原子的原子序数为8，则它有\_\_\_\_\_个质子和\_\_\_\_\_个电子。\\
+4. （选择）发现原子核的科学家是（\quad）A. 道尔顿 B. 汤姆孙 C. 卢瑟福 D. 玻尔\\
+5. 某原子的质量数为23，质子数为11，则中子数为\_\_\_\_\_。\\
+6. 卢瑟福$\alpha$粒子散射实验证明了\_\_\_\_\_。\\
+7. （判断）所有原子都是由质子、中子和电子构成的。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第三课\quad 元素与元素周期表}}
+
+\subsection*{元素——同一类原子的总称}
+
+具有相同的\textbf{核电荷数}（即质子数）的同一类原子总称为一种\textbf{元素}。氧元素包括所有质子数为8的原子（无论中子数多少）。目前人类已知118种元素。
+
+\subsection*{元素符号}
+
+国际通用的化学语言——每个元素用一个或两个字母表示：氢H、氧O、铁Fe（来自拉丁文ferrum）、钠Na（来自拉丁文natrium）。\textbf{第一个字母大写，第二个字母小写。}
+
+\subsection*{元素周期表——门捷列夫的天才}
+
+1869年，俄国化学家\textbf{门捷列夫}把当时已知的63种元素按相对原子质量从小到大排列——他发现元素的\textbf{性质呈周期性变化}。更神奇的是，他故意留了几个空位，大胆预言了尚不存在的元素（如"类铝"——后来发现的镓完美吻合）。
+
+\begin{definition}{元素周期表的结构}
+\textbf{横行——周期}：共7个周期。同一周期元素从左到右，金属性减弱、非金属性增强。\\
+\textbf{纵列——族}：共18列（主族+副族+0族）。同一主族元素从上到下，金属性增强。
+\end{definition}
+
+\textbf{记忆口诀（1-20号）：}氢氦锂铍硼，碳氮氧氟氖。钠镁铝硅磷，硫氯氩钾钙。\\
+H He Li Be B, C N O F Ne. Na Mg Al Si P, S Cl Ar K Ca.
+
+\begin{figplaceholder}
+此处插入元素周期表示意图（标注周期和族的主要分区）（见 figure/requirements/chem1-ch1.txt 插图2）
+\end{figplaceholder}
+
+\subsection*{元素分类}
+
+\textbf{金属元素}：大多数元素——有金属光泽、导电导热、可延展。铁、铝、金、银、钠。
+
+\textbf{非金属元素}：少数——通常在周期表右侧。碳、氮、氧、硫、氯。
+
+\textbf{稀有气体（0族）}：氦氖氩氪氙氡——极不活泼，几乎不形成化合物。
+
+\begin{example}
+在元素周期表中，同一周期从左到右，原子半径逐渐\_\_\_\_\_。同一主族从上到下，原子半径逐渐\_\_\_\_\_。
+
+\textbf{解：}同一周期从左到右——核电荷增加（吸引电子更紧）→原子半径\textbf{减小}。\\
+同一主族从上到下——电子层数增加→原子半径\textbf{增大}。
+\end{example}
+
+\begin{practice}
+1. 决定元素种类的是\_\_\_\_\_数。\\
+2. 元素周期表有\_\_\_\_\_个周期，共有\_\_\_\_\_个族。\\
+3. 写出下列元素的符号：氢\_\_\_\_\_ 氧\_\_\_\_\_ 铁\_\_\_\_\_ 金\_\_\_\_\_\\
+4. （判断）同一主族元素从下到上，金属性逐渐增强。（\quad）\\
+5. 地壳中含量最多的元素是\_\_\_\_\_。\\
+6. （选择）下列属于金属元素的是（\quad）\\
+\quad A. Si \quad B. Cl \quad C. Fe \quad D. He\\
+7. 门捷列夫的主要贡献是\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第四课\quad 化学式与化合价}}
+
+\subsection*{化学式——用符号写"分子配方"}
+
+水不是"H和O的混合物"——它是由无数个\textbf{H$_2$O}分子构成的。H$_2$O就是一个\textbf{化学式}：用元素符号和数字来表示物质组成的式子。
+
+化学式中的数字含义：
+\begin{itemize}
+  \item \textbf{右下角数字}：表示分子中该原子的个数。H$_2$O——2个氢原子 + 1个氧原子。H$_2$SO$_4$——2个H、1个S、4个O。
+  \item \textbf{前面的系数}：表示粒子的个数。3H$_2$O——3个水分子。
+\end{itemize}
+
+\subsection*{化合价——原子"拉手"的规则}
+
+在形成化合物时，每种原子能够"拉住"其他原子的数量是有限的——这个"拉手数量"就是\textbf{化合价}。化合价是书写化学式的\textbf{核心规则}。
+
+\formula{\text{在化合物中：正负化合价的代数和} = 0}
+
+\textbf{常见化合价口诀：}
+一价钾钠氯氢银（K$^+$ Na$^+$ Cl$^-$ H$^+$ Ag$^+$），二价氧钙钡镁锌（O$^{2-}$ Ca$^{2+}$ Ba$^{2+}$ Mg$^{2+}$ Zn$^{2+}$）。\\
+三铝四硅五价磷（Al$^{3+}$ Si$^{4+}$ P$^{5+}$），二三铁、二四碳。\\
+二四六硫都齐全，铜汞二价最常见。
+
+\subsection*{化学式的书写规则}
+
+\textbf{已知化合价写化学式：}写出元素符号（正价在左，负价在右）$\rightarrow$ 标化合价 $\rightarrow$ 十字交叉（化合价绝对值交叉为右下角数字）$\rightarrow$ 约分检查。
+
+\textbf{已知化学式求化合价：}用化合物中正负化合价代数和为零的规则反推。
+
+\begin{example}
+写出氧化铝的化学式。
+
+\textbf{解：}Al为+3价，O为-2价。十字交叉：Al的右下角写2（O的化合价绝对值），O的右下角写3（Al的化合价绝对值）。$\rightarrow$ \textbf{Al$_2$O$_3$}。验证：$(+3)\times2 + (-2)\times3 = 6-6 = 0$ ✓。
+\end{example}
+
+\begin{example}
+求KMnO$_4$中Mn的化合价。
+
+\textbf{解：}K为+1，O为-2（4个O贡献$-8$），设Mn为$x$。代数和=0：$+1 + x + (-2)\times4 = 0 \rightarrow x = +7$。$\therefore$ Mn为+7价。
+\end{example}
+
+\begin{practice}
+1. 写出下列物质的化学式：水\_\_\_\_\_ 二氧化碳\_\_\_\_\_ 氯化钠\_\_\_\_\_\\
+2. （计算）求Fe$_2$O$_3$中Fe的化合价。\\
+3. 写出+3价铝和-2价氧形成的化合物的化学式。\\
+4. （判断）单质中元素的化合价为0。（\quad）\\
+5. （计算）求KClO$_3$中Cl的化合价。\\
+6. 写出氯化镁的化学式\_\_\_\_\_。\\
+7. （判断）H$_2$O$_2$中氧元素的化合价为-2。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第五课\quad 化学方程式——用符号"描述"反应}}
+
+\subsection*{化学方程式是什么？}
+
+碳在氧气中燃烧——用文字写："碳 + 氧气 $\rightarrow$ 二氧化碳"。用化学方程式写：
+
+\formula{\text{C} + \text{O}_2 \longrightarrow \text{CO}_2}
+
+化学方程式就是\textbf{用化学式写的"反应一句话"}。左边是反应物，右边是生成物，中间是箭头（或等号）。
+
+\subsection*{配平化学方程式}
+
+\textbf{配平}是写化学方程式最关键的一步——根据\textbf{质量守恒定律}，反应前后每种原子的\textbf{个数必须相等}。
+
+\textbf{最小公倍数法（最常用）：}
+\begin{enumerate}
+  \item 找出出现次数最多的元素
+  \item 用最小公倍数确定该元素的系数
+  \item 逐步调整其他系数
+  \item 检查所有原子是否守恒
+\end{enumerate}
+
+\textbf{配平口诀：}先金属、后非金属、再氧、最后氢。原子团看作整体。
+
+\begin{example}
+配平：H$_2$ + O$_2$ $\rightarrow$ H$_2$O
+
+\textbf{解：}左侧O有2个，右侧O有1个——O的最小公倍数为2。\\
+右侧H$_2$O前配2：H$_2$ + O$_2$ $\rightarrow$ 2H$_2$O。\\
+此时右侧H有4个——左侧H$_2$前配2：\textbf{2H$_2$ + O$_2$ $\rightarrow$ 2H$_2$O}。\\
+检查：H: $2\times2=4$, 右侧$2\times2=4$ ✓。O: 2=2 ✓。
+\end{example}
+
+\begin{example}
+配平：KClO$_3$ $\rightarrow$ KCl + O$_2$
+
+\textbf{解：}O: 左侧3个，右侧2个——最小公倍数6。\\
+KClO$_3$前配2，O$_2$前配3：2KClO$_3$ $\rightarrow$ KCl + 3O$_2$。\\
+K与Cl需配平：\textbf{2KClO$_3$ $\rightarrow$ 2KCl + 3O$_2$}。
+\end{example}
+
+\begin{practice}
+1. 配平下列化学方程式：\\
+\quad ① \_\_\_\_\_Mg + \_\_\_\_\_O$_2$ $\rightarrow$ \_\_\_\_\_MgO\\
+\quad ② \_\_\_\_\_Fe + \_\_\_\_\_HCl $\rightarrow$ \_\_\_\_\_FeCl$_2$ + \_\_\_\_\_H$_2$\\
+2. （判断）化学方程式中"="和"$\rightarrow$"含义相同。（\quad）\\
+3. 配平：CH$_4$ + O$_2$ $\rightarrow$ CO$_2$ + H$_2$O\\
+4. 配平：Al + O$_2$ $\rightarrow$ Al$_2$O$_3$\\
+5. （判断）配平化学方程式时可以改变化学式中元素符号右下角的数字。（\quad）\\
+6. 配平：Na + H$_2$O $\rightarrow$ NaOH + H$_2$$\uparrow$\\
+7. 配平：C$_2$H$_6$ + O$_2$ $\rightarrow$ CO$_2$ + H$_2$O
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第六课\quad 质量守恒定律}}
+
+\subsection*{化学反应前后，总质量不变}
+
+\begin{definition}{质量守恒定律}
+参加化学反应的各物质的\textbf{质量总和}，等于反应后生成的各物质的\textbf{质量总和}。
+\end{definition}
+
+为什么？因为化学反应的本质是\textbf{原子的重新组合}——原子的种类和数目都没有变，只是排列方式变了。每个原子的质量不变，总质量自然不变。
+
+\subsection*{质量守恒定律的应用}
+
+\textbf{推断未知物质的化学式；} \quad \textbf{计算反应物或产物的质量；}\\
+\textbf{解释实验现象}（如镁条燃烧后质量"增加"——其实是结合了空气中的氧气）。
+
+\begin{example}
+12g碳和32g氧气恰好完全反应，生成多少克二氧化碳？
+
+\textbf{解：}根据质量守恒，$m_{\text{CO}_2} = 12 + 32 = 44\ \text{g}$。\\
+（化学方程式 C + O$_2$ $\rightarrow$ CO$_2$——12g C + 32g O$_2$ = 44g CO$_2$ ✓）
+\end{example}
+
+\begin{example}
+加热15.8g高锰酸钾，得到1g氧气。剩余固体的质量是多少？
+
+\textbf{解：}质量守恒：$m_{\text{剩余}} = 15.8 - 1 = 14.8\ \text{g}$。
+\end{example}
+
+\begin{thinkbox}
+蜡烛燃烧后质量减少了——是否违反质量守恒？不违反。蜡烛燃烧的产物是二氧化碳和水蒸气——它们散逸到空气中了。如果把蜡烛放在密闭容器中燃烧、收集所有产物称重——总质量不变。
+\end{thinkbox}
+
+\begin{practice}
+1. 质量守恒定律的本质是化学反应前后\_\_\_\_\_种类和\_\_\_\_\_不变。\\
+2. 24g镁与16g氧气恰好完全反应，生成\_\_\_\_\_g氧化镁。\\
+3. （判断）铁丝生锈后质量增加，违反了质量守恒。（\quad）\\
+4. 铜片在空气中加热后质量增加了——增加的质量来自\_\_\_\_\_。\\
+5. 10g氢气和氧气混合点燃恰好完全反应，生成9g水。参加反应的氢气质量为\_\_\_\_\_g。\\
+6. （选择）下列现象能用质量守恒定律解释的是（\quad）\\
+\quad A. 水蒸发 \quad B. 蜡烛燃烧 \quad C. 糖溶于水 \quad D. 玻璃破碎\\
+7. 反应A + B $\rightarrow$ C中，5g A与4g B恰好完全反应，生成C的质量为\_\_\_\_\_g。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第七课\quad 物质的量——摩尔的引入}}
+
+\subsection*{为什么要引入"摩尔"？}
+
+原子太小了——一个碳原子质量约$2\times10^{-26}\ \text{kg}$。在实验室里，我们处理的不是"几个原子"，而是"阿伏加德罗常数级"的巨量粒子。化学家需要一个方便的计数单位——\textbf{摩尔（mol）}。
+
+\begin{definition}{物质的量}
+\textbf{摩尔}是物质的量的单位。1 mol任何粒子（原子、分子、离子）含有约\textbf{$6.02\times10^{23}$}个粒子。这个数叫\textbf{阿伏加德罗常数}，记作 $N_A$。
+\end{definition}
+
+$6.02\times10^{23}$有多大？如果全世界80亿人一起数，不吃不喝不睡——也要数两百万年。
+
+\subsection*{摩尔质量}
+
+\textbf{1 mol物质的质量}叫做\textbf{摩尔质量} $M$，单位：g/mol。\textbf{数值上等于该物质的相对原子（分子）质量}。
+
+例如：C的相对原子质量=12 $\rightarrow$ $M(\text{C})=12\ \text{g/mol}$。\\
+H$_2$O的相对分子质量=18 $\rightarrow$ $M(\text{H}_2\text{O})=18\ \text{g/mol}$。
+
+\subsection*{物质的量与质量的换算}
+
+\formula{n = \frac{m}{M}}
+
+$n$：物质的量（mol），$m$：质量（g），$M$：摩尔质量（g/mol）。这三个量，知二求一。
+
+\begin{example}
+36g水的物质的量是多少？（$M_{\text{H}_2\text{O}} = 18\ \text{g/mol}$）
+
+\textbf{解：}$n = m/M = 36/18 = 2\ \text{mol}$。
+\end{example}
+
+\begin{example}
+0.5 mol二氧化碳的质量是多少？（$M_{\text{CO}_2} = 44\ \text{g/mol}$）
+
+\textbf{解：}$m = nM = 0.5 \times 44 = 22\ \text{g}$。
+\end{example}
+
+\subsection*{气体摩尔体积}
+
+在标准状况（0℃，101 kPa）下，1 mol任何气体的体积约为\textbf{22.4 L}——这叫气体摩尔体积 $V_m$。注意：只有\textbf{气体}适用！固体和液体的体积和摩尔体积没有简单的关系。
+
+\begin{practice}
+1. 1 mol水分子中含有\_\_\_\_\_个水分子。\\
+2. （计算）44g CO$_2$的物质的量？（$M=44\ \text{g/mol}$）\\
+3. 在标准状况下，2 mol O$_2$的体积约为\_\_\_\_\_ L。\\
+4. （判断）1 mol任何物质体积都是22.4 L。（\quad）\\
+5. （计算）0.5 mol H$_2$SO$_4$的质量是多少？（$M=98\ \text{g/mol}$）\\
+6. （判断）标准状况下1 mol O$_2$的体积约为22.4 L。（\quad）\\
+7. 0.1 mol Na$^+$含有\_\_\_\_\_个Na$^+$。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第八课\quad 化学键——原子怎么"拉手"}}
+
+\subsection*{为什么原子要"拉手"？}
+
+单个原子通常是不稳定的——它们通过\textbf{化学键}结合在一起形成分子或晶体。化学键的本质是\textbf{电子}的重新排布——原子通过得到、失去或共用电子来达到\textbf{最外层8电子（或2电子）的稳定结构}（"八隅律"）。
+
+\subsection*{离子键——"一给一拿"}
+
+当金属原子（容易失去电子）遇到非金属原子（容易得到电子）时——金属原子把电子给了非金属原子。双方都变成了带电的\textbf{离子}——阳离子（正）和阴离子（负）之间的静电吸引力就是\textbf{离子键}。
+
+\textbf{NaCl（氯化钠）的形成：}Na原子（最外层1个电子）失去那个电子变成Na$^+$；Cl原子（最外层7个电子）得到那个电子变成Cl$^-$。Na$^+$和Cl$^-$通过离子键结合。
+
+离子化合物通常固态为晶体结构——氯化钠晶体就是Na$^+$和Cl$^-$在三维空间中交替排列。
+
+\subsection*{共价键——"一人出一半"}
+
+非金属原子之间——谁也不愿意"白给"电子（都想得到电子），于是双方\textbf{共用}一对（或多对）电子——这就是\textbf{共价键}。
+
+\textbf{H$_2$（氢气）的形成：}两个H原子各拿出1个电子——共用这一对电子——两个原子核都被这对电子"包裹"，都达到了"类氦"的2电子稳定结构。
+
+\textbf{H$_2$O（水）的形成：}O最外层6个电子（差2个），H各有1个——O和两个H分别共用一对电子。
+
+共价键的表示方法：\textbf{电子式}——用"·"或"×"代表最外层电子，把共用的电子对放在两原子之间。\textbf{结构式}——用一条短线"—"代表一对共用电子。
+
+\begin{example}
+写出H$_2$O的电子式。
+
+\textbf{解：}O周围共8个电子（6个原有的 + 2个和H共用的），其中两对分别和两个H共用。省略非共用电子后，结构式为 H—O—H。
+\end{example}
+
+\subsection*{分子的空间构型（VSEPR简介）}
+
+分子并不是平面的——原子在三维空间中有特定的排列。一个简单的判断方法（VSEPR——价层电子对互斥理论）：原子周围的电子对（包括成键电子对和孤对电子）互相排斥，它们会尽可能远离彼此。
+
+\textbf{CO$_2$：}直线形（O=C=O，180°）。\\
+\textbf{H$_2$O：}V形（折线形，约104.5°）——因为O上有两对孤对电子，挤压了H—O—H的夹角。\\
+\textbf{CH$_4$：}正四面体形——四个H均匀分布在C的四周。
+
+\begin{figplaceholder}
+此处插入常见分子的空间构型示意图：CO$_2$直线/H$_2$O V形/CH$_4$正四面体（见 figure/requirements/chem1-ch1.txt 插图3）
+\end{figplaceholder}
+
+\begin{thinkbox}
+离子键和共价键不是截然二分的——它们是同一个"光谱"的两端。纯粹的离子键（完全给电子）和纯粹的共价键（完全均分电子）是理想模型，大多数化学键介于两者之间——电子偏向某一方更多一些。化学的魅力正在于这种"灰度"——简单规则背后是丰富的复杂性。
+\end{thinkbox}
+
+\begin{practice}
+1. （判断）NaCl中Na和Cl之间形成的是共价键。（\quad）\\
+2. 写出下列物质的电子式：① H$_2$ ② HCl\\
+3. （填空）CO$_2$是\_\_\_\_\_形分子；H$_2$O是\_\_\_\_\_形分子。\\
+4. 离子键的本质是\_\_\_\_\_和\_\_\_\_\_之间的\_\_\_\_\_力。\\
+5. CH$_4$的分子构型是\_\_\_\_\_。\\
+6. （判断）NH$_3$分子中N的杂化方式是sp$^3$。（\quad）\\
+7. （判断）离子化合物中一定不含共价键。（\quad）
+\end{practice}
+
+\vspace{0.5cm}
+\begin{center}\rule{0.7\textwidth}{1pt}\vspace{0.4cm}
+{\large\textcolor{blue!70!black}{\textbf{—— 化学1·物质构成与化学语言 完 ——}}}
+\vspace{0.3cm}\textcolor{gray}{\small 下一本预告：化学2·常见元素与无机反应——从空气到金属，认识身边的化学物质}
+\end{center}
+
+\newpage
+
+\appendix
+\section*{\textcolor{blue!70!black}{附录A\quad 元素周期表}}
+
+\begin{figplaceholder}
+此处插入完整元素周期表（118元素，彩色，含中文名称与相对原子质量）。\\
+本图化学1-4通用（见 figure/requirements/periodic-table.txt）
+\end{figplaceholder}
+
+\subsection*{1-20号元素速查表}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{序数} & \textbf{符号} & \textbf{名称} & \textbf{相对原子质量} & \textbf{常见化合价} \\
+\hline
+1 & H & 氢 & 1.008 & +1 \\
+2 & He & 氦 & 4.003 & 0 \\
+3 & Li & 锂 & 6.941 & +1 \\
+4 & Be & 铍 & 9.012 & +2 \\
+5 & B & 硼 & 10.81 & +3 \\
+6 & C & 碳 & 12.01 & +2,+4,-4 \\
+7 & N & 氮 & 14.01 & -3,+3,+5 \\
+8 & O & 氧 & 16.00 & -2 \\
+9 & F & 氟 & 19.00 & -1 \\
+10 & Ne & 氖 & 20.18 & 0 \\
+11 & Na & 钠 & 22.99 & +1 \\
+12 & Mg & 镁 & 24.31 & +2 \\
+13 & Al & 铝 & 26.98 & +3 \\
+14 & Si & 硅 & 28.09 & +4,-4 \\
+15 & P & 磷 & 30.97 & -3,+3,+5 \\
+16 & S & 硫 & 32.07 & -2,+4,+6 \\
+17 & Cl & 氯 & 35.45 & -1,+1,+5,+7 \\
+18 & Ar & 氩 & 39.95 & 0 \\
+19 & K & 钾 & 39.10 & +1 \\
+20 & Ca & 钙 & 40.08 & +2 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+\textcolor{gray}{\small 注：相对原子质量为近似值，教学用。稀有气体（He/Ne/Ar）化合价为0。}
+
+\newpage
+\section*{\textcolor{defblue}{参考答案}}
+
+\subsection*{第一课}
+1. ① 物理变化　② 化学变化　③ 物理变化　④ 化学变化\\
+2. 有无新物质生成\\
+3. C（可燃性）\\
+4. B（冰融化）\\
+5. （×）\\
+6. 物理、化学\\
+7. 发光、放热、变色、生成气体、产生沉淀（任写三种）
+
+\subsection*{第二课}
+1. 原子核、核外电子；质子、中子\\
+2. （×）\\
+3. 8个质子、8个电子\\
+4. C（卢瑟福）\\
+5. 12\\
+6. 原子内部有一个极小且带正电的原子核\\
+7. （×）普通氢原子（$^1$H）不含中子
+
+\subsection*{第三课}
+1. 质子（或核电荷）\\
+2. 7、16（或18列）\\
+3. H、O、Fe、Au\\
+4. （×）\\
+5. 氧（O）\\
+6. C（Fe）\\
+7. 发现了元素周期律，制作了元素周期表
+
+\subsection*{第四课}
+1. H$_2$O、CO$_2$、NaCl\\
+2. Fe为+3价\\
+3. Al$_2$O$_3$\\
+4. （√）\\
+5. +5价（K$^{+1}$，O$^{-2}\times3=-6$，代数和为零$\rightarrow$Cl为+5）\\
+6. MgCl$_2$\\
+7. （×）H$_2$O$_2$中O为-1价
+
+\subsection*{第五课}
+1. ① 2Mg + O$_2$ $\rightarrow$ 2MgO　② Fe + 2HCl $\rightarrow$ FeCl$_2$ + H$_2$$\uparrow$\\
+2. （×）"="表示配平后的方程式，"$\rightarrow$"仅表示反应方向\\
+3. CH$_4$ + 2O$_2$ $\rightarrow$ CO$_2$ + 2H$_2$O\\
+4. 4Al + 3O$_2$ $\rightarrow$ 2Al$_2$O$_3$\\
+5. （×）配平是在化学式前加系数，不能更改角标\\
+6. 2Na + 2H$_2$O $\rightarrow$ 2NaOH + H$_2$$\uparrow$\\
+7. 2C$_2$H$_6$ + 7O$_2$ $\rightarrow$ 4CO$_2$ + 6H$_2$O
+
+\subsection*{第六课}
+1. 原子种类和个数（数目）\\
+2. 40\\
+3. （×）\\
+4. 空气中的氧气（或O$_2$）\\
+5. 1g（水中氢元素全部来自H$_2$，$9 \times \frac{2}{18}=1$）\\
+6. B（蜡烛燃烧）\\
+7. 9
+
+\subsection*{第七课}
+1. $6.02\times10^{23}$（阿伏加德罗常数个）\\
+2. $n = 44/44 = 1$ mol\\
+3. 44.8 L\\
+4. （×）只有气体在标准状况下才适用\\
+5. 49g（$0.5\times98=49$）\\
+6. （√）\\
+7. $6.02\times10^{22}$
+
+\subsection*{第八课}
+1. （×）离子键\\
+2. ① H:H　② H:Cl:\\
+3. 直线、V（折线）\\
+4. 阳离子和阴离子之间的静电引力\\
+5. 正四面体\\
+6. （√）\\
+7. （×）如NaOH中的O—H是共价键
+
+\end{document}

@@ -1,0 +1,547 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,amsmath}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\definecolor{defblue}{RGB}{0,80,160}\definecolor{thinkorange}{RGB}{230,120,20}
+\definecolor{formulared}{RGB}{180,30,50}\definecolor{funboxbg}{RGB}{245,248,252}
+\definecolor{examplebg}{RGB}{255,250,240}\definecolor{practicegreen}{RGB}{40,130,70}
+
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{thinkorange}{【 想一想 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.3cm}}
+\newenvironment{definition}[1]{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{\textcolor{defblue}{【 #1 】}}}{\vspace{0.1cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{example}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{examplebg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{orange!80!black}{【 例题 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{practice}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{practicegreen}{【 练一练 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textcolor{blue!70!black}{\textbf{【插图位置】}}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}
+\newcommand{\formula}[1]{\begin{center}\textcolor{formulared}{\large\boxed{#1}}\end{center}}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{物理5 · 曲线、能量与动量}}}
+\author{}\date{}
+
+\begin{document}
+\maketitle\thispagestyle{empty}
+\section*{\textcolor{blue!70!black}{致同学}}
+在前面四本物理书中，我们研究的运动基本局限在"一条直线"上。现在我们要打开视野——平抛、圆周、天体运行——世界上的运动大多是\textbf{曲线}。同时，我们将引入物理学的三大守恒律——能量守恒、动量守恒——它们比牛顿定律更"高层"，是解决复杂问题的终极利器。
+
+\newpage
+\section{\textcolor{orange!80!black}{第一课\quad 运动的合成与分解}}
+
+\subsection*{一个运动可以拆成两个}
+
+飞机在风中飞行——既有发动机提供的向前的速度，又有风把它往旁边吹的速度。飞机实际的运动轨迹，是这两个运动的\textbf{合成}。
+
+\begin{definition}{运动的合成与分解}
+如果一个物体同时参与了多个运动，这些运动互不干扰（\textbf{独立性}），总的运动效果等于各个分运动效果的\textbf{矢量叠加}。
+\end{definition}
+
+\subsection*{小船渡河——经典模型}
+
+一艘小船要从河的一岸横渡到对岸。船有自身的划行速度（指向对岸），河水有流速（沿河向下游）。船实际的轨迹是两者的合成——船走的是一条斜线。
+
+\textbf{最短时间渡河：}船头垂直指向对岸——$t_{\text{min}} = d/v_{\text{船}}$（$d$为河宽）。此时虽然河水会把船冲向下游，但横渡时间最短。
+
+\textbf{最短航程渡河：}船头向上游偏一个角度，让合速度正好垂直指向对岸——前提是 $v_{\text{船}} > v_{\text{水}}$（船速必须大于水速，否则无法完全抵消水流）。
+
+\begin{example}
+河宽200m，船在静水中速度$4\ \text{m/s}$，水流速度$3\ \text{m/s}$。最短渡河时间是多少？船会被冲到下游多远？
+
+\textbf{解：}船头垂直对岸：$t = 200/4 = 50\ \text{s}$。\\
+下游漂移距离：$x = v_{\text{水}} \cdot t = 3 \times 50 = 150\ \text{m}$。
+\end{example}
+
+\begin{practice}
+1. （判断）一个运动分解为两个分运动后，两个分运动之间会互相影响。（\quad）\\
+2. 河宽$100\ \text{m}$，船速$5\ \text{m/s}$，水速$3\ \text{m/s}$。最短渡河时间\_\_\_\_\_s。\\
+3. （选择）小船渡河时，使渡河时间最短的方法是（\quad）\\
+\quad A. 船头指向上游 \quad B. 船头指向下游 \quad C. 船头垂直指向对岸 \quad D. 无法确定\\
+4. （计算）河宽120m，船速$4\ \text{m/s}$，水速$3\ \text{m/s}$，船头垂直指向对岸。渡河时间和下游漂移距离各多少？\\
+5. （填空）运动的合成与分解遵循\_\_\_\_\_定则。\\
+6. （判断）两个直线运动的合运动一定是直线运动。（\quad）\\
+7. 船在静水中速度大于水速时，最短航程渡河的合速度方向\_\_\_\_\_河岸。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第二课\quad 平抛运动}}
+
+\subsection*{"水平抛出"——两种运动的叠加}
+
+把一个小球从桌面边缘水平推出——它一边向前匀速移动（水平方向），一边向下加速坠落（竖直方向自由落体）。这两个运动\textbf{互不干扰}——水平方向保持匀速，竖直方向从头开始自由落体。
+
+\begin{definition}{平抛运动}
+物体以一定的\textbf{水平初速度}抛出，只在重力作用下的运动。
+\end{definition}
+
+平抛运动可以看作：\textbf{水平方向匀速直线运动 + 竖直方向自由落体运动}。
+
+\formula{\text{水平：}x = v_0 t \qquad \text{竖直：}y = \frac{1}{2}gt^2}
+
+合速度大小：$v = \sqrt{v_0^2 + (gt)^2}$。落地速度方向与水平夹角 $\theta$：$\tan\theta = gt/v_0$。
+
+\subsection*{平抛的重要推论}
+
+\textbf{飞行时间}只取决于高度：$t = \sqrt{2h/g}$——和水平初速度无关。高度一样，抛得再远也同时落地。
+
+\textbf{水平射程}：$x = v_0 t = v_0\sqrt{2h/g}$——高度固定时，初速度越大射程越远。
+
+\begin{example}
+一架飞机在$h=500\ \text{m}$高空以$v_0=100\ \text{m/s}$水平飞行，投下一个包裹（忽略空气阻力）。包裹多久落地？落地时离投掷点的水平距离多远？（$g=10$）
+
+\textbf{解：}$t = \sqrt{2h/g} = \sqrt{1000/10} = 10\ \text{s}$。\\
+$x = v_0 t = 100 \times 10 = 1000\ \text{m}$。
+\end{example}
+
+\begin{thinkbox}
+如果同时从同一高度释放一个小球（自由落体）和水平抛出一个小球（平抛）——谁会先落地？\textbf{同时落地。}水平和竖直运动互不干扰——两者的竖直运动都是一样的自由落体。这是一个反直觉但非常优美的结论。
+\end{thinkbox}
+
+\begin{practice}
+1. 平抛运动可以分解为水平方向的\_\_\_\_\_运动和竖直方向的\_\_\_\_\_运动。\\
+2. 从$20\ \text{m}$高以$5\ \text{m/s}$水平抛出一球。落地时间？水平射程？（$g=10$）\\
+3. （判断）平抛运动的飞行时间与初速度有关。（\quad）\\
+4. （计算）从$45\ \text{m}$高处水平抛出一球，初速$10\ \text{m/s}$。求落地时间和水平射程。（$g=10$）\\
+5. （填空）平抛运动的速度方向与水平方向的夹角$\theta$满足$\tan\theta =$\_\_\_\_\_。\\
+6. （选择）两个物体从同一高度同时水平抛出，初速度不同，则（\quad）\\
+\quad A. 初速度大的先落地 \quad B. 初速度小的先落地 \quad C. 同时落地 \quad D. 质量大的先落地\\
+7. （判断）平抛运动中，相等时间内速度的变化量相同。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第三课\quad 圆周运动}}
+
+\subsection*{转圈中的物理量}
+
+风扇叶片、摩天轮、地球绕太阳——圆周运动无处不在。描述圆周运动快慢有两个量：
+
+\textbf{线速度} $v$：单位时间内通过的弧长。方向沿圆周切线。$v = \Delta s/\Delta t$。
+
+\textbf{角速度} $\omega$：单位时间内转过的角度（弧度制）。$\omega = \Delta \theta/\Delta t$。单位：rad/s。
+
+两者关系：
+\formula{v = \omega r}
+
+\textbf{周期 $T$}：转一圈所用的时间。$T = 2\pi/\omega$。\textbf{频率 $f$}：每秒转的圈数，$f = 1/T$。
+
+\subsection*{向心加速度}
+
+匀速圆周运动的速度\textbf{大小}不变，但\textbf{方向}时刻在变——所以一定有加速度。这个加速度指向圆心，叫\textbf{向心加速度}：
+
+\formula{a_n = \frac{v^2}{r} = \omega^2 r}
+
+向心加速度只改变速度的\textbf{方向}，不改变速度的\textbf{大小}。
+
+\begin{example}
+一个质点做匀速圆周运动，半径$0.5\ \text{m}$，角速度$4\ \text{rad/s}$。线速度多大？向心加速度多大？
+
+\textbf{解：}$v = \omega r = 4 \times 0.5 = 2\ \text{m/s}$。\\
+$a_n = \omega^2 r = 16 \times 0.5 = 8\ \text{m/s}^2$（或 $v^2/r = 4/0.5 = 8\ \text{m/s}^2$）。
+\end{example}
+
+\begin{practice}
+1. 线速度与角速度的关系：$v =$\_\_\_\_\_。\\
+2. 一个质点做匀速圆周运动，$r=2\ \text{m}$，$v=4\ \text{m/s}$。角速度多大？\\
+3. （填空）向心加速度公式：$a_n =$\_\_\_\_\_ = \_\_\_\_\_。\\
+4. （计算）一个质点$r=0.2\ \text{m}$，$f=5\ \text{Hz}$做匀速圆周运动。角速度多大？线速度多大？\\
+5. （填空）匀速圆周运动中，速度的\_\_\_\_\_不变，\_\_\_\_\_时刻改变。\\
+6. （选择）关于匀速圆周运动，下列说法正确的是（\quad）\\
+\quad A. 是匀速运动 \quad B. 是匀变速运动 \quad C. 是非匀变速曲线运动 \quad D. 加速度不变\\
+7. 线速度$v=5\ \text{m/s}$，角速度$\omega=2\ \text{rad/s}$，圆周半径$r=$\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第四课\quad 向心力——圆周运动的原因}}
+
+\subsection*{什么力让物体"转圈"？}
+
+绳子一端拴一个小球，另一端用手抓住甩起来——小球做圆周运动。绳子对球的拉力就是小球做圆周运动所需的\textbf{向心力}。如果绳子突然断了——向心力消失——小球将沿着切线方向飞出去（不再转圈）。
+
+\begin{definition}{向心力}
+做匀速圆周运动的物体所受的指向圆心的合力，叫做\textbf{向心力}。
+\end{definition}
+
+\formula{F_n = m\frac{v^2}{r} = m\omega^2 r}
+
+\textbf{注意：向心力不是一种新的力——它是重力、弹力、摩擦力等真实力的合力（或分力），"向心力"只是一个角色名称。}就像"班长"不是一种新的人类——他是班上某个同学担任的一个角色。
+
+\subsection*{生活中的圆周运动}
+
+\textbf{汽车过拱桥：}在桥顶，重力和支持力的合力提供向心力。$mg - N = mv^2/r$。速度越大，$N$ 越小——速度大到一定程度时 $N = 0$，车轮离地——这就是"飞车"的危险速度。
+
+\textbf{火车转弯：}铁轨在弯道处外轨高于内轨——使支持力的水平分量提供火车转弯所需的向心力，减少对铁轨的侧向磨损。
+
+\begin{example}
+一辆$m=1000\ \text{kg}$的汽车以$10\ \text{m/s}$驶过半径$50\ \text{m}$的拱桥顶部。求桥面对汽车的支持力。（$g=10$）
+
+\textbf{解：}$mg - N = mv^2/r$。\\
+$N = mg - mv^2/r = 10000 - 1000\times100/50 = 10000 - 2000 = 8000\ \text{N}$。\\
+比静止时（10000N）少了2000N——司机有"变轻"的感觉。
+\end{example}
+
+\begin{practice}
+1. （判断）向心力是一种新的"特殊力"。（\quad）\\
+2. 绳子一端拴$0.5\ \text{kg}$小球，$r=1\ \text{m}$，$v=2\ \text{m/s}$。绳的拉力多大？\\
+3. （填空）汽车过拱桥顶部时，$mg - N =$\_\_\_\_\_，速度越大，$N$越\_\_\_\_\_。\\
+4. （计算）绳子拴$m=0.2\ \text{kg}$小球在竖直面内做圆周运动，$r=0.5\ \text{m}$，最高点$v=3\ \text{m/s}$。绳的拉力多大？（$g=10$）\\
+5. （选择）火车转弯时外轨高于内轨是为了（\quad）\\
+\quad A. 增大向心力 \quad B. 减小列车对铁轨的磨损 \quad C. 防止列车脱轨 \quad D. 增大速度\\
+6. （填空）向心力公式$F_n =$\_\_\_\_\_ = \_\_\_\_\_。\\
+7. （判断）做匀速圆周运动的物体所受的合外力方向一定指向圆心。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第五课\quad 万有引力与天体运动}}
+
+\subsection*{开普勒三大定律}
+
+在牛顿之前，德国天文学家\textbf{开普勒}总结了行星运动的三大规律：
+\begin{enumerate}
+  \item \textbf{椭圆轨道定律}：行星绕太阳的轨道是椭圆，太阳位于一个焦点。
+  \item \textbf{面积定律}：行星与太阳的连线在相等时间内扫过相等的面积（离太阳近时跑得快，远时慢）。
+  \item \textbf{周期定律}：$\dfrac{T^2}{a^3} = \text{常数}$（$T$为公转周期，$a$为半长轴）。
+\end{enumerate}
+
+\subsection*{万有引力定律}
+
+牛顿站在开普勒的肩膀上，推出了万有引力定律：
+
+\formula{F = G\frac{Mm}{r^2}}
+
+$G = 6.67 \times 10^{-11}\ \text{N·m}^2/\text{kg}^2$，是自然界中极小的常数。
+
+\subsection*{天体运动的"万能公式"}
+
+对于绕中心天体做匀速圆周运动的卫星（或行星），万有引力提供向心力：
+
+\formula{G\frac{Mm}{r^2} = m\frac{v^2}{r} = m\omega^2 r = m\frac{4\pi^2}{T^2}r}
+
+从这个等式可以推出卫星的线速度、角速度、周期与轨道半径的关系——"越高越慢"：轨道越高，$v$ 越小，$T$ 越长。
+
+\begin{example}
+已知地球质量$M=6\times10^{24}\ \text{kg}$，$G=6.67\times10^{-11}$。求距地心$r=6.6\times10^6\ \text{m}$的卫星的线速度。
+
+\textbf{解：}$G\dfrac{Mm}{r^2} = m\dfrac{v^2}{r} \rightarrow v = \sqrt{\dfrac{GM}{r}} = \sqrt{\dfrac{6.67\times10^{-11}\times6\times10^{24}}{6.6\times10^6}} \approx 7.8\times10^3\ \text{m/s}$。这就是近地卫星的第一宇宙速度。
+\end{example}
+
+\begin{thinkbox}
+为什么宇航员在空间站里"飘"起来？不是因为没引力——空间站高度的引力仍有地面90\%。而是因为空间站和人都在以同样的加速度"掉向地球"，人和地板之间没有相互挤压——完全失重。
+\end{thinkbox}
+
+\begin{practice}
+1. （填空）万有引力公式 $F =$\_\_\_\_\_。$G$ 的值约为\_\_\_\_\_。\\
+2. 由 $GMm/r^2 = mv^2/r$ 推出 $v =$\_\_\_\_\_。轨道越高，速度越\_\_\_\_\_。\\
+3. 第一宇宙速度约\_\_\_\_\_ km/s。\\
+4. （计算）已知$G=6.67\times10^{-11}$，$M=6\times10^{24}\ \text{kg}$，$r=4.2\times10^7\ \text{m}$（地球同步卫星轨道半径）。求卫星线速度。\\
+5. （填空）开普勒面积定律指出：行星与太阳的连线在\_\_\_\_\_时间内扫过\_\_\_\_\_的面积。\\
+6. （选择）关于万有引力，下列说法正确的是（\quad）\\
+\quad A. 两物体质量越大，距离越远，引力越大 \quad B. 两物体质量越大，距离越近，引力越大\\
+\quad C. 万有引力只在天体间存在 \quad D. 万有引力公式中$G$是变量\\
+7. （判断）同步卫星的周期等于地球自转周期。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第六课\quad 功与功率（高中深化）}}
+
+\subsection*{恒力做功的一般公式}
+
+在物理1中我们学了 $W = Fs$。但这是力与位移\textbf{同向}的特例。一般情况：
+
+\formula{W = Fs\cos\theta}
+
+其中 $\theta$ 是力与位移方向的夹角。$\theta < 90^\circ$——力做正功（推车前进）；$\theta = 90^\circ$——力不做功（提着行李在水平路上走）；$\theta > 90^\circ$——力做负功（摩擦力减慢物体）。
+
+\subsection*{功率}
+
+$P = W/t = Fv$（恒力且力与速度同向）。汽车发动机的功率：$P = Fv$。在功率恒定的情况下，速度越小牵引力越大——这就是为什么汽车爬坡时要挂低速挡（降速增力）。
+
+\begin{example}
+一个$m=2\ \text{kg}$的物体沿倾角$30^\circ$的斜面匀速下滑$s=5\ \text{m}$。重力做多少功？摩擦力做多少功？（$g=10$）
+
+\textbf{解：}重力沿斜面分量 = $mg\sin30^\circ = 20\times0.5 = 10\ \text{N}$。\\
+重力的功：$W_G = 10 \times 5 = 50\ \text{J}$（重力做正功，物体高度下降了）。\\
+匀速 $\rightarrow$ 摩擦力 = $10\ \text{N}$（向上沿斜面）。\\
+摩擦力的功：$W_f = -10 \times 5 = -50\ \text{J}$（负功，总和为零——动能不变）。
+\end{example}
+
+\begin{practice}
+1. 当力与位移成$60^\circ$角时，做功公式为 $W =$\_\_\_\_\_。\\
+2. 汽车以恒定功率上坡时，应挂\_\_\_\_\_速挡以增大\_\_\_\_\_。\\
+3. 摩擦力做功\_\_\_\_\_（一定/不一定）是负值。（提示：人走路时摩擦力做正功）\\
+4. （计算）用$F=20\ \text{N}$的恒力与水平成$37^\circ$推物体前进$s=5\ \text{m}$。$F$做的功多大？\\
+5. （填空）汽车爬坡换低速挡是为了在功率一定时\_\_\_\_\_牵引力。公式为$P =$\_\_\_\_\_。\\
+6. （选择）下列哪种情况力对物体不做功（\quad）\\
+\quad A. 用力搬石头但没搬动 \quad B. 小车在拉力下前进 \quad C. 重力使物体下落 \quad D. 刹车时摩擦力做负功\\
+7. 功率$P=60\ \text{kW}$的汽车，以$v=20\ \text{m/s}$匀速行驶。牵引力多大？
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第七课\quad 动能与动能定理}}
+
+\subsection*{动能——运动的能量}
+
+\formula{E_k = \frac{1}{2}mv^2}
+
+单位：焦耳（J）。动能是标量，只与质量和速度大小有关。
+
+\subsection*{动能定理——"功是动能变化的量度"}
+
+\begin{definition}{动能定理}
+合外力对物体做的\textbf{总功}等于物体\textbf{动能的变化}。
+\end{definition}
+
+\formula{W_{\text{总}}} = \Delta E_k = \frac{1}{2}mv_2^2 - \frac{1}{2}mv_1^2}
+
+这个定理极其强大——它不需要知道中间过程的细节，只需要初末状态的速度。无论运动是直线还是曲线、是匀变速还是变力——动能定理都成立。
+
+\begin{example}
+一个$m=2\ \text{kg}$的物体以$v_1=3\ \text{m/s}$运动，在合外力作用下加速到$v_2=7\ \text{m/s}$。合外力做了多少功？
+
+\textbf{解：}$W = \Delta E_k = \frac{1}{2}m(v_2^2 - v_1^2) = \frac{1}{2}\times2\times(49-9) = 40\ \text{J}$。\\
+（不需要知道力多大、位移多长——动能定理直接给出答案。）
+\end{example}
+
+\begin{practice}
+1. 动能公式 $E_k =$\_\_\_\_\_。\\
+2. $m=4\ \text{kg}$物体速度从$5\ \text{m/s}$增加到$10\ \text{m/s}$。合外力做功多少？\\
+3. （判断）动能是矢量。（\quad）\\
+4. （计算）$m=10\ \text{kg}$的物体速度从$2\ \text{m/s}$增加到$6\ \text{m/s}$。动能变化量是多少？\\
+5. （填空）动能定理的表达式是$W_{\text{总}} =$\_\_\_\_\_。\\
+6. （选择）若合外力对物体做正功，物体的动能（\quad）\\
+\quad A. 一定增加 \quad B. 一定减少 \quad C. 可能不变 \quad D. 无法确定\\
+7. （判断）合外力做的功为零时，物体的速度大小一定不变。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第八课\quad 机械能守恒定律}}
+
+\subsection*{势能}
+
+\textbf{重力势能：}$E_p = mgh$（$h$是相对于参考面的高度）。重力做正功时重力势能减少；克服重力做功时重力势能增加。
+
+\textbf{弹性势能：}$E_p = \frac{1}{2}kx^2$（弹簧）。
+
+\subsection*{机械能守恒}
+
+\formula{E_{k1} + E_{p1} = E_{k2} + E_{p2}}
+
+\textbf{条件：只有重力（或弹力）做功。}如果有摩擦力或其他非保守力做功，机械能不守恒——部分能量转化为内能。
+
+\subsection*{功能关系总结}
+
+\begin{itemize}
+  \item 合外力的总功 = 动能的增量（动能定理）
+  \item 重力做的功 = 重力势能增量的负值（$W_G = -\Delta E_p$）
+  \item 除重力/弹力外其他力做的功 = 机械能的增量
+\end{itemize}
+
+\begin{example}
+一个物体从高$h=10\ \text{m}$处自由落下。落地速度多大？（用机械能守恒）
+
+\textbf{解：}$mgh = \frac{1}{2}mv^2 \rightarrow v = \sqrt{2gh} = \sqrt{200} \approx 14.1\ \text{m/s}$。\\
+（不需要用运动学公式逐步算——机械能守恒一步到位。）
+\end{example}
+
+\begin{thinkbox}
+用动能定理和机械能守恒解同一道题——哪个更简便？如果只有重力做功（没有摩擦），机械能守恒更简洁（只需初末状态的$v$和$h$）。如果有摩擦力参与，只能用动能定理或功能关系。选择"对的方法"往往比"会的方法"更重要。
+\end{thinkbox}
+
+\begin{practice}
+1. 机械能守恒的条件是\_\_\_\_\_。\\
+2. 物体从$5\ \text{m}$高自由落下，落地速度多大？($g=10$) \\
+3. （判断）重力做正功时，重力势能增大。（\quad）\\
+4. （计算）物体从$h=20\ \text{m}$高处自由落下，用机械能守恒求落地速度。（$g=10$）\\
+5. （填空）弹性势能的公式是$E_p =$\_\_\_\_\_。\\
+6. （选择）下列情况中机械能守恒的是（\quad）\\
+\quad A. 物体在空气中自由下落（有阻力）\quad B. 物体沿光滑斜面下滑\\
+\quad C. 汽车匀速刹车 \quad D. 跳伞运动员匀速下降\\
+7. （判断）物体所受合外力为零时，机械能一定守恒。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第九课\quad 动量与冲量}}
+
+\subsection*{动量——"运动的量"}
+
+\formula{\vec{p} = m\vec{v}}
+
+动量是矢量，方向与速度方向相同。单位：$\text{kg·m/s}$。
+
+\subsection*{冲量与动量定理}
+
+\formula{\vec{I} = \vec{F}t \qquad \text{（冲量 = 力 × 作用时间）}}
+
+\textbf{动量定理：}合外力的冲量等于动量的变化。
+
+\formula{\vec{I}_{\text{合}}} = \Delta \vec{p} = m\vec{v}_2 - m\vec{v}_1}
+
+这和动能定理是对偶关系：动能定理——功是动能变化的量度（从"空间"角度累积）；动量定理——冲量是动量变化的量度（从"时间"角度累积）。
+
+\subsection*{缓冲原理}
+
+为什么从高处跳下来要屈膝？屈膝延长了脚与地面的接触时间——同样的动量变化，时间越长，平均冲击力越小。同理：跳远的沙坑、汽车的保险杠、安全气囊——都是缓冲。
+
+\begin{example}
+一个$m=0.5\ \text{kg}$的篮球以$v=8\ \text{m/s}$撞到篮板后原速弹回。接触时间$0.02\ \text{s}$。球受到的平均作用力多大？
+
+\textbf{解：}以反弹方向为正——$\Delta p = mv - (-mv) = 2mv = 2\times0.5\times8 = 8\ \text{kg·m/s}$。\\
+$F = \Delta p / t = 8/0.02 = 400\ \text{N}$——相当于一个40kg物体的重力。
+\end{example}
+
+\begin{practice}
+1. 动量公式 $p =$\_\_\_\_\_；冲量公式 $I =$\_\_\_\_\_。\\
+2. （判断）动量变化越大，受到的力一定越大。（\quad）（想想：还跟时间有关）\\
+3. 汽车安全气囊的原理是\_\_\_\_\_（增大/减小）碰撞时间以\_\_\_\_\_冲击力。\\
+4. （计算）$m=0.2\ \text{kg}$的球以$v=10\ \text{m/s}$飞向墙壁，以$8\ \text{m/s}$弹回。接触时间$0.05\ \text{s}$。平均作用力多大？\\
+5. （填空）动量定理的表达式是$\vec{I}_{\text{合}} =$\_\_\_\_\_。\\
+6. （选择）跳高运动员落地时总是屈膝，这是为了（\quad）\\
+\quad A. 减小冲量 \quad B. 减小动量变化 \quad C. 延长作用时间减小冲击力 \quad D. 增加作用力\\
+7. （判断）物体的动量方向一定与速度方向相同。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第十课\quad 动量守恒与碰撞}}
+
+\subsection*{动量守恒定律}
+
+\begin{definition}{动量守恒}
+如果一个系统\textbf{不受外力}或\textbf{所受外力的合力为零}，这个系统的总动量保持不变。
+\end{definition}
+
+\formula{m_1\vec{v}_1 + m_2\vec{v}_2 = m_1\vec{v}_1' + m_2\vec{v}_2'}
+
+动量守恒是自然界最基本的守恒律之一——它比牛顿第三定律更根本，甚至在现代物理（相对论和量子力学）中依然精确成立。
+
+\subsection*{碰撞问题}
+
+\textbf{弹性碰撞：}动能也守恒——碰撞前后总动能不变。微观粒子之间很多是弹性碰撞。
+
+\textbf{非弹性碰撞：}动能不守恒（部分转化为内能、声能等）。两物体碰撞后粘在一起（完全非弹性碰撞）是动能损失最大的一种。
+
+\begin{example}
+一个$m_1=2\ \text{kg}$的小球以$v_1=6\ \text{m/s}$追上一个$m_2=4\ \text{kg}$、$v_2=1\ \text{m/s}$的小球（同向），碰撞后两者粘在一起。求共同速度。
+
+\textbf{解：}动量守恒：$m_1v_1 + m_2v_2 = (m_1+m_2)v$。\\
+$12 + 4 = 6v \rightarrow v = 16/6 \approx 2.67\ \text{m/s}$。
+\end{example}
+
+\subsection*{反冲与火箭}
+
+火箭向后高速喷出燃气——系统动量守恒，箭体获得向前的动量。这就是反冲运动。在启蒙本中，我们已经用气球的类比讲过这个原理——现在是动量守恒的公式表达。
+
+\begin{thinkbox}
+能量和动量是解决物理问题的两把"万能钥匙"。一般来说：涉及时间的问题优先考虑动量；涉及位移/路程的问题优先考虑能量。两者结合，几乎可以解开经典力学的所有难题。
+\end{thinkbox}
+
+\begin{practice}
+1. （判断）动量守恒定律在任何情况下都成立。（\quad）\\
+2. （计算）两个$m=3\ \text{kg}$的小球，一个以$4\ \text{m/s}$向右运动，另一个静止。碰撞后粘在一起。求碰后速度。\\
+3. （填空）完全非弹性碰撞中，动能损失\_\_\_\_\_（最大/最小）。\\
+4. 火箭飞行利用的是\_\_\_\_\_原理。\\
+5. （计算）$m_1=1\ \text{kg}$以$v_1=5\ \text{m/s}$撞$m_2=2\ \text{kg}$静止小球，碰后粘在一起。求碰后速度。\\
+6. （选择）下列情况中系统动量守恒的是（\quad）\\
+\quad A. 在光滑水平面上两球碰撞 \quad B. 物体在粗糙斜面上下滑\\
+\quad C. 火箭在空中匀速上升 \quad D. 雨滴匀速下落\\
+7. （填空）弹性碰撞中\_\_\_\_\_守恒和\_\_\_\_\_守恒；完全非弹性碰撞中\_\_\_\_\_损失最大。\\
+8. 一门大炮质量为$M$，发射质量为$m$的炮弹。炮弹出膛速度为$v$，则炮身后退速度$V =$\_\_\_\_\_（水平方向动量守恒）。
+\end{practice}
+
+\vspace{0.5cm}
+\begin{center}\rule{0.7\textwidth}{1pt}\vspace{0.4cm}
+{\large\textcolor{blue!70!black}{\textbf{—— 物理5·曲线、能量与动量 完 ——}}}
+\vspace{0.3cm}\textcolor{gray}{\small 下一本预告：物理6·电磁、波与近代物理——最后一本，通向现代物理的大门}
+\end{center}
+
+\newpage
+\section*{\textcolor{defblue}{参考答案}}
+
+\textbf{第一课 练一练：}
+1. ×（两个分运动具有独立性，互不影响）\quad
+2. $t_{\min}=100/5=20\ \text{s}$\quad
+3. C\quad
+4. $t=120/4=30\ \text{s}$，漂移$x=3\times30=90\ \text{m}$\quad
+5. 平行四边形\quad
+6. ×（如平抛是曲线运动）\quad
+7. 垂直
+
+\textbf{第二课 练一练：}
+1. 匀速直线，自由落体\quad
+2. $t=\sqrt{2h/g}=\sqrt{40/10}=2\ \text{s}$，$x=v_0t=5\times2=10\ \text{m}$\quad
+3. ×（飞行时间只与高度有关）\quad
+4. $t=\sqrt{90/10}=3\ \text{s}$，$x=10\times3=30\ \text{m}$\quad
+5. $gt/v_0$\quad
+6. C\quad
+7. $\surd$（$\Delta v = g\Delta t$恒定）
+
+\textbf{第三课 练一练：}
+1. $\omega r$\quad
+2. $\omega=v/r=4/2=2\ \text{rad/s}$\quad
+3. $v^2/r$，$\omega^2 r$\quad
+4. $\omega=2\pi f=10\pi\approx31.4\ \text{rad/s}$，$v=\omega r=6.28\ \text{m/s}$\quad
+5. 大小，方向\quad
+6. C\quad
+7. $r=v/\omega=2.5\ \text{m}$
+
+\textbf{第四课 练一练：}
+1. ×（向心力是真实力的合力或分力，不是新力）\quad
+2. $F=mv^2/r=0.5\times4/1=2\ \text{N}$\quad
+3. $mv^2/r$，小\quad
+4. $T+mg=mv^2/r$ → $T=0.2\times9/0.5-2=3.6-2=1.6\ \text{N}$\quad
+5. B\quad
+6. $mv^2/r$，$m\omega^2 r$\quad
+7. $\surd$
+
+\textbf{第五课 练一练：}
+1. $F=GMm/r^2$，$G\approx6.67\times10^{-11}\ \text{N·m}^2/\text{kg}^2$\quad
+2. $v=\sqrt{GM/r}$，小\quad
+3. $7.9$\quad
+4. $v=\sqrt{GM/r}=\sqrt{6.67\times10^{-11}\times6\times10^{24}/(4.2\times10^7)}\approx3.1\times10^3\ \text{m/s}$\quad
+5. 相等，相等\quad
+6. B\quad
+7. $\surd$
+
+\textbf{第六课 练一练：}
+1. $W=Fs\cos60^\circ=Fs/2$\quad
+2. 低速挡，牵引力\quad
+3. 不一定\quad
+4. $W=Fs\cos37^\circ=20\times5\times0.8=80\ \text{J}$\quad
+5. 增大，$Fv$\quad
+6. A\quad
+7. $F=P/v=60000/20=3000\ \text{N}$
+
+\textbf{第七课 练一练：}
+1. $\frac{1}{2}mv^2$\quad
+2. $W=\frac{1}{2}m(v_2^2-v_1^2)=\frac{1}{2}\times4\times(100-25)=150\ \text{J}$\quad
+3. ×（动能是标量）\quad
+4. $\Delta E_k=\frac{1}{2}\times10\times(36-4)=160\ \text{J}$\quad
+5. $\frac{1}{2}mv_2^2-\frac{1}{2}mv_1^2$\quad
+6. A\quad
+7. $\surd$（速度方向可能变，但大小不变）
+
+\textbf{第八课 练一练：}
+1. 只有重力（或弹力）做功\quad
+2. $v=\sqrt{2gh}=\sqrt{2\times10\times5}=10\ \text{m/s}$\quad
+3. ×（重力做正功时重力势能减小）\quad
+4. $mgh=\frac{1}{2}mv^2$ → $v=\sqrt{2gh}=20\ \text{m/s}$\quad
+5. $\frac{1}{2}kx^2$\quad
+6. B\quad
+7. ×（如物体匀速上行，机械能不守恒）
+
+\textbf{第九课 练一练：}
+1. $p=mv$，$I=Ft$\quad
+2. ×（还与作用时间有关）\quad
+3. 增大，减小\quad
+4. $\Delta p=m(v_2-v_1)=0.2\times[8-(-10)]=3.6\ \text{kg·m/s}$，$F=\Delta p/t=3.6/0.05=72\ \text{N}$\quad
+5. $\Delta\vec{p}$\quad
+6. C\quad
+7. $\surd$
+
+\textbf{第十课 练一练：}
+1. ×（只有在系统不受外力或合外力为零时成立）\quad
+2. $m_1v_1+m_2v_2=(m_1+m_2)v$ → $3\times4+0=6v$ → $v=2\ \text{m/s}$（向右）\quad
+3. 最大\quad
+4. 反冲\quad
+5. $1\times5+0=3v$ → $v\approx1.67\ \text{m/s}$\quad
+6. A\quad
+7. 动量，动能；动能\quad
+8. $mV/M$（方向与炮弹相反）
+
+\end{document}

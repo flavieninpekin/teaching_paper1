@@ -1,0 +1,630 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,amsmath}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\definecolor{defblue}{RGB}{0,80,160}
+\definecolor{thinkorange}{RGB}{230,120,20}
+\definecolor{formulared}{RGB}{180,30,50}
+\definecolor{funboxbg}{RGB}{245,248,252}
+\definecolor{examplebg}{RGB}{255,250,240}
+\definecolor{practicegreen}{RGB}{40,130,70}
+
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{thinkorange}{【 想一想 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.3cm}}
+\newenvironment{definition}[1]{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{\textcolor{defblue}{【 #1 】}}}{\vspace{0.1cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{example}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{examplebg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{orange!80!black}{【 例题 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{practice}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{practicegreen}{【 练一练 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textcolor{blue!70!black}{\textbf{【插图位置】}}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}
+\newcommand{\formula}[1]{\begin{center}\textcolor{formulared}{\large\boxed{#1}}\end{center}}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{物理4 · 力学与运动定律}}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle\thispagestyle{empty}
+
+\section*{\textcolor{blue!70!black}{致同学}}
+
+欢迎来到高中物理。如果你已经完成了物理1（力学入门），你已经有了力、运动、压强、浮力的基础直觉。现在我们要把这些直觉升级——引入\textbf{矢量}思维和\textbf{牛顿定律}的系统应用。这一本是整个高中物理的"地基"：地基打不牢，后面学曲线运动、能量守恒、电磁学都会摇晃。请认真对待每一道受力分析图——它们是你和物理世界对话的语言。
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第一课\quad 质点、位移与矢量}}
+
+\subsection*{理想模型——质点}
+
+在物理1中我们描述运动时，默认处理的是一个"点"。但真实物体有大小、有形状——一辆汽车刹车时，车身的每一部分运动都一样吗？不一定。但在很多情况下，物体的形状和大小对研究的问题影响极小——这时我们可以把物体抽象成一个\textbf{有质量的点}——\textbf{质点}。
+
+\begin{definition}{质点}
+用来代替物体的\textbf{有质量的点}叫做\textbf{质点}。它是一种理想化模型。
+\end{definition}
+
+什么时候可以把物体看作质点？当物体的\textbf{大小和形状}对所研究的问题可以忽略不计时。比如：研究地球绕太阳公转——地球的大小（直径约1.2万公里）相比于轨道（直径约3亿公里）可以忽略，地球看作质点没问题。但研究地球自转——地球的大小不可忽略，不能再看作质点。
+
+\subsection*{位移 vs 路程}
+
+物理1中我们用了"路程"$s$。在高中阶段，我们更常用\textbf{位移}。
+
+\begin{itemize}
+  \item \textbf{路程}：物体运动轨迹的实际长度（标量，只有大小）。
+  \item \textbf{位移}：从初位置指向末位置的有向线段（矢量，有大小和方向）。
+\end{itemize}
+
+你绕操场跑一圈（400米）——路程是400米，但位移是\textbf{0}（你回到了起点）。位移只关心"从哪出发、到哪结束"，中间绕了多少弯都不管。
+
+\subsection*{矢量和标量}
+
+这是高中物理和初中最重要的思维转变之一：
+
+\begin{definition}{矢量与标量}
+\textbf{矢量}：既有大小又有方向的物理量。如位移、速度、加速度、力。\\
+\textbf{标量}：只有大小没有方向的物理量。如路程、速率、质量、时间、温度。
+\end{definition}
+
+矢量的运算法则不是简单的加减——两个方向不同的位移"加起来"，需要用\textbf{平行四边形定则}（或三角形定则）。
+
+\begin{example}
+一个人先向东走40m，再向北走30m。路程多少？位移多大？方向如何？
+
+\textbf{解：}路程 = $40 + 30 = 70\ \text{m}$。\\
+位移是两次移动的矢量和——构成直角三角形的斜边：$|\vec{x}| = \sqrt{40^2 + 30^2} = 50\ \text{m}$。方向：东北方向，与东夹角 $\tan\theta = 30/40$，$\theta \approx 37^\circ$。
+\end{example}
+
+\begin{practice}
+1. （判断）研究一列火车通过长江大桥的时间，可以把火车看作质点。（\quad）\\
+2. 绕标准跑道跑了两圈，路程是\_\_\_\_\_m，位移是\_\_\_\_\_m。\\
+3. （选择）下列物理量中是矢量的是（\quad）\\
+\quad A. 路程 \quad B. 质量 \quad C. 位移 \quad D. 时间\\
+4. 一个物体先向北走4m，再向东走3m。位移的大小是\_\_\_\_\_m。\\
+5. （选择）下列物理量中属于标量的是（\quad）\\
+\quad A. 位移 \quad B. 速度 \quad C. 路程 \quad D. 加速度\\
+6. （判断）质点是一种理想化模型，实际并不存在。（\quad）\\
+7. （填空）位移是\_\_\_\_\_量，路程是\_\_\_\_\_量。物体沿圆周运动一圈，位移为\_\_\_\_\_。\\
+8. 研究地球公转时，地球\_\_\_\_\_看作质点；研究地球自转时，地球\_\_\_\_\_看作质点。（填"可以"或"不可以"）
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第二课\quad 速度与加速度}}
+
+\subsection*{平均速度与瞬时速度}
+
+\begin{definition}{速度}
+\textbf{平均速度} $\vec{v} = \dfrac{\Delta \vec{x}}{\Delta t}$（位移除以时间，是矢量）。\\
+\textbf{瞬时速度}：物体在某一时刻（或某一位置）的速度。瞬时速度的大小叫\textbf{速率}（标量）。
+\end{definition}
+
+注意：平均速度和平均速率不是一回事！平均速度 = 位移/时间（矢量），平均速率 = 路程/时间（标量）。绕操场跑一圈——平均速度为零（位移为零），但平均速率不为零。
+
+\subsection*{加速度——速度变化的快慢}
+
+\begin{definition}{加速度}
+加速度是描述\textbf{速度变化快慢}的物理量，用 $\vec{a}$ 表示。\\
+$\vec{a} = \dfrac{\Delta \vec{v}}{\Delta t} = \dfrac{\vec{v}_t - \vec{v}_0}{t}$。单位：$\text{m/s}^2$。
+\end{definition}
+
+加速度是\textbf{矢量}——方向与速度变化量 $\Delta \vec{v}$ 的方向相同。
+
+几个重要判断：
+\begin{itemize}
+  \item 加速度大 = 速度变化快（不一定是"速度大"——刚起步的赛车加速度极大但速度还不大）。
+  \item $a > 0$ 不一定加速：如果速度是负的，$a > 0$ 反而在减速。
+  \item $v = 0$ 时 $a$ 不一定为0：竖直上抛到最高点时 $v=0$，但 $a = g$（始终向下）。
+\end{itemize}
+
+\subsection*{$v$-$t$图像}
+
+$v$-$t$图像是高中物理最重要的图像工具。纵轴是速度 $v$，横轴是时间 $t$：
+
+\begin{itemize}
+  \item 图线在横轴上方 = 速度方向为正；下方 = 速度为负。
+  \item 图线向上倾斜 = 加速度为正（加速/减速取决于速度符号）；向下倾斜 = 加速度为负。
+  \item \textbf{图线的斜率 = 加速度}。
+  \item \textbf{图线与坐标轴围成的面积 = 位移}（这是高中阶段最重要的图像结论之一）。
+\end{itemize}
+
+\begin{figplaceholder}
+此处插入$v$-$t$图像示例：匀加速/匀减速/匀速的图像及其斜率与面积含义（见 figure/requirements/book4-ch1.txt 插图1）
+\end{figplaceholder}
+
+\begin{example}
+一辆汽车的$v$-$t$图像是一条从原点向上的倾斜直线，$t=4\ \text{s}$时速度达到$20\ \text{m/s}$。求加速度和4s内的位移。
+
+\textbf{解：}$a = \dfrac{\Delta v}{\Delta t} = \dfrac{20-0}{4} = 5\ \text{m/s}^2$。\\
+$v$-$t$图像下的面积（三角形）= $\dfrac{1}{2} \times 4 \times 20 = 40\ \text{m}$。\\
+$\therefore$ 位移为 $40\ \text{m}$。
+\end{example}
+
+\begin{practice}
+1. 一辆汽车的瞬时速度是$30\ \text{m/s}$，5秒后变为$10\ \text{m/s}$。加速度多大？是加速还是减速？\\
+2. （判断）加速度为零时，速度一定为零。（\quad）\\
+3. （填空）$v$-$t$图像中，图线的斜率表示\_\_\_\_\_，面积表示\_\_\_\_\_。\\
+4. 物体竖直上抛到最高点时，$v=$\_\_\_\_\_，$a=$\_\_\_\_\_。\\
+5. （计算）一辆车从静止开始匀加速，5s内速度达到20m/s。加速度多大？\\
+6. （填空）$v$-$t$图像中，图线向上倾斜表示\_\_\_\_\_运动，向下倾斜表示\_\_\_\_\_运动。\\
+7. （判断）加速度越大，物体的速度一定越大。（\quad）\\
+8. 一物体以$v_0=15\ \text{m/s}$运动，2s后速度变为$5\ \text{m/s}$。加速度大小和方向如何？
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第三课\quad 匀变速直线运动}}
+
+\subsection*{三大核心公式}
+
+匀变速直线运动——加速度 $a$ 恒定。这是高中物理第一个需要熟练掌握的公式体系：
+
+\formula{v = v_0 + at}
+
+\formula{x = v_0 t + \frac{1}{2}at^2}
+
+\formula{v^2 - v_0^2 = 2ax}
+
+五个物理量：$v_0$（初速度）、$v$（末速度）、$a$（加速度）、$t$（时间）、$x$（位移）。每个公式含四个量——\textbf{知三求一}。
+
+\subsection*{匀变速直线运动的推论}
+
+\textbf{平均速度公式（仅匀变速适用）：}
+\formula{\bar{v} = \frac{v_0 + v}{2}}
+
+\textbf{中间时刻速度 = 平均速度：}$v_{t/2} = \bar{v} = \dfrac{v_0+v}{2}$。
+
+\textbf{连续相等时间内的位移差（判别式）：}
+\formula{\Delta x = x_{n+1} - x_n = aT^2}
+
+即：在匀变速运动中，相邻相等时间间隔内的位移之差是一个常数。这一条可以用来\textbf{判断运动是否是匀变速}，也可以用来求加速度。
+
+\begin{example}
+一辆汽车以$v_0 = 10\ \text{m/s}$的初速度刹车，加速度$a = -2\ \text{m/s}^2$。刹车后前进多远才停下？
+
+\textbf{解：}刹车停下时$v=0$。已知$v_0$、$v$、$a$，求$x$：\\
+用 $v^2 - v_0^2 = 2ax$：$0 - 10^2 = 2\times(-2)\times x$ $\rightarrow$ $-100 = -4x$ $\rightarrow$ $x = 25\ \text{m}$。
+\end{example}
+
+\begin{thinkbox}
+从公式中你能看出，刹车距离和初速度的\textbf{平方}成正比——速度变为2倍，刹车距离变为\textbf{4倍}！这就是为什么高速公路上限速这么重要——速度只快了一点点，刹车距离却翻倍增加。
+\end{thinkbox}
+
+\begin{practice}
+1. 物体从静止开始做匀加速直线运动，$a=2\ \text{m/s}^2$。求：（1）5s末的速度；（2）5s内的位移。\\
+2. （填空）匀变速运动判别式：$\Delta x =$\_\_\_\_\_。\\
+3. 物体以$20\ \text{m/s}$初速度刹车，$a=-5\ \text{m/s}^2$。刹车距离多少？\\
+4. （判断）匀变速运动的平均速度等于初末速度的算术平均值。（\quad）\\
+5. （计算）一辆汽车以15m/s匀速行驶，突然以$-3\ \text{m/s}^2$刹车。刹车后4s末的速度多大？\\
+6. （选择）由公式$x=v_0t+\frac{1}{2}at^2$，下列说法正确的是（\quad）\\
+\quad A. 只适用于匀加速直线运动 \quad B. 适用于任何变速运动 \quad C. 匀加和匀减速都适用，但$a$取正负号 \quad D. 只适用于匀速运动\\
+7. （填空）匀变速直线运动的速度公式是\_\_\_\_\_。\\
+8. （判断）匀变速直线运动的位移随时间均匀增加。（\quad）
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第四课\quad 自由落体运动}}
+
+\subsection*{亚里士多德的错误和伽利略的纠正}
+
+两千多年前，亚里士多德断言：重的物体落得快，轻的物体落得慢。这个"常识"统治了西方学术近两千年。
+
+直到17世纪，\textbf{伽利略}用逻辑推理推翻了它：如果把一个重球和一个轻球绑在一起——按亚里士多德的说法，轻球拖慢重球，总的下落速度应该在两者之间；但绑在一起后总重量变大了——按理应该更快。自相矛盾。
+
+伽利略在比萨斜塔上做了那个著名的实验（无论这个传说是真是假），结论是：\textbf{在没有空气阻力的情况下，所有物体下落的加速度都一样。}
+
+\subsection*{自由落体运动规律}
+
+\textbf{自由落体运动}满足两个条件：① 初速度 $v_0 = 0$；② 只受重力作用（忽略空气阻力）。
+
+自由落体其实就是 $v_0 = 0$、$a = g$ 的匀加速直线运动。直接套用三大公式：
+
+\formula{v = gt \qquad h = \frac{1}{2}gt^2 \qquad v^2 = 2gh}
+
+其中 $g \approx 9.8\ \text{m/s}^2$，通常取 $10\ \text{m/s}^2$。
+
+\subsection*{竖直上抛运动}
+
+把物体以一定的初速度竖直向上抛出——上升阶段匀减速（$a = -g$），最高点 $v = 0$；下降阶段自由落体（$a = g$）。全过程加速度恒为 $g$ 向下。
+
+\textbf{几个有用结论：}
+\begin{itemize}
+  \item 上升到最高点的时间：$t = v_0/g$
+  \item 最大高度：$H = v_0^2/(2g)$
+  \item 回到抛出点时，速度大小等于初速度（方向相反）
+  \item 上升和下降的时间相等
+\end{itemize}
+
+\begin{example}
+一物体从20m高处自由落下。求落地时间和落地速度。（$g = 10\ \text{m/s}^2$）
+
+\textbf{解：}$h = \dfrac{1}{2}gt^2 \rightarrow t = \sqrt{\dfrac{2h}{g}} = \sqrt{\dfrac{40}{10}} = 2\ \text{s}$。\\
+$v = gt = 10 \times 2 = 20\ \text{m/s}$（或用 $v^2 = 2gh$ 得 $v = \sqrt{2\times10\times20} = 20\ \text{m/s}$）。
+\end{example}
+
+\begin{thinkbox}
+1971年，阿波罗15号的宇航员在月球上（没有空气、$g$只有地球的1/6）同时放开了一把锤子和一根羽毛——两者完全同时落地。伽利略如果看到这个场景，一定会欣慰地微笑。
+\end{thinkbox}
+
+\begin{practice}
+1. （判断）重的物体比轻的物体下落得快。（\quad）\\
+2. 一石子从45m高处自由落下（$g=10\ \text{m/s}^2$）。求落地时间。\\
+3. 物体以$30\ \text{m/s}$竖直上抛。最大高度多少？\\
+4. （填空）自由落体是初速度\_\_\_\_\_、加速度为\_\_\_\_\_的匀加速直线运动。\\
+5. （计算）一石子从80m高处自由落下。落地时间和落地速度各是多少？（$g=10\ \text{m/s}^2$）\\
+6. （选择）关于自由落体运动，下列说法正确的是（\quad）\\
+\quad A. 重的物体下落快 \quad B. 物体竖直向下的运动就是自由落体\\
+\quad C. 自由落体是初速为零、加速度为$g$的匀加速运动 \quad D. 自由落体与质量有关\\
+7. （填空）竖直上抛到最高点的时间$t=$\_\_\_\_\_，最大高度$H=$\_\_\_\_\_。\\
+8. 一名宇航员在月球上同时释放锤子和羽毛，\_\_\_\_\_先落地（月球表面无空气）。
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第五课\quad 三大常见力——高中深化}}
+
+\subsection*{重力}
+
+$G = mg$，$g$ 在不同地点略有不同（赤道最小、两极最大），但一般取 $9.8$ 或 $10\ \text{N/kg}$。重力的方向始终\textbf{竖直向下}（指向地心附近）。
+
+\textbf{重心：}物体各部分所受重力的等效作用点。形状规则、密度均匀的物体——重心在其几何中心。重心不一定在物体上（比如圆环的重心在圆心——那是一处空的地方）。
+
+\subsection*{弹力——胡克定律}
+
+弹簧弹力的大小（在弹性限度内）：$F = kx$，$k$ 是劲度系数，$x$ 是形变量。劲度系数越大，弹簧越"硬"。$k$ 的单位是 N/m。
+
+\textbf{弹力的方向：}与接触面垂直。绳子的拉力沿绳子方向（且只能拉不能推）。支持力垂直于支持面指向被支持的物体。
+
+\subsection*{摩擦力深化}
+
+\textbf{静摩擦力：}大小在 $0$ 到 $f_{\text{max}}$ 之间，具体大小由平衡条件决定，不由公式直接计算。方向与\textbf{相对运动趋势}相反。
+
+\textbf{滑动摩擦力：}$f = \mu N$。$\mu$ 是动摩擦因数（无单位），$N$ 是正压力。注意 $N$ 不一定等于 $mg$——在斜面上，$N = mg\cos\theta$。
+
+\textbf{判断摩擦力方向的关键：}先判断物体相对于接触面的运动趋势。比如人走路时脚有向后滑的趋势，地面就给脚一个\textbf{向前}的摩擦力——这个摩擦力是推动人前进的力（不是阻挠！）。
+
+\begin{example}
+一个$m=10\ \text{kg}$的物体放在倾角30°的斜面上，$\mu = 0.5$。物体是否下滑？
+
+\textbf{解：}重力沿斜面分量：$mg\sin30^\circ = 10\times10\times0.5 = 50\ \text{N}$。\\
+最大静摩擦力 $\approx \mu N = 0.5 \times mg\cos30^\circ = 0.5 \times 100 \times 0.866 \approx 43.3\ \text{N}$。\\
+$50 > 43.3$，下滑力大于最大静摩擦 $\rightarrow$ \textbf{物体下滑}。
+\end{example}
+
+\begin{practice}
+1. （判断）摩擦力总是阻碍物体运动。（\quad）\\
+2. 弹簧劲度系数$k=200\ \text{N/m}$，伸长$0.05\ \text{m}$。弹力多大？\\
+3. （填空）滑动摩擦力 $f = \mu N$，其中 $N$ 是\_\_\_\_\_力，\_\_\_\_\_（一定/不一定）等于重力。\\
+4. 人走路时，地面对脚的摩擦力方向是\_\_\_\_\_（前/后）。\\
+5. （计算）一弹簧伸长0.1m时弹力为50N。劲度系数$k$多大？\\
+6. （选择）关于摩擦力，下列说法正确的是（\quad）\\
+\quad A. 静止物体一定不受摩擦力 \quad B. 滑动摩擦力方向一定与运动方向相反\\
+\quad C. 静摩擦力大小可以用$f=\mu N$计算 \quad D. 压力越大，滑动摩擦力不一定越大（因为$\mu$也可能变）\\
+7. （填空）重心\_\_\_\_\_（一定/不一定）在物体上。质量均匀的圆环重心在\_\_\_\_\_。\\
+8. （判断）滑动摩擦力的大小与接触面积大小无关。（\quad）
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第六课\quad 牛顿第一定律与惯性系}}
+
+物理1中已经初步学过。高中深化两个要点：
+
+\subsection*{力不是维持运动的原因}
+
+牛顿第一定律的本质含义：\textbf{力是改变运动状态的原因，不是维持运动的原因。}一个不受力的物体，要么静止、要么做匀速直线运动——不需要力来"维持"。
+
+\subsection*{惯性参考系}
+
+牛顿第一定律在有的参考系中成立，在有的中不成立。比如：一辆公交车急刹车——以地面为参考系，乘客因为惯性向前倾（符合牛顿第一定律）。但如果以\textbf{公交车}为参考系——车在减速，乘客却"无故"往前冲——这不符合牛顿第一定律。所以\textbf{加速运动的参考系不是惯性系},牛顿定律在其中不成立。
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第七课\quad 牛顿第二定律}}
+
+\subsection*{$F=ma$——物理学的"宪法"}
+
+\begin{definition}{牛顿第二定律}
+物体的加速度跟所受的\textbf{合外力}成正比，跟物体的\textbf{质量}成反比，加速度的方向跟合外力的方向\textbf{相同}。
+\end{definition}
+
+\formula{F_{\text{合}}} = ma}
+
+这是整个经典力学的核心方程。四个要点：
+\begin{enumerate}
+  \item \textbf{因果性}：力是产生加速度的\textbf{原因}（不是速度！）。
+  \item \textbf{矢量性}：$\vec{F}$ 和 $\vec{a}$ 的方向始终相同。
+  \item \textbf{瞬时性}：合外力变了，加速度立刻跟着变（没有延迟）。
+  \item \textbf{同体性}：$F$、$m$、$a$ 必须对应\textbf{同一个物体}。
+\end{enumerate}
+
+\subsection*{应用牛顿第二定律的规范步骤}
+
+\begin{enumerate}
+  \item \textbf{确定研究对象}（单个物体或整体）。
+  \item \textbf{受力分析}：画出所有力（重力、弹力、摩擦力……不要漏、不要多）。
+  \item \textbf{建立坐标系}：通常以加速度方向为 $x$ 轴正方向。
+  \item \textbf{列方程}：$F_{x\text{合}} = ma$，$F_{y\text{合}} = 0$（如果 $y$ 方向无加速度）。
+  \item \textbf{求解}。
+\end{enumerate}
+
+\begin{example}
+一个$m=2\ \text{kg}$的物体放在光滑水平面上，受到$F=10\ \text{N}$的水平拉力。求加速度。
+
+\textbf{解：}光滑→无摩擦。合外力 = $F = 10\ \text{N}$。\\
+$a = \dfrac{F}{m} = \dfrac{10}{2} = 5\ \text{m/s}^2$，方向与拉力方向相同。
+\end{example}
+
+\begin{example}
+一个$m=5\ \text{kg}$的箱子放在水平地面上，$\mu = 0.4$。用$F=30\ \text{N}$的水平力拉。加速度多大？（$g=10$）
+
+\textbf{解：}竖直方向：$N = mg = 50\ \text{N}$。\\
+摩擦力：$f = \mu N = 0.4 \times 50 = 20\ \text{N}$。\\
+水平合外力：$F_{\text{合}} = 30 - 20 = 10\ \text{N}$。\\
+$a = 10/5 = 2\ \text{m/s}^2$。
+\end{example}
+
+\begin{practice}
+1. （判断）物体的速度越大，所受的合外力越大。（\quad）\\
+2. 一个$m=3\ \text{kg}$的物体受$F=12\ \text{N}$合力作用。加速度多大？\\
+3. （填空）牛顿第二定律公式 $F_{\text{合}} = ma$中，$F$指的是\_\_\_\_\_力，$F$和$a$的方向\_\_\_\_\_。\\
+4. （计算）$m=10\ \text{kg}$，$\mu=0.3$，水平拉力$F=50\ \text{N}$。求加速度（$g=10$）。\\
+5. （选择）根据牛顿第二定律，下列说法正确的是（\quad）\\
+\quad A. 物体所受合外力越大，速度越大 \quad B. 合外力方向与加速度方向相同 \quad C. 合外力为零时加速度不一定为零 \quad D. 质量越大，加速度越大\\
+6. （填空）牛顿第二定律的表达式是\_\_\_\_\_，$F$指\_\_\_\_\_力，$a$的方向与\_\_\_\_\_方向相同。\\
+7. （计算）用$F=20\ \text{N}$的水平力拉$m=4\ \text{kg}$的物体在光滑水平面上运动。2s末物体速度多大？\\
+8. （判断）物体所受合外力减小时，加速度一定减小，但速度可能增大。（\quad）
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第八课\quad 牛顿第三定律与受力分析}}
+
+\subsection*{作用力与反作用力}
+
+\begin{definition}{牛顿第三定律}
+两个物体之间的作用力与反作用力总是\textbf{大小相等、方向相反}，作用在\textbf{同一条直线}上。
+\end{definition}
+
+\textbf{核心区别——平衡力 vs 作用力与反作用力（高中必考辨析）：}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+& \textbf{平衡力} & \textbf{作用力与反作用力} \\
+\hline
+作用物体 & \textbf{同一物体} & \textbf{两个不同物体} \\
+性质 & 可以不同（如重力+支持力）& \textbf{一定相同}（如都是弹力）\\
+依赖关系 & 一个消失，另一个不一定 & \textbf{同时产生、同时消失} \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{受力分析的核心方法}
+
+\textbf{整体法：}当多个物体的加速度相同时，可以把它们看作一个整体，只分析外部力，内部力不考虑。求整体加速度时最方便。
+
+\textbf{隔离法：}把每个物体单独拿出来分析受力，再列各自的牛顿第二定律方程。求内力时必须用隔离法。
+
+\begin{example}
+两个物体 A($m_1=2\ \text{kg}$)和B($m_2=3\ \text{kg}$)叠放在光滑水平面上，用$F=10\ \text{N}$推A。求A、B的加速度和A对B的作用力。
+
+\textbf{解：}先用整体法求加速度：$a = \dfrac{F}{m_1+m_2} = \dfrac{10}{5} = 2\ \text{m/s}^2$。\\
+再用隔离法（隔离B）：B只受A给它的推力 $N$（唯一水平力）。\\
+$N = m_2 a = 3 \times 2 = 6\ \text{N}$。
+\end{example}
+
+\begin{figplaceholder}
+此处插入整体法与隔离法受力分析对比示意图（见 figure/requirements/book4-ch1.txt 插图2）
+\end{figplaceholder}
+
+\begin{practice}
+1. （判断）作用力与反作用力可以相互抵消，使物体保持平衡。（\quad）\\
+2. 一本书放在桌上静止。书的重力和桌面对书的支持力是一对\_\_\_\_\_力。\\
+3. （选择）两个物块用轻绳连接，在拉力下一起加速。求绳中拉力时，应该用（\quad）\\
+\quad A. 整体法 \quad B. 隔离法 \quad C. 两种都可以 \quad D. 两种都不行\\
+4. 汽车拉着拖车在水平路上行驶。汽车对拖车的拉力和拖车对汽车的拉力——（\quad）\\
+\quad A. 大小相等 \quad B. 前者更大 \quad C. 后者更大 \quad D. 无法判断\\
+5. （填空）拔河比赛中，甲队拉乙队的力和乙队拉甲队的力是一对\_\_\_\_\_力，它们大小\_\_\_\_\_。\\
+6. （判断）人推墙时，墙对人有反作用力，所以人能后退。（\quad）\\
+7. 两个叠放物体一起加速运动，求整体加速度用\_\_\_\_\_法，求两物体间作用力用\_\_\_\_\_法。\\
+8. （选择）一本书静止在水平桌面上，下列说法正确的是（\quad）\\
+\quad A. 书的重力和书对桌面的压力是平衡力 \quad B. 书的重力和桌面对书的支持力是平衡力\\
+\quad C. 书对桌面的压力和桌面对书的支持力是平衡力 \quad D. 书的重力和桌面对书的支持力是相互作用力
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第九课\quad 超重与失重}}
+
+\subsection*{什么是超重和失重？}
+
+你坐电梯时有没有感觉——电梯启动上升的那一刻，身体好像变重了；电梯启动下降的那一刻，身体好像变轻了。
+
+\textbf{这不是重力变了——是支持力（或拉力）变了。}
+
+\begin{definition}{超重与失重}
+\textbf{超重}：物体对支持物的压力（或对悬绳的拉力）\textbf{大于}重力的现象。\\
+\textbf{失重}：物体对支持物的压力（或对悬绳的拉力）\textbf{小于}重力的现象。\\
+\textbf{完全失重}：压力（或拉力）\textbf{等于零}。
+\end{definition}
+
+\subsection*{用牛顿定律理解电梯里的感觉}
+
+以电梯里的人为研究对象。人受到重力 $mg$（向下）和地板支持力 $N$（向上）。
+
+电梯\textbf{加速上升}（$a$向上）：$N - mg = ma \rightarrow N = m(g+a) > mg$ —— \textbf{超重}（你感觉地板在往上推你更用力）。
+
+电梯\textbf{加速下降}（$a$向下）：$mg - N = ma \rightarrow N = m(g-a) < mg$ —— \textbf{失重}（你感觉地板托你的力变小了）。
+
+如果电梯自由落体（$a = g$）：$N = m(g-g) = 0$ —— \textbf{完全失重}（你"飘"起来了——和宇航员在空间站里一样）。
+
+\textbf{记住核心：}加速度向上→超重，加速度向下→失重。和运动方向无关——上升减速时 $a$ 向下，也是失重。
+
+\begin{example}
+一个质量$60\ \text{kg}$的人站在电梯里的体重秤上。电梯以$2\ \text{m/s}^2$加速上升时，秤的读数是多少？（$g=10$）
+
+\textbf{解：}$N - mg = ma \rightarrow N = m(g+a) = 60\times(10+2) = 720\ \text{N}$。秤的读数（显示的"质量"）= $720/10 = 72\ \text{kg}$，比真实质量多了12 kg——这就是超重。
+\end{example}
+
+\begin{thinkbox}
+宇航员在太空站里"飘起来"是失重还是完全失重？空间站在轨道上不断"掉向地球"（做圆周运动需要向心加速度），加速度 $a \approx 0.9g$。宇航员和空间站以同样的加速度下落——支持力为零——完全失重。重力没有消失（仍然有地球引力的90\%左右），但宇航员感觉不到了，因为没有地板托着他。
+\end{thinkbox}
+
+\begin{practice}
+1. （判断）超重时物体的重力变大了。（\quad）\\
+2. 电梯加速下降时，人处于\_\_\_\_\_（超重/失重）状态。\\
+3. （选择）一个物体在完全失重状态下（\quad）\\
+\quad A. 不受重力 \quad B. 重力变小 \quad C. 重力不变，但支持力为零 \quad D. 质量变为零\\
+4. 电梯以$3\ \text{m/s}^2$减速上升。加速度方向是\_\_\_\_\_，人处于\_\_\_\_\_状态。\\
+5. （计算）质量50kg的人站在电梯中，电梯以$2\ \text{m/s}^2$加速上升。人对电梯的压力多大？（$g=10$）\\
+6. （选择）关于超重和失重，下列说法正确的是（\quad）\\
+\quad A. 超重时重力变大 \quad B. 失重时重力变小 \quad C. 超重和失重时重力不变 \quad D. 完全失重时物体不受重力\\
+7. （填空）物体具有向上的加速度时处于\_\_\_\_\_状态；具有向下的加速度时处于\_\_\_\_\_状态。\\
+8. （判断）减速下降的电梯中，人处于超重状态。（\quad）
+\end{practice}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第十课\quad 牛顿定律综合应用}}
+
+\subsection*{连接体问题}
+
+两个（或多个）物体通过绳子、弹簧或接触面连接在一起，以相同的加速度运动。这类问题的一般步骤：\textbf{先整体求加速度，再隔离求内力}。
+
+\subsection*{临界问题}
+
+"刚好要滑动""刚好要分离""绳子刚好要断"——这些都是\textbf{临界状态}。在临界状态下，某些力达到最大值（如最大静摩擦）或正好减小到零（如两物体间的压力为零）。分析临界问题的关键是：\textbf{确定临界条件的物理含义}，然后列方程。
+
+例如：斜面上的物体刚好不下滑——$mg\sin\theta = \mu mg\cos\theta$——推出 $\tan\theta = \mu$。这是一个经典结论：$\theta$ 达到 $\arctan\mu$ 时，物体刚好开始下滑。
+
+\subsection*{传送带问题}
+
+物体放在匀速运动的传送带上——物体在传送带上的滑动摩擦力作用下加速（或减速），最终和传送带速度一致后保持匀速。这类问题的关键是分析物体相对传送带的运动方向（决定摩擦力的方向）。
+
+\begin{example}
+水平传送带以$v_0=2\ \text{m/s}$匀速运行。把一个$m=1\ \text{kg}$的物体轻轻放在传送带上，$\mu=0.2$。物体从放上到和传送带速度一致——滑行了多远？（$g=10$）
+
+\textbf{解：}物体刚放上时速度为零，相对于传送带向后滑——摩擦力向前（为动力）。\\
+$a = \dfrac{f}{m} = \dfrac{\mu mg}{m} = \mu g = 2\ \text{m/s}^2$。\\
+加速到 $v_0=2\ \text{m/s}$ 的时间：$t = v_0/a = 1\ \text{s}$。\\
+位移：$x = \dfrac{1}{2}at^2 = \dfrac{1}{2} \times 2 \times 1 = 1\ \text{m}$。
+\end{example}
+
+\begin{thinkbox}
+牛顿第二定律 $F=ma$ 虽然只有三个字母，却是整个经典力学的基石。从这一本开始，力学不再是"直觉+背公式"，而是"受力分析→列方程→求解→验证"。这个思维方式会贯穿你剩余的所有物理学习——力学、电磁学、热学，无一例外。打好这一本的基础，后面的路会平坦得多。
+\end{thinkbox}
+
+\begin{practice}
+1. （计算）两个物块 A($2\ \text{kg}$)和B($3\ \text{kg}$)用轻绳连接，在$F=20\ \text{N}$的水平拉力下沿光滑水平面运动。求加速度和绳的拉力。\\
+2. （填空）斜面上物体刚好不下滑的临界条件是 $\tan\theta =$\_\_\_\_\_。\\
+3. （判断）物体在传送带上受到的滑动摩擦力一定是阻力。（\quad）\\
+4. （计算）电梯以$2\ \text{m/s}^2$减速下降，人的加速度方向是\_\_\_\_\_，处于\_\_\_\_\_状态。\\
+5. （选择）对于连接体问题，下列说法正确的是（\quad）\\
+\quad A. 整体法可以求内力 \quad B. 隔离法可以求内力 \quad C. 整体法无法求加速度 \quad D. 隔离法无法求加速度\\
+6. （填空）传送带问题的关键是要分析物体相对传送带的\_\_\_\_\_方向，从而确定摩擦力的方向。\\
+7. （计算）$m=5\ \text{kg}$的物体放在水平传送带上，$\mu=0.2$，$g=10$。物体刚放上时加速度多大？\\
+8. （判断）斜面上的物体恰好匀速下滑时，$\mu=\tan\theta$成立。（\quad）
+\end{practice}
+
+\vspace{0.5cm}
+\begin{center}
+\rule{0.7\textwidth}{1pt}
+\vspace{0.4cm}
+{\large\textcolor{blue!70!black}{\textbf{—— 物理4·力学与运动定律 完 ——}}}
+\vspace{0.3cm}
+\textcolor{gray}{\small 下一本预告：物理5·曲线、能量与动量——从平抛到天体，三大守恒律的深度解析}
+\end{center}
+
+\newpage
+\section*{\textcolor{defblue}{参考答案}}
+
+\textbf{第一课 练一练：}
+1. ×（火车长度相对桥长不可忽略）\quad
+2. 800 m，0 m\quad
+3. C\quad
+4. $\sqrt{4^2+3^2}=5\ \text{m}$\quad
+5. C\quad
+6. $\surd$\quad
+7. 矢，标，0\quad
+8. 可以，不可以
+
+\textbf{第二课 练一练：}
+1. $a = \dfrac{10-30}{5} = -4\ \text{m/s}^2$，减速\quad
+2. ×（匀速直线运动时$a=0$但$v\neq0$）\quad
+3. 加速度，位移\quad
+4. $v=0$，$a=g$（约$10\ \text{m/s}^2$）\quad
+5. $a=\Delta v/\Delta t=20/5=4\ \text{m/s}^2$\quad
+6. 匀加速，匀减速\quad
+7. ×（加速度与速度大小无关）\quad
+8. $a=(5-15)/2=-5\ \text{m/s}^2$，方向与初速度相反
+
+\textbf{第三课 练一练：}
+1. （1）$v=v_0+at=0+2\times5=10\ \text{m/s}$；\quad（2）$x=\frac{1}{2}at^2=\frac{1}{2}\times2\times25=25\ \text{m}$\quad
+2. $aT^2$\quad
+3. $v^2-v_0^2=2ax$ → $0-400=2\times(-5)\times x$ → $x=40\ \text{m}$\quad
+4. $\surd$\quad
+5. $v=v_0+at=15+(-3)\times4=3\ \text{m/s}$\quad
+6. C\quad
+7. $v=v_0+at$\quad
+8. ×（匀变速位移与时间二次方有关，不是均匀增加）
+
+\textbf{第四课 练一练：}
+1. ×（忽略空气阻力时，所有物体下落一样快）\quad
+2. $t=\sqrt{2h/g}=\sqrt{90/10}=3\ \text{s}$\quad
+3. $H=v_0^2/(2g)=900/20=45\ \text{m}$\quad
+4. 0，$g$\quad
+5. $t=\sqrt{2h/g}=\sqrt{160/10}=4\ \text{s}$，$v=gt=40\ \text{m/s}$\quad
+6. C\quad
+7. $t=v_0/g$，$H=v_0^2/(2g)$\quad
+8. 同时落地
+
+\textbf{第五课 练一练：}
+1. ×（摩擦力不一定是阻力，如人走路时摩擦力向前推动人）\quad
+2. $F=kx=200\times0.05=10\ \text{N}$\quad
+3. 正压力，不一定\quad
+4. 前\quad
+5. $k=F/x=50/0.1=500\ \text{N/m}$\quad
+6. D\quad
+7. 不一定，圆心\quad
+8. $\surd$
+
+\textbf{第七课 练一练：}
+1. ×（合外力决定加速度，与速度大小无关）\quad
+2. $a=F/m=12/3=4\ \text{m/s}^2$\quad
+3. 合外力，相同\quad
+4. $N=mg=100\ \text{N}$，$f=\mu N=30\ \text{N}$，$F_{\text{合}}=50-30=20\ \text{N}$，$a=20/10=2\ \text{m/s}^2$\quad
+5. B\quad
+6. $F_{\text{合}}=ma$，合外，合外力\quad
+7. $a=F/m=5\ \text{m/s}^2$，$v=at=10\ \text{m/s}$\quad
+8. $\surd$（加速度与合外力变化同步，速度方向与加速度同向时速度仍增大）
+
+\textbf{第八课 练一练：}
+1. ×（作用在不同物体上，不能相互抵消）\quad
+2. 平衡力\quad
+3. B\quad
+4. A\quad
+5. 相互作用，相等\quad
+6. $\surd$\quad
+7. 整体，隔离\quad
+8. B
+
+\textbf{第九课 练一练：}
+1. ×（重力不变，超重是支持力变大）\quad
+2. 失重\quad
+3. C\quad
+4. 向下（竖直向下），失重\quad
+5. $N=m(g+a)=50\times12=600\ \text{N}$，由牛顿第三定律，人对电梯压力也为600N\quad
+6. C\quad
+7. 超重，失重\quad
+8. $\surd$（减速下降$a$向上→超重）
+
+\textbf{第十课 练一练：}
+1. $a=F/(m_A+m_B)=20/5=4\ \text{m/s}^2$；绳拉力$T=m_Ba=3\times4=12\ \text{N}$\quad
+2. $\mu$\quad
+3. ×（传送带上滑动摩擦力可以是动力）\quad
+4. 向上（竖直向上），超重\quad
+5. B\quad
+6. 运动趋势\quad
+7. $a=\mu g=2\ \text{m/s}^2$\quad
+8. $\surd$
+
+\end{document}
