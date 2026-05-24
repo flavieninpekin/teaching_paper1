@@ -1,0 +1,74 @@
+\ProvidesPackage{teaching-style}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tikz}
+\linespread{1.35}
+
+% 颜色定义
+\definecolor{mainblue}{RGB}{0, 73, 144}
+\definecolor{lightblue}{RGB}{220, 235, 250}
+\definecolor{exred}{RGB}{180, 30, 30}
+
+% 标题格式
+\newcommand{\maintitle}[1]{{
+  \centering
+  \vspace*{1cm}
+  {\Huge\bfseries\color{mainblue} #1}\par
+  \vspace{0.5cm}
+}}
+
+% 章节标题
+\newcommand{\chaptertitle}[1]{{
+  \vspace{0.6cm}
+  \noindent{\Large\bfseries\color{mainblue} #1}\par
+  \vspace{0.3cm}
+}}
+
+\newcommand{\sectiontitle}[1]{{
+  \vspace{0.4cm}
+  \noindent{\large\bfseries\color{mainblue!80!black} #1}\par
+  \vspace{0.2cm}
+}}
+
+% 知识点框
+\newcommand{\knowbox}[1]{{
+  \noindent\colorbox{lightblue}{\parbox{\dimexpr\linewidth-2\fboxsep}{\bfseries #1}}\par
+  \vspace{0.2cm}
+}}
+
+% 例题环境
+\newenvironment{example}{
+  \noindent\textbf{\color{exred}例 }%
+  \begingroup\parindent=2em
+}{
+  \endgroup\par\vspace{0.2cm}
+}
+
+% 解答环境
+\newenvironment{solution}{
+  \noindent\textbf{\color{mainblue!60!black}解 }%
+  \begingroup\parindent=2em
+}{
+  \endgroup\par\vspace{0.3cm}
+}
+
+% 练习题环境
+\newenvironment{exercise}{
+  \begin{enumerate}[label=\arabic*., leftmargin=*, itemsep=0.3cm]
+}{
+  \end{enumerate}
+}
+
+\newenvironment{subexercise}{
+  \begin{enumerate}[label=(\alph*), leftmargin=*, itemsep=0.15cm]
+}{
+  \end{enumerate}
+}
+
+% 书末答案直接使用 \sectiontitle{参考答案} 即可（见 drilling/ 各册做法）

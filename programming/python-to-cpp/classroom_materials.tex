@@ -1,0 +1,889 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true
+}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{从 Python 到 C++}}}
+\author{第二门语言——理解计算机的"方言"}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{写在前面}
+
+你已经熟练掌握了 Python，也学了数据结构和算法。现在，我们要学\textbf{第二门语言：C++}。
+
+为什么学 C++？
+\begin{itemize}
+  \item \textbf{更接近底层：} C++ 让你直接管理内存，理解计算机真正在做什么。
+  \item \textbf{性能更高：} C++ 程序通常比 Python 快 10--100 倍。
+  \item \textbf{竞赛语言：} 信息学奥赛（NOI）指定语言是 C++。
+  \item \textbf{拓宽视野：} 学了 C++ 之后，再看任何语言都会觉得"不过如此"。
+\end{itemize}
+
+\textbf{重要心态：} 你不是从零开始。你已经知道什么是变量、循环、函数、类——在 C++ 里它们都存在，只是语法不同。你的任务是\textbf{翻译}。
+
+\section*{第一课：核心差异总览}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{特性} & \textbf{Python} & \textbf{C++} \\ \hline
+类型系统 & 动态类型（运行时确定） & 静态类型（编译时确定） \\ \hline
+变量声明 & \texttt{x = 5} & \texttt{int x = 5;} \\ \hline
+执行方式 & 解释执行（一行一行） & 编译执行（先翻译再运行） \\ \hline
+内存管理 & 自动（垃圾回收） & 手动（new/delete） \\ \hline
+代码块 & 缩进 & 花括号 \{\} \\ \hline
+语句结束 & 换行 & 分号 ; \\ \hline
+速度 & 较慢 & 非常快 \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{第二课：开发环境搭建}
+
+\subsection*{安装编译器}
+
+Python 是解释型语言，安装 Python 就能运行。C++ 需要\textbf{编译器}把代码翻译成机器指令。
+
+\begin{itemize}
+  \item \textbf{Windows：} 安装 MinGW 或使用 Visual Studio
+  \item \textbf{Mac：} 安装 Xcode Command Line Tools
+  \item \textbf{在线：} \url{https://replit.com/} 或 \url{https://godbolt.org/}
+\end{itemize}
+
+安装完成后，在命令行输入以下命令验证：
+
+\begin{lstlisting}[language=bash]
+g++ --version
+\end{lstlisting}
+
+\subsection*{第一个 C++ 程序}
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, World!" << endl;
+    return 0;
+}
+\end{lstlisting}
+
+保存为 \texttt{hello.cpp}。编译并运行：
+
+\begin{lstlisting}[language=bash]
+g++ hello.cpp -o hello.exe
+hello.exe
+\end{lstlisting}
+
+\textbf{逐行解释：}
+\begin{itemize}
+  \item \texttt{\#include <iostream>} —— 引入输入输出库（类似 Python 的 \texttt{import}）
+  \item \texttt{using namespace std;} —— 使用标准命名空间（不然要写 \texttt{std::cout}）
+  \item \texttt{int main()} —— 程序入口（每个 C++ 程序必须有一个 main 函数）
+  \item \texttt{cout << "..."} —— 输出（类似 Python 的 \texttt{print}）
+  \item \texttt{return 0;} —— 告诉操作系统程序正常结束
+\end{itemize}
+
+\section*{第三课：变量与数据类型}
+
+\subsection*{变量声明}
+
+在 C++ 中，每个变量必须先声明\textbf{类型}，然后才能使用。
+
+\begin{lstlisting}[language=C++]
+int score = 95;           // 整数
+double pi = 3.14159;      // 双精度浮点数
+float price = 12.5f;      // 单精度浮点数
+char grade = 'A';         // 单个字符（注意是单引号）
+string name = "小明";     // 字符串（需要 #include <string>）
+bool is_ok = true;        // 布尔值
+\end{lstlisting}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Python} & \textbf{C++} & \textbf{说明} \\ \hline
+\texttt{x = 5} & \texttt{int x = 5;} & C++ 要写明类型 \\ \hline
+\texttt{name = "小明"} & \texttt{string name = "小明";} & 字符串类型是 string \\ \hline
+\texttt{flag = True} & \texttt{bool flag = true;} & 小写 true/false \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{类型转换}
+
+\begin{lstlisting}[language=C++]
+int a = 10;
+double b = (double)a;     // C 风格
+double c = static_cast<double>(a); // C++ 风格（推荐）
+
+// 字符串转数字
+int d = stoi("42");        // string to int
+double e = stod("3.14");   // string to double
+
+// 数字转字符串
+string s = to_string(42);  // "42"
+\end{lstlisting}
+
+\subsection*{常量}
+
+\begin{lstlisting}[language=C++]
+const int MAX_SCORE = 100;  // 常量，不能修改
+\end{lstlisting}
+
+\section*{第四课：输入输出}
+
+\subsection*{cout 和 cin}
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    string name;
+    int age;
+    
+    cout << "请输入名字：";
+    cin >> name;
+    
+    cout << "请输入年龄：";
+    cin >> age;
+    
+    cout << "你好，" << name << "！你" << age << "岁了。" << endl;
+    
+    return 0;
+}
+\end{lstlisting}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Python} & \textbf{C++} \\ \hline
+\texttt{print("Hello")} & \texttt{cout << "Hello";} \\ \hline
+\texttt{print(x, y)} & \texttt{cout << x << y;} \\ \hline
+\texttt{input()} & \texttt{cin >> var;} \\ \hline
+\texttt{print(x, end="")} & \texttt{cout << x;}（默认不换行） \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{格式化输出}
+
+\begin{lstlisting}[language=C++]
+#include <iomanip>
+
+double pi = 3.1415926;
+cout << fixed << setprecision(2) << pi << endl;  // 3.14
+\end{lstlisting}
+
+\section*{第五课：控制结构}
+
+\subsection*{if 语句}
+
+\begin{lstlisting}[language=C++]
+int score = 85;
+
+if (score >= 90) {
+    cout << "A" << endl;
+} else if (score >= 80) {
+    cout << "B" << endl;
+} else {
+    cout << "C" << endl;
+}
+\end{lstlisting}
+
+\textbf{注意：} C++ 的条件要放在\textbf{圆括号}里，代码块用\textbf{花括号}，没有冒号。
+
+\subsection*{switch 语句}
+
+C++ 有 Python 没有的 \texttt{switch}：
+
+\begin{lstlisting}[language=C++]
+int day = 3;
+switch (day) {
+    case 1: cout << "周一"; break;
+    case 2: cout << "周二"; break;
+    case 3: cout << "周三"; break;
+    default: cout << "其他"; break;
+}
+\end{lstlisting}
+
+\subsection*{for 循环}
+
+\begin{lstlisting}[language=C++]
+// 经典 for 循环
+for (int i = 0; i < 10; i++) {
+    cout << i << endl;
+}
+
+// 范围 for 循环（类似 Python）
+int nums[] = {1, 2, 3, 4, 5};
+for (int n : nums) {
+    cout << n << endl;
+}
+\end{lstlisting}
+
+\subsection*{while 循环}
+
+\begin{lstlisting}[language=C++]
+int i = 0;
+while (i < 10) {
+    cout << i << endl;
+    i++;
+}
+\end{lstlisting}
+
+\subsection*{对照表}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Python} & \textbf{C++} \\ \hline
+\texttt{if x > 0:} & \texttt{if (x > 0) \{} \\ \hline
+\texttt{for i in range(n):} & \texttt{for (int i = 0; i < n; i++)} \\ \hline
+\texttt{for x in lst:} & \texttt{for (int x : lst)} \\ \hline
+\texttt{while x > 0:} & \texttt{while (x > 0) \{} \\ \hline
+\texttt{and} / \texttt{or} / \texttt{not} & \texttt{\&\&} / \texttt{||} / \texttt{!} \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{第六课：数组与指针}
+
+\subsection*{数组}
+
+数组是 C++ 中最基本的数据结构。
+
+\begin{lstlisting}[language=C++]
+// 静态数组（大小固定）
+int scores[5] = {95, 87, 92, 78, 88};
+scores[0] = 100;            // 修改
+cout << scores[2] << endl;  // 读取
+
+// 遍历
+for (int i = 0; i < 5; i++) {
+    cout << scores[i] << endl;
+}
+
+// 二维数组
+int matrix[3][3] = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+\end{lstlisting}
+
+\subsection*{vector——C++ 的动态数组}
+
+Python 的列表是动态的（可以随时增减）。C++ 的 \texttt{vector} 也是一样。
+
+\begin{lstlisting}[language=C++]
+#include <vector>
+
+vector<int> nums;           // 空 vector
+nums.push_back(10);         // 添加元素
+nums.push_back(20);        
+nums.push_back(30);
+
+cout << nums.size() << endl;   // 3
+cout << nums[1] << endl;       // 20（越界不检查，危险！）
+cout << nums.at(1) << endl;    // 20（越界会抛异常）
+
+nums.pop_back();               // 删除最后一个
+nums.insert(nums.begin(), 5);  // 在开头插入
+
+// 遍历
+for (int i = 0; i < nums.size(); i++) {
+    cout << nums[i] << endl;
+}
+// 或
+for (int n : nums) {
+    cout << n << endl;
+}
+\end{lstlisting}
+
+\subsection*{指针——C++ 最"吓人"也最强大的特性}
+
+指针就是\textbf{存地址的变量}。它告诉你去哪里找数据。
+
+\begin{lstlisting}[language=C++]
+int x = 42;
+int* p = &x;    // p 存的是 x 的地址
+
+cout << p << endl;   // 输出地址，比如 0x61ff0c
+cout << *p << endl;  // 输出 42（通过地址找值）
+
+*p = 100;            // 通过指针修改 x 的值
+cout << x << endl;   // 100
+\end{lstlisting}
+
+\textbf{比喻：} 指针就像你家地址。\texttt{p} 是写地址的纸条，\texttt{*p} 是顺着地址找到你家。
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{操作} & \textbf{含义} \\ \hline
+\texttt{int* p} & 声明一个指向 int 的指针 \\ \hline
+\texttt{\&x} & 取 x 的地址 \\ \hline
+\texttt{*p} & 访问指针指向的值 \\ \hline
+\texttt{p = nullptr} & 空指针（不指向任何地方） \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{第七课：函数}
+
+\subsection*{基本函数}
+
+\begin{lstlisting}[language=C++]
+// 返回类型 函数名(参数类型 参数名) {
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(3, 5);
+    cout << result << endl;  // 8
+    return 0;
+}
+\end{lstlisting}
+
+\subsection*{函数重载}
+
+同一个函数名，不同的参数类型或数量——C++ 允许！
+
+\begin{lstlisting}[language=C++]
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+double max(double a, double b) {
+    return (a > b) ? a : b;
+}
+
+int max(int a, int b, int c) {
+    return max(max(a, b), c);
+}
+
+int main() {
+    cout << max(3, 5) << endl;          // 5
+    cout << max(3.14, 2.71) << endl;    // 3.14
+    cout << max(1, 5, 3) << endl;       // 5
+    return 0;
+}
+\end{lstlisting}
+
+Python 没有函数重载（用默认参数和 \texttt{*args} 实现类似效果）。
+
+\subsection*{引用参数}
+
+C++ 可以通过\textbf{引用}修改函数外部的变量：
+
+\begin{lstlisting}[language=C++]
+void swap(int& a, int& b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+    swap(x, y);
+    cout << x << " " << y << endl;  // 20 10
+    return 0;
+}
+\end{lstlisting}
+
+\texttt{\&} 在变量声明中表示引用（不是取地址）。\texttt{int\& a} 是 x 的别名，修改 a 就是修改 x。
+
+\subsection*{对照表}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Python} & \textbf{C++} \\ \hline
+\texttt{def f(x):} & \texttt{void f(int x) \{} \\ \hline
+\texttt{def f(x) -> int:} & \texttt{int f(int x) \{} \\ \hline
+\texttt{def f(x=0):} & \texttt{void f(int x = 0) \{} \\ \hline
+无重载 & 支持函数重载 \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{第八课：面向对象初步}
+
+\subsection*{类与对象}
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+class Student {
+private:       // 私有成员（外部不能直接访问）
+    string name;
+    int score;
+
+public:        // 公有成员
+    // 构造函数（创建对象时自动调用）
+    Student(string n, int s) {
+        name = n;
+        score = s;
+    }
+    
+    void display() {
+        cout << name << "：" << score << "分" << endl;
+    }
+    
+    void set_score(int s) {
+        if (s >= 0 && s <= 100) {
+            score = s;
+        }
+    }
+    
+    int get_score() {
+        return score;
+    }
+};
+
+int main() {
+    Student stu("小明", 95);  // 创建对象
+    stu.display();             // 调用方法
+    stu.set_score(98);         // 通过公有方法修改私有数据
+    cout << stu.get_score() << endl;
+    
+    return 0;
+}
+
+// Python 版对照：
+// class Student:
+//     def __init__(self, name, score):
+//         self.name = name
+//         self.score = score
+\end{lstlisting}
+
+\textbf{关键差异：}
+\begin{itemize}
+  \item C++ 要写 \texttt{public:} 和 \texttt{private:} 控制访问权限
+  \item C++ 每个成员函数和成员变量都要写类型
+  \item C++ 的 \texttt{this} 指针相当于 Python 的 \texttt{self}
+  \item C++ 没有 Python 的 \texttt{\_\_init\_\_}，而是用\textbf{构造函数}
+\end{itemize}
+
+\subsection*{继承}
+
+\begin{lstlisting}[language=C++]
+class Animal {
+public:
+    void speak() {
+        cout << "..." << endl;
+    }
+};
+
+class Dog : public Animal {  // Dog 继承 Animal
+public:
+    void speak() {           // 覆盖父类方法
+        cout << "汪汪！" << endl;
+    }
+};
+
+int main() {
+    Dog d;
+    d.speak();  // 汪汪！
+    return 0;
+}
+\end{lstlisting}
+
+\section*{第九课：内存管理}
+
+这是 C++ 和 Python 最大的区别。Python 自动管理内存，C++ 让你\textbf{自己管}。
+
+\subsection*{栈 vs 堆}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{} & \textbf{栈（Stack）} & \textbf{堆（Heap）} \\ \hline
+分配方式 & 自动（函数内声明的变量） & 手动（new） \\ \hline
+速度 & 快 & 慢 \\ \hline
+大小 & 小（几 MB） & 大（几 GB） \\ \hline
+生命周期 & 函数结束时自动释放 & 手动释放（delete） \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[language=C++]
+// 栈分配（自动管理）
+int a = 10;
+
+// 堆分配（手动管理）
+int* p = new int(10);   // 分配
+cout << *p << endl;     
+delete p;               // 释放！不释放会导致内存泄漏
+
+// 数组的堆分配
+int* arr = new int[100];
+arr[0] = 42;
+delete[] arr;           // 释放数组
+\end{lstlisting}
+
+\textbf{黄金法则：} 每个 \texttt{new} 都必须对应一个 \texttt{delete}。否则程序会一直"吃"内存，直到崩溃。
+
+\section*{第十课：编译与链接}
+
+\subsection*{编译过程}
+
+\begin{verbatim}
+源代码(.cpp)  →  预处理  →  编译  →  汇编  →  链接  →  可执行文件(.exe)
+\end{verbatim}
+
+\begin{enumerate}
+  \item \textbf{预处理：} 处理 \texttt{\#include}、\texttt{\#define} 等指令
+  \item \textbf{编译：} 把 C++ 代码翻译成汇编代码
+  \item \textbf{汇编：} 把汇编代码翻译成机器码（二进制）
+  \item \textbf{链接：} 把多个 .o 文件和库文件合并成一个可执行文件
+\end{enumerate}
+
+\subsection*{多文件编译}
+
+\begin{lstlisting}[language=bash]
+# 编译多个源文件
+g++ main.cpp student.cpp -o program.exe
+\end{lstlisting}
+
+头文件（\texttt{.h}）用于声明，源文件（\texttt{.cpp}）用于实现：
+
+\begin{lstlisting}[language=C++]
+// student.h —— 声明
+class Student {
+public:
+    Student(string name);
+    void say_hello();
+private:
+    string name;
+};
+
+// student.cpp —— 实现
+#include "student.h"
+Student::Student(string name) {
+    this->name = name;
+}
+void Student::say_hello() {
+    cout << "我是" << name << endl;
+}
+\end{lstlisting}
+
+\section*{综合项目：用 C++ 重写猜数字游戏}
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>   // rand, srand
+#include <ctime>     // time
+using namespace std;
+
+int main() {
+    srand(time(0));                  // 随机种子
+    int secret = rand() % 100 + 1;   // 1-100 随机数
+    int guess, attempts = 0;
+    
+    cout << "猜一个 1 到 100 之间的数" << endl;
+    
+    do {
+        cout << "你的猜测：";
+        cin >> guess;
+        attempts++;
+        
+        if (guess == secret) {
+            cout << "猜对了！用了" << attempts << "次" << endl;
+        } else if (guess > secret) {
+            cout << "大了" << endl;
+        } else {
+            cout << "小了" << endl;
+        }
+    } while (guess != secret);
+    
+    return 0;
+}
+\end{lstlisting}
+
+\subsection*{与 Python 版的差异}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Python} & \textbf{C++} \\ \hline
+\texttt{random.randint(1, 100)} & \texttt{rand() \% 100 + 1} \\ \hline
+\texttt{while guess != secret:} & \texttt{do...while(guess != secret)} \\ \hline
+\texttt{input() 返回字符串} & \texttt{cin >> guess 直接读整数} \\ \hline
+\texttt{print(...)} & \texttt{cout << ...} \\ \hline
+无分号 & 每条语句都要 ; \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{总结：Python vs C++ 快速对照表}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Python} & \textbf{C++} \\ \hline
+\texttt{x = 5} & \texttt{int x = 5;} \\ \hline
+\texttt{lst = [1, 2, 3]} & \texttt{vector<int> lst = \{1, 2, 3\}} \\ \hline
+\texttt{dct = \{"a": 1\}} & \texttt{map<string, int> dct;} \\ \hline
+\texttt{if x > 0:} & \texttt{if (x > 0) \{} \\ \hline
+\texttt{for i in range(n):} & \texttt{for (int i = 0; i < n; i++)} \\ \hline
+\texttt{def f(x):} & \texttt{int f(int x) \{} \\ \hline
+\texttt{class A:} & \texttt{class A \{} \\ \hline
+\texttt{import math} & \texttt{\#include <cmath>} \\ \hline
+\texttt{print(x)} & \texttt{cout << x;} \\ \hline
+\texttt{len(lst)} & \texttt{lst.size()} \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{各课练习}
+
+\subsection*{第一课：核心差异总览}
+\begin{enumerate}
+  \item 用自己的话解释"静态类型"和"动态类型"的区别。Python 和 C++ 分别属于哪种？
+  \item 为什么 C++ 需要编译而 Python 不需要？这分别带来了什么好处和坏处？
+  \item \textbf{[翻译练习]} 把以下 Python 代码"翻译"成它对应的 C++ 写法（不要求完整可运行，写出关键差异即可）：\texttt{x = 10}, \texttt{name = "小明"}, \texttt{print(x)}。
+\end{enumerate}
+
+\subsection*{第二课：开发环境搭建}
+\begin{enumerate}
+  \item 在你自己的电脑上安装 C++ 编译器，写第一个 C++ 程序并编译运行。
+  \item 尝试在编译时去掉 \texttt{\#include <iostream>}，看编译器报什么错。然后加回来。
+  \item \textbf{[对比]} C++ 的 \texttt{main} 函数和 Python 的"主程序"有什么不同？为什么 C++ 程序必须有一个 \texttt{main}？
+\end{enumerate}
+
+\subsection*{第三课：变量与数据类型}
+\begin{enumerate}
+  \item 声明一个 \texttt{double} 类型变量存储你的身高，一个 \texttt{int} 变量存储年龄，一个 \texttt{char} 变量存储性别首字母，然后输出它们。
+  \item 在 C++ 中，\texttt{float} 和 \texttt{double} 有什么区别？什么情况下用 \texttt{float} 更好？
+  \item \textbf{[类型安全]} 尝试在 C++ 中写 \texttt{int x = 3.14;} 看看会发生什么。然后再试 \texttt{double y = 10/3;}。观察结果，思考类型系统的意义。
+\end{enumerate}
+
+\subsection*{第四课：输入输出}
+\begin{enumerate}
+  \item 写一个 C++ 程序：输入两个整数，输出它们的和、差、积、商。
+  \item 对比 \texttt{cout << x << y} 和 \texttt{cout << x << " " << y} 的输出有什么不同。
+  \item \textbf{[格式化]} 用 \texttt{setprecision} 控制输出：输入一个小数，输出保留两位小数的结果。
+\end{enumerate}
+
+\subsection*{第五课：控制结构}
+\begin{enumerate}
+  \item 把 Python 的猜数字游戏（只用一次猜测的版本）改写成 C++。
+  \item C++ 有而 Python 没有的 \texttt{switch} 语句有什么用？什么场景下用 \texttt{switch} 比用 \texttt{if/else} 更好？
+  \item \textbf{[陷阱]} 以下 C++ 代码有什么问题？\texttt{for (int i = 0; i < 10; i++); \{ cout << i << endl; \}}。
+\end{enumerate}
+
+\subsection*{第六课：数组与指针}
+\begin{enumerate}
+  \item 声明一个包含 10 个整数的数组，用循环给每个元素赋值为它的索引的平方，然后输出。
+  \item 用指针修改一个变量的值：声明 \texttt{int x = 42}，用指针 \texttt{p} 指向 \texttt{x}，通过 \texttt{*p} 把 \texttt{x} 改成 100。
+  \item \textbf{[对比]} Python 有没有指针？为什么 Python 不需要指针？
+\end{enumerate}
+
+\subsection*{第七课：函数}
+\begin{enumerate}
+  \item 写一个函数 \texttt{int max3(int a, int b, int c)} 返回三个数中的最大值。
+  \item C++ 的函数重载有什么好处？Python 没有函数重载，它是怎么实现类似功能的？
+  \item \textbf{[引用参数]} 写一个函数 \texttt{void increment(int\& x)}，把传入的参数加 1。然后写 \texttt{main} 函数测试。
+\end{enumerate}
+
+\subsection*{第八课：面向对象初步}
+\begin{enumerate}
+  \item 创建一个 \texttt{Circle} 类，有私有成员 \texttt{radius}，公有方法 \texttt{getArea()} 返回面积。在 \texttt{main} 中创建对象测试。
+  \item \texttt{public} 和 \texttt{private} 的区别是什么？为什么面向对象编程要隐藏数据？
+  \item \textbf{[对比]} C++ 的构造函数对应 Python 的哪个方法？C++ 的 \texttt{this} 指针对应 Python 的什么？
+\end{enumerate}
+
+\subsection*{第九课：内存管理}
+\begin{enumerate}
+  \item 用 \texttt{new} 在堆上分配一个整数，赋值为 99，输出它，然后用 \texttt{delete} 释放。
+  \item "内存泄漏"是什么意思？举一个 C++ 中会导致内存泄漏的例子。
+  \item \textbf{[重要]} 每次用 \texttt{new} 之后都应该做什么？如果忘记了会有什么后果？
+\end{enumerate}
+
+\subsection*{第十课：编译与链接}
+\begin{enumerate}
+  \item 把综合项目中的猜数字游戏拆分成两个文件：\texttt{game.h}（声明）和 \texttt{game.cpp}（实现），然后在 \texttt{main.cpp} 中包含头文件并调用。
+  \item \texttt{\#include} 和 Python 的 \texttt{import} 有什么本质区别？
+  \item \textbf{[实验]} 在头文件中写 \texttt{int x = 5;}，然后在两个 \texttt{.cpp} 文件中都 \texttt{\#include} 这个头文件。编译看看会发生什么？为什么？
+\end{enumerate}
+
+\textbf{下一步：} 掌握了 C++ 之后，你有多个方向可以选择：
+\begin{itemize}
+  \item \textbf{信息学竞赛：} 深入学习 STL、算法、数据结构
+  \item \textbf{Web 开发：} 用 Python 做后端（本系列中的 Web Dev 模块）
+  \item \textbf{系统编程：} 深入了解操作系统、网络编程
+  \item \textbf{游戏开发：} 学习 Unity 或 Unreal Engine
+\end{itemize}
+
+\section*{\textcolor{blue!70!black}{各课练习参考答案}}
+
+\subsection*{第一课：核心差异总览}
+\begin{enumerate}
+  \item 静态类型：编译时确定类型（C++），动态类型：运行时确定类型（Python）。C++ 写 \texttt{int x = 5;}，Python 写 \texttt{x = 5}。
+  \item C++ 编译后直接运行机器码，速度快但修改后要重新编译。Python 解释执行，修改即生效但速度慢。
+  \item \texttt{int x = 10;} / \texttt{string name = "小明";} / \texttt{cout << x << endl;}。
+\end{enumerate}
+
+\subsection*{第二课：开发环境搭建}
+\begin{enumerate}
+  \item 验证是否安装成功：在命令行运行 \texttt{g++ --version} 能看到版本号。
+  \item 去掉 \texttt{\#include <iostream>} 后，\texttt{cout} 和 \texttt{endl} 未定义，编译器报大量错误。
+  \item C++ 需要 \texttt{main} 函数作为程序入口，操作系统从这里开始执行。Python 从文件第一行开始执行，不需要显式入口。
+\end{enumerate}
+
+\subsection*{第三课：变量与数据类型}
+\begin{enumerate}
+  \item \texttt{double height = 1.75; int age = 15; char gender = 'M';}
+  \item \texttt{float} 精确到约 7 位小数（4 字节），\texttt{double} 精确到约 15 位（8 字节）。省内存时用 \texttt{float}。
+  \item \texttt{int x = 3.14;} → x = 3（截断）。\texttt{double y = 10/3;} → y = 3.0（整数除法先执行）。需写 \texttt{10.0/3}。
+\end{enumerate}
+
+\subsection*{第四课：输入输出}
+\begin{enumerate}
+  \item 参考代码：\texttt{cin >> a >> b; cout << a+b << " " << a-b << " " << a*b << " " << (b!=0 ? a/b : 0);}
+  \item \texttt{cout << x << y} → 输出连在一起。\texttt{cout << x << " " << y} → 中间有空格。
+  \item \texttt{cout << fixed << setprecision(2) << num << endl;}。
+\end{enumerate}
+
+\subsection*{第五课：控制结构}
+\begin{enumerate}
+  \item 参考代码见综合项目。关键差异：\texttt{if (guess == secret)}（括号+花括号）。
+  \item \texttt{switch} 适合对一个变量的多个离散值做分支（如星期几），比多个 \texttt{if/else} 更清晰。
+  \item 循环后面多了分号：\texttt{for (...);} 导致循环体为空，后面的 \texttt{\{...\}} 只执行一次且 \texttt{i} 超出作用域。
+\end{enumerate}
+
+\subsection*{第六课：数组与指针}
+\begin{enumerate}
+  \item \texttt{int arr[10]; for (int i = 0; i < 10; i++) arr[i] = i*i;}
+  \item \texttt{int x = 42; int* p = \&x; *p = 100;} 此时 \texttt{x} 变成 100。
+  \item Python 没有显式指针，所有变量都是"引用"（类似自动管理的指针）。Python 设计者认为指针太容易出错，不适合初学者。
+\end{enumerate}
+
+\subsection*{第七课：函数}
+\begin{enumerate}
+  \item \texttt{int max3(int a, int b, int c) \{ return max(max(a,b), c); \}}
+  \item 函数重载让同一函数名处理不同类型/数量的参数。Python 用默认参数和 \texttt{*args} 实现。
+  \item \texttt{void increment(int\& x) \{ x++; \}} 调用后实参被修改。
+\end{enumerate}
+
+\subsection*{第八课：面向对象初步}
+\begin{enumerate}
+  \item \texttt{class Circle \{ private: double radius; public: Circle(double r): radius(r) \{\} double getArea() \{ return 3.14159*radius*radius; \} \};}
+  \item \texttt{public} 外部可访问，\texttt{private} 只有类内可访问。隐藏数据防止外部随意修改，保证数据完整性。
+  \item 构造函数对应 Python 的 \texttt{\_\_init\_\_}。\texttt{this} 指针对应 Python 的 \texttt{self}。
+\end{enumerate}
+
+\subsection*{第九课：内存管理}
+\begin{enumerate}
+  \item \texttt{int* p = new int(99); cout << *p; delete p;}
+  \item 内存泄漏：用 \texttt{new} 分配了内存但忘记 \texttt{delete}，程序退出前该内存一直无法释放。
+  \item 每个 \texttt{new} 都要对应一个 \texttt{delete}。忘记会导致内存泄漏，程序占用的内存越来越多，最终可能崩溃。
+\end{enumerate}
+
+\subsection*{第十课：编译与链接}
+\begin{enumerate}
+  \item 将函数声明写在 \texttt{.h} 文件，实现写在 \texttt{.cpp}，\texttt{main.cpp} 中 \texttt{\#include "game.h"}，一起编译链接。
+  \item \texttt{\#include} 是预处理指令，直接把头文件内容插入到当前位置（文本替换）。Python 的 \texttt{import} 是运行时加载模块。
+  \item 编译报错"重复定义"（multiple definition）。因为每个 \texttt{.cpp} 独立编译，链接时发现同一个符号在两个目标文件中都有定义。
+\end{enumerate}
+
+\section*{综合练习与答案}
+
+\subsection*{基础题}
+
+\begin{enumerate}
+  \item 写一个 C++ 程序，输入两个整数，输出它们的和、差、积、商。
+  \item 用 C++ 实现一个函数 \texttt{bool is\_prime(int n)} 判断质数。
+  \item 用 C++ 实现冒泡排序（参考 \texttt{ds-algo/} 模块的 Python 版，改写成 C++）。
+  \item 用 vector 实现一个学生成绩管理系统：添加成绩、打印所有成绩、计算平均分。
+  \item 用指针实现一个 \texttt{swap} 函数（已经在第七课教过，自己再写一遍）。
+\end{enumerate}
+
+\subsection*{参考答案}
+
+\textbf{练习 2（判断质数）：}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+bool is_prime(int n) {
+    if (n < 2) return false;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    for (int n : {2, 3, 4, 17, 25, 97}) {
+        cout << n << (is_prime(n) ? " 是质数" : " 不是质数") << endl;
+    }
+    return 0;
+}
+\end{lstlisting}
+
+\textbf{练习 3（冒泡排序）：}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void bubble_sort(vector<int>& arr) {
+    int n = arr.size();
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+
+int main() {
+    vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
+    bubble_sort(arr);
+    for (int x : arr) cout << x << " ";  // 11 12 22 25 34 64 90
+    return 0;
+}
+\end{lstlisting}
+
+\section*{扩展项目}
+
+\subsection*{项目一：用 C++ 重写 Python 猜数字（带文件记录）}
+
+在综合项目的基础上增加最佳记录保存功能（用文件读写）。对比 Python 版和 C++ 版的代码量和运行速度。
+
+\textbf{关联模块：} 本项目直接演示了 Python 和 C++ 的核心差异——同样一个猜数字游戏，Python 语法更简洁但运行稍慢，C++ 语法更繁琐但运行极快。理解这个 trade-off 是编程进阶的关键。
+
+\subsection*{项目二：用 C++ 实现链表}
+
+用类和指针实现单向链表，支持插入、删除、查找、打印操作。
+
+\textbf{关联模块：} 这是在 \texttt{ds-algo/} 模块中链表章节的 C++ 实现。对比 Python 链表的实现，注意指针使用和内存管理的差异。这也是理解 C++ 核心特性（指针 + OOP）的最佳练习。
+
+\section*{本模块与其他模块的关联}
+
+\begin{itemize}
+  \item \textbf{Python 基础} ↔ 本模块：本模块的每一课都在和 Python 做对照。你在 Python 中写 \texttt{x = 5}，在 C++ 中写 \texttt{int x = 5;}——本质一样，只是多了类型声明。在 \texttt{python/} 模块学得越扎实，这里就越轻松。
+  \item \textbf{计算思维} → 本模块：C++ 的编译过程（第十课）对应计算思维模块中的"编译 vs 解释"章节。你现在可以更深刻地理解解释型语言（Python）和编译型语言（C++）的区别。
+  \item \textbf{数据结构与算法} ↔ 本模块：本模块的数组和指针是 ds-algo 中链表和树的基础。反过来，ds-algo 中的排序算法可以在这里用 C++ 重新实现——这是很好的练习。
+  \item \textbf{计算机数学} ↔ 本模块：C++ 的位运算（\texttt{\&}, \texttt{|}, \texttt{<<}, \texttt{>>}）直接对应 \texttt{computer\_maths/} 中的二进制和位运算章节。C++ 让你能更直观地感受"计算机底层在做什么"。
+\end{itemize}
+
+\end{document}

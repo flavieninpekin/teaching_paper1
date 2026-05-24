@@ -1,0 +1,688 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true
+}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{综合项目实战}}}
+\author{六年编程学习的大总结——做一个真正的产品}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{写在前面}
+
+这是六年编程学习的\textbf{最终检验}。你不再是初学者——你已经掌握了 Scratch、计算思维、Python、C++、数据结构与算法、Web 开发、Git、AI 入门。
+
+现在，你要把所有知识串起来，做一个\textbf{真正的产品}。不是练习题，不是小游戏，而是一个能上线、能给别人用的项目。
+
+本模块不教新知识。它教你怎么\textbf{规划、执行、交付}一个完整的软件项目。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 回顾之前学过的所有模块，列出你最感兴趣的技术方向（至少 3 个）。
+  \item 根据你的兴趣，在"选题推荐"表中选一个项目，写出你的理由。
+  \item \textbf{[需求分析]} 假设你要做一个"班级图书角管理系统"，写出它的目标用户、核心功能（至少 5 个）和扩展功能（至少 3 个）。
+\end{enumerate}
+
+\section*{第一课：项目规划——从想法到需求}
+
+\subsection*{选题原则}
+
+\begin{enumerate}
+  \item \textbf{你自己想用：} 最有动力的项目是你自己需要的
+  \item \textbf{难度适中：} 能在 4-6 周内完成
+  \item \textbf{能用上多种技术：} 前端 + 后端 + 数据库，最好还能加点算法或 AI
+\end{enumerate}
+
+\subsection*{选题推荐}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{项目} & \textbf{用到什么} & \textbf{难度} \\ \hline
+在线笔记本 & Flask + SQLite + HTML/CSS/JS & ★★☆ \\ \hline
+背单词 App & Flask + SQLite + 算法（记忆曲线） & ★★★ \\ \hline
+简易网盘 & Flask + 文件上传 + 用户系统 & ★★★ \\ \hline
+班级投票系统 & Flask + 数据库 + 实时统计 & ★★☆ \\ \hline
+AI 图片分类器 & Flask + 预训练 CNN 模型 & ★★★★ \\ \hline
+学习计时器（番茄钟） & 前端（JS）+ 本地存储 & ★★☆ \\ \hline
+问答社区（轻量版） & Flask + 数据库 + 用户系统 & ★★★ \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{需求文档模板}
+
+写清楚你的项目要做什么：
+
+\begin{lstlisting}
+# 项目名称：我的背单词 App
+
+## 目标用户
+四年级到六年级的学生
+
+## 核心功能（MVP，最小可行产品）
+1. 用户注册和登录
+2. 添加单词（英文 + 中文释义）
+3. 浏览所有单词列表
+4. 单词测验（显示英文，选中文）
+5. 显示正确/错误统计
+
+## 扩展功能（做完了 MVP 再考虑）
+1. 艾宾浩斯记忆曲线提醒复习
+2. 导入/导出单词列表
+3. 每日打卡
+4. 多人排行榜
+
+## 技术选型
+- 前端：HTML + CSS + JavaScript
+- 后端：Python Flask
+- 数据库：SQLite
+- 版本控制：Git + GitHub
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 使用课中的需求文档模板，为你选的 capstone 项目写一份完整的需求文档。
+  \item 评估你的项目难度：用 ★ 评级（参考课中的表格），并解释为什么是这个难度。
+  \item \textbf{[MVP 思维]} 从你的需求文档中区分出"核心功能（MVP）"和"扩展功能"。解释为什么 MVP 很重要。
+\end{enumerate}
+
+\section*{第二课：项目架构设计}
+
+在做任何功能之前，先设计好项目的整体结构。
+
+\subsection*{项目目录结构}
+
+\begin{verbatim}
+word-app/
+├── app.py                 # 主程序（路由 + 业务逻辑）
+├── models.py              # 数据库模型
+├── requirements.txt       # 依赖包列表
+├── .gitignore
+├── README.md
+├── static/
+│   ├── style.css          # 样式
+│   └── script.js          # 前端交互
+└── templates/
+    ├── base.html          # 基础模板
+    ├── index.html         # 首页
+    ├── login.html         # 登录页
+    ├── register.html      # 注册页
+    ├── words.html         # 单词列表
+    └── quiz.html          # 测验页
+\end{verbatim}
+
+\subsection*{数据库设计}
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE words (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    english TEXT NOT NULL,
+    chinese TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE quiz_results (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    word_id INTEGER NOT NULL,
+    correct BOOLEAN NOT NULL,
+    quizzed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (word_id) REFERENCES words(id)
+);
+\end{lstlisting}
+
+\subsection*{API 设计}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{方法} & \textbf{路由} & \textbf{功能} \\ \hline
+GET & / & 首页 \\ \hline
+GET & /register & 注册页面 \\ \hline
+POST & /register & 提交注册 \\ \hline
+GET & /login & 登录页面 \\ \hline
+POST & /login & 提交登录 \\ \hline
+GET & /logout & 退出登录 \\ \hline
+GET & /words & 单词列表 \\ \hline
+POST & /words/add & 添加单词 \\ \hline
+POST & /words/delete/<id> & 删除单词 \\ \hline
+GET & /quiz & 测验页面 \\ \hline
+POST & /quiz/check & 检查答案 \\ \hline
+GET & /stats & 统计页面 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 为你选的 capstone 项目画出完整的项目目录结构（参考课中的 \texttt{word-app/} 示例）。
+  \item 设计你的项目的数据库表结构：需要几张表？每张表有哪些列？写出 \texttt{CREATE TABLE} 语句。
+  \item \textbf{[API 设计]} 列出你的项目所需的所有路由（URL），标注每个路由的 HTTP 方法（GET/POST）和功能描述。
+\end{enumerate}
+
+\section*{第三课：分阶段开发——迭代交付}
+
+不要试图一次性写完所有功能。按以下顺序开发：
+
+\subsection*{阶段一：骨架（第 1 周）}
+
+\begin{itemize}
+  \item 创建项目目录结构
+  \item \texttt{git init}，写 \texttt{.gitignore} 和 \texttt{README.md}
+  \item 写 \texttt{app.py} 的基础框架（Flask 初始化 + 首页路由）
+  \item 创建 \texttt{base.html} 模板
+  \item 提交：\texttt{git add . \&\& git commit -m "项目骨架"}
+\end{itemize}
+
+\subsection*{阶段二：用户系统（第 2 周）}
+
+\begin{itemize}
+  \item 实现用户注册、登录、退出
+  \item 使用 Flask session 管理登录状态
+  \item 注册页面和登录页面 UI
+  \item 测试：注册 → 登录 → 退出
+  \item 提交
+\end{itemize}
+
+\subsection*{阶段三：核心功能（第 3-4 周）}
+
+\begin{itemize}
+  \item 单词 CRUD（增删查）
+  \item 单词列表页面
+  \item 添加单词表单
+  \item 测验功能（随机出题 + 判断正确）
+  \item 结果统计
+  \item 每完成一个功能就提交一次
+\end{itemize}
+
+\subsection*{阶段四：打磨（第 5 周）}
+
+\begin{itemize}
+  \item UI 美化（CSS 样式）
+  \item 错误处理（输入验证、异常捕获）
+  \item 用户提示（flash 消息）
+  \item 移动端适配
+\end{itemize}
+
+\subsection*{阶段五：部署（第 6 周）}
+
+\begin{itemize}
+  \item 部署到服务器（可以用 Render / PythonAnywhere 等免费平台）
+  \item 绑定域名（可选）
+  \item 最终测试
+\end{itemize}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 按照课中的五阶段规划，为你选的项目制定一个 4-6 周的开发计划。每个阶段列出要完成的具体任务。
+  \item 在第三课的阶段三（核心功能）中，每个功能完成后应该做什么？（提示：commit 和测试）
+  \item \textbf{[里程碑]} 为你的项目设定 3 个关键里程碑，每个里程碑对应一个可演示的阶段性成果。
+\end{enumerate}
+
+\section*{第四课：项目管理——怎么保证做完}
+
+\subsection*{使用 GitHub Projects 跟踪进度}
+
+在 GitHub 仓库中创建 Projects，用看板（Kanban）管理：
+
+\begin{verbatim}
+To Do（待办）  |  Doing（进行中）  |  Done（已完成）
+───────────────────────────────────────────────────
+注册页面       |   添加单词表单     |   项目初始化
+登录页面       |                   |   数据库设计
+单词列表       |                   |   基础模板
+测验功能       |                   |
+统计页面       |                   |
+\end{verbatim}
+
+\subsection*{每天的工作流程}
+
+\begin{enumerate}
+  \item \texttt{git pull} —— 拉取最新代码
+  \item 从 To Do 中选一个任务移到 Doing
+  \item 写代码、测试
+  \item \texttt{git add . \&\& git commit -m "完成了xxx"}
+  \item 把任务移到 Done
+  \item 重复
+\end{enumerate}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 在 GitHub 上为你的项目创建一个仓库，初始化 \texttt{.gitignore} 和 \texttt{README.md}。
+  \item 创建一个 GitHub Projects 看板，添加你的所有任务到 To Do 列。
+  \item \textbf{[Git 工作流]} 描述你开发 capstone 时将使用的 Git 工作流：用分支吗？怎么 commit？多久 push 一次？
+\end{enumerate}
+
+\section*{第五课：测试——确保代码正确}
+
+\subsection*{手动测试清单}
+
+每完成一个功能，按清单测试：
+
+\begin{lstlisting}
+# 用户系统测试
+✓ 注册新用户（正常情况）
+✓ 注册已存在的用户名（应报错）
+✓ 登录正确的用户名/密码
+✓ 登录错误的密码（应报错）
+✓ 未登录访问需要登录的页面（应跳转登录页）
+✓ 退出登录后无法访问需要登录的页面
+
+# 单词功能测试
+✓ 添加一个单词
+✓ 查看单词列表中出现了新单词
+✓ 删除一个单词
+✓ 删除后列表更新
+
+# 测验功能测试
+✓ 随机出题不重复
+✓ 回答正确统计加 1
+✓ 回答错误统计不加
+✓ 没有单词时不崩
+\end{lstlisting}
+
+\subsection*{自动化测试（可选）}
+
+\begin{lstlisting}[language=Python]
+# test_app.py
+import pytest
+from app import app
+import json
+
+@pytest.fixture
+def client():
+    app.config["TESTING"] = True
+    with app.test_client() as client:
+        yield client
+
+def test_homepage(client):
+    rv = client.get("/")
+    assert rv.status_code == 200
+
+def test_register(client):
+    rv = client.post("/register", data={
+        "username": "test_user",
+        "password": "123456"
+    }, follow_redirects=True)
+    assert rv.status_code == 200
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 为你的项目的核心功能编写手动测试清单（至少 10 条测试用例），覆盖正常情况、错误情况和边界情况。
+  \item 什么是"边界条件"？以"登录功能"为例，列出至少 3 个边界条件测试用例。
+  \item \textbf{[测试思维]} 有人说"我写代码从来不出错，不用测试"。你对这种观点有什么看法？
+\end{enumerate}
+
+\section*{第六课：性能优化——让程序跑得更快}
+
+当你的项目数据变多时，可能会变慢。以下是常用的优化方法：
+
+\subsection*{数据库优化}
+
+\begin{lstlisting}[language=SQL]
+-- 添加索引（大幅加快查询速度）
+CREATE INDEX idx_words_user_id ON words(user_id);
+
+-- 分页查询（不要一次查所有数据）
+SELECT * FROM words LIMIT 20 OFFSET 0;
+\end{lstlisting}
+
+\subsection*{缓存}
+
+对于不频繁变化的数据，可以缓存起来：
+
+\begin{lstlisting}[language=Python]
+from functools import lru_cache
+
+@lru_cache(maxsize=128)
+def get_word_count(user_id):
+    # 这个结果会被缓存，下次调用直接返回
+    return db.execute("SELECT COUNT(*) FROM words WHERE user_id=?", (user_id,)).fetchone()[0]
+\end{lstlisting}
+
+\subsection*{前端优化}
+
+\begin{itemize}
+  \item 合并 CSS/JS 文件，减少 HTTP 请求
+  \item 图片压缩
+  \item 使用 CDN 加载公共库
+  \item 懒加载（滚动到才加载）
+\end{itemize}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 当你的项目有 10000 条数据时，哪些查询可能会变慢？怎么验证你的猜测？
+  \item 数据库索引为什么能让查询变快？它的代价是什么？
+  \item \textbf{[优化思考]} 如果你要在首页显示"最近 10 篇文章"和"文章总数"，分别应该怎么设计数据库查询来保证性能？
+\end{enumerate}
+
+\section*{第七课：部署——让全世界看到你的作品}
+
+\subsection*{方案一：PythonAnywhere（免费，适合新手）}
+
+\begin{enumerate}
+  \item 注册 \url{https://www.pythonanywhere.com/}
+  \item 上传代码（或直接从 GitHub 拉取）
+  \item 配置 Web 应用（选择 Flask + Python 版本）
+  \item 设置静态文件路径
+  \item 访问你的网站！
+\end{enumerate}
+
+\subsection*{方案二：Render（免费，支持自动部署）}
+
+\begin{enumerate}
+  \item 把代码推送到 GitHub
+  \item 注册 \url{https://render.com/}
+  \item New → Web Service → 连接你的 GitHub 仓库
+  \item Render 会自动部署并生成 HTTPS 链接
+\end{enumerate}
+
+\subsection*{部署检查清单}
+
+\begin{lstlisting}
+✓ 关闭调试模式 (debug=False)
+✓ 使用环境变量存储密钥
+✓ 静态文件路径配置正确
+✓ 数据库路径正确（不要用相对路径）
+✓ 所有页面 HTTPS 访问正常
+✓ 移动端显示正常
+\end{lstlisting}
+
+\section*{第八课：项目展示——让别人看到你的努力}
+
+\subsection*{准备项目展示（5-10 分钟）}
+
+\begin{enumerate}
+  \item \textbf{1 分钟：} 这是什么项目？为什么做？
+  \item \textbf{3 分钟：} 演示核心功能（走一遍用户流程）
+  \item \textbf{1 分钟：} 技术栈和架构
+  \item \textbf{1 分钟：} 遇到的困难怎么解决的
+  \item \textbf{1 分钟：} 未来计划改进什么
+\end{enumerate}
+
+\subsection*{完善 README}
+
+\begin{lstlisting}
+# 我的背单词 App
+
+一款面向小学生的背单词 Web 应用。
+
+## 功能
+- 用户注册/登录
+- 添加、查看、删除单词
+- 随机测验
+- 学习统计
+
+## 技术栈
+- Python Flask
+- SQLite
+- HTML/CSS/JS
+
+## 在线演示
+https://my-word-app.onrender.com
+
+## 本地运行
+1. git clone ...
+2. pip install -r requirements.txt
+3. python app.py
+4. 访问 http://localhost:5000
+
+## 项目截图
+（放几张截图）
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 选择一种部署方案（PythonAnywhere 或 Render），注册账号并按照课中步骤尝试部署一个简单的 Flask 应用（如 web-dev 模块的留言板）。
+  \item 列出部署前需要检查的所有事项（参照课中的"部署检查清单"），逐项确认你的项目是否满足。
+  \item \textbf{[部署挑战]} 部署过程中最常见的错误是什么？如果你遇到了"500 Internal Server Error"，你应该怎么排查？
+\end{enumerate}
+
+\section*{总结：六年的收获}
+
+恭喜你！你完成了六年的编程学习之旅。
+
+回顾走过的路：
+
+\begin{center}
+\begin{tabular}{|c|l|c|}
+\hline
+\textbf{阶段} & \textbf{学到的核心能力} & \textbf{年级} \\ \hline
+Scratch 启蒙 & 编程直觉、核心概念 & G4 \\ \hline
+计算思维 & 分解问题、算法思维 & G4-G5 \\ \hline
+Python 基础 & 文本编程、项目能力 & G5-G6 \\ \hline
+数据结构与算法 & 内功修炼、竞赛基础 & G6 \\ \hline
+Python → C++ & 第二语言、底层理解 & G6-G7 \\ \hline
+Web 开发 & 全栈能力、产品思维 & G7-G8 \\ \hline
+Git 与协作 & 团队合作、版本控制 & G8 \\ \hline
+AI 入门 & 前沿视野、未来方向 & G9 \\ \hline
+综合项目 & 独立交付、完整产品 & G9 \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{你现在已经不是"学编程的孩子"了——你是一个真正的程序员。}
+
+当然，学习永远不会停止。以下是你以后可以继续深入的方向：
+
+\begin{itemize}
+  \item \textbf{竞赛：} 信息学奥赛（NOI），深入算法和数学
+  \item \textbf{工程：} 分布式系统、数据库、DevOps
+  \item \textbf{AI/ML：} PyTorch、数学基础、Kaggle
+  \item \textbf{游戏开发：} Unity、Unreal Engine
+  \item \textbf{移动开发：} Flutter、Swift
+  \item \textbf{开源贡献：} 参与真实开源项目
+\end{itemize}
+
+记住：编程最重要的不是学会了多少语言，而是\textbf{解决问题的能力}。你已经在六年中建立了这个能力。以后遇到任何新语言、新框架，你都能快速上手。
+
+继续加油！
+
+\section*{跨模块项目选题大全}
+
+以下项目按涉及的模块数排序，涉及模块越多综合度越高：
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{项目} & \textbf{涉及模块} & \textbf{综合度} \\ \hline
+AI 图片分类网站 & python + web-dev + ai-intro + git-collab & ★★★★★ \\ \hline
+在线代码评判系统 & python + ds-algo + web-dev + git-collab & ★★★★★ \\ \hline
+背单词 App + 记忆曲线 & python + ds-algo + web-dev + computer\_maths & ★★★★☆ \\ \hline
+个人博客系统 & python + web-dev + git-collab & ★★★☆☆ \\ \hline
+算法可视化工具 & python + ds-algo + web-dev & ★★★☆☆ \\ \hline
+C++ 排序性能对比 & python-to-cpp + ds-algo + computer\_maths & ★★★☆☆ \\ \hline
+命令行待办事项 & python + file-io + git-collab & ★★☆☆☆ \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{建议的完整项目计划（AI 图片分类网站）}
+
+\subsection*{第 1 周：需求与设计}
+
+\begin{itemize}
+  \item 技术选型：Python Flask + TensorFlow/Keras + SQLite + HTML/CSS/JS
+  \item 功能列表：用户上传图片 → AI 识别 → 显示结果 → 保存识别历史
+  \item 数据库设计：用户表、图片记录表
+  \item Git 初始化，提交项目骨架
+\end{itemize}
+
+\subsection*{第 2 周：AI 模型集成}
+
+\begin{itemize}
+  \item 加载预训练模型（MobileNet，轻量级，适合 Web 部署）
+  \item 实现图片预处理（resize + normalize）
+  \item 测试模型预测效果
+\end{itemize}
+
+\textbf{关联模块：} \texttt{ai-intro/} 第四课（CNN）+ 第六课（模型部署思路）
+
+\subsection*{第 3 周：Web 后端}
+
+\begin{itemize}
+  \item Flask 路由：首页、上传、结果页、历史记录
+  \item 图片文件存储与处理
+  \item 用户识别历史数据库操作
+\end{itemize}
+
+\textbf{关联模块：} \texttt{web-dev/} 项目三和四（Flask + SQLite）
+
+\subsection*{第 4 周：前端页面}
+
+\begin{itemize}
+  \item 上传页面（拖拽上传 + 预览）
+  \item 结果展示（图片 + Top-3 标签 + 概率条）
+  \item 历史记录页面（最近 20 条）
+  \item 响应式设计（手机也能用）
+\end{itemize}
+
+\textbf{关联模块：} \texttt{web-dev/} 项目一和四（HTML/CSS/JS）
+
+\subsection*{第 5 周：测试与优化}
+
+\begin{itemize}
+  \item 手动测试清单（不同格式图片、大图片、非图片文件）
+  \item 错误处理（上传失败、模型加载失败）
+  \item 性能优化（模型加载缓存、图片压缩）
+\end{itemize}
+
+\textbf{关联模块：} \texttt{capstone/} 第五课（测试）+ 第六课（性能优化）
+
+\subsection*{第 6 周：部署与展示}
+
+\begin{itemize}
+  \item 部署到 Render/PythonAnywhere
+  \item 准备 5 分钟演示
+  \item 完善 README 和项目文档
+\end{itemize}
+
+\textbf{关联模块：} \texttt{capstone/} 第七课（部署）+ 第八课（展示）+ \texttt{git-collab/}（版本管理）
+
+\subsection*{完成标志}
+
+\begin{lstlisting}
+✓ 用户能上传任意图片
+✓ AI 能识别出图片内容（准确率 > 70%）
+✓ 显示 Top-3 识别结果
+✓ 保存识别历史
+✓ 可以在手机上使用
+✓ 代码在 GitHub 上
+✓ 项目已部署上线
+\end{lstlisting}
+
+\section*{本模块与其他模块的关联总表}
+
+本模块是系列的终章，用到前面\textbf{所有模块}的知识：
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{用到哪个模块} & \textbf{用在 capstone 哪里} \\ \hline
+Scratch & 项目规划时的"大问题拆小问题"思维 \\ \hline
+计算思维 & 第一课的项目分解、算法设计 \\ \hline
+计算机数学 & 第六课的性能优化（时间复杂度分析） \\ \hline
+Python 基础 & 所有代码实现 \\ \hline
+数据结构与算法 & 第三课的数据结构选择、复杂度分析 \\ \hline
+Python → C++ & （可选）C++ 写高性能组件 \\ \hline
+Web 开发 & 第二课的 API 设计、前端渲染、后端逻辑 \\ \hline
+Git 与协作 & 第四课的项目管理、版本控制 \\ \hline
+AI 入门 & （可选）集成 AI 模型 \\ \hline
+\end{tabular}
+\end{center}
+
+这就是你六年来学到的全部——每一个模块都在这个最终项目中发挥作用。
+
+\section*{\textcolor{blue!70!black}{各课练习参考答案}}
+
+\subsection*{第一课：项目规划}
+\begin{enumerate}
+  \item 无标准答案——鼓励学生思考自己的技术兴趣点，如 Web 开发、AI、游戏开发等。
+  \item 无标准答案——选择理由应包括：兴趣匹配、难度适中、技术覆盖面合适。
+  \item 目标用户：班级同学和老师。核心功能：① 图书录入（书名、编号、捐赠人）② 借书登记 ③ 还书登记 ④ 图书搜索 ⑤ 借阅记录查询。扩展功能：① 逾期提醒 ② 热门图书排行 ③ 预约借书。
+\end{enumerate}
+
+\subsection*{第二课：项目架构设计}
+\begin{enumerate}
+  \item 无标准答案——鼓励写出清晰、完整的需求文档，参考课中模板。
+  \item 无标准答案——需合理论证难度评级，考虑技术难度和工作量。
+  \item MVP（最小可行产品）包含最核心的功能，能解决用户最基本的需求。先做 MVP 可以快速验证想法、获得反馈，避免在不需要的功能上浪费时间。
+\end{enumerate}
+
+\subsection*{第三课：分阶段开发——迭代交付}
+\begin{enumerate}
+  \item 无标准答案——参考 \texttt{word-app/} 的目录结构：包含 \texttt{app.py}、\texttt{models.py}、\texttt{templates/}、\texttt{static/}、\texttt{requirements.txt}、\texttt{.gitignore}、\texttt{README.md}。
+  \item 无标准答案——需合理设计数据库表、字段类型和外键关系。
+  \item 无标准答案——参考课中 API 设计表格，列出所有路由及其方法。
+\end{enumerate}
+
+\subsection*{第四课：项目管理}
+\begin{enumerate}
+  \item 无标准答案——示例：第 1 周（骨架）、第 2 周（用户系统）、第 3-4 周（核心功能）、第 5 周（打磨）、第 6 周（部署）。
+  \item 每个功能完成后应：① 手动测试功能是否正常 ② 处理边界情况 ③ \texttt{git add} 和 \texttt{git commit} ④ 把任务从 Doing 移到 Done。
+  \item 里程碑 1：用户系统完成（可注册登录）。里程碑 2：核心功能完成（可完成主要业务流程）。里程碑 3：部署上线（可公开访问）。
+\end{enumerate}
+
+\subsection*{第五课：测试}
+\begin{enumerate}
+  \item 无标准答案——GitHub 仓库应包括 \texttt{.gitignore}、\texttt{README.md}，并已完成初始 commit 和 push。
+  \item 无标准答案——GitHub Projects 看板应包含所有功能任务，分为 To Do / Doing / Done 三列。
+  \item 推荐工作流：每个功能开一个分支，开发完成后合并到 main。每次完成一个小功能（而非一天结束）就 commit。每天至少 push 一次到远程仓库备份。
+\end{enumerate}
+
+\subsection*{第六课：性能优化}
+\begin{enumerate}
+  \item 无标准答案——测试清单应覆盖核心功能的正常操作、非法输入、空数据处理等场景。
+  \item 边界条件示例：① 用户名为空字符串 ② 密码长度为 1 个字符 ③ 用户名包含特殊字符 ④ 用户名已存在 ⑤ 连续快速提交登录请求。
+  \item "不用测试"是错误的观点。人都会犯错，代码越复杂越容易出 bug。测试是保证代码质量和程序正确性的必要手段。即使很有经验的程序员也会写 bug。
+\end{enumerate}
+
+\subsection*{第七课：部署}
+\begin{enumerate}
+  \item 可能变慢的查询：\texttt{ORDER BY created\_at DESC}（需要全表排序）、\texttt{COUNT(*)} 统计。用 \texttt{EXPLAIN} 或 \texttt{EXPLAIN QUERY PLAN} 分析查询计划。
+  \item 索引就像书的目录——通过维护一个有序的数据结构（B树/哈希表），把全表扫描变成快速查找。代价：占用额外空间，写入数据（INSERT/UPDATE/DELETE）时需要更新索引，稍微变慢。
+  \item "最近 10 篇文章"：\texttt{SELECT * FROM posts ORDER BY created\_at DESC LIMIT 10}（加索引在 created\_at 上）。"文章总数"：\texttt{SELECT COUNT(*) FROM posts}（SQLite 会自动优化这个查询）。
+\end{enumerate}
+
+\subsection*{第八课：项目展示}
+\begin{enumerate}
+  \item 无标准答案——成功部署后应能通过公网 URL 访问应用。
+  \item 检查清单：debug=False、密钥用环境变量、静态文件路径正确、数据库路径正确、HTTPS 访问正常、移动端显示正常。
+  \item "500 Internal Server Error" 是服务器内部错误。排查步骤：① 查看服务器日志 ② 在本地开启 debug=True 重现问题 ③ 检查最近的代码修改 ④ 检查数据库连接和权限。
+\end{enumerate}
+
+\end{document}

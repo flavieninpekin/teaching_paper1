@@ -1,0 +1,214 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{../../teaching-style}
+
+\begin{document}
+\pagestyle{empty}
+
+\maintitle{概率论与数理统计}
+\begin{center}
+  \large 高学段 \quad ★ 标记为高考不考内容
+\end{center}
+\vspace{0.3cm}
+
+\chaptertitle{第一章\quad 排列组合与二项式定理}
+
+\sectiontitle{1.1\quad 排列组合回顾}
+
+\knowbox{
+$A_n^m=n(n-1)\cdots(n-m+1)=\dfrac{n!}{(n-m)!}$。\\
+$C_n^m=\dfrac{A_n^m}{A_m^m}=\dfrac{n!}{m!(n-m)!}$。\\
+性质：$C_n^m=C_n^{n-m}$，$C_{n+1}^m=C_n^m+C_n^{m-1}$（杨辉恒等式）。}
+
+\sectiontitle{1.2\quad 二项式定理}
+
+\knowbox{
+$(a+b)^n=\sum_{k=0}^n C_n^k a^{n-k}b^k$。\\
+通项：$T_{k+1}=C_n^k a^{n-k}b^k$。\\
+性质：二项式系数和$C_n^0+C_n^1+\cdots+C_n^n=2^n$。\\
+奇数项系数和$=$偶数项系数和$=2^{n-1}$。}
+
+\sectiontitle{习题1}
+
+\begin{exercise}
+\item 求$(x+2)^5$展开式中$x^3$的系数。
+\item 求$(2x-\dfrac1x)^6$的常数项。
+\item $(1+x)^n$展开式中$x^3$的系数是$x^2$系数的$2$倍，求$n$。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第二章\quad 概率进阶}
+
+\sectiontitle{2.1\quad 条件概率与乘法公式}
+
+\knowbox{
+$P(B|A)=\dfrac{P(AB)}{P(A)}$（$P(A)>0$）。\\
+乘法公式：$P(AB)=P(A)P(B|A)=P(B)P(A|B)$。\\
+事件的独立性：$P(AB)=P(A)P(B)\Leftrightarrow A,B$独立。}
+
+\sectiontitle{2.2\quad 全概率公式与贝叶斯公式 ★}
+
+\knowbox{
+\textbf{全概率公式}：若$B_1,B_2,\dots,B_n$是完备事件组，则$P(A)=\sum_{i=1}^n P(B_i)P(A|B_i)$。\\
+\textbf{贝叶斯公式}：$P(B_i|A)=\dfrac{P(B_i)P(A|B_i)}{\sum_{j=1}^n P(B_j)P(A|B_j)}$。\\
+意义：用结果反推原因的概率（后验概率）。}
+
+\sectiontitle{习题2}
+
+\begin{exercise}
+\item 袋中有$3$红$2$白球，先后取两球（不放回），求第二次取到红球的概率。
+\item 某产品合格率$90\%$，合格品中一等品率$80\%$，求产品是一等品的概率。
+\item ★ 两台机器生产同种产品，甲产量$60\%$，合格率$95\%$；乙产量$40\%$，合格率$90\%$。\\
+  求任取一件是合格品的概率。若取到一件合格品，求它是甲厂生产的概率。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第三章\quad 随机变量与分布}
+
+\sectiontitle{3.1\quad 随机变量与分布列}
+
+\knowbox{
+\textbf{离散型随机变量}$X$：取值有限或可列个。\\
+分布列：$P(X=x_i)=p_i$，满足$p_i\ge0$，$\sum p_i=1$。\\
+\textbf{分布函数}：$F(x)=P(X\le x)$，单调不减，右连续。}
+
+\sectiontitle{3.2\quad 常见离散型分布}
+
+\knowbox{
+\textbf{二项分布}$X\sim B(n,p)$：$P(X=k)=C_n^k p^k(1-p)^{n-k}$（$n$次独立重复试验）。\\
+期望$E(X)=np$，方差$D(X)=np(1-p)$。\\
+\textbf{超几何分布}$X\sim H(N,M,n)$：$P(X=k)=\dfrac{C_M^k C_{N-M}^{n-k}}{C_N^n}$。\\
+\textbf{泊松分布}★ $X\sim P(\lambda)$：$P(X=k)=\dfrac{\lambda^k}{k!}e^{-\lambda}$（$k=0,1,2,\dots$）。}
+
+\sectiontitle{3.3\quad 正态分布 ★}
+
+\knowbox{
+连续型随机变量，密度函数$f(x)=\dfrac1{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$。\\
+$X\sim N(\mu,\sigma^2)$，$E(X)=\mu$，$D(X)=\sigma^2$。\\
+标准正态$N(0,1)$：$\Phi(x)=\dfrac1{\sqrt{2\pi}}\int_{-\infty}^x e^{-\frac{t^2}{2}}dt$。\\
+$3\sigma$原则：$P(|X-\mu|<\sigma)\approx68.3\%$，$2\sigma\approx95.4\%$，$3\sigma\approx99.7\%$。}
+
+\sectiontitle{习题3}
+
+\begin{exercise}
+\item 掷硬币$5$次，求正面朝上次数的分布列和期望。
+\item 某射击手命中率$0.8$，射击$10$次，求至少命中$8$次的概率。
+\item ★ 某地区成年男性身高$X\sim N(170,10^2)$，求身高在$160$到$180$之间的概率。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第四章\quad 期望与方差}
+
+\sectiontitle{4.1\quad 数学期望}
+
+\knowbox{
+离散型：$E(X)=\sum x_i p_i$。\\
+连续型★：$E(X)=\int_{-\infty}^{\infty} x f(x)\,dx$。\\
+性质：$E(aX+b)=aE(X)+b$；$E(X+Y)=E(X)+E(Y)$。\\
+若$X,Y$独立，$E(XY)=E(X)E(Y)$。}
+
+\sectiontitle{4.2\quad 方差}
+
+\knowbox{
+$D(X)=E[(X-E(X))^2]=E(X^2)-[E(X)]^2$。\\
+性质：$D(aX+b)=a^2 D(X)$；若$X,Y$独立，$D(X\pm Y)=D(X)+D(Y)$。\\
+标准差$\sigma(X)=\sqrt{D(X)}$。}
+
+\sectiontitle{4.3\quad 大数定律与中心极限定理 ★}
+
+\knowbox{
+\textbf{切比雪夫不等式}：$P(|X-\mu|\ge\varepsilon)\le\dfrac{\sigma^2}{\varepsilon^2}$。\\
+\textbf{大数定律}：样本均值依概率收敛于总体均值。\\
+\textbf{中心极限定理}：独立同分布随机变量的和近似服从正态分布。\\
+重要性：解释了正态分布在自然界中普遍存在的原因。}
+
+\sectiontitle{习题4}
+
+\begin{exercise}
+\item 已知$X$分布列：$P(X=0)=0.2$，$P(X=1)=0.5$，$P(X=2)=0.3$，求$E(X)$和$D(X)$。
+\item $X\sim B(10,0.2)$，求$E(X)$和$D(X)$。
+\item 已知$E(X)=3$，$D(X)=4$，求$E(2X-1)$和$D(2X-1)$。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第五章\quad 数理统计初步}
+
+\sectiontitle{5.1\quad 抽样方法与统计量}
+
+\knowbox{
+\textbf{简单随机抽样}：每个个体被抽到的概率相等。\\
+\textbf{分层抽样}：按比例从各层抽取。\\
+\textbf{系统抽样}：等距抽取。\\
+\textbf{样本均值}$\bar X=\dfrac1n\sum_{i=1}^n X_i$。\\
+\textbf{样本方差}$S^2=\dfrac1{n-1}\sum_{i=1}^n (X_i-\bar X)^2$（无偏估计）。}
+
+\sectiontitle{5.2\quad 参数估计 ★}
+
+\knowbox{
+\textbf{点估计}：用样本统计量估计总体参数。\\
+$\hat\mu=\bar X$，$\hat{\sigma^2}=S^2$。\\
+\textbf{区间估计}：$\bar X\pm z_{\alpha/2}\dfrac{\sigma}{\sqrt{n}}$（$\sigma$已知时总体均值的置信区间）。\\
+置信水平越高，区间越宽。}
+
+\sectiontitle{5.3\quad 假设检验与回归分析 ★}
+
+\knowbox{
+\textbf{假设检验}：提出假设$H_0$，计算检验统计量，根据$p$值判断是否拒绝$H_0$。\\
+两类错误：弃真（$\alpha$）和纳伪（$\beta$）。\\
+\textbf{线性回归}：$y=\beta_0+\beta_1 x+\varepsilon$。\\
+最小二乘法：使$\sum(y_i-\hat y_i)^2$最小。\\
+相关系数$r$：衡量$x$与$y$线性相关程度（$|r|\le1$）。\\
+$r$接近$\pm1$表示强线性相关，接近$0$表示弱相关。}
+
+\sectiontitle{习题5}
+
+\begin{exercise}
+\item 某样本数据：$12,15,14,13,16$，求样本均值和样本方差。
+\item 从$500$名学生中抽取$50$名调查，采用什么抽样方法比较合理？
+\item ★ 某厂产品寿命$\sim N(\mu,\sigma^2)$，抽样$n=100$，$\bar x=1050$小时，$s=40$小时，求$\mu$的$95\%$置信区间（$z_{0.025}\approx1.96$）。
+\item ★ 给出$5$组数据$(x,y)$：$(1,2),(2,4),(3,5),(4,7),(5,8)$，求回归直线方程。
+\end{exercise}
+
+\newpage
+\sectiontitle{参考答案}
+
+\subsection*{习题1}
+\begin{enumerate}
+  \item $40$
+  \item $-160$
+  \item $n=8$
+\end{enumerate}
+
+\subsection*{习题2}
+\begin{enumerate}
+  \item $\dfrac35$
+  \item $0.72$（$72\%$）
+  \item $P(\text{合格})=0.93$；$P(\text{甲}|\text{合格})=\dfrac{19}{31}\approx0.6129$
+\end{enumerate}
+
+\subsection*{习题3}
+\begin{enumerate}
+  \item $P(X=k)=\dfrac{C_5^k}{32}$（$k=0,1,\dots,5$），$E(X)=2.5$
+  \item $P(X\ge8)\approx0.6778$
+  \item $P(160<X<180)\approx0.6826$（$68.3\%$）
+\end{enumerate}
+
+\subsection*{习题4}
+\begin{enumerate}
+  \item $E(X)=1.1$，$D(X)=0.49$
+  \item $E(X)=2$，$D(X)=1.6$
+  \item $E(2X-1)=5$，$D(2X-1)=16$
+\end{enumerate}
+
+\subsection*{习题5}
+\begin{enumerate}
+  \item $\bar x=14$，$S^2=2.5$
+  \item 分层抽样（按年级分层）或简单随机抽样
+  \item $95\%$置信区间：$[1042.16,\,1057.84]$
+  \item $\hat y=0.7+1.5x$
+\end{enumerate}
+
+\end{document}

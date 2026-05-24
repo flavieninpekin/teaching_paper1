@@ -1,0 +1,147 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{编程系列整体课程大纲}}}
+\author{面向北京地区四年级起点，六年编程素养培养}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{一、设计总纲}
+
+本系列面向\textbf{北京地区四年级起点}的学生，计划在 \textbf{6 年内（G4--G9）}完成从图形化编程启蒙到现代编程素养的完整构建。核心理念如下：
+
+\begin{enumerate}
+  \item \textbf{先思维，后语法}——先通过 Scratch 建立编程直觉，再过渡到文本语言。
+  \item \textbf{逐层递进}——每一年在上一年的基础上增加一个"认知维度"，不跳跃。
+  \item \textbf{产出驱动}——每个阶段都有可展示的作品（游戏、网页、项目），保持成就感。
+  \item \textbf{家长可参与}——特别为家长编写了 Scratch 指南，让不懂编程的家长也能了解孩子在学习什么。
+  \item \textbf{对标主流}——知识体系覆盖信息学奥赛入门要求、高中信息技术新课标核心内容。
+\end{enumerate}
+
+\section*{二、六年学习路径总览}
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tabular}{|c|l|c|l|}
+\hline
+\textbf{年级} & \textbf{模块} & \textbf{课时建议} & \textbf{核心目标} \\ \hline
+G4（四上） & Scratch 启蒙 & 20--30h & 建立编程直觉，理解顺序/分支/循环/事件 \\ \hline
+G5（四下） & 计算思维与计算机基础 & 20--30h & 学会分解问题，理解计算机工作原理 \\ \hline
+G5--G6（五上） & Python 基础 & 30--40h & 掌握文本编程基本语法，能写 100 行级程序 \\ \hline
+G6（五下--六上） & 数据结构与算法初步 & 30--40h & 培养算法思维，为竞赛和后续学习打底 \\ \hline
+G6--G7（六下--七上） & 从 Python 到 C++ & 30--40h & 理解静态类型、内存管理、OOP \\ \hline
+G7--G8（七下--八上） & Web 开发入门 & 30--40h & 做出能用的产品，建立全栈视角 \\ \hline
+G8（八上） & 版本控制与协作开发 & 10--15h & 学会 Git，体验团队协作 \\ \hline
+G9（八下--九上） & AI 入门 & 15--20h & 理解 ML/DL/NN/RL 核心思想 \\ \hline
+G9（九上） & 综合项目实战 & 20--30h & 融会贯通，完成一个完整项目 \\ \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+\textbf{注：}年级安排为建议，可根据孩子的实际进度灵活调整。实际教学中可以多个模块穿插进行，不一定要严格串行。
+
+\section*{三、模块依赖关系}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{模块} & \textbf{前置依赖} & \textbf{为后续提供} \\ \hline
+Scratch 启蒙 & 无 & 编程核心概念的直观理解 \\ \hline
+计算思维与计算机基础 & Scratch 启蒙 & 问题分解能力和底层认知 \\ \hline
+Python 基础 & 计算思维 & 文本编程的基本能力 \\ \hline
+数据结构与算法初步 & Python 基础 & 算法思维，竞赛基础 \\ \hline
+从 Python 到 C++ & Python 基础 & 静态类型语言能力，OOP 理解 \\ \hline
+Web 开发入门 & Python 基础 & 全栈开发视角，项目经验 \\ \hline
+版本控制与协作开发 & Web 开发入门 & 团队协作能力 \\ \hline
+AI 入门 & Python 基础 & 前沿视野 \\ \hline
+综合项目实战 & 所有前置模块 & 综合运用能力 \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{四、各模块简介}
+
+\subsection*{模块 1：Scratch 启蒙（家长指南）}
+
+Scratch 是 MIT 开发的免费图形化编程工具，面向 8--16 岁青少年。本模块以\textbf{家长指南}的形式编写——孩子已经掌握了 Scratch，而家长需要了解它是什么、孩子学了什么、以及如何与孩子交流编程话题。
+
+\textbf{涵盖内容：}Scratch 界面介绍、积木类型（运动/外观/声音/事件/控制/侦测/运算/变量）、核心编程概念（顺序、分支、循环、变量、事件、并行）、典型项目类型、家长提问指南。
+
+\subsection*{模块 2：计算思维与计算机基础}
+
+从 Scratch 到 Python 之间需要一座桥梁——计算思维。本模块训练孩子像程序员一样思考，同时建立对计算机底层的基本理解。
+
+\textbf{涵盖内容：}计算思维四步法（分解→模式识别→抽象→算法）、流程图与伪代码、二进制与数据表示、CPU/内存/存储工作原理、程序执行过程（编译 vs 解释）、调试思维。
+
+\subsection*{模块 3：Python 基础}
+
+Python 语法简洁，是从图形化编程到文本编程的最佳过渡语言。
+
+\textbf{涵盖内容：}环境搭建、变量与数据类型、条件判断、循环、列表/元组/字典、函数与模块、文件读写、小项目（猜数字/计算器/记账本）。
+
+\subsection*{模块 4：数据结构与算法初步}
+
+现代编程素养的核心是算法思维。本模块系统讲解常用数据结构和经典算法，衔接信息学奥赛入门要求。
+
+\textbf{涵盖内容：}时间复杂度初步、数组/链表、栈与队列、树与图基础、排序算法（冒泡/选择/插入/归并/快排）、二分查找、递归、动态规划入门。
+
+\subsection*{模块 5：从 Python 到 C++}
+
+在掌握 Python 的基础上学习 C++，帮助理解静态类型、手动内存管理、编译执行等核心概念，拓展语言视野。
+
+\textbf{涵盖内容：}动态类型 vs 静态类型、语法对照、数组与指针、函数重载、OOP 基础（类与对象）、编译链接过程、小项目：用 C++ 重写一个 Python 项目。
+
+\subsection*{模块 6：Web 开发入门}
+
+从"写代码"到"做产品"的关键一步。涵盖前后端基础，通过 4 个小项目逐步深入。
+
+\textbf{涵盖内容：}前端（HTML/CSS/JavaScript）、后端（Flask）、数据库（SQLite）、项目路线（个人主页→交互页面→留言板→简易博客）。
+
+\subsection*{模块 7：版本控制与协作开发}
+
+现代编程的必修课。Git 是行业标准工具，越早接触越好。
+
+\textbf{涵盖内容：}为什么需要版本控制、Git 核心工作流（add/commit/push/pull）、分支与合并、GitHub/GitLab 基础操作、Pull Request 与 Code Review、开源文化简介。
+
+\subsection*{模块 8：AI 入门}
+
+理解人工智能的核心思想，建立对 ML/DL/NN/RL 的直觉认知。
+
+\textbf{涵盖内容：}机器学习（监督/无监督/半监督）、神经网络结构（输入/隐藏/输出层）、深度学习与应用（人脸识别/语音助手/自动驾驶）、强化学习（AlphaGo）。
+
+\subsection*{模块 9：综合项目实战}
+
+六年学习的最终检验。从需求分析到部署上线的完整项目实践。
+
+\textbf{涵盖内容：}项目选题与需求分析、技术选型与架构设计、分阶段开发（原型→迭代→完善）、测试与调试、Git 协作与文档编写、部署与演示。
+
+\section*{五、家长角色指南}
+
+\begin{itemize}
+  \item \textbf{G4--G5（兴趣培养期）：} 家长主要角色是"观众和提问者"。看孩子的 Scratch 作品，问他"这个角色是怎么动起来的？""如果分数到 10 分会发生什么？"
+  \item \textbf{G5--G6（技能积累期）：} 家长主要角色是"学习伙伴"。可以和孩子一起看 Python 代码，虽然可能看不懂，但可以说"给我讲讲这段是干什么的"。
+  \item \textbf{G7--G9（独立开发者期）：} 家长主要角色是"产品体验官"。试用孩子的网站或项目，给出真实反馈。
+\end{itemize}
+
+\textbf{核心原则：}不需要家长会编程。只需要表现出兴趣和支持，让孩子愿意展示和讲解自己的作品。
+
+\section*{六、后续扩展方向（可选）}
+
+完成上述 9 个模块后，学生可以根据兴趣选择深入方向：
+\begin{itemize}
+  \item \textbf{竞赛方向：} 深入算法（DP/图论/数论），备考 NOI / 信息学奥赛
+  \item \textbf{工程方向：} 深入学习数据库（SQL/NoSQL）、后端框架、DevOps
+  \item \textbf{AI 方向：} 深入学习机器学习框架（PyTorch/TensorFlow）、数学基础
+  \item \textbf{游戏开发：} 学习 Unity/Unreal Engine 或 Pygame
+  \item \textbf{移动开发：} 学习 Flutter / Swift / Android 开发
+\end{itemize}
+
+\end{document}

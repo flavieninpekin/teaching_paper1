@@ -1,0 +1,1010 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true
+}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{Python 基础}}}
+\author{从 Scratch 积木到真正的代码}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{欢迎来到真正的编程！}
+
+你已经在 Scratch 里学会了编程的核心概念，又通过计算思维学会了"像程序员一样思考"。现在，是时候学习\textbf{第一门真正的编程语言}了。
+
+Python 是目前全球最流行的入门编程语言。它的特点是\textbf{语法简单、读起来像英语}。很多大学生、甚至工作中的程序员都在用 Python。
+
+更重要的是：你在 Scratch 里学的每一个概念，在 Python 中都有对应的写法。你不是从零开始——你只是换了一种表达方式。
+
+\section*{第一课：搭建环境与第一个程序}
+
+\subsection*{安装 Python}
+
+\begin{enumerate}
+  \item 打开浏览器，访问 \url{https://www.python.org/downloads/}
+  \item 下载最新版本的 Python（点击黄色的 Download 按钮）
+  \item 安装时，\textbf{一定记得勾选} "Add Python to PATH"
+  \item 安装完成后，打开"命令提示符"（按 Win+R，输入 \texttt{cmd}，回车）
+  \item 输入 \texttt{python --version}，如果显示版本号，就安装成功了
+\end{enumerate}
+
+\subsection*{第一个程序：Hello World}
+
+打开任意文本编辑器（记事本就可以），输入：
+
+\begin{lstlisting}[language=Python]
+print("Hello, World!")
+\end{lstlisting}
+
+保存为 \texttt{hello.py}。然后在命令行输入：
+
+\begin{lstlisting}[language=bash]
+python hello.py
+\end{lstlisting}
+
+屏幕上就会显示：
+
+\begin{lstlisting}
+Hello, World!
+\end{lstlisting}
+
+\textbf{恭喜！你写了第一个 Python 程序！} \texttt{print()} 是 Python 的"说话"指令——它把括号里的内容显示在屏幕上。
+
+\subsection*{对比 Scratch}
+
+在 Scratch 里，想让小猫说话，你用的是"说 你好！ 2 秒"积木。在 Python 里就是 \texttt{print("你好！")}。本质上是一回事。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 修改你的 \texttt{hello.py}，让它输出三行：你的名字、你最喜欢的颜色、你今天的日期。
+  \item 故意制造一个错误：把 \texttt{print} 写成 \texttt{pront}，运行看看报错信息是什么样的。然后改回来。
+  \item \textbf{[思考]} \texttt{print("Hello" + "World")} 和 \texttt{print("Hello", "World")} 的输出有什么不同？动手试试。
+\end{enumerate}
+
+\section*{第二课：变量与数据类型}
+
+\subsection*{变量——贴了标签的盒子}
+
+变量就是一个\textbf{存储数据的盒子}，你给它起个名字，往里面放东西。
+
+\begin{lstlisting}[language=Python]
+score = 0          # 变量 score 里存了数字 0
+name = "小明"      # 变量 name 里存了文字"小明"
+price = 12.5      # 变量 price 里存了小数 12.5
+is_game_over = False  # 变量 is_game_over 里存了"假"
+\end{lstlisting}
+
+\texttt{=} 不是数学里的"等于"，而是\textbf{赋值}——把右边的值装进左边名字的盒子里。
+
+\subsection*{数据类型}
+
+Python 中有几种基本的数据类型：
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{类型} & \textbf{名字} & \textbf{例子} \\ \hline
+整数 & \texttt{int} & \texttt{42}, \texttt{-3}, \texttt{0} \\ \hline
+浮点数 & \texttt{float} & \texttt{3.14}, \texttt{-0.5}, \texttt{2.0} \\ \hline
+字符串 & \texttt{str} & \texttt{"你好"}, \texttt{'Python'} \\ \hline
+布尔值 & \texttt{bool} & \texttt{True}, \texttt{False} \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{注意：} 字符串要用引号括起来，数字不用。\texttt{42} 是数字，\texttt{"42"} 是文字。
+
+\subsection*{Scratch 对照}
+
+在 Scratch 里，你在红色"变量"积木里创建了"得分"——那就是 Python 中的变量。Scratch 会帮你区分数据类型，Python 也会自动识别，但你自己要知道："1" 和 1 是不同的东西。
+
+\subsection*{练习}
+
+\begin{lstlisting}[language=Python]
+# 创建三个变量：你的名字、年龄、身高
+my_name = "张三"
+my_age = 10
+my_height = 1.45
+
+# 打印出来
+print(my_name)
+print(my_age)
+print(my_height)
+\end{lstlisting}
+
+运行看看。然后试着把 \texttt{my\_age} 改成文字：\texttt{my\_age = "十岁"}。还能正常运行吗？
+
+\section*{第三课：输入与输出}
+
+\subsection*{让程序和你对话}
+
+\begin{lstlisting}[language=Python]
+name = input("你叫什么名字？")
+print("你好，" + name + "！")
+\end{lstlisting}
+
+\texttt{input()} 会在屏幕上显示括号里的文字，然后等待你输入。你输入的内容会被存到变量里。
+
+\texttt{+} 在字符串之间可以把它们\textbf{拼接}起来。
+
+\subsection*{注意：input 返回的是字符串}
+
+\begin{lstlisting}[language=Python]
+age = input("你几岁？")      # age 是字符串，比如 "10"
+next_year = age + 1         # 报错！不能把字符串和数字相加
+\end{lstlisting}
+
+需要用 \texttt{int()} 把字符串转换成整数：
+
+\begin{lstlisting}[language=Python]
+age = int(input("你几岁？"))  # age 现在是整数 10
+next_year = age + 1          # 正确！结果是 11
+print("明年你" + str(next_year) + "岁了")
+\end{lstlisting}
+
+\texttt{str()} 又把数字变回字符串，这样就能用 + 拼接了。
+
+\subsection*{Scratch 对照}
+
+Scratch 里的"询问 你叫什么名字？并等待"积木 + "回答"积木 = Python 中的 \texttt{input()}。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写一个程序：用 \texttt{input()} 问用户出生年份，计算并输出用户年龄（假设今年是 2026 年）。
+  \item 扩展上题：如果年龄 $\ge$ 18，输出"你已经成年了"；否则输出"你还未成年"。
+  \item \textbf{[调试练习]} 运行以下代码，观察报错信息，然后修复它：
+\begin{lstlisting}[language=Python]
+age = input("你几岁？")
+print("明年你" + age + 1 + "岁了")
+\end{lstlisting}
+\end{enumerate}
+
+\section*{第四课：条件判断——if 语句}
+
+\subsection*{基本语法}
+
+在 Scratch 里，你用橙色"如果……那么"积木做判断。在 Python 里是这样：
+
+\begin{lstlisting}[language=Python]
+score = 85
+
+if score >= 60:
+    print("及格了！")
+else:
+    print("不及格……")
+\end{lstlisting}
+
+\textbf{注意事项：}
+\begin{itemize}
+  \item \texttt{if} 后面的条件\textbf{不用括号}，但要以\textbf{冒号}结尾
+  \item 条件下面的代码要\textbf{缩进}（通常按 Tab 或 4 个空格）
+  \item Python 用缩进来表示代码属于哪一块（不是花括号 \{\}）
+\end{itemize}
+
+\subsection*{多分支：if / elif / else}
+
+\begin{lstlisting}[language=Python]
+score = 85
+
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+elif score >= 60:
+    grade = "D"
+else:
+    grade = "F"
+
+print("你的等级是：" + grade)
+\end{lstlisting}
+
+\texttt{elif} = else + if，是"否则如果"的意思。
+
+\subsection*{比较运算符}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{运算符} & \textbf{含义} & \textbf{例子} \\ \hline
+\texttt{==} & 等于 & \texttt{score == 100} \\ \hline
+\texttt{!=} & 不等于 & \texttt{score != 0} \\ \hline
+\texttt{>} & 大于 & \texttt{score > 60} \\ \hline
+\texttt{<} & 小于 & \texttt{score < 60} \\ \hline
+\texttt{>=} & 大于等于 & \texttt{score >= 60} \\ \hline
+\texttt{<=} & 小于等于 & \texttt{score <= 100} \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{注意：} \texttt{=} 是赋值，\texttt{==} 才是判断是否相等。这是初学者最容易犯的错误！
+
+\subsection*{练习：猜数字}
+
+结合 \texttt{random} 模块和条件判断，写一个猜数字游戏：
+
+\begin{lstlisting}[language=Python]
+import random
+
+secret = random.randint(1, 100)
+guess = int(input("猜一个 1-100 之间的数："))
+
+if guess == secret:
+    print("太厉害了！一次就猜对！")
+elif guess > secret:
+    print("大了")
+else:
+    print("小了")
+\end{lstlisting}
+
+（这个版本只能猜一次。后面学了循环，你就能让它一直猜直到猜中。）
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写一个程序：输入一个分数，输出对应的等级（90以上A，80-89 B，70-79 C，60-69 D，60以下F）。用 \texttt{if/elif/else} 实现。
+  \item 判断以下条件表达式的值（True 或 False）：① \texttt{10 > 5 and 3 < 1} ② \texttt{not (7 == 7)} ③ \texttt{5 != 5 or 2 == 2}
+  \item \textbf{[陷阱题]} 以下代码为什么会输出意想不到的结果？改正确。
+\begin{lstlisting}[language=Python]
+x = 10
+if x = 10:
+    print("x is 10")
+\end{lstlisting}
+\end{enumerate}
+
+\section*{第五课：循环——让计算机做重复的事}
+
+\subsection*{for 循环——知道要重复几次}
+
+Scratch 中的"重复 10 次"积木，在 Python 中：
+
+\begin{lstlisting}[language=Python]
+for i in range(10):
+    print("这是第", i+1, "次")
+\end{lstlisting}
+
+\texttt{range(10)} 生成 0 到 9 的数字序列。循环变量 \texttt{i} 依次取每个值。
+
+\subsection*{遍历列表}
+
+\begin{lstlisting}[language=Python]
+fruits = ["苹果", "香蕉", "橘子"]
+for fruit in fruits:
+    print("我喜欢吃" + fruit)
+\end{lstlisting}
+
+输出：
+\begin{lstlisting}
+我喜欢吃苹果
+我喜欢吃香蕉
+我喜欢吃橘子
+\end{lstlisting}
+
+\subsection*{while 循环——不知道要重复几次}
+
+\begin{lstlisting}[language=Python]
+secret = 42
+guess = 0
+
+while guess != secret:
+    guess = int(input("猜数字："))
+    
+print("猜对了！")
+\end{lstlisting}
+
+只要条件成立，循环就一直执行。当 \texttt{guess == secret} 时，循环结束。
+
+\textbf{小心无限循环！} 如果条件永远为真，程序就会永远跑下去。
+
+\subsection*{Scratch 对照}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Scratch 积木} & \textbf{Python} \\ \hline
+"重复 10 次" & \texttt{for i in range(10):} \\ \hline
+"重复执行" & \texttt{while True:} \\ \hline
+"重复执行直到……" & \texttt{while 条件:} \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{练习：完善猜数字游戏}
+
+用 \texttt{while} 循环改造刚才的猜数字游戏，让玩家可以一直猜，直到猜中为止。并记录猜了多少次。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 用 \texttt{for} 循环打印 1 到 100 之间所有 7 的倍数。
+  \item 用 \texttt{while} 循环计算 1 到 100 所有整数之和，并与公式 $n(n+1)/2$ 的结果对比。
+  \item \textbf{[代码理解]} 以下循环会输出什么？运行前先推理：
+\begin{lstlisting}[language=Python]
+for i in range(5):
+    if i % 2 == 0:
+        print(str(i) + "是偶数")
+    else:
+        print(str(i) + "是奇数")
+\end{lstlisting}
+\end{enumerate}
+
+\section*{第六课：列表——装很多东西的盒子}
+
+\subsection*{什么是列表}
+
+列表就是\textbf{有序的多个值的集合}。在 Scratch 里叫"列表"（List），在 Python 里也叫列表。
+
+\begin{lstlisting}[language=Python]
+# 创建列表
+scores = [95, 87, 92, 78, 88]
+names = ["小明", "小红", "小刚"]
+mixed = [1, "hello", 3.14, True]  # 不同数据类型也可以
+
+# 访问元素（从 0 开始数！）
+print(scores[0])   # 第一个元素：95
+print(scores[2])   # 第三个元素：92
+print(scores[-1])  # 最后一个元素：88
+\end{lstlisting}
+
+\textbf{重要：} 计算机从 0 开始数数，不是从 1。所以第一个元素的索引是 0，第二个是 1……这是初学者最容易搞混的地方。
+
+\subsection*{列表常用操作}
+
+\begin{lstlisting}[language=Python]
+nums = [1, 2, 3]
+
+nums.append(4)        # 在末尾添加：nums = [1, 2, 3, 4]
+nums.insert(0, 0)     # 在位置 0 插入：nums = [0, 1, 2, 3, 4]
+nums.remove(2)        # 删除第一个出现的 2
+last = nums.pop()     # 弹出最后一个元素
+length = len(nums)    # 获取列表长度
+nums.sort()           # 排序
+\end{lstlisting}
+
+\subsection*{遍历列表的几种方式}
+
+\begin{lstlisting}[language=Python]
+fruits = ["苹果", "香蕉", "橘子"]
+
+# 方式 1：直接遍历元素
+for fruit in fruits:
+    print(fruit)
+
+# 方式 2：通过索引遍历
+for i in range(len(fruits)):
+    print(i, fruits[i])
+
+# 方式 3：同时得到索引和元素
+for i, fruit in enumerate(fruits):
+    print(i, fruit)
+\end{lstlisting}
+
+\subsection*{练习：成绩统计}
+
+有一个列表 \texttt{scores = [85, 92, 78, 95, 88, 76, 91]}，请计算：
+\begin{itemize}
+  \item 总分
+  \item 平均分
+  \item 最高分
+  \item 最低分
+\end{itemize}
+
+提示：用 \texttt{sum()}, \texttt{max()}, \texttt{min()} 函数。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 创建一个包含 10 个随机整数的列表，输出：最大值、最小值、平均值、中位数。
+  \item 有两个列表 \texttt{a = [1, 2, 3, 4, 5]} 和 \texttt{b = [3, 4, 5, 6, 7]}，用列表的方式找出同时在两个列表中的元素（交集）。
+  \item \textbf{[挑战]} 写一个程序生成"斐波那契数列"的前 20 项并存到列表中，然后输出。斐波那契：$F_1=1, F_2=1, F_n = F_{n-1} + F_{n-2}$。
+\end{enumerate}
+
+\section*{第七课：元组与字典}
+
+\subsection*{元组——不可修改的列表}
+
+元组和列表很像，但创���后\textbf{不能修改}（不能添加、删除、修改元素）。
+
+\begin{lstlisting}[language=Python]
+point = (3, 5)        # 一个坐标点
+rgb = (255, 128, 0)   # 一种颜色
+
+print(point[0])       # 3
+# point[0] = 10       # 错误！元组不能修改
+\end{lstlisting}
+
+什么时候用元组？当你确定数据不会改变时——比如坐标、颜色、日期等。
+
+\subsection*{字典——用名字索引}
+
+列表用数字做索引，字典用\textbf{任意名字}做索引。
+
+\begin{lstlisting}[language=Python]
+student = {
+    "name": "小明",
+    "age": 10,
+    "score": 95
+}
+
+print(student["name"])    # 小明
+print(student["score"])   # 95
+
+student["score"] = 98     # 修改
+student["class"] = "4班"  # 添加新键
+del student["age"]        # 删除
+\end{lstlisting}
+
+\textbf{类比：} 字典就像一本真正的字典——你用"词"（键）去查"释义"（值）。
+
+\subsection*{遍历字典}
+
+\begin{lstlisting}[language=Python]
+student = {"name": "小明", "age": 10, "score": 95}
+
+for key in student:
+    print(key, student[key])
+
+for key, value in student.items():
+    print(key, value)
+\end{lstlisting}
+
+\subsection*{Scratch 对照}
+
+Scratch 里只有"变量"和"列表"，没有字典。字典是 Python 新增的功能。但在 Scratch 中，你可以用两个列表模拟字典（一个存键、一个存值）。
+
+\subsection*{练习：通讯录}
+
+创建一个字典来存储 3 个同学的姓名和电话号码。然后让用户输入名字，程序显示对应的电话号码。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 有一个字典 \texttt{student = \{"name": "小明", "scores": [85, 92, 78]\}}，请计算该学生的平均分并输出。
+  \item 用字典统计一个字符串中每个字母出现的次数。例如 \texttt{"hello"} → \texttt{\{'h':1, 'e':1, 'l':2, 'o':1\}}。
+  \item \textbf{[对比思考]} 列表和字典有什么不同？什么时候用列表，什么时候用字典？各举一个例子。
+\end{enumerate}
+
+\section*{第八课：函数——自制积木}
+
+\subsection*{为什么要用函数？}
+
+你还记得 Scratch 里的"自制积木"吗？你在那里定义了一段代码，然后可以重复使用。Python 里的\textbf{函数}是一样的。
+
+\begin{lstlisting}[language=Python]
+def greet(name):
+    print("你好，" + name + "！")
+    print("欢迎来到 Python 世界！")
+
+# 调用函数
+greet("小明")
+greet("小红")
+\end{lstlisting}
+
+\subsection*{函数结构}
+
+\begin{lstlisting}[language=Python]
+def 函数名(参数1, 参数2, ...):
+    """函数的说明文档（可选）"""
+    # 函数体
+    return 返回值  # 可选
+\end{lstlisting}
+
+\subsection*{有返回值的函数}
+
+\begin{lstlisting}[language=Python]
+def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print(result)  # 8
+\end{lstlisting}
+
+\texttt{return} 会把结果"送回来"给调用者。没有 \texttt{return} 的函数返回 \texttt{None}。
+
+\subsection*{例子：面积计算器}
+
+\begin{lstlisting}[language=Python]
+def rectangle_area(width, height):
+    return width * height
+
+def circle_area(radius):
+    return 3.14 * radius * radius
+
+print("长方形面积：", rectangle_area(5, 3))
+print("圆形面积：", circle_area(2))
+
+# 用循环调用函数
+for r in range(1, 6):
+    print(f"半径{r}的圆面积：{circle_area(r)}")
+\end{lstlisting}
+
+\subsection*{Scratch 对照}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Scratch} & \textbf{Python} \\ \hline
+"自制积木" & \texttt{def 函数名():} \\ \hline
+积木的"输入参数" & 函数的参数 \\ \hline
+"将……返回"积木 & \texttt{return} 语句 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{练习：计算器函数}
+
+写一个函数 \texttt{calculator(a, b, op)}，接受两个数字和一个运算符（\texttt{"+"}, \texttt{"-"}, \texttt{"*"}, \texttt{"/"}），返回计算结果。除数为 0 时返回 \texttt{"除数不能为 0"}。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写一个函数 \texttt{is\_palindrome(s)}，判断字符串是否是回文（正反读一样，如 \texttt{"aba"}、\texttt{"上海自来水来自海上"}）。
+  \item 写一个函数 \texttt{fib(n)}，返回斐波那契数列的第 $n$ 项。用循环实现，不要用递归。
+  \item \textbf{[代码复用]} 你在本课写了多个函数（计算器、回文判断等），现在把它们放在一个文件里，然后写另一个文件来 \texttt{import} 并使用它们。体验模块化的好处。
+\end{enumerate}
+
+\section*{第九课：模块——借用别人的代码}
+
+\subsection*{导入模块}
+
+Python 有大量的\textbf{现成模块}供你使用。你不必什么都自己写。
+
+\begin{lstlisting}[language=Python]
+import random      # 随机数模块
+import math        # 数学模块
+import os          # 操作系统模块
+\end{lstlisting}
+
+\subsection*{random 模块}
+
+\begin{lstlisting}[language=Python]
+import random
+
+print(random.randint(1, 100))     # 1-100 的随机整数
+print(random.choice(["石头", "剪刀", "布"]))  # 随机选一个
+print(random.shuffle([1, 2, 3, 4, 5]))        # 打乱列表
+\end{lstlisting}
+
+\subsection*{math 模块}
+
+\begin{lstlisting}[language=Python]
+import math
+
+print(math.sqrt(16))       # 平方根：4.0
+print(math.floor(3.7))     # 向下取整：3
+print(math.ceil(3.2))      # 向上取整：4
+print(math.pi)             # 圆周率：3.14159...
+\end{lstlisting}
+
+\subsection*{小练习：石头剪刀布}
+
+\begin{lstlisting}[language=Python]
+import random
+
+choices = ["石头", "剪刀", "布"]
+computer = random.choice(choices)
+player = input("请出拳（石头/剪刀/布）：")
+
+print("电脑出了：" + computer)
+
+if player == computer:
+    print("平局！")
+elif (player == "石头" and computer == "剪刀") or \
+     (player == "剪刀" and computer == "布") or \
+     (player == "布" and computer == "石头"):
+    print("你赢了！")
+else:
+    print("你输了！")
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 用 \texttt{random} 模块写一个程序：生成一个 4 位数的随机密码（每位是 0-9 的数字）。
+  \item 用 \texttt{math} 模块计算半径为 5 的圆的面积和周长（$\pi$ 用 \texttt{math.pi}）。
+  \item \textbf{[项目整合]} 把第四课的猜数字游戏和第九课的石头剪刀布放在同一个程序中，让用户可以选择玩哪个游戏。
+\end{enumerate}
+
+\section*{第十课：文件读写——让程序记住东西}
+
+现在你的程序一关闭，数据就丢了。\textbf{文件}可以让数据长久保存。
+
+\subsection*{写文件}
+
+\begin{lstlisting}[language=Python]
+# 写入文件（覆盖模式）
+with open("notes.txt", "w", encoding="utf-8") as f:
+    f.write("这是第一行\n")
+    f.write("这是第二行\n")
+
+# 追加模式
+with open("notes.txt", "a", encoding="utf-8") as f:
+    f.write("这是追加的行\n")
+\end{lstlisting}
+
+\subsection*{读文件}
+
+\begin{lstlisting}[language=Python]
+# 读取全部内容
+with open("notes.txt", "r", encoding="utf-8") as f:
+    content = f.read()
+    print(content)
+
+# 逐行读取
+with open("notes.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        print("行：", line.strip())  # strip() 去掉换行符
+\end{lstlisting}
+
+\texttt{with open(...) as f:} 是一个固定写法——打开文件、使用、自动关闭。不用担心忘记关文件。
+
+\subsection*{文件模式}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{模式} & \textbf{含义} \\ \hline
+\texttt{"r"} & 读取（文件必须存在） \\ \hline
+\texttt{"w"} & 写入（覆盖已有内容，文件不存在则创建） \\ \hline
+\texttt{"a"} & 追加（在文件末尾添加） \\ \hline
+\texttt{"r+"} & 读取和写入 \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{小项目：记账本}
+
+\begin{lstlisting}[language=Python]
+def add_expense(amount, note):
+    with open("expenses.txt", "a", encoding="utf-8") as f:
+        f.write(f"{amount},{note}\n")
+
+def show_expenses():
+    total = 0
+    with open("expenses.txt", "r", encoding="utf-8") as f:
+        for line in f:
+            amt, note = line.strip().split(",")
+            total += int(amt)
+            print(f"{note}: {amt}元")
+    print(f"总计：{total}元")
+
+# 主程序
+while True:
+    print("\n1. 添加支出  2. 查看账单  3. 退出")
+    choice = input("请选择：")
+    if choice == "1":
+        amt = int(input("金额："))
+        note = input("说明：")
+        add_expense(amt, note)
+    elif choice == "2":
+        show_expenses()
+    elif choice == "3":
+        break
+\end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写一个程序：让用户输入多行文字（输入"quit"结束），把所有内容保存到 \texttt{notes.txt} 中。
+  \item 写一个程序：读取 \texttt{notes.txt} 并统计总行数、总字数和平均每行字数。
+  \item \textbf{[扩展]} 给记账本添加一个功能：显示"本月支出最多的类别"。提示：需要记录每个支出的类别（如"餐饮""交通""娱乐"）。
+\end{enumerate}
+
+\section*{综合项目：猜数字完整版}
+
+把之前零零散散的知识串起来，做一个完整的猜数字游戏：
+
+\begin{lstlisting}[language=Python]
+import random
+
+def guess_game():
+    secret = random.randint(1, 100)
+    attempts = 0
+    best_score = None
+    
+    # 尝试读取历史最佳记录
+    try:
+        with open("best_score.txt", "r") as f:
+            best_score = int(f.read())
+            print(f"历史最佳：{best_score}次猜中")
+    except:
+        print("还没有历史记录")
+    
+    print("猜一个 1 到 100 之间的数")
+    
+    while True:
+        guess = int(input("你的猜测："))
+        attempts += 1
+        
+        if guess == secret:
+            print(f"猜对了！你用了{attempts}次")
+            if best_score is None or attempts < best_score:
+                print("新纪录！")
+                with open("best_score.txt", "w") as f:
+                    f.write(str(attempts))
+            break
+        elif guess > secret:
+            print("大了")
+        else:
+            print("小了")
+
+guess_game()
+\end{lstlisting}
+
+这个游戏包含了：变量、循环、条件判断、函数、文件读写、异常处理——几乎你学过的所有内容！
+
+\section*{总结：你学到了什么？}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Scratch 概念} & \textbf{Python 实现} \\ \hline
+变量 & \texttt{score = 0} \\ \hline
+"如果……那么" & \texttt{if 条件:} \\ \hline
+"重复……次" & \texttt{for i in range(n):} \\ \hline
+"重复执行" & \texttt{while True:} \\ \hline
+"重复执行直到" & \texttt{while 条件:} \\ \hline
+列表 & \texttt{[1, 2, 3]} \\ \hline
+自制积木 & \texttt{def 函数名():} \\ \hline
+"询问并等待" & \texttt{input()} \\ \hline
+"说……" & \texttt{print()} \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{下一步：} 掌握了 Python 基础之后，你有几个方向可以选择：
+\begin{itemize}
+  \item \textbf{数据结构与算法} —— 学更多数据结构和经典算法
+  \item \textbf{Python → C++} —— 学第二门语言，打开新世界
+  \item \textbf{Web 开发} —— 做出自己的网站
+  \item \textbf{AI 入门} —— 了解人工智能
+\end{itemize}
+
+这些模块都在本系列中！按照《整体课程大纲》的路线继续前进吧。
+
+\section*{\textcolor{blue!70!black}{各课练习参考答案}}
+
+\subsection*{第一课：搭建环境与第一个程序}
+\begin{enumerate}
+  \item 修改后的 \texttt{hello.py} 应包含三行 \texttt{print()}，分别输出姓名、颜色、日期。
+  \item 把 \texttt{print} 写成 \texttt{pront} 会报 \texttt{NameError: name 'pront' is not defined}。
+  \item \texttt{print("Hello" + "World")} 输出 \texttt{HelloWorld}（拼接无空格）。\texttt{print("Hello", "World")} 输出 \texttt{Hello World}（默认空格分隔）。
+\end{enumerate}
+
+\subsection*{第二课：变量与数据类型}
+\begin{enumerate}
+  \item 创建三个变量并打印。尝试 \texttt{my\_age = "十岁"} 仍可运行，因为 Python 是动态类型——但之后 age+1 会报错。
+  \item 合法变量名：\texttt{score}、\texttt{player\_1}、\texttt{\_temp}。不合法：\texttt{2player}（数字开头）、\texttt{my-name}（含连字符）、\texttt{class}（关键字）。
+  \item \texttt{print("10" + 5)} 会报 \texttt{TypeError}：不能拼接字符串和整数。\texttt{print(10 + 5)} 输出 15。
+\end{enumerate}
+
+\subsection*{第三课：输入与输出}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+birth_year = int(input("请输入出生年份："))
+age = 2026 - birth_year
+print("你今年" + str(age) + "岁")
+\end{lstlisting}
+  \item 在输出前加判断：\texttt{if age >= 18: print("你已经成年了") else: print("你还未成年")}。
+  \item \texttt{age} 是字符串，不能直接加整数。修复：\texttt{print("明年你" + str(int(age) + 1) + "岁了")}。
+\end{enumerate}
+
+\subsection*{第四课：条件判断}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+score = int(input("输入分数："))
+if score >= 90: print("A")
+elif score >= 80: print("B")
+elif score >= 70: print("C")
+elif score >= 60: print("D")
+else: print("F")
+\end{lstlisting}
+  \item ① \texttt{10 > 5 and 3 < 1} → \texttt{True and False} → \texttt{False}。② \texttt{not (7 == 7)} → \texttt{not True} → \texttt{False}。③ \texttt{5 != 5 or 2 == 2} → \texttt{False or True} → \texttt{True}。
+  \item 错误：\texttt{if x = 10:} 用了赋值 \texttt{=} 而不是判等 \texttt{==}。修复：\texttt{if x == 10:}。
+\end{enumerate}
+
+\subsection*{第五课：循环}
+\begin{enumerate}
+  \item \texttt{for i in range(1, 101): if i \% 7 == 0: print(i)}。
+  \item \texttt{total = 0; i = 1; while i <= 100: total += i; i += 1; print(total)} 输出 5050。
+  \item 输出：
+\begin{verbatim}
+0是偶数
+1是奇数
+2是偶数
+3是奇数
+4是偶数
+\end{verbatim}
+\end{enumerate}
+
+\subsection*{第六课：列表}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+import random
+nums = [random.randint(1, 100) for _ in range(10)]
+print("最大", max(nums), "最小", min(nums), "平均", sum(nums)/len(nums))
+sorted_nums = sorted(nums)
+n = len(sorted_nums)
+median = sorted_nums[n//2] if n%2==1 else (sorted_nums[n//2-1]+sorted_nums[n//2])/2
+\end{lstlisting}
+  \item 交集：\texttt{list(set(a) \& set(b))} → [3, 4, 5]。
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+fib = [1, 1]
+for i in range(2, 20):
+    fib.append(fib[i-1] + fib[i-2])
+print(fib)
+\end{lstlisting}
+\end{enumerate}
+
+\subsection*{第七课：元组与字典}
+\begin{enumerate}
+  \item 平均分 = \texttt{sum(student["scores"]) / len(student["scores"])} = (85+92+78)/3 = 85。
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+s = "hello"
+count = {}
+for ch in s:
+    count[ch] = count.get(ch, 0) + 1
+\end{lstlisting}
+  \item 列表用数字索引，适合有序集合（如排行榜）。字典用键索引，适合快速查找（如根据名字查电话）。
+\end{enumerate}
+
+\subsection*{第八课：函数}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+def is_palindrome(s):
+    return s == s[::-1]
+\end{lstlisting}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+def fib(n):
+    a, b = 1, 1
+    for _ in range(n-1):
+        a, b = b, a + b
+    return a
+\end{lstlisting}
+  \item 将函数定义放在 \texttt{utils.py} 中，在 \texttt{main.py} 中用 \texttt{from utils import calculator, is\_palindrome} 导入使用。
+\end{enumerate}
+
+\subsection*{第九课：模块}
+\begin{enumerate}
+  \item \texttt{import random; password = "".join(str(random.randint(0, 9)) for _ in range(4))}。
+  \item \texttt{import math; area = math.pi * 5**2; circumference = 2 * math.pi * 5}。
+  \item 用一个主菜单，\texttt{input()} 获取用户选择，用 \texttt{if/elif} 分支到不同的游戏。
+\end{enumerate}
+
+\subsection*{第十课：文件读写}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+with open("notes.txt", "w", encoding="utf-8") as f:
+    while True:
+        line = input()
+        if line == "quit": break
+        f.write(line + "\n")
+\end{lstlisting}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+with open("notes.txt", "r", encoding="utf-8") as f:
+    lines = f.readlines()
+    total_chars = sum(len(line.strip()) for line in lines)
+    print(f"行数：{len(lines)}，总字数：{total_chars}，平均：{total_chars/len(lines):.1f}")
+\end{lstlisting}
+  \item 添加一个"类别"字段到记录中，然后用字典统计每类支出总和。
+\end{enumerate}
+
+\section*{综合练习与答案}
+
+\subsection*{基础题}
+
+\begin{enumerate}
+  \item 写一个程序，输入三个数，输出其中最大的数。
+  \item 用循环打印 1 到 100 之间所有能被 3 整除但不能被 5 整除的数。
+  \item 写一个函数 \texttt{is\_palindrome(s)}，判断字符串是否是回文（正着读和反着读一样，如 "aba"、"上海自来水来自海上"）。
+  \item 生成一个包含 20 个随机数的列表，输出其中的奇数和偶数分别有多少个。
+  \item 读一个文本文件，统计其中有多少个单词（用 \texttt{split()} 即可）。
+\end{enumerate}
+
+\subsection*{参考答案}
+
+\textbf{练习 1：}
+\begin{lstlisting}[language=Python]
+a = int(input("第一个数："))
+b = int(input("第二个数："))
+c = int(input("第三个数："))
+print(max(a, b, c))
+\end{lstlisting}
+
+\textbf{练习 2：}
+\begin{lstlisting}[language=Python]
+for i in range(1, 101):
+    if i % 3 == 0 and i % 5 != 0:
+        print(i, end=" ")
+\end{lstlisting}
+
+\textbf{练习 3：}
+\begin{lstlisting}[language=Python]
+def is_palindrome(s):
+    return s == s[::-1]
+
+print(is_palindrome("aba"))   # True
+print(is_palindrome("hello")) # False
+\end{lstlisting}
+
+\textbf{练习 4：}
+\begin{lstlisting}[language=Python]
+import random
+nums = [random.randint(1, 100) for _ in range(20)]
+odds = [n for n in nums if n % 2 == 1]
+evens = [n for n in nums if n % 2 == 0]
+print(f"奇数：{len(odds)}个, 偶数：{len(evens)}个")
+\end{lstlisting}
+
+\textbf{练习 5：}
+\begin{lstlisting}[language=Python]
+with open("article.txt", "r", encoding="utf-8") as f:
+    text = f.read()
+words = text.split()
+print(f"单词数：{len(words)}")
+\end{lstlisting}
+
+\section*{扩展项目}
+
+\subsection*{项目一：学生成绩管理系统}
+
+要求：用字典存储学生信息（学号、姓名、各科成绩），实现以下功能：
+\begin{enumerate}
+  \item 添加学生
+  \item 删除学生
+  \item 修改成绩
+  \item 按总分排名
+  \item 按科目统计平均分
+  \item 数据保存到文件（下次启动时自动加载）
+\end{enumerate}
+用函数组织代码，每个功能一个函数。
+
+\textbf{关联模块：} 本项目用到文件 IO（本模块第十课）和字典（本模块第七课）。完成后可以对比 \texttt{ds-algo/} 中的排序算法，看你用的排序方法和课程中的哪种算法一致。
+
+\subsection*{项目二：密码生成器}
+
+要求：
+\begin{enumerate}
+  \item 用户指定密码长度和包含的字符类型（大小写字母/数字/符号）
+  \item 生成随机密码
+  \item 评估密码强度（弱/中/强）
+\end{enumerate}
+
+\textbf{关联模块：} 本项目用到 \texttt{random} 模块（本模块第九课）。密码强度的数学原理见 \texttt{computer\_maths/} 的组合数学章节。
+
+\section*{本模块与其他模块的关联}
+
+\begin{itemize}
+  \item \textbf{计算思维} → 本模块：你已经在计算思维模块学会了画流程图和写伪代码。现在你把这些伪代码变成了真正的 Python 程序。回头看你在计算思维模块写的伪代码，试着用 Python 实现它。
+  \item \textbf{计算机数学} → 本模块：Python 中的布尔运算（\texttt{and/or/not}）对应 \texttt{computer\_maths/} 中的布尔代数；Python 的 \texttt{set} 类型对应集合论。学完 \texttt{computer\_maths/} 再来写 Python 代码，你会理解 "为什么这样设计"。
+  \item 本模块 → \textbf{数据结构与算法}：本模块的列表、字典、函数是 ds-algo 模块的基础。你在本模块写的猜数字游戏用了线性搜索，ds-algo 模块会教你二分搜索——快了 100 倍。
+  \item 本模块 → \textbf{Web 开发}：本模块的 Flask 入门需要 Python 基础。你在这里学会的 Python 语法会被直接用到 Web 后端开发中。
+  \item 本模块 → \textbf{AI 入门}：AI 模块的代码全部用 Python 实现。你的 Python 基础决定了你能多深入理解 AI 的内部实现。
+\end{itemize}
+
+\end{document}

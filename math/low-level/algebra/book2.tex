@@ -1,0 +1,466 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{../../teaching-style}
+
+\begin{document}
+\pagestyle{empty}
+
+\maintitle{代数 下册}
+\begin{center}
+  \large 低学段 · 函数与代数式
+\end{center}
+\vspace{0.3cm}
+
+\chaptertitle{第一章\quad 整式运算}
+
+\sectiontitle{1.1\quad 整式的概念}
+
+\knowbox{
+\textbf{单项式}：数与字母的积，如$3x$、$-2ab$。其中数字叫\textbf{系数}，所有字母指数之和叫\textbf{次数}。\\
+\textbf{多项式}：几个单项式的和。每个单项式叫\textbf{项}，最高次项的次数叫\textbf{多项式的次数}。\\
+\textbf{同类项}：字母相同且对应指数也相同的项。}
+
+\sectiontitle{1.2\quad 整式的加减}
+
+\knowbox{
+去括号法则：$+(a-b)=a-b$，$-(a-b)=-a+b$\\
+合并同类项：系数相加减，字母和指数不变。}
+
+\begin{example}
+计算：$(3x^2-2xy+y^2)-2(x^2-xy+2y^2)$
+\end{example}
+\begin{solution}
+原式 $=3x^2-2xy+y^2-2x^2+2xy-4y^2=x^2-3y^2$
+\end{solution}
+
+\sectiontitle{1.3\quad 整式的乘法}
+
+\knowbox{
+单项式$\times$单项式：系数相乘，同底数幂相乘。\\
+单项式$\times$多项式：用单项式乘以多项式的每一项。\\
+多项式$\times$多项式：逐项相乘。\\
+同底数幂的乘法：$a^m\cdot a^n=a^{m+n}$\\
+幂的乘方：$(a^m)^n=a^{mn}$\\
+积的乘方：$(ab)^n=a^n b^n$}
+
+\sectiontitle{习题1}
+
+\begin{exercise}
+\item 化简：
+  \begin{subexercise}
+    \item $(3x+2y)+(x-3y)$
+    \item $(2a^2-3ab+4b^2)-(a^2+2ab-3b^2)$
+    \item $3(2m-3n)-2(3m-5n)$
+    \item $4(2x^2-xy)-3(x^2-2xy+1)$
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $(-3a^2b)\times(2ab^3)$
+    \item $2x^2y\times(-3xy^2)^2$
+    \item $(2x+1)(x-4)$
+    \item $(3a-2b)(2a+3b)$
+    \item $(x+2y)(x-3y)$
+    \item $(2x-1)(3x^2+2x-1)$
+  \end{subexercise}
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第二章\quad 乘法公式}
+
+\sectiontitle{2.1\quad 平方差公式}
+
+\knowbox{$(a+b)(a-b)=a^2-b^2$}
+
+\begin{example}
+计算：$(3x+2y)(3x-2y)$
+\end{example}
+\begin{solution}
+原式 $=(3x)^2-(2y)^2=9x^2-4y^2$
+\end{solution}
+
+\sectiontitle{2.2\quad 完全平方公式}
+
+\knowbox{$(a+b)^2=a^2+2ab+b^2$\\
+$(a-b)^2=a^2-2ab+b^2$}
+
+\begin{example}
+计算：$(2x-3y)^2$
+\end{example}
+\begin{solution}
+原式 $=4x^2-12xy+9y^2$
+\end{solution}
+
+\sectiontitle{习题2}
+
+\begin{exercise}
+\item 利用平方差公式计算：
+  \begin{subexercise}
+    \item $(x+6)(x-6)$
+    \item $(3a+2b)(3a-2b)$
+    \item $(-2x+3y)(-2x-3y)$
+    \item $102\times98$
+  \end{subexercise}
+
+\item 利用完全平方公式计算：
+  \begin{subexercise}
+    \item $(x+5)^2$
+    \item $(3a-2b)^2$
+    \item $(-2x+3y)^2$
+    \item $199^2$
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $(x+2)(x-2)(x^2+4)$
+    \item $(x+3)^2-(x-3)^2$
+    \item $(a+b+c)^2$
+    \item $(2x-y+3z)^2$
+  \end{subexercise}
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第三章\quad 因式分解}
+
+\sectiontitle{3.1\quad 提公因式法}
+
+\knowbox{$ma+mb+mc=m(a+b+c)$\\
+公因式：各项系数的最大公约数与相同字母的最低次幂的积。}
+
+\begin{example}
+分解：$12a^3b^2-18a^2b^3+24a^2b^2$
+\end{example}
+\begin{solution}
+原式 $=6a^2b^2(2a-3b+4)$
+\end{solution}
+
+\sectiontitle{3.2\quad 公式法}
+
+\knowbox{
+平方差：$a^2-b^2=(a+b)(a-b)$\\
+完全平方：$a^2+2ab+b^2=(a+b)^2$，$a^2-2ab+b^2=(a-b)^2$\\
+立方和/差：$a^3+b^3=(a+b)(a^2-ab+b^2)$\\
+$a^3-b^3=(a-b)(a^2+ab+b^2)$}
+
+\sectiontitle{3.3\quad 十字相乘法}
+
+\knowbox{$x^2+(p+q)x+pq=(x+p)(x+q)$\\
+$acx^2+(ad+bc)x+bd=(ax+b)(cx+d)$}
+
+\sectiontitle{3.4\quad 分组分解法与综合运用}
+
+\begin{example}
+分解：$x^2-6x+9-4y^2$
+\end{example}
+\begin{solution}
+原式 $=(x-3)^2-(2y)^2=(x-3+2y)(x-3-2y)$
+\end{solution}
+
+\sectiontitle{习题3}
+
+\begin{exercise}
+\item 提公因式：
+  \begin{subexercise}
+    \item $8a^2b-12ab^2$
+    \item $15x^3y-20x^2y^2+5x^2y$
+    \item $6m^3n^2-9m^2n^3+3m^2n^2$
+  \end{subexercise}
+
+\item 用公式法分解：
+  \begin{subexercise}
+    \item $x^2-25$
+    \item $4a^2-9b^2$
+    \item $x^2+6x+9$
+    \item $4a^2-20a+25$
+    \item $a^3+8$
+    \item $27x^3-1$
+  \end{subexercise}
+
+\item 十字相乘法：
+  \begin{subexercise}
+    \item $x^2+5x+6$
+    \item $x^2-7x+12$
+    \item $x^2+2x-15$
+    \item $2x^2+7x+3$
+    \item $3x^2-10x+3$
+    \item $6x^2-7x-3$
+  \end{subexercise}
+
+\item 综合分解：
+  \begin{subexercise}
+    \item $x^3-4x$
+    \item $x^3-6x^2+9x$
+    \item $x^2-y^2+2x+1$
+    \item $a^2-2ab+b^2-1$
+  \end{subexercise}
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第四章\quad 分式与根式}
+
+\sectiontitle{4.1\quad 分式的化简与运算}
+
+\knowbox{
+分式基本性质：$\dfrac{A}{B}=\dfrac{A\times C}{B\times C}$（$C\neq0$）\\
+约分：分子分母同除以公因式。\\
+通分：化为同分母的分式。}
+
+\begin{example}
+化简：$\dfrac{x^2-4}{x^2+4x+4}$
+\end{example}
+\begin{solution}
+原式 $=\dfrac{(x+2)(x-2)}{(x+2)^2}=\dfrac{x-2}{x+2}$
+\end{solution}
+
+\sectiontitle{4.2\quad 二次根式的化简}
+
+\knowbox{
+$\sqrt{a^2}=|a|$ \qquad $(\sqrt{a})^2=a\;(a\ge0)$\\
+$\sqrt{a}\cdot\sqrt{b}=\sqrt{ab}$ \qquad $\dfrac{\sqrt{a}}{\sqrt{b}}=\sqrt{\dfrac{a}{b}}$\\
+最简二次根式：被开方数不含分母、不含开得尽方的因数因式。}
+
+\begin{example}
+化简：$\sqrt{48}-\sqrt{75}+\sqrt{27}$
+\end{example}
+\begin{solution}
+原式 $=4\sqrt3-5\sqrt3+3\sqrt3=2\sqrt3$
+\end{solution}
+
+\sectiontitle{习题4}
+
+\begin{exercise}
+\item 化简分式：
+  \begin{subexercise}
+    \item $\dfrac{x^2-1}{x^2+2x+1}$
+    \item $\dfrac{a^2-4}{a^2-4a+4}$
+    \item $\dfrac{6x^2y^3}{9xy^2}$
+  \end{subexercise}
+
+\item 化简根式：
+  \begin{subexercise}
+    \item $\sqrt{32}$
+    \item $\sqrt{72}$
+    \item $\sqrt{108}$
+    \item $\sqrt{\dfrac{1}{2}}$
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $\sqrt{8}+\sqrt{18}-\sqrt{32}$
+    \item $\sqrt{27}+2\sqrt{\dfrac13}-\sqrt{48}$
+    \item $\dfrac{2}{x}+\dfrac{3}{x^2}$
+    \item $\dfrac{1}{a-1}-\dfrac{1}{a+1}$
+  \end{subexercise}
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第五章\quad 函数初步}
+
+\sectiontitle{5.1\quad 平面直角坐标系}
+
+\knowbox{
+平面内两条互相垂直、原点重合的数轴组成坐标系。\\
+各象限：第一象限$(+,+)$，第二象限$(-,+)$，第三象限$(-,-)$，第四象限$(+,-)$。\\
+点到$x$轴距离$=|y|$，到$y$轴距离$=|x|$。}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+\draw[->,thick] (-3.5,0) -- (3.5,0) node[right] {$x$};
+\draw[->,thick] (0,-3.5) -- (0,3.5) node[above] {$y$};
+\node[below left] at (0,0) {$O$};
+\foreach \x in {-3,-2,-1,1,2,3} {
+  \draw (\x,0.1) -- (\x,-0.1) node[below] {$\x$};
+}
+\foreach \y in {-3,-2,-1,1,2,3} {
+  \draw (0.1,\y) -- (-0.1,\y) node[left] {$\y$};
+}
+% 标记象限
+\node at (2.5,2.5) {第一象限};
+\node at (-2.5,2.5) {第二象限};
+\node at (-2.5,-2.5) {第三象限};
+\node at (2.5,-2.5) {第四象限};
+% 标记点
+\filldraw (2,1) circle (2pt) node[right] {$P(2,1)$};
+\draw[dashed] (2,0) -- (2,1) -- (0,1);
+\end{tikzpicture}
+\end{center}
+
+\sectiontitle{5.2\quad 变量与函数}
+
+\knowbox{
+在一个变化过程中，数值发生变化的量叫\textbf{变量}。\\
+如果对于$x$的每一个确定的值，$y$都有唯一确定的值与之对应，那么$y$叫做$x$的\textbf{函数}，$x$叫\textbf{自变量}。\\
+函数的表示法：解析式法、列表法、图象法。}
+
+\sectiontitle{5.3\quad 正比例函数与反比例函数}
+
+\knowbox{
+正比例函数：$y=kx(k\neq0)$，图象是过原点的直线。\\
+反比例函数：$y=\dfrac{k}{x}(k\neq0)$，图象是双曲线。}
+
+\sectiontitle{5.4\quad 一次函数}
+
+\knowbox{$y=kx+b(k\neq0)$，图象是一条直线。\\
+$k>0$，$y$随$x$增大而增大；$k<0$，$y$随$x$增大而减小。\\
+$b$决定与$y$轴交点的位置。}
+
+\sectiontitle{5.5\quad 二次函数}
+
+\knowbox{$y=ax^2+bx+c(a\neq0)$，图象是抛物线。\\
+顶点坐标：$\left(-\dfrac{b}{2a},\dfrac{4ac-b^2}{4a}\right)$\\
+对称轴：$x=-\dfrac{b}{2a}$\\
+$a>0$开口向上，有最小值；$a<0$开口向下，有最大值。}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+\draw[->,thick] (-3.5,0) -- (3.5,0) node[right] {$x$};
+\draw[->,thick] (0,-1.5) -- (0,5.5) node[above] {$y$};
+\node[below left] at (0,0) {$O$};
+\draw[domain=-2.5:2.5,smooth,thick,red] plot (\x, {\x*\x - 1});
+\draw[dashed] (0,-1) -- (0,0);
+\filldraw (0,-1) circle (2pt) node[below right] {顶点$(0,-1)$};
+\node[above right] at (1.5,1.5) {$y=x^2-1$};
+\node at (-1.5,3) {开口向上};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.7]
+\draw[->,thick] (-3.5,0) -- (3.5,0) node[right] {$x$};
+\draw[->,thick] (0,-1.5) -- (0,5.5) node[above] {$y$};
+\node[below left] at (0,0) {$O$};
+\draw[domain=-2.5:2.5,smooth,thick,blue] plot (\x, {-\x*\x + 4});
+\filldraw (0,4) circle (2pt) node[above right] {顶点$(0,4)$};
+\node[above right] at (-2,0.5) {$y=-x^2+4$};
+\node at (1.5,3) {开口向下};
+\end{tikzpicture}
+\end{center}
+
+\sectiontitle{习题5}
+
+\begin{exercise}
+\item 点$A(3,-2)$在第几象限？它到$x$轴和$y$轴的距离各是多少？
+
+\item 下列函数中，哪些是正比例函数？一次函数？反比例函数？\\
+$y=2x$，$y=\dfrac{3}{x}$，$y=-x+1$，$y=x^2$，$y=\dfrac{1}{2}x$
+
+\item 已知一次函数$y=2x-3$，求：
+  \begin{subexercise}
+    \item 它与$x$轴、$y$轴交点的坐标
+    \item 当$x=2$时的$y$值
+    \item 当$y=5$时的$x$值
+  \end{subexercise}
+
+\item 求二次函数$y=x^2-4x+3$的：
+  \begin{subexercise}
+    \item 顶点坐标和对称轴
+    \item 与$x$轴交点的坐标
+    \item 在$x$取何值时$y>0$？
+  \end{subexercise}
+
+\item 已知正比例函数$y=kx$经过点$(2,6)$，求$k$并画出示意图。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第六章\quad 复数入门}
+
+\sectiontitle{6.1\quad 为什么要引入复数}
+
+\knowbox{
+数的扩张：自然数$\mathbb N\rightarrow$整数$\mathbb Z\rightarrow$有理数$\mathbb Q\rightarrow$实数$\mathbb R$。\\
+方程$x^2+1=0$在实数范围内无解，因为没有任何实数的平方等于$-1$。\\
+引入虚数单位$i$，规定$i^2=-1$。}
+
+\sectiontitle{6.2\quad 复数的概念与运算}
+
+\knowbox{
+形如$a+bi$（$a,b$为实数）的数叫\textbf{复数}。\\
+$a$叫\textbf{实部}，$b$叫\textbf{虚部}。\\
+$i^2=-1$，$i^3=-i$，$i^4=1$，$i^5=i$，$\dots$（周期为4）\\
+复数加减：$(a+bi)\pm(c+di)=(a\pm c)+(b\pm d)i$\\
+复数乘法：$(a+bi)(c+di)=(ac-bd)+(ad+bc)i$\\
+复数相等：$a+bi=c+di$当且仅当$a=c$且$b=d$}
+
+\sectiontitle{6.3\quad 复平面}
+
+\knowbox{
+用直角坐标系中的点$(a,b)$表示复数$a+bi$。\\
+$x$轴为实轴，$y$轴为虚轴。\\
+复数$a+bi$到原点的距离叫\textbf{模}，记作$|a+bi|=\sqrt{a^2+b^2}$。\\
+$a-bi$叫做$a+bi$的\textbf{共轭复数}。}
+
+\sectiontitle{习题6}
+
+\begin{exercise}
+\item 计算：
+  \begin{subexercise}
+    \item $(3+2i)+(1-5i)$
+    \item $(4-3i)-(2+7i)$
+    \item $(2+3i)(1-2i)$
+    \item $(1+2i)(1-2i)$
+  \end{subexercise}
+
+\item 求下列复数的模和共轭复数：
+  \begin{subexercise}
+    \item $3+4i$
+    \item $1-2i$
+    \item $-2+3i$
+    \item $5$
+  \end{subexercise}
+
+\item 解方程：$x^2+4=0$
+
+\item 化简：$i^{2023}$（提示：$i^{4n}=1$，用余数）
+\end{exercise}
+
+\newpage
+\sectiontitle{参考答案}
+
+\textbf{习题1}
+\begin{enumerate}
+\item[(1)] (a) $4x-y$ \qquad (b) $a^2-5ab+7b^2$ \qquad (c) $n$ \qquad (d) $5x^2+2xy-3$
+\item[(2)] (a) $-6a^3b^4$ \qquad (b) $18x^4y^5$ \qquad (c) $2x^2-7x-4$ \qquad (d) $6a^2+5ab-6b^2$ \\ \qquad (e) $x^2-xy-6y^2$ \qquad (f) $6x^3+x^2-4x+1$
+\end{enumerate}
+
+\textbf{习题2}
+\begin{enumerate}
+\item[(1)] (a) $x^2-36$ \qquad (b) $9a^2-4b^2$ \qquad (c) $4x^2-9y^2$ \qquad (d) $9996$
+\item[(2)] (a) $x^2+10x+25$ \qquad (b) $9a^2-12ab+4b^2$ \\ \qquad (c) $4x^2-12xy+9y^2$ \qquad (d) $39601$
+\item[(3)] (a) $x^4-16$ \qquad (b) $12x$ \qquad (c) $a^2+b^2+c^2+2ab+2ac+2bc$ \\ \qquad (d) $4x^2+y^2+9z^2-4xy+12xz-6yz$
+\end{enumerate}
+
+\textbf{习题3}
+\begin{enumerate}
+\item[(1)] (a) $4ab(2a-3b)$ \qquad (b) $5x^2y(3x-4y+1)$ \qquad (c) $3m^2n^2(2m-3n+1)$
+\item[(2)] (a) $(x+5)(x-5)$ \qquad (b) $(2a+3b)(2a-3b)$ \qquad (c) $(x+3)^2$ \\ \qquad (d) $(2a-5)^2$ \qquad (e) $(a+2)(a^2-2a+4)$ \qquad (f) $(3x-1)(9x^2+3x+1)$
+\item[(3)] (a) $(x+2)(x+3)$ \qquad (b) $(x-3)(x-4)$ \qquad (c) $(x+5)(x-3)$ \\ \qquad (d) $(2x+1)(x+3)$ \qquad (e) $(3x-1)(x-3)$ \qquad (f) $(2x-3)(3x+1)$
+\item[(4)] (a) $x(x+2)(x-2)$ \qquad (b) $x(x-3)^2$ \\ \qquad (c) $(x+1+y)(x+1-y)$ \qquad (d) $(a-b+1)(a-b-1)$
+\end{enumerate}
+
+\textbf{习题4}
+\begin{enumerate}
+\item[(1)] (a) $\dfrac{x-1}{x+1}$ \qquad (b) $\dfrac{a+2}{a-2}$ \qquad (c) $\dfrac{2xy}{3}$
+\item[(2)] (a) $4\sqrt2$ \qquad (b) $6\sqrt2$ \qquad (c) $6\sqrt3$ \qquad (d) $\dfrac{\sqrt2}{2}$
+\item[(3)] (a) $\sqrt2$ \qquad (b) $-\dfrac{\sqrt3}{3}$ \qquad (c) $\dfrac{2x+3}{x^2}$ \qquad (d) $\dfrac{2}{a^2-1}$
+\end{enumerate}
+
+\textbf{习题5}
+\begin{enumerate}
+\item[(1)] 第四象限；到$x$轴距离$2$，到$y$轴距离$3$
+\item[(2)] 正比例：$y=2x$, $y=\dfrac12x$；一次：$y=2x$, $y=-x+1$, $y=\dfrac12x$；反比例：$y=\dfrac3x$
+\item[(3)] (a) 与$x$轴$(\frac32,0)$，与$y$轴$(0,-3)$ \qquad (b) $y=1$ \qquad (c) $x=4$
+\item[(4)] (a) 顶点$(2,-1)$，对称轴$x=2$ \qquad (b) $(1,0)$, $(3,0)$ \qquad (c) $x<1$或$x>3$
+\item[(5)] $k=3$
+\end{enumerate}
+
+\textbf{习题6}
+\begin{enumerate}
+\item[(1)] (a) $4-3i$ \qquad (b) $2-10i$ \qquad (c) $8-i$ \qquad (d) $5$
+\item[(2)] (a) 模$5$，共轭$3-4i$ \qquad (b) 模$\sqrt5$，共轭$1+2i$ \\ \qquad (c) 模$\sqrt{13}$，共轭$-2-3i$ \qquad (d) 模$5$，共轭$5$
+\item[(3)] $x=\pm2i$
+\item[(4)] $-i$
+\end{enumerate}
+
+\end{document}
