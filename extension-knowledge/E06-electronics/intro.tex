@@ -1,0 +1,103 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,geometry,array,hyperref,booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\geometry{top=1.8cm,bottom=1.8cm,left=1.8cm,right=1.8cm}
+\linespread{1.35}
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{blue!5}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{【想一想】}}\vspace{0.15cm}\end{minipage}\end{minipage}\end{center}\vspace{0.3cm}}{}
+\newenvironment{funfact}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{【有趣的小知识】}}\vspace{0.1cm}\end{minipage}\end{minipage}\end{center}\vspace{0.2cm}}{}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textbf{【插图位置】}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}{}
+
+\title{\Huge\textbf{电子信息小故事}}
+\date{}
+\begin{document}\maketitle\thispagestyle{empty}
+
+\section{手机是怎么"说话"的？——从声音到电磁波}
+
+小明给小红打电话——他对着手机说"你好"，小红在另一头听到了。中间发生了什么？
+
+\textbf{七步旅程：}
+\begin{enumerate}
+  \item \textbf{声→电：}小明的"你好"是声波（空气振动）。手机里的麦克风里有一个小振膜——声波让振膜振动，振膜改变了一个电容器的距离，从而把声波变成了变化的电信号
+  \item \textbf{模→数：}这个连续变化的电信号（模拟信号）被ADC（模数转换器）以每秒44100次的速度"采样"，变成了数字信号——一串0和1
+  \item \textbf{压缩编码：}一串很长的数字需要压缩才能高效传输。语音编码算法把重要的声音信息保留、不重要的去掉
+  \item \textbf{调制：}数字信号被"搭载"到电磁波上——改变电磁波的某个参数（频率/相位/幅度）来代表0和1
+  \item \textbf{发射：}电磁波通过天线发射出去——以光速传播
+  \item \textbf{接收与解调：}小红的手机天线接收电磁波，解调出数字信号
+  \item \textbf{数→模→声：}DAC（数模转换器）把数字变回模拟电信号，送到扬声器——振膜再把电信号变回声波——小红听到了"你好"
+\end{enumerate}
+
+整个过程大约需要几十毫秒——你完全感觉不到延迟。
+
+\begin{figplaceholder}
+插图：手机通话的七步流程——从嘴巴→麦克风→ADC→编码→调制→天线→电磁波→天线→解调→DAC→扬声器→耳朵
+\end{figplaceholder}
+
+\begin{thinkbox}
+为什么有时候在电梯里信号不好？——电梯是一个金属"法拉第笼"——金属框阻挡了电磁波的进入。把手机放到金属盒子里也会没信号。
+\end{thinkbox}
+
+\begin{funfact}
+从第一部移动电话（1983年摩托罗拉DynaTAC 8000X，重约1公斤，通话30分钟要充电10小时）到今天的智能手机——变化比从"写信"到"打电话"还要大。现在一部普通手机的算力比1969年送阿波罗11号登月的计算机强几百万倍。
+\end{funfact}
+
+\newpage
+
+\section{芯片里有什么？——指甲盖上的城市}
+
+小明问妈妈："手机里最重要的东西是什么？"
+
+"芯片。所有芯片中最重要的那个叫CPU——中央处理器。"
+
+如果把芯片放大几万倍——你会看到什么？一个密集的"城市"：街道（纳米级的金属导线）、建筑物（晶体管）、广场（缓存）。华为麒麟9000芯片上有约153亿个晶体管——放在指甲盖大小（约100平方毫米）的区域。
+
+\textbf{晶体管——最简单的"开关"}
+
+每个晶体管就是一个极微小的"开关"——当给它一个电压时，它打开（让电流通过→代表"1"）；不给电压时，它关闭（不让电流通过→代表"0"）。CPU用几十亿个这样的开关组合来执行计算。
+
+\textbf{光刻机——用光"画"出电路}
+
+制造芯片的过程类似于用光在相纸上"曝光"——但精度极其惊人。ASML的EUV（极紫外）光刻机用波长13.5nm的光在硅片上"画"出晶体管——相当于用光描绘出一根头发丝直径的1/7000的线条。
+
+\begin{figplaceholder}
+插图：芯片制造流程——硅片→光刻胶→曝光→刻蚀→掺杂→金属沉积→切割→封装
+\end{figplaceholder}
+
+\textbf{从ENIAC到智能手机：}第一台通用电子计算机ENIAC（1946年）用了18000个真空管（晶体管的"老祖宗"）、重30吨、占地170平方米、功耗150千瓦。今天你口袋里的一台智能手机——性能是ENIAC的数百万倍、功耗是几十分之一（约1-2瓦）、重量不到200克。
+
+\begin{thinkbox}
+晶体管的特征尺寸（"几纳米"）是什么意思？——比如"7nm芯片"指晶体管的最小特征尺寸为7纳米。越小的晶体管，同样面积可以放越多、速度越快、功耗越低。
+\end{thinkbox}
+
+\begin{funfact}
+摩尔定律（Intel联合创始人Gordon Moore 1965年提出）：集成电路上可容纳的晶体管数量每18-24个月翻一番。这个"预测"在过去60年里基本成立。但在7nm以下，摩尔定律正在放缓——因为当晶体管小到几个纳米时，量子效应开始出现（电子会"隧穿"绝缘层——无法准确控制开关状态）。未来的可能出路：碳纳米管/量子计算/光子芯片。
+\end{funfact}
+
+\newpage
+
+\section{WiFi是怎么"穿墙"的？}
+
+小明家的WiFi路由器放在客厅——他在卧室里隔着两面墙仍然可以上网。但光是穿不过墙的——为什么WiFi可以？
+
+\textbf{频率决定穿透力：}
+
+电磁波按频率从低到高排列——叫"电磁波谱"。低频（如无线电波、WiFi的2.4GHz）波长大、穿透力强；高频（如可见光、X射线）波长短，遇到障碍物更容易被吸收或反射。
+
+WiFi使用的2.4GHz频段波长约12.5cm——波长大，遇到墙壁时一部分被吸收，一部分"绕"过去。5GHz频段波长只有约6cm——穿透力较弱（所以5GHz隔了墙信号差），但传输速率更高。60GHz（WiFi 6E/7的新频段）波长只有5mm——几乎无法穿墙，但可以"聚焦"到特定设备——适合同一个房间内的极高速通信。
+
+\begin{figplaceholder}
+插图：电磁波谱——从长波→无线电→微波（WiFi/手机）→红外→可见光→紫外→X射线→伽马射线
+\end{figplaceholder}
+
+\textbf{为什么5G需要那么多基站？}
+
+5G使用更高的频段（中国主要用3.5GHz和毫米波28-39GHz）。频率越高——带宽越大（速度越快）——但传输距离越短、穿墙能力越弱。所以5G基站的覆盖半径只有200-500米（4G约为1-3公里）。需要密集建站——这也是为什么你的小区里突然多了很多"小基站"。
+
+\begin{thinkbox}
+为什么蓝牙耳机（2.4GHz）和WiFi（2.4GHz）互相干扰？——因为它们用同一个频段。当蓝牙和WiFi同时工作时，二者通过"跳频"（快速切换频率）和"时分"（轮流"说话"）来避免冲突。
+\end{thinkbox}
+
+\begin{funfact}
+1895年，Guglielmo Marconi发送了人类第一个无线电信号——距离只有2公里。今天——旅行者1号探测器（距离地球约240亿公里，2024年数据）仍然通过无线电波向地球发送信号——虽然发射功率只有20瓦（和一个灯泡差不多），但NASA在加州和澳大利亚的深空网络用直径70米的巨型天线可以接收到它。
+\end{funfact}
+
+\end{document}

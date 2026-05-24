@@ -1,0 +1,487 @@
+\documentclass[a4paper,11pt]{ctexbook}
+\usepackage{xcolor,graphicx,geometry,array,hyperref,booktabs,amsmath,amssymb,framed,marginnote,tcolorbox}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\geometry{top=2cm,bottom=2cm,left=2.2cm,right=2.2cm}
+\linespread{1.4}
+
+\definecolor{themeblue}{RGB}{0,80,150}\definecolor{scenario}{RGB}{180,50,30}\definecolor{quant}{RGB}{30,120,70}\definecolor{sidebarbg}{RGB}{245,248,252}\definecolor{summarybg}{RGB}{230,245,230}\definecolor{discussbg}{RGB}{255,245,230}
+
+\newenvironment{scenario}{\vspace{0.4cm}\noindent\begin{tcolorbox}[colback=scenario!5!white,colframe=scenario!70!black,title=\textcolor{scenario}{\textbf{情景引入}}]\vspace{0.1cm}}{\end{tcolorbox}\vspace{0.3cm}}
+\newenvironment{qualitative}{\vspace{0.3cm}\noindent\begin{tcolorbox}[colback=themeblue!5!white,colframe=themeblue!60!black,title=\textcolor{themeblue}{\textbf{定性分析}}]\vspace{0.1cm}}{\end{tcolorbox}\vspace{0.3cm}}
+\newenvironment{quantitative}{\vspace{0.3cm}\noindent\begin{tcolorbox}[colback=quant!5!white,colframe=quant!60!black,title=\textcolor{quant}{\textbf{定量分析}}]\vspace{0.1cm}}{\end{tcolorbox}\vspace{0.3cm}}
+\newenvironment{lessonsummary}{\vspace{0.3cm}\noindent\begin{tcolorbox}[colback=summarybg,colframe=green!50!black,title=\textbf{总结}]\vspace{0.1cm}}{\end{tcolorbox}\vspace{0.3cm}}
+\newenvironment{discuss}{\vspace{0.3cm}\noindent\begin{tcolorbox}[colback=discussbg,colframe=orange!60!black,title=\textbf{讨论题}]\vspace{0.1cm}}{\end{tcolorbox}\vspace{0.3cm}}
+\newenvironment{exercises}{\vspace{0.3cm}\noindent\begin{tcolorbox}[colback=blue!3!white,colframe=blue!50!black,title=\textbf{课后练习}]\vspace{0.1cm}}{\end{tcolorbox}\vspace{0.3cm}}
+\newcommand{\xuehaiinline}[1]{\vspace{0.2cm}\noindent\fcolorbox{themeblue!40}{sidebarbg}{\begin{minipage}{0.92\textwidth}\textbf{\textcolor{themeblue}{【学海拾遗】}}\\ #1\end{minipage}}\vspace{0.2cm}}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textcolor{blue!70!black}{\textbf{【插图位置】}}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}{}
+
+\title{\textcolor{themeblue}{\Huge\textbf{焊接技术基础}}}
+\subtitle{\textcolor{gray}{E03·第一卷\quad 共六课}}
+\date{}
+\begin{document}\maketitle\thispagestyle{empty}\tableofcontents\newpage
+
+\chapter{焊接冶金——金属熔化后发生了什么？}
+
+\begin{scenario}
+\textbf{为什么焊接后不能"吹口气"冷却？}
+
+小明在电焊课上焊完一条焊缝，觉得等它自然冷却太慢了——于是拿一杯冷水"刺啦"一声浇了上去。师傅看到后大喊："别！——焊缝会裂！"
+
+冷却太快，焊缝附近的热影响区（HAZ）会产生\textbf{淬硬组织}——比如马氏体——极其硬但也极其脆。在焊接残余应力的作用下，一条微小的冷裂纹就会沿着这个脆性区域扩展——整条焊缝报废，甚至结构在此处断裂。
+\end{scenario}
+
+\begin{qualitative}
+\textbf{焊接热循环的三个核心区域}
+
+焊接的热源（电弧、火焰、激光）将焊接区加热到熔点以上——局部熔化形成熔池。热以极快的速度从热源向四周传导，形成三个温度分区：
+
+\textbf{熔合区（Fusion Zone, FZ）：}温度超过熔点——金属完全熔化，与填充金属混合形成熔池。冷却后凝固为铸态组织。
+
+\textbf{热影响区（Heat-Affected Zone, HAZ）：}温度在相变点以上但低于熔点——金属没有熔化，但固态相变发生了（晶粒粗化、组织转变）。
+
+\textbf{母材区（Base Metal, BM）：}温度低于相变点——显微组织不变，但可能有热应力的残余。
+
+\textbf{为什么HAZ是焊接中最薄弱的环节？}因为母材和熔合区的组织都可以通过焊接材料和工艺参数来控制和优化——但HAZ的组织变化是"被动"发生的（由传入的热量决定），无法在焊接过程中主动控制。HAZ的脆化、软化或硬化是大多数焊接失效的根源。
+\end{qualitative}
+
+\begin{quantitative}
+\textbf{焊接热循环的参数化}
+
+焊接热输入（Heat Input, $Q$）：
+\[
+Q = \frac{\eta \times U \times I}{v}
+\]
+其中$U$=电弧电压（V）、$I$=焊接电流（A）、$v$=焊接速度（mm/s）、$\eta$=热效率系数（SMAW约0.8、GMAW约0.85、SAW约0.95）。
+
+$Q$越大→HAZ越宽→冷却速度越慢→组织越粗→对某些材料的冲击韧性有负面影响。
+
+\textbf{冷却速度（$t_{8/5}$）：}从800°C冷却到500°C所需的时间——是最常用的焊接热循环参数。$t_{8/5}$太短→淬硬（马氏体、冷裂纹），$t_{8/5}$太长→晶粒粗大（韧性下降）。高强钢焊接对$t_{8/5}$有严格的上下限要求——必须通过预热、层间温度控制和后热来调节。
+
+\textbf{碳当量（CE）——可焊性评估：}
+\[
+CE = C + \frac{Mn}{6} + \frac{Cr + Mo + V}{5} + \frac{Ni + Cu}{15}
+\]
+$CE > 0.45$时冷裂纹风险显著增加——需要预热和后热。
+\end{quantitative}
+
+\begin{lessonsummary}
+\begin{enumerate}
+  \item 焊接区的三个区域——熔合区（完全熔化+凝固）、热影响区（固态相变）、母材（只有热应力）——各有不同的组织演化规律
+  \item 焊接热输入$Q$是控制焊接质量的首要参数——太大和太小都会导致缺陷
+  \item 碳当量CE是判断钢材可焊性的快速工具——CE>0.45时必须预热
+  \item 冷裂纹是焊接最致命的缺陷之一——由"淬硬组织+H₂+残余应力"三个条件共同导致
+\end{enumerate}
+\end{lessonsummary}
+
+\begin{discuss}
+\begin{enumerate}
+  \item 为什么高强钢比低碳钢更难焊接？——高强钢的CE更高——更容易产生淬硬组织（冷裂纹）。需要严格预热和后热，焊接工艺窗口更窄。
+  \item 焊接热输入过大导致HAZ晶粒粗大——晶粒粗大为什么降低韧性？（Hall-Petch关系：$\sigma_y = \sigma_0 + k_y d^{-1/2}$——晶粒尺寸越大，强度越低。）
+  \item 在现场焊接（比如野外管道施工）中——环境温度0°C/风速20km/h/湿度90\%——这三个条件各有什么影响？——低温增加冷速（冷裂纹风险）、大风散热带走热量（增加预热难度）、高湿度增加氢含量（氢致裂纹）。
+\end{enumerate}
+\end{discuss}
+
+\begin{exercises}
+\begin{enumerate}
+  \item 焊接参数：电压24V、电流200A、速度5mm/s、热效率0.85。计算热输入（J/mm）。
+  \item 一块钢板的成分为C0.18\%, Mn1.4\%, Cr0.3\%, Ni0.1\%, Mo0.05\%。计算CE。需要预热吗？
+  \item 为什么不锈钢焊接后有时会出现"刀口腐蚀"（Knife-Line Attack）？——（提示：晶间碳化物析出导致晶界附近铬贫化。）
+\end{enumerate}
+\end{exercises}
+
+\xuehaiinline{
+\textbf{泰坦尼克号与焊接——但不是你想象的那样：}泰坦尼克号的船体不是焊接的——它是用铆钉连接的。但1990年代的研究发现在泰坦尼克沉没中起关键作用的因素是：1860-1910年代英国造船业使用的钢材含硫量高（当时没有今天的脱硫技术），高硫钢在低温下表现出极端脆性。同时期美国已经广泛使用平炉炼钢（含硫量低）——如果泰坦尼克号用美国钢材建造，冰山撞击可能只是划伤而不是撕开。\\
+\textbf{焊接在海难中的另一个故事——自由轮（Liberty Ship）的脆性断裂：}二战期间，美国大量生产"自由轮"货船——为了提高建造速度，从铆接改为焊接。1943-1946年间，约150艘自由轮发生了不同程度的脆性断裂——其中约12艘断成了两截。调查发现——焊缝处的应力集中+高温钢的脆性转变温度在0°C以上（冰冷的大西洋海水）+焊接残余应力——三者共同作用导致了"完全没有预兆"的船体断裂。这个事件直接催生了"断裂力学"作为一个独立的工程学科的诞生。
+}
+
+\newpage
+\chapter{焊接工艺——从手工电弧焊到激光焊}
+
+\begin{scenario}
+\textbf{一个航天发动机喷嘴的焊接——为什么不能用"普通电焊"？}
+
+一个火箭发动机的喷嘴由高温合金制成——壁厚只有1-2mm、内部有极其复杂的冷却通道。必须把两个精密加工的零件焊接在一起——但不能有任何热变形（否则冷却通道堵塞）、不能有任何气孔（否则高温下会爆裂）、不能有任何氧化（否则材料性能下降）。SMAW不行、GMAW不行、TIG也不行——只能用\textbf{电子束焊接（EBW）}在真空室里完成。
+\end{scenario}
+
+\begin{qualitative}
+\textbf{九种主要焊接工艺的分类}
+
+按热源和保护方式分类：
+
+\textbf{电弧焊（Arc Welding）：}
+\begin{itemize}
+  \item \textbf{SMAW（手工电弧焊）：}最古老、最简单—焊条就是填充金属+药皮。适合现场维修和粗活
+  \item \textbf{GMAW/MIG（熔化极气体保护焊）：}送丝机自动送焊丝+CO₂/Ar保护。汽车工业最常用
+  \item \textbf{TIG（钨极氩弧焊）：}非消耗性钨电极+人工送丝+Ar保护。精度最高，适合薄板/有色/不锈钢
+  \item \textbf{SAW（埋弧焊）：}焊丝+颗粒状焊剂覆盖。大厚板的首选（船舶/管道）
+\end{itemize}
+
+\textbf{高能束焊（High-Energy Beam Welding）：}
+\begin{itemize}
+  \item \textbf{电子束焊（EBW）：}真空室中高速电子加热——深宽比极大（深度/宽度可达50:1）、热变形极小
+  \item \textbf{激光焊（LBW）：}聚焦激光加热——速度极快（可达10m/min以上）、热影响区极窄
+\end{itemize}
+
+\textbf{固态焊（Solid-State Welding）：}
+\begin{itemize}
+  \item \textbf{摩擦搅拌焊（FSW）：}旋转搅拌头摩擦生热——材料在固态下"揉"合。铝合金的首选（高铁车厢）
+  \item \textbf{超声波焊：}高频振动摩擦生热——塑料焊接和极薄金属箔的焊接
+  \item \textbf{扩散焊：}高温高压下原子在界面处扩散——两种不同金属的连接（电磁炮轨道/核燃料包壳）
+\end{itemize}
+\end{qualitative}
+
+\begin{quantitative}
+\textbf{各工艺的核心参数对比}
+
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+\textbf{工艺} & \textbf{热输入范围} & \textbf{熔深/焊速} & \textbf{适用板厚} & \textbf{变形量} \\
+\midrule
+SMAW & 1-3 kJ/mm & 浅/慢 & 2-20mm & 大 \\
+GMAW & 0.5-2 kJ/mm & 中/中 & 1-30mm & 中 \\
+TIG & 0.1-1 kJ/mm & 浅/慢 & 0.5-5mm & 小 \\
+SAW & 2-10 kJ/mm & 深/快 & 8-200mm & 大 \\
+EBW & 0.1-5 kJ/mm & 极深/慢 & 1-150mm & 极小 \\
+LBW & 0.01-1 kJ/mm & 中/极快 & 0.1-20mm & 极小 \\
+FSW & — & 中/中 & 1-50mm & 中 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{工艺选择的"铁三角"：}在任何焊接任务中，质量、速度和成本三者不能同时最优——必须权衡。例如FSW质量极高（无气孔/无飞溅）但速度较慢且设备昂贵（一台FSW搅拌头约5-10万美元）。
+\end{quantitative}
+
+\begin{lessonsummary}
+\begin{enumerate}
+  \item 选择焊接工艺取决于：材料类型、板厚、接头可达性、质量要求、成本和产量
+  \item 高能束焊接（EBW/LBW）提供最少的热变形和最高的精度——适合航空/航天/精密制造
+  \item 固态焊（FSW/扩散焊）消除了熔化焊的几乎所有缺陷（气孔/裂纹/变形）——但设备成本高
+  \item "铁三角"权衡（质量/速度/成本）是焊接工艺选择的核心决策框架
+\end{enumerate}
+\end{lessonsummary}
+
+\begin{discuss}
+\begin{enumerate}
+  \item 为什么汽车车身焊接大量采用"电阻点焊"而不是TIG/MIG？——电阻点焊每秒可以完成4-6个焊点、不需要填充金属、容易实现机器人自动化。一个车身6000个焊点用TIG焊需要几个小时——用点焊只需要2-3分钟。
+  \item 2024年，特斯拉在Cybertruck上大规模使用了\textbf{激光焊}来连接不锈钢外骨骼面板——如果采用传统焊接，热变形会导致面板配合不齐。激光焊的极小热输入输入解决了这个问题——但激光焊的设备投资是电阻点焊的10倍以上。这个"选择"在经济学上是划算的吗？——对特斯拉来说是的，因为它取消了涂装工序（不用涂漆的不锈钢不需要遮盖点焊痕迹），总制造成本反而降低了。
+  \item 为什么核电站的压力容器焊接必须用SAW而不是SMAW？——SAW的焊剂覆盖充分隔离空气、焊接参数稳定可重复、每道焊缝的化学成分均匀可控——全部是核安全需要的条件。
+\end{enumerate}
+\end{discuss}
+
+\begin{exercises}
+\begin{enumerate}
+  \item 比较TIG和MIG的异同——哪个速度更快？哪个精度更高？哪个更适合铝？哪个更适合钢？
+  \item 一个6mm厚的铝合金板需要对接焊。你会选择TIG、MIG还是FSW？说出你的决策过程。
+  \item 激光焊的"匙孔效应"（Keyhole Effect）是什么？它为什么能让激光焊得到极高的深宽比？
+\end{enumerate}
+\end{exercises}
+
+\xuehaiinline{
+\textbf{摩擦搅拌焊（FSW）的发明——1991年英国焊接研究所（TWI）：}一个工程师在试图用常规摩擦焊焊接铝合金时发现——如果把一个旋转的搅拌头插入两个对接工件的接缝中、沿着接缝移动——两块金属会被"揉"在一起，没有熔化、没有飞溅、没有气孔。FSW就这样被"偶然"发现了。今天全世界的高铁铝合金车体几乎全部使用FSW——因为铝合金熔化焊的气孔和变形问题在FSW中完全被消除了。\\
+\textbf{新能源汽车电池托盘：}2023年特斯拉率先在其电池包中大规模采用FSW来焊接铝合金电池托盘——需要绝对的密封（防水）和绝对的平面度（电池模块的平整安装面）。FSW是唯一能同时满足这两个要求的工艺。
+}
+
+\newpage
+\chapter{焊接应力与变形——热胀冷缩的"敌人"}
+
+\begin{scenario}
+\textbf{船体分段焊完发现短了10mm}
+
+某造船厂，两个船体分段分别在两个车间焊接完成——然后移到总装平台对接。一对接发现——左右两个分段各短了5mm——总短10mm。不是加工错了——是焊接变形。焊缝在冷却时收缩——将整个分段"拉"短了。这就是焊接残余应力与变形的典型后果。
+\end{scenario}
+
+\begin{qualitative}
+\textbf{焊接变形的来源：热胀冷缩的不均匀}
+
+焊接时，焊缝和HAZ被加热到高温——膨胀。但周围冷金属不让它自由膨胀——产生压缩塑性变形。冷却时，焊缝收缩——但现在收缩被周围冷金属约束——产生拉伸残余应力。
+
+焊接变形的六种基本形式：横向收缩、纵向收缩、弯曲变形、角变形、扭曲变形、屈曲变形。在大型薄壁结构中（船体/飞机蒙皮/储罐），最常见的失效模式是屈曲变形。
+
+\textbf{控制焊接变形的策略：}
+\begin{itemize}
+  \item \textbf{设计阶段：}减少焊缝数量、对称布置焊缝、优化接头设计
+  \item \textbf{焊接前：}反变形（预弯曲到相反方向）、刚性固定（卡具压紧）
+  \item \textbf{焊接中：}顺序焊接（从中心向两侧、对称跳焊）、热输入控制
+  \item \textbf{焊接后：}锤击（松弛应力）、热处理（去应力退火）、机械校正
+\end{itemize}
+\end{qualitative}
+
+\begin{quantitative}
+\textbf{残余应力的产生与度量}
+
+焊缝纵向收缩产生的残余应力分布：在焊缝中心附近达到材料的屈服强度（$\sigma \approx \sigma_y$）——拉伸。远离焊缝的地方为压缩应力（自平衡）。
+
+\textbf{残余应力的测量方法：}
+\begin{itemize}
+  \item \textbf{钻孔法（Hole-drilling）：}在测点钻一个小孔——孔周围的应变释放——通过应变片测量释放的应变量反推原始应力。最常用，但有轻微破坏性
+  \item \textbf{X射线衍射法：}测量晶格间距变化推算应力——无损但只能测表面
+  \item \textbf{中子衍射法：}可以测量内部应力——但需要核反应堆作为中子源——成本极高
+\end{itemize}
+
+\textbf{去应力退火（Stress Relief Annealing）：}将焊件加热到约600-650°C（视材料而定）→保温一定时间（每25mm厚度约1小时）→缓慢冷却。在高温下，屈服强度降低——残余应力通过微小塑性变形得到释放。
+\end{quantitative}
+
+\begin{lessonsummary}
+\begin{enumerate}
+  \item 焊接变形的根源是加热和冷却的不均匀——热胀冷缩受到约束
+  \item 控制变形需要从设计、焊前、焊中、焊后四个阶段综合施策
+  \item 焊接残余应力在焊缝附近接近屈服强度——如果与工作应力叠加可能直接导致失效
+  \item 去应力退火是消除残余应力的最彻底方法——但不适用于所有材料和结构
+\end{enumerate}
+\end{lessonsummary}
+
+\begin{discuss}
+\begin{enumerate}
+  \item "焊接变形"和"焊接缺陷"（如裂纹/气孔）哪个对结构安全的威胁更大？——变形通常不影响强度（除非导致屈曲），但影响装配精度和外观。缺陷直接影响载荷承载能力——所以检验标准对缺陷更严格。
+  \item 对于大型结构（如桥面板的对接焊），反变形量的精确预估是关键技术。如果反少了——变形仍然存在；如果反多了——新的变形。怎样精确计算反变形量？（提示：有限元模拟+少量试验验证——这是焊接CAE工程师的核心工作。）
+  \item 残余应力不一定是"坏"的——在某些场景下工程师故意引入\textbf{有益的残余压应力}来延长疲劳寿命。比如在航空发动机叶片上通过激光冲击强化（LSP）引入表层压应力、在汽车弹簧上通过喷丸处理引入压应力。为什么压应力是"有益"的？
+\end{enumerate}
+\end{discuss}
+
+\begin{exercises}
+\begin{enumerate}
+  \item 一块500mm×200mm×10mm的钢板，沿中心线焊一道纵缝。估算焊后的纵向收缩量（提示：纵向收缩$ \Delta L \approx \frac{A_w}{A} \times \text{经验系数}$，其中$A_w$为焊缝截面积，$A$为板材截面积）。
+  \item 解释"反变形法"的原理——用一块薄板和一根焊条做一个演示实验（如果可以的话——试一下）。
+  \item 为什么焊接热处理中的"加热速率"和"冷却速率"同样重要？（提示：热应力叠加相变应力可能导致开裂。）
+\end{enumerate}
+\end{exercises}
+
+\xuehaiinline{
+\textbf{焊接变形的"经典失败"——美国海军"Thresher"号核潜艇（1963年）：}这艘潜艇在深潜测试中沉没——129人遇难。调查发现——船体焊接变形导致海水管路系统的银钎焊（一种低温焊接）接头在深水压力下发生了脆性断裂。不是主要的船体焊缝出了问题——是一个辅助管路的焊接接头。这个案例说明了一个残酷的工程教训：失败往往发生在你没有想到的地方。\\
+\textbf{高强钢焊接的"氢致延迟裂纹"——一个必须在焊后48小时才能检测的缺陷：}高强钢（屈服强度>600MPa）焊接后，氢原子从焊缝区扩散到HAZ——在应力集中的部位聚集——经过几小时到几十小时的"潜伏"后——突然产生一条微观裂纹。这就是为什么高强钢焊接后不能立即做无损检测——必须等待至少48小时让"延迟裂纹"充分显现。
+}
+
+\newpage
+\chapter{焊接检验——如何判断一个焊口合格？}
+
+\begin{scenario}
+\textbf{大兴机场钢结构的"体检"}
+
+北京大兴机场航站楼的钢结构——14万吨钢管、6万多个节点、总焊缝长度超过200公里。每一个节点焊缝都必须经过检验——这是一个巨大的工程。不是每一条焊缝都能100\%检测——但关键节点（"主桁架"、"C形柱根部"）必须100\%进行超声波探伤（UT）和磁粉探伤（MT）。检测出缺陷后——不是"报废"——而是评估"这个缺陷是否在可接受范围内"并决定是"接受"还是"修补"。
+\end{scenario}
+
+\begin{qualitative}
+\textbf{焊接缺陷的六大类型}
+
+\begin{enumerate}
+  \item \textbf{裂纹：}最危险——条状断裂。冷裂纹（焊后几小时才出现）、热裂纹（凝固过程中出现）、再热裂纹（焊后热处理中出现）
+  \item \textbf{气孔：}熔池中的气体没有逸出被"困"在了焊缝里——圆形/椭圆形空洞。降低焊缝有效截面积
+  \item \textbf{夹渣：}焊剂或氧化物没有被排出到熔池表面——在焊缝中形成块状夹杂
+  \item \textbf{未熔合：}焊丝和母材没有充分熔合——"假焊"——焊接中最容易被忽视的缺陷
+  \item \textbf{未焊透：}坡口根部没有完全熔透——接头有效截面积减小
+  \item \textbf{咬边：}焊缝边缘的母材被电弧熔化但没有被填充金属填满——应力集中点
+\end{enumerate}
+
+\textbf{缺陷的可接受标准：}不是"有缺陷就报废"——而是根据缺陷的类型、尺寸、位置和结构的重要性来判断。航空结构最严格（几乎零容忍）、建筑结构中等、一般非承重结构较宽松。标准文件：ISO 5817（钢焊缝质量等级）、AWS D1.1（美国钢结构焊接规范）、中国GB 50661。
+\end{qualitative}
+
+\begin{quantitative}
+\textbf{无损检测（NDT）方法的选择}
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{方法} & \textbf{可检测的缺陷} & \textbf{优点} & \textbf{缺点} \\
+\midrule
+VT（目视） & 表面缺陷 & 最便宜、最快速 & 只能看表面 \\
+PT（渗透） & 表面开口缺陷 & 简单、便宜 & 只能检表面对焊缝必须清洁 \\
+MT（磁粉） & 表面+近表面缺陷 & 灵敏度高 & 只适用于铁磁性材料 \\
+UT（超声波） & 内部缺陷 & 深度准确、可检厚板 & 需要熟练操作员 \\
+RT（射线） & 内部缺陷 & 结果直观可记录 & 辐射防护、成本高、厚板受限 \\
+ET（涡流） & 表面+近表面 & 快速可自动化 & 只适用于导电材料 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{UT的定量分析：}当超声波遇到裂纹时——部分能量被反射。反射信号的幅度与裂纹尺寸有关。通常用"当量缺陷尺寸"（相当于一个特定直径的平底孔）来报告检测结果。
+
+\textbf{RT的缺陷评级：}射线胶片上——气孔呈现为圆形黑斑、夹渣为不规则黑斑、裂纹为细长黑线。焊工考试时，必须"读"出X光胶片上所有缺陷并判断等级。
+\end{quantitative}
+
+\begin{lessonsummary}
+\begin{enumerate}
+  \item 焊接检验不是简单的"好/坏"二分——而是根据缺陷的类型、尺寸和位置做出"接受/返修/报废"的判断
+  \item 每种NDT方法有其适合的缺陷类型——合理的方法组合才能保证检测可靠性
+  \item 超声波（UT）是钢结构焊接检验的主力——成本低、深度准确、对人体无害
+  \item 破坏性试验（弯曲/拉伸/冲击/宏观金相）用于工艺评定和焊工资格考试——不是日常检验手段
+\end{enumerate}
+\end{lessonsummary}
+
+\begin{discuss}
+\begin{enumerate}
+  \item 无损检测能做到"绝对不漏检"吗？——不能。每种NDT方法都有其检测概率（Probability of Detection, POD）。对于超声波UT，POD与缺陷尺寸、深度、取向都有关。一个和超声波束平行的薄裂纹——可能完全检测不到。工程中用的不是"确保100\%检测到"，而是"确保95\%的缺陷在某个尺寸以上能被检测到"。
+  \item 焊工考试——焊工需要"考证"吗？——是的。中国有"焊工资格考试"（根据GB/T 15169和TSG Z6002）。焊工必须针对每种材料、每种焊接位置（平焊/横焊/立焊/仰焊）单独考试。拿到证后定期复考。一个核电站焊工可能需要考6-10个不同的"工艺认可"——每个都对应特定的材料/板厚/焊接位置组合。
+  \item 为什么核电站的焊接接头的RT（射线）检验不能用数字代替胶片？——（其实正在被替代。数字射线DR（Digital Radiography）和计算机辅助射线CR（Computed Radiography）已经在核电和航空航天领域逐步得到标准认可——但在很多国家法规中，胶片RT仍然是"法定"的验收手段。）
+\end{enumerate}
+\end{discuss}
+
+\begin{exercises}
+\begin{enumerate}
+  \item 假设你在UT探伤中发现了一个当量直径2mm的缺陷，位于板厚40mm的中心位置。按照AWS D1.1标准——这个缺陷可以接受吗？（需要查标准中的允许缺陷尺寸表。）
+  \item 对比UT和RT——为什么在很多国家规范中厚板（>30mm）优先用UT而不是RT？（提示：X射线在钢中的衰减系数与厚度的关系——厚度增加需要更高的管电压和更长的曝光时间。）
+  \item 解释"TOFD"（Time of Flight Diffraction）超声波检测技术的原理——它和传统脉冲回波UT有什么不同？
+\end{enumerate}
+\end{exercises}
+
+\xuehaiinline{
+\textbf{世界上最大的焊接检验工程——核电站压力容器的制造：}一个AP1000核反应堆压力容器——壁厚约200mm、由高强低合金钢锻造成形——纵缝和环缝全部用SAW焊接——焊接完成后要进行以下全部检验：\\
+（1）VT（目视）——表面质量；\\
+（2）MT（磁粉）——表面+近表面裂纹；\\
+（3）UT（超声波）——内部缺陷，按ASME规范要求100\%检测；\\
+（4）RT（射线）——至少25\%的焊缝长度进行射线检测；\\
+（5）ET（涡流）——堆焊层（不锈钢耐蚀层）的表面微裂纹检测；\\
+（6）水压试验——1.25倍设计压力——保压30分钟；\\
+（7）泄漏试验——氦质谱检漏——灵敏度极高（可检测到每年泄漏量小于10ml标准空气）。\\
+整个检验周期约3个月——超过焊接本身的时间。这个投入是值得的——因为如果核压力容器在运行中发生失效——后果不是"修一下"，而是整个核电站报废。
+}
+
+\newpage
+\chapter{特种焊接——水下、太空与核环境}
+
+\begin{scenario}
+\textbf{福岛核电站的焊接修复——地球上最困难的焊接}
+
+2011年福岛核事故后，需要在高辐射环境下焊接被损坏的冷却管路。人不能进入（辐射致死剂量），所以必须使用远程操控的焊接机器人。但焊接过程中的电弧不稳定怎么办？焊丝送不进去怎么办？熔池飞溅导致导电嘴堵塞怎么办？所有这些在普通车间里五分钟就能解决的小问题——在核辐射环境里需要数月来研发解决方案。
+\end{scenario}
+
+\begin{qualitative}
+\textbf{三种极端环境焊接的挑战}
+
+\textbf{水下焊接：}
+\begin{itemize}
+  \item \textbf{湿法焊接：}焊工直接在水下焊接——防水焊条+特殊面罩。水深<50m。最大问题——水会迅速冷却熔池、氢含量极高（冷裂纹风险）、能见度极差
+  \item \textbf{干法焊接（高压舱）：}在焊接区域周围建一个"水密舱"——抽出水、充入高压气体——焊工在"干"的环境中焊接。水深可达300m以上。质量高但成本极高
+\end{itemize}
+
+\textbf{太空焊接：}
+\begin{itemize}
+  \item 真空环境中电弧不稳定（没有空气电离——需要特殊电极设计）
+  \item 微重力导致熔池行为完全不同——无"下坠"、无"对流"
+  \item 温度极端——焊接时数千度、旁边几十度（没有空气导热——散热只能靠热辐射和接触传导）
+\end{itemize}
+
+\textbf{核环境焊接：}
+\begin{itemize}
+  \item 辐射会使操作者死亡——必须远程遥控
+  \item 辐射可能使焊接设备失效（电子器件被辐射破坏）
+  \item 焊接后的检验同样必须远程完成
+\end{itemize}
+\end{qualitative}
+
+\begin{quantitative}
+\textbf{水下湿法焊接的极限深度}
+
+电弧在水下环境中的稳定性可以用以下关系近似描述：
+\[
+P_{arc} \approx P_{atm} + \rho g h + P_{bubble}
+\]
+
+随着水深增加——环境压力增大——电弧长度被压缩——引弧更困难、电弧电压降低。一般手工湿法焊接的极限深度约50-60m（超出后电弧极不稳定）。使用特殊焊条和改进的焊接电源可以到达约150m。
+
+\textbf{太空电子束焊的真空条件：}真空度需要达到$10^{-2}$Pa以上才能稳定发射电子束。这意味着焊接过程必须在真空室中进行——但太空本身就是真空——所以太空是电子束焊接的"天然环境"——前提是电子枪的散热问题（太空中没有空气对流散热）。
+\end{quantitative}
+
+\begin{lessonsummary}
+\begin{enumerate}
+  \item 极端环境焊接的最主要挑战——不是焊接本身，而是"如何把焊接设备和操作者放在正确的位置上"
+  \item 水下湿法焊接质量受高氢含量限制（冷裂纹风险）——干法焊接质量接近陆地焊接
+  \item 太空焊接最有前景的方案是电子束焊和摩擦搅拌焊——无需保护气体、不需要"接地"
+  \item 核环境焊接的终极解决方案是"全自动、远程操控、容错设计"
+\end{enumerate}
+\end{lessonsummary}
+
+\begin{discuss}
+\begin{enumerate}
+  \item 为什么水下焊接的焊工被称为"极限职业"？——除了水下焊接本身的技术难度外，还面临减压病风险（焊工在高压环境中呼吸压缩空气必须在工作结束后缓慢减压）、电击风险（海水导电）、以及鲨鱼（虽然很少但确实有记录）。
+  \item 太空中摩擦搅拌焊（FSW）比电子束焊更有优势？——FSW不需要真空、不需要大功率电源、不受热辐射影响——但需要施加大力（轴向力可达数吨）——这个"力的传递"在微重力环境下很难实现（焊件必须被刚性固定到焊接平台上——但平台本身也悬浮着）。
+  \item 中国正在建设自己的空间站焊接实验平台——"梦天"实验舱配备了材料暴露装置和焊接试验设备。你觉得在太空焊接的"第一个实际工程应用"应该是什么？
+\end{enumerate}
+\end{discuss}
+
+\begin{exercises}
+\begin{enumerate}
+  \item 查一下——目前全球拥有"水下干法焊接（高压舱焊接）"资质的潜水焊工大约有多少人？（答案：全球不超过200人。）
+  \item 解释为什么水下湿法焊接的焊条药皮中含有"防水涂层"——它的作用是什么？
+  \item 评估——如果要在月球表面焊接一个科学考察站的铝合金框架——你会选择哪种焊接工艺？说明你的理由。
+\end{enumerate}
+\end{exercises}
+
+\xuehaiinline{
+\textbf{太空焊接的"第一次"——苏联"联盟"号任务（1969年）：}1969年10月16日，苏联宇航员在"联盟-8号"飞船上进行了人类第一次太空焊接实验——使用了一种特制的电子束焊接装置。焊接后的样品被带回地球分析——焊缝质量良好。这个实验之后，苏联/俄罗斯在焊接技术和太空制造技术上积累了数十项专利。\\
+\textbf{今天——商业太空焊接：}几家美国初创公司（如Made In Space, Tethers Unlimited）正在开发太空3D打印和焊接技术。当前最成熟的方案不是"焊接"——而是用类似FSW的"摩擦沉积打印"（Friction Deposition Printing）来在太空中制造金属零件。优势：不需要熔池、不需要保护气体、对微重力不敏感。
+}
+
+\newpage
+\chapter{焊接自动化——从机器人到智能焊接}
+
+\begin{scenario}
+\textbf{北京奔驰的焊接车间——6000个焊点、500个机器人、0.1mm的精度}
+
+在北京亦庄的北京奔驰工厂，车身焊接车间里有超过500台六轴工业机器人。每一台机器人负责若干个焊点的任务——机械臂末端的焊钳夹紧车身钢板的两个面→大电流通过→电阻热使钢板融化→冷却后形成焊点。一台机器人每分钟可以完成约20个点焊。在全自动生产线上，白车身（未涂装的车架）的制造精度控制在0.1mm级别——相当于一根头发丝的直径。
+\end{scenario}
+
+\begin{qualitative}
+\textbf{焊接自动化的三个层次}
+
+\textbf{第一层：示教再现——}操作员"手把手"把机器人移动到想要的焊接路径上——机器人"记住"这个路径然后自动重复。这是最基础的焊接机器人编程方式。问题：如果工件的位置稍微偏差——机器人焊偏了。
+
+\textbf{第二层：传感器引导——}机器人通过激光位移传感器/视觉传感器实时检测焊缝位置——自动修正轨迹。ABB的"焊缝跟踪"系统可以在焊接过程中以每秒50次的频率调整焊枪位置。
+
+\textbf{第三层：自适应控制——}机器人不仅"跟踪焊缝"——还根据实际的坡口宽度、间隙、装配偏差动态调整焊接参数（电流/电压/焊接速度/送丝速度）。在厚板多层多道焊中——每一条道焊都要根据前一道的形貌调整轨迹和参数。
+
+\textbf{智能焊接的终极愿景："参数自学习+质量自判断"}
+\begin{itemize}
+  \item 焊接前的激光视觉扫描→自动生成焊接路径和参数
+  \item 焊接过程中的电弧传感+熔池视觉+声音分析→实时判断焊接质量
+  \item 焊接后的AI视觉检测→自动标记和分类缺陷
+  \item 全流程数据积累→下一次焊接时自动优化参数
+\end{itemize}
+\end{qualitative}
+
+\begin{quantitative}
+\textbf{焊接机器人的经济性分析}
+
+一台六轴工业焊接机器人（含焊机和外围设备）的购置成本约30-60万元人民币（中国品牌如埃斯顿/埃夫特）到80-150万元（日本FANUC/德国KUKA）。一条典型的机器人焊接工作站每年可运行350天×2班（16小时）。替换的人工成本：一个熟练焊工的年综合成本约15-20万元。
+
+\textbf{投资回收期计算：}
+\[
+\text{回收期} = \frac{\text{设备投资}}{(\text{替换的人工数} \times \text{每人年成本}) + \text{效率提升收益} + \text{缺陷率降低收益}}
+\]
+
+通常三班制的机器人焊接站可以在2-3年内收回投资。但这是"理论上的"——实际中还需要考虑维护成本、编程培训、夹具更换的停线损失。
+
+\textbf{焊接参数的自适应控制模型：}用机器学习方法（如高斯过程回归）建立"焊接参数→焊缝形貌"的映射关系——给定目标焊缝宽度和熔深，模型输出推荐的电流/电压/焊速组合。
+\end{quantitative}
+
+\begin{lessonsummary}
+\begin{enumerate}
+  \item 焊接机器人从"示教再现"→"传感器引导"→"自适应控制"→"智能焊接"——每个层次解决一个核心问题
+  \item 中国是世界上最大的焊接机器人消费国——2023年新装机量约10万台
+  \item 智能化焊接的核心技术瓶颈不是算法——而是传感器的精度和可靠性（电流200-600A时，电弧传感信号的信噪比很低）
+  \item 焊接自动化的经济可行性取决于产量、复杂度和质量要求的组合——不是所有焊接都适合机器人
+\end{enumerate}
+\end{lessonsummary}
+
+\begin{discuss}
+\begin{enumerate}
+  \item 为什么汽车制造业（高产量、标准化产品、短节拍）最适合焊接机器人——而船舶制造（低产量、多样化结构、长焊缝）仍然依赖大量手工焊？——因为汽车的"规模和标准化"使得机器人的编程成本被分摊到了上百万个零件中。而船舶的每艘船都是"半定制"——机器人编程的时间可能比焊接本身还长。
+  \item "焊接技师"会不会被机器人完全取代？——常规焊接（批量产品的自动化点焊/气保焊）会。但复杂焊接（固定焊位不可达/极厚板/合金/修复焊接）仍然依赖焊工的判断和技巧。所以焊接技师的"技能栈"应该向"设备维护/编程/质量分析"方向演进。
+  \item 中国焊接机器人的品牌——本土品牌（埃斯顿/埃夫特/欢颜）的市场份额从2015年的约20\%上升到2024年的约40\%，但在高端六轴机器人领域（载荷>150kg、重复定位精度<0.05mm），日本FANUC和德国KUKA仍然占据主导——为什么？——因为减速器（RV减速器/谐波减速器）和伺服电机这两个核心零部件——仍然是日本（纳博特斯克/哈默纳科）和德国（博世力士乐）的技术垄断。
+\end{enumerate}
+\end{discuss}
+
+\begin{exercises}
+\begin{enumerate}
+  \item 查资料对比一下——FANUC焊接机器人（日本）和安徽埃夫特（中国）的同类产品(比如六轴、6kg负载)在价格和重复定位精度上的差别。
+  \item 如果一个小型金属加工厂想要引入第一台焊接机器人——需要哪些配套条件？（提示：焊接电源的数字化接口/夹具精度/安全围栏/操作员培训/焊缝跟踪传感器。）
+  \item 解释为什么"焊缝跟踪传感器"在厚板多层多道焊中比在薄板单道焊中更加重要？
+\end{enumerate}
+\end{exercises}
+
+\xuehaiinline{
+\textbf{焊工和机器人的"合作"——人机协作焊接：}传统的焊接机器人——用安全围栏完全隔离（怕打到人）。新一代的"协作机器人"（Cobot）——内置力矩传感器——碰到人会自动停止——可以没有围栏。在航空发动机维修中——一个人+一台Cobot 的"人机团队"的生产效率比纯手工焊接高3-5倍、质量稳定性显著提升——因为Cobot负责"匀速送枪"（人最难做到的事）、人负责"观察熔池调整位置"（机器最难做到的事）。\\
+\textbf{中国的焊接智能化——2025年重大进展：}2024年，华中科技大学和哈尔滨工业大学联合发布了"大型构件多机器人协同焊接系统"——用于船舶和海洋工程——多个移动焊接机器人同时在一段复杂曲面上工作——用UWB定位+激光轮廓仪相互感知位置——避免"焊过头"（多个机器人在同一个位置重复焊接）或"漏焊"（中间的间隙没人焊）。这个系统在中国某造船厂进行了初步验证——将某型船体分段的焊接周期缩短了40\%。
+}
+
+\end{document}

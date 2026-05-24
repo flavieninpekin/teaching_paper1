@@ -1,0 +1,216 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\definecolor{storyblue}{RGB}{0,102,153}
+\definecolor{thinkorange}{RGB}{230,120,20}
+\definecolor{funboxbg}{RGB}{245,248,252}
+
+\newenvironment{thinkbox}{
+  \vspace{0.3cm}
+  \begin{center}
+  \begin{minipage}{0.88\textwidth}
+  \colorbox{funboxbg}{
+  \begin{minipage}{0.94\textwidth}
+  \vspace{0.15cm}
+  \textbf{\textcolor{thinkorange}{【 想一想 】}}
+}{
+  \vspace{0.15cm}
+  \end{minipage}}
+  \end{minipage}
+  \end{center}
+  \vspace{0.3cm}
+}
+
+\newenvironment{funfact}{
+  \vspace{0.2cm}
+  \begin{center}
+  \begin{minipage}{0.88\textwidth}
+  \fbox{
+  \begin{minipage}{0.92\textwidth}
+  \vspace{0.1cm}
+  \textbf{\textcolor{storyblue}{【 有趣的小知识 】}}
+}{
+  \vspace{0.1cm}
+  \end{minipage}}
+  \end{minipage}
+  \end{center}
+  \vspace{0.2cm}
+}
+
+\newenvironment{figplaceholder}[1]{
+  \vspace{0.2cm}
+  \begin{center}
+  \fbox{
+  \begin{minipage}{0.82\textwidth}
+  \centering
+  \textcolor{blue!70!black}{\textbf{【插图位置】}} \\[0.2cm]
+  #1
+  \end{minipage}}
+  \end{center}
+  \vspace{0.2cm}
+}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{机械工程小故事}}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第一课\quad 自行车为什么能跑？——齿轮与链条的秘密}}
+
+\subsection*{一个省力的大发现}
+
+小明每天骑自行车上学。他踩一圈踏板，后轮能转好几圈——车子就飞快地跑起来了。
+
+有一天他仔细观察了一下——发现脚踏板那里有一个大齿轮，后轮有一个小齿轮，中间用链条连着。他踩一圈大齿轮，链条带动小齿轮转了好几圈。
+
+这就是\textbf{齿轮传动}：大齿轮带动小齿轮时，速度变快但力量变小；小齿轮带动大齿轮时，速度变慢但力量变大。自行车的设计中兼顾了两者——起步爬坡时用"小带大"（省力），平路加速时用"大带小"（快速）。
+
+\begin{figplaceholder}
+此处插入"自行车齿轮传动"插图——标注大牙盘、小飞轮、链条、踩踏方向与车轮转动方向
+\end{figplaceholder}
+
+小明试了试——用最大档（小齿轮带大齿轮）爬坡，果然轻松多了；用最小档（大齿轮带小齿轮）在平路骑行，速度快了不少。
+
+\begin{thinkbox}
+观察一下你家的自行车——前后齿轮各有几个？链条是怎么绕的？不同的档位对应哪些齿轮组合？
+\end{thinkbox}
+
+\subsection*{从自行车到变速箱}
+
+汽车、摩托车、甚至风力发电机都用同样的原理——只是更复杂。汽车的变速箱里有很多组大小不同的齿轮——起步低速用大齿轮（力量大）、高速巡航用小齿轮（速度快）。手动挡汽车踩下离合器的瞬间，就是在切换不同的齿轮组合。
+
+\begin{funfact}
+世界上第一辆自行车是1817年发明的——但没有踏板！叫"奔跑机"——人坐在上面用脚蹬地前进。到1861年才加上了踏板和曲柄，1885年发明了链条传动——从那以后自行车的基本结构就没变过了。
+\end{funfact}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第二课\quad 挖掘机为什么那么有力？——液压的秘密}}
+
+\subsection*{工地上最酷的机器}
+
+小明路过一个建筑工地，看到一台挖掘机——巨大的铁臂轻松地挖起几吨重的泥土。更神奇的是，那条"手臂"有多个关节，可以像人的手臂一样自由弯曲。
+
+\textbf{是什么让这么重的铁臂动起来的？}——不是电机，而是液压。
+
+\begin{figplaceholder}
+此处插入"挖掘机液压系统"插图——标注液压缸、油管、挖掘机动臂的关节动作
+\end{figplaceholder}
+
+\subsection*{液压的原理}
+
+液压的奥秘就在于——液体（通常是液压油）几乎不能被压缩。当你在一个密封管道的一端推液体，这个力会几乎无损地传到另一端。
+
+可以做个小实验：准备两个大小不一样的注射器，用软管连起来，装满水。推小注射器——大注射器会以更大的力气推出来（力放大了）；推大注射器——小注射器会走得更远（距离放大了）。
+
+这就是\textbf{帕斯卡原理}：在密闭液体中，加在液体上的压强会大小不变地向各个方向传递。
+
+\[
+\frac{F_1}{A_1} = \frac{F_2}{A_2}
+\]
+
+所以——小活塞走的距离多（换来力小），大活塞走的距离少（但力放大）。用距离换力量——这个思想在机械工程里无处不在。
+
+\begin{thinkbox}
+如果小注射器的面积是1cm²，大注射器的面积是10cm²——你在小注射器上推10N的力，大注射器能输出多大的力？如果小注射器进去了10cm，大注射器会出来多少？（答案：100N, 1cm）
+\end{thinkbox}
+
+\subsection*{液压无处不在}
+
+不只是挖掘机——液压还用在：
+\begin{itemize}
+  \item \textbf{汽车刹车}——你轻轻踩刹车踏板，液压把力放大几十倍，推动刹车片夹紧刹车盘
+  \item \textbf{飞机起落架}——收放起落架用的也是液压系统
+  \item \textbf{电梯}——大型液压电梯用液压缸推动轿厢升降
+  \item \textbf{工厂里的压力机}——把金属板材压成汽车外壳
+\end{itemize}
+
+\begin{funfact}
+目前世界上最大的液压挖掘机是德国克虏伯（Krupp）的Bagger 293——重达1.4万吨，高96米，一天能挖24万吨煤——相当于30个足球场的面积挖1米深。
+\end{funfact}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第三课\quad 桥为什么不会塌？——三角形的力量}}
+
+\subsection*{纸的变身}
+
+小明拿一张A4纸，两端架在两本书之间——纸中间塌下去了。但他把纸折成波浪形（像手风琴的风箱），同样两端架在书上——上面放一支笔都没问题。
+
+同一个材料、同样的重量——只是因为形状变了，强度就完全不一样了。
+
+\begin{figplaceholder}
+此处插入"纸桥实验"插图——对比平纸塌陷 vs 波浪形纸承重
+\end{figplaceholder}
+
+再做一个实验：用四根吸管和一个大头针拼一个正方形——一推就歪。多加一根吸管变成三角形——怎么推都不歪。
+
+\textbf{三角形是不可变形的！}这就是为什么桥梁和塔吊里有那么多三角形结构（桁架）。
+
+\subsection*{三种常见的桥}
+
+\begin{itemize}
+  \item \textbf{梁桥：}最简单的桥——就是一根大梁架在两端。适合小跨度
+  \item \textbf{拱桥：}赵州桥（1400年历史）就是拱桥——拱形把向下的重力转到两侧，再由两侧传到地基。石头不用任何黏合剂，靠互相挤压就能站千年
+  \item \textbf{悬索桥：}跨度最大的桥——两根主缆挂在两端的塔上，桥面吊在主缆上。金门大桥、港珠澳大桥都是悬索桥
+\end{itemize}
+
+\begin{thinkbox}
+\textbf{观察挑战：}你每天路过的桥是什么类型的？去北京的各种桥看看——玉蜓桥、天宁寺桥、卢沟桥——它们分别用了什么样的结构？
+\end{thinkbox}
+
+\begin{funfact}
+赵州桥建于隋朝（公元605年），由工匠李春设计。它是世界上现存最古老、保存最完整的石拱桥——已经有1400多年了还在用！欧洲类似的桥在它之后700年才出现。
+\end{funfact}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第四课\quad 螺丝为什么能固定东西？——螺纹的发明}}
+
+\subsection*{一个改变世界的小设计}
+
+小明想用两块木板做个书架——他把两块木板叠在一起，用一个钉子钉进去——但没用多久就松了。
+
+他想到了用螺丝——把螺丝对准木头，用螺丝刀一转——螺丝钻了进去，非常牢固。
+
+\textbf{为什么螺丝比钉子牢固？}
+
+秘密在螺丝表面那条螺旋上升的"螺纹"。它把旋转运动变成了直线运动——螺丝每转一圈，就前进一小步。旋转的力量很大（用杠杆原理），所以即使木材不太硬，螺丝也能"钻"进去。当你想把它拔出来时——同样需要旋转它退出来——普通的外力拔不动它。
+
+\begin{figplaceholder}
+此处插入"螺纹原理"插图——螺丝剖面、螺纹的螺旋线、用斜面解释螺纹如何转化的图
+\end{figplaceholder}
+
+\textbf{螺纹本质上就是一个缠绕在圆柱体上的斜面。}斜面越长（螺纹越密），抬升同样距离需要的力越小——这就是为什么细螺纹的螺丝比粗螺纹的螺丝更容易拧进去（但拧的时间也更长）。
+
+\subsection*{螺纹无处不在}
+
+螺纹不只在螺丝上——还有：
+\begin{itemize}
+  \item 饮料瓶的瓶盖——也是螺纹，转几圈就能拧紧或打开
+  \item 水管接头——用螺纹连接不漏水
+  \item 千斤顶——用一个大螺纹把汽车顶起来
+  \item 螺旋桨——本质上就是把螺纹的原理用到水上和水里产生推力
+\end{itemize}
+
+\begin{thinkbox}
+观察你身边的东西——哪些用了螺纹？瓶盖、灯泡接口、水龙头、圆珠笔的笔帽……你还能发现一个吗？（提示：查一下螺旋式楼梯——顶楼到一楼就是一个大螺纹！）
+\end{thinkbox}
+
+\begin{funfact}
+螺丝虽然看起来简单，但直到18世纪才被广泛使用——因为手工制作一颗精准的螺丝太难了。直到1770年英国工程师Jesse Ramsden发明了"螺纹切削车床"——螺丝才可以被精确、大批量地制造。从那以后，工业革命的大门被这个小小的零件推开了。蒸汽机、火车、纺织机——所有机器都需要螺丝来固定。
+\end{funfact}
+
+\end{document}
