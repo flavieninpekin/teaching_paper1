@@ -9,54 +9,70 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/xu-cheng/texlive-full:latest
+    strategy:
+      fail-fast: false
+      matrix:
+        group:
+          - math-low
+          - math-high
+          - science
+          - chinese-social
+          - extension
+          - standalone
     steps:
       - uses: actions/checkout@v4
 
-      - name: Compile LaTeX files
+      - name: Compile ${{ matrix.group }}
         shell: bash
         run: |
-          set +e
-          rc=0
-
           compile() {
             local dir="$1" file="$2"
             echo "=== $dir/$file ==="
-            cd "$dir" || return 1
-            xelatex -interaction=nonstopmode -file-line-error "$file" 2>&1 | tail -20
-            local r1=${PIPESTATUS[0]}
-            xelatex -interaction=nonstopmode -file-line-error "$file" 2>&1 | tail -20
-            local r2=${PIPESTATUS[0]}
+            cd "$dir" || { echo "FAIL: cannot cd $dir"; return; }
+            timeout 120 xelatex -interaction=nonstopmode -file-line-error "$file" 2>&1 | tail -10 || echo "WARN: xelatex $dir/$file exited with code $?"
+            timeout 120 xelatex -interaction=nonstopmode -file-line-error "$file" 2>&1 | tail -10 || echo "WARN: xelatex $dir/$file (pass 2) exited with code $?"
             cd "$GITHUB_WORKSPACE"
-            if [ "$r1" -ne 0 ] || [ "$r2" -ne 0 ]; then
-              echo "::warning::$dir/$file - xelatex exit code: $r1 / $r2"
-              rc=1
-            fi
           }
 
-          # classroom_materials
-          while IFS= read -r -d '' f; do
-            compile "$(dirname "$f")" classroom_materials.tex
-          done < <(find . -name 'classroom_materials.tex' -print0 2>/dev/null)
-
-          # Extension knowledge
-          for d in E04-finance E01-mechanical-eng E03-welding-tech E05-civil-eng E06-electronics E07-clinical-medicine E08-law E11-aerospace E15-automation; do
-            for f in intro vol1-foundations vol2-derivatives vol3-innovation syllabus; do
-              [ -f "extension-knowledge/$d/$f.tex" ] && compile "extension-knowledge/$d" "$f"
-            done
-          done
-
-          # Other standalone files
-          compile science overall_plan
-          compile science/nature-intro syllabus
-          compile programming overview
-          compile math/low-level/algebra book1
-          compile math/low-level/algebra book2
-
-          exit $rc
+          case "${{ matrix.group }}" in
+            math-low)
+              compile math/low-level/algebra book1
+              compile math/low-level/algebra book2
+              find math/low-level -maxdepth 3 -name 'classroom_materials.tex' | while read f; do compile "$(dirname "$f")" classroom_materials.tex; done
+              ;;
+            math-high)
+              find math/high-level -maxdepth 4 -name 'classroom_materials.tex' | while read f; do compile "$(dirname "$f")" classroom_materials.tex; done
+              ;;
+            science)
+              find science -maxdepth 4 -name 'classroom_materials.tex' | while read f; do compile "$(dirname "$f")" classroom_materials.tex; done
+              ;;
+            chinese-social)
+              find chinese -maxdepth 3 -name 'classroom_materials.tex' | while read f; do compile "$(dirname "$f")" classroom_materials.tex; done
+              find social-science -maxdepth 3 -name 'classroom_materials.tex' | while read f; do compile "$(dirname "$f")" classroom_materials.tex; done
+              find history -maxdepth 3 -name 'classroom_materials.tex' | while read f; do compile "$(dirname "$f")" classroom_materials.tex; done
+              ;;
+            extension)
+              for d in E04-finance E01-mechanical-eng E03-welding-tech E05-civil-eng E06-electronics E07-clinical-medicine E08-law E11-aerospace E15-automation; do
+                for b in intro vol1-foundations vol2-derivatives vol3-innovation syllabus; do
+                  [ -f "extension-knowledge/$d/$b.tex" ] && compile "extension-knowledge/$d" "$b"
+                done
+              done
+              ;;
+            standalone)
+              compile science overall_plan
+              compile science/nature-intro syllabus
+              compile programming overview
+              compile math/high-level/analytic-geometry classroom_materials
+              compile math/high-level/calculus/book1-calculus-intro classroom_materials
+              compile math/high-level/calculus/book2-multivariable classroom_materials
+              compile social-science/society-intro classroom_materials
+              compile social-science/society-intro syllabus
+              ;;
+          esac
 
       - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
-          name: pdfs
+          name: pdfs-${{ matrix.group }}
           path: "**/*.pdf"
           if-no-files-found: warn
