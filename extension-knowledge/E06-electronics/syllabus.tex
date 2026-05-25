@@ -1,0 +1,47 @@
+\documentclass[a4paper,11pt]{ctexart}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\newcommand{\draft}{\textcolor{orange!80!black}{\textbf{【待写】}}}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{电子信息工程模块 · 课程大纲}}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{第零层 · 入门故事}
+
+\begin{enumerate}
+\item[\textbf{第1课}] \textbf{手机是怎么"说话"的？——从声音到电信号到电磁波} \draft \\
+\textbf{内容：} 声音→麦克风（声电转换）→ADC→数字编码→调制→电磁波发射→接收→解调→DAC→喇叭。电报→电话→手机的简史。
+\item[\textbf{第2课}] \textbf{芯片里有什么？——指甲盖上的城市} \draft \\
+\textbf{内容：} 晶体管（数十亿个微小的"开关"）、光刻机就像用光在硅片上"画电路"、摩尔定律。从ENIAC（房子那么大）到手机芯片（指甲盖大）。
+\item[\textbf{第3课}] \textbf{WiFi是怎么"穿墙"的？——电磁波的频率与波长} \draft \\
+\textbf{内容：} 为什么WiFi信号能穿墙但可见光不能？不同频率的电磁波的穿透能力。5G为什么需要密集建站？
+\end{enumerate}
+
+\section*{深入课程}
+
+\begin{enumerate}
+\item[\textbf{第1课}] \textbf{模拟电子——放大、滤波与振荡} \draft \\
+\textbf{内容：} 二极管（整流）、三极管与运放（放大）、RC滤波器、振荡器。情景：为什么音响的"底噪"永远消除不了？
+\item[\textbf{第2课}] \textbf{数字电子——0和1怎么组成世界} \draft \\
+\textbf{内容：} 组合逻辑与时序逻辑。锁存器、触发器、计数器、寄存器。情景：CPU的加法器是怎么用逻辑门造出来的？
+\item[\textbf{第3课}] \textbf{信号与系统——时域和频域是一回事} \draft \\
+\textbf{内容：} 傅里叶变换——时域信号→频域表示。采样定理（Nyquist）。情景：为什么MP3压缩音乐时有人听不出区别？
+\item[\textbf{第4课}] \textbf{通信原理——从AM/FM到5G} \draft \\
+\textbf{内容：} 调制与解调（AM/FM/PM/ASK/FSK/QPSK/QAM）。信道容量 $C=B\log_2(1+SNR)$（香农公式）。情景：为什么5G的速度是4G的10倍以上？
+\item[\textbf{第5课}] \textbf{嵌入式系统——让万物"智能"} \draft \\
+\textbf{内容：} 微控制器（MCU vs MPU）、传感器+ADC+MCU+执行器。情景：智能家居里的温度传感器是如何采集、处理和传输数据的？
+\item[\textbf{第6课}] \textbf{北京在地——中国芯片产业与电子信息} \draft \\
+\textbf{内容：} 亦庄的"集成电路产业链"（中芯国际北方、北方华创）。北京中关村的电子信息产业集群。光刻机为什么这么难？
+\end{enumerate}
+
+\end{document}

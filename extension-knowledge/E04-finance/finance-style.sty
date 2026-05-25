@@ -1,0 +1,112 @@
+% 金融学三卷本 · 统一样式包
+\ProvidesPackage{finance-style}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[top=2cm, bottom=2cm, left=2.2cm, right=2.2cm]{geometry}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{framed}
+\usepackage{marginnote}
+\usepackage{tcolorbox}
+
+\definecolor{themeblue}{RGB}{0,80,150}
+\definecolor{scenario}{RGB}{180,50,30}
+\definecolor{quant}{RGB}{30,120,70}
+\definecolor{sidebarbg}{RGB}{245,248,252}
+\definecolor{summarybg}{RGB}{230,245,230}
+\definecolor{discussbg}{RGB}{255,245,230}
+
+% 情景引入框
+\newenvironment{scenario}{
+  \vspace{0.4cm}
+  \noindent\begin{tcolorbox}[colback=scenario!5!white,colframe=scenario!70!black,title=\textcolor{scenario}{\textbf{情景引入}}]
+  \vspace{0.1cm}
+}{
+  \end{tcolorbox}
+  \vspace{0.3cm}
+}
+
+% 定性分析框
+\newenvironment{qualitative}{
+  \vspace{0.3cm}
+  \noindent\begin{tcolorbox}[colback=themeblue!5!white,colframe=themeblue!60!black,title=\textcolor{themeblue}{\textbf{定性分析}}]
+  \vspace{0.1cm}
+}{
+  \end{tcolorbox}
+  \vspace{0.3cm}
+}
+
+% 定量分析框
+\newenvironment{quantitative}{
+  \vspace{0.3cm}
+  \noindent\begin{tcolorbox}[colback=quant!5!white,colframe=quant!60!black,title=\textcolor{quant}{\textbf{定量分析}}]
+  \vspace{0.1cm}
+}{
+  \end{tcolorbox}
+  \vspace{0.3cm}
+}
+
+% 总结框
+\newenvironment{lessonsummary}{
+  \vspace{0.3cm}
+  \noindent\begin{tcolorbox}[colback=summarybg,colframe=green!50!black,title=\textbf{\textcolor{green!50!black}{总结}}]
+  \vspace{0.1cm}
+}{
+  \end{tcolorbox}
+  \vspace{0.3cm}
+}
+
+% 讨论题框
+\newenvironment{discuss}{
+  \vspace{0.3cm}
+  \noindent\begin{tcolorbox}[colback=discussbg,colframe=orange!60!black,title=\textbf{\textcolor{orange!60!black}{讨论题}}]
+  \vspace{0.1cm}
+}{
+  \end{tcolorbox}
+  \vspace{0.3cm}
+}
+
+% 课后练习框
+\newenvironment{exercises}{
+  \vspace{0.3cm}
+  \noindent\begin{tcolorbox}[colback=blue!3!white,colframe=blue!50!black,title=\textbf{\textcolor{blue!50!black}{课后练习}}]
+  \vspace{0.1cm}
+}{
+  \end{tcolorbox}
+  \vspace{0.3cm}
+}
+
+% 学海拾遗——边栏
+\newcommand{\xuehai}[1]{%
+  \marginnote{%
+    \footnotesize%
+    \begin{colorbox}{sidebarbg}%
+    \textbf{\textcolor{themeblue}{学海拾遗}} \\%
+    #1%
+    \end{colorbox}%
+  }%
+}
+
+\newcommand{\xuehaiinline}[1]{%
+  \vspace{0.2cm}
+  \noindent
+  \fcolorbox{themeblue!40}{sidebarbg}{%
+    \begin{minipage}{0.92\textwidth}
+    \textbf{\textcolor{themeblue}{【学海拾遗】}} \\%
+    #1
+    \end{minipage}%
+  }
+  \vspace{0.2cm}
+}
+
+% 定义/定理环境
+\newtheorem{definition}{定义}[section]
+\newtheorem{theorem}{定理}[section]
+
+\linespread{1.4}

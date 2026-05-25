@@ -5,6 +5,7 @@
 \usepackage{listings}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
 
 \lstset{
   basicstyle=\ttfamily\small,
@@ -179,6 +180,14 @@ class LinkedList:
 
 \textbf{记住了：} 没有"最好的"数据结构，只有"最适合当前场景"的数据结构。
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 判断以下场景更适合用数组还是链表：① 需要频繁在中间插入和删除元素 ② 需要频繁按索引访问元素 ③ 数据量不确定，经常需要扩容。
+  \item 实现一个函数 \texttt{reverse\_list(lst)}，不用 \texttt{lst.reverse()} 或切片，用循环将列表反转。
+  \item \textbf{[代码对比]} 写两个函数分别用数组和"链表类"存储 10000 个整数，然后比较它们的尾部和头部插入速度。
+\end{enumerate}
+
 \section*{第三课：栈与队列}
 
 \subsection*{栈——后进先出}
@@ -345,6 +354,21 @@ def search(root, value):
 
 二叉搜索树的查找、插入、删除平均都是 $O(\log n)$——非常高效！
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 画出以下树的前序、中序、后序遍历结果：
+\begin{verbatim}
+    5
+   / \
+  3   8
+ / \   \
+2   4   10
+\end{verbatim}
+  \item 实现一个函数 \texttt{tree\_height(root)}，返回二叉树的高度（根到最远叶子节点的路径长度）。
+  \item \textbf{[BST 应用]} 给定一个有序列表 \texttt{[1, 3, 5, 7, 9, 11, 13]}，构建一棵平衡二叉搜索树，使得查找每个元素的时间复杂度都是 $O(\log n)$。
+\end{enumerate}
+
 \section*{第五课：图——连接一切}
 
 \subsection*{什么是图？}
@@ -410,6 +434,14 @@ def dfs(graph, start, visited=None):
 
 dfs(graph, "A")  # A B D E F C
 \end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 用邻接表表示以下社交网络：小明和小红是朋友，小明和小刚是朋友，小红和小丽是朋友，小刚和小丽是朋友。写出 Python 字典表示。
+  \item 对上面的社交网络，用 BFS 从小明出发，写出遍历顺序。
+  \item \textbf{[对比思考]} BFS 和 DFS 各有什么优缺点？什么情况下用 BFS 更好？什么情况下用 DFS 更好？
+\end{enumerate}
 
 \section*{第六课：排序算法}
 
@@ -524,6 +556,14 @@ def quick_sort(arr):
 \end{tabular}
 \end{center}
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 对列表 \texttt{[5, 2, 8, 1, 9, 3]}，用手动画出冒泡排序每一轮的结果。
+  \item Python 内置的 \texttt{sorted()} 用的是 Timsort 算法（结合了归并排序和插入排序）。查资料了解为什么 Timsort 被称为"实际中最好的排序算法"。
+  \item \textbf{[性能实验]} 生成一个 10000 个随机数的列表，用冒泡排序和 \texttt{sorted()} 分别排序，记录时间。运行 3 次取平均值，对比差距。
+\end{enumerate}
+
 \section*{第七课：二分查找与二分答案}
 
 \subsection*{二分查找}
@@ -633,6 +673,14 @@ print(fib_fast(100))  # 354224848179261915075
 
 \textbf{关键：} 朴素斐波那契做了大量重复计算。用"记忆化"（把算过的结果存起来）可以大大加快速度。这就是动态规划的雏形。
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 用递归实现 \texttt{power(base, exp)} 计算 $base^{exp}$（如 \texttt{power(2, 10)} = 1024）。
+  \item 递归三要素分别对应 \texttt{factorial} 函数中的哪部分代码？标注出来。
+  \item \textbf{[递归可视化]} 写一个递归函数 \texttt{print\_stars(n)}，每次递归打印一行 $n$ 个星号然后递归调用 \texttt{print\_stars(n-1)}。观察 n=5 时的输出，理解递归的"递"和"归"。
+\end{enumerate}
+
 \section*{第九课：动态规划入门}
 
 动态规划（Dynamic Programming，简称 DP）的核心思想：\textbf{把大问题拆成小问题，先解决小问题，把小问题的答案存起来，再用它们解决大问题。}
@@ -700,6 +748,14 @@ values = [50, 30, 80]
 print(knapsack(weights, values, 10))  # 160（书+水+食物全部装下）
 \end{lstlisting}
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 爬楼梯（每次 1 或 2 级）到第 10 级有多少种方法？写出 $f(1)$ 到 $f(10)$ 的值。
+  \item 用 DP 思想解决"最大子数组和"问题：给定数组 \texttt{[-2, 1, -3, 4, -1, 2, 1, -5, 4]}，找到和最大的连续子数组。
+  \item \textbf{[DP 理解]} 对比斐波那契的朴素递归和 DP 解法，解释为什么 DP 快这么多。用"重复计算的次数"来说明。
+\end{enumerate}
+
 \section*{总结：知识图谱}
 
 \begin{verbatim}
@@ -739,6 +795,89 @@ print(knapsack(weights, values, 10))  # 160（书+水+食物全部装下）
   \item \textbf{Python → C++：} 用 C++ 重新实现这些算法，感受性能差异
   \item \textbf{刷题平台：} LeetCode、Codeforces、洛谷
 \end{itemize}
+
+\section*{\textcolor{blue!70!black}{各课练习参考答案}}
+
+\subsection*{第一课：时间复杂度}
+\begin{enumerate}
+  \item 程序 A：$O(n)$（单层循环），程序 B：$O(n^2)$（双层循环），程序 C：$O(\log n)$（二分查找，每次减半）。
+  \item \texttt{for i in range(n): for j in range(i, n): print(i, j)} → 执行次数 $n(n+1)/2$ → $O(n^2)$。
+  \item $O(1)$：常数时间，不随输入大小变化。$O(n)$：线性增长。$O(n^2)$：平方增长。例子：数组访问($O(1)$)、遍历($O(n)$)、冒泡排序($O(n^2)$)。
+\end{enumerate}
+
+\subsection*{第二课：数组 vs 链表}
+\begin{enumerate}
+  \item ① 频繁中间插入→链表 ② 频繁按索引访问→数组 ③ 不确定容量→链表（或动态数组）。
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+def reverse_list(lst):
+    left, right = 0, len(lst) - 1
+    while left < right:
+        lst[left], lst[right] = lst[right], lst[left]
+        left, right = left + 1, right - 1
+    return lst
+\end{lstlisting}
+  \item 数组（Python 列表）尾部插入快（$O(1)$），头部插入慢（$O(n)$）。链表头部插入快（$O(1)$）。用 \texttt{timeit} 模块测试对比。
+\end{enumerate}
+
+\subsection*{第三课：栈与队列}
+\begin{enumerate}
+  \item \texttt{is\_valid("\{\{()[]\}\}()")} → True。过程：\texttt{\{ \{ ( ) [ ] \} \} ( )}，每次右括号都与栈顶匹配。
+  \item 用栈模拟浏览器后退：每次访问页面 push 到栈，点后退 pop。
+  \item 用队列模拟打印任务队列：多个文档发送到打印机，先来的先打印。
+\end{enumerate}
+
+\subsection*{第四课：树}
+\begin{enumerate}
+  \item 前序：5 3 2 4 8 10；中序：2 3 4 5 8 10；后序：2 4 3 10 8 5。
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+def tree_height(root):
+    if not root: return -1
+    return 1 + max(tree_height(root.left), tree_height(root.right))
+\end{lstlisting}
+  \item 平衡 BST 的根选中间元素 7，左子树 [1,3,5] 选 3 为根，右子树 [9,11,13] 选 11 为根。
+\end{enumerate}
+
+\subsection*{第五课：图}
+\begin{enumerate}
+  \item \texttt{\{"小明": ["小红", "小刚"], "小红": ["小明", "小丽"], "小刚": ["小明", "小丽"], "小丽": ["小红", "小刚"]\}}。
+  \item BFS 从小明出发：小明 → 小红 → 小刚 → 小丽（同一层的顺序可能不同）。
+  \item BFS：找最短路径好，需要较多内存；DFS：找连通性、检测环好，不需要太多内存。
+\end{enumerate}
+
+\subsection*{第六课：排序算法}
+\begin{enumerate}
+  \item 冒泡排序：[5,2,8,1,9,3]→[2,5,1,8,3,9]→[2,1,5,3,8,9]→[1,2,3,5,8,9]。
+  \item Timsort 利用数据中已有的有序片段（run），对短片段用插入排序，然后用归并合并。实际数据常包含有序子序列，因此 Timsort 比纯归并/快排更快。
+  \item 冒泡排序在 n=10000 时可能需几十秒，\texttt{sorted()} 只需几毫秒。差距可达 10000 倍。
+\end{enumerate}
+
+\subsection*{第七课：二分查找}
+\begin{enumerate}
+  \item 二分查找过程查 13：left=0,right=9,mid=4→9<13→left=5,right=9,mid=7→15>13→right=6,mid=5→11<13→left=6,right=6,mid=6→13，找到。
+  \item sqrt\_int(25)=5, sqrt\_int(27)=5（$5^2=25 \le 27$，$6^2=36>27$）。
+  \item 二分查找要求数组有序。如果无序，先排序（$O(n\log n)$）再二分（$O(\log n)$），不如直接遍历（$O(n)$）。
+\end{enumerate}
+
+\subsection*{第八课：递归}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+def power(base, exp):
+    if exp == 0: return 1
+    return base * power(base, exp - 1)
+\end{lstlisting}
+  \item 基准条件：\texttt{if n <= 1: return 1}；递归条件：\texttt{return n * factorial(n-1)}；确保终止：每次 n 减 1，最终达到 1。
+  \item \texttt{print\_stars(5)} 输出 5 行星号（5,4,3,2,1 个星号），体现递归先"递"到最深层，再"归"回来。
+\end{enumerate}
+
+\subsection*{第九课：动态规划}
+\begin{enumerate}
+  \item $f(1)=1, f(2)=2, f(3)=3, f(4)=5, f(5)=8, f(6)=13, f(7)=21, f(8)=34, f(9)=55, f(10)=89$。
+  \item 最大子数组和 = 6（子数组 [4,-1,2,1]）。DP 思路：\texttt{dp[i]} = 以 i 结尾的最大子数组和，\texttt{dp[i] = max(nums[i], dp[i-1] + nums[i])}。
+  \item 朴素递归重复计算 $f(3)$ 多次（计算 $f(5)$ 时需要 $f(4)$ 和 $f(3)$，而计算 $f(4)$ 时又需要 $f(3)$ 和 $f(2)$）。DP 每个值只算一次存起来，避免指数级重复。
+\end{enumerate}
 
 \section*{综合练习与答案}
 

@@ -1,0 +1,224 @@
+\chaptertitle{第六章\quad 二次型——用矩阵研究圆锥曲线}
+
+前面五章，我们逐一建立了矩阵、行列式、特征值、齐次坐标这四块基石。这一章，我们将把它们全部用上——来优雅地解决一个经典几何问题：如何判断一个含有$xy$交叉项的二次曲线到底是椭圆、双曲线还是抛物线？你会发现，答案就藏在特征值的正负号里。这是全书的高潮，也是你检验自己是否真正掌握了前五章的最佳时刻。
+
+\sectiontitle{6.1\quad 一个问题：为什么有些曲线是"歪"的？}
+
+在解析几何中，椭圆的标准方程是$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$，双曲线是$\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$。它们的对称轴都和坐标轴对齐，形状很"正"。
+
+但实际问题中，圆锥曲线往往长这样：
+\[
+5x^2+4xy+2y^2=1,\qquad
+x^2-4xy+y^2=1
+\]
+这些方程里出现了一项$xy$——交叉项。交叉项让曲线"歪"了，使得它的主轴不再和坐标轴对齐。怎么判断这些"歪"曲线到底是椭圆、双曲线还是抛物线？传统做法是先旋转坐标系消掉$xy$项，再分类。过程繁琐。
+
+有了矩阵之后，这个问题有了一个简洁的解法。
+
+\begin{exercise}
+\item 下列方程中哪些含有交叉项$xy$？哪些没有？\\
+(a) $2x^2+3y^2=5$\quad (b) $x^2-2xy+y^2=0$\quad (c) $4x^2-y^2=1$\quad (d) $x^2+3xy+2y^2=4$
+\item 对于不含交叉项的方程，你能直接判断曲线类型吗？(a)和(c)各是什么类型？
+\end{exercise}
+
+\sectiontitle{6.2\quad 从例子出发：怎么把$xy$项拆进矩阵}
+
+看一个具体的二次型：$5x^2+4xy+2y^2$。把它写成矩阵形式：
+\[
+5x^2+4xy+2y^2=
+\begin{pmatrix}x&y\end{pmatrix}
+\begin{pmatrix}5&2\\2&2\end{pmatrix}
+\begin{pmatrix}x\\y\end{pmatrix}
+\]
+
+注意$xy$的系数$4$被平均分到了两个非对角线位置（各放$2$），保持矩阵对称。展开验证一下：第一行乘列向量得$5x+2y$，再左乘行向量得$(x,y)$与$(5x+2y,2x+2y)$的内积，即$x(5x+2y)+y(2x+2y)=5x^2+4xy+2y^2$，正确。
+
+一般地，二次型$ax^2+2bxy+cy^2$对应的对称矩阵是：
+\[
+M = \begin{pmatrix}a&b\\b&c\end{pmatrix}
+\]
+注意$xy$的系数写成了$2b$，这样$b$恰好分到两个非对角位置。如果原方程是$ax^2+pxy+cy^2$的形式，则$b=p/2$。
+
+再看一个例子：$x^2-4xy+y^2$对应的矩阵是$\begin{pmatrix}1&-2\\-2&1\end{pmatrix}$——把$-4xy$的系数$-4$平分到两个非对角位置各$-2$。
+
+\begin{exercise}
+\item 写出以下二次型的对称矩阵：\\
+(a) $x^2+6xy+9y^2$\quad (b) $2x^2-2xy+y^2$\quad (c) $x^2+y^2$
+\item 验证：将你的答案代入$\begin{pmatrix}x&y\end{pmatrix}M\begin{pmatrix}x\\y\end{pmatrix}$，展开后是否得到原二次型。
+\end{exercise}
+
+\sectiontitle{6.3\quad 核心发现：特征值直接消掉交叉项}
+
+现在做一件关键的事。把坐标轴转一个角度$\theta$，新旧坐标的关系是：
+\[
+\begin{pmatrix}x\\y\end{pmatrix}
+= \begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}
+\begin{pmatrix}X\\Y\end{pmatrix}
+\]
+代入二次型，经过旋转后$XY$项的系数变为$0$——这意味着在新的坐标系中曲线不再"歪"。留下来的表达式会变成什么样子？我们不看公式推导，直接用几个例子来发现规律。
+
+\vspace{0.2cm}
+\noindent\textbf{实例1：}$5x^2+4xy+2y^2$。对应矩阵$M=\begin{pmatrix}5&2\\2&2\end{pmatrix}$。先求$M$的特征值：
+\[
+\det(M-\lambda I)=\begin{vmatrix}5-\lambda&2\\2&2-\lambda\end{vmatrix}=\lambda^2-7\lambda+6=0,\quad\lambda_1=6,\;\lambda_2=1.
+\]
+如果做坐标旋转，$XY$项被消掉后，留下的标准形恰好是$6X^2+Y^2$。因此$5x^2+4xy+2y^2=1$化为$6X^2+Y^2=1$——一个椭圆。
+
+\vspace{0.2cm}
+\noindent\textbf{实例2：}$x^2-4xy+y^2$。对应矩阵$M=\begin{pmatrix}1&-2\\-2&1\end{pmatrix}$。特征值：
+\[
+\det(M-\lambda I)=\begin{vmatrix}1-\lambda&-2\\-2&1-\lambda\end{vmatrix}=\lambda^2-2\lambda-3=0,\quad\lambda_1=3,\;\lambda_2=-1.
+\]
+旋转后标准形为$3X^2-Y^2$。方程$x^2-4xy+y^2=1$化为$3X^2-Y^2=1$——一个双曲线。
+
+\vspace{0.2cm}
+\noindent\textbf{实例3：}再取一个例子来确认这个规律。$3x^2+2xy+3y^2$。对应矩阵$M=\begin{pmatrix}3&1\\1&3\end{pmatrix}$。
+\[
+\det(M-\lambda I)=(3-\lambda)^2-1=\lambda^2-6\lambda+8=0,\quad\lambda_1=4,\;\lambda_2=2.
+\]
+旋转后标准形为$4X^2+2Y^2$。方程$3x^2+2xy+3y^2=4$化为$4X^2+2Y^2=4$，即$\frac{X^2}{1}+\frac{Y^2}{2}=1$——还是一个椭圆，但长短轴比例不同。
+
+\vspace{0.2cm}
+\noindent\textbf{归纳。}
+
+三个例子揭示了一个统一的规律：每个二次型经过坐标旋转化为标准形$\lambda_1X^2+\lambda_2Y^2$之后，系数$\lambda_1$和$\lambda_2$恰好就是对称矩阵$M$的两个特征值。这不是巧合——数学上可以严格证明，旋转后的$XY$项系数消去的条件，恰好等价于特征方程（详见进阶教材）。但从使用者的角度，你只需要记住这一条：
+
+\textbf{结论：不需要做坐标旋转变换，直接求$M$的特征值，标准形就出来了。}
+
+\begin{exercise}
+\item 写出$3x^2+2xy+3y^2$的对称矩阵，求特征值，并由此判断$3x^2+2xy+3y^2=4$的曲线类型。
+\item 为什么判断曲线类型只需要特征值而不需要实际做坐标旋转？用两三句话解释核心原理。
+\end{exercise}
+
+\sectiontitle{6.4\quad 用特征值分类圆锥曲线}
+
+三个实例涵盖了三种曲线类型，这不是偶然。我们先用更多的例子确认这个模式，再总结分类规则。
+
+\vspace{0.2cm}
+\noindent\textbf{例A（两个正特征值）：}$2x^2+4xy+5y^2=9$。$M=\begin{pmatrix}2&2\\2&5\end{pmatrix}$，$\lambda_1=6$，$\lambda_2=1$。两特征值都为正——椭圆。
+
+\vspace{0.2cm}
+\noindent\textbf{例B（一正一负）：}$x^2-6xy+y^2=1$。$M=\begin{pmatrix}1&-3\\-3&1\end{pmatrix}$，特征方程$\lambda^2-2\lambda-8=0$，$\lambda_1=4$，$\lambda_2=-2$。一正一负——双曲线。
+
+\vspace{0.2cm}
+\noindent\textbf{例C（一个特征值为零）：}$4x^2+12xy+9y^2=1$。$M=\begin{pmatrix}4&6\\6&9\end{pmatrix}$，$\lambda_1=13$，$\lambda_2=0$。有一个零特征值——抛物线。
+
+\vspace{0.2cm}
+\noindent\textbf{例D（两个相等的正特征值）：}$x^2+y^2=4$。$M=\begin{pmatrix}1&0\\0&1\end{pmatrix}$，$\lambda_1=\lambda_2=1$。两特征值相等且为正——圆（椭圆的特例）。
+
+这四个例子加上6.3节的三个，共七条曲线，它们的特征值符号和曲线类型的对应关系没有丝毫例外。我们可以安全地归纳出以下分类规则：
+
+\[
+\begin{array}{c|c}
+\textbf{特征值符号} & \textbf{曲线类型}\\\hline
+\lambda_1,\lambda_2>0\;\text{或}\;<0 & \text{椭圆（$\lambda_1=\lambda_2$时为圆）}\\
+\lambda_1>0,\lambda_2<0\;\text{或反之} & \text{双曲线}\\
+\lambda_1\lambda_2=0\;\text{（一个为零）} & \text{抛物线}
+\end{array}
+\]
+
+注意$\lambda_1\lambda_2=\det M$。因此$\det M>0$对应椭圆，$\det M<0$对应双曲线，$\det M=0$对应抛物线——与解析几何中的判别式$ac-b^2$等价（实际上$\det M = ac-b^2$），但矩阵的解释更直接：$\det M$是特征值的乘积，它的符号直接告诉我们特征值的正负号分布。
+
+\begin{example}
+判断$4x^2+12xy+9y^2=1$的曲线类型。
+\end{example}
+\begin{solution}
+$M=\begin{pmatrix}4&6\\6&9\end{pmatrix}$。特征方程$\lambda^2-13\lambda=0$，得$\lambda_1=13$，$\lambda_2=0$。
+有一个特征值为$0$，这是\textbf{抛物线}。
+\end{solution}
+
+\begin{exercise}
+\item 不计算特征值，仅凭$\det M$的符号判断以下曲线的类型：\\
+(a) $2x^2+4xy+5y^2=9$\quad (b) $x^2-6xy+9y^2=1$\\
+提示：$\det M = ac-b^2$。
+\item 若$\det M=0$，为什么曲线一定是抛物线（或退化为两条直线/一个点）？从特征值和降维两个角度解释。
+\end{exercise}
+
+\sectiontitle{6.5\quad 主轴方向——特征向量告诉你曲线怎么摆}
+
+知道了曲线类型之后，下一个问题是：它的主轴（长轴和短轴，或实轴和虚轴）沿着什么方向？答案仍然在特征向量里。
+
+以$5x^2+4xy+2y^2=1$为例，我们已经知道$\lambda_1=6$，$\lambda_2=1$。下面找出主轴方向。
+
+\begin{example}
+求椭圆$5x^2+4xy+2y^2=1$的长短轴方向。
+\end{example}
+\begin{solution}
+第1步：对$\lambda_1=6$求特征向量。$(M-6I)\vec v=\begin{pmatrix}-1&2\\2&-4\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$。
+由第一行$-x+2y=0$得$\vec v_1$沿$(2,1)$方向。
+
+第2步：对$\lambda_2=1$求特征向量。$(M-I)\vec v=\begin{pmatrix}4&2\\2&1\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$。
+由第一行$4x+2y=0$得$\vec v_2$沿$(1,-2)$方向。
+
+第3步：这两个特征向量互相垂直（验证：$(2,1)\cdot(1,-2)=0$），分别就是椭圆的两条主轴的方向。
+
+第4步：判断长轴对应哪个特征值。旋转后的标准方程为$6X^2+Y^2=1$，即$\frac{X^2}{1/6}+\frac{Y^2}{1}=1$。半轴长为$1/\sqrt{6}\approx0.41$和$1$。$Y$方向半轴更长，所以长轴沿$\lambda_2=1$对应的特征向量方向$(1,-2)$，短轴沿$\lambda_1=6$对应的特征向量方向$(2,1)$。
+
+\begin{center}
+\begin{tikzpicture}[scale=0.65]
+  \draw[->,thick] (-3,0) -- (3,0) node[right]{$x$};
+  \draw[->,thick] (0,-3) -- (0,3) node[above]{$y$};
+  \draw[->, mainblue, very thick] (0,0) -- (2,1) node[above right]{$Y$（长轴）};
+  \draw[->, mainblue, very thick] (0,0) -- (-1,2) node[above left]{$X$（短轴）};
+  \draw[->, mainblue, very thick] (0,0) -- (-2,-1);
+  \draw[->, mainblue, very thick] (0,0) -- (1,-2);
+  \draw[thick, mainblue!60!black] plot[smooth cycle, tension=0.8] coordinates {
+    (1,-1.85) (1.22,-1.5) (1.8,-0.8) (2,-0.3) (1.9,0.3) (1.6,1) (1,1.5) (0.5,1.8)
+    (-0.3,2) (-1,1.8) (-1.5,1.5) (-1.85,0.8) (-1.9,0) (-1.7,-0.8) (-1.2,-1.5) (-0.5,-1.9)
+  };
+  \node at (0,-3.2){$5x^2+4xy+2y^2=1$——倾斜椭圆及其主轴};
+\end{tikzpicture}
+\end{center}
+\end{solution}
+
+\begin{example}
+求双曲线$x^2-4xy+y^2=1$的实轴和虚轴方向。
+\end{example}
+\begin{solution}
+$M=\begin{pmatrix}1&-2\\-2&1\end{pmatrix}$，特征值$\lambda_1=3$，$\lambda_2=-1$。
+
+$\lambda_1=3$：$(M-3I)\vec v=\begin{pmatrix}-2&-2\\-2&-2\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，得$x+y=0$，沿$(1,-1)$方向。
+
+$\lambda_2=-1$：$(M+I)\vec v=\begin{pmatrix}2&-2\\-2&2\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，得$x-y=0$，沿$(1,1)$方向。
+
+标准形为$3X^2-Y^2=1$，即$\frac{X^2}{1/3}-\frac{Y^2}{1}=1$。实轴沿$\lambda_1=3$对应的$(1,-1)$方向（$X$轴），虚轴沿$\lambda_2=-1$对应的$(1,1)$方向（$Y$轴）。
+\end{solution}
+
+\sectiontitle{6.6\quad 对比两种处理方式}
+
+\textbf{传统方法}：设直线方程代入曲线，化简得到二次方程，用判别式判断交点个数，再用韦达定理求弦长。每一步都是纯代数计算，没有几何直观。
+
+\textbf{矩阵方法}：写出二次型的对称矩阵，求特征值，看正负号——三步了结。而且每一步都有几何意义：特征值的正负号对应椭圆/双曲线/抛物线，特征向量给出主轴的方向。学习这本书的真正收获就在这一章：代数和几何在特征值这里完美汇合了。
+
+\sectiontitle{本章小结}
+
+二次型是本书的高潮。核心洞察是：任何一个含$xy$交叉项的二次曲线，都可以写成一个对称矩阵$M$的形式；$M$的特征值直接决定了曲线的类型（同号→椭圆，异号→双曲线，有零→抛物线）；$M$的特征向量给出主轴的方向。这比传统的联立方程+判别式方法不仅计算量更小，而且每一步都有几何含义。从第一章的旋转公式开始，经矩阵、行列式、特征值，一路铺垫，最终在圆锥曲线的分类中全部用上——这就是线性代数作为一套统一语言的力量。
+
+\sectiontitle{课后练习}
+
+\subsection*{A组\quad 基础巩固}
+\begin{exercise}
+\item 写出以下二次型的对称矩阵：(a) $x^2+2xy+3y^2$；(b) $4x^2-6xy+y^2$。
+\item 判断下列曲线的类型（先写矩阵，再求特征值，再判断）：\\
+(a) $3x^2+2xy+3y^2=4$\\
+(b) $2x^2+4xy+5y^2=9$\\
+(c) $4x^2+12xy+9y^2=1$
+\item 曲线$2x^2+3y^2=6$已经是标准形（椭圆），它的对称矩阵是什么？特征值是多少？
+\item 已知某二次型的对称矩阵特征值为$4$和$-1$，曲线应是什么类型？
+\item 判断$x^2+4xy+4y^2=0$是什么图形（提示：先因式分解或求特征值）。
+\item 矩阵$\begin{pmatrix}1&2\\2&1\end{pmatrix}$的特征值为$3$和$-1$。对应的二次型$X^2+4XY+Y^2$经过旋转后变成$3u^2-v^2$。说明原曲线是什么类型。
+\end{exercise}
+
+\subsection*{B组\quad 挑战提升}
+\begin{exercise}
+\item 证明：用二次型矩阵求得的特征值之积等于行列式，等于原二次型判别式（$ac-b^2$）的一个倍数。这一关系说明什么？
+\item 设二次曲线$ax^2+2bxy+cy^2=1$中$a=c$。证明：旋转消$xy$项时旋转角$\theta=45^\circ$（或$-45^\circ$）。
+\item 椭圆的长轴长度对应较小特征值的倒数还是较大特征值的倒数？解释为什么。（提示：椭圆方程$\frac{x^2}{A^2}+\frac{y^2}{B^2}=1$中$A>B$时长轴对应较小的分母。）
+\item 曲线$x^2+2xy+y^2=1$通过特征值方法判断为抛物线。通过直接因式分解验证这一结果。
+\item 判断$3x^2+8xy-3y^2=5$的曲线类型，并求其主轴方向（保留根号）。
+\item 二次曲线$6x^2-\sqrt{3}\,xy+5y^2=1$。写出对称矩阵，求特征值（保留分数），判断曲线类型。
+\item 若一对称矩阵$M=\begin{pmatrix}a&b\\b&c\end{pmatrix}$的两个特征值恰好相等，证明此时曲线一定是圆（设$a=c$且$b=0$）。如果不是圆，特征值相等还可能是什么情况？
+\item 已知二次曲线$\alpha x^2+2\beta xy+\gamma y^2=1$的特征值为$7$和$-2$，且$\alpha+\gamma=5$。求$\alpha,\beta,\gamma$的值。
+\end{exercise}
+
+\newpage

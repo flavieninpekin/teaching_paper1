@@ -1,0 +1,47 @@
+\documentclass[a4paper,11pt]{ctexart}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\newcommand{\draft}{\textcolor{orange!80!black}{\textbf{【待写】}}}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{自动化模块 · 课程大纲}}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{第零层 · 入门故事}
+
+\begin{enumerate}
+\item[\textbf{第1课}] \textbf{扫地机器人为什么不会撞墙？——传感器与反馈} \draft \\
+\textbf{内容：} 红外传感器发出光→光反射回来→"前面有墙"。反馈控制的基本思想：感知→决策→行动→感知的循环。从扫地机器人到自动驾驶汽车——传感器的差异。
+\item[\textbf{第2课}] \textbf{工厂里的"黑灯车间"——无人工厂是怎样的？} \draft \\
+\textbf{内容：} 北京亦庄京东方和奔驰工厂的自动化生产线。机械臂如何知道"抓哪个零件"、"放哪里"、"用多大力"？PLC（可编程逻辑控制器）是工厂自动化的"大脑"。
+\item[\textbf{第3课}] \textbf{空调的温控——最简单的自动化系统} \draft \\
+\textbf{内容：} 你设定26°C→温度传感器检测到28°C→控制器启动压缩机→温度降到26°C→停止压缩机。这就是一个闭环控制系统。生活中处处是自动化——电饭煲、热水器、冰箱。
+\end{enumerate}
+
+\section*{深入课程}
+
+\begin{enumerate}
+\item[\textbf{第1课}] \textbf{控制理论——PID控制为什么无处不在？} \draft \\
+\textbf{内容：} P（比例：误差越大，调节越猛）、I（积分：消除稳态误差）、D（微分：预测误差变化趋势）。PID的数学形式 $u(t) = K_pe(t) + K_i\int e(t)dt + K_d\frac{de(t)}{dt}$。情景：为什么四轴飞行器能稳定悬浮？
+\item[\textbf{第2课}] \textbf{传感器技术——自动化的"感官"} \draft \\
+\textbf{内容：} 温度和压力（热电偶/RTD/压阻）、位置和速度（编码器/霍尔/IMU）、视觉（CCD/CMOS/ ToF）、力觉（应变片/压电）。传感器选型的主要参数（精度/分辨率/采样率/线性度/温漂）。情景：自动驾驶需要多少种不同类型的传感器？
+\item[\textbf{第3课}] \textbf{执行器——从电机到液压} \draft \\
+\textbf{内容：} 直流电机（有刷/无刷）、步进电机（位置控制）、伺服电机（速度+位置闭环）。液压和气动执行器。执行器的"三大指标"（力矩/速度/精度）。情景：手术机器人需要的"力反馈"为什么比工厂机械臂难得多？
+\item[\textbf{第4课}] \textbf{机器人学——位置、速度与力的协调} \draft \\
+\textbf{内容：} 正运动学 vs 逆运动学、雅可比矩阵、轨迹规划（梯形速度曲线/S形曲线）。人机协作的安全性（力矩传感器+阻抗控制）。情景：为什么协作机器人（Cobot）可以不装围栏？
+\item[\textbf{第5课}] \textbf{工业控制系统——SCADA与PLC} \draft \\
+\textbf{内容：} PLC（可编程逻辑控制器）的扫描周期、梯形图编程、SCADA（监控与数据采集）系统架构。工业通信协议（Modbus/Profibus/EtherCAT）。情景：一个水厂的自动化系统是如何从取水到供水全流程自动运行的？
+\item[\textbf{第6课}] \textbf{北京在地——北京自动化产业的分布} \draft \\
+\textbf{内容：} 北京经济技术开发区（亦庄）的智能制造产业集群。海淀区中关村的工业软件和机器人创业公司。中国制造2025与工业4.0在北京的落地——北京奔驰的智能制造工厂、三一重工的灯塔工厂。
+\end{enumerate}
+
+\end{document}

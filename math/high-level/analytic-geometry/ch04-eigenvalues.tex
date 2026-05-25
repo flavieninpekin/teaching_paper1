@@ -1,0 +1,258 @@
+\chaptertitle{第四章\quad 特征——变换的不变方向}
+
+\sectiontitle{4.1\quad 观察：有没有方向特别"幸运"？}
+
+前三章我们掌握了变换的两个基本侧面：矩阵告诉我们"每个点去了哪里"，行列式告诉我们"面积放大了几倍"。现在问一个更深层的问题：在变换中，有没有某些方向是"特殊"的——它们不偏不转，只是被拉长或缩短？如果有，怎么找到它们？这个问题将引向本书最核心的概念之一——特征值和特征向量。
+
+对于大多数变换，随便选一个向量，经过变换后它的方向会偏转。但有些变换中存在一些特殊的向量——方向完全不偏，只是被拉长或被缩短了。
+
+\textbf{例1}：伸缩变换$A=\begin{pmatrix}2&0\\0&3\end{pmatrix}$。
+\begin{itemize}
+\item $(1,0)$经过$A$变成$(2,0)$。方向还是水平，长度变成$2$倍。
+\item $(0,1)$变成$(0,3)$。方向竖直不变，长度变成$3$倍。
+\item 但斜方向的$(1,1)$变成$(2,3)$，方向明显变了——因为两个方向放大倍数不同。
+\end{itemize}
+
+\textbf{例2}：切变$A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$。
+\begin{itemize}
+\item $(1,0)$经过$A$变成$(1,0)$——水平方向完全不变。
+\item $(0,1)$变成$(2,1)$——方向变了。
+\item $(2,1)$? 算一下：$(2,1)$在切变下变成$(2+2,1)=(4,1)$。方向变了。
+\end{itemize}
+
+\textbf{例3}：旋转$90^\circ$。不管选什么方向，转了$90^\circ$肯定变了——所以旋转没有任何这样的"幸运方向"。
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  \draw[->,thick] (-0.5,0) -- (4,0) node[right]{$x$};
+  \draw[->,thick] (0,-0.5) -- (0,4) node[above]{$y$};
+  % Eigenvector direction 1: horizontal → stays horizontal, stretched
+  \draw[->, mainblue, very thick] (0,0) -- (1,0) node[midway, below]{$\vec v_1$};
+  \draw[->, mainblue, very thick, dashed] (0,0) -- (2,0) node[near end, above]{$2\vec v_1$};
+  % Eigenvector direction 2: vertical → stays vertical, stretched
+  \draw[->, mainblue, very thick] (0,0) -- (0,1) node[midway, left]{$\vec v_2$};
+  \draw[->, mainblue, very thick, dashed] (0,0) -- (0,3) node[near end, right]{$3\vec v_2$};
+  % Non-eigenvector: (1,1) → (2,3) direction changes
+  \draw[->, gray, thick] (0,0) -- (1,1) node[midway, above left]{$\vec w$};
+  \draw[->, gray, thick, dashed] (0,0) -- (2,3) node[right]{$A\vec w$};
+  \node at (2,-0.7){伸缩变换：特征方向保持不偏，斜方向偏转};
+\end{tikzpicture}
+\end{center}
+
+这些不改变方向、只改变长度的向量，被称为\textbf{特征向量}。长度改变的比例，被称为这个特征向量对应的\textbf{特征值}。
+
+\begin{exercise}
+\item 对于伸缩矩阵$A=\begin{pmatrix}4&0\\0&0.5\end{pmatrix}$，凭直觉判断：$(1,0)$和$(0,1)$是不是特征向量？如果是，对应的特征值是多少？
+\item 在例2的切变矩阵$\begin{pmatrix}1&2\\0&1\end{pmatrix}$中，沿$x$轴方向的向量是否总是特征向量？沿$y$轴方向的呢？
+\item 为什么旋转变换没有实特征向量？从几何直觉和代数计算两个角度简答。
+\end{exercise}
+
+\sectiontitle{4.2\quad 怎么找特征值和特征向量？}
+
+条件就是$A\vec v = \lambda\vec v$。移项得$(A-\lambda I)\vec v = 0$。要使这个方程有非零解$\vec v$（$\vec v\neq\vec 0$），矩阵$(A-\lambda I)$的行列式必须为零——因为若行列式不为零，矩阵可逆，方程$(A-\lambda I)\vec v=0$两边左乘逆矩阵后只能得到$\vec v = \vec 0$。因此特征值$\lambda$必须满足：
+\[
+\det(A-\lambda I) = 0
+\]
+这就是\textbf{特征方程}。对$2\times2$矩阵$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$：
+\[
+\begin{vmatrix}a-\lambda & b\\c & d-\lambda\end{vmatrix}
+= \lambda^2-(a+d)\lambda+(ad-bc) = 0
+\]
+解出$\lambda$之后代回$(A-\lambda I)\vec v=0$，就能求出对应的特征向量。
+
+\begin{example}
+求$A=\begin{pmatrix}2&0\\0&3\end{pmatrix}$的特征值和特征向量。
+\end{example}
+\begin{solution}
+特征方程：$\begin{vmatrix}2-\lambda&0\\0&3-\lambda\end{vmatrix}=(2-\lambda)(3-\lambda)=0$，得$\lambda_1=2$，$\lambda_2=3$。
+
+$\lambda_1=2$：$(A-2I)\vec v=\begin{pmatrix}0&0\\0&1\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，得$y=0$，$x$任意。特征向量形如$(t,0)$——即所有水平方向的向量。
+
+$\lambda_2=3$：$(A-3I)\vec v=\begin{pmatrix}-1&0\\0&0\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，得$x=0$，$y$任意。特征向量形如$(0,t)$——所有竖直方向的向量。
+\end{solution}
+
+\begin{example}
+求$A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$的特征值和特征向量。
+\end{example}
+\begin{solution}
+特征方程：$\begin{vmatrix}2-\lambda&1\\1&2-\lambda\end{vmatrix}=(2-\lambda)^2-1=\lambda^2-4\lambda+3=0$。
+
+$\lambda_1=1$：$(A-I)\vec v=\begin{pmatrix}1&1\\1&1\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，得$x+y=0$，$\vec v_1=(1,-1)$。
+
+$\lambda_2=3$：$(A-3I)\vec v=\begin{pmatrix}-1&1\\1&-1\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，得$x-y=0$，$\vec v_2=(1,1)$。
+
+结论：沿$(1,-1)$方向拉伸$1$倍（即不变），沿$(1,1)$方向拉伸$3$倍。
+\end{solution}
+
+\begin{exercise}
+\item 求$\begin{pmatrix}5&0\\0&2\end{pmatrix}$的特征值和特征向量。
+\item 求$\begin{pmatrix}1&2\\2&1\end{pmatrix}$的特征值和特征向量。
+\item 旋转$180^\circ$矩阵$\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$有特征向量吗？特征值是多少？
+\item 已知$\det A=6$，$\tr A=5$（迹$=a+d$），求特征值。
+\end{exercise}
+
+\sectiontitle{4.3\quad 旋转为什么没有实特征向量？}
+
+旋转$90^\circ$矩阵$A=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$。特征方程：$\lambda^2+1=0$，$\lambda=\pm i$——没有实根。
+
+这从几何上完全说得通：旋转$90^\circ$把每个非零向量都转了方向，不存在任何"方向不变"的向量。如果特征方程只有复数根而没有实数根，说明矩阵含有旋转的成分。
+
+\begin{exercise}
+\item 旋转$60^\circ$矩阵的特征方程是否有实数根？用$\cos60^\circ=\frac12$、$\sin60^\circ=\frac{\sqrt3}{2}$代入特征方程验证。
+\item 一个矩阵的特征方程为$\lambda^2+4=0$。这个矩阵可能代表什么类型的变换？为什么？
+\end{exercise}
+
+\sectiontitle{4.4\quad 特征值的和与积}
+
+从4.2节的特征方程出发，我们可以发现一个优雅的关系。对$2\times2$矩阵$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$，特征方程为：
+\[
+\lambda^2-(a+d)\lambda+(ad-bc)=0
+\]
+由韦达定理（一元二次方程的根与系数的关系），两根之和为一次项系数的相反数，两根之积为常数项。因此：
+\[
+\lambda_1+\lambda_2 = a+d = \tr A,\qquad
+\lambda_1\lambda_2 = ad-bc = \det A
+\]
+这里$\tr A = a+d$（主对角线元素之和）称为矩阵的\textbf{迹}（trace）。
+
+这两个公式极为有用——它们把特征值、行列式、迹这三个看似独立的概念串联在了一起：
+\begin{itemize}
+\item $\det A=0$ $\Longleftrightarrow$ 至少有一个特征值为$0$ $\Longleftrightarrow$ 存在一个方向被压缩消失（降维）。这与第三章的结论完全呼应。
+\item $\tr A=0$ $\Longleftrightarrow$ 两个特征值互为相反数。
+\end{itemize}
+
+更妙的是，这组关系不限于二阶——对任意$n\times n$矩阵，始终有：
+\[
+\lambda_1+\lambda_2+\cdots+\lambda_n = \tr A,\qquad
+\lambda_1\lambda_2\cdots\lambda_n = \det A
+\]
+特征值之和总是等于迹（所有主对角线元素之和），特征值之积总是等于行列式。这是线性代数中最优美的恒等式之一——它意味着，即使你无法一眼看出$n$个特征值各自是多少，你也能立刻知道它们的和与积。
+
+\begin{example}
+已知$\det A=12$，$\tr A=7$，求$A$的两个特征值。
+\end{example}
+\begin{solution}
+$\lambda_1+\lambda_2=7$，$\lambda_1\lambda_2=12$。联立解：$(\lambda-3)(\lambda-4)=0$，得$\lambda_1=3,\lambda_2=4$。
+\end{solution}
+
+\begin{example}
+若$\det A=0$且$\tr A=5$，特征值是多少？
+\end{example}
+\begin{solution}
+$\lambda_1+\lambda_2=5$，$\lambda_1\lambda_2=0$。必有一个特征值为$0$，另一个为$5$。$\det=0$意味着矩阵不可逆，有一个方向被压缩消失——特征值$0$正好反映了这一点。
+\end{solution}
+
+\begin{exercise}
+\item 已知$\det A=-6$，$\tr A=1$，求$A$的两个特征值。
+\item 若$\det A=0$，能否唯一确定两个特征值？如果还知道$\tr A=4$呢？
+\end{exercise}
+
+\sectiontitle{4.5\quad 施密特正交化——扶正坐标系}
+
+有时我们找到的几个向量并不互相垂直，但在很多应用（如下一章的二次型）中，我们需要一组互相垂直的坐标系。施密特正交化的作用就是：给定一组线性无关的向量，构造出一组互相垂直的向量，且它们张成同一个空间。
+
+给定$\vec v_1,\vec v_2$：
+\begin{align*}
+\vec u_1 &= \vec v_1\\
+\vec u_2 &= \vec v_2 - \frac{\vec v_2\cdot\vec u_1}{\vec u_1\cdot\vec u_1}\,\vec u_1
+\end{align*}
+几何意义：先取$\vec v_1$作为第一个正交方向$\vec u_1$；然后从$\vec v_2$中减去它在$\vec u_1$上的投影分量，剩下的部分必然垂直于$\vec u_1$——这就是$\vec u_2$。
+
+\begin{example}
+$\vec v_1=(1,1)$，$\vec v_2=(1,2)$，做施密特正交化。
+\end{example}
+\begin{solution}
+$\vec u_1=(1,1)$。$\vec v_2$在$\vec u_1$上的投影长度$=\frac{(1,2)\cdot(1,1)}{(1,1)\cdot(1,1)}=\frac{3}{2}$。
+
+$\vec u_2=(1,2)-\frac32(1,1)=(-\frac12,\frac12)$。
+
+验证：$\vec u_1\cdot\vec u_2=1\cdot(-\frac12)+1\cdot\frac12=0$，垂直。
+\end{solution}
+
+\begin{exercise}
+\item 对$\vec v_1=(3,0)$和$\vec v_2=(0,4)$做施密特正交化。结果说明了什么？
+\item 对$\vec v_1=(1,2)$和$\vec v_2=(3,4)$做施密特正交化，并验证结果是否垂直。
+\end{exercise}
+
+\sectiontitle{4.6\quad 对角化——在最自然的坐标系下看变换}
+
+如果矩阵$A$有$n$个线性无关的特征向量，以它们为列排成矩阵$P$，则：
+\[
+A = PDP^{-1},\qquad D = \begin{pmatrix}\lambda_1&0\\0&\lambda_2\end{pmatrix}
+\]
+在特征向量构成的新坐标系下，变换就简单了——它只是沿着每个特征方向做伸缩而已。$P^{-1}AP=D$这个等式叫对角化：把坐标系换到特征方向上之后，矩阵变成了对角形。
+
+我们通过一个完整的例子走一遍全过程。
+
+\begin{example}
+对$A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$做对角化。
+\end{example}
+\begin{solution}
+我们已经知道$A$的特征值为$\lambda_1=1$（特征向量$\vec v_1=(1,-1)$）和$\lambda_2=3$（特征向量$\vec v_2=(1,1)$）。
+
+第1步：将特征向量作为列向量排成矩阵$P$：
+\[
+P = \begin{pmatrix}1&1\\-1&1\end{pmatrix}
+\]
+
+第2步：求$P$的逆矩阵。$\det P = 1\times1-1\times(-1)=2$，所以
+\[
+P^{-1} = \frac12\begin{pmatrix}1&-1\\1&1\end{pmatrix}
+\]
+
+第3步：验证$P^{-1}AP$是否等于对角阵：
+\begin{align*}
+P^{-1}AP &= \frac12\begin{pmatrix}1&-1\\1&1\end{pmatrix}
+\begin{pmatrix}2&1\\1&2\end{pmatrix}
+\begin{pmatrix}1&1\\-1&1\end{pmatrix}\\[1mm]
+&= \frac12\begin{pmatrix}1&-1\\3&3\end{pmatrix}
+\begin{pmatrix}1&1\\-1&1\end{pmatrix}
+= \frac12\begin{pmatrix}2&0\\0&6\end{pmatrix}
+= \begin{pmatrix}1&0\\0&3\end{pmatrix}
+\end{align*}
+结果正是以特征值为对角元的对角矩阵。$\checkmark$
+
+这告诉我们：在$P$的列向量$(1,-1)$和$(1,1)$构成的新坐标系中，$A$这个变换就只是一个沿两个方向分别拉伸$1$倍和$3$倍的简单伸缩。
+\end{solution}
+
+注意：不是所有矩阵都能对角化。例如$A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$只有一个特征值$\lambda=1$（二重）和一个特征方向$(1,0)$，无法拼出可逆矩阵$P$。这表明该矩阵除了伸缩还含有切变的成分，不能简化为纯伸缩。后续课程中会系统分析这类情况。
+
+\begin{exercise}
+\item 对$\vec v_1=(2,1)$和$\vec v_2=(1,3)$做施密特正交化。
+\item 对角矩阵$\begin{pmatrix}3&0\\0&5\end{pmatrix}$的特征值和特征向量是什么？
+\item 如果$\det A=0$，$A$可能有多少个特征值为$0$？
+\end{exercise}
+
+\sectiontitle{本章小结}
+
+特征值和特征向量是本书的第四块基石。核心方程 $A\vec v=\lambda\vec v$ 刻画了变换中方向不变、仅被拉伸的特殊向量。特征值之和等于迹、之积等于行列式——这组关系将特征值与前面各章的概念完美串联。当矩阵拥有足够多线性无关的特征向量时，可以通过 $P^{-1}AP=D$ 对角化——这意味着在特征向量构成的坐标系中，变换简化为了纯伸缩。施密特正交化则提供了将任意一组向量"扶正"为垂直坐标系的方法，为后续二次型的处理做准备。旋转没有实特征向量这一事实，也从代数上印证了几何直觉：旋转改变了所有方向。
+
+\sectiontitle{课后练习}
+
+\subsection*{A组\quad 基础巩固}
+\begin{exercise}
+\item 求下列矩阵的特征值和特征向量：\\
+(a) $\begin{pmatrix}4&1\\2&3\end{pmatrix}$\quad (b) $\begin{pmatrix}3&0\\0&3\end{pmatrix}$\quad (c) $\begin{pmatrix}0&1\\1&0\end{pmatrix}$
+\item 求$\begin{pmatrix}2&1\\2&3\end{pmatrix}$的特征值和特征向量。
+\item 已知$\det A=8$，$\tr A=6$，求$A$的两个特征值。
+\item 判断矩阵$\begin{pmatrix}3&1\\0&3\end{pmatrix}$的特征值情况。它是一个对角的倍数加切变，特征向量有什么特点？
+\item 已知某$2\times2$矩阵的特征值为$2$和$-1$，对应的特征向量分别为$(1,0)$和$(1,1)$。求出该矩阵。（提示：利用$A=PDP^{-1}$。）
+\item 矩阵$\begin{pmatrix}2&1\\0&2\end{pmatrix}$的特征值是多少？它的特征向量有什么几何意义？
+\item 对$\vec v_1=(3,0)$和$\vec v_2=(1,2)$做施密特正交化。
+\item 编写一个$2\times2$矩阵，使得其特征值乘积为$6$，特征值和为$5$。
+\end{exercise}
+
+\subsection*{B组\quad 挑战提升}
+\begin{exercise}
+\item 若$A$的特征值为$\lambda_1,\lambda_2$，求证$A^{-1}$的特征值为$1/\lambda_1,1/\lambda_2$。$A^{-1}$的特征向量是否与$A$相同？
+\item 若$\lambda$是$A$的特征值，则$\lambda^2$是$A^2$的特征值。验证此结论并用两个具体例子检验。
+\item 证明：若$A$可逆，则$A$和$A^{-1}$有相同的特征向量。
+\item 已知某矩阵的特征值为$2$和$-3$，求$A^2-2A+I$的特征值。
+\item 设$A$是二阶斜对称矩阵（对角全为$0$）。求$A$的特征值，并验证它们是否为实数。
+\item 求$A=\begin{pmatrix}1&4\\2&3\end{pmatrix}$的特征值与特征向量。这两个特征向量是否正交？如果否，对它们做施密特正交化。
+\item 矩阵$A=\begin{pmatrix}0&2\\-1&3\end{pmatrix}$的特征值是否为实数？若非实数，说明$A$的几何含义中含有什么成分。
+\item 对于一个$2\times2$矩阵，已知$\det A=-2$且$\tr A=0$。不计算具体矩阵，求其特征值，并判断该变换是否可能是一个旋转。
+\item 对$\vec v_1=(1,3)$和$\vec v_2=(2,-1)$做施密特正交化。验证结果是否正交，并说明为什么这里施密特正交化后得到的向量方向与原始向量不同（与课后练习A组第7题作对比）。
+\end{exercise}
+
+\newpage

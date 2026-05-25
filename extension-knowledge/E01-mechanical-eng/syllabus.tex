@@ -1,0 +1,100 @@
+\documentclass[a4paper,11pt]{ctexart}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\newcommand{\done}{\textcolor{green!50!black}{\textbf{【已完成】}}}
+\newcommand{\draft}{\textcolor{orange!80!black}{\textbf{【待写】}}}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{机械工程模块 · 完整课程大纲}}}
+\subtitle{\textcolor{gray}{三卷本 · 从直觉到工程力学}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{模块定位}
+
+面向北京地区高中阶段（G10-G12），对标AP Physics C: Mechanics 和大学先修水平的工程力学。机械工程是"把物理定律变成能用的机器"的学问——它不只需要懂力，还要懂材料、懂运动、懂控制。
+
+\textbf{前置要求：}高中物理力学部分（牛顿定律、功与能），线性代数基础。
+
+\section*{第零层 · 入门故事（intro/）——4课}
+
+\begin{enumerate}
+\item[\textbf{第1课}] \textbf{自行车为什么能跑？——齿轮与链条的秘密} \done \\
+\textbf{内容：} 自行车传动→齿轮比→从自行车到汽车变速箱。
+\item[\textbf{第2课}] \textbf{挖掘机为什么那么有力？——液压的秘密} \done \\
+\textbf{内容：} 帕斯卡原理→液压放大→汽车刹车/飞机起落架/巨大挖掘机。
+\item[\textbf{第3课}] \textbf{桥为什么不会塌？——三角形的力量} \done \\
+\textbf{内容：} 纸桥实验→三角形稳定性→拱桥/梁桥/悬索桥→赵州桥1400年。
+\item[\textbf{第4课}] \textbf{螺丝为什么能固定东西？——螺纹的发明} \done \\
+\textbf{内容：} 螺纹=斜面的变形→不同螺纹的力学→螺丝在工业革命中的作用。
+\end{enumerate}
+
+\section*{第一卷 · 机械工程基础（Foundations of Mechanical Engineering）}
+
+\begin{enumerate}
+\item[\textbf{第1课}] \textbf{静力学——力为什么能平衡？} \draft \\
+\textbf{内容：} 力系与平衡方程 $\sum F=0, \sum M=0$。自由体受力图、约束类型、桁架分析（节点法和截面法）。情景：起重机吊起极限重物时，哪一根杆先失效？
+\item[\textbf{第2课}] \textbf{材料力学——一个零件能承受多大的力？} \draft \\
+\textbf{内容：} 应力 $\sigma = F/A$、应变 $\epsilon = \Delta L/L$、胡克定律 $\sigma = E\epsilon$。应力-应变曲线（弹性区→屈服→强化→颈缩→断裂）。安全系数。情景：为什么泰坦尼克号的钢材在冰冷海水中变脆了？
+\item[\textbf{第3课}] \textbf{动力学——加速度和力如何互相转换？} \draft \\
+\textbf{内容：} 牛顿第二定律 $F=ma$ 在机械系统中的应用。转动运动 $M=I\alpha$、转动惯量的计算。四杆机构与曲柄滑块机构。情景：内燃机如何把活塞的直线运动变成曲轴的旋转运动？
+\item[\textbf{第4课}] \textbf{能量与功率——机器效率的极限在哪？} \draft \\
+\textbf{内容：} 功 $W=F\cdot d$、动能 $E_k=\frac12mv^2$、势能、功率 $P=Fv$。机械效率 $\eta = P_{out}/P_{in}$。热机效率的卡诺极限。情景：为什么没有"永动机"？
+\item[\textbf{第5课}] \textbf{机械设计——公差、配合与表面粗糙度} \draft \\
+\textbf{内容：} 公差与配合（基孔制/基轴制）、表面粗糙度、工程图的尺寸标注。情景：为什么一个小小的制造误差能让整个发动机报废？
+\item[\textbf{第6课}] \textbf{北京在地——中国制造业与机械工程} \draft \\
+\textbf{内容：} 北京亦庄经济技术开发区（奔驰工厂、京东方）。中国制造2025与机械工程的关系。
+\end{enumerate}
+
+\section*{第二卷 · 机械系统（Mechanical Systems）}
+
+\begin{enumerate}
+\item[\textbf{第7课}] \textbf{齿轮传动——从自行车到风力发电机} \draft \\
+\textbf{内容：} 齿轮比 $i=\omega_{in}/\omega_{out}$、直齿轮/斜齿轮/蜗轮蜗杆/行星齿轮。变速箱原理。情景：风力发电机在风速变化时如何保持恒速？
+\item[\textbf{第8课}] \textbf{轴承与润滑——减少摩擦的艺术} \draft \\
+\textbf{内容：} 滑动轴承 vs 滚动轴承、润滑理论（Stribeck曲线）、润滑油粘度选择。情景：高铁轴箱轴承在时速350km下的润滑挑战。
+\item[\textbf{第9课}] \textbf{液压与气动——流体传动} \draft \\
+\textbf{内容：} 液压回路基本元件（泵/阀/缸/马达）、流量与压力控制。液压 vs 气动的选择。情景：北京地铁盾构机如何用巨型液压缸掘进？
+\item[\textbf{第10课}] \textbf{振动与噪声控制} \draft \\
+\textbf{内容：} 单自由度系统固有频率 $\omega_n=\sqrt{k/m}$、共振、隔振与减振。情景：2000年伦敦千禧桥因行人共振关闭事件。
+\item[\textbf{第11课}] \textbf{疲劳与断裂} \draft \\
+\textbf{内容：} S-N曲线、疲劳极限、应力集中、裂纹扩展。情景：为什么飞机要定期检查机翼蒙皮的微小裂纹？
+\end{enumerate}
+
+\section*{第三卷 · 工程实践（Engineering Practice）}
+
+\begin{enumerate}
+\item[\textbf{第12课}] \textbf{制造工艺——从设计图到实物} \draft \\
+\textbf{内容：} 铸造/锻造/焊接/机加工/3D打印——每种工艺的力学原理和精度极限。情景：一个涡轮叶片的制造要经过多少道工序？
+\item[\textbf{第13课}] \textbf{热力学基础——发动机为什么发热？} \draft \\
+\textbf{内容：} 热力学第一定律 $dU = \delta Q - \delta W$、第二定律与熵、内燃机循环（Otto/Diesel）。情景：为什么电动车的能效远高于燃油车？
+\item[\textbf{第14课}] \textbf{计算与仿真——有限元分析（FEA）} \draft \\
+\textbf{内容：} 有限元的基本思想——把连续体离散化成网格。应力/应变/模态分析的FEA实现。情景：为什么现代飞机和桥梁都必须在计算机里"虚拟加载"后才能制造？
+\item[\textbf{第15课}] \textbf{工程伦理——挑战者号的教训} \draft \\
+\textbf{内容：} 1986年挑战者号航天飞机O型密封圈在低温下失效——七名宇航员遇难。这是一次材料失效，但更是一次"组织失效"——工程师知道风险但没有得到足够重视。工程的伦理责任：公众安全高于一切。
+\end{enumerate}
+
+\section*{统计}
+
+\begin{tabular}{ll}
+\toprule
+层级 & 课数 \\
+\midrule
+intro/ 入门故事 & 4课 \\
+第一卷 · 机械工程基础 & 6课 \\
+第二卷 · 机械系统 & 5课 \\
+第三卷 · 工程实践 & 4课 \\
+\midrule
+合计 & 19课 \\
+\bottomrule
+\end{tabular}
+
+\end{document}

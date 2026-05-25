@@ -1,0 +1,74 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{../../teaching-style}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=mainblue}
+
+\begin{document}
+\pagestyle{empty}
+
+% ===== 封面 =====
+\vspace*{2.5cm}
+{\centering
+  {\Huge\bfseries\color{mainblue} 线性代数初步}\par
+  \vspace{0.6cm}
+  {\Large 从几何变换到二次型}\par
+  \vspace{2cm}
+  \rule{0.5\textwidth}{0.4pt}\par
+  \vspace{1.2cm}
+  {\normalsize 适用学段：高中一\~{}三年级（课外扩展模块）}\par
+  \vspace{0.4cm}
+  {\normalsize 先修要求：平面解析几何、平面向量、三角函数基础}\par
+  \vspace{0.4cm}
+  {\normalsize 建议课时：30\~{}36 课时（含练习）}\par
+  \vspace{1.2cm}
+  \rule{0.5\textwidth}{0.4pt}
+}
+\newpage
+
+% ===== 使用说明 =====
+\vspace*{0.5cm}
+{\Large\bfseries\color{mainblue} 使用说明}\par
+\vspace{0.3cm}
+
+\textbf{适用对象。} 本教材面向已修完平面解析几何和高中三角函数入门的学生。不需要任何线性代数预备知识——一切从坐标平面上的几何直觉出发。
+
+\textbf{教学理念。} 全书遵循"先做足够多的具体数字例子，再总结一般规律"的原则。每一节都从手算几个具体的点或矩阵开始，让学生先看到现象，再归纳公式。这与传统从定义出发的讲法相反——我们把"为什么"放在"是什么"之前。
+
+\textbf{章节安排。} 第一章建立几何直觉（五种变换），第二章引入矩阵语言，第三章用行列式度量面积效应，第四章发掘不变方向（特征值与特征向量），第五章用齐次坐标统一平移，第六章将全部工具汇聚于圆锥曲线分类——这是全书的高潮。第七章对前六章的概念做系统推广，引入拉普拉斯展开、克拉默法则和奇异值分解，并设有全书综合练习。
+
+\textbf{练习体系。} 大部分节后配有即时练习，每章末设有 A 组（基础巩固）和 B 组（挑战提升）。A 组侧重计算熟练度，B 组侧重概念理解与跨节综合。全书习题约 200 题，所有答案列于书末附录。习题中的数字不刻意凑整——部分题目会出现分数、根号等"不整洁"的结果，目的是让学生习惯真实计算场景。
+
+\textbf{致教师。} 如果课时有限，前五章可各用 3--4 课时完成，第六章用 4--5 课时（务必讲透），第七章可根据学生程度选讲或作为阅读材料。每章的"本章小结"可直接用作板书提纲。建议重点讲解各章的实例部分，让学生课后独立完成 A 组练习，B 组可作为讨论题或选做。
+
+\newpage
+
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\preface{前言}
+
+这本书不走抽象定义的老路。我们从最直观的事情开始——在坐标平面上
+把一个点旋转一下，把一张图反射一下，把一个图形拉长或压扁。这些动作，
+你用手比划一下就能想象出来。做完足够多的例子之后，你会发现它们背后
+有一个共同的结构，这个结构恰好可以用一种叫做"矩阵"的数学对象来表达。
+接着，矩阵的乘法和行列式就自然出现了。然后引入特征值与特征向量，再用齐次坐标处理平移，最后用这套语言来优雅地处理
+圆锥曲线——椭圆、双曲线、抛物线的分类，其实就是特征值的正负号问题。
+
+全书遵循一个原则：\textbf{先做足够多的具体数字的例子，再总结一般规律。}
+每一节后面都配有练习，每一章末尾配有两组综合练习（A组打基础，
+B组挑战提升），所有习题答案附在书末。
+
+\newpage
+
+\input{ch01.tex}
+\input{ch02.tex}
+\input{ch03.tex}
+\input{ch04-eigenvalues.tex}
+\input{ch05-homogeneous.tex}
+\input{ch06-quadratic.tex}
+\input{ch07-promotion.tex}
+\input{answers.tex}
+
+\end{document}

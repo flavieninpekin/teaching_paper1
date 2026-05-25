@@ -4,6 +4,24 @@
 \usepackage{array}
 \linespread{1.35}
 
+\newcommand{\yuansect}[2]{%
+  \vspace{0.3cm}
+  \noindent
+  \begin{minipage}[t]{0.47\textwidth}
+  \colorbox{blue!70!black}{\textcolor{white}{\normalsize\textbf{原文}}}
+  \vspace{0.1cm}\par {\small #1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.47\textwidth}
+  \colorbox{green!60!black}{\textcolor{white}{\normalsize\textbf{译文}}}
+  \vspace{0.1cm}\par {\small #2}
+  \end{minipage}
+  \par
+}
+
+\newcommand{\annlist}[1]{{\vspace{0.15cm}\noindent\textcolor{orange!80!black}{\small\bfseries 注释：}\par\footnotesize #1\par}}
+\newcommand{\thinkq}[1]{\vspace{0.2cm}\noindent\textcolor{orange!60!black}{\small\bfseries【想一想】}{\small #1}\par}
+
 \title{\textcolor{blue!70!black}{\Huge\textbf{文言文选读}}}
 \author{}
 \date{}
@@ -12,19 +30,176 @@
 \maketitle
 \thispagestyle{empty}
 
-\section*{\textcolor{blue!70!black}{说明}}
+\section*{\textcolor{blue!70!black}{给同学的话}}
 
-本模块选取小学至初中阶段经典文言文篇目，以原文、译文、注释相结合的方式呈现，帮助四年级学生初步接触文言文。
+同学们，你们已经在《左传》模块里读到了春秋时代的历史故事，感受到了文言文的魅力。这个模块将继续带你领略更多经典文言文的精彩。
 
-文言文是古代汉语的书面形式，其特点是简练、含蓄。阅读文言文，可以从以下方面入手：一、了解背景；二、借助注释；三、对照译文；四、多读多背。
+文言文并不难。它像一扇通往古代世界的窗户——推开它，你就能看到两千多年前的人是怎么思考、怎么说话的。你会发现，他们关心的问题（什么是好人？怎样治理国家？什么才是真正的快乐？）和我们今天关心的，其实没有什么不同。
 
-\textbf{参考篇目：}
-\begin{itemize}
-  \item 已配套模块：参见《左传》模块（zuozhuan/）
-  \item 《世说新语》选篇
-  \item 《论语》选篇
-  \item 《孟子》选篇
-  \item 唐宋八大家散文选
-\end{itemize}
+\newpage
+
+\section{\textcolor{orange!80!black}{第一课\quad 《论语》选读：孔子和弟子们的对话}}
+
+孔子（公元前551—前479年）是春秋时期最伟大的思想家、教育家。他的言行被弟子们记录在《论语》里。《论语》不是一本系统性的著作，而是一段段生动的对话记录——就像今天的课堂讨论笔记。透过这些简短的对话，我们可以看到孔子的教育方法：他很少直接给答案，而是通过提问和比喻来引导学生自己思考。
+
+\subsection*{学而时习之}
+
+\noindent\textcolor{blue!70!black}{\large【原文】}
+
+子曰：\textquotedblleft 学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？\textquotedblright
+
+\annlist{子：孔子。时：按时。习：温习、练习。说(yuè)：同"悦"，愉快。愠(yùn)：恼怒。君子：有道德修养的人。}
+
+\noindent\textcolor{green!60!black}{\large【译文】}
+
+孔子说：\textquotedblleft 学习了知识并且按时温习它，不也很愉快吗？有志同道合的朋友从远方来，不也很快乐吗？别人不了解自己也不恼怒，不也是君子吗？\textquotedblright
+
+\thinkq 孔子把"学习"、"交友"、"不被理解"放在一起说，这三件事有什么共同点？为什么做到了这三件事就是"君子"？
+
+\subsection*{己所不欲，勿施于人}
+
+\noindent\textcolor{blue!70!black}{\large【原文】}
+
+子贡问曰：\textquotedblleft 有一言而可以终身行之者乎？\textquotedblright 子曰：\textquotedblleft 其恕乎！己所不欲，勿施于人。\textquotedblright
+
+\annlist{子贡：孔子的学生端木赐。一言：一个字（但也可以理解为"一句话"）。行：奉行。其：大概。恕(shù)：宽恕、推己及人。施：施加。}
+
+\noindent\textcolor{green!60!black}{\large【译文】}
+
+子贡问道：\textquotedblleft 有没有一个字可以终身奉行的呢？\textquotedblright 孔子说：\textquotedblleft 大概是'恕'吧！自己不愿意要的，不要施加给别人。\textquotedblright
+
+\thinkq "己所不欲，勿施于人"被称为"道德的金律"，在全世界各种文化中都有类似的表述。想一想：为什么这句话如此简单，却被认为是道德的最高原则？你在生活中有没有经历过"己所欲而施于人"反而造成问题的例子？
+
+\subsection*{三人行，必有我师}
+
+\noindent\textcolor{blue!70!black}{\large【原文】}
+
+子曰：\textquotedblleft 三人行，必有我师焉。择其善者而从之，其不善者而改之。\textquotedblright
+
+\annlist{三人：几个人（古人以"三"表示多数）。行：同行。焉(yān)：兼词，"在其中"的意思。善者：优点。从：跟从、学习。改之：引以为戒来改正自己。}
+
+\noindent\textcolor{green!60!black}{\large【译文】}
+
+孔子说：\textquotedblleft 几个人一起走路，其中一定有可以做我老师的人。选择他们的优点来学习，看到他们的缺点就对照着改正自己。\textquotedblright
+
+\thinkq 孔子这里说的"师"，不一定指学校里的老师，而是说每个人都可以从其他人身上学到东西。最关键的是后半句"其不善者而改之"——连坏榜样也是学习的机会。这种学习态度和我们平时说的"批评"有什么不同？
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第二课\quad 《世说新语》选读：魏晋名士的风采}}
+
+《世说新语》是南朝刘义庆编撰的一本"故事集"，记录的是东汉末年到魏晋时期名人们的言行轶事。这些故事非常简短——长的不过一百多字，短的只有几十个字——但每则都像一幅速写，把一个人的性格刻画得栩栩如生。
+
+\subsection*{咏雪}
+
+\noindent\textcolor{blue!70!black}{\large【原文】}
+
+谢太傅寒雪日内集，与儿女讲论文义。俄而雪骤，公欣然曰：\textquotedblleft 白雪纷纷何所似？\textquotedblright 兄子胡儿曰：\textquotedblleft 撒盐空中差可拟。\textquotedblright 兄女曰：\textquotedblleft 未若柳絮因风起。\textquotedblright 公大笑乐。
+
+\annlist{谢太傅：谢安，东晋名相。内集：家庭聚会。儿女：子侄辈。俄而：不久、一会儿。何所似：像什么。胡儿：谢安侄儿谢朗的小名。差可拟：勉强可以相比。因风：乘风。}
+
+\noindent\textcolor{green!60!black}{\large【译文】}
+
+谢安在一个寒冷的雪天举行家庭聚会，和子侄们讨论文章义理。不久雪下大了，谢安高兴地问：\textquotedblleft 这纷纷扬扬的白雪像什么？\textquotedblright 他的侄儿谢朗说：\textquotedblleft 就像把盐撒在空中差不多可以相比。\textquotedblright 他的侄女（谢道韫）说：\textquotedblleft 不如比作柳絮乘风飞舞。\textquotedblright 谢安听了大笑，非常高兴。
+
+\thinkq "撒盐"和"柳絮"哪个比喻更好？为什么？你试试从"形"和"神"两个角度来比较一下。这位"兄女"谢道韫后来成为中国历史上著名的才女，这个比喻就是最好的证明。
+
+\subsection*{陈太丘与友期行}
+
+\noindent\textcolor{blue!70!black}{\large【原文】}
+
+陈太丘与友期行，期日中。过中不至，太丘舍去，去后乃至。元方时年七岁，门外戏。客问元方：\textquotedblleft 尊君在不？\textquotedblright 答曰：\textquotedblleft 待君久不至，已去。\textquotedblright 友人便怒曰：\textquotedblleft 非人哉！与人期行，相委而去。\textquotedblright 元方曰：\textquotedblleft 君与家君期日中。日中不至，则是无信；对子骂父，则是无礼。\textquotedblright 友人惭，下车引之。元方入门不顾。
+
+\annlist{期行：约定一同出行。日中：正午。舍去：丢下（他）离开。乃至：（友人）才到。元方：陈太丘的儿子陈纪，字元方。尊君在不(fǒu)：令尊在不在？委：丢下。引：拉、牵。顾：回头看。}
+
+\noindent\textcolor{green!60!black}{\large【译文】}
+
+陈太丘和友人约好同行，约定在正午见面。过了正午友人还没来，太丘便不再等候离开了。太丘离开后友人才到。元方当时七岁，在门外玩耍。客人问元方：\textquotedblleft 令尊在不在？\textquotedblright 元方回答说：\textquotedblleft 等您很久不来，已经走了。\textquotedblright 友人生气地说：\textquotedblleft 真不是人啊！和人约好同行，却丢下别人自己走了。\textquotedblright 元方说：\textquotedblleft 您和家父约定在正午。正午不到就是不讲信用；当着儿子的面骂父亲，就是没有礼貌。\textquotedblright 友人感到惭愧，下车拉元方示好。元方却头也不回地走进了家门。
+
+\thinkq 七岁的元方用两句话（"无信""无礼"）就让一个成年人哑口无言。注意他的逻辑：他没有为自己辩护，而是用对方自己的行为来反驳对方。这是一种什么论证方法？在生活中你有没有遇到过需要用"以其人之道还治其人之身"的时候？
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第三课\quad 《孟子》选读：雄辩家的逻辑}}
+
+孟子（约公元前372—前289年）是战国时期儒家的大思想家，被尊为"亚圣"。和《论语》的简短语录不同，《孟子》中的对话通常是长篇大论，充满气势磅礴的辩论。孟子很擅长用比喻和层层推进的逻辑来说服对方。
+
+\subsection*{生于忧患，死于安乐（节选）}
+
+\noindent\textcolor{blue!70!black}{\large【原文】}
+
+故天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。
+
+\annlist{大任：重大的使命。是：这、这个。苦：使……痛苦。劳：使……劳累。饿：使……饥饿。空乏：使……穷困。拂(fú)乱：扰乱。所以：用来。动心忍性：使内心惊动、使性格坚韧。曾(zēng)益：增加。}
+
+\noindent\textcolor{green!60!black}{\large【译文】}
+
+所以上天将要把重大使命降临给这个人时，一定先要使他的心志痛苦，使他的筋骨劳累，使他的身体饥饿，使他穷困贫乏，使他每做一件事都受到干扰扰乱，用这些来使他的内心惊动、使他的性格坚韧，增加他所不具备的能力。
+
+\thinkq 为什么"成就大事"和"吃苦"会联系在一起？从逻辑上看，吃苦本身并不自动带来成功——那中间还需要什么环节？孟子说的"动心忍性"实际上是一种什么样的心理过程？这和我们今天说的"逆商"有什么关系？
+
+\subsection*{鱼我所欲也（节选）}
+
+\noindent\textcolor{blue!70!black}{\large【原文】}
+
+鱼，我所欲也；熊掌，亦我所欲也。二者不可得兼，舍鱼而取熊掌者也。生，亦我所欲也；义，亦我所欲也。二者不可得兼，舍生而取义者也。
+
+\annlist{欲：想要。得兼：同时得到。舍：舍弃。生：生命。义：道义。}
+
+\noindent\textcolor{green!60!black}{\large【译文】}
+
+鱼是我想要的，熊掌也是我想要的。如果两者不能同时得到，就舍弃鱼而选取熊掌。生命是我想要的，道义也是我想要的。如果两者不能同时得到，就舍弃生命而选取道义。
+
+\thinkq 孟子的论证方法很简单：先打一个大家都懂的比方（鱼和熊掌），再引出他要讲的道理（生和义）。这种论证方法叫"类比论证"。想一想：这个类比成立的前提是什么？"生命"和"道义"真的像"鱼"和"熊掌"一样是可以比较的东西吗？你同意孟子的结论吗？为什么？
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第四课\quad 唐宋八大家散文精选}}
+
+"唐宋八大家"是唐宋时期八位最杰出的散文家：唐代的韩愈、柳宗元，宋代的欧阳修、苏轼、苏洵、苏辙、王安石、曾巩。他们的散文打破了六朝以来骈文的华丽空洞，用朴实自然的语言表达真挚的思想感情。
+
+\subsection*{马说（韩愈）}
+
+\noindent\textcolor{blue!70!black}{\large【原文】}
+
+世有伯乐，然后有千里马。千里马常有，而伯乐不常有。故虽有名马，祇辱于奴隶人之手，骈死于槽枥之间，不以千里称也。
+
+马之千里者，一食或尽粟一石。食马者不知其能千里而食也。是马也，虽有千里之能，食不饱，力不足，才美不外见，且欲与常马等不可得，安求其能千里也？
+
+策之不以其道，食之不能尽其材，鸣之而不能通其意，执策而临之，曰：\textquotedblleft 天下无马！\textquotedblright 呜呼！其真无马邪？其真不知马也！
+
+\annlist{伯乐：传说中善于相马的人。祇(zhǐ)：同"只"，只是。辱：受屈辱。骈(pián)死：并列而死。槽枥(cáo lì)：马槽和马厩。一食：吃一顿。或：有时。尽粟(sù)一石(dàn)：吃完一石（约120斤）粮食。食(sì)马者：喂养马的人。外见(xiàn)：表现在外面。且：尚且。等：同样。策：马鞭，用作动词指鞭打。鸣之而不能通其意：马鸣叫却不能理解它的意思。临：面对。}
+
+\noindent\textcolor{green!60!black}{\large【译文】}
+
+世上有了伯乐，然后才会有千里马被发现的可能。千里马是经常有的，但伯乐却不经常有。所以即使有名马，也只能在仆役手中受屈辱，在马槽马厩里和普通马一起死掉，不被人以千里马著称。
+
+一匹日行千里的马，吃一顿有时能吃完一石粮食。喂马的人不知道它能日行千里而按千里马的食量喂养它。这样的马，虽然有日行千里的本领，但因为吃不饱，力气不足，才能和优点不能表现出来，甚至想和普通马一样都做不到，怎么能要求它日行千里呢？
+
+鞭打它不按照正确的方法，喂养它不能让它充分发挥才能，它鸣叫却不能理解它的意思，却拿着鞭子对着它说：\textquotedblleft 天下没有好马！\textquotedblright 唉！难道真的没有千里马吗？恐怕是真的不识千里马啊！
+
+\thinkq 韩愈写这篇短文的目的并不在"马"。想一想：千里马、伯乐、奴隶人分别比喻什么？这篇文章表达的核心观点是什么？你认为韩愈的"不平之鸣"针对的是一种什么样的社会现象？
+
+\newpage
+
+\subsection*{醉翁亭记（节选）（欧阳修）}
+
+\noindent\textcolor{blue!70!black}{\large【原文】}
+
+环滁皆山也。其西南诸峰，林壑尤美。望之蔚然而深秀者，琅琊也。山行六七里，渐闻水声潺潺，而泻出于两峰之间者，酿泉也。峰回路转，有亭翼然临于泉上者，醉翁亭也。作亭者谁？山之僧智仙也。名之者谁？太守自谓也。太守与客来饮于此，饮少辄醉，而年又最高，故自号曰醉翁也。醉翁之意不在酒，在乎山水之间也。山水之乐，得之心而寓之酒也。
+
+\annlist{环滁(chú)：环绕着滁州（今安徽滁州）。壑(hè)：山谷。蔚然：草木茂盛的样子。翼然：像鸟儿张开翅膀一样。辄(zhé)：就。寓：寄托。}
+
+\noindent\textcolor{green!60!black}{\large【译文】}
+
+环绕着滁州的都是山。它西南边的那些山峰，树林和山谷尤其优美。望去树木茂盛、幽深秀丽的，是琅琊山。沿着山路走六七里，渐渐听到潺潺的水声，从两座山峰之间倾泻而出的，是酿泉。山势回环、路也随之转弯，有一座亭子像鸟展翅一样高踞在泉水之上的，是醉翁亭。建造亭子的是谁？是山上的僧人智仙。给它命名的是谁？是太守用自己的别号命名的。太守和客人来这里饮酒，喝得很少就醉了，而且年纪又最大，所以给自己起了个别号叫"醉翁"。醉翁的心意不在酒上，而在山水之间的美景中。欣赏山水的乐趣，领会在心里而寄托在酒上。
+
+\thinkq "醉翁之意不在酒"成了千古名句。想一想：欧阳修说自己"醉"了，但他真的醉了吗？一个真正喝醉的人，能写出这样优美的文字吗？"醉"在这里是一种什么样的精神状态？
+
+\vspace{0.5cm}
+
+\begin{center}
+\textcolor{blue!70!black}{\large\textbf{—— 文言文选读 · 完 ——}}
+\end{center}
 
 \end{document}

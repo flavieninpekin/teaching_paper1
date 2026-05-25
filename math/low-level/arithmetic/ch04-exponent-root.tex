@@ -1,0 +1,498 @@
+\chaptertitle{第四章\quad 乘方开方——实数}
+
+\sectiontitle{第12讲\quad 乘方——连乘太慢的时候}
+
+\subsection*{又一次"加快"}
+
+回顾一下我们的路线：
+\begin{itemize}
+  \item 加法太慢？发明了乘法（相同加数的加法）。
+  \item 那乘法太慢呢？
+\end{itemize}
+
+$2\times2\times2\times2\times2$（5个2连乘）——每次都写这么长太烦了。我们再发明一次简写：\textbf{乘方}。
+
+\[
+\underbrace{2\times2\times2\times2\times2}_{5\text{个}} = 2^5
+\]
+
+读作"2的5次方"。2叫\textbf{底数}，5叫\textbf{指数}，$2^5=32$叫\textbf{幂}。
+
+\begin{example}
+把 $3\times3\times3\times3$ 改写成乘方并计算。
+\end{example}
+\begin{solution}
+4个3相乘，$3^4 = 3\times3\times3\times3 = 81$。
+\end{solution}
+
+\begin{example}
+计算 $10^3$，$10^4$，$10^5$，你发现什么规律？
+\end{example}
+\begin{solution}
+$10^3=1000$，$10^4=10000$，$10^5=100000$。规律：10的n次方等于1后面跟n个0。
+\end{solution}
+
+\begin{example}
+计算 $2^0$，$2^1$，$2^2$，$2^3$，$2^4$，$2^5$。你发现什么规律？
+\end{example}
+\begin{solution}
+$2^0=1$，$2^1=2$，$2^2=4$，$2^3=8$，$2^4=16$，$2^5=32$。
+规律：每多一次方，结果翻一倍（乘以2）。
+\end{solution}
+
+\begin{example}
+$3^2$ 和 $2^3$ 哪个大？
+\end{example}
+\begin{solution}
+$3^2 = 3\times3 = 9$，$2^3 = 2\times2\times2 = 8$。$9>8$，所以 $3^2 > 2^3$。
+同样是2和3，只是位置不同，结果就不同。
+\end{solution}
+
+\begin{example}
+计算 $5^3$ 和 $3^5$，比较大小。
+\end{example}
+\begin{solution}
+$5^3 = 5\times5\times5 = 125$，$3^5 = 3\times3\times3\times3\times3 = 243$。
+$125 < 243$，所以 $5^3 < 3^5$。指数大有时比底数大更"厉害"。
+\end{solution}
+
+\subsection*{乘方的一些特殊情况}
+
+\begin{itemize}
+  \item $a^1=a$：一个数的一次方等于它本身。
+  \item $a^0=1$（$a\neq0$）：任何非零数的0次方等于1。
+  \item $1^n=1$：1的任何次方都是1。
+  \item $0^n=0$（$n>0$）：0的任何正数次方都是0。
+\end{itemize}
+
+\begin{example}
+$1^{100}$ 等于多少？$0^{100}$ 呢？
+\end{example}
+\begin{solution}
+$1^{100}=1$（1乘以自己100次还是1），$0^{100}=0$（0乘以自己100次还是0）。
+\end{solution}
+
+\begin{example}
+$(-2)^3$ 和 $(-2)^4$ 分别等于多少？
+\end{example}
+\begin{solution}
+$(-2)^3 = (-2)\times(-2)\times(-2) = -8$（奇数个负数相乘得负）。
+$(-2)^4 = (-2)\times(-2)\times(-2)\times(-2) = 16$（偶数个负数相乘得正）。
+负数的奇次方为负，偶次方为正。
+\end{solution}
+
+\subsection*{指数增长——棋盘上的麦粒}
+
+有一个著名的故事：国际象棋发明家向国王要赏赐。棋盘有64格，第一格放1粒麦子，第二格放2粒，第三格放4粒，每格翻一倍。国王觉得这太容易了——
+
+第一格：$1 = 2^0$\\
+第二格：$2 = 2^1$\\
+第三格：$4 = 2^2$\\
+第四格：$8 = 2^3$\\
+\ldots\\
+第64格：$2^{63}$
+
+$2^{63} \approx 9.22\times10^{18}$——大约92亿亿粒麦子。全世界所有麦田都种不出这么多。
+
+这就是\textbf{指数增长}的力量——开始很慢，越到后面越惊人。
+
+\begin{exercise}
+\item 把连乘改写成乘方：
+  \begin{subexercise}
+    \item $2\times2\times2$
+    \item $5\times5\times5\times5$
+    \item $10\times10$
+    \item $3\times3\times3\times3\times3\times3$
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $2^3$
+    \item $2^4$
+    \item $3^2$
+    \item $3^3$
+    \item $4^2$
+    \item $5^2$
+    \item $10^4$
+    \item $10^5$
+    \item $0^3$
+    \item $1^{100}$
+  \end{subexercise}
+
+\item 观察规律填空：
+  \begin{subexercise}
+    \item $2^1=2$，$2^2=4$，$2^3=8$，$2^4=\;$?，$2^5=\;$?，$2^6=\;$?，$2^7=\;$?
+    \item 每次乘以几？
+  \end{subexercise}
+
+\item 比较大小：
+  \begin{subexercise}
+    \item $2^3$ 和 $3^2$
+    \item $4^2$ 和 $2^4$
+    \item $2^5$ 和 $5^2$
+  \end{subexercise}
+
+\item 一张纸对折1次变成2层，对折2次变成4层，对折3次变成8层。对折10次变成多少层？写出算式。
+
+\item 如果今天给你1元，第二天2元，第三天4元，每天翻一倍。第10天给你多少元？第20天呢？
+\end{exercise}
+
+\sectiontitle{第13讲\quad 开方——乘方的逆运算}
+
+\subsection*{乘方也有逆运算}
+
+$2^3=8$——这个我们知道了。现在反过来问：\textbf{什么数的3次方等于8？}
+
+答案是2，因为 $2^3=8$。这个"找底数"的运算叫\textbf{开方}。
+
+对于平方（2次方）和立方（3次方）有专门的名称：
+
+\begin{itemize}
+  \item 平方根：如果 $x^2=a$，$x$ 叫 $a$ 的平方根。记作 $x=\pm\sqrt{a}$（正负两个）。
+  \item 算术平方根：$\sqrt{a}$ 表示 $a$ 的\textbf{正}的平方根。
+  \item 立方根：如果 $x^3=a$，$x$ 叫 $a$ 的立方根。记作 $x=\sqrt[3]{a}$（只有一个）。
+\end{itemize}
+
+\begin{example}
+求 $\sqrt{9}$。
+\end{example}
+\begin{solution}
+因为 $3^2=9$，所以 $\sqrt{9}=3$（算术平方根取正的）。
+\end{solution}
+
+\begin{example}
+求 $\sqrt{25}$ 和 $\sqrt[3]{27}$。
+\end{example}
+\begin{solution}
+$5^2=25$，所以 $\sqrt{25}=5$。$3^3=27$，所以 $\sqrt[3]{27}=3$。
+\end{solution}
+
+\begin{example}
+计算：$\sqrt{169}-\sqrt[3]{125}$
+\end{example}
+\begin{solution}
+$\sqrt{169}=13$（$13^2=169$），$\sqrt[3]{125}=5$（$5^3=125$）。$13-5=8$。
+\end{solution}
+
+\subsection*{开方的符号——根号}
+
+我们日常用的 $\sqrt{\quad}$（根号）是从德国人鲁道夫在1525年的一本书里传下来的。它原来是 $\surd$，后来演变成了现在的样子。
+
+有个口诀帮你记：\textbf{平方根问"谁的平方等于它"，立方根问"谁的立方等于它"}。
+
+\subsection*{开方的一个重要限制}
+
+做开方之前必须先弄清楚一个问题：\textbf{什么数的平方可以是负数？}
+
+任何数的平方都是非负的：$3^2=9$，$(-3)^2=9$，$0^2=0$。没有哪个实数的平方等于 $-9$。
+
+所以，\textbf{在实数范围内，负数没有平方根}。
+
+\[
+a < 0 \quad\Longrightarrow\quad \sqrt{a}\ \text{在实数范围内无意义}
+\]
+
+$\sqrt{-9}$ 不是任何实数——因为没有任何实数的平方等于 $-9$。
+
+不过，\textbf{立方根没有这个限制}：
+$\sqrt[3]{-8} = -2$，因为 $(-2)^3 = -8$。
+偶次方根（平方根、四次方根等）要求被开方数非负；
+奇次方根（立方根、五次方根等）可以是负数，结果也是负数。
+
+此外，$\sqrt{a}$（算术平方根）的结果也是非负的：
+\[
+\sqrt{a} \ge 0 \quad\text{（对于 $a\ge 0$）}
+\]
+你不能写 $\sqrt{9} = -3$。虽然 $(-3)^2=9$，但 $\sqrt{9}$ 特指\textbf{正}的那个平方根，也就是3。
+
+\begin{example}
+$\sqrt{-4}$ 等于多少？
+\end{example}
+\begin{solution}
+在实数范围内无意义。因为没有任何实数的平方等于 $-4$。
+\end{solution}
+
+\begin{example}
+$\sqrt{0}$ 等于多少？
+\end{example}
+\begin{solution}
+$0^2=0$，所以 $\sqrt{0}=0$。
+\end{solution}
+
+\begin{example}
+$\sqrt[3]{-27}$ 等于多少？
+\end{example}
+\begin{solution}
+$(-3)^3=-27$，所以 $\sqrt[3]{-27}=-3$。立方根可以是负数。
+\end{solution}
+
+\begin{exercise}
+\item 口答平方根：
+  \begin{subexercise}
+    \item $\sqrt{16}$
+    \item $\sqrt{36}$
+    \item $\sqrt{49}$
+    \item $\sqrt{64}$
+    \item $\sqrt{81}$
+    \item $\sqrt{100}$
+  \end{subexercise}
+
+\item 求下列各数的平方根（注意正负两个）：
+  \begin{subexercise}
+    \item $169$
+    \item $0.25$
+    \item $\dfrac{64}{81}$
+    \item $2\dfrac{1}{4}$
+    \item $(-6)^2$
+    \item $10^4$
+  \end{subexercise}
+
+\item 求立方根：
+  \begin{subexercise}
+    \item $\sqrt[3]{27}$
+    \item $\sqrt[3]{-64}$
+    \item $\sqrt[3]{0.125}$
+    \item $\sqrt[3]{216}$
+    \item $\sqrt[3]{-1}$
+    \item $\sqrt[3]{-\dfrac{8}{27}}$
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $\sqrt{81}+\sqrt{25}$
+    \item $\sqrt{144}-\sqrt{49}$
+    \item $\sqrt{0.09}+\sqrt{0.16}$
+    \item $\sqrt[3]{8}+\sqrt[3]{-27}$
+    \item $\sqrt{36}-\sqrt[3]{-64}+\sqrt{\dfrac{1}{4}}$
+    \item $\sqrt[3]{125}-\sqrt{100}+\sqrt[3]{0.001}$
+  \end{subexercise}
+
+\item 解方程（求 $x$）：
+  \begin{subexercise}
+    \item $x^2=49$
+    \item $4x^2=25$
+    \item $(x-1)^2=9$
+    \item $x^3=-27$
+    \item $8x^3+27=0$
+    \item $(x+2)^3=64$
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第14讲\quad 无理数的诞生——当开方"开不尽"的时候}
+
+\subsection*{又"不够用"了？}
+
+$\sqrt{2}$ 是多少？
+
+你大概能猜到它大概是多少。$1^2=1$，太小。$2^2=4$，太大。那1.5呢？$1.5^2=2.25$，还是大了一点。1.4？$1.4^2=1.96$，小了一点。1.414？$1.414^2\approx1.999$，非常接近了\ldots
+
+但不管你算到多少位，它永远不是精确的2。
+
+这不是因为你算得不够准——而是因为 $\sqrt{2}$ \textbf{根本不能写成分数的形式}。古希腊的毕达哥拉斯学派在2500年前就证明了这一点。他们发现正方形的对角线长度和边长之比不是分数——这件事在当时让他们非常震惊。
+
+不能写成分数的数，叫\textbf{无理数}。
+
+\subsection*{无理数有多少？}
+
+非常多：
+
+\begin{itemize}
+  \item $\sqrt{2},\sqrt{3},\sqrt{5},\sqrt{6},\sqrt{7},\sqrt{8},\sqrt{10},\ldots$（开不尽的平方根）
+  \item $\pi\approx3.14159\ldots$（圆周率）
+  \item $e\approx2.71828\ldots$（自然常数）
+\end{itemize}
+
+\subsection*{实数——数轴被填满了}
+
+有理数（分数）和无理数合在一起，叫\textbf{实数}，用 $\mathbb{R}$ 表示。实数有一个很重要的性质：\textbf{每一个实数都能在数轴上找到一个点，反过来，数轴上的每一个点都对应一个实数}。数轴被填满了。
+
+\begin{example}
+判断：$\sqrt{4}$ 是有理数还是无理数？
+\end{example}
+\begin{solution}
+$\sqrt{4}=2$，2可以写成 $\dfrac{2}{1}$，所以是有理数。关键：开方开得尽就是有理数，开不尽就是无理数。
+\end{solution}
+
+\begin{exercise}
+\item 判断下列各数是有理数还是无理数：
+  \begin{subexercise}
+    \item $\sqrt{16}$
+    \item $\sqrt{2}$
+    \item $3.14$
+    \item $\pi$
+    \item $\sqrt{0.01}$
+    \item $-\sqrt{3}$
+    \item $\dfrac{22}{7}$
+    \item $\sqrt{50}$
+  \end{subexercise}
+
+\item 用计算器或估算：
+  \begin{subexercise}
+    \item $\sqrt{2}$ 大概是多少？（精确到小数点后两位）
+    \item $\sqrt{3}$ 大概是多少？
+    \item $\sqrt{5}$ 大概是多少？
+    \item $\sqrt{10}$ 大概是多少？
+  \end{subexercise}
+
+\item 比较大小：
+  \begin{subexercise}
+    \item $\sqrt{2}$ 和 $1.4$
+    \item $\sqrt{3}$ 和 $1.7$
+    \item $\sqrt{5}$ 和 $2.2$
+    \item $\sqrt{10}$ 和 $3.1$
+  \end{subexercise}
+
+\item 思考题：
+  \begin{subexercise}
+    \item 一个有理数的平方根，什么时候是有理数？什么时候是无理数？用自己的话说说规律。
+    \item 有没有最小的无理数？有没有最大的无理数？
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第15讲\quad 实数混合运算——根式的化简}
+
+\subsection*{根号下的运算}
+
+实数的运算法则和有理数完全一样。唯一的区别是，无理数我们通常保留根号形式，不写成小数（因为写不完）。
+
+\textbf{根式的化简：}
+\[
+\sqrt{12} = \sqrt{4\times3} = \sqrt{4}\times\sqrt{3} = 2\sqrt{3}
+\]
+
+\textbf{根式的加减：}只有相同的根式才能加减（像合并同类项一样）。
+\[
+2\sqrt{3} + 3\sqrt{3} = 5\sqrt{3}
+\]
+
+\begin{example}
+化简：$\sqrt{12}-3\sqrt{\dfrac{1}{3}}+2\sqrt{48}$
+\end{example}
+\begin{solution}
+$\sqrt{12} = 2\sqrt{3}$\\
+$\sqrt{\dfrac{1}{3}} = \dfrac{\sqrt{3}}{3}$\\
+$\sqrt{48} = 4\sqrt{3}$
+
+原式 $= 2\sqrt{3} - 3\times\dfrac{\sqrt{3}}{3} + 2\times4\sqrt{3}$\\
+$= 2\sqrt{3} - \sqrt{3} + 8\sqrt{3} = 9\sqrt{3}$
+\end{solution}
+
+\subsection*{乘法公式在实数中仍然有效}
+
+平方差、完全平方公式对根式同样有效。
+
+\begin{example}
+计算：$(\sqrt{3}+2)(\sqrt{3}-2)$
+\end{example}
+\begin{solution}
+利用平方差公式：$(\sqrt{3}+2)(\sqrt{3}-2) = (\sqrt{3})^2-2^2 = 3-4 = -1$。
+\end{solution}
+
+\begin{example}
+计算：$(\sqrt{2}+1)^2$
+\end{example}
+\begin{solution}
+完全平方公式：$(\sqrt{2}+1)^2 = (\sqrt{2})^2+2\times\sqrt{2}\times1+1^2 = 2+2\sqrt{2}+1 = 3+2\sqrt{2}$。
+\end{solution}
+
+\subsection*{分母有理化}
+
+分数 $\dfrac{1}{\sqrt{2}}$ 的分母里有个根号，不太美观。我们可以把分子分母同时乘以 $\sqrt{2}$ 来去掉分母里的根号：
+
+\[
+\frac{1}{\sqrt{2}} \times \frac{\sqrt{2}}{\sqrt{2}} = \frac{\sqrt{2}}{2}
+\]
+
+这叫做\textbf{分母有理化}。
+
+\begin{example}
+分母有理化：$\dfrac{1}{\sqrt{3}}$
+\end{example}
+\begin{solution}
+$\dfrac{1}{\sqrt{3}} \times \dfrac{\sqrt{3}}{\sqrt{3}} = \dfrac{\sqrt{3}}{3}$。
+\end{solution}
+
+\begin{example}
+分母有理化：$\dfrac{1}{\sqrt{2}-1}$
+\end{example}
+\begin{solution}
+用平方差公式：$\dfrac{1}{\sqrt{2}-1}\times\dfrac{\sqrt{2}+1}{\sqrt{2}+1} = \dfrac{\sqrt{2}+1}{2-1} = \sqrt{2}+1$。
+\end{solution}
+
+\begin{exercise}
+\item 化简（把根号内的完全平方数提出来）：
+  \begin{subexercise}
+    \item $\sqrt{8}$
+    \item $\sqrt{18}$
+    \item $\sqrt{32}$
+    \item $\sqrt{72}$
+    \item $\sqrt{98}$
+    \item $\sqrt{108}$
+  \end{subexercise}
+
+\item 根式加减（只有相同根式才能合并）：
+  \begin{subexercise}
+    \item $\sqrt{8}+\sqrt{18}-\sqrt{32}$
+    \item $\sqrt{27}-\sqrt{\dfrac{1}{3}}+\sqrt{12}$
+    \item $\sqrt{50}-3\sqrt{2}+2\sqrt{8}$
+    \item $\sqrt{75}+2\sqrt{\dfrac{1}{3}}-3\sqrt{48}$
+    \item $2\sqrt{20}-3\sqrt{45}+\sqrt{80}$
+    \item $\sqrt{54}-\sqrt{24}+2\sqrt{\dfrac{2}{3}}$
+  \end{subexercise}
+
+\item 根式乘除：
+  \begin{subexercise}
+    \item $\sqrt{3}\times\sqrt{6}$
+    \item $\sqrt{2}\times\sqrt{8}$
+    \item $\sqrt{27}\div\sqrt{3}$
+    \item $\sqrt{50}\div\sqrt{2}$
+    \item $\sqrt{12}\times\sqrt{3}-5$
+    \item $(\sqrt{5}+1)(\sqrt{5}-1)$
+  \end{subexercise}
+
+\item 乘法公式：
+  \begin{subexercise}
+    \item $(\sqrt{2}+1)^2$
+    \item $(\sqrt{3}-2)^2$
+    \item $(\sqrt{7}+\sqrt{5})(\sqrt{7}-\sqrt{5})$
+    \item $(\sqrt{2}+\sqrt{3})^2$
+    \item $(\sqrt{5}-\sqrt{3})^2$
+    \item $(2\sqrt{3}+3\sqrt{2})(2\sqrt{3}-3\sqrt{2})$
+  \end{subexercise}
+
+\item 分母有理化：
+  \begin{subexercise}
+    \item $\dfrac{1}{\sqrt{3}}$
+    \item $\dfrac{2}{\sqrt{5}}$
+    \item $\dfrac{3}{\sqrt{12}}$
+    \item $\dfrac{1}{\sqrt{2}-1}$
+    \item $\dfrac{3}{\sqrt{5}+\sqrt{2}}$
+    \item $\dfrac{2}{\sqrt{3}-\sqrt{2}}$
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{章末小结}
+
+\begin{enumerate}
+  \item \textbf{乘方是相同因数的乘法}——乘法的"提速"。
+  \item \textbf{开方是乘方的逆运算}——平方根、立方根。
+  \item \textbf{开方开不尽时，无理数出现了。} 有理数+无理数=实数 $\mathbb{R}$。
+  \item \textbf{实数填满整条数轴。}
+  \item \textbf{实数的运算}和有理数一样，根式需要化简和有理化。
+\end{enumerate}
+
+\textbf{关键思想：}这是第三次"不够用"的扩张。第一次减法不够→负数，第二次除法不够→分数，第三次开方不够→无理数。每一次都是运算驱动数系扩张。
+
+但乘方还有一个逆运算没有被我们发掘出来。开方是找底数——那如果我要找指数呢？
+
+\bigskip
+
+\begin{center}
+\fbox{
+  \parbox{0.7\linewidth}{
+    \textbf{数系脚印 \#4：} $\mathbb{N} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{R}$ \\
+    开不尽的，无理数来接。数轴满了。\\
+    但乘方还有一个逆运算——开方找的是底数，而找指数呢？
+  }
+}
+\end{center}

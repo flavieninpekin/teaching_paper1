@@ -1,0 +1,169 @@
+\chaptertitle{第七章\quad 容斥原理}
+
+第一章我们学过两集合的计数公式：$|A\cup B| = |A| + |B| - |A\cap B|$。它的思路是"先把各自的数量加起来，再减去重复的部分"。这个思路可以推广到任意多个集合——这就是容斥原理。
+
+\sectiontitle{7.1\quad 两集合容斥（回顾）}
+
+从$1$到$100$中，$2$或$3$的倍数有多少个？
+
+\begin{example}
+$1$到$100$中，能被$2$整除或能被$3$整除的数有多少个？
+\end{example}
+\begin{solution}
+设$A=\{x\mid2|x\}$，$B=\{x\mid3|x\}$。\\
+$|A| = 50$（$2$的倍数），$|B| = 33$（$3$的倍数），$|A\cap B| = 16$（$6$的倍数）。\\
+$|A\cup B| = 50 + 33 - 16 = 67$个。
+\end{solution}
+
+两集合公式：$|A\cup B| = |A| + |B| - |A\cap B|$。
+
+\sectiontitle{7.2\quad 三集合容斥}
+
+\begin{example}
+某班$50$人，喜欢数学的$30$人，喜欢物理的$25$人，喜欢化学的$20$人，三样都喜欢的$5$人，喜欢数学和物理的$12$人，喜欢数学和化学的$8$人，喜欢物理和化学的$10$人。求至少喜欢一科的人数。
+\end{example}
+\begin{solution}
+设$M,P,C$分别表示喜欢数学、物理、化学的集合。
+\[
+|M\cup P\cup C| = |M|+|P|+|C| - |M\cap P|-|M\cap C|-|P\cap C| + |M\cap P\cap C|
+\]
+\[
+= 30+25+20 -12-8-10 + 5 = 50\ \text{人}
+\]
+刚好全班$50$人，说明每个人都至少喜欢一科。
+\end{solution}
+
+三集合公式：
+\[
+|A\cup B\cup C| = |A|+|B|+|C| - |A\cap B| - |B\cap C| - |C\cap A| + |A\cap B\cap C|
+\]
+
+规律：加单集合和，减两两交集和，加三三交集和。
+
+\begin{exercise}
+\item $1$到$100$中，$2$或$3$或$5$的倍数有多少个？
+\item 某校调查，$60$人喜欢篮球，$45$人喜欢足球，$30$人喜欢排球，$15$人三种都喜欢，$25$人喜欢篮球和足球，$10$人喜欢篮球和排球，$8$人喜欢足球和排球。至少喜欢一种的有多少人？
+\end{exercise}
+
+\sectiontitle{7.3\quad 一般形式}
+
+容斥原理可以推广到任意$n$个集合：
+\[
+\Bigl|\bigcup_{i=1}^n A_i\Bigr| = \sum_{i=1}^n |A_i| - \sum_{1\le i<j\le n} |A_i\cap A_j| + \sum_{1\le i<j<k\le n} |A_i\cap A_j\cap A_k| - \cdots + (-1)^{n-1}|A_1\cap A_2\cap\cdots\cap A_n|
+\]
+
+公式的记忆方法：
+\begin{itemize}
+\item 奇数个集合的交：加号。
+\item 偶数个集合的交：减号。
+\item 从$1$到$n$，每一项都是"所有可能的$k$个集合的交集大小之和"。
+\end{itemize}
+
+\begin{example}
+写出$4$个集合的容斥原理公式的前几项。
+\end{example}
+\begin{solution}
+\[
+|A\cup B\cup C\cup D| = |A|+|B|+|C|+|D|
+\]
+\[
+- |A\cap B| - |A\cap C| - |A\cap D| - |B\cap C| - |B\cap D| - |C\cap D|
+\]
+\[
++ |A\cap B\cap C| + |A\cap B\cap D| + |A\cap C\cap D| + |B\cap C\cap D|
+\]
+\[
+- |A\cap B\cap C\cap D|
+\]
+\end{solution}
+
+\sectiontitle{7.4\quad 筛法应用}
+
+容斥原理的一个重要应用是"筛法"——求不超过某个数的、具有某种性质的数的个数。
+
+\textbf{互质计数}：不超过$N$且与$n$互质的数的个数。
+
+\begin{example}
+求不超过$100$且与$30$互质的正整数的个数。
+（提示：$30 = 2\times3\times5$，互质意味着不能被$2$、$3$、$5$中任何一个整除。）
+\end{example}
+\begin{solution}
+设$A_2,A_3,A_5$分别表示$1$到$100$中能被$2$、$3$、$5$整除的数的集合。
+我们要求的是补集$| \complement_U (A_2\cup A_3\cup A_5) |$。
+
+先求$|A_2\cup A_3\cup A_5|$：
+\begin{align*}
+|A_2| &= 50,\ |A_3| = 33,\ |A_5| = 20\\
+|A_2\cap A_3| &= 16\ (6\text{的倍数}),\ |A_2\cap A_5| = 10\ (10\text{的倍数}),\ |A_3\cap A_5| = 6\ (15\text{的倍数})\\
+|A_2\cap A_3\cap A_5| &= 3\ (30\text{的倍数})
+\end{align*}
+\[
+|A_2\cup A_3\cup A_5| = 50+33+20 - 16-10-6 + 3 = 74
+\]
+所以与$30$互质的数有$100 - 74 = 26$个。
+\end{solution}
+
+\textbf{错排问题}——这也是容斥原理的经典应用。
+
+错排：$n$个元素全部不在自己原本的位置上的排列数。记作$D_n$。
+
+\begin{example}
+$4$个人，每人有$1$件外套。拿外套时每人都不拿自己的，有多少种拿法？
+\end{example}
+\begin{solution}
+$4$件外套的全排列：$4! = 24$种。
+设$A_i$表示第$i$个人拿到自己外套的排列集合。我们要算的是不在任何$A_i$中的排列数。
+
+用容斥原理：
+\begin{align*}
+|A_1\cup A_2\cup A_3\cup A_4| &= \sum|A_i| - \sum|A_i\cap A_j| + \sum|A_i\cap A_j\cap A_k| - |A_1\cap A_2\cap A_3\cap A_4|
+\end{align*}
+\begin{itemize}
+\item $|A_i| = 3! = 6$：第$i$人位置固定，剩下$3$人随便排。有$C_4^1\times6 = 24$个。
+\item $|A_i\cap A_j| = 2! = 2$：两人固定，剩下$2$人随便排。有$C_4^2\times2 = 12$个。
+\item $|A_i\cap A_j\cap A_k| = 1! = 1$：三人固定，剩一人也固定。有$C_4^3\times1 = 4$个。
+\item $|A_1\cap A_2\cap A_3\cap A_4| = 0! = 1$：全部固定。有$C_4^4\times1 = 1$个。
+\end{itemize}
+\[
+|A_1\cup A_2\cup A_3\cup A_4| = 24 - 12 + 4 - 1 = 15
+\]
+错排数 $D_4 = 24 - 15 = 9$种。
+\end{solution}
+
+错排的一般公式（不要求记忆，了解即可）：
+\[
+D_n = n!\sum_{k=0}^n \frac{(-1)^k}{k!}
+\]
+
+\begin{exercise}
+\item 不超过$200$且与$6$互质的数有多少个？（提示：$6=2\times3$）
+\item $5$个人各写一张贺卡，每人拿一张且都不拿自己的，有多少种拿法？
+\end{exercise}
+
+\sectiontitle{本章小结}
+
+容斥原理是"先加后减"思想的推广。两集合时是$|A|+|B|-|A\cap B|$，三集合是正负交替，$n$集合也是正负交替的一般形式。它特别适合处理"至少满足一个条件"以及"排除某些条件"的计数问题。筛法（互质计数）和错排问题是容斥原理的两个经典应用。
+
+\sectiontitle{课后练习}
+
+\subsection*{A组\quad 基础巩固}
+
+\begin{exercise}
+\item $1$到$200$中，$3$或$5$的倍数有多少个？
+\item $1$到$120$中，$2$或$3$或$7$的倍数有多少个？
+\item 不超过$100$且与$10$互质的数有多少个？
+\item $3$个人的错排数$D_3$是多少？
+\end{exercise}
+
+\subsection*{B组\quad 挑战提升}
+
+\begin{exercise}
+\item $1$到$1000$中，既不是完全平方数也不是完全立方数的数有多少个？
+\item 用容斥原理解释：为什么从$1$到$p$（$p$为质数）中与$p$互质的数有$p-1$个？
+\item $6$个人写贺卡，每人拿一张且都不拿自己的，有多少种拿法？
+\item 求$1$到$100$中不能被$2$、$3$、$5$、$7$中任何一个整除的数的个数。
+\end{exercise}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章练习答案请参见书末附录。

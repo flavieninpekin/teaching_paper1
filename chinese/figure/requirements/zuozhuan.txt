@@ -1,0 +1,103 @@
+========================================
+《左传》名篇选读 - 插图需求清单
+========================================
+
+【插图1】
+位置：引言部分（"知人知世：关于《左传》"段落后，第63行\newpage前）
+描述：春秋时期诸侯国地图（简版），标注主要国家（郑、晋、秦、楚、齐、鲁、虞、虢等），用不同色块区分，风格宜古朴淡雅
+搜索词：春秋时期地图 诸侯国分布
+Prompt: A simplified map of China during the Spring and Autumn period (770-476 BCE), showing major states like Zheng, Jin, Qin, Chu, Qi, Lu, Yu, Guo in muted earth tones, classical Chinese map style, clear labels in Chinese, suitable for children age 9-10
+
+【插图2】
+位置：第44-45行之间（"读起来就像看故事片一样过瘾"之后）
+描述：一卷展开的竹简，上面隐约可见古文墨迹，旁边放着一支毛笔，画面温暖有书卷气
+搜索词：古代竹简 毛笔 古籍
+Prompt: A scroll of bamboo slips partially unrolled, showing faint ancient Chinese calligraphy, with a traditional Chinese brush pen beside it, warm lighting, scholarly atmosphere, traditional Chinese study setting
+
+【插图3】
+位置：第49行之后（竹简重量那段论述之后）
+描述：古人伏案在竹简上刻写，旁边堆着一大捆竹简，一人扛着竹简步履艰难，夸张表现出"竹简又重又占地方"
+搜索词：古代 竹简 书写 场景
+Prompt: Ancient Chinese scribe carving characters onto bamboo slips at a low desk, a large pile of heavy bamboo slip bundles beside him, another man struggling to carry a bundle, cartoon- realistic style, warm earthy colors, educational illustration for children
+
+【插图4】
+位置：第50行之后（"食否"例子之后）
+描述：两个古人在对话，一人问"食否？"，一人点头，旁边用气泡框展示文字
+搜索词：古人对话 文言文 趣味
+Prompt: Two ancient Chinese people in simple traditional robes having a conversation, one asking "食否?" with a speech bubble, the other nodding, playful educational illustration style, clean lines, suitable for children
+
+========================================
+六篇故事配图
+========================================
+
+【插图5 - 郑伯克段于鄢】
+位置：第65行标题下，背景介绍段落后
+描述：庄公与共叔段兄弟二人对立而站，中间有裂隙，母亲姜氏站在共叔段身后，眼神偏向小儿子，暗示家庭不和
+搜索词：春秋 兄弟 母子 家庭矛盾
+Prompt: Two brothers standing apart with a symbolic crack between them on the ground, their mother standing behind the younger brother with a biased expression, Spring and Autumn period clothing, dramatic composition, emotional tension, suitable for children's educational book
+
+【插图6 - 郑伯克段于鄢】
+位置：第85行之后（颍考叔献策段落）
+描述：庄公与母亲在隧道中相见，隧道上方阳光洒入，两人相拥，面带感动
+搜索词：黄泉相见 隧道 母子重逢
+Prompt: A underground tunnel scene, Duke Zhuang of Zheng embracing his mother inside a tunnel, sunlight streaming down from above through an opening, emotional reunion, ancient Chinese setting, warm golden lighting, hopeful atmosphere
+
+【插图7 - 烛之武退秦师】
+位置：第103行背景介绍段落后
+描述：夜空中，一位白发老人（烛之武）坐在箩筐里，用绳子从城墙上缓缓放下，下面是一片军营帐篷的灯光
+搜索词：烛之武 夜缒而出 城墙
+Prompt: Night scene, an old white-haired man sitting in a wicker basket being lowered down from an ancient city wall by rope, below in the distance rows of military camp tents with flickering lights, full moon in the sky, dramatic atmosphere, ancient Chinese setting
+
+【插图8 - 烛之武退秦师】
+位置：第112行说服段落之后
+描述：烛之武在秦军大帐中侃侃而谈，秦穆公坐在主位上倾听，帐外可见晋军旗帜
+搜索词：烛之武 秦穆公 谈判 大帐
+Prompt: Inside a military tent, an old Chinese diplomat (Zhu Zhiwu) speaking persuasively with hand gestures, Duke Mu of Qin sitting on the main seat listening thoughtfully, Jin army banners visible through the tent opening, candlelight, Spring and Autumn period setting
+
+【插图9 - 曹刿论战】
+位置：第133行背景介绍段落后
+描述：曹刿与鲁庄公同乘一辆战车，齐军在前方，曹刿做出"且慢"的手势
+搜索词：曹刿论战 长勺之战 战车
+Prompt: Ancient Chinese battle scene, Cao Gui and Duke Zhuang of Lu on a war chariot, Cao Gui making a "wait" gesture, Qi army ahead, war drums and banners, Spring and Autumn period, dramatic moment before battle, educational illustration
+
+【插图10 - 曹刿论战】
+位置：第141行（一鼓作气解释之后）
+描述：三面鼓依次排列，第一面鼓声波强烈、气势足，第二面声波减弱，第三面微弱
+搜索词：一鼓作气 战鼓 成语
+Prompt: Three ancient Chinese war drums arranged in a row, first drum showing strong sound waves and energy, second drum with weaker waves, third drum barely visible sound, visual metaphor for "一鼓作气" idiom, clean educational diagram style
+
+【插图11 - 弦高犒师】
+位置：第157行背景介绍段落后
+描述：一个商人打扮的人（弦高）站在路上，向秦军将领献上牛群，秦军将领惊讶
+搜索词：弦高 犒师 郑国商人
+Prompt: A Chinese merchant in travel clothes (Xian Gao) presenting a herd of cattle to a surprised Qin army general on a road, hills in background, ancient Chinese setting, the merchant looks calm and clever, the general looks confused, storybook style
+
+【插图12 - 弦高犒师】
+位置：第169行（秦军退兵之后）
+描述：郑国城门前，百姓听说了商人的事迹后欢呼鼓掌，弦高在人群中微笑
+搜索词：弦高 爱国商人 郑国
+Prompt: City gate of a Zheng state city, citizens cheering and applauding as they hear about the merchant's clever deed, Xian Gao smiling modestly in the crowd, joyful atmosphere, ancient Chinese city architecture, warm sunlight
+
+【插图13 - 唇亡齿寒】
+位置：第184行背景介绍段落后
+描述：一张简化的示意地图，虞国和虢国紧邻，晋国大军压在边境线上，用箭头表示进攻路线
+搜索词：唇亡齿寒 虞国 虢国 地图
+Prompt: Simplified map showing the states of Yu and Guo adjacent to each other, large Jin army massing at border, arrows showing invasion route, visual metaphor of the relationship between the two states, clear and simple for children
+
+【插图14 - 唇亡齿寒】
+位置：第187行宫之奇谏言段落之间
+描述：宫之奇急切地向虞公解释，虞公不以为然地摆手，旁边地图上画着晋军
+搜索词：宫之奇 谏言 虞公
+Prompt: Court scene, official Gong Zhiqi urgently advising Duke Yu with concerned expression, Duke Yu dismissively waving his hand, a map visible showing Jin army nearby, tension in the composition, Spring and Autumn period Chinese court setting
+
+【插图15 - 退避三舍】
+位置：第211行背景介绍段落后
+描述：重耳流亡途中，在楚王宴席上，拱手承诺的画面，楚王坐于主位
+搜索词：重耳 楚王 流亡 宴席
+Prompt: Exiled prince Zhong'er (later Duke Wen of Jin) dining with King Cheng of Chu, Zhong'er making a promise gesture with clasped hands, King Cheng sitting at the head, banquet setting with ancient Chinese vessels, polite atmosphere with underlying tension
+
+【插图16 - 退避三舍】
+位置：第219行之后（晋军后退段落）
+描述：晋军旗帜整齐地向后退却，地面上标记"一舍""二舍""三舍"的距离标记
+搜索词：退避三舍 晋军 城濮之战
+Prompt: Jin army retreating in orderly formation, ground markers showing "一舍" "二舍" "三舍" indicating distance, banners waving, clean and clear composition showing the retreat distance concept, battlefield landscape background

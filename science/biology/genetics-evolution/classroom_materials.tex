@@ -1,0 +1,381 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,amsmath}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+\definecolor{defblue}{RGB}{0,80,160}\definecolor{thinkorange}{RGB}{230,120,20}
+\definecolor{funboxbg}{RGB}{245,248,252}\definecolor{practicegreen}{RGB}{40,130,70}
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{thinkorange}{【 想一想 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.3cm}}
+\newenvironment{definition}[1]{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{\textcolor{defblue}{【 #1 】}}}{\vspace{0.1cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{example}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{examplebg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{orange!80!black}{【 例题 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{practice}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{practicegreen}{【 练一练 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textcolor{blue!70!black}{\textbf{【插图位置】}}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}
+\title{\textcolor{blue!70!black}{\Huge\textbf{生物3 · 遗传与进化}}}
+\author{}\date{}
+\begin{document}\maketitle\thispagestyle{empty}
+\section*{\textcolor{blue!70!black}{致同学}}
+生物1和2教了你"生命是什么"和"生命怎么构成"。现在我们要回答两个更深刻的问题：\textbf{生命怎么延续？生命怎么改变？}遗传告诉你为什么孩子像父母——但不完全像；进化告诉你为什么地球上有如此多样的生命形式——以及为什么恐龙灭绝后人类出现了。
+
+\newpage
+\section{\textcolor{orange!80!black}{第一课\quad 生殖——生命的"复制"}}
+
+\subsection*{无性生殖}
+由一个亲本直接产生后代——新个体和母体遗传信息完全相同。方式：
+\textbf{分裂生殖}（细菌——一分为二）、\textbf{出芽生殖}（酵母菌——长出小芽脱落）、\textbf{孢子生殖}（霉菌）、\textbf{营养生殖}（植物用根茎叶繁殖——扦插土豆）。
+优点：快速、不依赖异性伙伴。缺点：不能产生多样性——环境一旦不利，全军覆没。
+
+\subsection*{有性生殖}
+两性生殖细胞（配子）结合$\rightarrow$合子$\rightarrow$发育成新个体。后代具有双亲的遗传信息——多样性增加。多样性带来适应环境变化的"资本"——这是有性生殖在进化上的最大优势。缺点是"低效"——需要找到异性、需要大量配子。
+
+\subsection*{开花的秘密——植物的有性生殖}
+花粉$\rightarrow$柱头萌发$\rightarrow$花粉管伸入花柱$\rightarrow$到达胚珠$\rightarrow$精子+卵细胞$\rightarrow$受精卵$\rightarrow$胚。胚珠$\rightarrow$种子；子房$\rightarrow$果实。
+
+\begin{practice}
+1. 无性生殖的后代遗传信息和母体\_\_\_\_\_；有性生殖的后代具有\_\_\_\_\_性。\\
+2. （判断）扦插属于有性生殖。（\quad）\\
+3. 有性生殖相对于无性生殖的最大优势是\_\_\_\_\_。\\
+4. 绿色开花植物的受精发生在\_\_\_\_\_中。\\
+5. （判断）无性生殖可以产生丰富的遗传多样性。（\quad）\\
+6. 细菌一分为二的繁殖方式叫\_\_\_\_\_生殖。\\
+7. 扦插属于\_\_\_\_\_性生殖。\\
+8. 有性生殖的配子是指\_\_\_\_\_和\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第二课\quad 孟德尔定律（一）——分离定律}}
+
+\subsection*{孟德尔的豌豆实验}
+19世纪，奥地利修道士\textbf{孟德尔}用豌豆做了8年实验。他选择了\textbf{相对性状}（一对明显不同的特征：高茎vs矮茎、圆粒vs皱粒）做杂交实验。
+
+\textbf{高茎 × 矮茎 $\rightarrow$ 子一代全部高茎。}高茎"遮盖"了矮茎——孟德尔把这种表现出来的性状叫\textbf{显性}，被遮盖的叫\textbf{隐性}。
+
+\textbf{子一代自交 $\rightarrow$ 子二代：高茎 : 矮茎 ≈ 3 : 1。}这个3:1的分离比非常稳定——说明被遮盖的矮茎"因子"并没有消失，只是没有表达出来。
+
+\subsection*{分离定律的现代解释}
+\begin{definition}{分离定律（孟德尔第一定律）}
+在形成配子（精/卵）时，成对的遗传因子（等位基因）\textbf{分离}——各进入一个配子。
+\end{definition}
+
+用字母表示：高茎基因D（显性），矮茎基因d（隐性）。\\
+亲本：DD × dd $\rightarrow$ 配子：全部D 和 全部d $\rightarrow$ F$_1$：Dd（全部高茎）。\\
+F$_1$自交：Dd × Dd $\rightarrow$ 配子：1/2 D, 1/2 d $\rightarrow$ F$_2$：1 DD（高），2 Dd（高），1 dd（矮）。比例\textbf{3:1}。
+
+\begin{example}
+双眼皮（A）对单眼皮（a）是显性。双亲都是双眼皮，生了一个单眼皮孩子。双亲的基因型？
+
+\textbf{解：}孩子是单眼皮$\rightarrow$基因型aa。两个a分别来自父母。$\therefore$双亲基因型都是Aa。Aa×Aa$\rightarrow$理论上后代有3/4双眼皮、1/4单眼皮。
+\end{example}
+
+\begin{practice}
+1. 孟德尔实验中，F$_1$高茎自交，F$_2$中高茎和矮茎的比例是\_\_\_\_\_。\\
+2. 豌豆的高茎（D）对矮茎（d）显性。Dd×Dd后代中，dd的概率是\_\_\_\_\_。\\
+3. （判断）隐性基因控制的性状在子一代中不表现，所以消失了。（\quad）\\
+4. 人的单眼皮（aa）和双眼皮（Aa或AA），双眼皮父母生出单眼皮小孩，概率是\_\_\_\_\_。\\
+5. （判断）显性基因控制的性状一定在子代表现出来。（\quad）\\
+6. 基因型Dd的个体产生的配子类型有\_\_\_\_\_和\_\_\_\_\_。\\
+7. 孟德尔实验中F$_1$（Dd）自交，后代中高茎个体的基因型有\_\_\_\_\_。\\
+8. 分离定律的实质是等位基因在形成配子时\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第三课\quad 孟德尔定律（二）——自由组合定律}}
+
+\subsection*{两对相对性状 \qquad 9:3:3:1}
+孟德尔接着研究两对性状——黄色（Y）圆粒（R）vs 绿色（y）皱粒（r）。\\
+YYRR × yyrr $\rightarrow$ F$_1$全部YyRr（黄圆）。F$_1$自交$\rightarrow$F$_2$：\textcolor{formulared}{\textbf{9黄圆:3绿圆:3黄皱:1绿皱}}。
+
+这个9:3:3:1的规律说明：\textbf{不同对的遗传因子在形成配子时独立地分离和组合}——互不干扰。
+
+\begin{definition}{自由组合定律（孟德尔第二定律）}
+控制不同性状的遗传因子的分离和组合是互不干扰的——各自独立地分配到配子中。
+\end{definition}
+
+\textbf{YyRr产生的配子种类：}YR、Yr、yR、yr，各1/4。雌雄各4种→16种组合→9种基因型→4种表型比例9:3:3:1。
+
+\begin{example}
+基因型AaBb和Aabb杂交，生AaBb后代的概率？
+
+\textbf{解：}Aa×Aa $\rightarrow$ Aa概率1/2。Bb×bb $\rightarrow$ Bb概率1/2。独立事件$\rightarrow$ 相乘：$1/2 \times 1/2 = 1/4$。
+\end{example}
+
+\begin{practice}
+1. YyRr$\times$YyRr后代中，黄色皱粒的比例是\_\_\_\_\_。\\
+2. （判断）自由组合定律要求控制两对性状的基因位于非同源染色体上。（\quad）\\
+3. AaBb$\times$aaBb，产生aaBb的概率是\_\_\_\_\_。\\
+4. （判断）自由组合定律适用于所有两对相对性状的遗传。（\quad）\\
+5. YyRr产生的配子种类有\_\_\_\_\_种。\\
+6. 基因型AaBb$\times$AaBb，后代表型比例为\_\_\_\_\_。\\
+7. （判断）绿色皱粒豌豆的基因型是yyRR。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第四课\quad 基因与染色体}}
+
+\subsection*{染色体——基因的"集装箱"}
+\textbf{染色体}是细胞核中DNA的载体。人类体细胞有46条染色体（23对）。其中22对为\textbf{常染色体}，1对为\textbf{性染色体}（女性XX，男性XY）。
+
+\subsection*{基因——一段有功能的DNA}
+\textbf{基因}是染色体上的一段特定DNA序列——它"编码"一个蛋白质（或一个功能RNA）。染色体是"集装箱"，基因就是集装箱里一个个"要寄送的包裹"。\textbf{一个染色体上有多个基因}。
+
+\subsection*{伴性遗传}
+位于性染色体上的基因——其遗传方式和性别有关。\\
+\textbf{色盲（X染色体隐性）}：红绿色盲的基因$X^b$（正常为$X^B$）。\\
+男性只有一个X染色体——只要X上带色盲基因就色盲（$X^bY$）。\\
+女性需要两个X都带色盲基因才色盲（$X^bX^b$）。如果只有一个（$X^BX^b$）——她不色盲但携带者。\\
+$\therefore$ 色盲患者中\textbf{男性远多于女性}。
+
+\begin{example}
+一个色盲男性和一个正常女性（非携带者）结婚，他们的子女色盲情况如何？
+
+\textbf{解：}$X^bY \times X^BX^B \rightarrow $ 女儿全部$X^BX^b$（正常携带者），儿子全部$X^BY$（正常）。色盲不会传给子女——但女儿如果和色盲男性结婚，外孙可能色盲。这就是"隔代遗传"。
+\end{example}
+
+\begin{practice}
+1. 人类体细胞有\_\_\_\_\_条染色体，其中常染色体\_\_\_\_\_对。\\
+2. 红绿色盲在\_\_\_\_\_性中出现概率更高。\\
+3. （判断）一个基因位于一条染色体上。（\quad）\\
+4. 血友病（X隐性）——正常父亲和一携带者母亲——儿子患病概率\_\_\_\_\_。\\
+5. 男性色盲患者的基因型是\_\_\_\_\_。\\
+6. 人的体细胞中性染色体组成：女性\_\_\_\_\_，男性\_\_\_\_\_。\\
+7. （判断）基因在染色体上呈线性排列。（\quad）\\
+8. 伴X隐性遗传中，男性患者的致病基因来自\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第五课\quad DNA——遗传物质}}
+
+\subsection*{DNA双螺旋结构}
+1953年，沃森和克里克（参考了富兰克林的X射线衍射照片）提出了DNA的双螺旋结构模型：
+
+\begin{itemize}
+  \item 两条链反向平行缠绕成一个\textbf{双螺旋}——像一个螺旋梯子。
+  \item "把手"（梯子两侧）：脱氧核糖 + 磷酸。
+  \item "梯级"：碱基对——\textbf{A配T（2个氢键）}、\textbf{G配C（3个氢键）}。
+\end{itemize}
+
+正是"碱基互补配对"原则——保证了DNA复制时精确复制。
+
+\subsection*{半保留复制}
+DNA复制时——两条链分开——每条链作为模板——按照碱基互补原则合成新的互补链——形成两个新的双链DNA分子。每个新DNA分子含一条\textbf{旧链}和一条\textbf{新链}——所以叫"\textbf{半保留复制}"。
+
+\subsection*{中心法则}
+DNA $\xrightarrow{\text{转录}}$ RNA $\xrightarrow{\text{翻译}}$ 蛋白质
+
+\textbf{转录}（细胞核）：以DNA的一条链为模板，合成mRNA（信使RNA）。\\
+\textbf{翻译}（核糖体上）：mRNA上的三个碱基（\textbf{密码子}）决定一个氨基酸。tRNA（转运RNA）把对应的氨基酸"运"到核糖体上，连接成肽链。
+
+\begin{example}
+DNA上的碱基序列 ATG GCT CAG —— 对应的mRNA序列是什么？对应的氨基酸链的起始是什么（已知AUG=甲硫氨酸）？
+
+\textbf{解：}DNA: ATG-GCT-CAG。mRNA（把T换成U）：AUG-CGA-GUC。起始密码子AUG$\rightarrow$甲硫氨酸。
+\end{example}
+
+\begin{practice}
+1. DNA双螺旋结构中，A与\_\_\_\_\_配对，G与\_\_\_\_\_配对。\\
+2. 中心法则：DNA $\xrightarrow{\text{\_\_\_\_\_}}$ RNA $\xrightarrow{\text{\_\_\_\_\_}}$ 蛋白质。\\
+3. （判断）DNA复制时，新合成的链完全是全新的。（\quad）\\
+4. 一个DNA分子中含A=20\%——含T=\_\_\_\_\_\%，含G=\_\_\_\_\_\%。\\
+5. DNA复制遵循\_\_\_\_\_原则。\\
+6. 转录的场所是\_\_\_\_\_。\\
+7. 翻译的场所是\_\_\_\_\_。\\
+8. （判断）DNA分子中碱基A和T之间形成3个氢键。（\quad）
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第六课\quad 变异与育种}}
+
+\subsection*{变异的类型}
+\textbf{基因突变}：DNA碱基对的替换、增加、缺失。可能引起蛋白质结构和功能改变。是\textbf{进化的原材料}。大多数突变是有害的——但偶尔出现一个"有用"的突变。
+\textbf{基因重组}：有性生殖中——同源染色体之间的交叉互换 + 非同源染色体的自由组合——产生新的基因组合。不是"新基因"而是"新搭配"。
+\textbf{染色体变异}：染色体数目或结构的改变。如人的21三体综合征（唐氏综合征——第21号染色体多了一条）。
+
+\subsection*{育种技术}
+\textbf{杂交育种}：让不同品种杂交——在后代中选择"优点组合"的个体，一代一代选育。耗时久。
+\textbf{诱变育种}：用物理或化学方法增加突变率——从中筛选有利突变。辐射诱变、化学诱变。
+\textbf{基因工程育种}（后面详述）。
+
+\begin{practice}
+1. DNA碱基对的改变叫做\_\_\_\_\_。\\
+2. （判断）所有变异对生物都有利。（\quad）\\
+3. 唐氏综合征属于\_\_\_\_\_变异。\\
+4. 杂交育种的实质是利用了\_\_\_\_\_（基因突变/基因重组）。\\
+5. 基因突变如果发生在体细胞中，一般\_\_\_\_\_（能/不能）遗传给后代。\\
+6. 基因重组主要发生在\_\_\_\_\_（有性/无性）生殖过程中。\\
+7. （判断）染色体变异包括染色体结构和数目的改变。（\quad）\\
+8. 诱变育种利用理化因素提高\_\_\_\_\_率。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第七课\quad 现代生物技术}}
+
+\subsection*{基因工程——"剪开"和"贴上"DNA}
+基因工程就是：把一个生物的基因（DNA片段）提取出来——用\textbf{限制酶}切下——用\textbf{DNA连接酶}连接到载体（质粒/病毒）上——转入另一种生物细胞中——让它表达出我们想要的蛋白质。
+
+\textbf{应用：}
+\begin{itemize}
+  \item 生产胰岛素：把人胰岛素基因转入大肠杆菌——细菌大量培养→源源不断地产生人胰岛素。
+  \item 转基因作物：抗虫棉（转入Bt基因）、抗除草剂大豆。
+  \item 基因治疗：把正常基因导入患者细胞来纠正遗传缺陷（仍处于研究阶段）。
+\end{itemize}
+
+\subsection*{PCR——DNA的"复印机"}
+\textbf{聚合酶链式反应}——让微量的DNA在试管里快速扩增到数百万倍。三个步骤循环：变性（95℃，DNA解链）→ 退火（55℃，引物结合）→ 延伸（72℃，合成新链）。\textbf{30个循环——理论上扩增$2^{30} \approx 10^9$倍。}
+
+\subsection*{克隆技术}
+\textbf{克隆（无性繁殖）}：用体细胞核移植的方法产生遗传信息完全相同的个体。1996年——多莉羊（第一个从成年体细胞克隆的哺乳动物）。操作：取A羊的体细胞核$\rightarrow$注入B羊去核的卵细胞$\rightarrow$移植到C羊子宫发育。
+
+\begin{thinkbox}
+人类基因组计划（1990-2003）——测定了人类全部约30亿个碱基对的序列、约2-2.5万个蛋白质编码基因。这之后，我们"拥有了人类生命的说明书"——但说明书怎么"读"、怎么"用"，是下一个一百年的任务。
+\end{thinkbox}
+
+\begin{practice}
+1. 基因工程常用的工具酶是\_\_\_\_\_和\_\_\_\_\_。\\
+2. PCR的三个步骤：\_\_\_\_\_$\rightarrow$\_\_\_\_\_$\rightarrow$\_\_\_\_\_。\\
+3. （判断）多莉羊的遗传物质全部来自提供细胞核的母羊。（\quad）\\
+4. 转入人胰岛素基因的大肠杆菌生产人胰岛素——这属于\_\_\_\_\_工程。\\
+5. （判断）限制酶是"剪切"DNA的工具。（\quad）\\
+6. PCR技术中，DNA解链的温度是\_\_\_\_\_℃。\\
+7. PCR每个循环包括三个步骤：\_\_\_\_\_、\_\_\_\_\_、\_\_\_\_\_。\\
+8. 克隆多莉羊时，细胞核来自\_\_\_\_\_羊。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第八课\quad 生物的进化——证据}}
+
+\subsection*{化石证据}
+\textbf{化石}是古生物的遗骸或遗迹埋在地下经过长期矿化形成的。化石记录显示：越古老的地层中生物结构越简单；从老到新——生物从简单到复杂、从水生到陆生。
+
+\subsection*{比较解剖学证据}
+哺乳动物的前肢：人的手、蝙蝠的翅膀、鲸的鳍、猫的腿——外形和功能差异巨大——但内部骨骼结构高度相似（都是肱骨+桡骨/尺骨+腕骨+指骨）。这叫\textbf{同源器官}——说明它们有\textbf{共同祖先}——适应不同环境而分化。
+
+\subsection*{分子生物学证据}
+比较不同生物的DNA序列：人和黑猩猩的DNA序列相似度约98.8\%——人和大猩猩约98\%——人和老鼠约85\%——人和果蝇约60\%。相似度越高，亲缘关系越近。
+
+\newpage
+\section{\textcolor{orange!80!black}{第九课\quad 自然选择学说与进化}}
+
+\subsection*{达尔文的远航}
+1831年，26岁的\textbf{达尔文}登上"贝格尔号"军舰，开始了为期五年的环球考察。在加拉帕戈斯群岛——他观察到了13种地雀（雀鸟）——嘴的形状各不相同——有的吃种子（厚嘴）、有的吃昆虫（细嘴）。它们应该来自同一个祖先——到达不同岛屿后适应不同食物源——逐渐分化。
+
+\subsection*{自然选择学说的四点}
+\begin{enumerate}
+  \item \textbf{过度繁殖}：生物产生的后代远多于可能存活的数量。
+  \item \textbf{生存斗争}：有限的资源→个体之间竞争。
+  \item \textbf{遗传变异}：个体间有差异——有些差异更有利于生存和繁殖。
+  \item \textbf{适者生存}：有利变异的个体存活率更高、繁殖更多→有利变异在后代中积累。
+\end{enumerate}
+
+\textbf{自然选择的结果：}种群向着更适应环境的方向演变——这个过程就是\textbf{进化}。
+
+\subsection*{现代综合进化论}
+达尔文时代的不足：不知道变异是怎么产生的（没学过遗传学）。现代进化论补充：\textbf{突变为进化提供原材料}、\textbf{自然选择是进化的方向舵}、\textbf{隔离（地理隔离/生殖隔离）使新物种形成}。
+
+\begin{example}
+抗生素的滥用为什么会导致"超级细菌"的出现？用自然选择解释。
+
+\textbf{解：}① 细菌群体中存在随机突变——个别细菌恰好有耐药基因。
+② 用抗生素→杀死了不具耐药性的细菌→耐药细菌存活下来。
+③ 耐药细菌大量繁殖→整个细菌群体变得耐药→"超级细菌"出现。\\
+这就是\textbf{人工选择（抗生素筛选）驱动细菌的快速进化}。
+\end{example}
+
+\begin{practice}
+1. 不同生物DNA序列的相似度越高——亲缘关系越\_\_\_\_\_。\\
+2. 自然选择的四个要点：\_\_\_\_\_、\_\_\_\_\_、\_\_\_\_\_、\_\_\_\_\_。\\
+3. （判断）进化必定朝着"从低级到高级"的方向。（\quad）\\
+4. "超级细菌"的出现是\_\_\_\_\_选择的结果。\\
+5. 同源器官表明不同生物有\_\_\_\_\_。\\
+6. （判断）化石是研究进化最直接的证据。（\quad）\\
+7. 人和黑猩猩的DNA相似度约为\_\_\_\_\_。\\
+8. 越古老的地层中，化石生物的结构越\_\_\_\_\_。
+\end{practice}
+
+\vspace{0.5cm}
+\begin{center}\rule{0.7\textwidth}{1pt}\vspace{0.4cm}
+{\large\textcolor{blue!70!black}{\textbf{—— 生物3·遗传与进化 完 ——}}}
+\end{center}
+
+\newpage
+\section*{\textcolor{defblue}{参考答案}}
+
+\subsection*{第一课}
+1. 完全相同、多样（变异）\\
+2. （×）属于无性生殖\\
+3. 后代具有遗传多样性，适应环境的能力更强\\
+4. 胚珠\\
+5. （×）无性生殖后代与母体遗传信息相同\\
+6. 分裂\\
+7. 无\\
+8. 精子、卵细胞
+
+\subsection*{第二课}
+1. 3:1\\
+2. $1/4$\\
+3. （×）隐性基因未消失，只是被显性基因遮盖\\
+4. $1/4$\\
+5. （×）需要看双亲基因型，隐性纯合时显性不表现\\
+6. D、d\\
+7. DD和Dd\\
+8. 分离
+
+\subsection*{第三课}
+1. $3/16$\\
+2. （√）\\
+3. $1/8$\\
+4. （×）要求位于非同源染色体上\\
+5. 4\\
+6. 9:3:3:1\\
+7. （×）绿色皱粒为yyrr
+
+\subsection*{第四课}
+1. 46、22\\
+2. 男\\
+3. （×）一个染色体上有多个基因\\
+4. $1/2$\\
+5. $X^bY$\\
+6. XX、XY\\
+7. （√）\\
+8. 母亲
+
+\subsection*{第五课}
+1. T、C\\
+2. 转录、翻译\\
+3. （×）半保留复制：一条旧链一条新链\\
+4. T=20\%、G=30\%\\
+5. 碱基互补配对\\
+6. 细胞核\\
+7. 核糖体\\
+8. （×）A和T之间2个氢键
+
+\subsection*{第六课}
+1. 基因突变\\
+2. （×）大多数有害\\
+3. 染色体数目\\
+4. 基因重组\\
+5. 不能\\
+6. 有性\\
+7. （√）\\
+8. 突变
+
+\subsection*{第七课}
+1. 限制酶、DNA连接酶\\
+2. 变性$\rightarrow$退火$\rightarrow$延伸\\
+3. （√）\\
+4. 基因\\
+5. （√）\\
+6. 95（或94--96）\\
+7. 变性、退火、延伸\\
+8. A（提供体细胞核的母羊）
+
+\subsection*{第八课}
+1. 近\\
+2. 过度繁殖、生存斗争、遗传变异、适者生存\\
+3. （×）进化没有方向，适应环境即可\\
+4. 人工（或抗生素）\\
+5. 共同祖先\\
+6. （√）\\
+7. 98.8\%\\
+8. 简单
+
+\end{document}

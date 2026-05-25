@@ -1,0 +1,329 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  frame=single,
+  breaklines=true
+}
+
+\title{\textcolor{blue!70!black}{\Huge\textbf{Web 开发项目指导手册}}}
+\author{四个项目的详细指导、常见问题与拓展思路}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{使用说明}
+
+本手册是 \texttt{web-dev/} 主教材的配套指导，为四个项目提供：
+\begin{itemize}
+  \item \textbf{项目分解：} 每个项目拆成小步骤，按顺序完成
+  \item \textbf{常见问题：} 初学者最容易卡住的地方及解决方法
+  \item \textbf{检查清单：} 完成每个功能后对照检查
+  \item \textbf{拓展方向：} 做完基础版本后如何升级
+\end{itemize}
+
+\section*{项目一：个人主页（纯前端）}
+
+\subsection*{步骤分解}
+
+\begin{enumerate}
+  \item 创建 \texttt{index.html}，写入 HTML 基本骨架（\texttt{<!DOCTYPE html>} 到 \texttt{</html>}）
+  \item 在 \texttt{<body>} 中添加标题 \texttt{<h1>}、自我介绍 \texttt{<p>}、爱好列表 \texttt{<ul>}
+  \item 在 \texttt{<head>} 中添加 \texttt{<style>} 标签，写 CSS 美化页面
+  \item 添加图片 \texttt{<img>} 和超链接 \texttt{<a>}
+  \item 用 \texttt{<div>} 和 \texttt{class} 做卡片式布局
+\end{enumerate}
+
+\subsection*{CSS 样式建议}
+
+\begin{lstlisting}[language=CSS]
+/* 让页面更美观的常用样式 */
+body {
+  max-width: 800px;
+  margin: 0 auto;        /* 让内容居中 */
+  padding: 20px;
+  background: #f9f9f9;
+  font-family: "微软雅黑", sans-serif;
+}
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+\end{lstlisting}
+
+\subsection*{常见问题}
+
+\begin{itemize}
+  \item \textbf{图片不显示：} 检查文件路径。如果是本地图片，确保图片文件和 \texttt{index.html} 在同一文件夹，或用相对路径如 \texttt{images/photo.jpg}。
+  \item \textbf{样式不生效：} 检查 CSS 是否写在 \texttt{<style>} 标签内，选择器是否正确（注意 \texttt{.} 和 \texttt{\#} 的区别）。
+  \item \textbf{中文乱码：} 确保 \texttt{<head>} 中有 \texttt{<meta charset="UTF-8">}。
+\end{itemize}
+
+\subsection*{检查清单}
+
+\begin{itemize}
+  \item 页面有标题、自我介绍、列表
+  \item 有图片或超链接
+  \item 有 CSS 样式（背景色、字体、圆角等）
+  \item 鼠标悬停时链接变色
+  \item 页面在浏览器中打开正常
+\end{itemize}
+
+\subsection*{拓展方向}
+
+\begin{itemize}
+  \item 添加多页面导航（多个 HTML 文件用超链接跳转）
+  \item 嵌入 YouTube/B站 视频
+  \item 添加 Google 字体
+  \item 用 Flexbox 做响应式布局
+\end{itemize}
+
+\section*{项目二：互动页面（JavaScript 入门）}
+
+\subsection*{步骤分解}
+
+\begin{enumerate}
+  \item 在 HTML 中添加按钮和显示区域
+  \item 在 \texttt{<script>} 标签中写 JavaScript 函数
+  \item 用 \texttt{onclick} 属性绑定按钮和函数
+  \item 用 \texttt{document.getElementById()} 获取页面元素
+  \item 用 \texttt{prompt()} 获取用户输入，用 \texttt{textContent} 更新页面
+\end{enumerate}
+
+\subsection*{JS 调试技巧}
+
+\begin{itemize}
+  \item \textbf{打开开发者工具：} 按 F12 或 Ctrl+Shift+I，在 Console（控制台）看错误信息
+  \item \textbf{用 console.log() 调试：} 在 JS 中写 \texttt{console.log(variable)} 在控制台查看变量值
+  \item \textbf{常见错误：} 拼写错误（如 \texttt{getElementById} 漏了大写）、未定义变量
+\end{itemize}
+
+\subsection*{常见问题}
+
+\begin{itemize}
+  \item \textbf{按钮点击没反应：} 检查函数名是否匹配（\texttt{onclick="myFunc()"} 和 \texttt{function myFunc()} 名字要一致）。
+  \item \textbf{getElementById 返回 null：} 确保 HTML 元素的 \texttt{id} 属性拼写正确。
+  \item \textbf{计算结果是字符串拼接：} \texttt{prompt()} 返回的是字符串，用 \texttt{parseFloat()} 或 \texttt{Number()} 转成数字。
+\end{itemize}
+
+\subsection*{检查清单}
+
+\begin{itemize}
+  \item 点击按钮能触发函数
+  \item 能获取用户输入并显示在页面上
+  \item 计算器功能：两个数相加结果正确
+  \item 控制台无报错信息
+\end{itemize}
+
+\subsection*{拓展方向}
+
+\begin{itemize}
+  \item 添加更多运算（减乘除、平方、开方）
+  \item 添加键盘事件（按 Enter 触发计算）
+  \item 添加动画效果（CSS transition）
+  \item 用 \texttt{localStorage} 保存用户偏好
+\end{itemize}
+
+\section*{项目三：留言板（后端 + 数据库）}
+
+\subsection*{步骤分解}
+
+\begin{enumerate}
+  \item 安装 Flask：\texttt{pip install flask}
+  \item 创建 \texttt{app.py}，写基本路由
+  \item 创建 \texttt{templates/index.html}，用 Jinja2 模板语法显示留言
+  \item 添加 SQLite 数据库操作（创建表、插入、查询）
+  \item 添加表单提交和 POST 路由
+  \item 测试：提交留言，刷新页面看是否显示
+\end{enumerate}
+
+\subsection*{Flask 调试技巧}
+
+\begin{itemize}
+  \item 运行 \texttt{app.py} 时开启 \texttt{debug=True}，修改代码后服务器自动重启
+  \item 访问 \texttt{http://127.0.0.1:5000} 查看页面
+  \item 如果端口被占用，用 \texttt{app.run(port=5001)} 换一个端口
+\end{itemize}
+
+\subsection*{常见问题}
+
+\begin{itemize}
+  \item \textbf{模板找不到：} 确保 HTML 文件放在 \texttt{templates/} 文件夹下，且文件名拼写正确。
+  \item \textbf{表单提交后 405 错误：} 检查路由是否允许 POST 方法：\texttt{@app.route("/add", methods=["POST"])}。
+  \item \textbf{数据库错误：} 运行程序前确保调用了 \texttt{init\_db()} 函数创建表。
+  \item \textbf{中文乱码：} Python 字符串用 Unicode，HTML 文件加 \texttt{<meta charset="UTF-8">}，数据库连接加 \texttt{encoding="utf-8"}。
+\end{itemize}
+
+\subsection*{检查清单}
+
+\begin{itemize}
+  \item 访问首页显示留言列表（可以为空）
+  \item 填写表单提交后，留言出现在列表中
+  \item 关闭程序重新打开，留言仍然存在（数据持久化）
+  \item 多提交几条留言，按时间倒序排列
+\end{itemize}
+
+\subsection*{拓展方向}
+
+\begin{itemize}
+  \item 添加删除留言功能（需要确认弹窗）
+  \item 添加留言时间戳显示
+  \item 用 CSS 美化留言卡片
+  \item 添加分页功能（每页显示 10 条）
+\end{itemize}
+
+\section*{项目四：简易博客（综合项目）}
+
+\subsection*{步骤分解}
+
+\subsubsection*{第一阶段：项目骨架}
+\begin{enumerate}
+  \item 创建项目目录结构（\texttt{blog/}、\texttt{templates/}）
+  \item \texttt{git init} 初始化 Git 仓库
+  \item 写 \texttt{app.py} 基础框架
+  \item 创建 \texttt{base.html} 模板（导航栏、页脚）
+\end{enumerate}
+
+\subsubsection*{第二阶段：用户系统}
+\begin{enumerate}
+  \item 创建 users 表
+  \item 实现注册路由（GET 显示表单，POST 处理注册）
+  \item 实现登录路由（验证用户名和密码）
+  \item 实现退出登录（清除 session）
+  \item 用 \texttt{@login\_required} 装饰器保护需要登录的页面
+\end{enumerate}
+
+\subsubsection*{第三阶段：文章功能}
+\begin{enumerate}
+  \item 创建 posts 表
+  \item 实现发布文章（标题 + 内容）
+  \item 首页显示所有文章列表（标题、作者、时间）
+  \item 文章详情页
+\end{enumerate}
+
+\subsubsection*{第四阶段：评论功能}
+\begin{enumerate}
+  \item 创建 comments 表
+  \item 在文章详情页添加评论表单
+  \item 显示已有评论
+\end{enumerate}
+
+\subsubsection*{第五阶段：打磨与部署}
+\begin{enumerate}
+  \item 美化 UI（CSS 样式）
+  \item 错误处理（重复用户名、空表单等）
+  \item 部署到 PythonAnywhere 或 Render
+\end{enumerate}
+
+\subsection*{常见问题}
+
+\begin{itemize}
+  \item \textbf{session 相关错误：} 确保设置了 \texttt{app.secret\_key}，否则 session 无法正常工作。
+  \item \textbf{SQL 注入风险：} 永远用参数化查询（\texttt{?} 占位符），不要用字符串拼接构造 SQL。
+  \item \textbf{密码安全：} 基础版本可以明文存储，但实际项目一定要用 \texttt{werkzeug.security} 的 \texttt{generate\_password\_hash} 和 \texttt{check\_password\_hash}。
+  \item \textbf{页面跳转循环：} 检查 \texttt{@login\_required} 是否把未登录用户正确跳转到登录页，登录页本身不需要登录。
+\end{itemize}
+
+\subsection*{调试实用技巧}
+
+\begin{lstlisting}[language=Python]
+# 在 app.py 中添加这行，可以在页面中看到 SQL 查询
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+# 或者在路由中打印调试信息
+@app.route("/debug")
+def debug():
+    conn = get_db()
+    users = conn.execute("SELECT * FROM users").fetchall()
+    posts = conn.execute("SELECT * FROM posts").fetchall()
+    conn.close()
+    return {"users": [dict(u) for u in users],
+            "posts": [dict(p) for p in posts]}
+\end{lstlisting}
+
+\subsection*{检查清单}
+
+\begin{itemize}
+  \item 用户能注册、登录、退出
+  \item 已登录用户能发布文章
+  \item 首页显示所有文章
+  \item 点击文章标题能查看详情
+  \item 已登录用户能评论
+  \item 未登录用户不能发布文章和评论
+  \item 重复注册时提示错误
+  \item 代码在 GitHub 上管理
+  \item 项目已部署上线
+\end{itemize}
+
+\subsection*{拓展方向}
+
+\begin{itemize}
+  \item 密码加密存储
+  \item 文章 Markdown 渲染（用 \texttt{marked} 库）
+  \item 编辑和删除自己的文章
+  \item 文章分类和标签
+  \item 搜索功能（按标题和内容搜索）
+  \item 头像上传
+  \item 分页展示
+  \item 用 Flask-WTF 做表单验证
+\end{itemize}
+
+\section*{项目过程中用好 Git}
+
+每个项目都应该用 Git 管理。推荐工作流：
+
+\begin{lstlisting}[language=bash]
+# 初始化
+git init
+git add . && git commit -m "项目初始化"
+
+# 每完成一个小功能就提交一次
+git add . && git commit -m "完成注册功能"
+git add . && git commit -m "完成登录功能"
+
+# 尝试用分支开发新功能
+git checkout -b feature-comment
+# ... 开发评论功能 ...
+git checkout main
+git merge feature-comment
+\end{lstlisting}
+
+\section*{从项目三到项目四的升级路径}
+
+项目三（留言板）→ 项目四（博客）的升级本质：
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{留言板} & \textbf{博客} \\ \hline
+1 张表（messages） & 3 张表（users + posts + comments） \\ \hline
+无用户系统 & 有注册/登录/权限控制 \\ \hline
+单页面 & 多页面（首页、详情页、创建页） \\ \hline
+无依赖关系 & 文章依赖用户，评论依赖文章和用户 \\ \hline
+\end{tabular}
+\end{center}
+
+理解这个升级过程，就掌握了 Web 开发从入门到实战的核心路径。
+
+\end{document}

@@ -6,6 +6,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath, amssymb}
 \hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
 
 \lstset{
   basicstyle=\ttfamily\small,
@@ -173,6 +174,14 @@ print(hex(42))     # '0x2a'
 print(int("FF", 16))  # 255
 \end{lstlisting}
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 把十进制 255 转成八进制和十六进制。用 Python 验证。
+  \item 颜色 \texttt{\#AABBCC} 的红色、绿色、蓝色分量分别是多少（转十进制）？
+  \item \textbf{[扩展]} 查一下为什么程序员常用十六进制而不是八进制来表示颜色和内存地址？
+\end{enumerate}
+
 \section*{第三课：日常生活中的数学概念映射}
 
 当你学编程时，很多概念其实就是你熟悉的数学概念的"另一种说法"：
@@ -190,6 +199,14 @@ print(int("FF", 16))  # 255
 逻辑与/或/非 ($\land, \lor, \lnot$) & \texttt{and, or, not} \\ \hline
 \end{tabular}
 \end{center}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写出以下数学表达式的 Python 代码：① $f(x) = 2x + 3$ ② 集合 $\{1, 2, 3\}$ 与 $\{3, 4, 5\}$ 的交集 ③ $\sum_{i=1}^{10} i^2$
+  \item Python 中坐标为 $(3, 7)$ 的点，数学上可以怎么表示？Python 可以用什么数据类型表示？
+  \item \textbf{[思考]} 为什么 Python 用 \texttt{and} / \texttt{or} / \texttt{not} 而不是 $\land$ / $\lor$ / $\lnot$？这体现了编程语言的什么设计原则？
+\end{enumerate}
 
 \section*{第四课：模运算——时钟算术}
 
@@ -570,6 +587,14 @@ def matrix_multiply(A, B):
 # 神经网络：权重就是矩阵，前向传播就是矩阵乘法
 \end{lstlisting}
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 用 Python 创建一个 $3 \times 4$ 的矩阵（全部初始化为 0），然后把第二行第三列改为 1。
+  \item 有两个矩阵 $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ 和 $B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$，手算 $A + B$ 和 $A \times B$。
+  \item \textbf{[扩展]} 图像为什么可以用矩阵表示？一张 $100 \times 100$ 的彩色图片，需要多少个数字来存储？
+\end{enumerate}
+
 \section*{第十一课：概率初步——不确定性的数学}
 
 \subsection*{随机事件}
@@ -666,6 +691,14 @@ for n in [10, 100, 1000, 10000, 100000]:
     print(f"n={n:6d}: 最多{times:3d}次查找, 而线性查找最多{n}次")
 \end{lstlisting}
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 用数学知识优化以下代码：判断一个数是否是 2 的幂（提示：用位运算，$O(1)$ 时间）。
+  \item 对一个长度为 1,000,000 的有序数组做二分查找，最多需要多少次比较？如果改用线性查找呢？
+  \item \textbf{[综合]} 你有一个查找系统：先做二分查找（$O(\log n)$），然后做线性扫描（$O(k)$）。对 $n = 10^6$ 和 $k = 100$，总共需要多少次操作？如果把二分查找换成哈希表（$O(1)$ 查找），情况如何？
+\end{enumerate}
+
 \subsection*{跨模块关联}
 
 \begin{itemize}
@@ -675,5 +708,92 @@ for n in [10, 100, 1000, 10000, 100000]:
   \item 本模块的\textbf{集合论}对应 Python 中的 \texttt{set} 类型（见 \texttt{python/}）
   \item 本模块的\textbf{模运算}在 \texttt{ds-algo/} 的哈希表和循环队列中用到
 \end{itemize}
+
+\section*{\textcolor{blue!70!black}{各课练习参考答案}}
+
+\subsection*{第一课：二进制}
+\begin{enumerate}
+  \item 11010 = 26，27 = 11011。
+  \item \texttt{5 \& 3}：0101 \& 0011 = 0001 = 1，与手动计算一致。
+  \item 判断 2 的幂：\texttt{n > 0 and (n \& (n-1)) == 0}。因为 2 的幂的二进制只有最高位是 1，减 1 后所有低位变成 1，按位与得 0。
+  \item 权限系统：读取=001(1)，写入=010(2)，执行=100(4)。\texttt{permission = read | write = 3}，\texttt{permission \& read != 0} 为 True。
+\end{enumerate}
+
+\subsection*{第二课：八进制与十六进制}
+\begin{enumerate}
+  \item 255 = 0o377 = 0xFF。Python 验证：\texttt{oct(255)} → '0o377'，\texttt{hex(255)} → '0xff'。
+  \item \#AABBCC：红色 AA=170，绿色 BB=187，蓝色 CC=204。
+  \item 十六进制比八进制更紧凑（每 4 位二进制 vs 3 位），且一个字节（8 位）正好用两个十六进制位表示，非常方便。
+\end{enumerate}
+
+\subsection*{第三课：日常生活中的数学概念映射}
+\begin{enumerate}
+  \item ① \texttt{def f(x): return 2*x + 3} ② \texttt{\{1,2,3\} \& \{3,4,5\}} ③ \texttt{sum(i**2 for i in range(1, 11))}。
+  \item 数学上表示为点 $(3, 7)$，Python 中用元组 \texttt{(3, 7)}。
+  \item Python 用英文单词而不是数学符号，是为了让代码更接近自然语言、更容易理解和输入。这体现了"可读性优先"的设计原则。
+\end{enumerate}
+
+\subsection*{第四课：模运算}
+\begin{enumerate}
+  \item (3 + 100) \% 7 = 103 \% 7 = 5，所以 100 天后是星期五。
+  \item 闰年判断：\texttt{def is\_leap(y): return (y \% 4 == 0 and y \% 100 != 0) or (y \% 400 == 0)}。
+  \item 循环队列用 \texttt{(tail + 1) \% size} 实现游标绕回。
+\end{enumerate}
+
+\subsection*{第五课：布尔代数}
+\begin{enumerate}
+  \item XOR 真值表：A=0,B=0→0；A=0,B=1→1；A=1,B=0→1；A=1,B=1→0。
+  \item \texttt{not (score >= 60 or grade == "F")} = \texttt{score < 60 and grade != "F"}。
+  \item \texttt{A OR B = NOT(NOT A AND NOT B)}，即 \texttt{not (not a and not b)}。
+\end{enumerate}
+
+\subsection*{第六课：集合论}
+\begin{enumerate}
+  \item 综合运用并集、交集、差集：只在一个列表中的元素 = \texttt{(A-B-C) | (B-A-C) | (C-A-B)}。
+  \item \texttt{bool(set(str1) \& set(str2))}。
+  \item 搜索引擎"与"=交集，"或"=并集，"非"=差集。
+\end{enumerate}
+
+\subsection*{第七课：组合数学}
+\begin{enumerate}
+  \item $10^4 = 10000$ 种。
+  \item $C(10, 3) = 120$ 种选法。
+  \item \texttt{from itertools import combinations; list(combinations(range(6), 3))} 输出 20 种组合。
+\end{enumerate}
+
+\subsection*{第八课：图论基础}
+\begin{enumerate}
+  \item 5 个顶点的完全图有 $C(5,2) = 10$ 条边。
+  \item 无标准答案——用字典表示，如 \texttt{\{"小明": ["小红", "小刚"], ...\}}。
+  \item 用 BFS（广度优先搜索）计算无权图的最短路径。
+\end{enumerate}
+
+\subsection*{第九课：数列与求和}
+\begin{enumerate}
+  \item 1 到 1000 所有奇数：共 500 个，和 = $500 \times (1+999)/2 = 250000$。
+  \item $2^k \ge n$，$k = \lceil \log_2 n \rceil$。与等比数列 $1, 2, 4, 8, \dots$ 有关，每次翻倍。
+  \item 推导：$S = a_1 + a_1q + \dots + a_1q^{n-1}$，两边乘 q 得 $qS = a_1q + \dots + a_1q^n$，相减得 $(q-1)S = a_1(q^n - 1)$，所以 $S = \frac{a_1(q^n - 1)}{q - 1}$。
+\end{enumerate}
+
+\subsection*{第十课：矩阵}
+\begin{enumerate}
+  \item \texttt{m = [[0]*4 for _ in range(3)]; m[1][2] = 1}。
+  \item $A+B = \begin{bmatrix}6 & 8 \\ 10 & 12\end{bmatrix}$，$A \times B = \begin{bmatrix}19 & 22 \\ 43 & 50\end{bmatrix}$。
+  \item 图像由像素网格组成，每个像素有数值（灰度图一个数，彩色图三个数）。$100 \times 100$ 彩色 = $100 \times 100 \times 3 = 30000$ 个数字。
+\end{enumerate}
+
+\subsection*{第十一课：概率初步}
+\begin{enumerate}
+  \item 两个骰子之和：2-12，概率分布呈三角形，7 的概率最高（1/6）。
+  \item 生日悖论验证：随机生成 23 个生日，检查是否有重复，重复实验 10000 次。
+  \item 蒙特卡洛估算 $\pi$：在正方形内随机投点，统计落在内切圆中的比例 $\times 4$。
+\end{enumerate}
+
+\subsection*{第十二课：综合——用数学优化程序}
+\begin{enumerate}
+  \item \texttt{n > 0 and (n \& (n-1)) == 0}。时间复杂度 $O(1)$。
+  \item $\lceil \log_2 1000000 \rceil = 20$ 次比较。线性查找最多 1,000,000 次。
+  \item 二分+线性：$20 + 100 = 120$ 次操作。哈希+线性：$1 + 100 = 101$ 次操作。哈希表略快但占用更多内存。
+\end{enumerate}
 
 \end{document}

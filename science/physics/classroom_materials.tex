@@ -1,55 +1,169 @@
 \documentclass[a4paper,12pt]{ctexart}
 \usepackage{xcolor}
-\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
 \usepackage{amsmath}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
 \usepackage{array}
 \linespread{1.35}
 
+\definecolor{defblue}{RGB}{0,80,160}
+\definecolor{thinkorange}{RGB}{230,120,20}
+
+\newenvironment{thinkbox}{
+  \vspace{0.3cm}
+  \begin{center}
+  \begin{minipage}{0.88\textwidth}
+  \colorbox{blue!3}{
+  \begin{minipage}{0.94\textwidth}
+  \vspace{0.15cm}
+  \textbf{\textcolor{thinkorange}{【 想一想 】}}
+}{
+  \vspace{0.15cm}
+  \end{minipage}}
+  \end{minipage}
+  \end{center}
+  \vspace{0.3cm}
+}
+
 \title{\textcolor{blue!70!black}{\Huge\textbf{物理初步}}}
-\author{}
+\author{力学 $\cdot$ 热学 $\cdot$ 光学 $\cdot$ 电磁学}
 \date{}
 
 \begin{document}
 \maketitle
 \thispagestyle{empty}
 
-\section*{\textcolor{blue!70!black}{说明}}
+\section*{\textcolor{defblue}{写在前面}}
 
-本模块对标初中物理课程，系统介绍力、热、光、电、声五大板块的基础知识，含公式推导与例题。适合小学高年级到初中一年级的衔接学习。
+物理是研究自然规律的学科。它回答的是"为什么"的问题——为什么苹果会往下落而不往上飞？为什么夏天热冬天冷？为什么镜子能照出人？
+
+这个模块把物理分成\uwave{六个分册}，每个分册集中学习一个领域。
+在学习之前，我们先来认识物理学的几个\uwave{核心思维方式}。
 
 \vspace{0.3cm}
 
-\textbf{主要内容（初拟）：}
+\noindent\textcolor{defblue}{\large\textbf{1. 物理量单位}}
+
+物理离不开测量。每个物理量都有它的单位：
+\begin{itemize}
+  \item 长度——米（m）
+  \item 时间——秒（s）
+  \item 质量——千克（kg）
+  \item 温度——摄氏度（$^\circ$C）或开尔文（K）
+  \item 力——牛顿（N）
+\end{itemize}
+
+\noindent\textcolor{defblue}{\large\textbf{2. 理想模型}}
+
+现实世界太复杂，物理学家会先做一个"简化版的模型"来研究。比如：
+\begin{itemize}
+  \item \textbf{质点}：忽略物体的大小和形状，把它看成一个有质量的点
+  \item \textbf{光滑面}：忽略摩擦力
+  \item \textbf{理想气体}：忽略气体分子之间的作用力
+\end{itemize}
+模型不是真实世界的照片，而是有助于我们抓住问题关键的"工具"。
+
+\noindent\textcolor{defblue}{\large\textbf{3. 控制变量法}}
+
+当一个现象受多个因素影响时，每次只改变一个因素，其他因素保持不变。
+
+\begin{thinkbox}
+你在生活中用过控制变量法吗？比如做菜时想确定"加多少盐最好吃"，你会怎么做？
+\end{thinkbox}
+
+\newpage
+
+\section*{\textcolor{defblue}{六册内容概览}}
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{分册} & \textbf{标题} & \textbf{核心内容} \\ \hline
+1 & 力学入门 & 位置与运动、速度、加速度、牛顿第一定律 \\
+2 & 牛顿力学 & 牛顿三定律、重力、弹力、摩擦力、受力分析 \\
+3 & 能量与动量 & 功、功率、动能、势能、机械能守恒、动量 \\
+4 & 波动·光学·热学 & 波、声、光、透镜、温度与热量、物态变化 \\
+5 & 电磁学入门 & 电荷、电路、欧姆定律、串并联、电功率 \\
+6 & 电磁波与现代物理 & 电磁感应、电磁波、相对论初步、量子力学初步 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\section*{\textcolor{defblue}{各分册要点速览}}
+
+\subsection*{\textcolor{thinkorange}{第一分册：力学入门}}
+力学是物理学的基础。我们从最直观的"运动"开始。
+\begin{itemize}
+  \item 如何描述物体的位置和运动？
+  \item 速度是"快慢"的精确描述：$v = \dfrac{s}{t}$
+  \item 加速度是"速度的变化快慢"：$a = \dfrac{\Delta v}{t}$
+  \item 牛顿第一定律（惯性定律）：不受力的物体保持静止或匀速直线运动
+\end{itemize}
+
+\subsection*{\textcolor{thinkorange}{第二分册：牛顿力学}}
+\begin{itemize}
+  \item 牛顿第二定律：$F = ma$——力是改变运动状态的原因
+  \item 牛顿第三定律：作用力与反作用力大小相等方向相反
+  \item 重力：$G = mg$（$g \approx 9.8\text{ N/kg}$）
+  \item 摩擦力：静摩擦、滑动摩擦、滚动摩擦
+  \item 受力分析的基本方法
+\end{itemize}
+
+\subsection*{\textcolor{thinkorange}{第三分册：能量与动量}}
+\begin{itemize}
+  \item 做功的两个要素：力和在力方向上的位移
+  \item 功率：$P = \dfrac{W}{t}$
+  \item 动能：$E_k = \dfrac12 mv^2$；重力势能：$E_p = mgh$
+  \item 机械能守恒定律
+  \item 动量：$p = mv$，动量守恒定律
+\end{itemize}
+
+\subsection*{\textcolor{thinkorange}{第四分册：波动·光学·热学}}
+\begin{itemize}
+  \item 波：横波与纵波，波长、频率、波速的关系：$v = f\lambda$
+  \item 声音的产生与传播
+  \item 光的反射定律、折射定律、凸透镜成像
+  \item 温度、热量：$Q = cm\Delta t$；物态变化
+\end{itemize}
+
+\subsection*{\textcolor{thinkorange}{第五分册：电磁学入门}}
+\begin{itemize}
+  \item 电荷与电场：同种电荷相斥，异种电荷相吸
+  \item 电路的基本元件：电源、开关、导线、用电器
+  \item 欧姆定律：$I = \dfrac{U}{R}$
+  \item 串并联电路的特点
+  \item 电功率：$P = UI$
+\end{itemize}
+
+\subsection*{\textcolor{thinkorange}{第六分册：电磁波与现代物理}}
+\begin{itemize}
+  \item 电磁感应现象与发电机原理
+  \item 电磁波谱：从无线电波到 $\gamma$ 射线
+  \item 相对论初步：光速不变、时间膨胀
+  \item 量子力学初步：波粒二象性、能级
+\end{itemize}
+
+\newpage
+
+\section*{\textcolor{defblue}{学习建议}}
 
 \begin{enumerate}
-  \item \textbf{力学基础}
-    \begin{itemize}
-      \item 速度、路程与时间：$v = \dfrac{s}{t}$
-      \item 重力：$G = mg$
-      \item 压强：$p = \dfrac{F}{S}$
-      \item 浮力：阿基米德原理 $F_\text{浮} = \rho g V_\text{排}$
-    \end{itemize}
-  \item \textbf{声与振动}
-    \begin{itemize}
-      \item 声音的产生与传播
-      \item 音调、响度、音色
-    \end{itemize}
-  \item \textbf{光与光学}
-    \begin{itemize}
-      \item 光的直线传播、反射定律、折射定律
-      \item 凸透镜成像规律
-    \end{itemize}
-  \item \textbf{热学基础}
-    \begin{itemize}
-      \item 温度与热量：$Q = cm\Delta t$
-      \item 物态变化
-    \end{itemize}
-  \item \textbf{电学初步}
-    \begin{itemize}
-      \item 电路与欧姆定律：$I = \dfrac{U}{R}$
-      \item 串并联电路
-      \item 电功率：$P = UI$
-    \end{itemize}
+  \item 按顺序学习分册1至分册6，前四册是中考物理的重点
+  \item 每学完一个分册，回头复习一下前面的核心公式
+  \item 物理重在理解"为什么"，而不是死记硬背公式
+  \item 遇到生活中有趣的物理现象，试着用学过的原理解释
 \end{enumerate}
+
+\begin{thinkbox}
+你觉得物理和数学最大的不同是什么？物理学的所有公式，背后都是可以用"实验"来验证的——这也是物理作为"自然科学"的基本特征。
+\end{thinkbox}
+
+\vspace{0.5cm}
+
+\begin{center}
+\textcolor{blue!70!black}{\large\textbf{—— 物理初步 · 完 ——}}
+\end{center}
 
 \end{document}

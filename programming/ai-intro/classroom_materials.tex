@@ -5,6 +5,7 @@
 \usepackage{listings}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
 
 \lstset{
   basicstyle=\ttfamily\small,
@@ -35,6 +36,14 @@
 这个模块会给你一个清晰的认识：AI 不是什么神秘魔法，而是一种\textbf{让计算机从数据中学习}的技术。你不需要复杂的数学就能理解核心思想。
 
 \section*{第一课：传统编程 vs 机器学习}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 以下任务适合用传统编程还是机器学习？① 计算两个数的最大公约数 ② 识别图片中的猫 ③ 预测明天的气温 ④ 判断一个数是否是质数。
+  \item 用自己的话解释"监督学习"和"无监督学习"的区别，各举一个生活中的例子。
+  \item \textbf{[思考]} 为什么说"机器学习不是魔法"？它和传统编程的本质区别是什么？
+\end{enumerate}
 
 \subsection*{传统编程}
 
@@ -128,6 +137,14 @@ print(model.intercept_)  # 截距 ≈ 0
 \end{lstlisting}
 
 \textbf{发生了什么？} 模型"看"了数据后，自己算出了 \texttt{价格 = 3 × 面积 + 0}。这就是机器学习——\textbf{从数据中自动发现规律}。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 如果你给线性回归模型提供的数据是 \texttt{[(50, 100), (80, 160), (100, 200)]}，预测 \texttt{model.coef\_} 和 \texttt{model.intercept\_} 会是多少？
+  \item 什么是"过拟合"？用"死记硬背 vs 真正理解"的类比来解释。
+  \item \textbf{[动手实验]} 用文中的房价数据，手动计算 \texttt{price/area} 的比值，验证是否接近于 3。如果加入一个异常数据 \texttt{(200, 100)}（面积 200 但价格只有 100 万），重新训练模型，预测 \texttt{coef\_} 会怎么变化？
+\end{enumerate}
 
 \subsection*{关键术语}
 
@@ -229,6 +246,14 @@ for i, pred in enumerate(predictions):
 
 这段代码只有十几行，但已经让一个"人工大脑"学会了识别手写数字，准确率超过 97\%！
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 一个神经元有 3 个输入 \texttt{[1, 0, 1]}，权重 \texttt{[0.5, -0.2, 0.8]}，偏置为 -1。计算加权求和的结果，然后通过阶跃激活函数（大于 0 输出 1，否则 0）得到最终输出。
+  \item 为什么神经网络需要"激活函数"？如果没有激活函数，堆叠多层和一层有什么区别？
+  \item \textbf{[网络结构]} 一个网络有 784 个输入神经元、128 个隐藏层神经元、10 个输出神经元。这个网络总共有多少个参数（权重 + 偏置）？
+\end{enumerate}
+
 \section*{第四课：卷积神经网络（CNN）——让 AI 看懂图片}
 
 普通的神经网络把图片的每个像素当成独立输入，但这样做忽略了图片的空间结构（相邻的像素有关系）。
@@ -246,6 +271,14 @@ for i, pred in enumerate(predictions):
 
 第一层学到的是简单的边缘和纹理，第二层学到的是形状（眼睛、鼻子），更深层学到的是完整物体的概念。
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item CNN 和普通的全连接神经网络在处理图像时有什么本质区别？为什么 CNN 更适合图像任务？
+  \item 用类比解释卷积操作：卷积核在图片上滑动，就像什么？（提示：像用手电筒在黑暗中照一幅画，每次只能看到一个小区域）
+  \item \textbf{[观察]} 回想你手机的人脸识别解锁过程。每次你戴眼镜、换发型或改变表情时，手机还能认出你吗？这说明什么？
+\end{enumerate}
+
 \subsection*{现实应用：人脸识别}
 
 \begin{enumerate}
@@ -254,6 +287,14 @@ for i, pred in enumerate(predictions):
   \item 提取人脸特征（眼睛间距、鼻梁高度等）
   \item 和数据库中的特征比对
   \item 匹配成功 → 解锁手机
+\end{enumerate}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 为什么 CNN 的"第一层学到边缘"、"第二层学到形状"、"更深层学到完整物体"？这和人类认识事物的方式有什么相似之处？
+  \item 用一个实际的手机应用场景（如相册中的人脸分类），描述 CNN 在其中的作用流程。
+  \item \textbf{[前沿了解]} 查资料了解"Vision Transformer（ViT）"，它和 CNN 在处理图像的方式上有什么不同？
 \end{enumerate}
 
 \section*{第五课：大语言模型——ChatGPT 是怎么工作的？}
@@ -286,6 +327,14 @@ for i, pred in enumerate(predictions):
   \item \textbf{有偏见：} 训练数据中的偏见会被模型学到
   \item \textbf{会"幻觉"：} 可能编造看起来合理但错误的事实
 \end{itemize}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 大语言模型的"训练任务"是什么？（用一句话概括）
+  \item ChatGPT 有时会"编造"看起来合理但错误的事实，这叫什么？为什么会发生？
+  \item \textbf{[批判性思考]} 你用 ChatGPT 查资料时，应该怎么验证它给出的信息的准确性？列出至少两种验证方法。
+\end{enumerate}
 
 \section*{第六课：强化学习——从试错中学习}
 
@@ -327,6 +376,22 @@ Reward（奖励） & 智能体做对或做错时得到的反馈 \\ \hline
   \item 再自己和自己下了上千万盘（强化学习）
   \item 2016 年击败世界冠军李世石
 \end{itemize}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 强化学习中的"探索 vs 利用"困境是什么？用"选择餐厅"的例子解释。
+  \item AlphaGo 用了哪些学习技术？它先通过什么学习，再通过什么提升？
+  \item \textbf{[对比学习]} 监督学习、无监督学习、强化学习三者的"反馈"方式有什么不同？（数据标签 / 无标签 / 奖励信号）
+\end{enumerate}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item AI 的"偏见"是怎么产生的？举一个现实中 AI 偏见的例子。
+  \item 如果你要设计一个 AI 系统来筛选求职者的简历，你应该考虑哪些伦理问题？
+  \item \textbf{[伦理讨论]} 有人认为"AI 会取代所有人类工作"，有人认为"AI 只是工具，不会取代人类"。你支持哪种观点？为什么？
+\end{enumerate}
 
 \section*{第七课：AI 的伦理与未来}
 
@@ -441,6 +506,57 @@ Reward（奖励） & 智能体做对或做错时得到的反馈 \\ \hline
   \item 用户上传一张图片
   \item 模型预测图片内容（猫、狗、桌子、汽车……）
   \item 显示 Top-3 预测结果及其概率
+\end{enumerate}
+
+\section*{\textcolor{blue!70!black}{各课练习参考答案}}
+
+\subsection*{第一课：传统编程 vs 机器学习}
+\begin{enumerate}
+  \item ① 传统编程（有明确规则）② 机器学习（规则太复杂）③ 机器学习（从历史数据预测）④ 传统编程（有数学规则）。
+  \item 监督学习：给数据和标签，学习映射关系。如学生做习题（题目+答案）。无监督学习：只给数据，自己发现结构。如给一堆书自行分类。
+  \item 机器学习也是编程——只是编程方式变了：从"手写规则"变成"用数据训练模型"。模型本质上还是数学公式和参数。
+\end{enumerate}
+
+\subsection*{第二课：用 Python 做最简单的机器学习}
+\begin{enumerate}
+  \item \texttt{coef\_} ≈ 2，\texttt{intercept\_} ≈ 0（价格 = 面积 × 2）。
+  \item 过拟合：模型记住了训练数据的所有细节（包括噪声），但不能泛化到新数据。好比考试时死记硬背了练习题的答案，但题目一变就不会了。
+  \item 比值均为 3。加入异常点后，\texttt{coef\_} 会降低（被异常点"拉低"），不再是准确的 3。
+\end{enumerate}
+
+\subsection*{第三课：神经网络}
+\begin{enumerate}
+  \item 加权求和 = $1×0.5 + 0×(-0.2) + 1×0.8 + (-1) = 0.5 + 0 + 0.8 - 1 = 0.3$。阶跃函数：$0.3 > 0$ → 输出 1。
+  \item 激活函数引入非线性。没有激活函数，多层网络等价于单层线性变换，无法学习复杂模式（如 XOR 问题、图像识别）。
+  \item 参数数 = $784×128 + 128 + 128×10 + 10 = 100352 + 128 + 1280 + 10 = 101770$。
+\end{enumerate}
+
+\subsection*{第四课：卷积神经网络}
+\begin{enumerate}
+  \item CNN 保留了图像的空间结构（相邻像素有关系），用卷积核提取局部特征。全连接网络把每个像素当成独立输入，忽略了局部关系。
+  \item 卷积操作像用一个"滑动窗口"扫描图片，每次只关注一个小区域，提取区域内的特征。
+  \item 大多数现代人脸识别系统能适应眼镜、发型变化，但对大幅度变化（如夸张表情、极端角度）可能失效。说明 AI 的"泛化能力"有限。
+\end{enumerate}
+
+\subsection*{第五课：大语言模型}
+\begin{enumerate}
+  \item 训练任务：给定上文，预测下一个最可能出现的词（Token）。
+  \item 这叫"幻觉"（Hallucination）。因为模型只是预测"看起来合理的词"，它不理解什么是真实。训练数据中的错误也被学到。
+  \item 验证方法：① 交叉比对多个来源（如查维基百科、官方文档）② 向模型追问"你的依据是什么？"③ 用搜索引擎直接验证事实性内容。
+\end{enumerate}
+
+\subsection*{第六课：强化学习}
+\begin{enumerate}
+  \item "探索 vs 利用"：是一直去已知好吃的餐厅（利用），还是尝试新餐厅（探索）？AI 初期多探索，后期多利用。
+  \item AlphaGo 先用人类棋谱做监督学习，再通过自我对弈（强化学习）提升。
+  \item 监督学习：数据有正确答案（标签）。无监督学习：数据无标签，模型自己发现模式。强化学习：通过环境反馈的奖励信号学习。
+\end{enumerate}
+
+\subsection*{第七课：AI 的伦理与未来}
+\begin{enumerate}
+  \item 偏见来自训练数据。如果训练数据中男性程序员占 90%，AI 可能认为"程序员 = 男性"。例子：Amazon 的招聘 AI 因数据偏见歧视女性。
+  \item 考虑：① 训练数据是否有偏见？② 模型决策是否可解释？③ 是否保护了求职者隐私？④ 是否遵守了相关法律？
+  \item 无标准答案——鼓励批判性思考。常见的观点是：AI 会替代某些任务而非整个职业，人类应学会与 AI 协作。
 \end{enumerate}
 
 \section*{本模块与其他模块的关联}

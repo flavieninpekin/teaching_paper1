@@ -1,0 +1,274 @@
+\chaptertitle{第三章\quad 两个未知数——从一条线到一个平面}
+
+\sectiontitle{第7讲\quad 方程组——两个条件定两个数}
+
+\subsection*{一个条件不够了}
+
+"鸡和兔关在一个笼子里，一共有 10 个头。"这能算出鸡和兔各几只吗？不能——只知道总头数，有无穷多种可能（1 只鸡 9 只兔，2 只鸡 8 只兔，……）。
+
+但如果再加一个条件："一共有 28 条腿"。鸡 2 条腿，兔 4 条腿。两个条件合在一起，就确定了唯一的答案。
+
+\begin{example}
+解鸡兔同笼问题：头共 10 个，腿共 28 条，鸡兔各几只？
+\end{example}
+\begin{solution}
+设鸡 $x$ 只，兔 $y$ 只。
+根据头数：$x + y = 10$ \quad (1)\\
+根据腿数：$2x + 4y = 28$ \quad (2)
+
+两个方程合在一起，叫\textbf{方程组}。\\
+
+方法一（代入消元）：\\
+由 (1) 得 $y = 10 - x$，代入 (2)：\\
+$2x + 4(10 - x) = 28$\\
+$2x + 40 - 4x = 28$\\
+$-2x = -12$，$x = 6$\\
+$y = 10 - 6 = 4$\\
+答：鸡 6 只，兔 4 只。
+\end{solution}
+
+\subsection*{代入消元法}
+
+核心思想：把一个方程变形成"$y$ 等于什么"，代入另一个方程，消去一个未知数。
+
+\begin{example}
+解方程组：$\begin{cases}x + y = 10\\2x - y = 5\end{cases}$
+\end{example}
+\begin{solution}
+由 (1) 得 $y = 10 - x$，代入 (2)：\\
+$2x - (10 - x) = 5$\\
+$2x - 10 + x = 5$\\
+$3x = 15$，$x = 5$\\
+$y = 10 - 5 = 5$\\
+所以 $\begin{cases}x=5\\y=5\end{cases}$。
+\end{solution}
+
+\subsection*{加减消元法}
+
+另一种思路：把两个方程相加或相减，消去一个未知数。
+
+\begin{example}
+解方程组：$\begin{cases}3x + 2y = 13\\2x + 3y = 12\end{cases}$
+\end{example}
+\begin{solution}
+观察：两个方程中 $x$ 和 $y$ 的系数都不相同，但可以配成相同。
+
+(1)×2：$6x + 4y = 26$\\
+(2)×3：$6x + 9y = 36$\\
+相减：(6x 抵消) $4y - 9y = 26 - 36$\\
+$-5y = -10$，$y = 2$\\
+代入 (1)：$3x + 4 = 13$，$x = 3$\\
+所以 $\begin{cases}x=3\\y=2\end{cases}$。
+\end{solution}
+
+\subsection*{几何意义：两条直线的交点}
+
+$x + y = 10$ 和 $2x - y = 5$ 在坐标平面上各是一条直线。它们的交点 $(5,5)$ 同时满足两个方程——这就是方程组的解。
+
+如果你还没学过直角坐标系也没关系，先记住这个图景：\textbf{方程组是在找两条线的交点}。
+
+\begin{exercise}
+\item 用代入消元法解：
+  \begin{subexercise}
+    \item $\begin{cases}x-y=3\\2x+y=12\end{cases}$
+    \item $\begin{cases}x+2y=8\\3x-y=7\end{cases}$
+    \item $\begin{cases}3x-2y=7\\x+y=4\end{cases}$
+  \end{subexercise}
+
+\item 用加减消元法解：
+  \begin{subexercise}
+    \item $\begin{cases}2x+3y=12\\3x+2y=13\end{cases}$
+    \item $\begin{cases}5x+2y=25\\3x+4y=15\end{cases}$
+    \item $\begin{cases}4x-3y=11\\3x+2y=4\end{cases}$
+  \end{subexercise}
+
+\item 列方程组解应用：
+  \begin{subexercise}
+    \item 甲、乙两数的和为 32，甲数的 3 倍等于乙数的 5 倍，求甲、乙两数。
+    \item 篮球和排球共 12 个，总价 560 元。篮球每个 50 元，排球每个 40 元，各几个？
+    \item 客车和货车共 12 辆，共载 420 人。客车每辆载 40 人，货车每辆载 30 人，各几辆？
+  \end{subexercise}
+
+\item 思考：$\begin{cases}x+y=5\\2x+2y=10\end{cases}$ 有多少组解？为什么？
+\end{exercise}
+
+\sectiontitle{第8讲\quad 不等式组——两个条件同时成立}
+
+两个不等式放在一起同时满足，就是\textbf{不等式组}。
+
+\begin{example}
+解不等式组：$\begin{cases}x+3>0\\2x-1<5\end{cases}$
+\end{example}
+\begin{solution}
+先分别解：
+$x+3>0$ → $x>-3$\\
+$2x-1<5$ → $2x<6$ → $x<3$\\
+两个条件同时成立：$-3 < x < 3$。
+
+在数轴上：$-3$ 和 $3$ 之间，两端都是空心圈。
+\end{solution}
+
+\subsection*{不等式组的四种基本类型}
+
+\begin{itemize}
+  \item $x>a$ 且 $x>b$（$a>b$）：取 $x>a$（大大取大）
+  \item $x<a$ 且 $x<b$（$a<b$）：取 $x<a$（小小取小）
+  \item $x>a$ 且 $x<b$（$a<b$）：取 $a<x<b$（大小小大中间找）
+  \item $x<a$ 且 $x>b$（$a<b$）：无解（大大小小找不到）
+\end{itemize}
+
+\begin{example}
+解不等式组：$\begin{cases}2x-1\ge x+1\\x-2\le 2x\end{cases}$
+\end{example}
+\begin{solution}
+$2x-1\ge x+1$ → $x\ge2$\\
+$x-2\le 2x$ → $-2\le x$ → $x\ge -2$\\
+两个条件同时成立：$x\ge 2$（因为 $2$ 比 $-2$ 大，"大大取大"）。
+\end{solution}
+
+\begin{exercise}
+\item 解不等式组：
+  \begin{subexercise}
+    \item $\begin{cases}x+3>0\\2x-1<5\end{cases}$
+    \item $\begin{cases}3x-2>4\\x+1<5\end{cases}$
+    \item $\begin{cases}2x-1\ge x+1\\x-2\le 2x\end{cases}$
+    \item $\begin{cases}x-2<0\\x+1>0\\2x-5\le1\end{cases}$
+  \end{subexercise}
+
+\item 含参讨论：$ax<b$ 的解集是什么？（分 $a>0$、$a<0$、$a=0$ 三种情况）
+
+\item 应用：某商品进价 40 元，售价不低于 50 元，且利润不超过进价的 30\%，求售价的取值范围。
+\end{exercise}
+
+\sectiontitle{第9讲\quad 一次关系三位一体}
+
+\subsection*{从方程到函数}
+
+到目前为止的路径：\\
+$2x+1=7$ → 这是方程，求一个精确的 $x$。\\
+$2x+1>7$ → 这是不等式，求 $x$ 的范围。
+
+现在问第三个问题：\textbf{当 $x$ 取不同的值时，$y=2x+1$ 分别等于多少？}
+
+这就是\textbf{函数}——描述输入和输出之间对应关系的规则。
+
+\begin{example}
+对于 $y=2x+1$，填写下表并观察规律：
+\end{example}
+\begin{solution}
+\[
+\begin{array}{c|cccccc}
+x & -3 & -2 & -1 & 0 & 1 & 2 & 3 \\ \hline
+y & -5 & -3 & -1 & 1 & 3 & 5 & 7
+\end{array}
+\]
+
+规律：$x$ 每增加 1，$y$ 增加 2——这就是 \textbf{一次函数}。
+\end{solution}
+
+\subsection*{一张图看三位一体}
+
+对于关系 $y = 2x + 1$：
+
+\begin{enumerate}
+  \item \textbf{方程} $2x+1=7$：当 $y$ 取定值 $7$ 时，找 $x$。结果是 $x=3$——一个精确值。
+  \item \textbf{不等式} $2x+1>7$：当 $y$ 大于 $7$ 时，找 $x$ 的范围。结果是 $x>3$——一个区间。
+  \item \textbf{函数} $y=2x+1$：给定任意 $x$，算出对应的 $y$。或者反过来，给定任意 $y$，算出对应的 $x$。
+\end{enumerate}
+
+\textbf{三个问法，一个关系。}
+
+\begin{example}
+对于 $y = -3x + 6$，求：
+\end{example}
+\begin{solution}
+(1) 当 $y=0$ 时：$-3x+6=0$ → $x=2$（方程，函数图像与 $x$ 轴的交点）
+
+(2) 当 $y>0$ 时：$-3x+6>0$ → $-3x>-6$ → $x<2$（不等式）
+
+(3) 当 $x=4$ 时：$y=-3\times4+6=-6$（函数值）
+\end{solution}
+
+\subsection*{一次函数的图像是一条直线}
+
+一次函数 $y=kx+b$ 的图像是一条直线。$k$ 叫\textbf{斜率}，决定直线陡不陡、向上还是向下。$b$ 叫\textbf{截距}，是直线与 $y$ 轴的交点。
+
+\begin{itemize}
+  \item 正比例函数 $y=kx$ 是 $b=0$ 的特殊情况，图像过原点。
+  \item $k>0$：直线从左下到右上（$x$ 增大 $y$ 增大）
+  \item $k<0$：直线从左上到右下（$x$ 增大 $y$ 减小）
+\end{itemize}
+
+\begin{example}
+指出下列一次函数的斜率和截距：
+\end{example}
+\begin{solution}
+(1) $y=2x+3$：$k=2$，$b=3$（向上倾斜，过 $(0,3)$）
+
+(2) $y=-x+1$：$k=-1$，$b=1$（向下倾斜，过 $(0,1)$）
+
+(3) $y=5x$：$k=5$，$b=0$（正比例，过原点）
+\end{solution}
+
+\subsection*{三位一体的几何解释}
+
+对于一条直线 $y=kx+b$：
+
+\begin{itemize}
+  \item \textbf{方程} $kx+b=0$：问直线与 $x$ 轴的交点
+  \item \textbf{不等式} $kx+b>0$：问直线上方在 $x$ 轴的哪一侧
+  \item \textbf{函数} $y=kx+b$：整条直线本身
+\end{itemize}
+
+\boxed{\text{方程} \rightarrow \text{交点} \quad \text{不等式} \rightarrow \text{区域} \quad \text{函数} \rightarrow \text{整条线}}
+
+\begin{exercise}
+\item 对于 $y=2x-4$，求：
+  \begin{subexercise}
+    \item 当 $y=0$ 时的 $x$
+    \item 当 $y>0$ 时的 $x$ 范围
+    \item 当 $y<-2$ 时的 $x$ 范围
+    \item 当 $x=3$ 时的 $y$ 值
+  \end{subexercise}
+
+\item 对于 $y=-x+3$，求：
+  \begin{subexercise}
+    \item 当 $y=0$ 时的 $x$
+    \item 当 $y\ge0$ 时的 $x$ 范围
+    \item 当 $x=-1$ 时的 $y$ 值
+    \item 当 $y=x$ 时（即函数值等于自变量）的 $x$
+  \end{subexercise}
+
+\item 完成下表并找出规律：
+  \begin{subexercise}
+    \item $y=3x-2$，填表：$x=-2,-1,0,1,2$ 对应的 $y$
+    \item $x$ 每增加 1，$y$ 增加几？
+    \item 这个"增加量"和哪个系数有关？
+  \end{subexercise}
+
+\item 判断正误并说明理由：
+  \begin{subexercise}
+    \item 一次函数的图像一定是一条直线。
+    \item $y=2x+1$ 与 $y=2x-3$ 的图像平行。
+    \item $y=-x+1$ 的图像经过原点。
+  \end{subexercise}
+
+\item 思考：$y=2x+1$ 与 $y=2x+1=0$ 有什么区别和联系？
+\end{exercise}
+
+\sectiontitle{章末小结}
+
+这一章做了三件事：
+
+\begin{enumerate}
+  \item \textbf{方程组}——两个条件确定两个未知数，几何上是两条直线的交点。
+  \item \textbf{不等式组}——两个范围条件取公共部分。
+  \item \textbf{三位一体}——方程、不等式、函数是同一个关系的三个侧面。
+\end{enumerate}
+
+\textbf{核心思想}：一个关系式 $y=kx+b$ 不是方程，不是不等式，也不是函数——它是一个\textbf{关系}。你可以用三种方式问它：
+\begin{itemize}
+  \item "什么时候等于某值？"→方程
+  \item "什么时候大于/小于某值？"→不等式
+  \item "每个 $x$ 对应什么 $y$？"→函数
+\end{itemize}

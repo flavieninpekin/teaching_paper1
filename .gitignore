@@ -11,6 +11,29 @@
 *.fdb_latexmk
 *.synctex.gz
 *.xdv
+*.lof
+*.lot
+*.lol
+*.ilg
+*.ind
+*.idx
+*.nlo
+*.nls
+*.ist
+*.brf
+*.run.xml
+*-blx.bib
+*.bcf
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.acn
+*.acr
+*.alg
+*.listing
+*.mw
+*.pdf
 
 # Word export
 *.docx
@@ -18,7 +41,13 @@
 # Python cache
 __pycache__/
 *.pyc
+*.pyo
 
 # System files
 Thumbs.db
 .DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~

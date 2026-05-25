@@ -1,0 +1,115 @@
+========================================
+Unit 1: 古代神话与传说 - 插图需求清单
+========================================
+
+【插图1 - 前言·人类的好奇心】
+位置：前言段落（"天为什么不会掉下来？"等问句列表之后）
+描述：一个古代装束的孩子仰头看天，天空中有闪电、太阳、月亮、星星的图案围绕，四周有疑问号漂浮
+搜索词：古代孩子 仰望天空 好奇 疑问
+Prompt: An ancient Chinese child looking up at the sky with wonder, surrounded by floating question marks, sky filled with stylized sun, moon, stars and lightning, warm colors, curiosity and imagination, children's book illustration style
+
+【插图2 - 山海经奇兽展示】
+位置：第一周引言（"有长着九条尾巴的狐狸"等描述段落之后）
+描述：一本打开的《山海经》书页上，几只神兽图案从书页里"飘"出来——九尾狐、独角兽形状的怪物、一只脚的牛，风格像古代刻本插画
+搜索词：山海经 神兽 九尾狐 古代插画
+Prompt: An open ancient Chinese book with mythical creatures floating out from its pages, including a nine-tailed fox, a one-legged ox, a strange bird, stylized like classical Chinese woodblock print illustrations, misty atmosphere, magical, warm beige and black ink colors
+
+【插图3 - 精卫填海】
+位置：精卫填海故事白话文本之后，原文段之前
+描述：一只花脑袋、白嘴巴、红脚丫的小鸟，叼着一根小树枝，飞在辽阔的蓝色大海上空，海面波涛汹涌，远处有一轮夕阳
+搜索词：精卫填海 小鸟 大海 夕阳
+Prompt: A small bird with colorful head, white beak and red feet carrying a small twig in its beak, flying over a vast rough blue sea with waves, sunset in the distance, the bird looks tiny compared to the immense ocean, dramatic scale contrast, storybook illustration style
+
+【插图4 - 夸父逐日】
+位置：夸父逐日白话文段落结束后，原文段之前
+描述：一个巨大的巨人迈开大步奔跑，追赶前方燃烧的太阳，汗水如雨，脚下是山川河流
+搜索词：夸父逐日 巨人 追太阳
+Prompt: A giant man with long legs running fiercely towards a blazing sun, sweat pouring like rain, mountains and rivers shrinking beneath his enormous feet, dramatic action scene, warm orange and red color palette, epic atmosphere
+
+【插图5 - 精卫对比图】
+位置：精卫填海 细节推理部分旁边
+描述：左侧一只小鸟在填海，右侧一片宽阔大海，中间有一个"="和一个"?"，示意"极小 vs 极大"的对比
+搜索词：小鸟填海 大小对比 示意图
+Prompt: A simple but powerful visual comparison, left side tiny bird with twig, right side vast ocean, an equals sign and question mark between them, concept illustration showing "impossibly small vs impossibly large", minimalist style, suitable for children's educational material
+
+【插图6 - 希腊风格边框/分隔线】
+位置：第二周标题处（希腊神话）
+描述：希腊风格的装饰边框，有月桂叶纹样和多立克柱式元素，替换之前的章节分隔
+Prompt: Decorative border element in ancient Greek style, featuring laurel leaves and Doric column motifs, terracotta and white color scheme, classical Greek pattern, clean vector style
+
+【插图7 - 普罗米修斯盗火】
+位置：普罗米修斯故事背景段落后
+描述：普罗米修斯从太阳战车上取火，高举燃烧的茴香枝，下方是人类黑暗的世界，光明正在降临，宙斯在天际怒视
+搜索词：Prometheus 盗火 希腊神话
+Prompt: Prometheus reaching up to steal fire from the sun chariot, holding a burning fennel stalk aloft, below him the dark human world starting to receive light, Zeus watching angrily from the clouds above, ancient Greek setting, dramatic chiaroscuro lighting, epic composition
+
+【插图8 - 普罗米修斯受罚】
+位置：普罗米修斯受惩罚段落后
+描述：普罗米修斯被铁链锁在高加索山的岩石上，一只巨鹰俯冲而来，远方是壮丽的山脉和日落
+搜索词：Prometheus 受罚 高加索山 巨鹰
+Prompt: Prometheus chained to a rock cliff on Mount Caucasus, a giant eagle diving towards him, majestic mountain landscape in background, dramatic sunset sky, ancient Greek mythological style, powerful and somber mood
+
+【插图9 - 精卫与普罗米修斯对比图】
+位置：比较阅读文体分析旁
+描述：左侧精卫小鸟填海，右侧普罗米修斯抱火，中间汉字"坚持"或"牺牲"浮现，两者用风格线连接
+搜索词：精卫 Prometheus 对比
+Prompt: Split illustration comparing two mythological heroes, left side Jingwei bird carrying twig over ocean, right side Prometheus holding fire, Chinese character for "perseverance" or "sacrifice" floating in center between them, connecting lines, educational comparison chart style
+
+【插图10 - 潘多拉打开盒子】
+位置：潘多拉故事"她悄悄打开盒子"段落旁
+描述：潘多拉蹲在一个大罐子旁，双手微开盖子，从罐子里飞出各种颜色的烟雾状影子（象征疾病、痛苦等），她的表情是惊恐的
+搜索词：Pandora 潘多拉 盒子 打开
+Prompt: Pandora crouching beside a large ancient Greek jar (pithos), hands slightly opening the lid, colorful shadowy figures and wisps of smoke flying out representing disease, pain, sorrow, her face shows shock and horror, classical Greek setting, dramatic moment
+
+【插图11 - 盒底留下希望】
+位置：潘多拉故事结局段落后
+描述：一只半开的盒子里透出金色光芒，烟雾已散去，只有一点光留在盒底，潘多拉跪在旁，表情由惊恐转为欣慰
+搜索词：潘多拉 希望 盒子 光芒
+Prompt: Close-up of the almost-closed Greek jar with golden light glowing from within, the dark smoke has mostly dissipated, a single warm light remains at the bottom, Pandora kneeling beside it with expression changing from fear to relief, hopeful atmosphere, golden warm tones
+
+【插图12 - 古代诗人观月】
+位置：第三周标题旁
+描述：一位唐代诗人（李白风格）站在窗前仰望夜空中的圆月，月光洒在他身上，窗外有桂树影
+搜索词：李白 望月 唐诗 诗人
+Prompt: Tang dynasty poet standing by a window looking up at a full moon in the night sky, moonlight casting a silver glow on him, shadow of osmanthus tree outside window, classical Chinese painting style, ink wash and light color, poetic and tranquil atmosphere
+
+【插图13 - 嫦娥奔月】
+位置：嫦娥诗背景知识旁
+描述：一位古装女子（嫦娥）衣带飘飘飞向圆月，脚下是人间山河，身后有淡淡云彩
+搜索词：嫦娥奔月 月亮 神话 中国画
+Prompt: Chang'e in flowing traditional Chinese robes floating gracefully up towards a large full moon, earthly mountains and rivers shrinking below, light clouds trailing behind her, classical Chinese painting style, blue and silver color palette, ethereal and beautiful
+
+【插图14 - 月亮联想图】
+位置：李白诗"白玉盘""瑶台镜"等意象旁
+描述：一轮圆月旁边用虚线框标出"白玉盘""瑶台镜""仙人""桂树""白兔捣药"等注示，连向月面上的相应位置
+搜索词：月亮 意象 古诗 示意图
+Prompt: A large full moon annotated with labels and dotted lines pointing to different areas, showing "jade white plate" "celestial mirror" "immortal" "osmanthus tree" "rabbit pounding medicine", combining poetic imagination with moon surface, educational diagram style with classical Chinese aesthetic
+
+【插图15 - 埃及风格边框】
+位置：第四周标题处
+描述：埃及风格的装饰边框，有金字塔、眼线、莲花和圣甲虫图案
+Prompt: Decorative border element in ancient Egyptian style, featuring small pyramids, eye of Horus, lotus flowers and scarab beetle motifs, gold and blue color scheme, clean vector style
+
+【插图16 - 奥西里斯遇害】
+位置：奥西里斯故事"塞特盖紧箱盖"段落后
+描述：塞特和几个人按下箱盖，奥西里斯在箱中伸手，周围宴会场景已变成阴谋气氛
+搜索词：Osiris 奥西里斯 塞特 阴谋
+Prompt: Ancient Egyptian scene, Seth and his accomplices sealing a beautiful chest with Osiris inside reaching out, banquet setting transforming into atmosphere of conspiracy, Egyptian-style art with profile figures, gold and turquoise colors, dramatic tension
+
+【插图17 - 伊西斯寻夫】
+位置：伊西斯寻找段落旁
+描述：一位埃及女子（伊西斯）划着纸莎草小船在尼罗河上寻找，她伸手指向远方，河面宽阔，两岸有神庙和棕榈树
+搜索词：Isis 伊西斯 尼罗河 埃及
+Prompt: Isis in Egyptian dress paddling a small papyrus boat on the Nile river, pointing towards the distance, wide river with temples and palm trees on banks, sunset light, Egyptian art style, determined and sad expression, gold and blue colors
+
+【插图18 - 三大神话对比图】
+位置：第四周文体对比旁边
+描述：三列竖排对比——左侧中国龙/云纹样/山海经风格，中间希腊柱/橄榄枝/陶罐图案，右侧金字塔/埃及图案。每个文化下面有代表性小图
+搜索词：中国神话 希腊神话 埃及神话 对比 文化
+Prompt: Three-column comparison chart, left column Chinese mythology symbols (dragon, cloud patterns, mountain), center column Greek mythology (columns, olive branches, amphora), right column Egyptian mythology (pyramids, ankh, eye of Horus), each with small representative scene below, clean educational infographic style
+
+【插图19 - 空白神话模板】
+位置：第五周创作任务旁
+描述：一张空白的"神话创作模板"示意图——主人公框、困难/对手框、结局框、箭头连接
+搜索词：故事模板 创作 神话
+Prompt: A blank story creation template/diagram for creating myths, showing boxes labeled "hero/heroine" "obstacle/opponent" "ending" connected by arrows, with a decorative border of stars and clouds, clean and inviting design for children, mythological elements in background

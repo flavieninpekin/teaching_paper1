@@ -1,0 +1,115 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,geometry,array,hyperref,booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\geometry{top=1.8cm,bottom=1.8cm,left=1.8cm,right=1.8cm}
+\linespread{1.35}
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{blue!5}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{【想一想】}}\vspace{0.15cm}\end{minipage}\end{minipage}\end{center}\vspace{0.3cm}}{}
+\newenvironment{funfact}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{【有趣的小知识】}}\vspace{0.1cm}\end{minipage}\end{minipage}\end{center}\vspace{0.2cm}}{}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textbf{【插图位置】}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}{}
+
+\title{\Huge\textbf{自动化小故事}}
+\date{}
+\begin{document}\maketitle\thispagestyle{empty}
+
+\section{扫地机器人为什么不会撞墙？}
+
+小明家的扫地机器人——打开电源，它开始在客厅里转。碰到沙发腿——拐弯；走到楼梯口——停下来倒车；地毯区域——自动加大吸力。它怎么"知道"前面有东西？
+
+\textbf{传感器的"感知—决策—行动"循环：}
+\begin{enumerate}
+  \item \textbf{感知：}机器人前端有一个红外传感器——发出一束红外光。如果前面有障碍物，光会反射回来——被接收器检测到。如果光没有反射回来——前面没有障碍物
+  \item \textbf{决策：}机器人的"大脑"（一个微控制器）根据传感器信号做出判断："前面有墙——需要转向"
+  \item \textbf{行动：}控制信号发送给两个驱动轮——一个轮子加速、一个轮子减速——机器人转弯
+  \item \textbf{循环：}机器人继续前进——传感器再次检测——直到下一次需要转向
+\end{enumerate}
+
+这就是\textbf{闭环控制}的最基本形式——系统不断感知自己的状态、与目标状态比较、做出调整。你也在不断做闭环控制——比如你伸手去拿一个杯子：眼睛（传感器）看到手的位置→大脑（控制器）计算偏差→手（执行器）调整位置→眼睛再次确认。
+
+\begin{figplaceholder}
+插图：闭环控制框图——传感器→控制器→执行器→被控对象→传感器（反馈循环）
+\end{figplaceholder}
+
+\textbf{从扫地机器人到自动驾驶汽车：}原理完全相同——只是传感器的种类多了几十倍（摄像头/激光雷达/毫米波雷达/超声波/IMU/GPS）、处理器的算力大了几万倍（一个自动驾驶AI芯片的算力相当于几百台笔记本电脑）、决策的复杂度高了无数倍（需要识别行人/车辆/信号灯/路标/突然冲出的动物——每毫秒都在做生死攸关的决策）。
+
+\begin{thinkbox}
+扫地机器人用的红外传感器在什么情况下会"误判"？——深色/黑色物体吸收红外光（不反射）——机器人可能觉得"前面没东西"直接撞上去。所以高端扫地机器人会同时用红外 + 激光雷达（LiDAR） + 超声波 + 碰撞传感器——多种传感器互相验证。
+\end{thinkbox}
+
+\begin{funfact}
+第一台真正意义上的"家用扫地机器人"是2002年的iRobot Roomba——它没有激光雷达也没有摄像头，完全靠"随机碰撞+螺旋算法"来覆盖清扫面积（碰到墙就转一个随机角度继续走）。今天的高端扫地机器人用LiDAR和SLAM（即时定位与地图构建）算法可以精确知道自己在房间里的位置——20年的技术进步。
+\end{funfact}
+
+\newpage
+
+\section{工厂里的"黑灯车间"——无人工厂是怎样的？}
+
+小明在电视上看到北京亦庄某工厂的一个画面——几百米长的车间里灯火通明，但一个人都没有。机器人在忙碌——有的在焊接、有的在搬运、有的在检测。这就是"黑灯车间"（其实灯还是亮着的——只不过不需要人来看）。
+
+\textbf{工厂自动化的三个层次：}
+
+\begin{itemize}
+  \item \textbf{单机自动化：}一台数控机床——输入程序后，它可以自动加工一个零件——但需要人工上下料
+  \item \textbf{产线自动化：}传送带把工件从一个工位送到下一个——每个工位有机器人自动加工——但仍然需要人工监控异常
+  \item \textbf{整厂自动化：}从原材料进厂到成品出库——全部由自动化系统调度——人来维护设备而不是操作设备
+\end{itemize}
+
+\textbf{PLC——工厂自动化的"大脑"}
+
+PLC（可编程逻辑控制器）是一种专门用于工业控制的计算机——它比普通电脑更抗振、更耐高温、更适合24小时不停机运行。它接收传感器的信号，按照预设的逻辑（"如果传送带上有工件→启动机械臂"）发出控制指令。
+
+\begin{figplaceholder}
+插图：自动化工厂的架构——从上到下：ERP（企业资源计划）→ MES（制造执行系统）→ SCADA（监控与数据采集）→ PLC（现场控制）→ 传感器/执行器（物理层）
+\end{figplaceholder}
+
+\begin{thinkbox}
+如果无人工厂里的一个机器人坏了——会发生什么？——生产线可能会停。但自动化工厂设计了"冗余"——关键工位有两台机器人互为备份。如果没有冗余——维修工程师需要在30分钟内赶到现场解决问题——否则整条产线的计划被打乱。
+\end{thinkbox}
+
+\begin{funfact}
+北京奔驰的工厂拥有超过500台焊接机器人——每台机器人可以记住和切换数十种不同的焊接参数（电流/电压/焊接速度/焊丝速度），以适配不同车型的焊接需求。一台机器人在产线上的平均无故障运行时间（MTBF）超过50000小时——约5.7年不出一次故障。
+\end{funfact}
+
+\newpage
+
+\section{空调的温控——最简单的自动化系统}
+
+夏天空调设到26°C——它精确地把房间温度维持在26°C，既不冷也不热。它是怎么做到的？
+
+\textbf{最简单的自动控制系统里面的"逻辑"：}
+
+\begin{enumerate}
+  \item 你设定目标温度：26°C
+  \item 温度传感器检测当前温度：30°C
+  \item 控制器（空调里的微电脑）计算偏差：30-26=4°C（太热）
+  \item 控制器启动压缩机——开始制冷
+  \item 温度降低到26°C时——传感器检测到"已达到目标"
+  \item 控制器关闭压缩机
+  \item 温度又升到27°C——重新启动……
+\end{enumerate}
+
+这是一个"开关控制"（On-Off Control）——最简单的自动控制方式。
+
+\textbf{你身边的自动控制系统：}
+
+\begin{itemize}
+  \item 电饭煲：设定"煮饭模式"→加热到沸腾→转为保温（维持约65°C）
+  \item 冰箱：温度高于设定值→启动压缩机→降低到设定值→停止
+  \item 热水器：设定50°C→加热→到50°C停→降到48°C再加热
+  \item 智能马桶盖：设定35°C座温→加热元件保持温度
+\end{itemize}
+
+这些设备中，最重要的共同点是——它们都有一个\textbf{传感器}（检测当前状态）、一个\textbf{设定点}（目标状态）、一个\textbf{控制器}（比较当前和目标）、一个\textbf{执行器}（做出改变）。四个要素缺一不可。
+
+\begin{figplaceholder}
+插图：空调温控系统——传感器/控制器/压缩机/冷媒循环的完整反馈环
+\end{figplaceholder}
+
+\begin{thinkbox}
+如果空调的传感器坏了（一直检测到26°C），会发生什么？——控制器永远得不到"太热"的信号——压缩机永远不启动——房间会越来越热。这就是"传感器失效"的后果——所以自动化系统中最关键的零件通常不是执行器（可以做坏），而是传感器（不能做坏）。
+\end{thinkbox}
+
+\begin{funfact}
+第一个实用的恒温调节器（Thermostat）是1886年由Albert Butz发明的——他用的是一个双金属片：两种膨胀系数不同的金属叠在一起，温度变化时双金属片会弯曲——接通或断开电路。这个原理一直用到了今天——虽然现代恒温器已经被电子传感器+数字控制取代了，但"感温→断通"的基本思路没变。
+\end{funfact}
+
+\end{document}

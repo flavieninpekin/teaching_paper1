@@ -1,0 +1,205 @@
+\chaptertitle{第六章\quad 二项式定理与递推}
+
+上一章我们学习了组合$C_n^m$和杨辉三角。本章将用它们来研究$(a+b)^n$的展开规律——这就是二项式定理。然后我们学习递推法，用一个问题"喂"出下一个问题的答案。
+
+\sectiontitle{6.1\quad 从杨辉三角出发}
+
+先做一些具体的展开：
+\begin{align*}
+(a+b)^1 &= a + b \\
+(a+b)^2 &= a^2 + 2ab + b^2 \\
+(a+b)^3 &= a^3 + 3a^2b + 3ab^2 + b^3 \\
+(a+b)^4 &= a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4
+\end{align*}
+
+观察系数：
+\begin{center}
+\begin{tabular}{c|cccccc}
+$n$ & & & 系数 & & & \\ \hline
+$1$ & & & $1$ & $1$ & & \\
+$2$ & & $1$ & $2$ & $1$ & & \\
+$3$ & $1$ & $3$ & $3$ & $1$ & & \\
+$4$ & $1$ & $4$ & $6$ & $4$ & $1$ & \\
+\end{tabular}
+\end{center}
+
+\textbf{发现}：这些系数就是杨辉三角（也就是组合数$C_n^k$）！
+
+\begin{example}
+展开$(a+b)^5$。
+\end{example}
+\begin{solution}
+杨辉三角下一行系数：$1,5,10,10,5,1$。
+\[
+(a+b)^5 = a^5 + 5a^4b + 10a^3b^2 + 10a^2b^3 + 5ab^4 + b^5
+\]
+验证：$C_5^0=1$，$C_5^1=5$，$C_5^2=10$，$C_5^3=10$，$C_5^4=5$，$C_5^5=1$。
+\end{solution}
+
+\begin{exercise}
+\item 写出$(a+b)^6$的展开式。
+\item $(a+b)^n$的展开式中，$a^{n-k}b^k$的系数是多少？
+\end{exercise}
+
+\sectiontitle{6.2\quad 二项式定理}
+
+\textbf{二项式定理}：对任意正整数$n$，
+\[
+(a+b)^n = \sum_{k=0}^n C_n^k a^{n-k}b^k = C_n^0 a^n + C_n^1 a^{n-1}b + C_n^2 a^{n-2}b^2 + \cdots + C_n^n b^n
+\]
+
+其中第$k+1$项$T_{k+1} = C_n^k a^{n-k}b^k$称为\textbf{通项公式}。
+
+为什么系数恰好是$C_n^k$？用组合意义解释：$(a+b)^n = (a+b)(a+b)\cdots(a+b)$（$n$个括号相乘）。展开时，每个括号要么贡献$a$要么贡献$b$。要得到$a^{n-k}b^k$，就需要在$n$个括号中选$k$个取$b$（其余取$a$），选取方式正好是$C_n^k$种。
+
+\begin{example}
+展开$(2x+1)^4$。
+\end{example}
+\begin{solution}
+令$a=2x$，$b=1$，$n=4$：
+\[
+(2x+1)^4 = C_4^0(2x)^4 + C_4^1(2x)^3\cdot1 + C_4^2(2x)^2\cdot1^2 + C_4^3(2x)\cdot1^3 + C_4^4\cdot1^4
+\]
+\[
+= 1\cdot16x^4 + 4\cdot8x^3 + 6\cdot4x^2 + 4\cdot2x + 1 = 16x^4 + 32x^3 + 24x^2 + 8x + 1
+\]
+\end{solution}
+
+\begin{example}
+求$(x+2)^5$展开式中$x^3$的系数。
+\end{example}
+\begin{solution}
+通项$T_{k+1} = C_5^k x^{5-k} \cdot 2^k$。\\
+令$5-k=3$得$k=2$。$T_3 = C_5^2 x^3 \cdot 2^2 = 10 \times 4 \times x^3 = 40x^3$。\\
+所以$x^3$的系数是$40$。
+\end{solution}
+
+\begin{exercise}
+\item 展开$(x-2)^4$。
+\item 求$(2x-1)^6$展开式中$x^3$的系数。
+\item 求$(1+x)^{10}$展开式中$x^5$的系数。
+\end{exercise}
+
+\sectiontitle{6.3\quad 二项式系数的性质}
+
+\textbf{性质1（对称性）}：$C_n^k = C_n^{n-k}$，已学过。
+
+\textbf{性质2（和）}：
+\[
+C_n^0 + C_n^1 + C_n^2 + \cdots + C_n^n = 2^n
+\]
+在二项式定理中令$a=b=1$：$(1+1)^n = 2^n = \sum_{k=0}^n C_n^k$。
+
+\textbf{性质3（奇偶项和相等）}：
+\[
+C_n^0 + C_n^2 + C_n^4 + \cdots = C_n^1 + C_n^3 + C_n^5 + \cdots = 2^{n-1}
+\]
+在二项式定理中令$a=1,b=-1$：$(1-1)^n = 0 = \sum_{k=0}^n C_n^k (-1)^k$，所以奇数项和等于偶数项和。
+
+\begin{example}
+求$C_{10}^0 + C_{10}^2 + C_{10}^4 + \cdots + C_{10}^{10}$的值。
+\end{example}
+\begin{solution}
+由性质$3$，奇数项和（下标为偶数）等于$2^{10-1} = 512$。
+\end{solution}
+
+\begin{exercise}
+\item 求$C_8^0 + C_8^1 + \cdots + C_8^8$的值。
+\item 求$C_9^0 - C_9^1 + C_9^2 - C_9^3 + \cdots - C_9^9$的值。
+\end{exercise}
+
+\sectiontitle{6.4\quad 递推法}
+
+递推法不直接算出第$n$项，而是找出第$n$项与前面几项之间的关系——建立递推公式，然后逐项求出。
+
+\begin{example}
+上楼梯：有$10$级台阶，每次可以跨$1$级或$2$级。从地面到第$10$级有多少种不同的走法？
+\end{example}
+\begin{solution}
+设到第$n$级的走法有$f_n$种。\\
+要到达第$n$级，要么从第$n-1$级跨$1$步上来，要么从第$n-2$级跨$2$步上来。\\
+所以$f_n = f_{n-1} + f_{n-2}$。\\
+初始：$f_1=1$（只能跨$1$步），$f_2=2$（两次$1$步或一次$2$步）。\\
+逐项递推：$f_3=3$，$f_4=5$，$f_5=8$，$f_6=13$，$f_7=21$，$f_8=34$，$f_9=55$，$f_{10}=89$种。
+\end{solution}
+
+\textbf{斐波那契数列}：$1,1,2,3,5,8,13,21,\dots$，满足$F_1=F_2=1$，$F_n=F_{n-1}+F_{n-2}$。
+
+\begin{example}
+用递推法求$n$个圆的平面分割问题：平面上$n$个圆最多能把平面分成多少个区域？
+\end{example}
+\begin{solution}
+设$n$个圆最多分成$a_n$块。\\
+$a_1=2$（一个圆把平面分成内部和外部）。\\
+加第$n$个圆时，与前面$n-1$个圆最多有$2(n-1)$个交点，这些交点把新圆分成$2(n-1)$段弧，每段弧把所在区域一分为二，所以增加$2(n-1)$块。\\
+递推：$a_n = a_{n-1} + 2(n-1)$。\\
+$a_2 = 2 + 2 = 4$，$a_3 = 4 + 4 = 8$，$a_4 = 8 + 6 = 14$，$a_5 = 14 + 8 = 22$，$\dots$\\
+一般地，$a_n = n^2 - n + 2$。
+\end{solution}
+
+\begin{exercise}
+\item $f_n = f_{n-1} + 2f_{n-2}$，$f_1=1$，$f_2=3$，求$f_5$。
+\item 平面上的$n$条直线，两两相交且无三线共点，把平面分成多少块？（用递推法）
+\end{exercise}
+
+\sectiontitle{6.5\quad 应用}
+
+\textbf{近似计算}：当$x$很小时，$(1+x)^n \approx 1 + nx$（取前两项）。
+
+\begin{example}
+计算$1.02^{10}$的近似值。
+\end{example}
+\begin{solution}
+$1.02^{10} = (1+0.02)^{10}$。按二项式定理展开，取前两项：
+\[
+(1+0.02)^{10} \approx 1 + 10\times0.02 = 1 + 0.2 = 1.2
+\]
+精确值为$1.219\dots$，近似效果不错。
+\end{solution}
+
+\textbf{整除与余数}：用$(1+x)^n$的展开形式研究整除性。
+
+\begin{example}
+证明$99^{10} - 1$能被$100$整除。
+\end{example}
+\begin{solution}
+$99^{10} = (100-1)^{10}$。
+展开：$(100-1)^{10} = C_{10}^0 100^{10} - C_{10}^1 100^9 + \cdots - C_{10}^9 100 + C_{10}^{10}(-1)^{10}$。\\
+前面各项都含因子$100$（即都是$100$的倍数），最后一项$C_{10}^{10}(-1)^{10} = 1$。\\
+所以$99^{10} = 100\cdot k + 1$，$99^{10} - 1 = 100k$，被$100$整除。
+\end{solution}
+
+\begin{exercise}
+\item 计算$0.98^8$的近似值（取前两项）。
+\item 证明$11^{10} - 1$能被$10$整除。
+\end{exercise}
+
+\sectiontitle{本章小结}
+
+本章学习了二项式定理$(a+b)^n = \sum C_n^k a^{n-k}b^k$，其系数$C_n^k$来源于组合数的选取意义。二项式系数的性质（和为$2^n$、奇偶项和相等）可直接从定理中导出。递推法则提供了另一种计数工具——把大问题分解为小问题，用"已知推未知"。
+
+\sectiontitle{课后练习}
+
+\subsection*{A组\quad 基础巩固}
+
+\begin{exercise}
+\item 展开$(x+3)^4$。
+\item 求$(x-2)^6$展开式中$x^4$的系数。
+\item 求$C_7^0 + C_7^1 + \cdots + C_7^7$的值。
+\item 设$f_1=1$，$f_{n+1}=2f_n+1$，求$f_5$。
+\item 计算$0.99^5$的近似值。
+\end{exercise}
+
+\subsection*{B组\quad 挑战提升}
+
+\begin{exercise}
+\item 求$(2x^2 - \dfrac{1}{x})^6$展开式的常数项。
+\item 证明$C_n^1 + 2C_n^2 + 3C_n^3 + \cdots + nC_n^n = n\cdot2^{n-1}$。（提示：用二项式定理求导，或利用$kC_n^k = nC_{n-1}^{k-1}$。）
+\item 用递推法证明：$n$个圆最多把平面分成$n^2 - n + 2$块。
+\item 证明$2^{3n} - 1$能被$7$整除（$n$为正整数）。
+\item 平面上的$n$条直线中，有若干条平行，有多少种不同的交点数可能？
+\end{exercise}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章练习答案请参见书末附录。

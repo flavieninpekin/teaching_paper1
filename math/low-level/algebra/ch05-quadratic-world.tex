@@ -1,0 +1,320 @@
+\chaptertitle{第五章\quad 二次的世界——三位一体升级}
+
+\sectiontitle{第13讲\quad 从一次到二次}
+
+\subsection*{一次不够用了}
+
+一个长方形，长比宽多 3 米，面积是 10 平方米。求宽是多少？
+
+设宽为 $x$，则长为 $x+3$。面积公式：$x(x+3)=10$。
+
+展开：$x^2 + 3x = 10$
+移项：$x^2 + 3x - 10 = 0$
+
+出现了 $x^2$ 项——这是\textbf{二次方程}。
+
+\subsection*{因式分解法——用上一章的成果}
+
+$x^2 + 3x - 10 = 0$ 怎么解？还记得上一章的因式分解吗？
+
+$x^2 + 3x - 10 = (x+5)(x-2)$
+
+所以 $(x+5)(x-2) = 0$。
+
+\textbf{关键性质}：两个数相乘等于 0，至少有一个等于 0。
+
+所以 $x+5=0$ 或 $x-2=0$，$x=-5$ 或 $x=2$。
+
+宽是正数，所以 $x=2$ 米。
+
+\begin{example}
+解方程：$x^2 - 5x + 6 = 0$
+\end{example}
+\begin{solution}
+因式分解：$(x-2)(x-3)=0$。\\
+$x-2=0$ 或 $x-3=0$。\\
+$x_1 = 2$，$x_2 = 3$。
+\end{solution}
+
+\begin{example}
+解方程：$x^2 - 9 = 0$
+\end{example}
+\begin{solution}
+平方差公式：$(x-3)(x+3)=0$。\\
+$x_1 = 3$，$x_2 = -3$。
+\end{solution}
+
+\begin{example}
+解方程：$x^2 - 4x = 0$
+\end{example}
+\begin{solution}
+提公因式：$x(x-4)=0$。\\
+$x_1 = 0$，$x_2 = 4$。
+\end{solution}
+
+\subsection*{二次方程的一般形式}
+
+所有的二次方程都可以整理成：
+
+\[
+ax^2 + bx + c = 0 \quad (a \neq 0)
+\]
+
+$a\neq0$ 不是多余的——如果 $a=0$，二次项消失，就不是二次方程了。
+
+\begin{exercise}
+\item 用因式分解法解下列方程：
+  \begin{subexercise}
+    \item $x^2 - 3x = 0$
+    \item $x^2 + 7x + 12 = 0$
+    \item $x^2 - 4x - 5 = 0$
+    \item $x^2 - 9 = 0$
+    \item $x^2 + 6x + 9 = 0$
+    \item $x^2 - 49 = 0$
+  \end{subexercise}
+
+\item 先把方程化成一般形式，再解：
+  \begin{subexercise}
+    \item $x(x-2) = 3$
+    \item $(x+1)(x-3) = 5$
+    \item $x^2 + 5 = 6x$
+    \item $2x^2 = 3x + 5$
+  \end{subexercise}
+
+\item 列方程解应用：
+  \begin{subexercise}
+    \item 一个数的平方等于它本身，这个数是多少？
+    \item 两个连续整数的积是 56，求这两个数。
+    \item 一个长方形的长比宽多 4 米，面积是 45 平方米，求长和宽。
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第14讲\quad 配方法与公式法}
+
+\subsection*{不能因式分解怎么办？}
+
+$x^2 + 6x - 7 = 0$ 能用因式分解吗？找两个数积为 -7、和为 6……似乎不行。但我们可以用另一种方法。
+
+\subsection*{配方法——回到"平方"的本质}
+
+$(x+3)^2 = x^2 + 6x + 9$。那 $x^2 + 6x$ 是 $(x+3)^2$ 去掉 9。
+
+所以 $x^2 + 6x - 7 = 0$ 可以写成：
+$x^2 + 6x = 7$\\
+$x^2 + 6x + 9 = 7 + 9$（两边加 9，凑成完全平方）\\
+$(x+3)^2 = 16$\\
+$x+3 = \pm4$\\
+$x = 1$ 或 $x = -7$
+
+这种方法叫\textbf{配方法}——把一个二次式配成一个完全平方。
+
+\begin{example}
+用配方法解：$x^2 - 8x + 15 = 0$
+\end{example}
+\begin{solution}
+$x^2 - 8x = -15$\\
+$x^2 - 8x + 16 = -15 + 16$\\
+$(x-4)^2 = 1$\\
+$x-4 = \pm1$\\
+$x = 5$ 或 $x = 3$。
+\end{solution}
+
+\begin{example}
+用配方法解：$2x^2 + 4x - 6 = 0$
+\end{example}
+\begin{solution}
+先除以 2 使二次项系数为 1：$x^2 + 2x - 3 = 0$\\
+$x^2 + 2x = 3$\\
+$x^2 + 2x + 1 = 3 + 1$\\
+$(x+1)^2 = 4$\\
+$x+1 = \pm2$\\
+$x = 1$ 或 $x = -3$。
+\end{solution}
+
+\subsection*{公式法——配方法的通用版}
+
+对一般的 $ax^2 + bx + c = 0$（$a\neq0$）做配方，可以得到一个通用公式：
+
+\[
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]
+
+这叫作\textbf{求根公式}。
+
+\begin{example}
+用公式法解：$2x^2 - 5x + 2 = 0$
+\end{example}
+\begin{solution}
+$a=2$，$b=-5$，$c=2$。\\
+$x = \dfrac{5 \pm \sqrt{(-5)^2 - 4\cdot2\cdot2}}{2\cdot2} = \dfrac{5 \pm \sqrt{25-16}}{4} = \dfrac{5 \pm 3}{4}$。\\
+$x_1 = 2$，$x_2 = \dfrac{1}{2}$。
+\end{solution}
+
+\subsection*{判别式的故事}
+
+根号里的 $b^2 - 4ac$ 叫\textbf{判别式}，记作 $\Delta$：
+
+\begin{itemize}
+  \item $\Delta > 0$：两个不相等的实数根
+  \item $\Delta = 0$：两个相等的实数根（也叫重根）
+  \item $\Delta < 0$：没有实数根（但在复数范围内有根——第七章会讲）
+\end{itemize}
+
+\begin{example}
+不解方程，判断 $2x^2 - 3x + 5 = 0$ 的根的情况。
+\end{example}
+\begin{solution}
+$\Delta = (-3)^2 - 4\cdot2\cdot5 = 9 - 40 = -31 < 0$，所以没有实数根。
+\end{solution}
+
+\begin{exercise}
+\item 用配方法解：
+  \begin{subexercise}
+    \item $x^2 + 4x - 5 = 0$
+    \item $x^2 - 6x + 8 = 0$
+    \item $x^2 - 8x - 9 = 0$
+    \item $x^2 + 5x + 6 = 0$
+  \end{subexercise}
+
+\item 用公式法解：
+  \begin{subexercise}
+    \item $x^2 - 5x + 3 = 0$
+    \item $2x^2 - 7x + 3 = 0$
+    \item $3x^2 + 5x - 2 = 0$
+    \item $x^2 - 4x + 2 = 0$
+  \end{subexercise}
+
+\item 不解方程，判断根的情况：
+  \begin{subexercise}
+    \item $x^2 - 3x + 2 = 0$
+    \item $x^2 + x + 1 = 0$
+    \item $x^2 - 6x + 9 = 0$
+    \item $2x^2 - 3x - 1 = 0$
+  \end{subexercise}
+
+\item 已知方程 $x^2 - 5x + 6 = 0$ 的两根为 $x_1$、$x_2$，求：
+  \begin{subexercise}
+    \item $x_1 + x_2$
+    \item $x_1 x_2$
+    \item $\dfrac{1}{x_1} + \dfrac{1}{x_2}$
+    \item $x_1^2 + x_2^2$
+  \end{subexercise}
+
+\item 思考：三个方法（因式分解、配方、公式）什么时候用哪个？
+\end{exercise}
+
+\sectiontitle{第15讲\quad 二次三位一体——抛物线的世界}
+
+\subsection*{从二次方程到二次函数}
+
+二次方程 $ax^2+bx+c=0$ 问的是"什么时候等于 0"。
+
+二次函数 $y = ax^2 + bx + c$ 问的是"每个 $x$ 对应什么 $y$"。
+
+二次函数的图像是一条\textbf{抛物线}。
+
+\begin{example}
+填写 $y=x^2$ 的函数值表，观察规律：
+\end{example}
+\begin{solution}
+\[
+\begin{array}{c|cccccc}
+x & -3 & -2 & -1 & 0 & 1 & 2 & 3 \\ \hline
+y & 9 & 4 & 1 & 0 & 1 & 4 & 9
+\end{array}
+\]
+$y=x^2$ 的图像是以 $y$ 轴为对称轴的抛物线，最低点在 $(0,0)$。
+\end{solution}
+
+\subsection*{二次三位一体}
+
+对于二次关系 $y = ax^2 + bx + c$：
+
+\begin{enumerate}
+  \item \textbf{方程} $ax^2+bx+c=0$：问抛物线与 $x$ 轴的交点。
+  \item \textbf{不等式} $ax^2+bx+c>0$：问抛物线在 $x$ 轴上方的部分。
+  \item \textbf{函数} $y=ax^2+bx+c$：整条抛物线。
+\end{enumerate}
+
+\begin{example}
+对于 $y = x^2 - x - 2$，求：
+\end{example}
+\begin{solution}
+(1) 与 $x$ 轴交点（$y=0$）：$x^2-x-2=0$，$(x-2)(x+1)=0$，$x=2$ 或 $x=-1$。
+
+(2) $y>0$ 的范围：抛物线开口向上，与 $x$ 轴交于 $-1$ 和 $2$，所以在 $x<-1$ 或 $x>2$ 时 $y>0$。
+
+(3) $y<0$ 的范围：$-1<x<2$。
+\end{solution}
+
+\subsection*{配方法与二次函数的顶点}
+
+$y = ax^2 + bx + c$ 通过配方可以写成 $y = a(x-h)^2 + k$ 的形式。$(h,k)$ 就是抛物线的\textbf{顶点}。
+
+\begin{example}
+用配方法求 $y = x^2 - 4x + 1$ 的顶点。
+\end{example}
+\begin{solution}
+$y = x^2 - 4x + 1 = (x^2 - 4x + 4) + 1 - 4 = (x-2)^2 - 3$。\\
+顶点在 $(2, -3)$，开口向上，最低点。
+\end{solution}
+
+\subsection*{一次→二次：三位一体升级了}
+
+在第三章我们建立的框架：
+
+\[
+\text{关系式} \begin{cases}
+\text{方程（取固定值问 $x$）}\\
+\text{不等式（取范围问 $x$）}\\
+\text{函数（输入 $x$ 得 $y$）}
+\end{cases}
+\]
+
+这个框架在二次世界中完全一样，只是图像从直线变成了抛物线。以后遇到分式、根式、甚至更复杂的函数，这个框架都成立。
+
+\begin{exercise}
+\item 对于 $y = x^2 - 2x - 3$，求：
+  \begin{subexercise}
+    \item 与 $x$ 轴的交点
+    \item 当 $y>0$ 时的 $x$ 范围
+    \item 当 $y<0$ 时的 $x$ 范围
+    \item 用配方法求顶点
+  \end{subexercise}
+
+\item 对于 $y = -x^2 + 4x - 3$，求：
+  \begin{subexercise}
+    \item 与 $x$ 轴的交点
+    \item 当 $y>0$ 时的 $x$ 范围
+    \item 开口方向及顶点
+  \end{subexercise}
+
+\item 填空：
+  \begin{subexercise}
+    \item 二次方程 $ax^2+bx+c=0$ 的解，就是二次函数 $y=ax^2+bx+c$ 图像与 \_\_\_\_ 轴的交点的 \_\_\_\_ 坐标。
+    \item $\Delta>0$ 时抛物线与 $x$ 轴有 \_\_\_\_ 个交点。
+    \item $\Delta=0$ 时抛物线与 $x$ 轴 \_\_\_\_。
+    \item $\Delta<0$ 时抛物线与 $x$ 轴 \_\_\_\_。
+  \end{subexercise}
+
+\item 已知二次函数 $y = x^2 - 6x + 8$：
+  \begin{subexercise}
+    \item 用配方法写成 $y=(x-h)^2+k$ 的形式
+    \item 写出顶点坐标和对称轴
+    \item 写出 $y>0$ 时的 $x$ 范围
+  \end{subexercise}
+
+\item 比较 $y=2x+1$（一次）和 $y=x^2-2x-3$（二次）的三位一体分析，说说它们的相同点和不同点。
+\end{exercise}
+
+\sectiontitle{章末小结}
+
+这一章我们把三位一体从一次升级到了二次：
+
+\begin{enumerate}
+  \item \textbf{二次方程}——三种解法（因式分解、配方、公式），判别式告诉我们根的情况。
+  \item \textbf{二次函数}——抛物线，顶点决定最值。
+  \item \textbf{二次不等式}——抛物线与 $x$ 轴交点的上方或下方。
+\end{enumerate}
+
+\textbf{升级了什么？}一次关系是直线，二次关系是抛物线。问的问题（等于多少？范围多少？输入输出关系？）完全一样，但答案从"一个点"变成了"两个点或没有点"，从"一侧"变成了"中间或两边"。

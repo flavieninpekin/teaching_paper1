@@ -1,0 +1,192 @@
+\chaptertitle{第九章\quad 图论初步}
+
+图论是组合数学中"画出来看"的部分。用点表示对象，用线表示对象之间的关系，就能把抽象的问题变成直观的图形。本章从最基本的概念入手，学习一笔画问题、树和最小生成树。
+
+\sectiontitle{9.1\quad 图的基本概念}
+
+一个\textbf{图}由两部分组成：
+\begin{itemize}
+\item 顶点（也叫节点）——用点表示。
+\item 边——用连接两个顶点的线表示。
+\end{itemize}
+
+\begin{example}
+以下场景分别对应什么图？
+(1) 北京、上海、广州三个城市之间的直飞航线。\\
+(2) 一个班级中同学之间的朋友关系。
+\end{example}
+\begin{solution}
+(1) $3$个顶点（三个城市），$3$条边（每两个城市之间有直飞）。这就是完全图$K_3$。\\
+(2) $n$个顶点（$n$个同学），边表示朋友关系（可能有，可能没有）。
+\end{solution}
+
+基本术语：
+\begin{itemize}
+\item \textbf{度数}：从一个顶点出发的边的条数。
+\item \textbf{奇点}：度数为奇数的顶点。
+\item \textbf{偶点}：度数为偶数的顶点。
+\item \textbf{连通图}：任意两个顶点之间都有路径相连。
+\item \textbf{完全图}$K_n$：每对顶点之间都有一条边。
+\item \textbf{树}：连通且没有圈的图。
+\end{itemize}
+
+\begin{example}
+以下各图分别有多少个顶点、多少条边？
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+% 树
+\begin{scope}
+\node at (0,2) {树};
+\node[circle,draw,fill=lightblue] (a) at (0,0) {$A$};
+\node[circle,draw,fill=lightblue] (b) at (-1.5,-1.2) {$B$};
+\node[circle,draw,fill=lightblue] (c) at (1.5,-1.2) {$C$};
+\node[circle,draw,fill=lightblue] (d) at (-2.5,-2.4) {$D$};
+\node[circle,draw,fill=lightblue] (e) at (-0.5,-2.4) {$E$};
+\node[circle,draw,fill=lightblue] (f) at (2.5,-2.4) {$F$};
+\draw[thick] (a) -- (b) -- (d);
+\draw[thick] (b) -- (e);
+\draw[thick] (a) -- (c) -- (f);
+\end{scope}
+% 完全图 K4
+\begin{scope}[xshift=6cm]
+\node at (0,2) {$K_4$};
+\node[circle,draw,fill=lightblue] (a) at (-1,0.5) {$A$};
+\node[circle,draw,fill=lightblue] (b) at (1,0.5) {$B$};
+\node[circle,draw,fill=lightblue] (c) at (-1,-1.5) {$C$};
+\node[circle,draw,fill=lightblue] (d) at (1,-1.5) {$D$};
+\draw[thick] (a) -- (b) -- (d) -- (c) -- (a);
+\draw[thick] (a) -- (d);
+\draw[thick] (b) -- (c);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\end{example}
+\begin{solution}
+树：$6$个顶点，$5$条边。$K_4$：$4$个顶点，$6$条边（$\dfrac{4\times3}{2}=6$）。
+\end{solution}
+
+一个重要结论：图中所有顶点的度数之和等于边数的$2$倍（因为每条边贡献$2$度）。
+由此可得：奇点的个数一定是偶数。
+
+\begin{exercise}
+\item 完全图$K_5$有多少条边？
+\item 一个图有$8$个顶点，每个顶点的度数都是$3$，这个图有多少条边？
+\end{exercise}
+
+\sectiontitle{9.2\quad 欧拉路径与一笔画}
+
+\textbf{一笔画问题}：能不能不重复地一次走完所有的边？
+
+\textbf{欧拉定理}：一个连通图可以一笔画成，当且仅当奇点个数为$0$或$2$。
+\begin{itemize}
+\item 奇点个数$=0$：可以从任意点出发，走完所有边后回到起点（欧拉回路）。
+\item 奇点个数$=2$：从一个奇点出发，结束于另一个奇点（欧拉路径）。
+\item 奇点个数$>2$：不能一笔画成，至少需要$\dfrac{\text{奇点个数}}{2}$笔。
+\end{itemize}
+
+\begin{example}
+判断以下图形能否一笔画成。
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+% 可一笔画（2奇点）
+\begin{scope}
+\node at (0,2.5) {图1};
+\node[circle,draw,fill=lightblue] (a) at (0,0) {$A$};
+\node[circle,draw,fill=lightblue] (b) at (1.5,1) {$B$};
+\node[circle,draw,fill=lightblue] (c) at (2,0) {$C$};
+\node[circle,draw,fill=lightblue] (d) at (1,-1) {$D$};
+\draw[thick] (a) -- (b) -- (c) -- (d) -- (a);
+\draw[thick] (b) -- (d);
+\end{scope}
+% 4个奇点
+\begin{scope}[xshift=5cm]
+\node at (0,2.5) {图2};
+\node[circle,draw,fill=lightblue] (a) at (0,0) {$A$};
+\node[circle,draw,fill=lightblue] (b) at (1.5,0) {$B$};
+\node[circle,draw,fill=lightblue] (c) at (1.5,1.5) {$C$};
+\node[circle,draw,fill=lightblue] (d) at (0,1.5) {$D$};
+\draw[thick] (a) -- (b) -- (c) -- (d) -- (a);
+\draw[thick] (a) -- (c);
+\draw[thick] (b) -- (d);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\end{example}
+\begin{solution}
+图1：$A$度数为$2$（偶），$B$度数为$3$（奇），$C$度数为$2$（偶），$D$度数为$3$（奇）。\\
+奇点$2$个，可以一笔画成，从一个奇点出发到另一个奇点结束。
+
+图2：每个顶点度数都是$3$，$4$个奇点，不能一笔画成，至少需要$4\div2=2$笔。
+\end{solution}
+
+\sectiontitle{9.3\quad 树与最小生成树}
+
+\textbf{树}是连通且没有圈的图。树的特征：
+\begin{itemize}
+\item $n$个顶点的树恰好有$n-1$条边。
+\item 任意两个顶点之间有且仅有一条路径。
+\item 树的叶子（度数为$1$的顶点）至少有两个。
+\end{itemize}
+
+\textbf{最小生成树问题}：在连通的带权图中，找一棵包含所有顶点且边权值和最小的树。
+
+\begin{example}
+$A,B,C,D$四个城镇之间需要铺设天然气管道，各段距离（千米）如下：
+$AB=3, AC=6, AD=7, BC=4, BD=5, CD=8$。求最短的铺设方案。
+\end{example}
+\begin{solution}
+用\textbf{克鲁斯卡尔算法}：每次选权值最小的边，且不形成回路。
+\begin{enumerate}
+\item 选$AB=3$（最小）。
+\item 选$BC=4$（次小，且不形成回路）。
+\item 下一个最小是$BD=5$（$B$已连入树，$D$未连入，不形成回路，选）。
+\item 此时$A,B,C,D$已经连通（$A-B-C$和$B-D$），共$3$条边。
+\end{enumerate}
+最短总长$=3+4+5=12$千米。
+\end{solution}
+
+\textbf{普里姆算法}：从一个顶点开始，每次选与当前树相连的最小边，逐步扩展。
+
+\begin{example}
+用普里姆算法重做上题。
+\end{example}
+\begin{solution}
+从$A$开始。与$A$相连的最小边是$AB=3$，选$AB$。\\
+当前树$\{A,B\}$，与树相连的最小边是$BC=4$（$B$到$C$），选$BC$。\\
+当前树$\{A,B,C\}$，与树相连的最小边是$BD=5$（$B$到$D$），选$BD$。\\
+树已包含所有顶点，总长$3+4+5=12$千米。
+\end{solution}
+
+\begin{exercise}
+\item 一个树有$15$个顶点，有多少条边？
+\item 一个$7$个顶点的连通图，最少需要多少条边才能保证它连通？
+\item $5$个城市之间的道路建设成本如图所示（自行设计一个图），求最小生成树。
+\end{exercise}
+
+\sectiontitle{本章小结}
+
+图论把"关系"画出来研究。欧拉定理（一笔画）给出了奇点个数与能否一笔画之间的联系。树是最简单也最重要的图——$n$个顶点的树有$n-1$条边。最小生成树问题展示了图论在实际中的应用，克鲁斯卡尔算法和普里姆算法是求解最小生成树的两种经典方法。
+
+\sectiontitle{课后练习}
+
+\subsection*{A组\quad 基础巩固}
+
+\begin{exercise}
+\item 完全图$K_6$有多少条边？
+\item 一个图有$10$个顶点、$12$条边，各顶点度数之和是多少？
+\item 判断：$3\times3$网格（$3$行$3$列小方格组成的图）能否一笔画成？
+\item 一个树有$10$个顶点，其中$5$个是叶子，其余顶点的度数都是$3$，这棵树有多少条边？
+\end{exercise}
+
+\subsection*{B组\quad 挑战提升}
+
+\begin{exercise}
+\item 证明：在任何连通图中，奇点的个数一定是偶数。
+\item 一个连通图有$6$个奇点，至少需要几笔才能画完？
+\item 用克鲁斯卡尔算法求右图（自行补充数据）的最小生成树。
+\item 树中所有顶点的度数之和等于$2(n-1)$，证明这个结论并解释为什么树的叶子至少有两个。
+\end{exercise}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章练习答案请参见书末附录。

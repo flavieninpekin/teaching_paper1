@@ -1,0 +1,83 @@
+金融学 — 插图需求
+====================
+模块：E04-finance/intro/ + E04-finance/课本
+
+
+intro/ 入门故事
+────────────────────────────────────────────────
+[H] 第一课 "航海股份示意"
+  → 一艘大帆船在海上航行，周围有不同的人（商人、面包店老板、邻居）伸出手中的钱，箭头指向船
+    标注"风险分摊"和"按出钱比例分利润"。风格卡通历史。
+  → prompt: historical Dutch sailing ship surrounded by different people offering money,
+    arrows showing investment pooling, label "风险分摊 Risk Sharing", cartoon historical style,
+    warm colors, educational for children
+
+[H] 第二课 "三个袋子"
+  → 三个并排的袋子/罐子：红色(零花 20元/月) 蓝色(存钱 20元/月) 绿色(投资 10元/月)
+    每个袋子口有不同的小图标：零食购物车/小猪存钱罐/向上的箭头
+    旁边画小明正在分钱。卡通风格明亮。
+  → prompt: three colorful bags labeled in Chinese, red bag "零花 Spending" 20 yuan/month
+    with shopping cart icon, blue bag "存钱 Saving" 20 yuan/month with piggy bank icon,
+    green bag "投资 Investing" 10 yuan/month with up arrow icon, boy distributing pocket money,
+    cartoon style bright colors
+
+
+E04-finance/ 课本
+────────────────────────────────────────────────
+[H] 第一节 "中国三大交易所"
+  → 三个简洁的徽章式图标并排：上海证券交易所（蓝色、外滩建筑剪影）、
+    深圳证券交易所（红色、牛雕塑剪影）、北京证券交易所（红色、天安门剪影）
+    下方标注成立年份：1990/1991/2021。简洁信息图风格。
+  → prompt: three badge-style icons side by side: Shanghai Stock Exchange (blue, Bund skyline),
+    Shenzhen Stock Exchange (red, bull statue), Beijing Stock Exchange (red, Tiananmen),
+    with establishment years 1990/1991/2021, clean infographic style, Chinese labels
+
+[H] 第二节 "风险收益阶梯"
+  → 阶梯图从低到高：银行定期(最底层、最宽、绿色)→国债→货币基金→债券基金→股票基金→单只股票(最顶层、最窄、红色)
+    每级标注预期收益率范围和风险等级。阶梯高度递增。
+  → prompt: risk-return ladder, bottom step Bank Deposit 1.5-2% wide green,
+    step 2 Government Bond 2-3%, step 3 Money Market Fund same level,
+    step 4 Bond Fund 2-5%, step 5 Stock Fund -20%+30%, top step Individual Stock
+    -50%+100% narrow red, gradient green to red, Chinese labels
+
+[M] 第三节 "复利对比图"
+  → 两组柱状图对比：小明(18-28岁存，然后停) vs 小红(28-60岁存)
+    60岁时两个柱子：明明的43万 vs 小红的33万
+    有趣的信息图风格，配两个小人图标
+  → prompt: comparative bar chart, Ming starts at 18 saves 10 years then stops
+    vs Hong starts at 28 saves 33 years, at age 60 Ming's bar ~430K Hong's ~330K,
+    two small person icons, infographic style, Chinese labels
+
+[H] 第四节 "北京金融街地图"
+  → 北京西城区二环内简图，标注2号线和1号线地铁
+    金融街区域用高亮色块标出，标注央行、证监会、各大银行总行位置
+    清晰简洁
+  → prompt: simplified map of Beijing's Financial Street (金融街) area inside 2nd Ring Road
+    west of city center, subway lines 1 and 2 marked, highlighted zone showing PBOC,
+    CSRC, major bank headquarters, clean map style, Chinese labels
+
+
+[M] 课本第三节 "分散化降低风险"
+  → 坐标图，横轴"组合中资产数量"，纵轴"组合标准差"
+    曲线：从1只股票(风险20%)快速下降，到10只股票(约13%)，到20+只股票趋于平稳(约12%)
+    标注"总风险 = 系统性风险 + 非系统性风险"和"只有系统性风险被定价"
+  → prompt: graph showing portfolio risk vs number of assets, x-axis "组合中资产数量 Number of Assets",
+    y-axis "组合标准差 Portfolio Standard Deviation", curve drops steeply from 1 asset at ~20% to
+    10 assets at ~13% then flattens at ~12%, labeled "系统性风险 Systematic Risk" and
+    "非系统性风险 Unsystematic Risk", educational chart style, Chinese labels
+
+[H] 课本第三节 "市盈率区间对比"
+  → 三根柱状图：同一家公司EPS=3元，分别在P/E=15倍、20倍、25倍下的股价
+    15倍→45元(红色,悲观), 20倍→60元(蓝色,中性), 25倍→75元(绿色,乐观)
+    标注"市场情绪导致股价±25%波动"
+  → prompt: clustered bar chart, same company EPS=3 yuan under three P/E scenarios,
+    P/E 15 (pessimistic 悲观) → price 45 yuan red bar, P/E 20 (neutral 中性) → 60 yuan blue bar,
+    P/E 25 (optimistic 乐观) → 75 yuan green bar, annotation: market sentiment causes ±25% fluctuation,
+    clean chart style, Chinese labels
+
+
+统计
+────
+模块：E04-finance（intro 2张 + 课本 6张）
+总插图数：8张
+优先级分布：H=6, M=2

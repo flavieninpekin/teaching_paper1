@@ -1,0 +1,348 @@
+\chaptertitle{第二章\quad 矩阵——变换的代码}
+
+\sectiontitle{2.1\quad 把变换表示成一个方块}
+
+回顾第一章的所有变换公式，它们有个共同的形式：
+\[
+x' = ax + by,\qquad y' = cx + dy
+\]
+每个具体的变换对应一组$(a,b,c,d)$。比如下面这些例子，你可以在第一章的公式中逐一验证：
+\begin{align*}
+\text{旋转}90^\circ &:a=0,\;b=-1,\;c=1,\;d=0\\
+\text{关于$x$轴反射} &:a=1,\;b=0,\;c=0,\;d=-1\\
+\text{$x$方向拉伸$3$倍} &:a=3,\;b=0,\;c=0,\;d=1\\
+\text{向$x$轴投影} &:a=1,\;b=0,\;c=0,\;d=0\\
+\text{$x$方向切变$k=2$} &:a=1,\;b=2,\;c=0,\;d=1
+\end{align*}
+
+既然每个变换只需要这四个数就能完全确定，把它们排成一个$2\times2$的方块比每次都写四个单独的数更方便。这个方块就叫\textbf{矩阵}：
+\[
+A = \begin{pmatrix}a&b\\c&d\end{pmatrix}
+\]
+左上角是$a$，右上角是$b$，左下角是$c$，右下角是$d$。
+
+变换作用于点的计算，就是把列向量$\begin{pmatrix}x\\y\end{pmatrix}$左乘矩阵$A$来得到新坐标：
+\[
+\begin{pmatrix}x'\\y'\end{pmatrix}
+= \begin{pmatrix}a&b\\c&d\end{pmatrix}
+\begin{pmatrix}x\\y\end{pmatrix}
+= \begin{pmatrix}ax+by\\cx+dy\end{pmatrix}
+\]
+
+操作就是：矩阵每一行的两个数分别与列向量的两个数相乘再相加。第一行乘出$x'$，第二行乘出$y'$。
+
+\begin{example}
+旋转$90^\circ$的矩阵是$\begin{pmatrix}0&-1\\1&0\end{pmatrix}$。用它来计算点$(3,2)$的旋转像：
+\[
+\begin{pmatrix}0&-1\\1&0\end{pmatrix}\begin{pmatrix}3\\2\end{pmatrix}
+= \begin{pmatrix}0\times3+(-1)\times2\\1\times3+0\times2\end{pmatrix}
+= \begin{pmatrix}-2\\3\end{pmatrix}
+\]
+结果$(-2,3)$。我们之前手动算过$(3,2)$旋转$90^\circ$的结果正是$(-2,3)$。
+\end{example}
+
+\begin{example}
+伸缩矩阵$\begin{pmatrix}2&0\\0&3\end{pmatrix}$作用于点$(1,1)$：
+\[
+\begin{pmatrix}2&0\\0&3\end{pmatrix}\begin{pmatrix}1\\1\end{pmatrix}
+= \begin{pmatrix}2\times1+0\times1\\0\times1+3\times1\end{pmatrix}
+= \begin{pmatrix}2\\3\end{pmatrix}
+\]
+$x$被拉到$2$倍，$y$被拉到$3$倍。
+\end{example}
+
+\begin{example}
+切变矩阵$\begin{pmatrix}1&2\\0&1\end{pmatrix}$作用于点$(1,2)$：
+\[
+\begin{pmatrix}1&2\\0&1\end{pmatrix}\begin{pmatrix}1\\2\end{pmatrix}
+= \begin{pmatrix}1\times1+2\times2\\0\times1+1\times2\end{pmatrix}
+= \begin{pmatrix}5\\2\end{pmatrix}
+\]
+$(1,2)$切变后变成$(5,2)$，和我们之前用手算的结果一致。
+\end{example}
+
+为了后面查阅方便，以下是第一章所有常见变换对应的矩阵：
+\[
+\begin{array}{c|c}
+\text{变换} & \text{矩阵}\\\hline
+\text{旋转$\theta$} & \begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}\\[2mm]
+\text{关于$x$轴反射} & \begin{pmatrix}1&0\\0&-1\end{pmatrix}\\[2mm]
+\text{关于$y$轴反射} & \begin{pmatrix}-1&0\\0&1\end{pmatrix}\\[2mm]
+\text{关于$y=x$反射} & \begin{pmatrix}0&1\\1&0\end{pmatrix}\\[2mm]
+\text{关于$y=-x$反射} & \begin{pmatrix}0&-1\\-1&0\end{pmatrix}\\[2mm]
+\text{$x$方向拉伸$k$} & \begin{pmatrix}k&0\\0&1\end{pmatrix}\\[2mm]
+\text{两方向拉伸$k,l$} & \begin{pmatrix}k&0\\0&l\end{pmatrix}\\[2mm]
+\text{向$x$轴投影} & \begin{pmatrix}1&0\\0&0\end{pmatrix}\\[2mm]
+\text{向$y$轴投影} & \begin{pmatrix}0&0\\0&1\end{pmatrix}\\[2mm]
+\text{$x$方向切变$k$} & \begin{pmatrix}1&k\\0&1\end{pmatrix}
+\end{array}
+\]
+
+\begin{exercise}
+\item 用矩阵乘法计算：旋转$90^\circ$矩阵作用于$(5,0)$，写出运算过程。
+\item 用矩阵乘法计算：关于$x$轴反射矩阵作用于$(-3,2)$。
+\item 用矩阵乘法计算：$x$方向拉伸$4$倍矩阵作用于$(1,5)$。
+\item 用矩阵乘法计算：$x$方向切变$k=3$矩阵作用于$(2,1)$。
+\end{exercise}
+
+\sectiontitle{2.2\quad 复合变换——两个动作连起来做}
+
+我们来做两个具体的复合变换，用坐标直接算，观察结果。
+
+\textbf{实验1：先旋转$90^\circ$，再关于$x$轴反射。}
+
+取点$(1,2)$。先旋转$90^\circ$：$(1,2)\to(-2,1)$。再关于$x$轴反射：$(-2,1)\to(-2,-1)$。
+
+现在换一个点$(3,0)$。旋转$90^\circ$：$(3,0)\to(0,3)$。再反射：$(0,3)\to(0,-3)$。
+
+再试$(0,2)$。旋转$90^\circ$：$(0,2)\to(-2,0)$。反射：$(-2,0)\to(-2,0)$。
+
+这三个复合变换的结果是$(-2,-1)$、$(0,-3)$、$(-2,0)$。有没有一个公式能一步算出复合效果？我们先把每一步的矩阵写出来：
+\[
+\text{旋转}90^\circ: R=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad
+\text{反射}: S=\begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\]
+我们想知道有没有一个矩阵$M$，使得$M$乘$(x,y)$直接得到先旋转后反射的结果。直觉上，这个$M$应该由$R$和$S$通过某种运算组合而成。
+
+先算：$S$乘$R$（先旋转后反射，后做的写在前面）：
+\[
+SR = \begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\begin{pmatrix}0&-1\\1&0\end{pmatrix}
+\]
+计算每个位置：第一行第一列 $=1\times0+0\times1=0$；第一行第二列 $=1\times(-1)+0\times0=-1$；第二行第一列 $=0\times0+(-1)\times1=-1$；第二行第二列 $=0\times(-1)+(-1)\times0=0$。
+\[
+SR = \begin{pmatrix}0&-1\\-1&0\end{pmatrix}
+\]
+查一下第一章的表——这个矩阵对应的是关于$y=-x$的反射。
+
+验证：用$SR$直接作用于$(1,2)$：
+\[
+\begin{pmatrix}0&-1\\-1&0\end{pmatrix}\begin{pmatrix}1\\2\end{pmatrix}
+= \begin{pmatrix}-2\\-1\end{pmatrix}
+\]
+和我们分两步算的结果$(-2,-1)$一致！
+
+\textbf{实验2：先关于$x$轴反射，再旋转$90^\circ$。}
+
+把顺序反过来。先反射$S$后旋转$R$：
+\[
+RS = \begin{pmatrix}0&-1\\1&0\end{pmatrix}
+\begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\]
+第一行第一列 $=0\times1+(-1)\times0=0$；第一行第二列 $=0\times0+(-1)\times(-1)=1$；第二行第一列 $=1\times1+0\times0=1$；第二行第二列 $=1\times0+0\times(-1)=0$。
+\[
+RS = \begin{pmatrix}0&1\\1&0\end{pmatrix}
+\]
+这是关于$y=x$的反射。用$(1,2)$验证：$RS\cdot(1,2)^\text T$先反射得$(1,-2)$再旋转得$(2,1)$。$RS$直接乘：$(2,1)$。一致。
+
+两个实验的结果不一样——$SR$给出关于$y=-x$的反射，$RS$给出关于$y=x$的反射。这说明\textbf{矩阵乘法的顺序一般不可交换}，$SR\neq RS$。
+
+\textbf{实验3：先旋转$45^\circ$，再旋转$-45^\circ$。}
+
+直觉：正转再反转，应该回到原位。用矩阵验证：
+\[
+R_{45}=\frac{\sqrt2}{2}\begin{pmatrix}1&-1\\1&1\end{pmatrix},\quad
+R_{-45}=\frac{\sqrt2}{2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}
+\]
+计算$R_{-45}R_{45}$：
+\begin{align*}
+&= \frac24\begin{pmatrix}1\cdot1+1\cdot1 & 1\cdot(-1)+1\cdot1\\ (-1)\cdot1+1\cdot1 & (-1)\cdot(-1)+1\cdot1\end{pmatrix}\\
+&= \frac12\begin{pmatrix}2&0\\0&2\end{pmatrix}
+= \begin{pmatrix}1&0\\0&1\end{pmatrix}
+\end{align*}
+结果是$\begin{pmatrix}1&0\\0&1\end{pmatrix}$，称为\textbf{单位矩阵}$I$。$I$作用于任何点都不改变它的位置。这里$R_{-45}R_{45}=I$说明正转反转互相抵消。
+
+\textbf{实验4：两个伸缩。}
+
+$A=\begin{pmatrix}2&0\\0&1\end{pmatrix}$（$x$拉伸2倍），$B=\begin{pmatrix}1&0\\0&3\end{pmatrix}$（$y$拉伸3倍）。
+
+$AB=\begin{pmatrix}2&0\\0&3\end{pmatrix}$，$BA=\begin{pmatrix}2&0\\0&3\end{pmatrix}$。结果相同！为什么这次可以交换？因为两个方向各自独立拉伸，互不干扰。
+
+通过以上四个实验，我们可以总结出矩阵乘法的规则：
+
+\textbf{矩阵乘法的定义}：设$A=\begin{pmatrix}p&q\\r&s\end{pmatrix}$，$B=\begin{pmatrix}a&b\\c&d\end{pmatrix}$，定义它们的乘积（按$A$乘$B$的顺序）为：
+\[
+AB = \begin{pmatrix}p&q\\r&s\end{pmatrix}
+\begin{pmatrix}a&b\\c&d\end{pmatrix}
+= \begin{pmatrix}
+pa+qc & pb+qd\\
+ra+sc & rb+sd
+\end{pmatrix}
+\]
+规则：前一行$\times$后一列，对应位置相乘再求和。
+
+注意顺序：先做的变换写在右边，后做的写在左边。复合变换$BA$表示先做$A$再做$B$。
+
+\begin{exercise}
+\item 计算矩阵乘积：$\begin{pmatrix}2&1\\0&3\end{pmatrix}\begin{pmatrix}1&2\\3&4\end{pmatrix}$。写出每一步的计算过程。
+\item 交换上题顺序：$\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}2&1\\0&3\end{pmatrix}$。结果相同吗？
+\item 先旋转$180^\circ$再关于$x$轴反射，做矩阵乘法求复合矩阵。
+\item 先关于$y=x$反射再旋转$90^\circ$，写出复合矩阵。
+\item 验证伸缩矩阵$\begin{pmatrix}k&0\\0&l\end{pmatrix}$和$\begin{pmatrix}p&0\\0&q\end{pmatrix}$的乘法结果与顺序无关。
+\item 计算$\begin{pmatrix}1&0\\0&0\end{pmatrix}\begin{pmatrix}0&0\\0&1\end{pmatrix}$（向$x$轴投影乘以向$y$轴投影）。这个结果代表什么变换？
+\end{exercise}
+
+\sectiontitle{2.3\quad 几个重要的特殊矩阵}
+
+在计算矩阵乘法的过程中，有几类矩阵反复出现：
+
+\textbf{单位矩阵} $I=\begin{pmatrix}1&0\\0&1\end{pmatrix}$。对任何点$(x,y)$，$I\cdot(x,y)^\text T=(x,y)^\text T$——这个变换什么都不做。对任何矩阵$A$，有$IA=AI=A$。$I$在矩阵乘法中的作用类似于数字$1$在普通乘法中的作用。
+
+\textbf{零矩阵} $O=\begin{pmatrix}0&0\\0&0\end{pmatrix}$。任何点经过零矩阵都变成$(0,0)$。$OA=AO=O$。
+
+\textbf{对角矩阵} $\begin{pmatrix}k&0\\0&l\end{pmatrix}$。非对角线位置全是$0$，主对角线上是两个伸缩系数。这类矩阵对应的变换是沿坐标轴方向的伸缩。当$k=l=1$时就是$I$。
+
+\textbf{正交矩阵}：满足$A^\text T A=I$的方阵。旋转矩阵和反射矩阵都是正交矩阵。它们的共同特点是——作用后不改变向量的长度。
+
+\begin{exercise}
+\item 单位矩阵$I$的行列式（下章将定义）应该是什么？直觉上，$I$不改变面积。
+\item 对角矩阵$\begin{pmatrix}k&0\\0&l\end{pmatrix}$何时可逆？何时不可逆？
+\item 试写出一个不是旋转也不是反射的正交矩阵。
+\end{exercise}
+
+\sectiontitle{2.4\quad 解方程组与高斯消元法}
+
+在许多实际问题中，我们知道的不是变换前的点，而是变换后的结果——即已知矩阵$A$和结果向量$\vec b$，要找到原来的点$\vec x$。这相当于解方程$A\vec x = \vec b$。
+
+当矩阵是$2\times2$且$\det A\neq0$时，有个直接的办法——用逆矩阵（见2.5节）。但对于更大的矩阵或者含参数的方程，我们需要一个系统化的、一步步消去未知数的方法。这就是\textbf{高斯消元法}。
+
+高斯消元法的核心思想是：通过三种合法的行变换，把增广矩阵$\begin{pmatrix}A & | & \vec b\end{pmatrix}$化为阶梯形，然后回代求解。三种行变换是：
+\begin{enumerate}
+\item 交换两行。
+\item 某行乘以一个非零常数。
+\item 某行的倍数加到另一行上。
+\end{enumerate}
+
+这三种操作都不会改变方程组的解。下面我们通过三种不同的结果情况来全面理解这个方法。
+
+\vspace{0.2cm}
+\noindent\textbf{情况一：唯一解}
+
+\begin{example}
+用高斯消元法解$\begin{cases}2x+3y=7\\x-2y=-4\end{cases}$。
+\end{example}
+\begin{solution}
+增广矩阵：$\begin{pmatrix}2 & 3 & | & 7\\1 & -2 & | & -4\end{pmatrix}$
+
+交换两行使第一行首项为$1$：$\begin{pmatrix}1 & -2 & | & -4\\2 & 3 & | & 7\end{pmatrix}$
+
+$R_2$减去$R_1$的两倍：$\begin{pmatrix}1 & -2 & | & -4\\0 & 7 & | & 15\end{pmatrix}$
+
+回代：从第二行得$7y=15$，即$y=15/7$。代入第一行：$x-2(15/7)=-4$，得$x=-4+30/7=2/7$。
+
+解为$\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}2/7\\15/7\end{pmatrix}$。
+\end{solution}
+
+\vspace{0.2cm}
+\noindent\textbf{情况二：无穷多解}
+
+\begin{example}
+用高斯消元法解$\begin{cases}x+2y=3\\2x+4y=6\end{cases}$。
+\end{example}
+\begin{solution}
+增广矩阵：$\begin{pmatrix}1 & 2 & | & 3\\2 & 4 & | & 6\end{pmatrix}$
+
+$R_2\leftarrow R_2-2R_1$：$\begin{pmatrix}1 & 2 & | & 3\\0 & 0 & | & 0\end{pmatrix}$
+
+第二行变成$0=0$——一个恒等式，不提供新的信息。第一个方程$x+2y=3$中有一个自由变量。取$y=t$（$t$为任意实数），则$x=3-2t$。
+
+解为$\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}3\\0\end{pmatrix}+t\begin{pmatrix}-2\\1\end{pmatrix}$（无穷多个解）。几何上，两个方程实际上是同一条直线。
+\end{solution}
+
+\vspace{0.2cm}
+\noindent\textbf{情况三：无解}
+
+\begin{example}
+用高斯消元法解$\begin{cases}x+2y=3\\2x+4y=8\end{cases}$。
+\end{example}
+\begin{solution}
+增广矩阵：$\begin{pmatrix}1 & 2 & | & 3\\2 & 4 & | & 8\end{pmatrix}$
+
+$R_2\leftarrow R_2-2R_1$：$\begin{pmatrix}1 & 2 & | & 3\\0 & 0 & | & 2\end{pmatrix}$
+
+第二行变成$0=2$——一个矛盾。无论$x$和$y$取什么值，都不可能满足这个等式。因此方程组无解。几何上，两个方程代表两条平行直线，永不相交。
+\end{solution}
+
+总结：高斯消元法有三种可能的输出结果——唯一解（系数矩阵可逆时）、无穷多解（方程数目不够时）、无解（出现矛盾时）。这三种情况囊括了所有线性方程组求解的可能。
+
+\sectiontitle{2.5\quad 逆变换与逆矩阵}
+
+如果矩阵$A$对应一个变换，这个变换把每个点$P$变到$P'$。有时候存在一个"反向"的变换，能把$P'$再变回$P$。这个反向的变换称为$A$的逆变换，对应的矩阵称为$A$的\textbf{逆矩阵}，记作$A^{-1}$。
+
+\begin{example}
+先看几个具体例子，从例子中观察规律。
+\end{example}
+
+\begin{solution}
+(1) 旋转$90^\circ$的逆变换是旋转$-90^\circ$（顺时针转$90^\circ$）。我们已经验证过$R_{-90}R_{90}=I$，所以$R_{90}^{-1}=R_{-90}$。
+
+(2) 反射的逆变换是它自己。因为反射做两次回到原位，$S^2=I$，所以$S^{-1}=S$。
+
+(3) $x$方向拉伸$2$倍的逆变换是压缩到$\frac12$倍。
+
+(4) 投影没有逆变换——因为不同点投影到同一个点，无法还原。
+\end{solution}
+
+对于一般的$2\times2$矩阵$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$，它的逆矩阵是：
+\[
+A^{-1} = \frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}
+\]
+分母上的$ad-bc$就是下一章要讲的行列式。如果$ad-bc=0$，这个分数就没有意义，对应的矩阵不可逆——几何上，这个变换把平面压扁了，信息丢失了，再也回不去了。
+
+\begin{example}
+求$A=\begin{pmatrix}2&3\\1&4\end{pmatrix}$的逆矩阵。
+\end{example}
+\begin{solution}
+$ad-bc=2\times4-3\times1=5\neq0$。代入公式：
+$A^{-1}=\frac15\begin{pmatrix}4&-3\\-1&2\end{pmatrix}$。
+验证：$AA^{-1}=\frac15\begin{pmatrix}2&3\\1&4\end{pmatrix}\begin{pmatrix}4&-3\\-1&2\end{pmatrix}
+=\frac15\begin{pmatrix}5&0\\0&5\end{pmatrix}=I$。
+\end{solution}
+
+逆矩阵的另一种理解方式是：解$A\vec x = \vec b$等价于$\vec x = A^{-1}\vec b$。这就是为什么上一节的高斯消元法和逆矩阵是同一问题的两个解法——高斯消元是通向解的路径，逆矩阵是把这条路径封装成的一个紧凑公式。
+
+\sectiontitle{2.6\quad 从$2\times2$到$n\times n$}
+
+矩阵的维度可以扩展到$n$。$3\times3$矩阵对应三维空间中的变换，$n\times n$矩阵对应$n$维空间中的变换。矩阵乘法、逆矩阵、高斯消元法的规则对任意大小都适用，只是数字多了而已。例如，$3\times3$矩阵乘法同样是"前行乘后列"：
+\[
+\begin{pmatrix}1&2&1\\3&0&2\\0&1&4\end{pmatrix}
+\begin{pmatrix}2&0&1\\1&3&0\\0&1&2\end{pmatrix}
+\]
+每一项都是左行与右列的三对数字乘积之和。具体内容将在第四章中展开。
+
+\sectiontitle{本章小结}
+
+本章我们完成了从"几何变换"到"代数运算"的关键跨越。核心线索是：每种平面变换对应于一个$2\times2$矩阵，矩阵乘法正好对应变换的复合。矩阵乘法一般是不可交换的——先做A再做B与先做B再做A通常不同。在这套语言中，单位矩阵$I$扮演了"什么都不做"的角色，逆矩阵$A^{-1}$扮演了"撤销变换"的角色。最后，高斯消元法提供了解线性方程组的系统方法——有三种可能的结果：唯一解、无穷多解、无解。
+
+\sectiontitle{课后练习}
+
+\subsection*{A组\quad 基础巩固}
+
+\begin{exercise}
+\item 计算矩阵乘法，写出过程：$\begin{pmatrix}3&1\\2&5\end{pmatrix}\begin{pmatrix}1&0\\4&2\end{pmatrix}$。
+\item 交换上题顺序：$\begin{pmatrix}1&0\\4&2\end{pmatrix}\begin{pmatrix}3&1\\2&5\end{pmatrix}$。结果相同吗？
+\item 求$\begin{pmatrix}2&5\\1&3\end{pmatrix}$的逆矩阵（用公式$A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$）。
+\item 用高斯消元法解方程组：$\begin{cases}3x-2y=8\\x+4y=2\end{cases}$。写出增广矩阵的行变换过程。
+\item 写出以下变换的矩阵：(a) 旋转$120^\circ$；(b) 关于$y=-x$反射后再旋转$90^\circ$的复合。
+\item 计算：先$x$方向拉伸$2$倍再旋转$90^\circ$的复合矩阵。再交换顺序算一次。
+\item 求矩阵$A=\begin{pmatrix}0&1\\1&0\end{pmatrix}$的$A^2$（即$A$乘$A$）。这个结果在几何上是什么意思？
+\item 矩阵乘法是否满足结合律？即$(AB)C$是否等于$A(BC)$？任取三组数字验证。
+\item 用高斯消元法解：$\begin{cases}2x+y-z=3\\x-2y+3z=1\\3x+y+2z=7\end{cases}$。
+\item $\det(AB)=\det A\cdot\det B$。若$\det A=2$，$\det B=0.5$，则$\det(AB)$是多少？$\det(A^{-1})$呢？
+\end{exercise}
+
+\subsection*{B组\quad 挑战提升}
+
+\begin{exercise}
+\item 已知$AB=I$且$BA=I$，求证$A$和$B$互为逆矩阵。由此推导：若$AB=I$，是否一定有$BA=I$？（在方阵情况下是的，请说明理由。）
+\item 求所有满足$A^2=I$的$2\times2$矩阵$A$。提示：有两类——反射类和对角线取$\pm1$类。
+\item 用高斯消元法解以下含参数的方程组，讨论参数$a$取不同值时解的情况：$\begin{cases}x+ay=1\\ax+y=1\end{cases}$。
+\item 若$A$是旋转矩阵，$B$是反射矩阵，$AB$还可以写成一个更简单的变换吗？试对几种具体角度列举复合结果。
+\item 设$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$的一般逆矩阵为$\frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$。如果$ad-bc=0$，逆矩阵不存在。从几何变换角度解释为什么。
+\item 用高斯消元法解$\begin{cases}3x+2y=5\\\frac12 x-\frac13 y = 1\end{cases}$，写出增广矩阵和每一步行变换（允许使用分数）。
+\item 求矩阵$A=\begin{pmatrix}\frac12&\frac{\sqrt3}{2}\\-\frac{\sqrt3}{2}&\frac12\end{pmatrix}$的逆矩阵。这个逆矩阵在几何上对应什么变换？与$A$的几何含义有何关系？
+\item 计算乘积$\begin{pmatrix}\frac13&\frac23\\-\frac23&\frac13\end{pmatrix}\begin{pmatrix}\frac35&-\frac45\\\frac45&\frac35\end{pmatrix}$，并判断结果矩阵是否仍为正交矩阵。
+\item 一个$3\times3$对角矩阵的对角元依次为$2,3,0$。它是否可逆？将$(x,y,z)$经此矩阵变换后的结果用坐标公式表示。哪些点会被压缩到同一点？
+\end{exercise}
+
+\newpage

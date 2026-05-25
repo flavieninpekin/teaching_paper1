@@ -1,0 +1,106 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,geometry,array,hyperref,booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\geometry{top=1.8cm,bottom=1.8cm,left=1.8cm,right=1.8cm}
+\linespread{1.35}
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{blue!5}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{【想一想】}}\vspace{0.15cm}\end{minipage}\end{minipage}\end{center}\vspace{0.3cm}}{}
+\newenvironment{funfact}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{【有趣的小知识】}}\vspace{0.1cm}\end{minipage}\end{minipage}\end{center}\vspace{0.2cm}}{}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textbf{【插图位置】}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}{}
+
+\title{\Huge\textbf{临床医学小故事}}
+\date{}
+\begin{document}\maketitle\thispagestyle{empty}
+
+\section{为什么打针比吃药见效快？}
+
+小明发烧了，妈妈给他吃了退烧药。过了半小时，体温还没降下来。"药怎么这么慢？"妈妈解释："药吃进去以后要经过胃→肠道→被吸收到血液→再运到你全身——那么每一步都需要时间。打针就直接把药送进血液里了。"
+
+这就是两种最常见给药的途径的区别：\textbf{口服} vs \textbf{注射}。
+
+\textbf{口服药}的路径：口腔→食管→胃（胃酸可能破坏一部分药物）→小肠（大多数药物在这里被吸收）→肝脏（肝首过效应——很多药物在这里被"灭活"了一部分）→全身循环。
+
+\textbf{注射}的路径：直接进入组织或血液→全身循环。
+
+\begin{figplaceholder}
+插图：口服药和注射药的"旅程"对比——口服要走一条长路（经胃/肠道/肝脏），注射走捷径（直接入血）
+\end{figplaceholder}
+
+药物并不是只有口服和注射两种。制药工程师根据不同情况设计了多种给药途径——每种都有它的优势：
+
+\begin{itemize}
+  \item \textbf{吸入：}哮喘药用吸入方式——直接到肺部，全身副作用最小
+  \item \textbf{贴片：}晕车贴、戒烟贴——药物通过皮肤慢慢吸收，可以持续释放一整天
+  \item \textbf{滴眼液：}治疗青光眼的眼药水——局部用药，几乎不进入全身
+  \item \textbf{栓剂：}孩子发高烧呕吐时——栓剂从直肠吸收，避免被胃酸破坏
+\end{itemize}
+
+\begin{thinkbox}
+为什么有些药不能做成口服而是必须注射？——原因可能是：药物会被胃酸破坏（如胰岛素）、药物不溶于水（口服吸收不好）、或者需要快速起效（如急救药肾上腺素）。
+\end{thinkbox}
+
+\begin{funfact}
+胰岛素的发现故事（1921年）：Frederick Banting和Charles Best在狗的胰腺中提取了胰岛素。在1922年第一次给一个14岁的糖尿病男孩注射——男孩的血糖从"致命"水平恢复正常。Banting以1美元的价格把专利卖给了多伦多大学——"胰岛素应该属于全世界，不应该被用来赚钱。"（但他1969年去世后，制药公司最终还是把它变成了年销售额数百亿美元的市场。）
+\end{funfact}
+
+\newpage
+
+\section{医生怎么"看到"骨头里面的？——X射线的发现}
+
+1895年，德国物理学家威廉·伦琴在研究阴极射线管时发现——一种未知的射线可以穿透黑纸、在荧光屏上产生发光。他不知道这是什么——所以叫它"X射线"（X代表未知）。他做的第一张X光片是他夫人的手——能看到骨头和婚戒的轮廓。这张照片震惊了世界。
+
+\textbf{X射线为什么能"看穿"人体？}
+
+X射线是波长极短的电磁波。它可以穿过身体中密度较低的组织（皮肤、肌肉、器官），但不能穿过高密度的组织（骨头、牙齿、金属）。穿过的X射线在探测器上形成图像——白色（密度高的骨头）、灰色（密度中等的器官）、黑色（密度低的空气）。
+
+但X射线有一个缺点——对软组织（肝、肾、脑、肿瘤）的分辨率不高。这就需要其他影像技术来补充。
+
+\begin{figplaceholder}
+插图：四种医学影像的对比——X光（骨头清楚）/ CT（断面三维）/ MRI（软组织对比）/ B超（实时动态）
+\end{figplaceholder}
+
+\textbf{CT：}绕着人体拍很多张X光片（360°），通过计算机重建出"切面图"。可以看到骨骼的完整三维结构。但CT的辐射剂量比普通X光高几十到上百倍。
+
+\textbf{MRI：}用强磁场和无线电波（不是X射线）来成像。对软组织（脑、脊髓、肌肉、关节软骨）的分辨率远高于CT。没有辐射——但扫描时间长（20-60分钟），而且体内有金属植入物（如心脏起搏器）的人不能用。
+
+\textbf{B超：}用超声波的"回声"来成像——像蝙蝠用声波"看"世界。完全无辐射，实时显示（可以看心博动、胎动），而且便宜。但B超对气体（肺部）和骨骼（后面）成像不佳。
+
+\begin{thinkbox}
+假设你骨折了——医生应该给你开什么检查？X光（快速便宜，看骨头足够）。如果你怀疑半月板损伤——应该做什么？MRI（软组织最好）。如果你体检发现肺结节——应该做什么？CT（最薄切面）。
+\end{thinkbox}
+
+\begin{funfact}
+伦琴在发现X射线的1901年获得了第一个诺贝尔物理学奖。他把奖金全部捐给了他的大学（乌兹堡大学）。他拒绝为自己的发现申请专利——他认为科学发现应该属于全人类。和伦琴形成鲜明对比的是爱迪生——他迅速利用X射线开发了"荧光透视镜"，并试图申请专利。
+\end{funfact}
+
+\newpage
+
+\section{疫苗是怎么工作的？——让免疫系统提前"认识"敌人}
+
+天花——在历史上杀死了数亿人（比所有战争加起来还多）。但1980年，WHO宣布天花被彻底消灭——这是人类历史上唯一一次"消灭"了一种传染病。靠的是什么？——疫苗。
+
+\textbf{疫苗的原理：}你不需要真正得一次脊髓灰质炎（小儿麻痹症）才能对抗它——你只需要让免疫系统"见过"这个病毒，提前准备好武器（抗体和记忆细胞）。
+
+感染的"照片"——灭活疫苗（用被杀死的病毒，如脊灰注射疫苗）和减毒疫苗（用被削弱但仍活着的病毒，如麻疹疫苗）。
+
+新冠疫苗的"新一代"技术——\textbf{mRNA疫苗}：它不把一个完整的病毒或病毒蛋白质给你——而是给你一段"制造病毒刺突蛋白的图纸"（mRNA）。你自己身体里的细胞按照图纸生产出刺突蛋白，免疫系统看到这个蛋白后产生抗体。如果真正的病毒来了——免疫系统已经"认识"它的特征了，迅速开火。
+
+\begin{figplaceholder}
+插图：mRNA疫苗作用机制——mRNA进入细胞→细胞合成刺突蛋白→免疫系统识别→产生抗体
+\end{figplaceholder}
+
+\textbf{为什么新冠疫情中的mRNA疫苗能这么快被研发出来？}
+\begin{itemize}
+  \item mRNA疫苗技术的研发其实已经进行了20年（主要针对流感病毒和MERS病毒）
+  \item 新冠病毒的基因序列在2020年1月就被测出（只用了10天）——科学家迅速找到了"刺突蛋白"这个疫苗靶点
+  \item 全球多个团队同时开跑，加上各国政府投入了数十亿美元（前所未有）——不是"一步登天"，而是"20年铺垫+1年冲刺"
+\end{itemize}
+
+\begin{thinkbox}
+为什么每年都要打流感疫苗？——因为流感病毒变异很快，去年疫苗产生的抗体可能不认识今年的流感病毒。而麻疹病毒很少变异——所以麻疹疫苗打一次管终身。
+\end{thinkbox}
+
+\begin{funfact}
+第一个疫苗是爱德华·琴纳在1796年发明的——他给一个8岁男孩接种了牛痘（一种牛身上的"天花弱化版"病毒），然后这个男孩接触天花病人的痂皮竟然没有感染。当时的医学界无法理解——他们不知道"免疫系统"是什么——但这个方法有效。琴纳的"牛痘接种法"在10年内传播到了全世界。
+\end{funfact}
+
+\end{document}

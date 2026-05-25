@@ -1,0 +1,317 @@
+\chaptertitle{第一章\quad 用字母说话——代数式的诞生}
+
+\sectiontitle{第1讲\quad 从具体规律到字母公式}
+
+\subsection*{算术中已经见过字母了}
+
+翻开《算术》，你早就见过用字母写的东西了：
+
+加法交换律：$a+b=b+a$\\
+乘法分配律：$a\times(b+c)=a\times b+a\times c$
+
+这里面的 $a$、$b$、$c$ 不是哪一个具体的数——它们是\textbf{任意数}。一个式子 $a+b=b+a$ 用 26 个字母就概括了"任何两个数相加都可以交换位置"这件事。如果用文字说，要写半天。
+
+\textbf{字母的价值：用一个式子，管无穷多种情况。}
+
+\subsection*{从数列中发现字母公式}
+
+\begin{example}
+观察下面几组数，找出规律并用字母写出第 $n$ 个数的表达式：
+\end{example}
+\begin{solution}
+(1) $1,\;4,\;9,\;16,\;25,\;\ldots$\\
+这是 $1^2,\;2^2,\;3^2,\;4^2,\;5^2$，所以第 $n$ 个数是 $n^2$。
+
+(2) $3,\;5,\;7,\;9,\;11,\;\ldots$\\
+每次加 2。第 1 个是 $3=2\times1+1$，第 2 个是 $5=2\times2+1$，第 3 个是 $7=2\times3+1$，所以第 $n$ 个是 $2n+1$。
+\end{solution}
+
+\begin{example}
+搭正方形需要多少根小棒？
+\end{example}
+\begin{solution}
+\begin{itemize}
+  \item 1个正方形：4根
+  \item 2个正方形（连在一起）：7根（因为共用1条边）
+  \item 3个正方形：10根
+  \item 4个正方形：13根
+\end{itemize}
+每多一个正方形，多用 3 根小棒。\\
+第 1 个：$4 = 3\times1+1$\\
+第 2 个：$7 = 3\times2+1$\\
+第 $n$ 个：$3n+1$ 根。
+\end{solution}
+
+\begin{example}
+一个长方形的长是 $a$，宽是 $b$。用字母写出它的周长和面积。
+\end{example}
+\begin{solution}
+周长 = $2a+2b$（两条长加两条宽），\\
+面积 = $a\times b$（通常省略乘号写成 $ab$）。
+\end{solution}
+
+\subsection*{乘号的省略}
+
+在代数里，乘号经常被省略以节省书写：
+\begin{itemize}
+  \item $a\times b$ 写成 $ab$
+  \item $2\times a$ 写成 $2a$
+  \item $x\times y\times z$ 写成 $xyz$
+\end{itemize}
+数字写在字母前面，$2a$ 表示 $2\times a$，不是 $2+a$。
+
+\begin{exercise}
+\item 观察下列各组数的规律，写出第 $n$ 个数的表达式：
+  \begin{subexercise}
+    \item $1,\;3,\;5,\;7,\;9,\;\ldots$
+    \item $2,\;4,\;6,\;8,\;10,\;\ldots$
+    \item $2,\;5,\;8,\;11,\;14,\;\ldots$
+    \item $1,\;4,\;7,\;10,\;13,\;\ldots$
+  \end{subexercise}
+
+\item 用字母表示：
+  \begin{subexercise}
+    \item $a$ 与 $b$ 的和
+    \item $x$ 的 3 倍
+    \item $m$ 与 $n$ 的积
+    \item $a$ 的平方与 $b$ 的立方
+    \item $x$ 的一半加 $y$ 的 2 倍
+    \item $a$ 与 $b$ 的差的 5 倍
+  \end{subexercise}
+
+\item 把算式写成省略乘号的形式：
+  \begin{subexercise}
+    \item $3\times a$
+    \item $a\times b\times c$
+    \item $5\times x + 2\times y$
+    \item $a\times 3 + b\times 4$
+  \end{subexercise}
+
+\item 搭三角形：1个三角形要3根小棒，2个连在一起要5根，3个要7根。第 $n$ 个需要多少根？
+
+\item 填空并说明理由：
+  \begin{subexercise}
+    \item $a$ 个 $x$ 相加 = $\underline{\qquad}$
+    \item $x$ 个 $a$ 相加 = $\underline{\qquad}$
+    \item 这两个式子相等吗？为什么？
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第2讲\quad 代数式的构造与求值}
+
+\subsection*{把文字翻译成代数式}
+
+代数式的核心能力：把一段话变成一串符号。
+
+\begin{example}
+把下面的话翻译成代数式：
+\end{example}
+\begin{solution}
+"$x$ 的 3 倍与 $y$ 的 2 倍的和" → $3x + 2y$
+
+"$a$ 与 $b$ 的差的平方" → $(a-b)^2$
+
+"$m$ 的 $\dfrac{3}{4}$ 比 $n$ 多 5" → $\dfrac{3}{4}m = n + 5$ 或 $\dfrac{3}{4}m - 5 = n$
+\end{solution}
+
+\begin{example}
+小明今年 $x$ 岁，爸爸比小明大 28 岁。用代数式表示：
+\end{example}
+\begin{solution}
+(1) 爸爸的年龄：$x + 28$\\
+(2) 5 年后小明的年龄：$x + 5$\\
+(3) 5 年后爸爸的年龄：$(x + 28) + 5 = x + 33$\\
+(4) 10 年前爸爸的年龄：$(x + 28) - 10 = x + 18$
+\end{solution}
+
+\subsection*{代数式的值}
+
+代入具体的数，就能算出代数式的值。
+
+\begin{example}
+当 $a=2$，$b=3$ 时，求 $3a + 2b$ 的值。
+\end{example}
+\begin{solution}
+把 $a$ 换成 2，$b$ 换成 3：
+$3a + 2b = 3\times2 + 2\times3 = 6 + 6 = 12$。
+\end{solution}
+
+\begin{example}
+当 $x=5$ 时，求 $2x^2 - 3x + 1$ 的值。
+\end{example}
+\begin{solution}
+$2x^2 - 3x + 1 = 2\times5^2 - 3\times5 + 1 = 2\times25 - 15 + 1 = 50 - 15 + 1 = 36$。
+\end{solution}
+
+\subsection*{合并同类项——整式的整理}
+
+先看这个：
+
+$3x + 2x = \;\boxed{\;}\;?$
+
+"3 个 $x$ 加 2 个 $x$"就是 5 个 $x$，所以 $3x + 2x = 5x$。这个过程叫\textbf{合并同类项}。
+
+什么叫同类项？\textbf{字母相同、字母的指数也相同的项}。
+
+\begin{example}
+合并同类项：$4a + 3b - 2a + b$
+\end{example}
+\begin{solution}
+先找同类项：\\
+$a$ 类：$4a$ 和 $-2a$ → $4a-2a = 2a$\\
+$b$ 类：$3b$ 和 $+b$ → $3b+b = 4b$\\
+所以原式 $= 2a + 4b$。
+\end{solution}
+
+\begin{example}
+合并同类项：$5x^2 + 3x - 2x^2 + x - 1$
+\end{example}
+\begin{solution}
+$x^2$ 类：$5x^2 - 2x^2 = 3x^2$\\
+$x$ 类：$3x + x = 4x$\\
+常数类：$-1$ 单独\\
+结果：$3x^2 + 4x - 1$。
+\end{solution}
+
+\begin{exercise}
+\item 把下列文字翻译成代数式：
+  \begin{subexercise}
+    \item $x$ 的 2 倍减去 5
+    \item $a$ 与 $b$ 的和的 3 倍
+    \item $m$ 的平方与 $n$ 的差
+    \item 三个连续整数，中间一个是 $n$，求另外两个
+    \item 一个数的 $\dfrac{1}{3}$ 比它的 $\dfrac{1}{2}$ 小 4
+    \item 长方形的长是 $a$，宽比长短 3，求周长
+  \end{subexercise}
+
+\item 当 $x=3$ 时，求下列代数式的值：
+  \begin{subexercise}
+    \item $2x + 5$
+    \item $4x - 7$
+    \item $x^2 + 2x + 1$
+    \item $2x^2 - 3x$
+  \end{subexercise}
+
+\item 当 $a=2$，$b=-1$ 时，求：
+  \begin{subexercise}
+    \item $3a + 2b$
+    \item $a^2 - b^2$
+    \item $(a+b)^2$
+    \item $2a^2 - 3ab + b^2$
+  \end{subexercise}
+
+\item 合并同类项：
+  \begin{subexercise}
+    \item $3x + 5x$
+    \item $7a - 2a$
+    \item $4m + 3n - 2m + n$
+    \item $2x^2 + 3x - x^2 - x + 5$
+    \item $5ab - 2a^2 + 3ab - a^2$
+    \item $3x^2 - 2x + 1 - 2x^2 + 5x - 3$
+  \end{subexercise}
+
+\item 判断下列计算对不对，如果不对请改正：
+  \begin{subexercise}
+    \item $3x + 2y = 5xy$
+    \item $2a^2 + 3a^2 = 5a^4$
+    \item $4x - x = 4$
+    \item $5ab - 3ba = 2ab$
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第3讲\quad 括号与整式加减}
+
+\subsection*{去括号为什么这样去？}
+
+先看数字的例子：
+
+$10 + (3 + 2) = 10 + 5 = 15$，$10 + 3 + 2 = 15$。\\
+所以 $a + (b + c) = a + b + c$。
+
+$10 - (3 + 2) = 10 - 5 = 5$，$10 - 3 - 2 = 5$。\\
+所以 $a - (b + c) = a - b - c$。
+
+\textbf{括号前面是加号，去括号不变号；括号前面是减号，去括号全变号。}
+
+\begin{example}
+去括号：$(3x + 2y) + (x - y)$
+\end{example}
+\begin{solution}
+原式 $= 3x + 2y + x - y = 4x + y$。
+\end{solution}
+
+\begin{example}
+去括号：$(4a - 3b) - (2a + b)$
+\end{example}
+\begin{solution}
+原式 $= 4a - 3b - 2a - b = 2a - 4b$。
+注意：减号后面的括号去掉时，里面的每一项都要变号。
+\end{solution}
+
+\subsection*{整式加减——几个例子就够了}
+
+整式加减就是：先去括号，再合并同类项。
+
+\begin{example}
+计算：$(3x^2 - 2xy + y^2) - 2(x^2 - xy + 2y^2)$
+\end{example}
+\begin{solution}
+原式 $= 3x^2 - 2xy + y^2 - 2x^2 + 2xy - 4y^2$\\
+$= (3x^2 - 2x^2) + (-2xy + 2xy) + (y^2 - 4y^2)$\\
+$= x^2 - 3y^2$。
+\end{solution}
+
+\begin{example}
+计算：$(5a + 3b - 2c) - (2a - 4b + c) + (-a + b - 3c)$
+\end{example}
+\begin{solution}
+原式 $= 5a + 3b - 2c - 2a + 4b - c - a + b - 3c$\\
+$a$ 类：$5a - 2a - a = 2a$\\
+$b$ 类：$3b + 4b + b = 8b$\\
+$c$ 类：$-2c - c - 3c = -6c$\\
+结果：$2a + 8b - 6c$。
+\end{solution}
+
+\begin{exercise}
+\item 先去括号再合并同类项：
+  \begin{subexercise}
+    \item $(3x+2y)+(x-3y)$
+    \item $(2a^2-3ab+4b^2)-(a^2+2ab-3b^2)$
+    \item $3(2m-3n)-2(3m-5n)$
+    \item $4(2x^2-xy)-3(x^2-2xy+1)$
+    \item $-(3x-2y)+(2x-3y)-(x-y)$
+    \item $(a-2b)+(3a+b)-2(a-b)$
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $(x^2+2x+1)+(x^2-2x+1)$
+    \item $(3x^2-2x+5)-(x^2+3x-2)$
+    \item $2(a^2-ab)-3(2a^2+ab)$
+    \item $(4x^2-2xy+y^2)-2(x^2-xy+y^2)$
+  \end{subexercise}
+
+\item 已知 $A=3x+2y$，$B=x-y$：
+  \begin{subexercise}
+    \item 求 $A+B$
+    \item 求 $A-B$
+    \item 求 $2A-3B$
+  \end{subexercise}
+
+\item 一个多项式加上 $2x^2-3x+1$ 等于 $3x^2+x-2$，求这个多项式。
+
+\item 一个长方形的一边长为 $2a+3$，另一边长为 $a-1$，求它的周长。
+\end{exercise}
+
+\sectiontitle{章末小结}
+
+这一章我们从具体的数字出发，走进了抽象的字母世界：
+
+\begin{enumerate}
+  \item \textbf{用字母表示数}——字母是"可以变的数"，一个式子管一类问题。
+  \item \textbf{代数式的构造与求值}——把文字翻译成代数式，代入算值。
+  \item \textbf{合并同类项}——整理代数式的基本方法。
+  \item \textbf{去括号与整式加减}——括号法则的直观理解。
+\end{enumerate}
+
+下一步，我们要用这些字母去解决一个核心问题：\textbf{找那个未知的数}。

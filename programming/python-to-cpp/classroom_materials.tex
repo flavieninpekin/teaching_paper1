@@ -5,6 +5,7 @@
 \usepackage{listings}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
 
 \lstset{
   basicstyle=\ttfamily\small,
@@ -650,6 +651,78 @@ int main() {
 \end{tabular}
 \end{center}
 
+\section*{各课练习}
+
+\subsection*{第一课：核心差异总览}
+\begin{enumerate}
+  \item 用自己的话解释"静态类型"和"动态类型"的区别。Python 和 C++ 分别属于哪种？
+  \item 为什么 C++ 需要编译而 Python 不需要？这分别带来了什么好处和坏处？
+  \item \textbf{[翻译练习]} 把以下 Python 代码"翻译"成它对应的 C++ 写法（不要求完整可运行，写出关键差异即可）：\texttt{x = 10}, \texttt{name = "小明"}, \texttt{print(x)}。
+\end{enumerate}
+
+\subsection*{第二课：开发环境搭建}
+\begin{enumerate}
+  \item 在你自己的电脑上安装 C++ 编译器，写第一个 C++ 程序并编译运行。
+  \item 尝试在编译时去掉 \texttt{\#include <iostream>}，看编译器报什么错。然后加回来。
+  \item \textbf{[对比]} C++ 的 \texttt{main} 函数和 Python 的"主程序"有什么不同？为什么 C++ 程序必须有一个 \texttt{main}？
+\end{enumerate}
+
+\subsection*{第三课：变量与数据类型}
+\begin{enumerate}
+  \item 声明一个 \texttt{double} 类型变量存储你的身高，一个 \texttt{int} 变量存储年龄，一个 \texttt{char} 变量存储性别首字母，然后输出它们。
+  \item 在 C++ 中，\texttt{float} 和 \texttt{double} 有什么区别？什么情况下用 \texttt{float} 更好？
+  \item \textbf{[类型安全]} 尝试在 C++ 中写 \texttt{int x = 3.14;} 看看会发生什么。然后再试 \texttt{double y = 10/3;}。观察结果，思考类型系统的意义。
+\end{enumerate}
+
+\subsection*{第四课：输入输出}
+\begin{enumerate}
+  \item 写一个 C++ 程序：输入两个整数，输出它们的和、差、积、商。
+  \item 对比 \texttt{cout << x << y} 和 \texttt{cout << x << " " << y} 的输出有什么不同。
+  \item \textbf{[格式化]} 用 \texttt{setprecision} 控制输出：输入一个小数，输出保留两位小数的结果。
+\end{enumerate}
+
+\subsection*{第五课：控制结构}
+\begin{enumerate}
+  \item 把 Python 的猜数字游戏（只用一次猜测的版本）改写成 C++。
+  \item C++ 有而 Python 没有的 \texttt{switch} 语句有什么用？什么场景下用 \texttt{switch} 比用 \texttt{if/else} 更好？
+  \item \textbf{[陷阱]} 以下 C++ 代码有什么问题？\texttt{for (int i = 0; i < 10; i++); \{ cout << i << endl; \}}。
+\end{enumerate}
+
+\subsection*{第六课：数组与指针}
+\begin{enumerate}
+  \item 声明一个包含 10 个整数的数组，用循环给每个元素赋值为它的索引的平方，然后输出。
+  \item 用指针修改一个变量的值：声明 \texttt{int x = 42}，用指针 \texttt{p} 指向 \texttt{x}，通过 \texttt{*p} 把 \texttt{x} 改成 100。
+  \item \textbf{[对比]} Python 有没有指针？为什么 Python 不需要指针？
+\end{enumerate}
+
+\subsection*{第七课：函数}
+\begin{enumerate}
+  \item 写一个函数 \texttt{int max3(int a, int b, int c)} 返回三个数中的最大值。
+  \item C++ 的函数重载有什么好处？Python 没有函数重载，它是怎么实现类似功能的？
+  \item \textbf{[引用参数]} 写一个函数 \texttt{void increment(int\& x)}，把传入的参数加 1。然后写 \texttt{main} 函数测试。
+\end{enumerate}
+
+\subsection*{第八课：面向对象初步}
+\begin{enumerate}
+  \item 创建一个 \texttt{Circle} 类，有私有成员 \texttt{radius}，公有方法 \texttt{getArea()} 返回面积。在 \texttt{main} 中创建对象测试。
+  \item \texttt{public} 和 \texttt{private} 的区别是什么？为什么面向对象编程要隐藏数据？
+  \item \textbf{[对比]} C++ 的构造函数对应 Python 的哪个方法？C++ 的 \texttt{this} 指针对应 Python 的什么？
+\end{enumerate}
+
+\subsection*{第九课：内存管理}
+\begin{enumerate}
+  \item 用 \texttt{new} 在堆上分配一个整数，赋值为 99，输出它，然后用 \texttt{delete} 释放。
+  \item "内存泄漏"是什么意思？举一个 C++ 中会导致内存泄漏的例子。
+  \item \textbf{[重要]} 每次用 \texttt{new} 之后都应该做什么？如果忘记了会有什么后果？
+\end{enumerate}
+
+\subsection*{第十课：编译与链接}
+\begin{enumerate}
+  \item 把综合项目中的猜数字游戏拆分成两个文件：\texttt{game.h}（声明）和 \texttt{game.cpp}（实现），然后在 \texttt{main.cpp} 中包含头文件并调用。
+  \item \texttt{\#include} 和 Python 的 \texttt{import} 有什么本质区别？
+  \item \textbf{[实验]} 在头文件中写 \texttt{int x = 5;}，然后在两个 \texttt{.cpp} 文件中都 \texttt{\#include} 这个头文件。编译看看会发生什么？为什么？
+\end{enumerate}
+
 \textbf{下一步：} 掌握了 C++ 之后，你有多个方向可以选择：
 \begin{itemize}
   \item \textbf{信息学竞赛：} 深入学习 STL、算法、数据结构
@@ -657,6 +730,78 @@ int main() {
   \item \textbf{系统编程：} 深入了解操作系统、网络编程
   \item \textbf{游戏开发：} 学习 Unity 或 Unreal Engine
 \end{itemize}
+
+\section*{\textcolor{blue!70!black}{各课练习参考答案}}
+
+\subsection*{第一课：核心差异总览}
+\begin{enumerate}
+  \item 静态类型：编译时确定类型（C++），动态类型：运行时确定类型（Python）。C++ 写 \texttt{int x = 5;}，Python 写 \texttt{x = 5}。
+  \item C++ 编译后直接运行机器码，速度快但修改后要重新编译。Python 解释执行，修改即生效但速度慢。
+  \item \texttt{int x = 10;} / \texttt{string name = "小明";} / \texttt{cout << x << endl;}。
+\end{enumerate}
+
+\subsection*{第二课：开发环境搭建}
+\begin{enumerate}
+  \item 验证是否安装成功：在命令行运行 \texttt{g++ --version} 能看到版本号。
+  \item 去掉 \texttt{\#include <iostream>} 后，\texttt{cout} 和 \texttt{endl} 未定义，编译器报大量错误。
+  \item C++ 需要 \texttt{main} 函数作为程序入口，操作系统从这里开始执行。Python 从文件第一行开始执行，不需要显式入口。
+\end{enumerate}
+
+\subsection*{第三课：变量与数据类型}
+\begin{enumerate}
+  \item \texttt{double height = 1.75; int age = 15; char gender = 'M';}
+  \item \texttt{float} 精确到约 7 位小数（4 字节），\texttt{double} 精确到约 15 位（8 字节）。省内存时用 \texttt{float}。
+  \item \texttt{int x = 3.14;} → x = 3（截断）。\texttt{double y = 10/3;} → y = 3.0（整数除法先执行）。需写 \texttt{10.0/3}。
+\end{enumerate}
+
+\subsection*{第四课：输入输出}
+\begin{enumerate}
+  \item 参考代码：\texttt{cin >> a >> b; cout << a+b << " " << a-b << " " << a*b << " " << (b!=0 ? a/b : 0);}
+  \item \texttt{cout << x << y} → 输出连在一起。\texttt{cout << x << " " << y} → 中间有空格。
+  \item \texttt{cout << fixed << setprecision(2) << num << endl;}。
+\end{enumerate}
+
+\subsection*{第五课：控制结构}
+\begin{enumerate}
+  \item 参考代码见综合项目。关键差异：\texttt{if (guess == secret)}（括号+花括号）。
+  \item \texttt{switch} 适合对一个变量的多个离散值做分支（如星期几），比多个 \texttt{if/else} 更清晰。
+  \item 循环后面多了分号：\texttt{for (...);} 导致循环体为空，后面的 \texttt{\{...\}} 只执行一次且 \texttt{i} 超出作用域。
+\end{enumerate}
+
+\subsection*{第六课：数组与指针}
+\begin{enumerate}
+  \item \texttt{int arr[10]; for (int i = 0; i < 10; i++) arr[i] = i*i;}
+  \item \texttt{int x = 42; int* p = \&x; *p = 100;} 此时 \texttt{x} 变成 100。
+  \item Python 没有显式指针，所有变量都是"引用"（类似自动管理的指针）。Python 设计者认为指针太容易出错，不适合初学者。
+\end{enumerate}
+
+\subsection*{第七课：函数}
+\begin{enumerate}
+  \item \texttt{int max3(int a, int b, int c) \{ return max(max(a,b), c); \}}
+  \item 函数重载让同一函数名处理不同类型/数量的参数。Python 用默认参数和 \texttt{*args} 实现。
+  \item \texttt{void increment(int\& x) \{ x++; \}} 调用后实参被修改。
+\end{enumerate}
+
+\subsection*{第八课：面向对象初步}
+\begin{enumerate}
+  \item \texttt{class Circle \{ private: double radius; public: Circle(double r): radius(r) \{\} double getArea() \{ return 3.14159*radius*radius; \} \};}
+  \item \texttt{public} 外部可访问，\texttt{private} 只有类内可访问。隐藏数据防止外部随意修改，保证数据完整性。
+  \item 构造函数对应 Python 的 \texttt{\_\_init\_\_}。\texttt{this} 指针对应 Python 的 \texttt{self}。
+\end{enumerate}
+
+\subsection*{第九课：内存管理}
+\begin{enumerate}
+  \item \texttt{int* p = new int(99); cout << *p; delete p;}
+  \item 内存泄漏：用 \texttt{new} 分配了内存但忘记 \texttt{delete}，程序退出前该内存一直无法释放。
+  \item 每个 \texttt{new} 都要对应一个 \texttt{delete}。忘记会导致内存泄漏，程序占用的内存越来越多，最终可能崩溃。
+\end{enumerate}
+
+\subsection*{第十课：编译与链接}
+\begin{enumerate}
+  \item 将函数声明写在 \texttt{.h} 文件，实现写在 \texttt{.cpp}，\texttt{main.cpp} 中 \texttt{\#include "game.h"}，一起编译链接。
+  \item \texttt{\#include} 是预处理指令，直接把头文件内容插入到当前位置（文本替换）。Python 的 \texttt{import} 是运行时加载模块。
+  \item 编译报错"重复定义"（multiple definition）。因为每个 \texttt{.cpp} 独立编译，链接时发现同一个符号在两个目标文件中都有定义。
+\end{enumerate}
 
 \section*{综合练习与答案}
 

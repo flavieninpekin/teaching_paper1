@@ -1,45 +1,61 @@
 \ProvidesPackage{teaching-style}
 \usepackage{xcolor}
-\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 \usepackage{amsmath, amssymb}
 \usepackage{array}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \usepackage{fancyhdr}
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{tikz}
-\linespread{1.35}
+\usepackage{needspace}
+\linespread{1.3}
 
 % 颜色定义
 \definecolor{mainblue}{RGB}{0, 73, 144}
 \definecolor{lightblue}{RGB}{220, 235, 250}
 \definecolor{exred}{RGB}{180, 30, 30}
+\definecolor{comments}{RGB}{100, 100, 100}
 
 % 标题格式
 \newcommand{\maintitle}[1]{{
   \centering
-  \vspace*{1cm}
+  \vspace*{2cm}
   {\Huge\bfseries\color{mainblue} #1}\par
-  \vspace{0.5cm}
+  \vspace{0.3cm}
 }}
 
-% 章节标题
+% 章节标题（带底线，同时写入目录）
 \newcommand{\chaptertitle}[1]{{
-  \vspace{0.6cm}
-  \noindent{\Large\bfseries\color{mainblue} #1}\par
+  \needspace{3\baselineskip}
+  \addcontentsline{toc}{section}{#1}
+  \vspace{0.5cm}
+  \noindent{\LARGE\bfseries\color{mainblue} #1}\par
+  \vspace{0.1cm}
+  \noindent\textcolor{mainblue!40}{\rule{\linewidth}{0.8pt}}\par
   \vspace{0.3cm}
 }}
 
 \newcommand{\sectiontitle}[1]{{
-  \vspace{0.4cm}
+  \needspace{3\baselineskip}
+  \addcontentsline{toc}{subsection}{#1}
+  \vspace{0.3cm}
   \noindent{\large\bfseries\color{mainblue!80!black} #1}\par
-  \vspace{0.2cm}
+  \vspace{0.15cm}
+}}
+
+% 前言
+\newcommand{\preface}[1]{{
+  \addcontentsline{toc}{section}{#1}
+  \vspace{0.5cm}
+  \noindent{\LARGE\bfseries\color{mainblue} #1}\par
+  \vspace{0.3cm}
 }}
 
 % 知识点框
 \newcommand{\knowbox}[1]{{
   \noindent\colorbox{lightblue}{\parbox{\dimexpr\linewidth-2\fboxsep}{\bfseries #1}}\par
-  \vspace{0.2cm}
+  \vspace{0.15cm}
 }}
 
 % 例题环境
@@ -47,7 +63,7 @@
   \noindent\textbf{\color{exred}例 }%
   \begingroup\parindent=2em
 }{
-  \endgroup\par\vspace{0.2cm}
+  \endgroup\par\vspace{0.1cm}
 }
 
 % 解答环境
@@ -55,24 +71,36 @@
   \noindent\textbf{\color{mainblue!60!black}解 }%
   \begingroup\parindent=2em
 }{
-  \endgroup\par\vspace{0.3cm}
+  \endgroup\par\vspace{0.2cm}
 }
 
-% 练习题环境
+% 练习题环境（行内排列，短题并排，长题自动换行）
 \newenvironment{exercise}{
-  \begin{enumerate}[label=\arabic*., leftmargin=*, itemsep=0.3cm]
+  \vspace{0.08cm}
+  \noindent\textcolor{mainblue!30}{\rule{\linewidth}{0.4pt}}\par
+  \vspace{0.03cm}
+  \begin{enumerate*}[label=\arabic*., itemjoin={\hspace{1.5cm}}, leftmargin=*]
 }{
-  \end{enumerate}
+  \end{enumerate*}
+  \vspace{0.08cm}
 }
 
 \newenvironment{subexercise}{
-  \begin{enumerate}[label=(\alph*), leftmargin=*, itemsep=0.15cm]
+  \begin{enumerate}[label=(\alph*), leftmargin=*, itemsep=0.05cm, parsep=0pt]
 }{
   \end{enumerate}
 }
 
-% 答案环境（用于书末答案）
-\newenvironment{answerkey}{
-  \sectiontitle{参考答案}
-}{
-}
+% 知识笔记框（\xknow，用于思考加深的旁注）
+\newcommand{\xknow}[1]{{
+  \vspace{0.1cm}
+  \noindent\colorbox{mainblue!5}{\parbox{\dimexpr\linewidth-2\fboxsep}{\small\itshape #1}}\par
+  \vspace{0.15cm}
+}}
+
+% 章末小结框
+\newcommand{\summarybox}[1]{{
+  \vspace{0.3cm}
+  \noindent\colorbox{mainblue!8}{\parbox{\dimexpr\linewidth-2\fboxsep}{\small #1}}\par
+  \vspace{0.2cm}
+}}

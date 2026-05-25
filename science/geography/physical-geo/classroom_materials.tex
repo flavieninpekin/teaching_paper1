@@ -1,0 +1,274 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{xcolor,graphicx,amsmath}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}\linespread{1.35}
+\definecolor{defblue}{RGB}{0,80,160}\definecolor{thinkorange}{RGB}{230,120,20}
+\definecolor{funboxbg}{RGB}{245,248,252}\definecolor{practicegreen}{RGB}{40,130,70}
+\newenvironment{thinkbox}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{thinkorange}{【 想一想 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.3cm}}
+\newenvironment{definition}[1]{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\fbox{\begin{minipage}{0.92\textwidth}\vspace{0.1cm}\textbf{\textcolor{defblue}{【 #1 】}}}{\vspace{0.1cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{example}{\vspace{0.2cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{examplebg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{orange!80!black}{【 例题 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{practice}{\vspace{0.3cm}\begin{center}\begin{minipage}{0.88\textwidth}\colorbox{funboxbg}{\begin{minipage}{0.94\textwidth}\vspace{0.15cm}\textbf{\textcolor{practicegreen}{【 练一练 】}}}{\vspace{0.15cm}\end{minipage}}\end{minipage}\end{center}\vspace{0.2cm}}
+\newenvironment{figplaceholder}[1]{\vspace{0.2cm}\begin{center}\fbox{\begin{minipage}{0.82\textwidth}\centering\textcolor{blue!70!black}{\textbf{【插图位置】}}\\[0.2cm]#1\end{minipage}}\end{center}\vspace{0.2cm}}
+\title{\textcolor{blue!70!black}{\Huge\textbf{地理1 · 自然地理基础}}}
+\author{}\date{}
+\begin{document}\maketitle\thispagestyle{empty}
+\section*{\textcolor{blue!70!black}{致同学}}
+欢迎来到自然地理。这一本讲的是地球本身——它是怎么转的、地图怎么看、天气和气候是怎么回事、大气和海洋在做什么运动。自然地理是地理学的基础——没有这些，你无法理解后面所有"人和自然互动"的问题。
+
+\newpage
+\section{\textcolor{orange!80!black}{第一课\quad 地球与宇宙}}
+
+\subsection*{地球的形状与大小}
+地球是一个\textbf{两极稍扁、赤道略鼓}的椭球体。赤道半径约6378km，两极半径约6357km。平均半径约6371km。
+
+\subsection*{地球的自转}
+地球绕地轴自西向东旋转——周期约24小时（1个恒星日23h56min，1个太阳日24h）。\\
+自转产生\textbf{昼夜交替}（对着太阳的一半为白昼，背向的为黑夜）。\\
+\textbf{地转偏向力（科里奥利力）}：由于自转，北半球运动的物体偏向右侧，南半球偏向左侧——影响大气环流和洋流的运动方向。
+
+\subsection*{地球的公转}
+地球绕太阳公转——轨道近似圆形，周期约365.25天（1年）。公转轨道面叫\textbf{黄道面}。地轴与黄道面呈约66.5°的夹角——导致太阳直射点在南北回归线之间往返移动——产生\textbf{四季更替}和\textbf{五带划分}（热带/温带/寒带）。
+
+\subsection*{经纬度}
+\textbf{纬线}：东西向的平行圈。赤道（0°）向北为北纬N，向南为南纬S。\\
+\textbf{经线}：连接南北两极的半圆。本初子午线（0°）通过英国格林尼治天文台——向东为东经E，向西为西经W。\\
+\textbf{利用经纬网定位}（如北京：39.9°N, 116.4°E）。
+
+\begin{example}
+小明家4月1日早上8:00正在吃早饭。在伦敦的同学同一时间在做什么？北京时间（东八区）比格林尼治时间（0时区）早8小时——伦敦时间为0:00——深夜睡觉。
+\end{example}
+
+\begin{practice}
+1. 地球的自转周期约\_\_\_\_\_小时，公转周期约\_\_\_\_\_天。\\
+2. 格林尼治天文台所在的经线为\_\_\_\_\_度经线。\\
+3. （判断）地轴与黄道面的垂直夹角约为66.5°。（\quad）\\
+4. 北京时间比伦敦时间早\_\_\_\_\_小时。\\
+5. 北京的地理坐标约为\_\_\_\_\_。\\
+6. 北半球运动的物体受地转偏向力影响偏向\_\_\_\_\_侧。\\
+7. （判断）地球公转产生了昼夜交替现象。（\quad）\\
+8. 黄道面与地轴的夹角约为\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第二课\quad 地图的基本知识}}
+
+\subsection*{地图三要素}
+\textbf{比例尺}：图上距离/实地距离。大比例尺（如1:1000——画得详细），小比例尺（如1:100万——画的范围大但简略）。\\
+\textbf{方向}：上北下南左西右东（有指向标时指向标指示北方；有经纬网时经线指示南北）。\\
+\textbf{图例}：地图上的符号含义。
+
+\subsection*{地形图的阅读}
+\textbf{等高线}：地面上海拔相同的各点的连线。等高线密集$\rightarrow$坡度陡；稀疏$\rightarrow$坡度缓。\\
+\textbf{识别地形：}
+\begin{itemize}
+  \item 山顶：等高线闭合中高外低
+  \item 山脊：等高线向低处凸出（"脊线"）
+  \item 山谷：等高线向高处凸出（"谷线"——河流多发源于山谷）
+  \item 陡崖：等高线重合处
+\end{itemize}
+
+\begin{thinkbox}
+到野外玩的时候——手机没信号了怎么办？如果能看懂地形图、会辨方向——你永远能找到路。GIS技术和手机地图很强大，但学会纸质地图的基本功依然是地理学最核心的技能。
+\end{thinkbox}
+
+\begin{practice}
+1. 地图的三要素是\_\_\_\_\_、\_\_\_\_\_、\_\_\_\_\_。\\
+2. 等高线越密集——坡度越\_\_\_\_\_。\\
+3. 山谷处等高线向\_\_\_\_\_凸出；山脊处向\_\_\_\_\_凸出。\\
+4. 有两张地图，比例尺分别为1:1000和1:1000000。哪张图能看到的街道细节更多？为什么？\\
+5. 等高线重合处表示的地形是\_\_\_\_\_。\\
+6. （判断）山脊处等高线向高处凸出。（\quad）\\
+7. 比例尺越大，地图表示的范围越\_\_\_\_\_，内容越\_\_\_\_\_。\\
+8. 野外没有指南针时，可以利用\_\_\_\_\_判断方向。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第三课\quad 大气与气候（一）}}
+
+\subsection*{气温与降水}
+\textbf{气温：}太阳辐射是地球表面的主要热源。低纬度气温高、高纬度气温低。海拔每升高100米——气温约下降0.6℃（对流层）。\\
+\textbf{降水：}暖湿空气上升→冷却凝结→成云致雨。世界年降水量分布不均：赤道地区最多（对流旺盛），副热带高压带最少。
+
+\subsection*{气压带与风带}
+地球表面不均匀受热+地转偏向力——形成了全球性的气压带和风带。三圈环流简化版：
+\begin{itemize}
+  \item 赤道低压带（空气上升——炎热湿润）
+  \item 副热带高压带（空气下沉——炎热干燥——世界主要沙漠都在这附近，如撒哈拉）
+  \item 副极地低压带
+  \item 极地高压带（极寒干燥）
+\end{itemize}
+风从高压带吹向低压带——受地转偏向力偏转——形成信风带（东北/东南信风）、西风带、极地东风带。
+
+\subsection*{季风环流}
+北京所在的东亚受季风影响显著：\textbf{冬季}西伯利亚高压→干燥寒冷的西北风（北京干冷）；\textbf{夏季}太平洋高压→湿润温暖的东南风（北京高温多雨——七八月主汛期）。
+
+\begin{figplaceholder}
+此处插入全球气压带和风带示意图（七压六带）（见 figure/requirements/geo1-ch1.txt 插图1）
+\end{figplaceholder}
+
+\begin{practice}
+1. 海拔每升高100m，气温下降约\_\_\_\_\_℃。\\
+2. 副热带高压带控制下的气候特点是\_\_\_\_\_（湿润/干燥）。\\
+3. 北京夏季吹\_\_\_\_\_风——特点是\_\_\_\_\_。\\
+4. （判断）赤道地区降水丰富是因为空气下沉。（\quad）\\
+5. 全球近地面共分为\_\_\_\_\_个气压带和\_\_\_\_\_个风带。\\
+6. 撒哈拉沙漠主要受\_\_\_\_\_（副热带高压/赤道低压）控制。\\
+7. 东亚冬季盛行\_\_\_\_\_风，来自\_\_\_\_\_（海洋/大陆）。\\
+8. 信风带在北半球为\_\_\_\_\_信风。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第四课\quad 天气与气候（二）}}
+
+\subsection*{天气 vs 气候}
+\textbf{天气}：短时间、局部地区的大气状态（今天下雨、明天降温）。\\
+\textbf{气候}：长时间、大范围的平均天气状况（北京夏季高温多雨、冬季寒冷干燥）。
+
+\subsection*{世界主要气候类型}
+\textbf{热带雨林气候}：全年高温多雨（赤道附近——亚马逊、刚果盆地）。\\
+\textbf{热带草原气候}：全年高温、干湿季分明（非洲稀树草原）。\\
+\textbf{地中海气候}：夏季炎热干燥、冬季温和多雨（欧洲南部——葡萄酒产区）。\\
+\textbf{温带海洋性气候}：全年温和湿润（西欧）。\\
+\textbf{温带季风气候}：夏季高温多雨、冬季寒冷干燥（北京、华北）。\\
+\textbf{极地气候}：全年严寒（南北极）。
+
+\subsection*{气温曲线和降水量柱状图}
+根据这些"气候统计图"判断气候类型：高温和降水是否同季——热带雨林全年多雨，地中海气候雨热不同期。这是初中地理最经典的读图题。
+
+\begin{practice}
+1. "今天最高气温35°C"描述的是\_\_\_\_\_（天气/气候）。\\
+2. 温带季风气候的特点：夏\_\_\_\_\_冬\_\_\_\_\_。\\
+3. （判断）地中海气候雨热同期。（\quad）\\
+4. 北京属于\_\_\_\_\_气候类型。\\
+5. 热带雨林气候的特点是\_\_\_\_\_。\\
+6. 地中海气候夏季\_\_\_\_\_，冬季\_\_\_\_\_。\\
+7. （判断）气候是短时间内的大气状态。（\quad）\\
+8. 温带海洋性气候主要分布在\_\_\_\_\_（大陆西岸/东岸）。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第五课\quad 水循环与洋流}}
+
+\subsection*{水循环的三种类型}
+\textbf{海陆间循环（大循环）}：海面蒸发→水汽输送→降水到陆地→径流回海。最重要的一类——使陆地水不断更新。\\
+\textbf{海上内循环}：海面蒸发→海上降水（只发生在海洋上）。\\
+\textbf{陆地内循环}：内陆蒸发→降水到陆地（如塔里木盆地）。中国外流区（最终流入大洋）和内流区（不流入大洋，如新疆）。
+
+\subsection*{洋流}
+海洋中的大规模定向流动。\\
+\textbf{暖流}：从低纬流向高纬（水温高于流经海域——如日本暖流、北大西洋暖流）。暖流使沿岸气温升高、降水增多。\\
+\textbf{寒流}：从高纬流向低纬（水温低于流经海域——如秘鲁寒流、加利福尼亚寒流）。寒流使沿岸气温降低、降水减少。
+
+\textbf{洋流对地理环境的影响：}暖流经过的海域→水温高、蒸发旺盛→多雨。寒流经过→降温、少雨→易形成沙漠（如南美西海岸的阿塔卡马沙漠——受秘鲁寒流影响）。
+
+\begin{thinkbox}
+为什么西欧（比北京还要靠北得多！）冬天比北京暖和很多？因为北大西洋暖流把热带暖水带到了欧洲西北海岸——使伦敦的1月平均气温比同纬度的北京高出约15℃。这就是"洋流改变气候"的最好例证。
+\end{thinkbox}
+
+\begin{practice}
+1. 水循环三种类型中，最重要的一类是\_\_\_\_\_循环。\\
+2. 暖流使沿岸气温\_\_\_\_\_、降水\_\_\_\_\_。\\
+3. （判断）从高纬流向低纬的洋流是暖流。（\quad）\\
+4. 西欧冬季温暖得益于\_\_\_\_\_。\\
+5. 水循环中使陆地水不断更新的类型是\_\_\_\_\_循环。\\
+6. 从高纬流向低纬的洋流是\_\_\_\_\_（暖/寒）流。\\
+7. （判断）洋流对沿岸气候有显著影响。（\quad）\\
+8. 世界上最大的暖流之一是\_\_\_\_\_。
+\end{practice}
+
+\newpage
+\section{\textcolor{orange!80!black}{第六课\quad 自然环境的整体性与差异性}}
+
+\subsection*{整体性}
+自然环境的各要素（气候、地形、土壤、植被、水文）互相影响、构成统一整体。一个要素变化——其他要素随之改变。如：砍伐森林（植被变化）→ 水土流失（土壤变化）→ 河流含沙量增加（水文变化）→ 气候更加干旱。
+
+\subsection*{纬度地带性（水平地带性）}
+从赤道到两极——气温递减——植被和土壤随之变化：热带雨林$\rightarrow$草原$\rightarrow$温带森林/草原$\rightarrow$针叶林$\rightarrow$苔原/冰原。
+
+\subsection*{经度地带性（干湿度地带性）}
+从沿海到内陆——降水递减——景观变化：森林$\rightarrow$草原$\rightarrow$荒漠。中国从东到西就是典型的经度地带性。
+
+\subsection*{垂直地带性}
+随着海拔升高——气温递减、降水先增后减——植被类型从阔叶林到针叶林到草甸到积雪冰川。一个很形象的说法："一山有四季，十里不同天。"中国西南山区是垂直地带性最典型的区域（你从山脚到山顶走一圈，就像从赤道走到了北极）。
+
+\begin{practice}
+1. 从赤道到两极的植被变化规律属于\_\_\_\_\_地带性。\\
+2. 从沿海到内陆的植被变化规律属于\_\_\_\_\_地带性。\\
+3. 一个"山有四季"的现象属于\_\_\_\_\_地带性。\\
+4. （判断）自然环境各要素是独立存在的。（\quad）\\
+5. 中国从东到西呈现森林$\rightarrow$草原$\rightarrow$荒漠的变化，属于\_\_\_\_\_地带性。\\
+6. 海拔越高气温越\_\_\_\_\_，降水先增后\_\_\_\_\_。\\
+7. （判断）垂直地带性和纬度地带性有一定的相似性。（\quad）\\
+8. "一山有四季"体现的是\_\_\_\_\_地带性。
+\end{practice}
+
+\vspace{0.5cm}
+\begin{center}\rule{0.7\textwidth}{1pt}\vspace{0.4cm}
+{\large\textcolor{blue!70!black}{\textbf{—— 地理1·自然地理基础 完 ——}}}
+\end{center}
+
+\newpage
+\section*{\textcolor{defblue}{参考答案}}
+
+\subsection*{第一课}
+1. 24、365.25\\
+2. 0（本初子午线）\\
+3. （√）\\
+4. 8\\
+5. 39.9°N, 116.4°E\\
+6. 右\\
+7. （×）自转产生昼夜交替\\
+8. 66.5°
+
+\subsection*{第二课}
+1. 比例尺、方向、图例\\
+2. 陡\\
+3. 高（上）、低（下）\\
+4. 1:1000的图。比例尺越大，地图表示的范围越小但内容越详细，街道细节只有大比例尺图才能呈现。\\
+5. 陡崖\\
+6. （×）山脊等高线向低处凸出\\
+7. 小、详细\\
+8. 太阳（或北极星、树木年轮等）
+
+\subsection*{第三课}
+1. 0.6\\
+2. 干燥\\
+3. 东南、温暖湿润（高温多雨）\\
+4. （×）空气上升\\
+5. 7、6（七压六带）\\
+6. 副热带高压\\
+7. 西北、大陆（大陆吹向海洋）\\
+8. 东北
+
+\subsection*{第四课}
+1. 天气\\
+2. 高温多雨、寒冷干燥\\
+3. （×）雨热不同期（夏干冬雨）\\
+4. 温带季风\\
+5. 全年高温多雨\\
+6. 炎热干燥、温和多雨\\
+7. （×）气候是长时间平均天气状况\\
+8. 大陆西岸
+
+\subsection*{第五课}
+1. 海陆间（大循环）\\
+2. 升高、增多\\
+3. （×）高纬流向低纬是寒流\\
+4. 北大西洋暖流\\
+5. 海陆间（大循环）\\
+6. 寒\\
+7. （√）\\
+8. （墨西哥）湾暖流（或日本暖流、北大西洋暖流）
+
+\subsection*{第六课}
+1. 纬度\\
+2. 经度（干湿度）\\
+3. 垂直\\
+4. （×）各要素相互影响\\
+5. 经度（干湿度）\\
+6. 低、减\\
+7. （√）\\
+8. 垂直
+
+\end{document}

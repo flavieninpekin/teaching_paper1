@@ -2,77 +2,138 @@ teaching_paper1 —— 四年级课外扩展模块 · 小初高一体衔接
 ========================================================
 
 面向北京地区四年级学生设计的课外拓展学习资料，覆盖语文、数学、
-自然科学、社科、编程五大领域，注重小学到初中的平滑衔接。
+自然科学、社科、编程五大领域，注重小学到高中的平滑衔接。
 
 一、目录结构
 ------------
 
 teaching_paper1/
-├── chinese/                      语文系列
-│   ├── classical-prose/          文言文选读
-│   ├── classical-poetry/         古诗词选读
-│   ├── modern-literature/        现代文学选读
-│   └── zuozhuan/                 《左传》选读（含原文/译文/注释）
+├── build.ps1                       # 批量编译脚本
+├── .gitignore
+├── directory_structure.txt
+├── README.md
 │
-├── math/                         数学系列
-│   ├── calculation/              计算能力扩展（速算/巧算）
-│   └── comprehensive/            数学综合训练（应用/几何/代数入门）
+├── chinese/                        语文系列
+│   ├── README.md                   语文教学大纲（四大模块+写作+基础）
+│   ├── lesson-plan.md              教案设计指南
+│   ├── classical-prose/            文言文选读
+│   ├── classical-poetry/           古诗词选读
+│   ├── modern-literature/          现代文学选读
+│   ├── unit1-mythology/            古代神话与传说
+│   ├── zuozhuan/                   《左传》名篇选读
+│   └── figure/requirements/        插图需求
 │
-├── science/                      理科系列
-│   ├── nature-intro/             自然科学小故事（故事式启蒙）
-│   ├── physics/                  物理初步（含公式与例题）
-│   ├── chemistry-biology/        化学与生物初步
-│   └── geography/                地理初步
+├── math/                           数学系列
+│   ├── README.md                   整体大纲（三线并行：练习/精讲/竞赛）
+│   ├── math-syllabus-v7.md         历次大纲草稿
+│   ├── teaching-style.sty          统一样式包
+│   ├── drilling/                   专项练习
+│   │   ├── arithmetic/             四则运算
+│   │   ├── number-computation/     数的运算
+│   │   ├── expression-computation/ 式的运算
+│   │   └── word-problems/          应用题
+│   ├── low-level/                  低学段（G4~初三）
+│   │   ├── algebra/                代数（上/下册）
+│   │   ├── geometry/               几何（上/下册）
+│   │   ├── number-theory/          数论基础
+│   │   └── combo-stats/            组合与统计
+│   ├── high-level/                 高学段（高中）
+│   │   ├── algebra/                代数深化
+│   │   ├── calculus/               微积分
+│   │   ├── analytic-geometry/      解析几何+线性代数
+│   │   ├── solid-geometry/         立体几何
+│   │   └── probability-stats/      概率统计
+│   ├── competition/                竞赛专题（框架）
+│   └── figure/requirements/        插图需求
 │
-├── social-science/               社科系列
-│   ├── ancient-china/            中国古代史
-│   ├── ancient-world/            世界古近代史
-│   ├── modern-history/           18世纪以来的近现代史
-│   └── economy-society/          经济与社会引入（故事式）
+├── science/                        理科系列
+│   ├── SCIENCE_CATALOG.md          20本书完整大纲
+│   ├── overall_plan.tex            课程规划
+│   ├── nature-intro/               自然科学小故事（28篇启蒙）
+│   ├── physics/                    物理系列（6分册）
+│   │   ├── mechanics-intro/        力学入门（力学入门）
+│   │   ├── newton-mechanics/       牛顿力学
+│   │   ├── energy-momentum/        能量与动量
+│   │   ├── waves-optics-heat/      波动/光学/热学
+│   │   ├── electromagnetism-intro/ 电磁学入门
+│   │   ├── em-waves-modern/        电磁波与现代物理
+│   │   └── figure/requirements/    插图需求
+│   ├── chemistry/                  化学系列（4分册）
+│   │   ├── matter-language/        物质构成与化学语言
+│   │   ├── elements-reactions/     常见元素与无机反应
+│   │   ├── reaction-principles/    化学反应原理
+│   │   ├── organic-structure/      有机化学与物质结构
+│   │   └── figure/requirements/    插图需求
+│   ├── biology/                    生物系列（4分册）
+│   │   ├── cell-molecule/          分子与细胞
+│   │   ├── organism-structure/     生物体结构层次
+│   │   ├── genetics-evolution/     遗传与进化
+│   │   ├── ecology-diversity/      生态与多样性
+│   │   └── figure/requirements/    插图需求
+│   ├── geography/                  地理系列（2分册）
+│   │   ├── classroom_materials.tex 地理总论
+│   │   ├── physical-geo/           自然地理基础
+│   │   ├── geo-hazards/            地貌灾害与资源
+│   │   └── figure/requirements/    插图需求
+│   └── figure/requirements/        插图需求
 │
-└── programming/                  编程系列（G4-G9 六年完整路径，10+2个模块）
-    ├── overview.tex              六年整体课程大纲（模块依赖/学习路径）
-    ├── scratch/                  Scratch家长指南（写给不懂编程的家长）
-    ├── computational-thinking/   计算思维与计算机基础
-    ├── computer_maths/           计算机数学基础（二进制/布尔/集合/图论等）
-    ├── python/                   Python基础
-    ├── ds-algo/                  数据结构与算法初步
-    ├── python-to-cpp/            从Python到C++过渡
-    ├── web-dev/                  前后端开发入门（小项目）
-    ├── git-collab/               版本控制与协作开发（Git）
-    ├── ai-intro/                 人工智能初步（ML/DL/NN/RL）
-    ├── capstone/                 综合项目实战
-    └── figure/                   插图资源
-        └── requirements.txt      所有模块插图需求清单（61张图，含插入位置和搜索词）
+├── history/                        历史系列
+│   ├── HISTORY_CATALOG.md          完整大纲
+│   ├── SAMPLE_LOWER_VOLUME.tex     下卷写作模板
+│   ├── VOLUME_COMPARISON.md        上下卷写作对比
+│   ├── ancient-china/              中国古代史
+│   ├── ancient-world/              世界古近代史
+│   │   └── european-history.tex    欧洲史专题
+│   ├── modern-history/             近现代史
+│   └── figure/requirements/        插图需求
+│
+├── social-science/                 社科系列
+│   ├── SOCIAL_SCIENCE_INDEX.md     整体规划总览
+│   ├── society-intro/              社会科学小故事（启蒙模块）
+│   ├── economy-society/            经济与社会
+│   ├── morality-law/               道德与法治
+│   ├── philosophy/                 哲学初步
+│   ├── politics-law/               政治学与法学入门
+│   ├── economic-geography/         经济地理
+│   └── figure/requirements/        插图需求
+│
+└── programming/                    编程系列（G4-G9 六年路径）
+    ├── README.md                   完整课程大纲
+    ├── overview.tex                六年课程大纲
+    ├── scratch/                    Scratch家长指南（G4）
+    ├── computational-thinking/     计算思维（G4-G5）
+    ├── computer_maths/             计算机数学（G5）
+    ├── python/                     Python基础（G5-G6）
+    ├── ds-algo/                    数据结构与算法（G6）
+    ├── python-to-cpp/              Python→C++过渡（G6-G7）
+    ├── web-dev/                    前后端开发（G7-G8）
+    ├── git-collab/                 版本控制与协作（G8）
+    ├── ai-intro/                   人工智能入门（G9）
+    ├── capstone/                   综合项目实战（G9）
+    └── figure/                     插图需求（61张）
 
 二、使用说明
-------------
+-----------
 
 每个模块下有一个 classroom_materials.tex 文件，使用 ctexart 文档类，
-编译方式（以 zuozhuan 为例）：
+XeLaTeX 编译：
 
     xelatex classroom_materials.tex
 
-如需生成 docx 文档，可使用各模块下的 generate_docx.py（zuozhuan 已有示例）。
+批量编译（需安装 TeX Live 或 MiKTeX）：
+
+    .\build.ps1              # 全部编译
+    .\build.ps1 math         # 只编译数学
 
 三、设计理念
------------
+----------
 
-- "打包式"衔接：将小学与初中知识要点精简整合，减少升学断层
+- "打包式"衔接：小学与初中知识要点精简整合，减少升学断层
 - 故事与知识并重：低年级以故事引入兴趣，高年级渐进到公式和考点
-- 面向北京体系：对标北京中考（语文/数学/道法/物理计分，历/地/化/生等级考查）
-  和高考（3+3 选考模式）
+- 面向北京体系：对标北京中考和高考（3+3选考模式）
 - 编程六年路线（G4-G9）：详见 programming/overview.tex
 
 四、补充素材需求
-----------------
+--------------
 
-以下模块需要外部图片/插图素材配合：
-
-- chinese/classical-poetry/    → 诗词意境插图
-- science/nature-intro/        → 科学故事配图
-- science/physics/             → 实验示意图
-- science/chemistry-biology/   → 分子结构图、细胞结构图
-- science/geography/           → 地图、气候带示意图
-- social-science/ancient-china/ → 疆域简图、文物图片
-- social-science/ancient-world/ → 世界历史地图
+插图/图片素材需求清单见各 figure/requirements/ 目录。

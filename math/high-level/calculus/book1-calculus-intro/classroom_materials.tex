@@ -1,0 +1,429 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{../../teaching-style}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\pagestyle{empty}
+
+\maintitle{微积分初步}
+\begin{center}
+  \large 高学段 · 一元微积分与微分方程
+\end{center}
+\vspace{0.3cm}
+
+\chaptertitle{第一章\quad 极限}
+
+\sectiontitle{1.1\quad "无限趋近"是什么感觉？}
+
+想象你在操场上朝着远处的旗杆走。每走一步，你和旗杆之间的距离就缩短一些。走$10$步之后，你离旗杆已经很近了；走$100$步之后，近到几乎感觉不到距离了。但无论你走多少步，理论上你永远不可能真正"到达"旗杆——你只能无限趋近它。这就是极限的核心思想。
+
+数列的极限也是一回事。数列$\{a_n\}$的极限是$A$，意思是当$n$越来越大时，$a_n$和$A$之间的距离可以任意小，要多小有多小。记作$\lim_{n\to\infty}a_n=A$。
+
+有几个极限是一眼就能看出来的：
+\[
+\lim_{n\to\infty}\frac1n = 0,\qquad
+\lim_{n\to\infty}q^n = 0\;(\text{当}|q|<1),\qquad
+\lim_{n\to\infty}\left(1+\frac1n\right)^n = e
+\]
+最后一个不那么显然——$e$这个数就是这么定义出来的。
+
+\sectiontitle{1.2\quad 函数的极限}
+
+数列的极限是$n\to\infty$，函数的极限是$x\to x_0$（或$x\to\infty$）。意思一样：当$x$无限接近$x_0$时，$f(x)$无限接近某个常数$A$。比如$\lim_{x\to2}(3x+1)=7$，代入$x=2$就行——因为$3x+1$是连续的。
+
+不是所有函数都这么友好。当$x\to0$时$\frac{\sin x}{x}$不能直接代$x=0$（分母为$0$），但它的极限是$1$——这是一个重要结论。
+
+\sectiontitle{1.3\quad 极限怎么算？}
+
+如果你已经知道几个函数的极限，就可以用运算法则算出更复杂的：
+\[
+\lim(f\pm g)=\lim f\pm\lim g,\qquad
+\lim(f\cdot g)=\lim f\cdot\lim g,\qquad
+\lim\frac{f}{g}=\frac{\lim f}{\lim g}\;(\text{分母极限不为$0$})
+\]
+
+\sectiontitle{1.4\quad 两个重要的极限}
+
+有两个极限是所有微积分课程的必修课：
+\[
+\lim_{x\to0}\frac{\sin x}{x}=1,\qquad
+\lim_{x\to\infty}\left(1+\frac1x\right)^x=e
+\]
+它们一出现，就意味着一大堆其他极限可以靠它们推导出来。竞赛中还常见这两个推广版本：
+\[
+\lim_{x\to0}\frac{a^x-1}{x}=\ln a,\qquad
+\lim_{x\to0}\frac{(1+x)^\alpha-1}{x}=\alpha
+\]
+
+\sectiontitle{1.5\quad 无穷小的阶——比一比谁"小"得更快}
+
+当$x\to0$时，$\sin x$、$x$、$x^2$、$1-\cos x$都趋近于$0$，但它们"趋近"的速度不一样。$\sin x$和$x$几乎同步（比值趋近$1$），$1-\cos x$比$x$慢一倍（比值趋近$0$），$x^2$比$x$快得多（比值趋近$0$）。我们把两个无穷小的比值拿来作比较：比值趋近$1$，叫等价无穷小$\sim$；比值趋近$0$，说明分子比分母高阶。
+
+常用的等价无穷小（$x\to0$时）：
+\[
+\sin x\sim x,\quad \tan x\sim x,\quad \ln(1+x)\sim x,\quad e^x-1\sim x,\quad 1-\cos x\sim\frac{x^2}{2}
+\]
+
+\sectiontitle{1.6\quad 夹逼准则——找不到极限时，可以用"夹"的}
+
+如果一个函数$f(x)$不容易直接求极限，但你知道它一直夹在$g(x)$和$h(x)$之间，而$g$和$h$都收敛到同一个数$A$，那$f$也只能收敛到$A$。这就是夹逼准则。它常用于证明$\lim_{x\to0}\frac{\sin x}{x}=1$，也常用于处理带$n$的复杂数列极限。
+
+\sectiontitle{习题1}
+
+\begin{exercise}
+\item 求$\lim\limits_{n\to\infty}\dfrac{3n^2+2}{2n^2-1}$。
+\item 求$\lim\limits_{x\to2}\dfrac{x^2-4}{x-2}$。
+\item 求$\lim\limits_{x\to0}\dfrac{\tan 2x}{x}$。
+\item 求$\lim\limits_{x\to0}\dfrac{e^{2x}-1}{\sin3x}$。
+\item 求$\lim\limits_{x\to0}\dfrac{\ln(1+x^2)}{1-\cos x}$。
+\item 用夹逼准则求$\lim\limits_{x\to0}x^2\sin\frac1x$。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第二章\quad 导数}
+
+\sectiontitle{2.1\quad 导数的定义}
+
+函数在$x_0$处的导数：
+\[
+f'(x_0)=\lim_{\Delta x\to0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}
+\]
+
+几何意义：切线斜率。物理意义：瞬时速度。
+
+\sectiontitle{2.2\quad 基本导数公式}
+
+\[
+(c)'=0,\quad (x^n)'=nx^{n-1},\quad (e^x)'=e^x,\quad (\ln x)'=\frac1x,
+\]
+\[
+(\sin x)'=\cos x,\quad (\cos x)'=-\sin x,\quad (\tan x)'=\sec^2 x
+\]
+补充：
+\[
+(\arcsin x)'=\frac1{\sqrt{1-x^2}},\quad
+(\arctan x)'=\frac1{1+x^2}
+\]
+
+\sectiontitle{2.3\quad 四则运算法则与链式法则}
+
+\[
+(u\pm v)'=u'\pm v',\quad (uv)'=u'v+uv',\quad \left(\frac uv\right)'=\frac{u'v-uv'}{v^2}
+\]
+\[
+\frac{dy}{dx}=\frac{dy}{du}\cdot\frac{du}{dx}\quad\text{(链式法则)}
+\]
+
+\sectiontitle{2.4\quad 隐函数与参数方程求导}
+
+隐函数：两边同时对$x$求导，把$y$看作$x$的函数。
+
+参数方程$\begin{cases}x=f(t)\\y=g(t)\end{cases}$：
+\[
+\frac{dy}{dx}=\frac{dy/dt}{dx/dt}
+\]
+二阶导：$\dfrac{d^2y}{dx^2}=\dfrac{d}{dt}\left(\dfrac{dy}{dx}\right)\Big/\dfrac{dx}{dt}$。
+
+\sectiontitle{2.5\quad 高阶导数与莱布尼茨公式}
+
+$(uv)^{(n)} = \sum_{k=0}^n C_n^k u^{(n-k)}v^{(k)}$。
+
+\sectiontitle{2.6\quad 相关变化率}
+
+已知一个量的变化率，求相关量的变化率。
+关键是建立变量间的关系式，再对时间$t$求导。
+
+\begin{example}
+一个半径为$10$米的气球正在充气，体积变化率为$100\;\text{m}^3/\text{min}$。
+求当半径为$5$米时，半径的变化率。
+\end{example}
+\begin{solution}
+$V=\dfrac43\pi r^3$，两边对$t$求导：$\dfrac{dV}{dt}=4\pi r^2\dfrac{dr}{dt}$。
+代入$r=5$，$\dfrac{dV}{dt}=100$：
+$100=4\pi\cdot25\cdot\dfrac{dr}{dt}$，得$\dfrac{dr}{dt}=\dfrac1\pi\;\text{m/min}$。
+\end{solution}
+
+\sectiontitle{习题2}
+
+\begin{exercise}
+\item 求导：$y=x^3-3x^2+2$；$y=(2x+1)^5$；$y=e^{x^2}\sin x$。
+\item 隐函数求导：$x^2+y^2=25$，求$\dfrac{dy}{dx}$。
+\item 参数方程$\begin{cases}x=t^2\\y=t^3\end{cases}$，求$\dfrac{dy}{dx}$和$\dfrac{d^2y}{dx^2}$。
+\item 一个$5$米长的梯子靠在墙上，底端以$1$米/秒的速度滑离墙面。求顶端下落的速度。
+\item 求$y=x^2\ln x$的$n$阶导数公式。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第三章\quad 导数的应用}
+
+\sectiontitle{3.1\quad 单调性与极值}
+
+$f'(x)>0\Rightarrow f$增，$f'(x)<0\Rightarrow f$减。
+极值点处$f'(x)=0$（必要条件）。左正右负为极大，左负右正为极小。
+
+\sectiontitle{3.2\quad 洛必达法则}
+
+若$\lim\frac{f(x)}{g(x)}$为$\frac00$或$\frac\infty\infty$型，则：
+\[
+\lim\frac{f(x)}{g(x)} = \lim\frac{f'(x)}{g'(x)}
+\]
+其他不定型（$0\cdot\infty,\infty-\infty,1^\infty$等）要先化为$\frac00$或$\frac\infty\infty$型。
+
+\sectiontitle{3.3\quad 函数作图}
+
+步骤：定义域→奇偶性→渐近线→导数表→描点作图。
+\textbf{渐近线}：水平渐近线$y=\lim_{x\to\infty}f(x)$；
+垂直渐近线$x=x_0$（$\lim_{x\to x_0}f(x)=\infty$）；
+斜渐近线$y=kx+b$，$k=\lim\frac{f(x)}{x}$，$b=\lim(f(x)-kx)$。
+
+\sectiontitle{3.4\quad 不等式证明}
+
+构造辅助函数$F(x)=f(x)-g(x)$，用导数研究其单调性。
+高联压轴题的经典方法。
+
+\begin{example}
+证明：$x>0$时，$e^x>1+x+\dfrac{x^2}{2}$。
+\end{example}
+\begin{solution}
+令$F(x)=e^x-1-x-\dfrac{x^2}{2}$，$F(0)=0$，
+$F'(x)=e^x-1-x$，$F'(0)=0$，
+$F''(x)=e^x-1>0\;(x>0)$，所以$F'(x)>0$，$F(x)>0$。
+\end{solution}
+
+\sectiontitle{3.5\quad 方程根的个数讨论}
+
+步骤：分离参数→构造函数→求导找极值→画图→数交点。
+\[
+f(x)=k\text{的根的个数} \Leftrightarrow y=f(x)\text{与}y=k\text{的交点个数}
+\]
+
+\sectiontitle{习题3}
+
+\begin{exercise}
+\item 求$y=x^3-3x+2$的极值。
+\item 求$\lim\limits_{x\to0}\dfrac{x-\sin x}{x^3}$。
+\item 求$\lim\limits_{x\to0^+}x\ln x$。
+\item 求$y=\dfrac{x}{x^2+1}$的渐近线。
+\item 证明：$x>0$时，$\ln(1+x)<x$。
+\item 讨论$e^x=kx$的根的个数（$k>0$）。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第四章\quad 泰勒展开}
+
+\sectiontitle{4.1\quad 用多项式逼近函数}
+
+泰勒展开的核心思想：用多项式来近似一个光滑函数。
+
+$f(x)$在$x=a$处的$n$阶泰勒展开：
+\[
+f(x)=f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n+R_n
+\]
+
+\sectiontitle{4.2\quad 常用展开（麦克劳林公式，$a=0$）}
+
+\[
+e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots+\frac{x^n}{n!}+R_n
+\]
+\[
+\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots+(-1)^{n}\frac{x^{2n+1}}{(2n+1)!}+R_n
+\]
+\[
+\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots+(-1)^{n}\frac{x^{2n}}{(2n)!}+R_n
+\]
+\[
+\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots+(-1)^{n-1}\frac{x^n}{n}+R_n
+\]
+\[
+(1+x)^\alpha=1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2+\cdots+R_n
+\]
+
+\sectiontitle{4.3\quad 泰勒展开的应用}
+
+\textbf{求极限}：比洛必达更强大，一步到位。
+\begin{example}
+求$\lim\limits_{x\to0}\dfrac{e^x-1-x}{x^2}$。
+\end{example}
+\begin{solution}
+$e^x=1+x+\dfrac{x^2}{2}+o(x^2)$，代入得$\lim\limits_{x\to0}\dfrac{\frac{x^2}{2}+o(x^2)}{x^2}=\dfrac12$。
+\end{solution}
+
+\textbf{证不等式}：截断展开，利用余项符号。
+\begin{example}
+证明：$x>0$时，$x-\dfrac{x^3}{6}<\sin x<x$。
+\end{example}
+\begin{solution}
+$\sin x=x-\dfrac{x^3}{6}+\dfrac{x^5}{120}\cos\xi$，当$x>0$时余项正，所以$\sin x>x-\dfrac{x^3}{6}$。
+\end{solution}
+
+\sectiontitle{习题4}
+
+\begin{exercise}
+\item 写出$e^{-x}$的$4$阶麦克劳林展开。
+\item 用泰勒展开求$\lim\limits_{x\to0}\dfrac{\cos x-1+\frac{x^2}{2}}{x^4}$。
+\item 用泰勒展开估算$\sqrt{1.01}$的值（保留四位小数）。
+\item 证明：$x\in(0,1)$时，$x-\dfrac{x^2}{2}<\ln(1+x)<x$。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第五章\quad 不定积分}
+
+\sectiontitle{5.1\quad 原函数与不定积分}
+
+若$F'(x)=f(x)$，则$\int f(x)\,dx=F(x)+C$。
+
+基本积分表：
+\[
+\int x^n\,dx=\frac{x^{n+1}}{n+1}+C,\;
+\int\frac1x\,dx=\ln|x|+C,\;
+\int e^x\,dx=e^x+C
+\]
+\[
+\int\sin x\,dx=-\cos x+C,\;
+\int\cos x\,dx=\sin x+C,\;
+\int\frac1{1+x^2}\,dx=\arctan x+C
+\]
+
+\sectiontitle{5.2\quad 换元积分法}
+
+\textbf{第一类换元（凑微分）}：$\int f(g(x))g'(x)\,dx=\int f(u)\,du$。
+\textbf{第二类换元}：令$x=\varphi(t)$。
+
+\sectiontitle{5.3\quad 分部积分法}
+
+$\int u\,dv=uv-\int v\,du$。选择$u$和$dv$的原则：反、对、幂、指、三（越靠左越优先作$u$）。
+
+\sectiontitle{5.4\quad 有理函数积分}
+
+将真分式分解为部分分式：
+\[
+\frac{P(x)}{Q(x)} = \frac{A}{x-a}+\frac{B}{(x-a)^2}+\cdots+\frac{Cx+D}{x^2+px+q}+\cdots
+\]
+然后逐项积分。
+
+\sectiontitle{5.5\quad 三角函数积分常用技巧}
+
+万能公式：$\tan\frac{x}{2}=t$，$\sin x=\frac{2t}{1+t^2}$，$\cos x=\frac{1-t^2}{1+t^2}$，$dx=\frac{2}{1+t^2}dt$。
+
+递推公式：如$\int\sin^nx\,dx$、$\int\tan^nx\,dx$的递推。
+
+\sectiontitle{习题5}
+
+\begin{exercise}
+\item 求$\int(3x^2-2x+1)\,dx$；$\int\frac{2}{x}\,dx$。
+\item $\int(2x+1)^4\,dx$；$\int\frac{x}{x^2+1}\,dx$。
+\item $\int x e^x\,dx$；$\int x^2\ln x\,dx$。
+\item $\int\frac{1}{x^2-x-6}\,dx$。
+\item $\int\sin^3x\,dx$；$\int\frac{1}{\sin x}\,dx$。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第六章\quad 定积分}
+
+\sectiontitle{6.1\quad 定积分的概念}
+
+$\int_a^b f(x)\,dx$：将$[a,b]$分割成$n$个小段，
+每一段用矩形面积近似，再求和取极限（黎曼和）。
+\[
+\int_a^b f(x)\,dx = \lim_{\lambda\to0}\sum_{i=1}^n f(\xi_i)\Delta x_i
+\]
+
+几何意义：$x$轴上方面积减去下方面积。
+
+\sectiontitle{6.2\quad 微积分基本定理}
+
+若$F'(x)=f(x)$，则$\int_a^b f(x)\,dx = F(b)-F(a)$（牛顿-莱布尼茨公式）。
+
+\sectiontitle{6.3\quad 定积分的计算}
+
+换元法：$\int_a^b f(\varphi(x))\varphi'(x)\,dx = \int_{\varphi(a)}^{\varphi(b)} f(u)\,du$。
+分部法：$\int_a^b u\,dv=[uv]_a^b-\int_a^b v\,du$。
+
+\sectiontitle{6.4\quad 反常积分}
+
+无穷限积分：$\int_a^\infty f(x)\,dx = \lim_{t\to\infty}\int_a^t f(x)\,dx$。
+无界函数积分（瑕积分）：$\int_a^b f(x)\,dx$，$f$在$a$处无界。
+
+\textbf{审敛}：比较判别法、极限审敛法。
+
+\sectiontitle{6.5\quad 定积分的应用}
+
+\textbf{面积}：$S=\int_a^b|f(x)-g(x)|\,dx$。
+\textbf{旋转体体积}：
+圆盘法 $V=\pi\int_a^b[f(x)]^2\,dx$；柱壳法 $V=2\pi\int_a^b xf(x)\,dx$。
+\textbf{旋转体侧面积}：$S=2\pi\int_a^b f(x)\sqrt{1+[f'(x)]^2}\,dx$。
+\textbf{弧长}：$L=\int_a^b\sqrt{1+[f'(x)]^2}\,dx$。
+
+\sectiontitle{6.6\quad 积分不等式与定积分求极限}
+
+\textbf{积分形式的柯西不等式}：$\left(\int_a^b fg\right)^2 \le \int_a^b f^2\cdot\int_a^b g^2$。
+
+\textbf{定积分求极限}：
+\[
+\lim_{n\to\infty}\frac1n\sum_{k=1}^n f\left(\frac{k}{n}\right) = \int_0^1 f(x)\,dx
+\]
+这是把黎曼和的定义倒过来用——高联竞赛的经典技巧。
+
+\sectiontitle{习题6}
+
+\begin{exercise}
+\item 计算：$\int_0^1 (x^2+2x)\,dx$；$\int_0^\pi\sin x\,dx$。
+\item 求$y=x^2$与$y=2x$所围图形的面积。
+\item 求$y=\sqrt{x}$在$[0,4]$上绕$x$轴旋转的体积。
+\item 判断反常积分$\int_1^\infty\frac1{x^2}\,dx$是否收敛。
+\item 求$\lim\limits_{n\to\infty}\frac1n\sum_{k=1}^n\frac1{1+(k/n)^2}$。
+\end{exercise}
+
+\newpage
+
+\chaptertitle{第七章\quad 常微分方程}
+
+\sectiontitle{7.1\quad 可分离变量方程}
+
+$y' = f(x)g(y)$，分离为$\dfrac{dy}{g(y)}=f(x)\,dx$，两边积分。
+
+\sectiontitle{7.2\quad 一阶线性方程}
+
+$y'+P(x)y=Q(x)$，通解：
+\[
+y = e^{-\int P\,dx}\left(\int Q e^{\int P\,dx}\,dx + C\right)
+\]
+
+\sectiontitle{7.3\quad 伯努利方程}
+
+$y'+P(x)y=Q(x)y^n$，令$z=y^{1-n}$化为一阶线性。
+
+\sectiontitle{7.4\quad 可降阶的方程}
+
+$y''=f(x)$：直接积分两次。
+不含$y$型：$y''=f(x,y')$，令$p=y'$。
+不含$x$型：$y''=f(y,y')$，令$p=y'$，$y''=p\frac{dp}{dy}$。
+
+\sectiontitle{7.5\quad 二阶常系数线性齐次方程}
+
+$y''+py'+qy=0$，特征方程$r^2+pr+q=0$：
+\[
+\begin{cases}
+\text{两不等实根 }r_1,r_2 &: y=C_1e^{r_1x}+C_2e^{r_2x}\\
+\text{重根 }r &: y=(C_1+C_2x)e^{rx}\\
+\text{共轭复根 }r=\alpha\pm\beta i &: y=e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)
+\end{cases}
+\]
+
+\sectiontitle{习题7}
+
+\begin{exercise}
+\item 解$y'=2xy$，$y(0)=1$。
+\item 解$y'+y=e^{-x}$。
+\item 解$y'+y=xy^2$（伯努利方程）。
+\item 解$y''-3y'+2y=0$，$y(0)=0$，$y'(0)=1$。
+\item 解$y''+y=0$。
+\end{exercise}
+
+\end{document}

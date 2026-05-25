@@ -1,0 +1,871 @@
+\chaptertitle{第三章\quad 乘除——有理数}
+
+\sectiontitle{第7讲\quad 乘法——加法太慢的时候}
+
+\subsection*{一个烦人的问题}
+
+做这道题：
+
+\[
+3+3+3+3+3+3+3+3+3+3 = \;?
+\]
+
+10个3相加。你当然可以一个一个加：3,6,9,12\ldots 但你不觉得烦吗？
+
+如果有100个3相加呢？不可能一个一个加。
+
+人类很早就意识到了这个问题，于是发明了一种新运算：\textbf{乘法}。
+
+\[
+\underbrace{3+3+3+3+3+3+3+3+3+3}_{10\text{个}} = 3 \times 10
+\]
+
+读作"3乘以10"，意思是"10个3相加"。
+
+\textbf{乘法的本质就是相同加数的加法。}
+
+\begin{example}
+$4\times3$ 等于多少？用加法验证一下。
+\end{example}
+\begin{solution}
+$4\times3$ 的意思是3个4相加：$4+4+4 = 12$。或者4个3相加：$3+3+3+3 = 12$。结果一样。
+\end{solution}
+
+\begin{example}
+把 $7+7+7+7$ 改写成乘法并计算。
+\end{example}
+\begin{solution}
+4个7相加，写成 $7\times4 = 28$。
+\end{solution}
+
+\subsection*{乘法的交换律}
+
+从上面的例子你已经看到了：$4\times3=12$，$3\times4=12$。这和加法一样——两个数相乘，交换位置，积不变。
+
+\[
+a \times b = b \times a
+\]
+
+\begin{exercise}
+\item 把加法改写成乘法，并计算：
+  \begin{subexercise}
+    \item $5+5+5$
+    \item $8+8+8+8$
+    \item $12+12+12$
+    \item $7+7+7+7+7+7$
+    \item $0+0+0+0$
+    \item $1+1+1+1+1$
+  \end{subexercise}
+
+\item 先想清楚是"几个几"，再列算式：
+  \begin{subexercise}
+    \item 一盒有6个鸡蛋，4盒一共有几个鸡蛋？
+    \item 一排有9个座位，5排一共有几个座位？
+    \item 一袋有3块饼干，8袋一共有几块饼干？
+  \end{subexercise}
+\end{exercise}
+
+\subsection*{乘法的结合律}
+
+三个数相乘：$(2\times3)\times4$ 和 $2\times(3\times4)$ 一样吗？
+
+$(2\times3)\times4 = 6\times4 = 24$ \\
+$2\times(3\times4) = 2\times12 = 24$
+
+一样！这就是\textbf{乘法结合律}：
+
+\[
+(a\times b)\times c = a\times(b\times c)
+\]
+
+\begin{example}
+用结合律简算：$25\times17\times4$
+\end{example}
+\begin{solution}
+$25\times4=100$，所以先算 $25\times4$：
+$25\times17\times4 = (25\times4)\times17 = 100\times17 = 1700$。
+\end{solution}
+
+\begin{example}
+用结合律简算：$125\times23\times8$
+\end{example}
+\begin{solution}
+$125\times8=1000$，所以：
+$125\times23\times8 = (125\times8)\times23 = 1000\times23 = 23000$。
+\end{solution}
+
+\subsection*{竖式乘法——多位数相乘的可靠方法}
+
+交换律、结合律、分配律都是心算技巧，但如果数字很大，比如 $43\times57$，心算就不太可靠了。我们需要\textbf{竖式乘法}。
+
+竖式乘法的规则：
+\begin{enumerate}
+  \item 把两个数上下对齐（位数多的放上面）
+  \item 从下面的个位开始，依次乘上面的每一位（从右到左）
+  \item 每次乘的结果写一行（注意数位对齐）
+  \item 最后把各行的结果加起来
+\end{enumerate}
+
+\begin{example}
+用竖式计算：$43\times57$
+\end{example}
+\begin{solution}
+\[
+\begin{array}{r}
+  43 \\
+\times 57 \\ \hline
+\end{array}
+\]
+
+先算 $43\times7$（个位上的7）：
+$7\times3=21$，写1进2；
+$7\times4=28$，加进位2得30，写30。
+第一行：301（其实是 $43\times7=301$）。
+
+再算 $43\times5$（十位上的5，代表50）：
+$5\times3=15$，写5进1（写在十位位置）；
+$5\times4=20$，加进位1得21，写21。
+第二行：215（其实是 $43\times50=2150$，写的时候个位空着）。
+
+最后把两行加起来：
+\[
+\begin{array}{r}
+  43 \\
+\times 57 \\ \hline
+  301 \\
+ 215\phantom{0} \\ \hline
+  2451
+\end{array}
+\]
+
+$43\times57 = 2451$。
+\end{solution}
+
+\begin{example}
+用竖式计算：$125\times32$
+\end{example}
+\begin{solution}
+\[
+\begin{array}{r}
+  125 \\
+\times 32 \\ \hline
+  250 \\
+ 375\phantom{0} \\ \hline
+  4000
+\end{array}
+\]
+
+$125\times2=250$，$125\times3=375$（实际是 $125\times30=3750$），加起来等于4000。
+\end{solution}
+
+\subsection*{乘法的分配律——最重要的一个}
+
+乘法还有一个加法没有的规律——它把乘法和加法联系在了一起：
+
+\[
+a\times(b+c) = a\times b + a\times c
+\]
+
+这叫\textbf{乘法分配律}。用文字说：一个数乘两个数的和，等于这个数分别乘这两个数再相加。
+
+为什么要学这个？因为它能让很多计算变得特别简单。
+
+\begin{example}
+用分配律简算：$36\times99$
+\end{example}
+\begin{solution}
+99接近100，所以 $36\times99 = 36\times(100-1) = 36\times100 - 36\times1 = 3600-36 = 3564$。
+\end{solution}
+
+\begin{example}
+用分配律简算：$25\times(40+4)$
+\end{example}
+\begin{solution}
+$25\times(40+4) = 25\times40 + 25\times4 = 1000+100 = 1100$。
+\end{solution}
+
+\begin{example}
+用分配律简算：$36\times34+36\times66$
+\end{example}
+\begin{solution}
+两边都有36，可以反过来用分配律：
+$36\times34+36\times66 = 36\times(34+66) = 36\times100 = 3600$。
+\end{solution}
+
+\begin{exercise}
+\item 用乘法交换律和结合律简算：
+  \begin{subexercise}
+    \item $25\times17\times4$
+    \item $125\times23\times8$
+    \item $5\times37\times20$
+    \item $4\times9\times25$
+    \item $125\times7\times8$
+    \item $25\times13\times4$
+  \end{subexercise}
+
+\item 用乘法分配律简算：
+  \begin{subexercise}
+    \item $48\times101$
+    \item $25\times199$
+    \item $125\times801$
+    \item $54\times102$
+    \item $37\times98$
+    \item $36\times99$
+  \end{subexercise}
+
+\item 反过来用分配律简算：
+  \begin{subexercise}
+    \item $36\times34+36\times66$
+    \item $47\times58+47\times42$
+    \item $56\times99+56$
+    \item $72\times101-72$
+    \item $38\times99+38$
+    \item $95\times101-95$
+  \end{subexercise}
+
+\item 简算：
+  \begin{subexercise}
+    \item $25\times(40+4)$
+    \item $125\times(80+8)$
+    \item $45\times(100-2)$
+    \item $64\times(50-1)$
+    \item $88\times125$
+    \item $32\times25$
+  \end{subexercise}
+
+\item 小明买了4本笔记本，每本8元；又买了4支笔，每支2元。他一共花了多少元？
+  （用两种方法列式，并说明用了什么规律）
+\end{exercise}
+
+\sectiontitle{第8讲\quad 除法——乘法的逆运算，以及0不能做除数}
+
+\subsection*{乘法的逆运算}
+
+加法有逆运算（减法），乘法当然也有。
+
+$3\times4=12$，那么把12还原回去——拿走乘数4，剩下3；拿走乘数3，剩下4。
+
+这就是\textbf{除法}：$12\div4=3$，$12\div3=4$。
+
+\[
+a\times b = c \quad\Longrightarrow\quad c\div b = a,\quad c\div a = b
+\]
+
+\begin{example}
+已知 $8\times7=56$，直接写出 $56\div7$ 和 $56\div8$。
+\end{example}
+\begin{solution}
+因为 $8\times7=56$，所以 $56\div7=8$，$56\div8=7$。
+\end{solution}
+
+\subsection*{商不变性质}
+
+\textbf{商不变性质}是一个很实用的工具：被除数和除数同时乘以或除以同一个非零数，商不变。
+
+\begin{example}
+用商不变性质简算：$400\div25$
+\end{example}
+\begin{solution}
+被除数和除数同时乘以4：
+$400\div25 = (400\times4)\div(25\times4) = 1600\div100 = 16$。
+\end{solution}
+
+\begin{example}
+用商不变性质简算：$800\div125$
+\end{example}
+\begin{solution}
+同时乘以8：$(800\times8)\div(125\times8) = 6400\div1000 = 6.4$。
+\end{solution}
+
+\subsection*{除法中一些重要的关系}
+
+$12\div3=4$ 还可以怎么理解？$3\times4=12$。除法里包含的是：
+\[
+\text{被除数} \div \text{除数} = \text{商}
+\]
+
+所以 $12\div3=4$：
+\begin{itemize}
+  \item 12 是被除数（你要分的总数）
+  \item 3 是除数（分给几个人）
+  \item 4 是商（每个人分到多少）
+\end{itemize}
+
+\subsection*{最重要的一条：0不能做除数}
+
+$a\div0$ 等于多少？
+
+想一想它的意义：找一个数 $x$，使得 $x\times0=a$。
+
+任何数乘以0都等于0。所以如果 $a\neq0$，找不到这样的 $x$。如果 $a=0$，$0\div0$ 可以是任何数（因为任何数乘以0都得0），没有唯一答案。
+
+两种情况都混乱了。所以数学家规定：\textbf{0不能做除数}。
+
+\subsection*{长除法——多位数除法的竖式}
+
+和乘法一样，当数字变大时，我们需要竖式来帮忙。长除法的核心思路是\textbf{从高位开始，逐位除}——这和加减乘的竖式正好相反（加减乘都是从低位开始）。
+
+\begin{example}
+用竖式计算：$435\div3$
+\end{example}
+\begin{solution}
+写长除法竖式：$3\overline{)435}$
+
+从百位开始：$4\div3 = 1$，余1。\\
+把十位的3落下来：$13\div3 = 4$，余1。\\
+把个位的5落下来：$15\div3 = 5$，余0。
+
+竖式写出来是这样的：
+\[
+\begin{array}{r}
+  145 \\
+3\overline{)435} \\
+  \underline{3\phantom{00}} \\
+  13\phantom{0} \\
+  \underline{12\phantom{0}} \\
+  15 \\
+  \underline{15} \\
+   0
+\end{array}
+\]
+
+$435\div3 = 145$。
+\end{solution}
+
+\begin{example}
+用竖式计算：$876\div4$
+\end{example}
+\begin{solution}
+\[
+\begin{array}{r}
+  219 \\
+4\overline{)876} \\
+  \underline{8\phantom{00}} \\
+   7\phantom{0} \\
+  \underline{4\phantom{0}} \\
+  36 \\
+  \underline{36} \\
+   0
+\end{array}
+\]
+
+百位 $8\div4=2$，余0。十位 $7\div4=1$，余3。个位 $36\div4=9$，余0。结果是219。
+\end{solution}
+
+\begin{example}
+用竖式计算：$637\div7$
+\end{example}
+\begin{solution}
+\[
+\begin{array}{r}
+  91 \\
+7\overline{)637} \\
+  \underline{63\phantom{0}} \\
+   7 \\
+  \underline{7} \\
+   0
+\end{array}
+\]
+
+百位 $6\div7$ 不够除，看前两位 $63\div7=9$。个位 $7\div7=1$。结果是91。
+\end{solution}
+
+附加说明：\textbf{被除数某一位比除数小的时候，就看两位（或更多）}，这就是长除法"逐位试商"的意思。
+
+\begin{exercise}
+\item 根据乘法写除法：
+  \begin{subexercise}
+    \item $9\times6=54$，$54\div6=\;$? \quad $54\div9=\;$?
+    \item $12\times15=180$，$180\div15=\;$? \quad $180\div12=\;$?
+    \item $7\times12=84$，$84\div12=\;$? \quad $84\div7=\;$?
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $400\div25$
+    \item $800\div125$
+    \item $3000\div125$
+    \item $6000\div25$
+    \item $4200\div(42\times25)$
+    \item $3600\div(36\times125)$
+  \end{subexercise}
+
+\item 用商不变性质简算：
+  \begin{subexercise}
+    \item $360\div45$
+    \item $480\div32$
+    \item $540\div36$
+    \item $720\div48$
+  \end{subexercise}
+
+\item 判断对错并说明理由：
+  \begin{subexercise}
+    \item $5\div0$ 等于0。
+    \item $0\div5$ 等于0。
+    \item $0\div0$ 等于0。
+  \end{subexercise}
+
+\item 应用题：
+  \begin{subexercise}
+    \item 把 240 本书平均分给 12 个班，每班分到多少本？
+    \item 一段绳子长 480 厘米，每 30 厘米剪一段，可以剪成几段？
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第9讲\quad 分数的诞生——当除法"除不尽"的时候}
+
+\subsection*{又一个"不够用"}
+
+$1\div3$ 等于多少？
+
+1块饼分给3个人，每人分到多少？在整数世界里，$1\div3$ 没有答案。
+
+但是等等——我们在第二章里已经遇到过"不够用"了。那次我们发明了负数。这次呢？
+
+这次的办法是：\textbf{把1切成3份}。每份是 $\dfrac{1}{3}$（读作"三分之一"）。
+
+\textbf{分数诞生了。}
+
+分数的正式定义很简单：$\dfrac{a}{b}$ 就是 $a\div b$。分数线上面叫分子，下面叫分母，分母不能为0。
+
+\begin{example}
+$\dfrac{3}{4}$ 是什么意思？
+\end{example}
+\begin{solution}
+$\dfrac{3}{4}$ 就是 $3\div4$。也可以理解为：把1个整体平均分成4份，取其中的3份。
+\end{solution}
+
+\begin{example}
+一个蛋糕平均切成6块，你吃了2块。你吃了这个蛋糕的几分之几？
+\end{example}
+\begin{solution}
+一共6块，你吃了2块，所以吃了 $\dfrac{2}{6}$。约分后是 $\dfrac{1}{3}$——你吃了蛋糕的三分之一。
+\end{solution}
+
+\begin{example}
+$\dfrac{5}{4}$ 比1大还是比1小？为什么？
+\end{example}
+\begin{solution}
+$\dfrac{5}{4}$ 就是把1个整体分成4份，取其中的5份——也就是1个完整的整体加$\dfrac{1}{4}$，所以大于1。\\
+任何分子大于分母的分数都大于1，叫\textbf{假分数}。
+\end{solution}
+
+\begin{example}
+把3个苹果平均分给4个人，每人分到多少个？
+\end{example}
+\begin{solution}
+$3\div4 = \dfrac{3}{4}$。每人分到 $\dfrac{3}{4}$ 个苹果。\\
+也可以这样想：每个苹果切成4块，一共12块，每人分3块，也就是 $\dfrac{3}{4}$ 个苹果。
+\end{solution}
+
+\subsection*{有理数——分数和整数的总称}
+
+所有分数（正的、负的）和所有整数合在一起，叫\textbf{有理数}，记作 $\mathbb{Q}$。
+
+\[
+\mathbb{Q} = \left\{\frac{p}{q} \mid p,q\in\mathbb{Z},\; q\neq0\right\}
+\]
+
+读作："所有形如 $\dfrac{p}{q}$ 的数，其中 $p$ 和 $q$ 是整数，$q$ 不等于0"。
+
+\subsection*{同分母分数加减}
+
+同分母的分数相加减很简单：分母不变，分子相加减。
+
+\begin{example}
+计算：$\dfrac{2}{5}+\dfrac{1}{5}$
+\end{example}
+\begin{solution}
+分母都是5，分子相加：$2+1=3$。所以 $\dfrac{2}{5}+\dfrac{1}{5} = \dfrac{3}{5}$。
+\end{solution}
+
+\begin{example}
+计算：$\dfrac{7}{9}-\dfrac{2}{9}$
+\end{example}
+\begin{solution}
+$\dfrac{7}{9}-\dfrac{2}{9} = \dfrac{7-2}{9} = \dfrac{5}{9}$。
+\end{solution}
+
+\subsection*{异分母分数加减——通分}
+
+分母不同的时候，不能直接加减。为什么？因为 $\dfrac{1}{2}$ 和 $\dfrac{1}{3}$ 的"每一份"大小不一样。
+
+解决办法：找到两个分母的最小公倍数，把分数化成相同分母再算。这叫\textbf{通分}。
+
+\begin{example}
+计算：$\dfrac{1}{2}+\dfrac{1}{3}$
+\end{example}
+\begin{solution}
+分母2和3的最小公倍数是6。$\dfrac{1}{2} = \dfrac{3}{6}$，$\dfrac{1}{3} = \dfrac{2}{6}$。所以
+$\dfrac{1}{2}+\dfrac{1}{3} = \dfrac{3}{6}+\dfrac{2}{6} = \dfrac{5}{6}$。
+\end{solution}
+
+\begin{example}
+计算：$\dfrac{2}{3}-\dfrac{1}{4}$
+\end{example}
+\begin{solution}
+3和4的最小公倍数是12。
+$\dfrac{2}{3} = \dfrac{8}{12}$，$\dfrac{1}{4} = \dfrac{3}{12}$。
+$\dfrac{8}{12}-\dfrac{3}{12} = \dfrac{5}{12}$。
+\end{solution}
+
+\subsection*{带分数加减}
+
+像 $2\dfrac{1}{3}$ 这样的数叫带分数——整数部分+分数部分。带分数加减时，整数和整数算，分数和分数算。
+
+\begin{example}
+计算：$2\dfrac{1}{3}+1\dfrac{1}{4}$
+\end{example}
+\begin{solution}
+整数：$2+1=3$。分数：$\dfrac{1}{3}+\dfrac{1}{4} = \dfrac{4}{12}+\dfrac{3}{12} = \dfrac{7}{12}$。
+结果是 $3\dfrac{7}{12}$。
+\end{solution}
+
+\begin{exercise}
+\item 同分母分数加减：
+  \begin{subexercise}
+    \item $\dfrac{2}{5}+\dfrac{1}{5}$
+    \item $\dfrac{7}{9}-\dfrac{2}{9}$
+    \item $\dfrac{3}{8}+\dfrac{5}{8}$
+    \item $\dfrac{11}{12}-\dfrac{5}{12}$
+    \item $\dfrac{5}{7}+\dfrac{4}{7}$
+    \item $\dfrac{13}{15}-\dfrac{8}{15}$
+  \end{subexercise}
+
+\item 异分母分数加减：
+  \begin{subexercise}
+    \item $\dfrac{1}{2}+\dfrac{1}{3}$
+    \item $\dfrac{2}{3}-\dfrac{1}{4}$
+    \item $\dfrac{3}{4}+\dfrac{1}{6}$
+    \item $\dfrac{5}{6}-\dfrac{3}{8}$
+    \item $\dfrac{2}{5}+\dfrac{3}{10}$
+    \item $\dfrac{7}{12}-\dfrac{1}{3}$
+  \end{subexercise}
+
+\item 较复杂的异分母加减：
+  \begin{subexercise}
+    \item $\dfrac{5}{12}+\dfrac{7}{18}$
+    \item $\dfrac{9}{20}-\dfrac{3}{15}$
+    \item $\dfrac{11}{24}+\dfrac{5}{36}$
+    \item $\dfrac{13}{30}-\dfrac{7}{45}$
+  \end{subexercise}
+
+\item 带分数加减：
+  \begin{subexercise}
+    \item $2\dfrac{1}{3}+1\dfrac{1}{4}$
+    \item $3\dfrac{2}{5}-1\dfrac{1}{3}$
+    \item $5\dfrac{3}{8}+2\dfrac{1}{6}$
+    \item $4\dfrac{5}{12}-2\dfrac{1}{4}$
+  \end{subexercise}
+
+\item 简算：
+  \begin{subexercise}
+    \item $\dfrac{3}{7}+\dfrac{2}{5}+\dfrac{4}{7}$
+    \item $\dfrac{5}{9}+\dfrac{3}{8}+\dfrac{4}{9}+\dfrac{5}{8}$
+    \item $\dfrac{7}{12}+\dfrac{5}{11}+\dfrac{5}{12}$
+    \item $\dfrac{9}{13}+\dfrac{7}{10}-\dfrac{9}{13}$
+  \end{subexercise}
+
+\item 应用题：
+  \begin{subexercise}
+    \item 一块地，$\dfrac{2}{5}$ 种玉米，$\dfrac{1}{3}$ 种小麦，剩下的种蔬菜。蔬菜占几分之几？
+    \item 一根绳子，第一次用去 $\dfrac{1}{4}$，第二次用去 $\dfrac{1}{3}$，一共用去几分之几？还剩几分之几？
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第10讲\quad 分数乘除与化简}
+
+\subsection*{分数乘法}
+
+分数乘法是最简单的：分子乘分子，分母乘分母。
+
+\[
+\frac{a}{b}\times\frac{c}{d} = \frac{a\times c}{b\times d}
+\]
+
+\begin{example}
+计算：$\dfrac{2}{3}\times\dfrac{3}{4}$
+\end{example}
+\begin{solution}
+$\dfrac{2\times3}{3\times4} = \dfrac{6}{12} = \dfrac{1}{2}$（最后要化简）。
+
+快速做法：先约分。分子2和分母4约掉2，分子3和分母3约掉3：
+$\dfrac{2}{3}\times\dfrac{3}{4} = \dfrac{1}{1}\times\dfrac{1}{2} = \dfrac{1}{2}$。
+\end{solution}
+
+\subsection*{约分——把分数写成最简形式}
+
+$\dfrac{6}{12}$ 和 $\dfrac{1}{2}$ 是同一个数，但 $\dfrac{1}{2}$ 更简洁。把 $\dfrac{6}{12}$ 变成 $\dfrac{1}{2}$ 的过程叫\textbf{约分}。分子分母同除以它们的最大公约数。
+
+\begin{example}
+约分：$\dfrac{8}{12}$
+\end{example}
+\begin{solution}
+8和12的最大公约数是4。$8\div4=2$，$12\div4=3$。所以 $\dfrac{8}{12} = \dfrac{2}{3}$。
+\end{solution}
+
+\subsection*{分数除法}
+
+除以一个分数，等于乘以这个分数的倒数。
+
+\textbf{倒数}：两个数相乘得1，它们互为倒数。$\dfrac{2}{3}$ 的倒数是 $\dfrac{3}{2}$。
+
+\[
+\frac{a}{b}\div\frac{c}{d} = \frac{a}{b}\times\frac{d}{c}
+\]
+
+\begin{example}
+计算：$\dfrac{2}{3}\div\dfrac{4}{5}$
+\end{example}
+\begin{solution}
+$\dfrac{2}{3}\div\dfrac{4}{5} = \dfrac{2}{3}\times\dfrac{5}{4} = \dfrac{2\times5}{3\times4} = \dfrac{10}{12} = \dfrac{5}{6}$。
+\end{solution}
+
+\subsection*{带分数的乘除}
+
+带分数先化成假分数，再按规则算。
+
+\begin{example}
+计算：$2\dfrac{1}{2}\times\dfrac{2}{5}$
+\end{example}
+\begin{solution}
+$2\dfrac{1}{2} = \dfrac{5}{2}$。$\dfrac{5}{2}\times\dfrac{2}{5} = 1$。
+\end{solution}
+
+\subsection*{乘法分配律对分数同样有效}
+
+\begin{example}
+计算：$\dfrac{5}{7}\times\dfrac{3}{8}+\dfrac{5}{7}\times\dfrac{5}{8}$
+\end{example}
+\begin{solution}
+提取公因数 $\dfrac{5}{7}$：$\dfrac{5}{7}\times\left(\dfrac{3}{8}+\dfrac{5}{8}\right) = \dfrac{5}{7}\times1 = \dfrac{5}{7}$。
+\end{solution}
+
+\begin{exercise}
+\item 分数乘法（先约分再算）：
+  \begin{subexercise}
+    \item $\dfrac{2}{3}\times\dfrac{3}{4}$
+    \item $\dfrac{5}{6}\times\dfrac{2}{5}$
+    \item $\dfrac{3}{8}\times\dfrac{4}{9}$
+    \item $\dfrac{7}{12}\times\dfrac{6}{7}$
+    \item $\dfrac{4}{15}\times\dfrac{5}{8}$
+    \item $\dfrac{9}{20}\times\dfrac{10}{27}$
+  \end{subexercise}
+
+\item 分数除法：
+  \begin{subexercise}
+    \item $\dfrac{2}{3}\div\dfrac{4}{5}$
+    \item $\dfrac{5}{6}\div\dfrac{5}{12}$
+    \item $\dfrac{3}{8}\div\dfrac{9}{16}$
+    \item $\dfrac{7}{10}\div\dfrac{14}{15}$
+    \item $\dfrac{4}{9}\div\dfrac{8}{27}$
+    \item $\dfrac{9}{14}\div\dfrac{3}{7}$
+  \end{subexercise}
+
+\item 带分数乘除（先化假分数）：
+  \begin{subexercise}
+    \item $2\dfrac{1}{2}\times\dfrac{2}{5}$
+    \item $3\dfrac{1}{3}\times\dfrac{3}{10}$
+    \item $4\dfrac{2}{7}\div\dfrac{5}{7}$
+    \item $2\dfrac{4}{5}\div\dfrac{7}{10}$
+    \item $1\dfrac{3}{5}\times\dfrac{5}{8}$
+    \item $3\dfrac{3}{4}\div\dfrac{5}{6}$
+  \end{subexercise}
+
+\item 分配律在分数中的应用：
+  \begin{subexercise}
+    \item $\dfrac{5}{7}\times\dfrac{3}{8}+\dfrac{5}{7}\times\dfrac{5}{8}$
+    \item $\dfrac{4}{9}\times\dfrac{7}{11}+\dfrac{4}{9}\times\dfrac{4}{11}$
+    \item $\dfrac{3}{8}\times\dfrac{5}{9}+\dfrac{3}{8}\times\dfrac{4}{9}$
+    \item $\dfrac{8}{15}\times\dfrac{7}{13}+\dfrac{8}{15}\times\dfrac{6}{13}$
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $\left(\dfrac{1}{2}+\dfrac{1}{3}\right)\times6$
+    \item $\left(\dfrac{2}{3}-\dfrac{1}{4}\right)\times12$
+    \item $\left(\dfrac{3}{4}+\dfrac{5}{6}\right)\times24$
+    \item $\left(\dfrac{7}{8}-\dfrac{5}{12}\right)\times48$
+  \end{subexercise}
+
+\item 应用题：
+  \begin{subexercise}
+    \item 一根绳子长 $\dfrac{5}{6}$ 米，把它平均分成5段，每段长多少米？
+    \item 一瓶水 $\dfrac{3}{4}$ 升，一个杯子能装 $\dfrac{1}{8}$ 升。这瓶水能倒满几个杯子？
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第11讲\quad 小数——分数的十进制写法}
+
+\subsection*{分数和小数是一家}
+
+$\dfrac{1}{10}$ 可以写成 0.1，$\dfrac{1}{100}$ 可以写成 0.01。\textbf{小数就是分母为10、100、1000\ldots 的分数的一种简洁写法}。
+
+\begin{example}
+把 $\dfrac{3}{5}$ 化成小数。
+\end{example}
+\begin{solution}
+$\dfrac{3}{5} = \dfrac{6}{10} = 0.6$。
+\end{solution}
+
+\begin{example}
+把 $\dfrac{7}{8}$ 化成小数。
+\end{example}
+\begin{solution}
+$\dfrac{7}{8} = 7\div8 = 0.875$。（用除法竖式算）
+\end{solution}
+
+\begin{example}
+把 0.125 化成分数。
+\end{example}
+\begin{solution}
+0.125 是千分之一百二十五：$\dfrac{125}{1000}$，约分后是 $\dfrac{1}{8}$。
+\end{solution}
+
+\subsection*{小数的加减乘除}
+
+小数的运算法则和整数一样，只是要注意小数点的位置。
+
+\textbf{小数加减：}小数点对齐，按位加减。
+\textbf{小数乘法：}先按整数乘，再点小数点（因数的小数位数之和）。
+\textbf{小数除法：}除数变整数，被除数同步扩大。
+
+\begin{example}
+计算：$3.6+4.8$
+\end{example}
+\begin{solution}
+$3.6+4.8 = 8.4$。小数点对齐，个位3+4=7，十分位6+8=14，进1到个位，结果是8.4。
+\end{solution}
+
+\begin{example}
+计算：$2.5\times1.2$
+\end{example}
+\begin{solution}
+先按整数算：$25\times12=300$。两个因数各有一位小数，共两位。从右往左数两位点小数点：3.00，也就是3。
+\end{solution}
+
+\begin{example}
+计算：$7.2\div0.8$
+\end{example}
+\begin{solution}
+把除数0.8变成整数8（乘以10），被除数7.2也乘以10变成72。$72\div8=9$。
+\end{solution}
+
+\subsection*{分数和小数的混合运算}
+
+混合运算的顺序和整数一样：先乘除后加减，有括号先算括号里的。能简算的要简算。
+
+\begin{example}
+简算：$0.25\times\dfrac{3}{7}\times4$
+\end{example}
+\begin{solution}
+$0.25\times4 = 1$，$1\times\dfrac{3}{7} = \dfrac{3}{7}$。
+\end{solution}
+
+\begin{example}
+计算：$\left(0.5+\dfrac{1}{3}\right)\times12$
+\end{example}
+\begin{solution}
+$0.5 = \dfrac{1}{2}$，$\dfrac{1}{2}+\dfrac{1}{3} = \dfrac{5}{6}$。$\dfrac{5}{6}\times12 = 10$。
+\end{solution}
+
+\begin{exercise}
+\item 分数化小数：
+  \begin{subexercise}
+    \item $\dfrac{3}{5}$
+    \item $\dfrac{7}{8}$
+    \item $\dfrac{2}{25}$
+    \item $\dfrac{9}{20}$
+    \item $\dfrac{7}{16}$
+    \item $\dfrac{11}{40}$
+  \end{subexercise}
+
+\item 小数化分数并化简：
+  \begin{subexercise}
+    \item $0.6$
+    \item $0.75$
+    \item $0.125$
+    \item $0.375$
+    \item $0.65$
+    \item $0.875$
+  \end{subexercise}
+
+\item 小数加减乘除：
+  \begin{subexercise}
+    \item $3.6+4.8$
+    \item $7.2-3.9$
+    \item $2.5\times1.2$
+    \item $7.2\div0.8$
+    \item $4.5\div0.15$
+    \item $12.6\div0.3$
+  \end{subexercise}
+
+\item 分数小数混合计算：
+  \begin{subexercise}
+    \item $\dfrac{1}{2}+0.3$
+    \item $\dfrac{3}{4}-0.25$
+    \item $0.6+\dfrac{2}{5}$
+    \item $\dfrac{7}{8}-0.5$
+    \item $1.2-\dfrac{3}{5}$
+    \item $0.75+\dfrac{1}{3}$
+  \end{subexercise}
+
+\item 简算：
+  \begin{subexercise}
+    \item $0.25\times\dfrac{3}{7}\times4$
+    \item $1.25\times\dfrac{5}{8}\times8$
+    \item $4.8\times\dfrac{3}{8}+\dfrac{5}{8}\times4.8$
+    \item $7.2\times\dfrac{3}{5}+2.8\times\dfrac{3}{5}$
+    \item $2.5\times3.7\times4$
+    \item $0.125\times88$
+  \end{subexercise}
+
+\item 混合运算：
+  \begin{subexercise}
+    \item $3.6+4.8-2.5$
+    \item $12.5-3.6+7.5$
+    \item $7.2\times0.5\div0.3$
+    \item $4.5\div0.9\times1.2$
+    \item $(5.6+4.4)\times0.25$
+    \item $(8.8-3.8)\div0.5$
+    \item $0.25\times(4+0.8)$
+    \item $1.25\times(0.8-0.4)$
+    \item $4.8\div0.6+3.2$
+    \item $7.5-2.5\times0.4$
+    \item $12.6\div(0.2\times0.7)$
+    \item $3.6\times(0.5+0.25)$
+  \end{subexercise}
+
+\item 应用题：
+  \begin{subexercise}
+    \item 一瓶饮料1.5升，倒出0.75升后还剩多少升？
+    \item 一块布长3.6米，做一件衣服需要1.2米，可以做几件？
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{章末小结}
+
+这一章是我们目前最大的一步。
+
+\begin{enumerate}
+  \item \textbf{乘法是相同加数的加法}——加法的"提速"。
+  \item \textbf{交换律和结合律}在乘法中同样成立，\textbf{分配律}是乘法独有的法宝。
+  \item \textbf{除法是乘法的逆运算}。0不能做除数。
+  \item \textbf{除法算不尽时，分数出现了。} 有理数 $\mathbb{Q}$ 诞生。
+  \item \textbf{分数有加减乘除}四条法则，核心是通分和约分。
+  \item \textbf{小数是分数的十进制写法}。
+\end{enumerate}
+
+现在，四则运算（$+,-,\times,\div$）全部出现了。我们已经从自然数走到了有理数。但运算的旅程还没结束——还有更快的"连乘"等着我们。
+
+\bigskip
+
+\begin{center}
+\fbox{
+  \parbox{0.7\linewidth}{
+    \textbf{数系脚印 \#3：} $\mathbb{N} \to \mathbb{Z} \to \mathbb{Q}$ \\
+    四则运算全部打通，有理数已经"封闭"了。\\
+    但如果我们把"连乘"也当作一种运算呢？
+  }
+}
+\end{center}

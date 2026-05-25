@@ -5,6 +5,7 @@
 \usepackage{listings}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
 
 \lstset{
   basicstyle=\ttfamily\small,
@@ -71,6 +72,14 @@ Hello, World!
 \subsection*{对比 Scratch}
 
 在 Scratch 里，想让小猫说话，你用的是"说 你好！ 2 秒"积木。在 Python 里就是 \texttt{print("你好！")}。本质上是一回事。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 修改你的 \texttt{hello.py}，让它输出三行：你的名字、你最喜欢的颜色、你今天的日期。
+  \item 故意制造一个错误：把 \texttt{print} 写成 \texttt{pront}，运行看看报错信息是什么样的。然后改回来。
+  \item \textbf{[思考]} \texttt{print("Hello" + "World")} 和 \texttt{print("Hello", "World")} 的输出有什么不同？动手试试。
+\end{enumerate}
 
 \section*{第二课：变量与数据类型}
 
@@ -158,6 +167,18 @@ print("明年你" + str(next_year) + "岁了")
 
 Scratch 里的"询问 你叫什么名字？并等待"积木 + "回答"积木 = Python 中的 \texttt{input()}。
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写一个程序：用 \texttt{input()} 问用户出生年份，计算并输出用户年龄（假设今年是 2026 年）。
+  \item 扩展上题：如果年龄 $\ge$ 18，输出"你已经成年了"；否则输出"你还未成年"。
+  \item \textbf{[调试练习]} 运行以下代码，观察报错信息，然后修复它：
+\begin{lstlisting}[language=Python]
+age = input("你几岁？")
+print("明年你" + age + 1 + "岁了")
+\end{lstlisting}
+\end{enumerate}
+
 \section*{第四课：条件判断——if 语句}
 
 \subsection*{基本语法}
@@ -238,6 +259,19 @@ else:
 
 （这个版本只能猜一次。后面学了循环，你就能让它一直猜直到猜中。）
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写一个程序：输入一个分数，输出对应的等级（90以上A，80-89 B，70-79 C，60-69 D，60以下F）。用 \texttt{if/elif/else} 实现。
+  \item 判断以下条件表达式的值（True 或 False）：① \texttt{10 > 5 and 3 < 1} ② \texttt{not (7 == 7)} ③ \texttt{5 != 5 or 2 == 2}
+  \item \textbf{[陷阱题]} 以下代码为什么会输出意想不到的结果？改正确。
+\begin{lstlisting}[language=Python]
+x = 10
+if x = 10:
+    print("x is 10")
+\end{lstlisting}
+\end{enumerate}
+
 \section*{第五课：循环——让计算机做重复的事}
 
 \subsection*{for 循环——知道要重复几次}
@@ -297,6 +331,21 @@ print("猜对了！")
 \subsection*{练习：完善猜数字游戏}
 
 用 \texttt{while} 循环改造刚才的猜数字游戏，让玩家可以一直猜，直到猜中为止。并记录猜了多少次。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 用 \texttt{for} 循环打印 1 到 100 之间所有 7 的倍数。
+  \item 用 \texttt{while} 循环计算 1 到 100 所有整数之和，并与公式 $n(n+1)/2$ 的结果对比。
+  \item \textbf{[代码理解]} 以下循环会输出什么？运行前先推理：
+\begin{lstlisting}[language=Python]
+for i in range(5):
+    if i % 2 == 0:
+        print(str(i) + "是偶数")
+    else:
+        print(str(i) + "是奇数")
+\end{lstlisting}
+\end{enumerate}
 
 \section*{第六课：列表——装很多东西的盒子}
 
@@ -361,6 +410,14 @@ for i, fruit in enumerate(fruits):
 
 提示：用 \texttt{sum()}, \texttt{max()}, \texttt{min()} 函数。
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 创建一个包含 10 个随机整数的列表，输出：最大值、最小值、平均值、中位数。
+  \item 有两个列表 \texttt{a = [1, 2, 3, 4, 5]} 和 \texttt{b = [3, 4, 5, 6, 7]}，用列表的方式找出同时在两个列表中的元素（交集）。
+  \item \textbf{[挑战]} 写一个程序生成"斐波那契数列"的前 20 项并存到列表中，然后输出。斐波那契：$F_1=1, F_2=1, F_n = F_{n-1} + F_{n-2}$。
+\end{enumerate}
+
 \section*{第七课：元组与字典}
 
 \subsection*{元组——不可修改的列表}
@@ -417,6 +474,14 @@ Scratch 里只有"变量"和"列表"，没有字典。字典是 Python 新增的
 \subsection*{练习：通讯录}
 
 创建一个字典来存储 3 个同学的姓名和电话号码。然后让用户输入名字，程序显示对应的电话号码。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 有一个字典 \texttt{student = \{"name": "小明", "scores": [85, 92, 78]\}}，请计算该学生的平均分并输出。
+  \item 用字典统计一个字符串中每个字母出现的次数。例如 \texttt{"hello"} → \texttt{\{'h':1, 'e':1, 'l':2, 'o':1\}}。
+  \item \textbf{[对比思考]} 列表和字典有什么不同？什么时候用列表，什么时候用字典？各举一个例子。
+\end{enumerate}
 
 \section*{第八课：函数——自制积木}
 
@@ -488,6 +553,14 @@ for r in range(1, 6):
 
 写一个函数 \texttt{calculator(a, b, op)}，接受两个数字和一个运算符（\texttt{"+"}, \texttt{"-"}, \texttt{"*"}, \texttt{"/"}），返回计算结果。除数为 0 时返回 \texttt{"除数不能为 0"}。
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写一个函数 \texttt{is\_palindrome(s)}，判断字符串是否是回文（正反读一样，如 \texttt{"aba"}、\texttt{"上海自来水来自海上"}）。
+  \item 写一个函数 \texttt{fib(n)}，返回斐波那契数列的第 $n$ 项。用循环实现，不要用递归。
+  \item \textbf{[代码复用]} 你在本课写了多个函数（计算器、回文判断等），现在把它们放在一个文件里，然后写另一个文件来 \texttt{import} 并使用它们。体验模块化的好处。
+\end{enumerate}
+
 \section*{第九课：模块——借用别人的代码}
 
 \subsection*{导入模块}
@@ -541,6 +614,14 @@ elif (player == "石头" and computer == "剪刀") or \
 else:
     print("你输了！")
 \end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 用 \texttt{random} 模块写一个程序：生成一个 4 位数的随机密码（每位是 0-9 的数字）。
+  \item 用 \texttt{math} 模块计算半径为 5 的圆的面积和周长（$\pi$ 用 \texttt{math.pi}）。
+  \item \textbf{[项目整合]} 把第四课的猜数字游戏和第九课的石头剪刀布放在同一个程序中，让用户可以选择玩哪个游戏。
+\end{enumerate}
 
 \section*{第十课：文件读写——让程序记住东西}
 
@@ -618,6 +699,14 @@ while True:
         break
 \end{lstlisting}
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 写一个程序：让用户输入多行文字（输入"quit"结束），把所有内容保存到 \texttt{notes.txt} 中。
+  \item 写一个程序：读取 \texttt{notes.txt} 并统计总行数、总字数和平均每行字数。
+  \item \textbf{[扩展]} 给记账本添加一个功能：显示"本月支出最多的类别"。提示：需要记录每个支出的类别（如"餐饮""交通""娱乐"）。
+\end{enumerate}
+
 \section*{综合项目：猜数字完整版}
 
 把之前零零散散的知识串起来，做一个完整的猜数字游戏：
@@ -688,6 +777,142 @@ guess_game()
 \end{itemize}
 
 这些模块都在本系列中！按照《整体课程大纲》的路线继续前进吧。
+
+\section*{\textcolor{blue!70!black}{各课练习参考答案}}
+
+\subsection*{第一课：搭建环境与第一个程序}
+\begin{enumerate}
+  \item 修改后的 \texttt{hello.py} 应包含三行 \texttt{print()}，分别输出姓名、颜色、日期。
+  \item 把 \texttt{print} 写成 \texttt{pront} 会报 \texttt{NameError: name 'pront' is not defined}。
+  \item \texttt{print("Hello" + "World")} 输出 \texttt{HelloWorld}（拼接无空格）。\texttt{print("Hello", "World")} 输出 \texttt{Hello World}（默认空格分隔）。
+\end{enumerate}
+
+\subsection*{第二课：变量与数据类型}
+\begin{enumerate}
+  \item 创建三个变量并打印。尝试 \texttt{my\_age = "十岁"} 仍可运行，因为 Python 是动态类型——但之后 age+1 会报错。
+  \item 合法变量名：\texttt{score}、\texttt{player\_1}、\texttt{\_temp}。不合法：\texttt{2player}（数字开头）、\texttt{my-name}（含连字符）、\texttt{class}（关键字）。
+  \item \texttt{print("10" + 5)} 会报 \texttt{TypeError}：不能拼接字符串和整数。\texttt{print(10 + 5)} 输出 15。
+\end{enumerate}
+
+\subsection*{第三课：输入与输出}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+birth_year = int(input("请输入出生年份："))
+age = 2026 - birth_year
+print("你今年" + str(age) + "岁")
+\end{lstlisting}
+  \item 在输出前加判断：\texttt{if age >= 18: print("你已经成年了") else: print("你还未成年")}。
+  \item \texttt{age} 是字符串，不能直接加整数。修复：\texttt{print("明年你" + str(int(age) + 1) + "岁了")}。
+\end{enumerate}
+
+\subsection*{第四课：条件判断}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+score = int(input("输入分数："))
+if score >= 90: print("A")
+elif score >= 80: print("B")
+elif score >= 70: print("C")
+elif score >= 60: print("D")
+else: print("F")
+\end{lstlisting}
+  \item ① \texttt{10 > 5 and 3 < 1} → \texttt{True and False} → \texttt{False}。② \texttt{not (7 == 7)} → \texttt{not True} → \texttt{False}。③ \texttt{5 != 5 or 2 == 2} → \texttt{False or True} → \texttt{True}。
+  \item 错误：\texttt{if x = 10:} 用了赋值 \texttt{=} 而不是判等 \texttt{==}。修复：\texttt{if x == 10:}。
+\end{enumerate}
+
+\subsection*{第五课：循环}
+\begin{enumerate}
+  \item \texttt{for i in range(1, 101): if i \% 7 == 0: print(i)}。
+  \item \texttt{total = 0; i = 1; while i <= 100: total += i; i += 1; print(total)} 输出 5050。
+  \item 输出：
+\begin{verbatim}
+0是偶数
+1是奇数
+2是偶数
+3是奇数
+4是偶数
+\end{verbatim}
+\end{enumerate}
+
+\subsection*{第六课：列表}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+import random
+nums = [random.randint(1, 100) for _ in range(10)]
+print("最大", max(nums), "最小", min(nums), "平均", sum(nums)/len(nums))
+sorted_nums = sorted(nums)
+n = len(sorted_nums)
+median = sorted_nums[n//2] if n%2==1 else (sorted_nums[n//2-1]+sorted_nums[n//2])/2
+\end{lstlisting}
+  \item 交集：\texttt{list(set(a) \& set(b))} → [3, 4, 5]。
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+fib = [1, 1]
+for i in range(2, 20):
+    fib.append(fib[i-1] + fib[i-2])
+print(fib)
+\end{lstlisting}
+\end{enumerate}
+
+\subsection*{第七课：元组与字典}
+\begin{enumerate}
+  \item 平均分 = \texttt{sum(student["scores"]) / len(student["scores"])} = (85+92+78)/3 = 85。
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+s = "hello"
+count = {}
+for ch in s:
+    count[ch] = count.get(ch, 0) + 1
+\end{lstlisting}
+  \item 列表用数字索引，适合有序集合（如排行榜）。字典用键索引，适合快速查找（如根据名字查电话）。
+\end{enumerate}
+
+\subsection*{第八课：函数}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+def is_palindrome(s):
+    return s == s[::-1]
+\end{lstlisting}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+def fib(n):
+    a, b = 1, 1
+    for _ in range(n-1):
+        a, b = b, a + b
+    return a
+\end{lstlisting}
+  \item 将函数定义放在 \texttt{utils.py} 中，在 \texttt{main.py} 中用 \texttt{from utils import calculator, is\_palindrome} 导入使用。
+\end{enumerate}
+
+\subsection*{第九课：模块}
+\begin{enumerate}
+  \item \texttt{import random; password = "".join(str(random.randint(0, 9)) for _ in range(4))}。
+  \item \texttt{import math; area = math.pi * 5**2; circumference = 2 * math.pi * 5}。
+  \item 用一个主菜单，\texttt{input()} 获取用户选择，用 \texttt{if/elif} 分支到不同的游戏。
+\end{enumerate}
+
+\subsection*{第十课：文件读写}
+\begin{enumerate}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+with open("notes.txt", "w", encoding="utf-8") as f:
+    while True:
+        line = input()
+        if line == "quit": break
+        f.write(line + "\n")
+\end{lstlisting}
+  \item 参考代码：
+\begin{lstlisting}[language=Python]
+with open("notes.txt", "r", encoding="utf-8") as f:
+    lines = f.readlines()
+    total_chars = sum(len(line.strip()) for line in lines)
+    print(f"行数：{len(lines)}，总字数：{total_chars}，平均：{total_chars/len(lines):.1f}")
+\end{lstlisting}
+  \item 添加一个"类别"字段到记录中，然后用字典统计每类支出总和。
+\end{enumerate}
 
 \section*{综合练习与答案}
 

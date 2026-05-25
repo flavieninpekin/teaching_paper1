@@ -1,0 +1,68 @@
+name: Compile TeX Documents
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/xu-cheng/texlive-full:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile LaTeX files
+        shell: bash
+        run: |
+          compile() {
+            local dir="$1" file="$2"
+            echo "=== $dir/$file ==="
+            cd "$dir"
+            xelatex -interaction=nonstopmode -file-line-error "$file" 2>&1 | tail -5
+            xelatex -interaction=nonstopmode -file-line-error "$file" 2>&1 | tail -5
+            cd "$GITHUB_WORKSPACE"
+          }
+
+          # classroom_materials
+          find . -name 'classroom_materials.tex' | while read f; do
+            compile "$(dirname "$f")" classroom_materials.tex
+          done
+
+          # E04-finance
+          for f in intro vol1-foundations vol2-derivatives vol3-innovation syllabus; do
+            compile extension-knowledge/E04-finance "$f"
+          done
+
+          # E01-mechanical-eng
+          for f in intro vol1-foundations syllabus; do
+            compile extension-knowledge/E01-mechanical-eng "$f"
+          done
+
+          # E03-welding-tech
+          for f in intro vol1-foundations syllabus; do
+            compile extension-knowledge/E03-welding-tech "$f"
+          done
+
+          # Other extension-knowledge (intro + syllabus)
+          for d in E05-civil-eng E06-electronics E07-clinical-medicine E08-law E11-aerospace E15-automation; do
+            for f in intro syllabus; do
+              if [ -f "extension-knowledge/$d/$f.tex" ]; then
+                compile "extension-knowledge/$d" "$f"
+              fi
+            done
+          done
+
+          # Other standalone files
+          compile science overall_plan
+          compile science/nature-intro syllabus
+          compile programming overview
+          compile math/low-level/algebra book1
+          compile math/low-level/algebra book2
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdfs
+          path: "**/*.pdf"
+          if-no-files-found: warn

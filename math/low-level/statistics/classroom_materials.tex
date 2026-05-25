@@ -1,0 +1,73 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{../../teaching-style}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=mainblue}
+
+\begin{document}
+\pagestyle{empty}
+
+% ===== 封面 =====
+\vspace*{2.5cm}
+{\centering
+  {\Huge\bfseries\color{mainblue} 统计与概率初步}\par
+  \vspace{0.6cm}
+  {\Large 从数据到决策}\par
+  \vspace{2cm}
+  \rule{0.5\textwidth}{0.4pt}\par
+  \vspace{1.2cm}
+  {\normalsize 适用学段：小学四年级～初中九年级}\par
+  \vspace{0.4cm}
+  {\normalsize 先修要求：分数、小数、比例的基本运算}\par
+  \vspace{0.4cm}
+  {\normalsize 建议课时：24\~{}30 课时（含练习与项目）}\par
+  \vspace{1.2cm}
+  \rule{0.5\textwidth}{0.4pt}
+}
+\newpage
+
+% ===== 使用说明 =====
+\vspace*{0.5cm}
+{\Large\bfseries\color{mainblue} 使用说明}\par
+\vspace{0.3cm}
+
+\textbf{适用对象。} 本教材面向小学四年级至初中九年级的学生，作为课外拓展学习材料。不需要任何统计学的预备知识——一切从生活中常见的具体问题出发。
+
+\textbf{教学理念。} 全书遵循"先做足够多的具体数字例子，再总结一般规律"的原则。每一节都从手算几个具体的数据或概率问题开始，让学生先看到现象，再归纳公式和方法。这与传统从定义出发的讲法相反——我们把"为什么"放在"是什么"之前。
+
+\textbf{章节安排。} 前三章覆盖描述统计的核心工具（数据收集、图表、代表数），第四章深入数据的波动性，第五章引入概率思维，第六章将这些工具综合运用于实际决策——包括统计陷阱的识别和机器学习分类的直观介绍。
+
+\textbf{练习体系。} 大部分节后配有即时练习，每章末设有 A 组（基础巩固）和 B 组（挑战提升）。A 组侧重计算熟练度，B 组侧重概念理解与跨章综合。全部练习题答案列于书末附录。部分题目会出现分数、根号等"不整洁"的结果，目的是让学生习惯真实计算场景。
+
+\textbf{致教师。} 如果课时有限，前三章各用 3--4 课时，第四章用 2--3 课时，第五章用 3--4 课时，第六章用 3--4 课时（第六章的机器学习部分可作为选讲内容）。每章的"本章小结"可直接用作板书提纲。建议重点讲解各章的实例部分，让学生课后独立完成 A 组练习，B 组可作为讨论题或选做。第六章的统计调查项目建议在学期中安排一次完整的实践。
+
+\newpage
+
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\preface{前言}
+
+为什么要学统计和概率？因为我们的生活充满了数据和不确定性。"这个班平均分是多少？""明天下雨的概率是多少？""这种药的有效率有多高？""网购的好评率可信吗？"——它们无处不在。
+
+这本书的目标很简单：让你学会用数据思考，而不是凭感觉拍脑袋。你将从最基础的事情开始——怎么收集数据、怎么画一张让人一看就懂的图表、怎么用一个数说清楚一组数据的特征。然后你会接触到概率——怎么衡量"可能性有多大"。最后，你会把这些工具综合起来，做出更理性的决策，还能识破那些打着"统计数据"旗号的忽悠。
+
+全书遵循一个原则：\textbf{先做足够多的具体数字的例子，再总结一般规律。} 每一节后面都配有练习，每一章末尾配有两组综合练习（A 组打基础，B 组挑战提升），所有习题答案附在书末。
+
+准备好了吗？从你身边的数据开始。
+
+\newpage
+
+\tableofcontents
+\newpage
+
+\input{ch01}
+\input{ch02}
+\input{ch03}
+\input{ch04}
+\input{ch05}
+\input{ch06}
+\input{answers}
+
+\end{document}

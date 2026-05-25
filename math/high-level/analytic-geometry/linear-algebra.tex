@@ -1,143 +1,983 @@
 \documentclass[a4paper,12pt]{ctexart}
 \usepackage{../../teaching-style}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
 
 \begin{document}
 \pagestyle{empty}
 
 \maintitle{线性代数初步}
 \begin{center}
-  \large 高学段 · 重结构轻计算，非工科数学
+  \large 从几何变换到二次型
 \end{center}
 \vspace{0.3cm}
 
-\chaptertitle{第一章\quad 线性方程组与矩阵}
+\chaptertitle{前言}
 
-\sectiontitle{1.1\quad 线性方程组的消元法}
+这本书不走抽象定义的老路。我们会从最直观的事情开始——在坐标平面上把一个点旋转一下，把一张图反射一下，把一个图形拉长或压扁。这些动作，你用手比划一下就能想象出来。做完几十个这样的例子之后，你会发现它们背后有一个共同的结构，这个结构恰好可以用一种叫做"矩阵"的数学对象来表达。
 
-\knowbox{
-\textbf{线性方程组}：$\begin{cases}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\\vdots\\a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_m\end{cases}$\\
-\textbf{高斯消元法}：通过行变换（交换两行、某行乘非零常数、某行倍数加到另一行）化为阶梯形。\\
-\textbf{增广矩阵}：将系数和常数写成一个矩阵。\\
-三种情况：唯一解、无穷多解、无解。}
+然后我们从矩阵出发，逐步引出矩阵乘法（就是把两个动作连起来做）、行列式（就是这个动作把面积放大/缩小了多少倍）、特征值和特征向量（就是这个动作有没有不改变方向的特殊方向），最后用这套语言来研究圆锥曲线——椭圆、双曲线、抛物线——你会发现特征值的正负号直接告诉你是哪种曲线，比联立方程加判别式的方法好理解得多。
 
-\sectiontitle{1.2\quad 矩阵的概念与运算}
-
-\knowbox{
-矩阵$A_{m\times n}$：$m$行$n$列的数表。\\
-加法：对应元素相加（同型矩阵）。\\
-数乘：每个元素乘以该数。\\
-乘法：$A_{m\times n}B_{n\times p}=C_{m\times p}$，$c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}$（前行$\times$后列）。\\
-注意：矩阵乘法不满足交换律（$AB\neq BA$一般）。}
-
-\sectiontitle{1.3\quad 矩阵的秩与逆矩阵}
-
-\knowbox{
-\textbf{秩}：矩阵通过行变换化为阶梯形后非零行的行数，记作$r(A)$。\\
-秩是矩阵最本质的不变量之一。\\
-\textbf{逆矩阵}：若$AB=BA=I$，则$B=A^{-1}$。\\
-可逆条件：$n$阶方阵$A$可逆$\Leftrightarrow r(A)=n\Leftrightarrow\det A\neq0$。\\
-求逆：$(A|I)\xrightarrow{\text{行变换}}(I|A^{-1})$。}
-
-\sectiontitle{习题1}
-
-\begin{exercise}
-\item 用高斯消元法解：$\begin{cases}2x+3y=7\\x-2y=-4\end{cases}$。
-\item 计算矩阵乘积：$\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}0&1\\1&0\end{pmatrix}$。
-\item 求$\begin{pmatrix}2&3&1\\0&1&-1\\0&0&2\end{pmatrix}$的秩。
-\item 求$\begin{pmatrix}1&2\\3&4\end{pmatrix}$的逆矩阵。
-\end{exercise}
+整本书遵循一个原则：**先做足够多的具体数字的例子，再总结一般规律。** 不要怕算，算多了自然就懂了。
 
 \newpage
 
-\chaptertitle{第二章\quad 行列式}
+\chaptertitle{第一章\quad 平面上的几何变换}
 
-\sectiontitle{2.1\quad 行列式的定义与性质}
+\sectiontitle{1.1\quad 坐标——给平面上的点一个"地址"}
 
-\knowbox{
-二阶行列式：$\begin{vmatrix}a&b\\c&d\end{vmatrix}=ad-bc$。\\
-三阶行列式（展开）：$\begin{vmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{vmatrix}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$。\\
-\textbf{性质}：\\
-1. 转置行列式值不变。\\
-2. 交换两行（列）变号。\\
-3. 某行（列）乘$k$，值乘$k$。\\
-4. 两行（列）成比例，值为$0$。\\
-5. 某行（列）写成两数和，可拆成两个行列式之和。}
+想象一张方格纸。我们在这张纸上画两条互相垂直的直线：水平的这条叫$x$轴，竖直的这条叫$y$轴。两条线相交的那一点叫原点，记作$O$。
 
-\sectiontitle{2.2\quad 克拉默法则}
+现在平面上任何一个点都可以用两个数来"定位"。为什么是两个数？因为从原点到那个点，你可以分解为"向右（或左）走多少格"和"向上（或下）走多少格"两个步骤。向右（或左）的格数记作$x$坐标，向上（或下）的格数记作$y$坐标。如果往左或者往下的方向走，坐标就是负数。
 
-\knowbox{
-对于$n$元线性方程组$Ax=b$，若$\det A\neq0$，则唯一解为$x_i=\dfrac{\det A_i}{\det A}$，\\
-其中$A_i$是将$A$的第$i$列换成$b$得到的矩阵。\\
-理论意义重大，但实际计算中$n$较大时运算量巨大（高联二试可能涉及$n=2,3$的情况）。}
-
-\sectiontitle{习题2}
+举个具体的例子：从原点向右走3格，向上走2格，你到达的点记作$(3,2)$。从原点向左走1格，向上走4格，到达点$(-1,4)$。从原点向右走5格，向下走3格，到达点$(5,-3)$。练习一下：
 
 \begin{exercise}
-\item 计算：$\begin{vmatrix}2&3\\1&-4\end{vmatrix}$；$\begin{vmatrix}\sin\theta&-\cos\theta\\\cos\theta&\sin\theta\end{vmatrix}$。
-\item 计算：$\begin{vmatrix}1&2&3\\2&3&1\\3&1&2\end{vmatrix}$。
-\item 用克拉默法则解：$\begin{cases}2x+3y=7\\x-2y=-4\end{cases}$。
+\item 写出下列点的坐标：(a) 向右2格、向上5格。(b) 向左3格、向下1格。(c) 向左4格、向上0格（只在$x$轴上移动）。
+\item 描述坐标$(-2,3)$的位置。
+\item 坐标$(0,4)$和$(4,0)$是同一个点吗？为什么？
 \end{exercise}
+
+有了坐标，平面上任何一个图形都可以用它的顶点的坐标来描述。比如一个正方形，它的四个顶点可能是$(0,0),(2,0),(2,2),(0,2)$。
+
+\textbf{变换}是什么？就是把平面上的每个点$(x,y)$按照一定的规律挪到一个新的位置$(x',y')$。挪完了，图形就变了。我们关心的就是：这个挪动的规律具体是什么？能不能用公式写出来？
+
+看看下面几个简单的例子：\\
+把每个点向右平移2格：$x'=x+2,\;y'=y$。\\
+把每个点的$x$坐标翻倍（水平方向上拉长）：$x'=2x,\;y'=y$。\\
+把每个点绕原点转$90^\circ$：结果大概是什么？我们需要具体算一算。
+
+这一章我们就把几种最常见的变换一个一个看过去，观察它们是怎么改变点的坐标的。
+
+\sectiontitle{1.2\quad 旋转变换——把点绕原点转一个角度}
+
+先从最简单的开始。点$A(1,0)$在$x$轴的正方向上，把它绕原点逆时针旋转$90^\circ$，它会转到哪？你用手指在桌面上比划一下就知道了：$(1,0)$转了$90^\circ$之后，正好落在$y$轴的正方向上，变成了$(0,1)$。
+
+那点$B(0,1)$转$90^\circ$呢？转到$x$轴的负方向上，变成$(-1,0)$。点$C(2,0)$转$90^\circ$呢？变成$(0,2)$。
+
+把这些例子记下来：
+
+\begin{center}
+\begin{tabular}{c|c|c}
+原坐标 & $90^\circ$旋转后 & $180^\circ$旋转后\\\hline
+$(1,0)$ & $(0,1)$ & $(-1,0)$\\
+$(0,1)$ & $(-1,0)$ & $(0,-1)$\\
+$(2,0)$ & $(0,2)$ & $(-2,0)$\\
+$(0,3)$ & $(-3,0)$ & $(0,-3)$\\
+$(1,2)$ & $(-2,1)$ & $(-1,-2)$
+\end{tabular}
+\end{center}
+
+观察上表，$90^\circ$旋转看起来有个规律：$x'=-y$，$y'=x$。验证一下：$(1,2)$代入，$x'=-2$，$y'=1$，得到$(-2,1)$，对上表中最后一行的结果。再试$(3,4)$：旋转后应该是$(-4,3)$。$x'=-4$，$y'=3$，规律成立。
+
+那$180^\circ$旋转呢？观察表：$(1,0)\to(-1,0)$，$(1,2)\to(-1,-2)$。看起来规律是$x'=-x$，$y'=-y$。
+
+现在问一个更一般的问题：如果旋转的角度不是$90^\circ$也不是$180^\circ$，而是任意角度$\theta$，怎么算新坐标？
+
+这时候需要借助三角函数。如右图，设原点$O$到点$P(x,y)$的距离为$r$，$OP$与$x$轴的夹角为$\alpha$。根据三角函数的定义，$x=r\cos\alpha$，$y=r\sin\alpha$。
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+\draw[->,thick] (-1,0) -- (4,0) node[right]{$x$};
+\draw[->,thick] (0,-1) -- (0,4) node[above]{$y$};
+\filldraw (2.5,0.5) circle (2pt) node[right]{$P(x,y)$};
+\filldraw (-0.5,2.5) circle (2pt) node[left]{$P'(x',y')$};
+\draw[->,thick] (0,0) -- (2.5,0.5) node[midway,below]{$r$};
+\draw[->,thick,dashed] (0,0) -- (-0.5,2.5) node[midway,above]{$r$};
+\draw (0.8,0) arc (0:12:0.8);
+\node at (1.4,0.1){$\alpha$};
+\draw (0.8,0) arc (0:100:0.8);
+\node at (1.2,0.9){$\theta$};
+\end{tikzpicture}
+\end{center}
+
+把$OP$逆时针旋转$\theta$角后，新点$P'$对应的角度是$\alpha+\theta$，距离$r$不变。根据三角函数：
+\[
+x' = r\cos(\alpha+\theta),\qquad y' = r\sin(\alpha+\theta)
+\]
+利用和角公式$\cos(\alpha+\theta)=\cos\alpha\cos\theta-\sin\alpha\sin\theta$和$\sin(\alpha+\theta)=\sin\alpha\cos\theta+\cos\alpha\sin\theta$：
+\begin{align*}
+x' &= r(\cos\alpha\cos\theta-\sin\alpha\sin\theta) \\
+   &= (r\cos\alpha)\cos\theta-(r\sin\alpha)\sin\theta
+    = x\cos\theta-y\sin\theta\\[2mm]
+y' &= r(\sin\alpha\cos\theta+\cos\alpha\sin\theta) \\
+   &= (r\sin\alpha)\cos\theta+(r\cos\alpha)\sin\theta
+    = x\sin\theta+y\cos\theta
+\end{align*}
+
+这就是旋转任意角度$\theta$的通用公式：
+\[
+x' = x\cos\theta - y\sin\theta,\qquad y' = x\sin\theta + y\cos\theta
+\]
+
+现在用这个公式验证刚才的$90^\circ$和$180^\circ$：
+\begin{itemize}
+\item $\theta=90^\circ$：$\cos90^\circ=0,\sin90^\circ=1$，代入得$x'=-y,\;y'=x$。$\checkmark$
+\item $\theta=180^\circ$：$\cos180^\circ=-1,\sin180^\circ=0$，代入得$x'=-x,\;y'=-y$。$\checkmark$
+\item $\theta=270^\circ$：$\cos270^\circ=0,\sin270^\circ=-1$，代入得$x'=y,\;y'=-x$。
+\end{itemize}
+
+\begin{exercise}[旋转练习]
+\item 点$(3,0)$转$90^\circ$后到哪？转$270^\circ$后呢？
+\item 点$(2,1)$转$180^\circ$后坐标是什么？
+\item 点$(4,3)$转$90^\circ$后坐标是什么？
+\item 用旋转公式直接算：$\theta=45^\circ$时点$(1,0)$转到哪里？($\cos45^\circ=\sin45^\circ=\frac{\sqrt2}{2}$)
+\item 点$(1,1)$转$90^\circ$后坐标是什么？转$180^\circ$呢？转$270^\circ$呢？观察旋转$360^\circ$后会不会回到原位。
+\item 点$(x,y)$旋转$-90^\circ$（即顺时针旋转$90^\circ$）后坐标是什么？提示：$\cos(-90^\circ)=0$，$\sin(-90^\circ)=-1$。
+\end{exercise}
+
+
+\sectiontitle{1.3\quad 反射变换——照镜子}
+
+反射就是"照镜子"。关于$x$轴反射，就是把图形沿着$x$轴折过去。比如点$(3,2)$，它在$x$轴上方，反射到$x$轴下方就是$(3,-2)$。点$(-1,4)$反射到$x$轴下方是$(-1,-4)$。$x$坐标完全不变，$y$坐标变成相反数。公式是：
+\[
+x'=x,\quad y'=-y
+\]
+
+关于$y$轴反射呢？$(3,2)$反射到$y$轴左边是$(-3,2)$。$(5,-1)$反射到$(-5,-1)$。$y$坐标不变，$x$坐标变成相反数：
+\[
+x'=-x,\quad y'=y
+\]
+
+关于直线$y=x$反射，稍微转一下脑子。这条线是"东北-西南"方向的斜线。点$(3,2)$关于$y=x$反射后是$(2,3)$——就是把坐标对调。所以：
+\[
+x'=y,\quad y'=x
+\]
+
+关于直线$y=-x$反射，就是对调后再加一个负号。$(3,2)$变成$(-2,-3)$：
+\[
+x'=-y,\quad y'=-x
+\]
+
+反复做两次同一个反射会回到原位。比如$(3,2)$关于$x$轴反射两次：$(3,2)\to(3,-2)\to(3,2)$，回到了起点。
+
+\begin{exercise}[反射练习]
+\item 点$(5,-3)$关于$x$轴对称后到哪？关于$y$轴对称后呢？
+\item 点$(-2,4)$关于$y=x$对称后坐标是什么？关于$y=-x$呢？
+\item 点$(4,1)$先关于$x$轴对称，再关于$y$轴对称，最终在哪？这和单做某个反射等价吗？
+\item 一个点做三次关于$x$轴的反射，结果等于做了一次还是三次？
+\item 点$(1,0)$关于$y=x$对称，再关于$x$轴对称，写出整个过程每一步的坐标。
+\end{exercise}
+
+
+\sectiontitle{1.4\quad 伸缩变换——拉长或压扁}
+
+伸缩变换就像拽着一张橡皮膜——有一个方向被拉长了或者挤扁了。
+
+\textbf{沿$x$方向拉伸$k$倍}：每个点的$x$坐标变成$k$倍，$y$坐标不变。
+\begin{itemize}
+\item $k=2$时：$(1,2)\to(2,2)$，$(3,1)\to(6,1)$，$(-1,3)\to(-2,3)$。
+\item $k=\frac12$时（压扁一半）：$(4,3)\to(2,3)$，$(6,5)\to(3,5)$。
+\item $k=-2$时：$(1,2)\to(-2,2)$。负号的意思是——拉了两倍，同时翻到另一边。
+\end{itemize}
+公式就是：
+\[
+x'=kx,\quad y'=y
+\]
+
+同理，\textbf{沿$y$方向拉伸$l$倍}：
+\[
+x'=x,\quad y'=ly
+\]
+
+\textbf{两个方向同时拉伸}：
+\[
+x'=kx,\quad y'=ly
+\]
+比如$k=2,l=3$时，$(1,1)\to(2,3)$——一个$1\times1$的小正方形变成了$2\times3$的矩形。面积变成原来的$k\times l=6$倍。
+
+\begin{exercise}[伸缩练习]
+\item 点$(4,5)$沿$x$方向拉伸$3$倍后到哪？沿$y$方向压缩到$\frac12$呢？
+\item 点$(-2,5)$沿$x$方向拉伸$-1$倍后到哪？这和什么变换一样？
+\item $k=3,l=4$时，求$(2,1)$的像。这个变换把面积放大了几倍？
+\item 先沿$x$拉伸$2$倍，再沿$y$拉伸$3$倍——和先$y$后$x$的结果一样吗？算一下验证。
+\item 沿$x$拉伸$2$倍能"还原"吗？如果能，怎么还原？
+\end{exercise}
+
+
+\sectiontitle{1.5\quad 投影变换——丢掉一个维度}
+
+投影变换是最简单粗暴的一种：直接把所有点的$y$坐标（或$x$坐标）清零。
+
+\textbf{向$x$轴投影}：$(x,y)\to(x,0)$。不论原本$y$是多少，一概变成$0$。
+\begin{itemize}
+\item $(3,5)\to(3,0)$，$(3,-2)\to(3,0)$，$(-1,4)\to(-1,0)$。
+\end{itemize}
+注意，$(3,5)$和$(3,-2)$是两个不同的点，投影后都变成了$(3,0)$。所以\textbf{投影变换不可逆}——从投影结果你推不出原来的点在哪。公式：
+\[
+x'=x,\quad y'=0
+\]
+
+\textbf{向$y$轴投影}：
+\[
+x'=0,\quad y'=y
+\]
+$(3,5)\to(0,5)$，$(-2,5)\to(0,5)$——$(-2,5)$和$(3,5)$投影后重合了，同样不可逆。
+
+\begin{exercise}[投影练习]
+\item 点$(4,-3)$向$x$轴投影后到哪？向$y$轴投影呢？
+\item 点$(2,5)$和$(-2,5)$向$y$轴投影后重合吗？$(2,5)$和$(2,-5)$向$x$轴投影后重合吗？
+\item 把$1\times1$正方形（顶点$(0,0),(1,0),(1,1),(0,1)$）向$x$轴投影，得到的图形是什么？
+\item 投影变换能加一个平移再变回来吗？为什么不行？
+\end{exercise}
+
+
+\sectiontitle{1.6\quad 切变变换——像推一副扑克牌}
+
+切变变换比投影温和一些，但也很特别。想象一叠整齐的扑克牌，你用手在侧面推了一把——上面的牌被推得远一些，底下的牌基本不动。
+
+\textbf{沿$x$方向的切变}：公式是$x'=x+ky,\;y'=y$。注意，$y$坐标不变，$x$坐标则加上了一个与$y$成正比的量。$y$越大，$x$被加得越多——越靠上的点被推得越远。
+\begin{itemize}
+\item $k=2$，算$(1,2)$：$x'=1+2\times2=5,\;y'=2$，变成$(5,2)$。
+\item $k=2$，算$(3,0)$：$x'=3+2\times0=3,\;y'=0$，不变。因为$y=0$，不受推力的影响。
+\item $k=2$，算$(2,3)$：$x'=2+2\times3=8,\;y'=3$，变成$(8,3)$。
+\end{itemize}
+
+考虑一个正方形，四个顶点为$A(0,0),B(2,0),C(2,2),D(0,2)$，做$k=1$的$x$方向切变：
+\begin{align*}
+A(0,0) &\to (0+1\times0,\;0) = (0,0)\\
+B(2,0) &\to (2+1\times0,\;0) = (2,0)\\
+C(2,2) &\to (2+1\times2,\;2) = (4,2)\\
+D(0,2) &\to (0+1\times2,\;2) = (2,2)
+\end{align*}
+新顶点是$(0,0),(2,0),(4,2),(2,2)$——变成了一个平行四边形！底边长$2$不变，高$2$也不变，所以面积没变。切变不改变面积，这个性质在第三章讲行列式的时候会变成一个优雅的结论。
+
+\begin{exercise}[切变练习]
+\item $k=3$时，点$(1,2)$切变后到哪？点$(1,0)$呢？
+\item $k=-2$时，点$(1,3)$切变后坐标是什么？负号意味着往哪边推？
+\item 正方形顶点$(0,0),(2,0),(2,2),(0,2)$做$k=3$的$x$方向切变，画出新图形并计算各顶点坐标。
+\item 做完切变再做一次$k$取相反数的切变，能回到原位吗？验证一下。
+\item 猜一猜：$y$方向的切变公式应该是什么样子？
+\end{exercise}
+
+
+\sectiontitle{1.7\quad 本章小结与综合练习}
+
+到目前为止我们学了五种变换：旋转、反射、伸缩、投影、切变。观察它们的公式，你发现没有，除了平移（我们会在第五章专门处理），前五种变换都可以写成同一个形式：
+\[
+x' = ax + by,\qquad y' = cx + dy
+\]
+差别只在于$a,b,c,d$取的值不同。这正是下一章要讲的内容——把这四个数排成一个方块，就是矩阵。
+
+\begin{exercise}[综合练习1]
+\item 点$(3,4)$绕原点逆时针旋转$90^\circ$后，再关于$x$轴对称，求最终坐标。
+\item 点$(-1,5)$先关于$y=x$对称，再沿$x$方向拉伸$2$倍，求最终坐标。
+\item 点$(5,0)$做$x$方向$k=2$的切变，然后向$y$轴投影，求最终坐标。
+\item 一个正方形顶点为$(0,0),(2,0),(2,2),(0,2)$。依次做以下变换，求出每一步后的新顶点坐标：\\
+(a) 关于$x$轴对称 \\
+(b) 沿$y$方向拉伸$2$倍 \\
+(c) $x$方向$k=1$的切变 \\
+(d) 旋转$180^\circ$
+\item 判断下列说法是否正确，正确的举一个例子，错误的说明原因：\\
+(a) 旋转变换保持两点间距离不变。\\
+(b) 投影变换是可逆的。\\
+(c) 切变变换不改变面积。\\
+(d) 所有的反射变换做两次就等于什么都没做。
+\item 有没有一种变换能把一个正方形变成一个长方形？是哪种变换？
+\item 有没有一种变换能把一个正方形变成一个平行四边形但面积不变？是哪种变换？
+\item 思考：为什么线性变换的公式只能是$ax+by$而不能含有$x^2$或者$\sqrt{x}$这样的项？提示：想象一条直线经过这样的变换后，还应该是直线吗？
+\end{exercise}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章的所有练习答案和部分解析请参见书末附录。
 
 \newpage
 
-\chaptertitle{第三章\quad 向量空间}
+\chaptertitle{第二章\quad 矩阵——变换的代码}
 
-\sectiontitle{3.1\quad 向量与线性组合}
+\sectiontitle{2.1\quad 把变换"装进"一个方块}
 
-\knowbox{
-向量$\vec v=(v_1,v_2,\dots,v_n)$是$n$元有序数组。\\
-\textbf{线性组合}：$k_1\vec v_1+k_2\vec v_2+\cdots+k_m\vec v_m$。\\
-\textbf{线性相关}：存在不全为零的$k_i$使线性组合$=0$。\\
-\textbf{线性无关}：只有$k_i$全为零才能使线性组合$=0$。\\
-几何意义（$\mathbb R^2$中）：两个向量线性相关$\Leftrightarrow$共线；三个向量一定线性相关。}
+回头看第一章的所有变换公式，它们都长成同一个样子：
+\[
+x' = ax + by,\qquad y' = cx + dy
+\]
+把一个具体的变换写下来，就是给$a,b,c,d$各填一个具体的数。比如：
+\begin{align*}
+\text{旋转}90^\circ:\quad &a=0,\;b=-1,\;c=1,\;d=0\\
+\text{关于$x$轴对称}:\quad &a=1,\;b=0,\;c=0,\;d=-1\\
+\text{$x$方向拉伸$3$倍}:\quad &a=3,\;b=0,\;c=0,\;d=1\\
+\text{向$x$轴投影}:\quad &a=1,\;b=0,\;c=0,\;d=0\\
+\text{$x$方向切变$k=2$}:\quad &a=1,\;b=2,\;c=0,\;d=1
+\end{align*}
 
-\sectiontitle{3.2\quad 基与维数}
+既然每个变换只需要四个数就能完全确定，那把它们排成一个$2\times2$的方块不是更简洁吗？这个方块就叫\textbf{矩阵}：
+\[
+A = \begin{pmatrix}a&b\\c&d\end{pmatrix}
+\]
+这四个数的位置：$a$是左上角，$b$是右上角，$c$是左下角，$d$是右下角。
 
-\knowbox{
-\textbf{基}：向量空间中一组线性无关且能生成整个空间的向量。\\
-\textbf{维数}：基中向量的个数。\\
-$\mathbb R^n$的标准基：$\vec e_1=(1,0,\dots,0)$，$\vec e_2=(0,1,\dots,0)$，$\dots$，$\vec e_n=(0,0,\dots,1)$。\\
-$n$维向量空间中任意$n$个线性无关的向量构成一组基。\\
-\textbf{坐标}：向量在给定基下的表示系数。\\
-\textbf{基变换}：不同基之间的坐标变换通过过渡矩阵实现。}
+用矩阵表示变换，就是把列向量$\begin{pmatrix}x\\y\end{pmatrix}$左乘矩阵$A$得到新坐标：
+\[
+\begin{pmatrix}x'\\y'\end{pmatrix}
+= \begin{pmatrix}a&b\\c&d\end{pmatrix}
+\begin{pmatrix}x\\y\end{pmatrix}
+\]
 
-\sectiontitle{习题3}
+我们来实际操作一下。矩阵$\begin{pmatrix}0&-1\\1&0\end{pmatrix}$（这是旋转$90^\circ$的矩阵）作用在点$(3,2)$上：
+\[
+\begin{pmatrix}0&-1\\1&0\end{pmatrix}\begin{pmatrix}3\\2\end{pmatrix}
+= \begin{pmatrix}0\times3+(-1)\times2\\1\times3+0\times2\end{pmatrix}
+= \begin{pmatrix}-2\\3\end{pmatrix}
+\]
+算出来是$(-2,3)$。本章之前我们手动算过$(3,2)$旋转$90^\circ$的结果确实是$(-2,3)$，对上了。
 
-\begin{exercise}
-\item 判断$\vec a=(1,2)$，$\vec b=(2,4)$是否线性相关。
-\item 判断$\vec a=(1,0,1)$，$\vec b=(0,1,1)$，$\vec c=(1,-1,0)$是否线性无关。
-\item 求$\vec v=(3,4)$在标准基$\{\vec e_1,\vec e_2\}$下的坐标。
-\item 证明：$\mathbb R^2$中任意三个向量一定线性相关。
+再试一个：矩阵$\begin{pmatrix}2&0\\0&3\end{pmatrix}$（两个方向分别拉伸）作用于$(1,1)$：
+\[
+\begin{pmatrix}2&0\\0&3\end{pmatrix}\begin{pmatrix}1\\1\end{pmatrix}
+= \begin{pmatrix}2\times1+0\times1\\0\times1+3\times1\end{pmatrix}
+= \begin{pmatrix}2\\3\end{pmatrix}
+\]
+结果$(2,3)$。$(1,1)$的$x$被拉到$2$倍，$y$被拉到$3$倍，正确。
+
+\begin{exercise}[矩阵×向量练习]
+\item 用矩阵乘法计算：旋转$90^\circ$矩阵作用于$(5,0)$。
+\item 用矩阵乘法计算：关于$x$轴对称矩阵作用于$(-3,2)$。
+\item 用矩阵乘法计算：$x$方向拉伸$4$倍矩阵作用于$(1,5)$。
+\item 用矩阵乘法计算：$x$方向切变$k=3$矩阵作用于$(2,1)$。
 \end{exercise}
+
+现在我们整理一下常用变换的矩阵，把它当作一个速查表：
+
+\begin{center}
+\begin{tabular}{c|c}
+\textbf{变换} & \textbf{矩阵}\\\hline
+旋转$\theta$ & $\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$\\
+旋转$90^\circ$ & $\begin{pmatrix}0&-1\\1&0\end{pmatrix}$\\
+旋转$180^\circ$ & $\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$\\
+关于$x$轴对称 & $\begin{pmatrix}1&0\\0&-1\end{pmatrix}$\\
+关于$y$轴对称 & $\begin{pmatrix}-1&0\\0&1\end{pmatrix}$\\
+关于$y=x$对称 & $\begin{pmatrix}0&1\\1&0\end{pmatrix}$\\
+关于$y=-x$对称 & $\begin{pmatrix}0&-1\\-1&0\end{pmatrix}$\\
+$x$方向拉伸$k$ & $\begin{pmatrix}k&0\\0&1\end{pmatrix}$\\
+两个方向分别拉伸$k,l$ & $\begin{pmatrix}k&0\\0&l\end{pmatrix}$\\
+向$x$轴投影 & $\begin{pmatrix}1&0\\0&0\end{pmatrix}$\\
+向$y$轴投影 & $\begin{pmatrix}0&0\\0&1\end{pmatrix}$\\
+$x$方向切变$k$ & $\begin{pmatrix}1&k\\0&1\end{pmatrix}$
+\end{tabular}
+\end{center}
+
+有了矩阵，后面你会发现它能做的事情远不止"用一个方块代替四个数"这么简单——矩阵的乘法和变换的复合有一种天然的对应关系，这是整个线性代数中最美妙的部分之一。
+
+\sectiontitle{2.2\quad 复合变换与矩阵乘法}
+
+如果先做一个变换$A$，再做一个变换$B$，这两个动作合在一起显然也是一个变换。这个"复合变换"的矩阵是什么？就是$B$和$A$的乘积，写作$BA$。注意顺序：先做$A$再做$B$，复合矩阵是$B$乘$A$（右向左写）。
+
+矩阵乘法怎么算？规则是：左矩阵的第$i$行和右矩阵的第$j$列对应位置相乘再相加，得到结果矩阵的第$(i,j)$位。
+\[
+\begin{pmatrix}p&q\\r&s\end{pmatrix}
+\begin{pmatrix}a&b\\c&d\end{pmatrix}
+=
+\begin{pmatrix}
+pa+qc & pb+qd\\
+ra+sc & rb+sd
+\end{pmatrix}
+\]
+
+现在用具体例子来练习。
+
+\textbf{例1：先旋转$90^\circ$再关于$x$轴对称。}
+
+旋转$90^\circ$矩阵：$R=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$
+$x$轴反射矩阵：$S=\begin{pmatrix}1&0\\0&-1\end{pmatrix}$
+
+复合是$S$乘$R$（先旋转后反射，所以反射矩阵写在前面）：
+\[
+SR = \begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\begin{pmatrix}0&-1\\1&0\end{pmatrix}
+= \begin{pmatrix}
+1\times0+0\times1 & 1\times(-1)+0\times0\\
+0\times0+(-1)\times1 & 0\times(-1)+(-1)\times0
+\end{pmatrix}
+= \begin{pmatrix}0&-1\\-1&0\end{pmatrix}
+\]
+结果$\begin{pmatrix}0&-1\\-1&0\end{pmatrix}$，查表——这是关于$y=-x$的反射矩阵。
+
+\textbf{例2：反过来，先关于$x$轴对称再旋转$90^\circ$。}
+
+这次$R$乘$S$：
+\[
+RS = \begin{pmatrix}0&-1\\1&0\end{pmatrix}
+\begin{pmatrix}1&0\\0&-1\end{pmatrix}
+= \begin{pmatrix}
+0\times1+(-1)\times0 & 0\times0+(-1)\times(-1)\\
+1\times1+0\times0 & 1\times0+0\times(-1)
+\end{pmatrix}
+= \begin{pmatrix}0&1\\1&0\end{pmatrix}
+\]
+结果$\begin{pmatrix}0&1\\1&0\end{pmatrix}$——这是关于$y=x$的反射矩阵。
+
+$SR$和$RS$，结果不一样！这正是矩阵乘法的一个关键性质：**一般不可交换**，$AB\neq BA$。先做A再做B，和先做B再做A，效果通常不同。就像先穿袜子再穿鞋，和先穿鞋再穿袜子——结果怎么可能一样？
+
+\textbf{例3：先旋转$45^\circ$再旋转$-45^\circ$。}
+
+$\theta=45^\circ$的旋转矩阵：$R_{45}=\frac{\sqrt2}{2}\begin{pmatrix}1&-1\\1&1\end{pmatrix}$
+$\theta=-45^\circ$的旋转矩阵：$R_{-45}=\frac{\sqrt2}{2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}$
+
+计算乘积：
+\begin{align*}
+R_{-45}R_{45}
+&= \frac{\sqrt2}{2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}
+\cdot \frac{\sqrt2}{2}\begin{pmatrix}1&-1\\1&1\end{pmatrix}
+= \frac{2}{4}\begin{pmatrix}1\cdot1+1\cdot1 & 1\cdot(-1)+1\cdot1\\ (-1)\cdot1+1\cdot1 & (-1)\cdot(-1)+1\cdot1\end{pmatrix}\\
+&= \frac12\begin{pmatrix}2&0\\0&2\end{pmatrix}
+= \begin{pmatrix}1&0\\0&1\end{pmatrix}
+\end{align*}
+结果是$\begin{pmatrix}1&0\\0&1\end{pmatrix}$——这个矩阵什么都不做，叫做\textbf{单位矩阵}，记作$I$。正旋转紧接着逆旋转，回到了原地，乘法结果也恰好是$I$。
+
+\textbf{例4：两个伸缩可以交换。}
+
+$A=\begin{pmatrix}2&0\\0&1\end{pmatrix}$（$x$方向拉伸$2$倍），$B=\begin{pmatrix}1&0\\0&3\end{pmatrix}$（$y$方向拉伸$3$倍）。
+
+$AB=\begin{pmatrix}2&0\\0&3\end{pmatrix}$，$BA=\begin{pmatrix}2&0\\0&3\end{pmatrix}$，结果相同。因为两个方向各自独立拉伸，互不干扰。
+
+\begin{exercise}[矩阵乘法练习]
+\item 计算：$\begin{pmatrix}2&1\\0&3\end{pmatrix}\begin{pmatrix}1&2\\3&4\end{pmatrix}$
+\item 交换顺序计算上题，结果相同吗？
+\item 先旋转$180^\circ$再关于$x$轴对称，做矩阵乘法求复合矩阵。
+\item 先关于$y=x$对称再旋转$90^\circ$，写出复合矩阵。
+\item 验证：伸缩矩阵$\begin{pmatrix}k&0\\0&l\end{pmatrix}$和$\begin{pmatrix}p&0\\0&q\end{pmatrix}$的乘法结果与顺序无关。
+\item 求乘积：$\begin{pmatrix}1&0\\0&0\end{pmatrix}\begin{pmatrix}0&0\\0&1\end{pmatrix}$。这个结果代表什么变换？
+\end{exercise}
+
+
+\sectiontitle{2.3\quad 几个重要的特殊矩阵}
+
+下面三种特殊矩阵在后面的学习中会反复出现。
+
+\textbf{单位矩阵} $I=\begin{pmatrix}1&0\\0&1\end{pmatrix}$。它不改变任何点：$(x,y)$经过$I$还是$(x,y)$。在矩阵乘法中，$I$相当于数字乘法中的$1$——$IA=AI=A$。
+
+\textbf{零矩阵} $\begin{pmatrix}0&0\\0&0\end{pmatrix}$。它把所有点都变成原点$(0,0)$。零矩阵乘任何矩阵都等于零矩阵。
+
+\textbf{对角矩阵} $\begin{pmatrix}k&0\\0&l\end{pmatrix}$。主对角线上可以是任意数，其余都是$0$。对角矩阵对应的变换是沿着坐标轴方向的伸缩（$k$和$l$分别是两个方向的伸缩倍数）。
+
+\textbf{正交矩阵}——后面会专门讨论，指的是$A^TA=I$的矩阵，对应旋转或反射，保持长度不变。
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章练习答案请参见书末附录。
 
 \newpage
 
-\chaptertitle{第四章\quad 特征值与特征向量}
+\chaptertitle{附录\quad 部分练习答案}
 
-\sectiontitle{4.1\quad 特征值与特征向量的概念}
+\sectiontitle{第一章}
 
-\knowbox{
-对于$n$阶方阵$A$，若$A\vec v=\lambda\vec v$（$\vec v\neq\vec0$），则$\lambda$为\textbf{特征值}，$\vec v$为\textbf{特征向量}。\\
-几何意义：$A$作用于$\vec v$相当于将$\vec v$伸缩$\lambda$倍（方向不变或相反）。\\
-特征方程：$\det(A-\lambda I)=0$，展开得$\lambda$的$n$次多项式。}
+\noindent\textbf{1.1} 1.(a) $(2,5)$ \quad (b) $(-3,-1)$ \quad (c) $(-4,0)$\\
+2. 从原点向左2格，向上3格。\\
+3. 不是。$(0,4)$在$y$轴上方，$(4,0)$在$x$轴右侧。\\
 
-\sectiontitle{4.2\quad 特征值的性质}
+\noindent\textbf{1.2 旋转练习}\\
+1. $(0,3)$；$(0,-3)$ \quad 2. $(-2,-1)$ \quad 3. $(-3,4)$\\
+4. $(\frac{\sqrt2}{2},\frac{\sqrt2}{2})$\\
+5. $(1,1)\to(-1,1)\to(-1,-1)\to(1,-1)\to(1,1)$，$360^\circ$回原位。\\
+6. $(y,-x)$\\
 
-\knowbox{
-1. 特征值之和$=$矩阵的迹（对角线元素之和）。\\
-2. 特征值之积$=\det A$。\\
-3. 不同特征值对应的特征向量线性无关。\\
-4. 实对称矩阵的特征值都是实数，且可对角化。\\
-\textbf{对角化}：若$A$有$n$个线性无关的特征向量，则$A=P^{-1}DP$，$D$为对角矩阵（元素为特征值）。\\
-对角化的意义：简化计算$A^n$、解微分方程组等。}
+\noindent\textbf{1.3 反射练习}\\
+1. $(5,3)$；$(-5,-3)$ \quad 2. $(4,-2)$；$(-4,2)$\\
+3. $(-4,-1)$；等价于关于原点对称（旋转$180^\circ$）。\\
+4. 三次关于$x$轴 = 一次关于$x$轴（因为两次抵消了）。\\
+5. $(1,0)\to(0,1)\to(0,-1)$\\
 
-\sectiontitle{习题4}
+\noindent\textbf{1.4 伸缩练习}\\
+1. $(12,5)$；$(4,2.5)$ \quad 2. $(2,5)$，等价于关于$y$轴对称。 \quad 3. $(6,4)$；$12$倍\\
+4. 一样，都是$(2x,3y)$。 \quad 5. 能，沿着$x$方向压缩到$\frac12$倍即可。\\
 
-\begin{exercise}
-\item 求$A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$的特征值和特征向量。
-\item 求$A=\begin{pmatrix}1&2\\3&2\end{pmatrix}$的特征值。
-\item 若$A$的迹为$5$，$\det A=6$，求$A$的特征值。
-\item 利用对角化计算$A^{10}$，其中$A=\begin{pmatrix}2&0\\0&3\end{pmatrix}$。
+\noindent\textbf{1.5 投影练习}\\
+1. $(4,0)$；$(0,-3)$ \quad 2. 重合（都是$(0,5)$）；重合（都是$(2,0)$）。\\
+3. $x$轴上从$(0,0)$到$(1,0)$的线段。\\
+4. 不能，因为投影丢失了信息（无数个点投影到同一个点）。\\
+
+\noindent\textbf{1.6 切变练习}\\
+1. $(7,2)$；$(1,0)$ \quad 2. $(-5,3)$；向左推。\\
+3. $A(0,0),B(2,0),C(8,2),D(6,2)$ \quad 4. 能，$k=1$切变后用$k=-1$再切一次回原位。\\
+5. $x'=x,\;y'=y+kx$\\
+
+\noindent\textbf{1.7 综合练习}\\
+1. $(-4,-3)$\\
+2. 关于$y=x$：$(-1,5)\to(5,-1)$，拉伸$x$方向$2$倍：$(10,-1)$\\
+3. 切变$(5,0)\to(5,0)$（$y=0$不受影响），$y$轴投影：$(0,0)$\\
+4. (a) $(0,0),(2,0),(2,-2),(0,-2)$\\
+\quad (b) $(0,0),(2,0),(2,-4),(0,-4)$\\
+\quad (c) $(0,0),(2,0),(2+(-4),-4),(0+(-4),-4)=(-2,-4),(-4,-4)$\\
+\quad (d) 旋转$180^\circ$取负：$(0,0),(-2,0),(2,4),(4,4)$\\
+5. (a) 正确，旋转变换保持长度不变。\\
+\quad (b) 错误，不同点投影到同一点，无法还原。\\
+\quad (c) 正确，底和高都不变。\\
+\quad (d) 正确，反射的逆变换就是它自己。\\
+6. 伸缩变换，两个方向不同的拉伸倍数。\\
+7. 切变变换，面积不变但形状变成平行四边形。\\
+8. 因为直线上的点经过$ax+by$变换后，两个坐标仍然是参数的线性函数，参数消去后还是直线方程。如果有$x^2$项，直线的像会变成曲线。\\
+
+\noindent\textbf{第二章 2.1 矩阵×向量练习}\\
+1. $\begin{pmatrix}0&-1\\1&0\end{pmatrix}\begin{pmatrix}5\\0\end{pmatrix}=\begin{pmatrix}0\\5\end{pmatrix}$\\
+2. $\begin{pmatrix}1&0\\0&-1\end{pmatrix}\begin{pmatrix}-3\\2\end{pmatrix}=\begin{pmatrix}-3\\-2\end{pmatrix}$\\
+3. $\begin{pmatrix}4&0\\0&1\end{pmatrix}\begin{pmatrix}1\\5\end{pmatrix}=\begin{pmatrix}4\\5\end{pmatrix}$\\
+4. $\begin{pmatrix}1&3\\0&1\end{pmatrix}\begin{pmatrix}2\\1\end{pmatrix}=\begin{pmatrix}5\\1\end{pmatrix}$\\
+
+\noindent\textbf{2.2 矩阵乘法练习}\\
+1. $\begin{pmatrix}5&8\\9&12\end{pmatrix}$ \quad 2. $\begin{pmatrix}5&7\\6&11\end{pmatrix}$，不同。\\
+3. 旋转$180^\circ$矩阵$\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$，乘$x$轴反射$\begin{pmatrix}1&0\\0&-1\end{pmatrix}$\\
+乘积$=\begin{pmatrix}-1&0\\0&1\end{pmatrix}$（关于$y$轴对称）\\
+4. 关于$y=x$对称矩阵$\begin{pmatrix}0&1\\1&0\end{pmatrix}$乘旋转$90^\circ$矩阵$\begin{pmatrix}0&-1\\1&0\end{pmatrix}$\\
+$=\begin{pmatrix}1&0\\0&-1\end{pmatrix}$（关于$x$轴对称）\\
+5. $\begin{pmatrix}kp&0\\0&lq\end{pmatrix}$，顺序交换结果相同。\\
+6. $\begin{pmatrix}0&0\\0&0\end{pmatrix}$——零矩阵，把所有点变成原点。
+
+\newpage
+
+\chaptertitle{第三章\quad 行列式——变换的放大倍率}
+
+\sectiontitle{3.1\quad 面积变了多少？}
+
+前两章我们一直在算"每个点去了哪里"。现在换一个问题：经过一个变换之后，一个图形的面积变成了原来的多少倍？
+
+先看几个我们已经学过的变换，直觉上判断一下它们对面积的影响。
+\begin{itemize}
+\item 旋转$90^\circ$：一个正方形转了$90^\circ$，形状大小都没变。面积不放大也不缩小，倍数$=1$。
+\item 反射：对称过去，大小不变。面积倍数$=1$。
+\item $x$方向拉伸$3$倍：原来$1\times1$的正方形变成了$3\times1$的矩形，面积变成$3$倍。
+\item $x$方向$3$倍、$y$方向$2$倍：$1\times1$变成$3\times2$，面积变成$6$倍。
+\item 向$x$轴投影：正方形被压成了线段，面积变成$0$。
+\item $x$方向切变：正方形变成平行四边形，但底和高都没变，面积倍数$=1$。
+\end{itemize}
+
+如果我们有办法——不要一个个画图，而是看一眼矩阵就知道它把面积放大/缩小了多少倍，那该多方便。这个东西就是\textbf{行列式}。
+
+\sectiontitle{3.2\quad 二阶行列式——平行四边形面积}
+
+考虑一个矩阵$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$。它把原来的基向量$(1,0)$变成$(a,c)$，把$(0,1)$变成$(b,d)$。原来$1\times1$的正方形经过$A$之后变成以$(a,c)$和$(b,d)$为两条邻边的平行四边形。
+
+这个平行四边形的面积怎么算？回忆一下，由向量$\vec u=(a,c)$和$\vec v=(b,d)$张成的平行四边形面积等于$|ad-bc|$。我们就把这个数叫做矩阵$A$的\textbf{行列式}，记作：
+\[
+\det A = \begin{vmatrix}a&b\\c&d\end{vmatrix} = ad-bc
+\]
+
+现在来算几个具体矩阵的行列式，和我们前面直觉判断的结果对照一下：
+
+\textbf{例1}：旋转$90^\circ$矩阵$\begin{pmatrix}0&-1\\1&0\end{pmatrix}$。$\det=0\times0-(-1)\times1=1$。面积倍数$=1$，正确！
+
+\textbf{例2}：$x$方向拉伸$3$倍$\begin{pmatrix}3&0\\0&1\end{pmatrix}$。$\det=3\times1-0\times0=3$。正确！
+
+\textbf{例3}：两个方向分别拉伸$3$倍和$2$倍$\begin{pmatrix}3&0\\0&2\end{pmatrix}$。$\det=3\times2-0\times0=6$。正确！
+
+\textbf{例4}：$x$轴反射$\begin{pmatrix}1&0\\0&-1\end{pmatrix}$。$\det=1\times(-1)-0\times0=-1$。面积大小是$1$倍（反射不改变面积），但多了一个负号。这个负号是什么意思？看下一节。
+
+\textbf{例5}：向$x$轴投影$\begin{pmatrix}1&0\\0&0\end{pmatrix}$。$\det=1\times0-0\times0=0$。正方形被压成线段，面积$0$，正确！
+
+\textbf{例6}：切变$\begin{pmatrix}1&2\\0&1\end{pmatrix}$。$\det=1\times1-2\times0=1$。面积没变，和我们画图得出的结论一致。
+
+\textbf{例7}：旋转任意角度$\theta$：$\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$。
+$\det=\cos^2\theta+\sin^2\theta=1$。\textbf{任何旋转的行列式都是1——旋转不改变面积。}
+
+\begin{exercise}[行列式计算练习]
+\item 计算行列式：$\begin{vmatrix}2&3\\1&4\end{vmatrix}$；$\begin{vmatrix}5&0\\0&3\end{vmatrix}$。
+\item 矩阵$\begin{pmatrix}4&1\\2&3\end{pmatrix}$把面积放大了几倍？
+\item 关于$y=x$对称的矩阵$\begin{pmatrix}0&1\\1&0\end{pmatrix}$的行列式是多少？解释结果。
+\item 关于$y=-x$对称的矩阵$\begin{pmatrix}0&-1\\-1&0\end{pmatrix}$的行列式是多少？
+\item 写出一个行列式为$2$的矩阵（一个$2\times2$例子即可）。
 \end{exercise}
+
+\sectiontitle{3.3\quad 行列式为负——定向反转}
+
+刚才例4中$x$轴反射的行列式是$-1$，不是$+1$。行列式取负值意味着什么？
+
+从面积的角度，绝对值$|-1|=1$告诉我们面积大小没变。负号表示变换把空间的"左右手定则"颠倒了。在平面上，$(1,0)$到$(0,1)$的旋转是逆时针的（右手定则）。经过反射后，$(1,0)$还是$(1,0)$，$(0,1)$变成了$(0,-1)$——逆时针变成了顺时针——定向被反转了。行列式$=-1$就是在说这件事。
+
+关于$y=x$的反射$\begin{pmatrix}0&1\\1&0\end{pmatrix}$，同样$\det=-1$。
+而旋转$180^\circ$是$\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$，$\det=1$（两次$-1$相乘），旋转$180^\circ$不改变定向。
+
+一般规律：行列式为正时变换不改变定向，行列式为负时改变定向。
+
+\begin{exercise}[负行列式练习]
+\item 关于$y$轴对称的矩阵的行列式是多少？是正还是负？
+\item 判断：把$y$方向拉伸$-2$倍（即拉伸$2$倍再翻转），行列式是负的。这个变换改变了定向吗？它还能回到原位吗？
+\end{exercise}
+
+\sectiontitle{3.4\quad 行列式为$0$——线性相关与降维}
+
+如果$\det A=0$，即$ad-bc=0$，即$(a,c)$和$(b,d)$成比例。这意味着变换后的两个基向量是共线的——平行四边形被压成了一条线，面积为$0$。从几何上讲，这个变换把二维的平面压成了一维的直线（或者一个点）。这就是\textbf{降维}。
+
+举个例子：$A=\begin{pmatrix}2&4\\1&2\end{pmatrix}$，$\det=2\times2-4\times1=0$。这个矩阵把$(1,0)$变成$(2,1)$，把$(0,1)$变成$(4,2)$。注意$(4,2)=2\times(2,1)$——第二个向量是第一个的倍数，说明它们共线。所以平面被压成了沿着方向$(2,1)$的一条直线。
+
+\textbf{线性相关}这个词描述的就是这种情况：如果一组向量中有一个可以表示为其他向量的线性组合，那么这组向量线性相关，它们张成的平行多面体体积为$0$，行列式为$0$。反之，如果它们线性无关——两个不共线的向量、三个不共面的向量——行列式就不为$0$。
+
+\begin{exercise}[行列式为0练习]
+\item 判断矩阵$\begin{pmatrix}3&6\\2&4\end{pmatrix}$的行列式，并判断两个列向量是否共线。
+\item 线性相关的两个向量在平面上的几何关系是什么？行列式为$0$的矩阵把平面变成了什么？
+\item 矩阵$\begin{pmatrix}1&0\\0&1\end{pmatrix}$的行列式是多少？它是否把平面降维了？
+\end{exercise}
+
+\sectiontitle{3.5\quad 三阶行列式与体积}
+
+二维的面积对应三维的体积。把$3\times3$矩阵看作三维空间中的变换，它把$1\times1\times1$的立方体变成了平行六面体。这个平行六面体的体积就是三阶行列式的绝对值：
+\[
+\begin{vmatrix}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}
+\end{vmatrix}
+\]
+展开规则是：$a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$。
+
+三维中，三个向量线性相关当且仅当它们共面（可以被压扁在一个平面上），此时行列式为$0$。
+
+\sectiontitle{3.6\quad 行列式的几何性质}
+
+行列式的代数运算都有对应的几何解释，下面是几条最重要的：
+
+\begin{center}
+\begin{tabular}{c|c}
+\textbf{代数性质} & \textbf{几何意义}\\\hline
+交换两行，行列式变号 & 交换两个基向量的顺序，定向反转\\
+某行乘$k$，行列式乘$k$ & 一个方向拉伸$k$倍，体积放大$k$倍\\
+两行成比例，行列式为$0$ & 两个方向共线/共面，体积被压成$0$\\
+某行加另一行的倍数，值不变 & 切变不改变面积/体积\\
+$\det(AB)=\det A\cdot\det B$ & 复合变换的放大倍率 = 各自放大倍率相乘
+\end{tabular}
+\end{center}
+
+最后一条$\det(AB)=\det A\cdot\det B$用途最大。它告诉我们：如果把两个变换复合起来，整体面积放大倍率就是两个各自放大倍率的乘积。这也是为什么投影矩阵（$\det=0$）和任何矩阵复合后，结果矩阵的行列式还是$0$——因为$0$乘以任何数都是$0$。
+
+\begin{exercise}[行列式综合练习]
+\item 计算$\begin{vmatrix}1&3&2\\2&1&3\\3&2&1\end{vmatrix}$。
+\item 已知$\det A=3$，$\det B=4$，求$\det(AB)$和$\det(A^{-1})$。
+\item 为什么行列式为$0$的矩阵没有逆矩阵？从几何角度说明。
+\item 如果$A$是旋转矩阵，$B$是伸缩矩阵，$\det(AB)$是多少？
+\item 若$\det A\neq0$且$\det B=0$，$\det(AB)=?$ 这与压缩/降维有什么关系？
+\end{exercise}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章练习答案请参见书末附录。
+
+\newpage
+
+\chaptertitle{第四章\quad 特征——变换的不变方向}
+
+\sectiontitle{4.1\quad 观察：有些方向特别"幸运"}
+
+对于大多数变换，随便选一个向量经过变换后，它的方向会改变。但有没有某些方向，变换后只是被拉长或缩短，方向完全不变？
+
+先看一个具体的例子。伸缩变换$A=\begin{pmatrix}2&0\\0&3\end{pmatrix}$：
+\begin{itemize}
+\item 水平方向$(1,0)$经过$A$变成$(2,0)$。方向没变（还是水平方向），只是长度从$1$变成了$2$。
+\item 竖直方向$(0,1)$经过$A$变成$(0,3)$。方向没变，长度从$1$变成了$3$。
+\item 但斜方向$(1,1)$变成$(2,3)$，方向明显变了——因为$x$和$y$方向放大倍数不同。
+\end{itemize}
+
+再看旋转$90^\circ$：随便选什么方向，经过旋转后方向都变了。所以旋转没有这样的"幸运"方向。
+
+再看切变$\begin{pmatrix}1&2\\0&1\end{pmatrix}$：$(1,0)$变成$(1,0)$方向不变，$(0,1)$变成$(2,1)$方向变了。水平方向也是一个"幸运"方向。
+
+这些方向不变只被拉长的向量，被称为\textbf{特征向量}。拉长的倍数，被称为\textbf{特征值}。
+
+\sectiontitle{4.2\quad 怎么找出特征值和特征向量？}
+
+方程是$A\vec v=\lambda\vec v$。意思是：$\vec v$乘以矩阵$A$，等于$\vec v$乘以一个数$\lambda$——方向不变，只拉伸$\lambda$倍。
+
+把$\lambda$移到左边：$(A-\lambda I)\vec v=0$。如果$\vec v$不等于零向量，那么矩阵$(A-\lambda I)$必须是不可逆的——否则只有$\vec v=0$这一个解。不可逆的条件是$\det(A-\lambda I)=0$，这就是\textbf{特征方程}。
+
+对于$2\times2$矩阵$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$：
+\[
+\det(A-\lambda I)=\begin{vmatrix}a-\lambda&b\\c&d-\lambda\end{vmatrix}
+= \lambda^2-(a+d)\lambda+(ad-bc)=0
+\]
+
+\textbf{例1}：$A=\begin{pmatrix}2&0\\0&3\end{pmatrix}$
+
+$\det(A-\lambda I)=\begin{vmatrix}2-\lambda&0\\0&3-\lambda\end{vmatrix}=(2-\lambda)(3-\lambda)=0$
+
+$\lambda_1=2$，$\lambda_2=3$。果然对应两个方向的拉伸倍数。
+
+找$\lambda_1=2$对应的特征向量：$(A-2I)\vec v=\begin{pmatrix}0&0\\0&1\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，得$y=0$，$x$任意。所以特征向量形如$(t,0)$——正是水平方向。
+
+找$\lambda_2=3$对应的特征向量：$(A-3I)\vec v=\begin{pmatrix}-1&0\\0&0\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，得$x=0$，$y$任意。特征向量形如$(0,t)$——竖直方向。
+
+\textbf{例2}：$A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$
+
+特征方程：$\begin{vmatrix}2-\lambda&1\\1&2-\lambda\end{vmatrix}=(2-\lambda)^2-1=\lambda^2-4\lambda+3=0$
+
+$\lambda_1=1$：$(A-I)\vec v=\begin{pmatrix}1&1\\1&1\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，$x+y=0$，$\vec v_1=(1,-1)$。
+
+$\lambda_2=3$：$(A-3I)\vec v=\begin{pmatrix}-1&1\\1&-1\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=0$，$x-y=0$，$\vec v_2=(1,1)$。
+
+结果：沿$(1,-1)$方向拉伸$1$倍（不变），沿$(1,1)$方向拉伸$3$倍。
+
+\begin{exercise}[特征值练习]
+\item 求$\begin{pmatrix}5&0\\0&2\end{pmatrix}$的特征值和特征向量。
+\item 求$\begin{pmatrix}1&2\\2&1\end{pmatrix}$的特征值和特征向量。
+\item 旋转$180^\circ$有特征向量吗？特征值是多少？提示：$180^\circ$旋转相当于每个方向取负。
+\item 已知$\det A=6$，$\tr A=5$，求$A$的特征值（不要求给出特征向量）。
+\end{exercise}
+
+\sectiontitle{4.3\quad 旋转为什么没有实特征向量？}
+
+旋转$90^\circ$的矩阵$A=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$。
+特征方程：$\lambda^2+1=0$，$\lambda=\pm i$，没有实数根。
+
+几何上这很容易理解：旋转$90^\circ$把所有向量都转了方向，没有任何一个方向保持不变。所以没有实特征向量——特征值跑到复数里去了。
+
+这也是一种判断方法：如果某个矩阵的特征方程有复数根而没有实数根，说明它包含旋转的成分。
+
+\sectiontitle{4.4\quad 特征值的和与积}
+
+对$2\times2$矩阵，特征值满足两个关系：
+\[
+\lambda_1+\lambda_2=a+d=\tr A\quad(\text{迹}),\qquad
+\lambda_1\lambda_2=ad-bc=\det A
+\]
+特征值之和等于矩阵主对角线上两个数的和（叫迹），特征值之积等于行列式。这意味着行列式为$0$时至少有一个特征值为$0$——存在一个方向被压缩到$0$（降维了），这和三章4节的结论一致。
+
+\sectiontitle{4.5\quad 施密特正交化——给空间"扶正"一个坐标系}
+
+有时候我们找到的向量并不互相垂直，但很多问题需要一组垂直的坐标系。施密特正交化的作用就是：给一组线性无关的向量，找出一组互相垂直的向量，它们张成同一个空间。
+
+操作很简单。给定$\vec v_1,\vec v_2$，取：
+\[
+\vec u_1 = \vec v_1
+\]
+\[
+\vec u_2 = \vec v_2 - \frac{\vec v_2\cdot\vec u_1}{\vec u_1\cdot\vec u_1}\,\vec u_1
+\]
+几何意义：先把$\vec v_1$作为第一个方向$\vec u_1$。然后从$\vec v_2$中减去它在$\vec u_1$方向上的投影分量，剩下的部分就自动垂直于$\vec u_1$了，这就是$\vec u_2$。
+
+\textbf{具体例子}：$\vec v_1=(1,1)$，$\vec v_2=(1,2)$。
+
+$\vec u_1=(1,1)$
+
+$\vec v_2$在$\vec u_1$上的投影长度$=\frac{(1,2)\cdot(1,1)}{(1,1)\cdot(1,1)}=\frac{3}{2}$
+
+$\vec u_2=(1,2)-\frac32(1,1)=(-\frac12,\frac12)$
+
+检查：$\vec u_1\cdot\vec u_2=1\cdot(-\frac12)+1\cdot\frac12=0$，确实垂直。
+
+\sectiontitle{4.6\quad 对角化——在"最自然"的坐标系中看变换}
+
+如果矩阵$A$有$n$个线性无关的特征向量，以它们为列组成矩阵$P$，则：
+\[
+A = PDP^{-1},\qquad D=\begin{pmatrix}\lambda_1&0\\0&\lambda_2\end{pmatrix}
+\]
+对角化的意义：找到特征方向作为新坐标系，在这个坐标系下，变换就只是沿着各个特征方向伸缩而已。这对于计算$A^n$很有用——$A^n=PD^n P^{-1}$，而$D^n=\begin{pmatrix}\lambda_1^n&0\\0&\lambda_2^n\end{pmatrix}$，计算量极小。
+
+\begin{exercise}[施密特与对角化练习]
+\item 对$\vec v_1=(2,1)$，$\vec v_2=(1,3)$做施密特正交化。
+\item 已知矩阵$\begin{pmatrix}3&0\\0&5\end{pmatrix}$已经是对角形式。它的特征值和特征向量分别是什么？
+\item 已知$\det A=0$，那么$A$可以有几个特征值为$0$？可能只有一个吗？
+\end{exercise}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章练习答案请参见书末附录。
+
+\newpage
+
+\chaptertitle{第五章\quad 齐次坐标与仿射变换}
+
+\sectiontitle{5.1\quad 平移——我们一直漏掉的一个变换}
+
+前几章我们见过旋转变换、反射变换、伸缩变换、投影变换、切变变换。但有一个最简单的变换——平移——一直没有出现。
+
+为什么？因为平移的公式长这样：$x'=x+a$，$y'=y+b$。注意，右边有带$a$和$b$的额外项，不是$x'=ax+by$的形式。所以平移不是线性变换，无法用$2\times2$矩阵表示。
+
+但是有个巧妙的方法——给平面增加一个维度。我们不把点写成$(x,y)$，而是写成$(x,y,1)$。多出来的"$1$"只是一个占位符，不代表一个真实的空间方向，只是帮助我们做平移计算。
+
+在这个新的三维表示下，平移就可以写成矩阵乘法了：
+\[
+\begin{pmatrix}1&0&3\\0&1&2\\0&0&1\end{pmatrix}
+\begin{pmatrix}x\\y\\1\end{pmatrix}=
+\begin{pmatrix}x+3\\y+2\\1\end{pmatrix}
+\]
+上例把每个点向右平移了$3$、向上平移了$2$。你看，用$3\times3$矩阵，平移就被"装进去"了。这就是\textbf{齐次坐标}。
+
+\sectiontitle{5.2\quad 仿射变换的统一形式}
+
+在齐次坐标下，可以把线性部分（旋转、反射、伸缩、切变）和平移部分合并成一个矩阵。对于$2\times2$的线性部分$A$和平移向量$\vec t$，齐次坐标下的矩阵是：
+\[
+\begin{pmatrix}
+a&b&t_x\\
+c&d&t_y\\
+0&0&1
+\end{pmatrix}
+\]
+计算时，把这个矩阵乘以$(x,y,1)^\text T$，就得到了$(ax+by+t_x,\;cx+dy+t_y,\;1)^\text T$——前两个坐标是先线性变换再平移之后的结果。
+
+\textbf{例}：先沿$x$方向拉伸$2$倍，再向右平移$3$、向上平移$1$：
+\[
+\begin{pmatrix}2&0&3\\0&1&1\\0&0&1\end{pmatrix}
+\begin{pmatrix}x\\y\\1\end{pmatrix}=
+\begin{pmatrix}2x+3\\y+1\\1\end{pmatrix}
+\]
+作用于$(1,2)$：新坐标$(5,3)$。
+
+\sectiontitle{5.3\quad 仿射变换的分类}
+
+不同的仿射变换可以按线性部分的性质来分类：
+\begin{itemize}
+\item \textbf{刚体运动}：$A$是旋转矩阵（正交矩阵），平移可以是任意值。保持长度和面积不变。
+\item \textbf{相似变换}：$A$是$k$倍的旋转矩阵（$k>0$），保持形状不变但大小可以改变。
+\item \textbf{一般仿射变换}：$A$为任意可逆矩阵，保持平行线还是平行线。$\det A=0$时，把平面压成线或点。
+\end{itemize}
+
+\sectiontitle{5.4\quad 变换的分解}
+
+任何一个仿射变换都可以唯一地分解为：先做线性变换$A$，再做平移$\vec t$——或者反过来，先平移再线性变换。两者分解不同，但在具体问题中根据需要选择更方便的顺序。
+
+\begin{exercise}[仿射变换练习]
+\item 用齐次坐标矩阵计算点$(2,3)$平移$(1,-2)$后的坐标。
+\item 写出先绕原点旋转$45^\circ$再向右平移$3$个单位的齐次坐标矩阵。
+\item 写出先关于$x$轴对称再向下平移$2$个单位的齐次矩阵。
+\item 一个仿射变换把$(0,0)$变成$(1,2)$，把$(1,0)$变成$(4,2)$，把$(0,1)$变成$(1,5)$。求它的矩阵并验证。
+\end{exercise}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章练习答案请参见书末附录。
+
+\newpage
+
+\chaptertitle{第六章\quad 二次型——用矩阵研究圆锥曲线}
+
+\sectiontitle{6.1\quad 二次型是什么？}
+
+你在解析几何里学过椭圆、双曲线、抛物线的标准方程。比如椭圆的标准方程是$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$，双曲线是$\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$，抛物线是$y^2=2px$。
+
+但实际遇到的圆锥曲线往往是"歪"的，像这样：
+\[
+5x^2+4xy+2y^2=1,\qquad
+x^2-4xy+y^2=1
+\]
+为什么是"歪"的？因为里面有$xy$这一项——叫交叉项。有了交叉项，曲线的对称轴就不再与坐标轴对齐。
+
+用传统方法处理这种"歪"的曲线：先用坐标旋转公式把$xy$项消掉，变成标准形式，再判断曲线类型。过程相当繁琐。
+
+现在我们有了矩阵这一利器。左边$5x^2+4xy+2y^2$这种表达式叫\textbf{二次型}。它可以写成矩阵形式：
+\[
+5x^2+4xy+2y^2=
+\begin{pmatrix}x&y\end{pmatrix}
+\begin{pmatrix}5&2\\2&2\end{pmatrix}
+\begin{pmatrix}x\\y\end{pmatrix}
+\]
+其中$xy$的系数$4$被平分到了两个非对角线位置（各放$2$），保持矩阵对称。
+
+\sectiontitle{6.2\quad 用特征值消掉$xy$项}
+
+我们的目标是：通过坐标旋转，把$xy$项消掉，让二次型变成$\lambda_1X^2+\lambda_2Y^2$的清爽形式。
+
+设旋转角为$\theta$，新旧坐标的关系是：
+\[
+\begin{pmatrix}x\\y\end{pmatrix}=
+\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}
+\begin{pmatrix}X\\Y\end{pmatrix}
+\]
+代入二次型，令$XY$项的系数为$0$，可以解出$\theta$满足$\tan2\theta=\frac{2b}{a-c}$。
+
+但好看的事情在这里：旋转之后留下来的$\lambda_1$和$\lambda_2$，恰好就是对称矩阵$M=\begin{pmatrix}a&b\\b&c\end{pmatrix}$的两个特征值。也就是说，你不需要代数推导配平方——只需要求一下矩阵的特征值，标准形就出来了：
+\[
+\lambda_1X^2+\lambda_2Y^2
+\]
+
+\textbf{举例}：$5x^2+4xy+2y^2=1$。矩阵$M=\begin{pmatrix}5&2\\2&2\end{pmatrix}$。
+特征方程$\lambda^2-7\lambda+6=0$，$\lambda_1=6$，$\lambda_2=1$。
+标准化后为$6X^2+Y^2=1$，是一个椭圆。
+
+\sectiontitle{6.3\quad 特征值的符号决定曲线类型}
+
+既然旋转后的标准形是$\lambda_1X^2+\lambda_2Y^2=1$（或其他常数），那么$\lambda_1$和$\lambda_2$的正负号就决定了曲线的形状：
+
+\begin{center}
+\begin{tabular}{c|c}
+\textbf{特征值符号} & \textbf{曲线类型}\\\hline
+$\lambda_1,\lambda_2>0$ & 椭圆（$\lambda_1=\lambda_2$时是圆）\\
+$\lambda_1>0,\lambda_2<0$ 或 $\lambda_1<0,\lambda_2>0$ & 双曲线\\
+$\lambda_1\lambda_2=0$（有一个为$0$）& 抛物线
+\end{tabular}
+\end{center}
+
+我们再验一个例子：$x^2-4xy+y^2=1$。矩阵$M=\begin{pmatrix}1&-2\\-2&1\end{pmatrix}$。
+特征方程$\lambda^2-2\lambda-3=0$，$\lambda_1=3$，$\lambda_2=-1$。一正一负，所以是\textbf{双曲线}。
+
+\sectiontitle{6.4\quad 对比两种方法}
+
+\textbf{传统方法（联立+韦达定理）}：把直线方程代入曲线，化简得到二次方程，用判别式判断交点个数，韦达定理求弦长。每一道题都要从头算，纯靠代数运算。
+
+\textbf{矩阵方法（特征值）}：写出二次型的对称矩阵，求特征值，看正负号，立刻知道是椭圆、双曲线还是抛物线。用特征向量还可以直接得到主轴方向。
+
+\textbf{总结}：矩阵方法不仅计算量小，而且每一步都有几何意义。特征值的正负告诉你是哪种曲线，特征向量告诉你怎么摆的。这比在代数运算里打转要舒服得多。
+
+\begin{exercise}[二次型练习]
+\item 写出$2x^2+3xy+4y^2$的对称矩阵形式。
+\item 判断$2x^2+4xy+5y^2=9$的曲线类型（先写矩阵、再求特征值）。
+\item 判断$x^2-6xy+9y^2=1$的曲线类型。为什么特征值一个为$0$一个为$10$？
+\item 求$3x^2+2xy+3y^2=1$的主轴方向（特征向量方向）。
+\end{exercise}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章练习答案请参见书末附录。
+
+\newpage
+
+\chaptertitle{附录二\quad 第三\~{}六章练习答案}
+
+\sectiontitle{第三章}
+
+\noindent\textbf{3.2 行列式计算}\\
+1. $2\times4-3\times1=5$；$5\times3-0\times0=15$\\
+2. $\det=4\times3-1\times2=10$，面积放大$10$倍。\\
+3. $\det=0\times0-1\times1=-1$。面积大小$1$，定向反转。\\
+4. $\det=0\times0-(-1)\times(-1)=-1$。\\
+5. 例如$\begin{pmatrix}2&0\\0&1\end{pmatrix}$，$\det=2$。\\
+
+\noindent\textbf{3.3 负行列式}\\
+1. 关于$y$轴对称：$\begin{pmatrix}-1&0\\0&1\end{pmatrix}$，$\det=-1$，负。\\
+2. 拉伸$-2$倍矩阵$\begin{pmatrix}1&0\\0&-2\end{pmatrix}$，$\det=-2$。定向反转了。能还原——再做一次拉伸$-\frac12$倍即可。\\
+
+\noindent\textbf{3.4 行列式为0}\\
+1. $\det=3\times4-6\times2=0$，两列成比例，共线。\\
+2. 两个向量共线。行列式为$0$的矩阵把平面压成一条线。\\
+3. $\det=1\neq0$，没有降维，是可逆的。\\
+
+\noindent\textbf{3.6 综合}\\
+1. $=1\cdot1\cdot1+3\cdot3\cdot3+2\cdot2\cdot2-2\cdot1\cdot3-3\cdot2\cdot1-1\cdot3\cdot2=1+27+8-6-6-6=18$\\
+2. $\det(AB)=3\times4=12$。$\det(A^{-1})=1/3$。\\
+3. 行列式为$0$意味着变换把空间压扁了（降维），信息丢失，无法找到逆变换。\\
+4. $\det(A)_{\text{旋转}}=1$，$\det(B)_{\text{伸缩}}=kl$，$\det(AB)=kl$。\\
+5. $\det(AB)=0$。无论$A$怎么放大，有一个方向被压扁了，整体还是扁的。\\
+
+\sectiontitle{第四章}
+
+\noindent\textbf{4.2 特征值练习}\\
+1. $\lambda_1=5,\vec v_1=(1,0)$；$\lambda_2=2,\vec v_2=(0,1)$。\\
+2. 特征方程$\lambda^2-2\lambda-3=0$，$\lambda_1=3,\vec v_1=(1,1)$；$\lambda_2=-1,\vec v_2=(1,-1)$。\\
+3. 旋转$180^\circ$矩阵$\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$，特征方程$(\lambda+1)^2=0$，$\lambda=-1$（重根）。所有向量都是特征向量（都被反向）。\\
+4. 解$\lambda^2-5\lambda+6=0$，$\lambda_1=2$，$\lambda_2=3$。\\
+
+\noindent\textbf{4.6 施密特与对角化}\\
+1. $\vec u_1=(2,1)$。$\vec u_2=(1,3)-\frac{(1,3)\cdot(2,1)}{(2,1)\cdot(2,1)}(2,1)=(1,3)-\frac{5}{5}(2,1)=(-1,2)$。\\
+2. 特征值$3,5$。特征向量$(1,0)$和$(0,1)$。\\
+3. 可以有一个或两个特征值为$0$（取决于$A$的迹是否为$0$）。\\
+
+\sectiontitle{第五章}
+
+\noindent\textbf{5.4 仿射变换练习}\\
+1. $\begin{pmatrix}1&0&1\\0&1&-2\\0&0&1\end{pmatrix}\begin{pmatrix}2\\3\\1\end{pmatrix}=\begin{pmatrix}3\\1\\1\end{pmatrix}$，即$(3,1)$\\
+2. $\begin{pmatrix}\frac{\sqrt2}{2}&-\frac{\sqrt2}{2}&3\\\frac{\sqrt2}{2}&\frac{\sqrt2}{2}&0\\0&0&1\end{pmatrix}$\\
+3. $\begin{pmatrix}1&0&0\\0&-1&-2\\0&0&1\end{pmatrix}$\\
+4. 设矩阵$\begin{pmatrix}a&b&t_x\\c&d&t_y\\0&0&1\end{pmatrix}$。\\
+$(0,0)$变$(1,2)\Rightarrow t_x=1,t_y=2$。\\
+$(1,0)$变$(4,2)\Rightarrow a+1=4,c+2=2\Rightarrow a=3,c=0$。\\
+$(0,1)$变$(1,5)\Rightarrow b+1=1,d+2=5\Rightarrow b=0,d=3$。\\
+矩阵为$\begin{pmatrix}3&0&1\\0&3&2\\0&0&1\end{pmatrix}$。
+
+\sectiontitle{第六章}
+
+\noindent\textbf{6.4 二次型练习}\\
+1. $M=\begin{pmatrix}2&\frac32\\\frac32&4\end{pmatrix}$，但通常写成$M=\begin{pmatrix}2&1.5\\1.5&4\end{pmatrix}$或更规范地$M=\begin{pmatrix}2&\frac32\\\frac32&4\end{pmatrix}$。\\
+2. $M=\begin{pmatrix}2&2\\2&5\end{pmatrix}$，$\lambda^2-7\lambda+6=0$，$\lambda_1=6,\lambda_2=1$，均正，椭圆。\\
+3. $M=\begin{pmatrix}1&-3\\-3&9\end{pmatrix}$，$\lambda^2-10\lambda=0$，$\lambda_1=10,\lambda_2=0$。一方为$0$，抛物线。\\
+4. $M=\begin{pmatrix}3&1\\1&3\end{pmatrix}$，$\lambda^2-6\lambda+8=0$，$\lambda_1=4,\lambda_2=2$。\\
+$\lambda_1=4$的向量：$(A-4I)\vec v=0\Rightarrow\begin{pmatrix}-1&1\\1&-1\end{pmatrix}\vec v=0\Rightarrow\vec v=(1,1)$——长轴方向。\\
+$\lambda_2=2$的向量：$(A-2I)\vec v=0\Rightarrow\begin{pmatrix}1&1\\1&1\end{pmatrix}\vec v=0\Rightarrow\vec v=(1,-1)$——短轴方向。
 
 \end{document}

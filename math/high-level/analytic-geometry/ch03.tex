@@ -1,0 +1,312 @@
+\chaptertitle{第三章\quad 行列式——变换的放大倍率}
+
+\sectiontitle{3.1\quad 二阶行列式——从平行四边形面积说起}
+
+前两章我们一直在关注"每个点去了哪里"。现在换一个问题：经过一个变换之后，整个图形的面积是原来的多少倍？
+
+考虑矩阵$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$。它把原来的基向量$(1,0)$变成$(a,c)$，把$(0,1)$变成$(b,d)$。原来边长为$1\times1$的正方形，经过$A$之后变成以$(a,c)$和$(b,d)$为两条邻边的平行四边形。
+
+由向量$(a,c)$和$(b,d)$张成的平行四边形，其面积等于$|ad-bc|$。我们把这个数定义为矩阵$A$的行列式（determinant）：
+\[
+\det A = \begin{vmatrix}a&b\\c&d\end{vmatrix} = ad-bc
+\]
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  \draw[->,thick] (-0.5,0) -- (5,0) node[right]{$x$};
+  \draw[->,thick] (0,-0.5) -- (0,5) node[above]{$y$};
+  % Unit square
+  \draw[gray, thick, dashed, fill=lightblue!20] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+  \node[gray] at (0.7,0.5){$1$};
+  % Transformed vectors
+  \draw[->, mainblue, very thick] (0,0) -- (3.5,1.2) node[midway, below]{$(a,c)$};
+  \draw[->, mainblue, very thick] (0,0) -- (1.2,3.5) node[midway, left]{$(b,d)$};
+  % Parallelogram
+  \draw[mainblue, thick, fill=mainblue!10] (0,0) -- (3.5,1.2) -- (4.7,4.7) -- (1.2,3.5) -- cycle;
+  \node[mainblue] at (2.5,2.8){面积$=|ad-bc|$};
+\end{tikzpicture}
+\end{center}
+
+现在用这个公式逐一验证我们熟悉的变换，看行列式的值是否与我们直觉判断的面积倍数一致：
+
+\textbf{验证1}：旋转$90^\circ$矩阵$\begin{pmatrix}0&-1\\1&0\end{pmatrix}$。$\det=0\times0-(-1)\times1=1$。从几何上，旋转$90^\circ$不改变正方形的大小和形状，面积不变，行列式$=1$合理。
+
+\textbf{验证2}：$x$方向拉伸$3$倍$\begin{pmatrix}3&0\\0&1\end{pmatrix}$。$\det=3\times1-0\times0=3$。$1\times1$正方形变成了$3\times1$的矩形，面积确实是原来的$3$倍。
+
+\textbf{验证3}：两方向分别拉伸$3$倍和$2$倍$\begin{pmatrix}3&0\\0&2\end{pmatrix}$。$\det=3\times2=6$。面积变成$6$倍。
+
+\textbf{验证4}：$x$轴反射$\begin{pmatrix}1&0\\0&-1\end{pmatrix}$。$\det=1\times(-1)=-1$。绝对值$|-1|=1$，面积大小$1$倍（反射不改变面积）。但行列式多了一个负号。这个负号在下一节解释。
+
+\textbf{验证5}：向$x$轴投影$\begin{pmatrix}1&0\\0&0\end{pmatrix}$。$\det=1\times0-0\times0=0$。正方形被压成线段，面积$=0$。
+
+\textbf{验证6}：切变$\begin{pmatrix}1&2\\0&1\end{pmatrix}$。$\det=1\times1-2\times0=1$。切变把正方形变成平行四边形，但底和高都没变，面积不变——行列式$=1$。
+
+\textbf{验证7}：旋转任意角度$\theta$：$\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$。
+$\det=\cos^2\theta+\sin^2\theta=1$。不论$\theta$取多少，旋转不改变面积。
+
+从以上七个验证中，行列式的几何含义已经非常清晰：行列式的绝对值$|\det A|$是变换将单位正方形面积放大或缩小的倍数。行列式为负表示定向反转，行列式为$0$表示图形被压扁降维。
+
+\sectiontitle{3.2\quad 行列式为负——定向反转}
+
+刚才$x$轴反射的行列式是$-1$，绝对值$|-1|=1$说明面积大小没变。负号在这里表示的是：变换把空间的"定向"反转了。
+
+什么叫"定向"？在平面上，从$(1,0)$到$(0,1)$的旋转是逆时针的（这是标准的"右手方向"）。经过关于$x$轴的反射后，$(1,0)$仍是$(1,0)$，但$(0,1)$变成了$(0,-1)$——从$(1,0)$到$(0,-1)$的旋转方向变成了顺时针。这个坐标系手性的改变被行列式的负号捕捉住了。注意定向与单个向量的方向不同：旋转$180^\circ$把每个向量都反向，但$\det=(-1)\times(-1)=1$，它不改变手性（逆时针还是逆时针）。
+
+一般规律：行列式为正时保持定向，行列式为负时反转定向。任何纯旋转变换的行列式恒为$1$，不反转定向。
+
+\begin{exercise}
+\item 关于$y$轴对称矩阵$\begin{pmatrix}-1&0\\0&1\end{pmatrix}$的行列式是多少？正还是负？
+\item 旋转$180^\circ$矩阵$\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$的行列式是多少？$180^\circ$旋转是否反转定向？为什么虽然每个向量都反向了，定向却没变？
+\item 写出两个行列式为$-1$的矩阵（不能是题中已出现的）。
+\end{exercise}
+
+\sectiontitle{3.3\quad 行列式为$0$意味着什么？}
+
+如果$\det A=0$，即$ad-bc=0$，也就是$ad=bc$，等价于$(a,c)$和$(b,d)$这两个列向量成比例。此时以它们为邻边的平行四边形退化成了线段，面积自然为$0$。但更深远的问题是：这个变换在几何上到底做了什么？为什么行列式为$0$的矩阵不可逆？
+
+我们不要直接跳到抽象结论，而是一步一步从具体例子中归纳。
+
+\vspace{0.2cm}
+\noindent\textbf{实例1：投影矩阵。}
+$A=\begin{pmatrix}1&0\\0&0\end{pmatrix}$，$\det=1\times0-0\times0=0$。
+
+看两个列向量：第一个是$(1,0)$，第二个是$(0,0)$——零向量。第二个是第一个的$0$倍。这个矩阵把平面上的所有点都压到了$x$轴上：$(x,y)$变成$(x,0)$。无论$y$原来是多少，变换后$y'$恒为$0$。原来二维平面上的信息（$y$坐标）被完全丢失了。这就是为什么投影变换不可逆——你无法从$(x,0)$反推出原来的$y$是多少。
+
+向$y$轴投影$\begin{pmatrix}0&0\\0&1\end{pmatrix}$同理：$\det=0$，列向量$(0,0)$和$(0,1)$中第一个是第二个的$0$倍。
+
+\vspace{0.2cm}
+\noindent\textbf{实例2：列向量成倍数。}
+$B=\begin{pmatrix}2&4\\1&2\end{pmatrix}$，$\det=2\times2-4\times1=4-4=0$。
+
+列向量：$(2,1)$和$(4,2)$。观察：$(4,2)=2\times(2,1)$——第二个列向量正好是第一个的$2$倍。它们指向同一个方向，共线。
+
+用这个矩阵变换任意点$(x,y)$：$B\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}2x+4y\\x+2y\end{pmatrix}$。注意第二个坐标恰好是第一个的一半：$(x+2y)=\frac12(2x+4y)$。所以变换后的所有像点都落在直线$y=\frac12 x$上。整个二维平面被压成了一条直线——原本分布在平面各处的点，现在全部挤在一条线上。
+
+你在$(3,5)$和$(9,2)$两个不同的点分别算一下：前者变成$(2\cdot3+4\cdot5,\;1\cdot3+2\cdot5)=(26,13)$，后者变成$(2\cdot9+4\cdot2,\;1\cdot9+2\cdot2)=(26,13)$。居然重合了！无数个不同的原始点被映射到同一个像点。信息丢失了，逆矩阵不存在。
+
+\vspace{0.2cm}
+\noindent\textbf{实例3：再来一组不同的数。}
+$C=\begin{pmatrix}3&6\\2&4\end{pmatrix}$，$\det=3\times4-6\times2=12-12=0$。
+
+列向量：$(3,2)$和$(6,4)$。看到规律了吗？$(6,4)=2\times(3,2)$——又是第一个的倍数。这两个向量还是共线。用$C$作用在任何点上，像点都落在同一条直线上（通过原点、方向为$(3,2)$）。平面被压成了线。
+
+\vspace{0.2cm}
+\noindent\textbf{实例4：列向量不成比例的情况作对比。}
+$D=\begin{pmatrix}2&3\\1&4\end{pmatrix}$，$\det=2\times4-3\times1=8-3=5\neq0$。
+
+列向量：$(2,1)$和$(3,4)$。这次$(3,4)$不是$(2,1)$的倍数——无论你给$(2,1)$乘上什么数，都不可能得到$(3,4)$（因为乘$1.5$得$(3,1.5)$不是$(3,4)$；乘$2$得$(4,2)$也不是）。这两个向量不共线，它们指向不同的方向，张成了一个货真价实的平行四边形（面积$5$）。这个变换不会把平面压扁——它把平面映射到整个平面，每个像点唯一对应一个原像点。矩阵$D$是可逆的。
+
+\vspace{0.2cm}
+\noindent\textbf{归纳。}
+
+上面四个实例揭示了同一个模式：当两个列向量不共线时（实例4），$\det\neq0$，变换保持平面的"二维性"，矩阵可逆。当两个列向量共线时（实例1-3）——即其中一个能够表示为另一个的倍数——$\det=0$，变换把平面压成了一维的直线（甚至一个点），无数不同的原像被映射到同一个像，矩阵不可逆。
+
+这个关键概念有一个专门的名称。如果一组向量中存在某个向量能够表示为其他向量的线性组合（在二维中就是倍数关系），则称这组向量\textbf{线性相关}。反之，如果没有任何一个向量能表示为其他向量的线性组合（在二维中就是不共线），则称它们\textbf{线性无关}。
+
+\textbf{行列式为$0$ $\Longleftrightarrow$ 列向量线性相关 $\Longleftrightarrow$ 变换降维（平面被压扁）$\Longleftrightarrow$ 矩阵不可逆。}
+
+这组等价关系是学习后续章节的基础。记住它的几何图像：行列式不为零时，矩阵把正方形变成平行四边形；行列式为零时，矩阵把正方形压成一条线段——面积归零，信息丢失，再也回不去了。
+
+\begin{exercise}
+\item 判断矩阵$\begin{pmatrix}3&6\\2&4\end{pmatrix}$的两个列向量是否线性相关（是否共线），行列式是多少。
+\item 矩阵$\begin{pmatrix}1&2\\0&0\end{pmatrix}$的行列式是多少？它的两个列向量线性相关吗？它把平面变成了什么？
+\item 线性无关的两个向量在平面上的几何关系是什么？任写一个由线性无关列向量构成的$2\times2$矩阵。
+\item 矩阵$\begin{pmatrix}1&0\\0&1\end{pmatrix}$是把平面压扁了吗？它的行列式是多少？可逆吗？
+\end{exercise}
+
+\sectiontitle{3.4\quad 三阶行列式与体积}
+
+前面我们一直在二维平面上讨论：二阶行列式等于平行四边形的面积。现在自然要问：三维空间中的"体积放大倍率"该怎么算？这需要三阶行列式。我们同样不从公式出发，而是先看几个具体的三维变换，亲手算一算再总结。
+
+\vspace{0.2cm}
+\noindent\textbf{实例1：三方向伸缩。}
+
+考虑一个$3\times3$对角矩阵：
+\[
+A = \begin{pmatrix}2&0&0\\0&3&0\\0&0&4\end{pmatrix}
+\]
+它把三维空间中的每个点$(x,y,z)$映射为$(2x,3y,4z)$。来算几个具体的点：
+\begin{itemize}
+\item $(1,0,0)$变成$(2,0,0)$——沿$x$轴拉长$2$倍。
+\item $(0,1,0)$变成$(0,3,0)$——沿$y$轴拉长$3$倍。
+\item $(0,0,1)$变成$(0,0,4)$——沿$z$轴拉长$4$倍。
+\end{itemize}
+原来$1\times1\times1$的单位立方体，三条棱分别被拉成了$2,3,4$。变成的长方体体积显然是$2\times3\times4=24$。直觉上，这个变换的体积放大倍率就是$24$。
+
+\vspace{0.2cm}
+\noindent\textbf{实例2：只改变一个方向。}
+
+\[
+B = \begin{pmatrix}1&0&0\\0&1&0\\0&0&5\end{pmatrix}
+\]
+只在$z$方向拉伸$5$倍，$x$和$y$方向不变。单位立方体变成底面$1\times1$、高$5$的柱体，体积$=5$。
+
+\vspace{0.2cm}
+\noindent\textbf{实例3：含切变的三维变换。}
+
+\[
+C = \begin{pmatrix}1&1&0\\0&1&1\\0&0&1\end{pmatrix}
+\]
+这个矩阵在$xy$平面内有切变（$x$受$y$影响），同时在$yz$平面内也有切变（$y$受$z$影响）。看几个具体的点：
+\begin{itemize}
+\item $(1,0,0)\to(1,0,0)$——$x$轴方向不变。
+\item $(0,1,0)\to(1,1,0)$——$xy$平面内被斜推了。
+\item $(0,0,1)\to(0,1,1)$——$z$方向的点被推到了$(0,1,1)$。
+\end{itemize}
+直觉上，切变只是"推了一把"，像推扑克牌一样——不改变体积。所以体积应该还是$1$。
+
+\vspace{0.2cm}
+\noindent\textbf{实例4：三维投影——压缩到平面上。}
+
+\[
+D = \begin{pmatrix}1&0&0\\0&1&0\\0&0&0\end{pmatrix}
+\]
+这个矩阵把每个点的$z$坐标清零：$(x,y,z)\to(x,y,0)$。整个三维空间被压扁到$xy$平面上——像用压路机把立方体碾成了薄片。体积自然为$0$。
+
+\vspace{0.2cm}
+\noindent\textbf{从实例到公式。}
+
+上面四个例子中，我们靠直觉判断了体积变化。现在需要一套系统的方法——能对任意$3\times3$矩阵算出它的体积放大倍率（的绝对值）。这套方法就是三阶行列式。
+
+三阶行列式是二阶行列式的自然延伸。展开规则是：
+\[
+\begin{vmatrix}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}
+\end{vmatrix}
+= a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}
+-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}
+\]
+记忆技巧：主对角线（左上→右下）方向的三项取正号，副对角线（右上→左下）方向的三项取负号。但初学时更可靠的做法是直接用公式逐项代入。
+
+现在用公式验证我们的直觉判断：
+\begin{itemize}
+\item 实例1：$\det A=2\times3\times4=24$（只有主对角线乘积项非零）。$\checkmark$
+\item 实例2：$\det B=1\times1\times5=5$（只有主对角线乘积）。$\checkmark$
+\item 实例3：$\det C=1\times1\times1+1\times1\times0+0\times0\times0-0\times1\times0-1\times0\times1-1\times1\times0=1$。其他交叉项都含$0$，只剩$1$。$\checkmark$
+\item 实例4：$\det D=1\times1\times0+0\times0\times0+0\times0\times0-0\times1\times0-0\times0\times0-1\times0\times0=0$。$\checkmark$
+\end{itemize}
+
+公式和直觉完全吻合。三阶行列式的绝对值就是三维变换的体积放大倍率，符号表达定向（三维中的手性）。
+
+\vspace{0.2cm}
+\noindent\textbf{从三维看线性相关。}
+
+回顾3.3节：二维中，两个列向量共线（线性相关）$\Longleftrightarrow$ 行列式为$0$。在三维中，这个逻辑自然延伸到三个向量。
+
+试一个例子：$E=\begin{pmatrix}1&0&1\\0&1&1\\0&0&0\end{pmatrix}$。第三个列向量$(1,1,0)$恰好等于前两个$(1,0,0)$和$(0,1,0)$的和——它可以被另外两个"表示"出来。算一下行列式：$\det E=1\times1\times0+\cdots=0$（第三行全零，行列式必为零）。
+
+再看$F=\begin{pmatrix}1&2&3\\0&1&2\\0&0&0\end{pmatrix}$。第三行为零——意味着三个列向量的$z$分量全是$0$，它们全部躺在$xy$平面上。三个向量\textbf{共面}，张成的平行六面体厚度为零，体积为零，行列式为零。
+
+归纳：在三维中，三个向量\textbf{线性相关}当且仅当它们共面——存在某个向量可以表示为另外两个的线性组合。此时行列式为$0$，矩阵不可逆（三维空间被压扁成二维平面甚至更低）。三个向量\textbf{线性无关}当且仅当它们不共面——真正在三个独立方向上撑开了空间，行列式不为零，矩阵可逆。
+
+这一规律可以继续推广：在任意$n$维空间中，$n$个向量线性相关意味着它们被包含在一个低于$n$维的子空间内，行列式为零。
+
+\begin{exercise}
+\item 用展开公式计算$\begin{vmatrix}2&0&0\\0&3&0\\0&0&5\end{vmatrix}$。这个矩阵把体积放大了几倍？
+\item 判断：若一个$3\times3$矩阵的三个列向量共面，它的行列式是多少？可逆吗？
+\item 若一个$3\times3$矩阵的某两列恰好相等，行列式是多少？为什么？（提示：两列相等意味着什么线性关系？）
+\end{exercise}
+
+\sectiontitle{3.5\quad 行列式的核心性质}
+
+二阶行列式的各种代数性质在更高阶中依然成立。和前面几节一样，我们先看具体的数字例子，再来总结每一条性质背后的几何意义。
+
+\vspace{0.2cm}
+\noindent\textbf{性质1：交换两行，行列式变号。}
+
+取$A=\begin{pmatrix}2&1\\3&4\end{pmatrix}$，$\det A=2\times4-1\times3=5$。交换两行得$B=\begin{pmatrix}3&4\\2&1\end{pmatrix}$，$\det B=3\times1-4\times2=-5$。行列式从$5$变成了$-5$——绝对值没变，符号翻转。
+
+几何上：交换两行相当于交换两个基向量在平行四边形中的顺序。原本从第一列到第二列是逆时针，交换后变成顺时针——定向反转了。
+
+\vspace{0.2cm}
+\noindent\textbf{性质2：某行乘$k$，行列式乘$k$。}
+
+$A=\begin{pmatrix}2&1\\0&3\end{pmatrix}$，$\det A=2\times3=6$。把第一行乘$3$得$B=\begin{pmatrix}6&3\\0&3\end{pmatrix}$，$\det B=6\times3=18=3\times6$。
+
+几何上：给某行乘$k$，相当于把那个方向的基向量拉伸了$k$倍，平行四边形的高（或底）变成了$k$倍，面积自然变成$k$倍。
+
+同理，如果两行都翻倍，行列式变成$k^2$倍（每行独立贡献一个因子）。对$n$阶方阵，每行翻倍使行列式变成$k^n$倍。
+
+\vspace{0.2cm}
+\noindent\textbf{性质3：两行成比例，行列式为$0$。}
+
+这一条我们已经反复见到。$A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$，第二行恰好是第一行的$2$倍。$\det=1\times4-2\times2=0$。
+
+也可以从3.3节的角度理解：两行成比例意味着两列也线性相关（在二阶中），平行四边形的两条邻边共线，面积为零。在高阶中，任意两行成比例都会导致行列式为零——因为它们对应的方向重合了。
+
+\vspace{0.2cm}
+\noindent\textbf{性质4：某行加上另一行的倍数，行列式值不变。}
+
+$A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$，$\det=1\times4-2\times3=-2$。将第一行的$2$倍加到第二行：$B=\begin{pmatrix}1&2\\3+2&4+4\end{pmatrix}=\begin{pmatrix}1&2\\5&8\end{pmatrix}$。$\det B=1\times8-2\times5=-2$。不变！
+
+这个性质没有那么直观，但几何上的解释是：把一行的倍数加到另一行，在变换的视角下相当于在某个方向上叠加了一个切变操作。而切变（如1.6节所见）不改变平行四边形的底和高，因此面积不变。试试用$k=2$的切变矩阵$\begin{pmatrix}1&2\\0&1\end{pmatrix}$左乘$A$：结果矩阵的行列式是$\det A\times\det(\text{切变})=\det A\times1=\det A$。
+
+\vspace{0.2cm}
+\noindent\textbf{性质5：$\det(AB)=\det A\cdot\det B$。}
+
+这可能是最重要的一条。先算两个具体矩阵各自的行列式和它们乘积的行列式：
+\begin{align*}
+A=\begin{pmatrix}2&0\\0&3\end{pmatrix},\;\det A&=6,\qquad
+B=\begin{pmatrix}0&1\\1&0\end{pmatrix},\;\det B=-1\\[2pt]
+AB=\begin{pmatrix}0&2\\3&0\end{pmatrix},\;\det(AB)&=0\times0-2\times3=-6=6\times(-1)=\det A\cdot\det B
+\end{align*}
+
+再试一组：$A$把面积放大$3$倍，$B$是投影矩阵（$\det B=0$）。那么$AB$：$\det(AB)=3\times0=0$。无论$A$怎么"放大"，只要$B$已经压扁了，复合结果还是扁的——$0$乘任何数还是$0$。
+
+这个性质对数个变换的复合特别有用。比如三个矩阵连乘：$\det(ABC)=\det A\cdot\det B\cdot\det C$。特别地，逆矩阵的行列式：由$AA^{-1}=I$且$\det I=1$，得$\det A\cdot\det(A^{-1})=1$，即$\det(A^{-1})=1/\det A$。
+
+下面把五条性质整理成一览表：
+
+\[
+\begin{array}{c|c}
+\textbf{代数性质} & \textbf{几何意义}\\\hline
+\text{交换两行，行列式变号} & \text{交换两个基向量的顺序，定向反转}\\
+\text{某行乘$k$，行列式乘$k$} & \text{一个方向拉伸$k$倍，体积放大$k$倍}\\
+\text{两行成比例，行列式为$0$} & \text{两个方向共线/共面，体积被压成$0$}\\
+\text{某行加另一行的倍数，值不变} & \text{切变不改变体积——推一把不压缩}\\
+\det(AB)=\det A\cdot\det B & \text{复合变换的放大倍率 $=$ 各自倍率相乘}
+\end{array}
+\]
+
+这些性质不仅是行列式计算的口诀——每一条都对应着一个具体的几何动作。你可以在纸上画图验证，也可以在代数计算中反复应用。在后续各章中，它们会反复出现——尤其是 $\det(AB)=\det A\cdot\det B$ 在特征值和二次型的推导中是核心工具。
+
+\sectiontitle{本章小结}
+
+行列式是本书的第三块基石。它的几何含义极为直观：二阶行列式的绝对值 $=$ 平行四边形的面积，三阶行列式的绝对值 $=$ 平行六面体的体积。行列式的符号表示定向（手性是否反转），行列式为零表示变换降维（平面被压成线或点，空间被压成面）。其中最重要的等价关系是：$\det A=0 \Longleftrightarrow$ 列向量线性相关 $\Longleftrightarrow$ 变换降维 $\Longleftrightarrow A$ 不可逆。另外，行列式的五条代数性质（交换变号、行乘$k$则行列式乘$k$、成比例则为零、行加倍数不变、乘积的行列式$=$行列式的乘积）各有对应的几何解释——它们将在特征值、二次型等内容中反复出现。
+
+\sectiontitle{课后练习}
+
+\subsection*{A组\quad 基础巩固}
+\begin{exercise}
+\item 计算行列式并判断变换是放大还是缩小了面积（或改变了定向）：\\[2pt]
+(a) $\begin{vmatrix}4&3\\1&2\end{vmatrix}$\quad
+(b) $\begin{vmatrix}5&0\\0&7\end{vmatrix}$\quad
+(c) $\begin{vmatrix}0&2\\3&0\end{vmatrix}$
+\item 下列矩阵中哪些行列式为$0$？对于行列式为$0$的，判断两个列向量是否成比例：\\
+(a) $\begin{pmatrix}1&2\\2&4\end{pmatrix}$\quad (b) $\begin{pmatrix}3&0\\0&-2\end{pmatrix}$\quad (c) $\begin{pmatrix}0&1\\-1&0\end{pmatrix}$
+\item 计算$\begin{vmatrix}1&2&0\\0&3&1\\2&0&4\end{vmatrix}$。
+\item 已知$\det A=3$，求$\det(2A)$（提示：$2A$相当于$A$的每一行都乘了$2$，行列式如何变化）。
+\item 若$\det A=5$，$\det B=-2$，求$\det(AB)$和$\det(BA)$。
+\item 矩阵$\begin{pmatrix}1&2\\3&4\end{pmatrix}$可逆吗？若可逆，求$\det(A^{-1})$。
+\item 计算$\begin{vmatrix}x&1\\1&x\end{vmatrix}$，并求出使得行列式为$0$的$x$值。$x$取这些值时，两个列向量有什么关系？几何上发生了什么？
+\item 用行列式性质判断：若一个$2\times2$矩阵的某一行全为零，其行列式是多少？为什么？
+\item 计算对角矩阵$\begin{pmatrix}d_1&0&0\\0&d_2&0\\0&0&d_3\end{pmatrix}$的行列式。什么条件下这个矩阵不可逆？
+\item 写出两个不同的$2\times2$矩阵，使得它们的行列式都为$0$，但列向量所沿的直线不同。
+\end{exercise}
+
+\subsection*{B组\quad 挑战提升}
+\begin{exercise}
+\item 三阶行列式中，若将第一列的$2$倍加到第三列，行列式值是否改变？用性质说明。
+\item 证明：对于任何$2\times2$矩阵，$\det(A^2)=(\det A)^2$。并举出一个反例说明$\det(A^2)\neq\det A$一般不成立。
+\item 计算：$\begin{vmatrix}a&b&c\\b&c&a\\c&a&b\end{vmatrix}$。提示：展开后尝试提取公因式，可分解为$(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$。
+\item 设$A$是斜对称矩阵（$A^{\text T}=-A$），且是奇数阶。证明$\det A=0$。提示：利用$\det(A^{\text T})=\det A$和$\det(-A)=(-1)^n\det A$。
+\item 已知$\det\begin{pmatrix}2&3\\x&y\end{pmatrix}=1$，$\det\begin{pmatrix}1&4\\x&y\end{pmatrix}=2$。求$\det\begin{pmatrix}3&7\\x&y\end{pmatrix}$。提示：利用行列式关于列的线性性质，观察第三列与前两列的关系。
+\item 计算$\begin{vmatrix}2&-1&3\\1&0&4\\-2&1&1\end{vmatrix}$。利用行变换简化计算（而非直接套展开公式）。
+\item 设$A=\begin{pmatrix}k&2\\3&k\end{pmatrix}$。求使得$\det A=0$的所有$k$值。$k$取这些值时，$A$的列向量处于什么几何关系？
+\item 计算$\begin{vmatrix}1&\frac12&\frac13\\\frac12&\frac13&\frac14\\\frac13&\frac14&\frac15\end{vmatrix}$。
+\item 已知某$3\times3$矩阵的第三行是第一行的$2$倍减去第二行的$3$倍。不计算具体数字，判断该矩阵的行列式，并说明理由。
+\end{exercise}
+
+\newpage

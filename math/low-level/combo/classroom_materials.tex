@@ -1,0 +1,77 @@
+\documentclass[a4paper,12pt]{ctexart}
+\usepackage{../../teaching-style}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=mainblue}
+
+\begin{document}
+\pagestyle{empty}
+
+% ===== 封面 =====
+\vspace*{2.5cm}
+{\centering
+  {\Huge\bfseries\color{mainblue} 组合}\par
+  \vspace{0.6cm}
+  {\Large 集合$\cdot$计数$\cdot$图论}\par
+  \vspace{2cm}
+  \rule{0.5\textwidth}{0.4pt}\par
+  \vspace{1.2cm}
+  {\normalsize 适用学段：低学段（G4\~{}初三）}\par
+  \vspace{0.4cm}
+  {\normalsize 先修要求：小学四则运算基础}\par
+  \vspace{0.4cm}
+  {\normalsize 建议课时：40\~{}50 课时（含练习）}\par
+  \vspace{1.2cm}
+  \rule{0.5\textwidth}{0.4pt}
+}
+\newpage
+
+% ===== 使用说明 =====
+\vspace*{0.5cm}
+{\Large\bfseries\color{mainblue} 使用说明}\par
+\vspace{0.3cm}
+
+\textbf{适用对象。} 本教材面向小学四年级至初三的学生。不需要任何组合数学预备知识——一切从生活实例和具体数字出发。
+
+\textbf{教学理念。} 全书遵循"先做足够多的具体例子，再总结一般规律"的原则。每一节都从手算几个具体的数或情形开始，先看到现象，再归纳公式。这与传统从定义出发的讲法相反。
+
+\textbf{章节安排。} 前两章建立基础语言：集合（第一章）和逻辑（第二章）。第三章至第七章是全书核心——从最基本的加乘原理，到排列组合的各种技巧（隔板法、对应法、算两次），再到二项式定理、容斥原理、抽屉原理。第八章至第十章是工具扩展和应用。
+
+\textbf{练习体系。} 大部分节后配有即时练习，每章末设有 A 组（基础巩固）和 B 组（挑战提升）。A 组侧重计算熟练度，B 组侧重概念理解与跨节综合。全书所有答案列于书末附录。
+
+\textbf{致教师。} 如果课时有限，前两章各用 2--3 课时快速过完；第三章至第五章是核心，每章约 4--6 课时；第六至第八章各约 2--3 课时；第九、十章可选讲或作为阅读材料。
+
+\newpage
+
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\preface{前言}
+
+什么是组合数学？简单说，它研究的是"有多少种方式"和"能不能保证"这两类问题。
+
+有多少种方式穿衣服？有多少种方式排座位？有多少种方式把 10 个苹果分给 3 个小朋友？一个班 50 个人，能不能保证至少有 5 个人同一个月出生？快递员能不能找一条路不重复地走遍所有街道？这些都是组合数学要回答的问题。
+
+这本书从最基础的工具开始教起。第一、第二章教你说"组合数学的语言"——集合和逻辑。然后把计数的方法一样一样教给你：加法原理、乘法原理、排列、组合、隔板法、二项式定理、容斥原理。接着学一些存在性的推理工具——抽屉原理、染色、不变量、极端原理。最后用图论收尾——把关系和结构画成图来分析。
+
+全书遵循一个原则：\textbf{先做足够多的具体数字的例子，再总结一般规律。} 每一节后面都配有即时练习，每一章末尾配有两组综合练习（A 组打基础，B 组挑战提升），所有习题答案附在书末。
+
+\begin{flushright}——编者\end{flushright}
+
+\newpage
+
+\tableofcontents
+\newpage
+
+\input{ch01.tex}
+\input{ch02.tex}
+\input{ch03.tex}
+\input{ch04.tex}
+\input{ch05.tex}
+\input{ch06.tex}
+\input{ch07.tex}
+\input{ch08.tex}
+\input{ch09.tex}
+\input{ch10.tex}
+\input{answers.tex}
+
+\end{document}

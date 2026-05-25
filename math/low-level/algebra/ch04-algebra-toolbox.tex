@@ -1,0 +1,328 @@
+\chaptertitle{第四章\quad 代数式工具箱}
+
+\sectiontitle{第10讲\quad 整式乘法与乘法公式}
+
+\subsection*{从数的乘法到式的乘法}
+
+整式乘法和数的乘法道理一样：逐项相乘，再合并同类项。
+
+\begin{example}
+计算：$2x(3x+1)$
+\end{example}
+\begin{solution}
+$2x\times3x + 2x\times1 = 6x^2 + 2x$。（单项式×多项式：分配律）
+\end{solution}
+
+\begin{example}
+计算：$(x+2)(x+3)$
+\end{example}
+\begin{solution}
+逐项相乘：$x\times x + x\times3 + 2\times x + 2\times3$\\
+$= x^2 + 3x + 2x + 6 = x^2 + 5x + 6$。
+\end{solution}
+
+\subsection*{平方差公式——先看大量例子}
+
+先算几道具体的，看看有没有规律：
+
+$(3+2)(3-2) = 5\times1 = 5$，$3^2-2^2 = 9-4 = 5$，相等！\\
+$(5+1)(5-1) = 6\times4 = 24$，$5^2-1^2 = 25-1 = 24$，相等！\\
+$(10+3)(10-3) = 13\times7 = 91$，$10^2-3^2 = 100-9 = 91$，相等！
+
+\begin{example}
+计算 $(a+b)(a-b)$，看看是不是也等于 $a^2-b^2$。
+\end{example}
+\begin{solution}
+$(a+b)(a-b) = a^2 - ab + ab - b^2 = a^2 - b^2$。
+
+\textbf{平方差公式}：$(a+b)(a-b) = a^2 - b^2$。
+\end{solution}
+
+有了公式就不用逐项乘了：
+
+\begin{example}
+用平方差公式计算：$(3x+2y)(3x-2y)$
+\end{example}
+\begin{solution}
+$(3x)^2 - (2y)^2 = 9x^2 - 4y^2$。
+\end{solution}
+
+\subsection*{完全平方公式}
+
+再算几个：$(3+2)^2 = 5^2 = 25$，$3^2+2^2 = 9+4 = 13$——不相等！展开算一下：
+
+$(3+2)^2 = (3+2)(3+2) = 9+6+6+4 = 25$，而 $3^2+2\times3\times2+2^2 = 9+12+4 = 25$。\\
+$(10+1)^2 = 121$，$10^2+2\times10\times1+1^2 = 100+20+1=121$。
+
+\begin{example}
+展开 $(a+b)^2$ 和 $(a-b)^2$。
+\end{example}
+\begin{solution}
+$(a+b)^2 = (a+b)(a+b) = a^2 + ab + ab + b^2 = a^2 + 2ab + b^2$。\\
+$(a-b)^2 = (a-b)(a-b) = a^2 - ab - ab + b^2 = a^2 - 2ab + b^2$。
+
+\textbf{完全平方公式}：$(a\pm b)^2 = a^2 \pm 2ab + b^2$。
+\end{solution}
+
+\begin{example}
+用完全平方公式计算：$(2x-3y)^2$
+\end{example}
+\begin{solution}
+$(2x)^2 - 2\cdot(2x)\cdot(3y) + (3y)^2 = 4x^2 - 12xy + 9y^2$。
+\end{solution}
+
+\begin{exercise}
+\item 计算多项式乘法：
+  \begin{subexercise}
+    \item $(2x+1)(x-4)$
+    \item $(3a-2b)(2a+3b)$
+    \item $(x+2y)(x-3y)$
+    \item $(2x-1)(3x^2+2x-1)$
+  \end{subexercise}
+
+\item 用平方差公式计算：
+  \begin{subexercise}
+    \item $(x+6)(x-6)$
+    \item $(3a+2b)(3a-2b)$
+    \item $(5m-n)(5m+n)$
+    \item $(a^2+b)(a^2-b)$
+    \item $103\times97$（提示：$103=100+3$）
+    \item $202\times198$
+  \end{subexercise}
+
+\item 用完全平方公式计算：
+  \begin{subexercise}
+    \item $(x+5)^2$
+    \item $(2a-3)^2$
+    \item $(3m+2n)^2$
+    \item $102^2$（提示：$102=100+2$）
+    \item $99^2$
+    \item $201^2$
+  \end{subexercise}
+
+\item 判断对错并改正：
+  \begin{subexercise}
+    \item $(a+b)^2 = a^2 + b^2$
+    \item $(a-b)^2 = a^2 - b^2$
+    \item $(x+3)^2 = x^2 + 6x + 9$
+    \item $(2x-1)^2 = 4x^2 - 4x + 1$
+  \end{subexercise}
+
+\item 计算：$(x+y)^2 - (x-y)^2$，想一想这个结果有什么用。
+\end{exercise}
+
+\sectiontitle{第11讲\quad 因式分解——展开的逆运算}
+
+\subsection*{为什么要把一个式子拆开？}
+
+展开是把 $(x+2)(x+3)$ 变成 $x^2+5x+6$。但有时候需要反过来——把 $x^2+5x+6$ 变回 $(x+2)(x+3)$。
+
+为什么要反过来？因为\textbf{变成乘积形式后，我们可以利用"几个数相乘等于0，至少有一个是0"这个性质来解方程}。这是下一章的伏笔。
+
+先看两种基本方法。
+
+\subsection*{提公因式法}
+
+$3x + 6$ 中，两项都有公因数 3，可以提到外面：
+
+$3x + 6 = 3(x + 2)$
+
+\begin{example}
+分解因式：$6x^2 + 3x$
+\end{example}
+\begin{solution}
+两项都含 $3x$：$6x^2 + 3x = 3x(2x + 1)$。
+\end{solution}
+
+\begin{example}
+分解因式：$4xy^2 - 6x^2y$
+\end{example}
+\begin{solution}
+$4xy^2 - 6x^2y = 2xy(2y - 3x)$。（公因式取系数的最大公约数和字母的最低指数）
+\end{solution}
+
+\subsection*{公式法}
+
+平方差公式和完全平方公式反过来用：
+
+$a^2 - b^2 = (a+b)(a-b)$\\
+$a^2 + 2ab + b^2 = (a+b)^2$\\
+$a^2 - 2ab + b^2 = (a-b)^2$
+
+\begin{example}
+分解因式：$x^2 - 9$
+\end{example}
+\begin{solution}
+$x^2 - 9 = x^2 - 3^2 = (x+3)(x-3)$。
+\end{solution}
+
+\begin{example}
+分解因式：$4x^2 - 12x + 9$
+\end{example}
+\begin{solution}
+$4x^2 = (2x)^2$，$9 = 3^2$，$2\cdot2x\cdot3 = 12x$，符合完全平方公式。\\
+所以 $4x^2 - 12x + 9 = (2x-3)^2$。
+\end{solution}
+
+\subsection*{十字相乘法}
+
+对于 $x^2 + 5x + 6$ 这样的二次三项式，找两个数 $p$、$q$ 使得 $p+q=5$、$pq=6$：
+$(x+2)(x+3)$。
+
+\begin{example}
+分解因式：$x^2 - 5x + 6$
+\end{example}
+\begin{solution}
+找两个数积为 6、和为 -5：-2 和 -3。\\
+所以 $x^2 - 5x + 6 = (x-2)(x-3)$。
+\end{solution}
+
+\begin{example}
+分解因式：$x^2 + x - 12$
+\end{example}
+\begin{solution}
+找两个数积为 -12、和为 +1：4 和 -3。\\
+所以 $x^2 + x - 12 = (x+4)(x-3)$。
+\end{solution}
+
+\begin{exercise}
+\item 提公因式：
+  \begin{subexercise}
+    \item $5x+10$
+    \item $3a^2-6a$
+    \item $6x^3-9x^2$
+    \item $4m^2n-8mn^2$
+    \item $2x(x-3)+5(x-3)$
+    \item $3a(x+y)-2b(x+y)$
+  \end{subexercise}
+
+\item 用平方差公式分解：
+  \begin{subexercise}
+    \item $x^2-16$
+    \item $4a^2-9$
+    \item $25m^2-n^2$
+    \item $9x^2-16y^2$
+  \end{subexercise}
+
+\item 用完全平方公式分解：
+  \begin{subexercise}
+    \item $x^2+6x+9$
+    \item $4a^2-20a+25$
+    \item $9m^2+12mn+4n^2$
+    \item $x^2-8x+16$
+  \end{subexercise}
+
+\item 十字相乘法：
+  \begin{subexercise}
+    \item $x^2+7x+12$
+    \item $x^2-4x-5$
+    \item $x^2+3x-10$
+    \item $x^2-7x+12$
+  \end{subexercise}
+
+\item 综合（先看能用哪种方法）：
+  \begin{subexercise}
+    \item $3x^2-27$
+    \item $2x^2-8x+8$
+    \item $x^3-4x$
+    \item $x^2y-y$
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第12讲\quad 分式与根式}
+
+\subsection*{分式——分数的推广}
+
+分式 $\dfrac{A}{B}$ 就是 $\dfrac{\text{整式}}{\text{整式}}$。分式的运算法则和分数一模一样——因为分数就是分式的特例（分子分母都是整数）。
+
+\begin{example}
+约分：$\dfrac{6a^2b}{3ab^2}$
+\end{example}
+\begin{solution}
+分子分母同除以 $3ab$：
+$\dfrac{6a^2b}{3ab^2} = \dfrac{2a}{b}$。
+\end{solution}
+
+\begin{example}
+分式加减：$\dfrac{1}{x} + \dfrac{1}{y}$
+\end{example}
+\begin{solution}
+通分（分母取 $xy$）：$\dfrac{1}{x} + \dfrac{1}{y} = \dfrac{y}{xy} + \dfrac{x}{xy} = \dfrac{x+y}{xy}$。
+\end{solution}
+
+\begin{example}
+分式乘除：$\dfrac{a}{b} \times \dfrac{c}{d}$ 和 $\dfrac{a}{b} \div \dfrac{c}{d}$
+\end{example}
+\begin{solution}
+$\dfrac{a}{b} \times \dfrac{c}{d} = \dfrac{ac}{bd}$，$\dfrac{a}{b} \div \dfrac{c}{d} = \dfrac{a}{b} \times \dfrac{d}{c} = \dfrac{ad}{bc}$。
+和分数一模一样。
+\end{solution}
+
+\subsection*{根式的化简}
+
+算术中学过的根式性质在这里同样适用。
+
+\begin{example}
+化简：$\sqrt{12a^3b^2}$
+\end{example}
+\begin{solution}
+$\sqrt{12a^3b^2} = \sqrt{4\cdot3\cdot a^2\cdot a\cdot b^2} = \sqrt{4}\cdot\sqrt{a^2}\cdot\sqrt{b^2}\cdot\sqrt{3a} = 2ab\sqrt{3a}$。
+\end{solution}
+
+\begin{example}
+分母有理化：$\dfrac{1}{\sqrt{2}-1}$
+\end{example}
+\begin{solution}
+$\dfrac{1}{\sqrt{2}-1} \times \dfrac{\sqrt{2}+1}{\sqrt{2}+1} = \dfrac{\sqrt{2}+1}{2-1} = \sqrt{2}+1$。
+\end{solution}
+
+\begin{exercise}
+\item 分式约分：
+  \begin{subexercise}
+    \item $\dfrac{4x^2}{2x}$
+    \item $\dfrac{6a^2b}{3ab^2}$
+    \item $\dfrac{x^2-1}{x+1}$
+    \item $\dfrac{x^2-4}{x-2}$
+  \end{subexercise}
+
+\item 分式加减：
+  \begin{subexercise}
+    \item $\dfrac{1}{a} + \dfrac{1}{b}$
+    \item $\dfrac{2}{x} - \dfrac{3}{x^2}$
+    \item $\dfrac{1}{x+1} + \dfrac{1}{x-1}$
+    \item $\dfrac{a}{b} - \dfrac{b}{a}$
+  \end{subexercise}
+
+\item 分式乘除：
+  \begin{subexercise}
+    \item $\dfrac{2a}{3b} \times \dfrac{6b}{a}$
+    \item $\dfrac{x}{y} \div \dfrac{x^2}{y^2}$
+    \item $\dfrac{a^2-1}{a} \div \dfrac{a-1}{a}$
+  \end{subexercise}
+
+\item 根式化简：
+  \begin{subexercise}
+    \item $\sqrt{18a^2}$
+    \item $\sqrt{8x^3y}$
+    \item $\sqrt{50a^2b^4}$
+  \end{subexercise}
+
+\item 分母有理化：
+  \begin{subexercise}
+    \item $\dfrac{1}{\sqrt{3}}$
+    \item $\dfrac{2}{\sqrt{5}}$
+    \item $\dfrac{1}{\sqrt{3}+1}$
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{章末小结}
+
+这一章我们把代数式的"工具箱"充实了：
+
+\begin{enumerate}
+  \item \textbf{乘法公式}——平方差和完全平方，让多项式乘法有捷径。
+  \item \textbf{因式分解}——多项式乘法的逆运算，核心方法有三种（提公因式、公式法、十字相乘）。
+  \item \textbf{分式与根式}——分数和平方根在代数式中的推广。
+\end{enumerate}
+
+因式分解会在下一章发挥关键作用：\textbf{解高次方程要靠它降次}。

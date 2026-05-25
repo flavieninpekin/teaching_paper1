@@ -1,0 +1,395 @@
+\chaptertitle{第二章\quad 逻辑与推理}
+
+第一章我们用集合的语言来描述"一组东西"。但描述完"是什么"之后，我们需要判断"对吗""能推出什么"。这一章学习逻辑——一套判断命题真假的规则，以及基于规则的推理方法。组合数学中的很多结论，靠的不是死算，而是严谨的逻辑推理。
+
+\sectiontitle{2.1\quad 命题与逻辑联结词}
+
+先看几个句子：
+\begin{itemize}
+\item 今天是晴天。
+\item $2>1$。
+\item 请关门。
+\item $x>5$。
+\item $1+1=3$。
+\end{itemize}
+
+哪些能判断真假？"今天是晴天"——看天气就能判断。"$2>1$"——真。"$1+1=3$"——假。"请关门"——这是祈使句，没有真假。"$x>5$"——不知道$x$是多少，无法判断。
+
+在逻辑中，把可以判断真假的陈述句称为\textbf{命题}。判断为真的叫\textbf{真命题}，判断为假的叫\textbf{假命题}。
+
+\begin{example}
+判断以下是否为命题；如果是，判断真假：
+(1) 北京是中国的首都。\qquad (2) 请安静。\\
+(3) $\sqrt2$是有理数。\qquad (4) $x+3=5$。
+\end{example}
+\begin{solution}
+(1) 是真命题。\qquad (2) 不是命题（祈使句）。\\
+(3) 是假命题（$\sqrt2$不是有理数）。\qquad (4) 不是命题（$x$不确定）。
+\end{solution}
+
+现实中我们经常把几个命题组合起来说。逻辑中有三个最基本的联结词：
+
+\begin{center}
+\begin{tabular}{c|c|c}
+联结词 & 符号 & 含义 \\ \hline
+且 & $p\land q$ & $p$和$q$同时成立 \\
+或 & $p\lor q$ & $p$和$q$至少一个成立 \\
+非 & $\lnot p$ & $p$不成立（否定）
+\end{tabular}
+\end{center}
+
+来看一个具体例子。设$p$表示"小明是男生"，$q$表示"小明戴眼镜"。
+\begin{itemize}
+\item $p\land q$（小明是男生且戴眼镜）：只有两个条件都满足时，这个命题为真。
+\item $p\lor q$（小明是男生或戴眼镜）：只要满足至少一个条件，这个命题就为真。
+\item $\lnot p$（小明不是男生）：$p$为假时它为真。
+\end{itemize}
+
+用表格表示命题在各种情况下的真假，叫\textbf{真值表}：
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$p$ & $q$ & $p\land q$ & $p\lor q$ & $\lnot p$ \\ \hline
+真 & 真 & 真 & 真 & 假 \\
+真 & 假 & 假 & 真 & 假 \\
+假 & 真 & 假 & 真 & 真 \\
+假 & 假 & 假 & 假 & 真
+\end{tabular}
+\end{center}
+
+\begin{example}
+已知$p$：$2$是偶数，$q$：$2>3$。判断$p\land q$、$p\lor q$、$\lnot p$的真假。
+\end{example}
+\begin{solution}
+$p$是真，$q$是假。\\
+$p\land q$：$2$是偶数且$2>3$——假（$q$不成立）。\\
+$p\lor q$：$2$是偶数或$2>3$——真（$p$成立）。\\
+$\lnot p$：$2$不是偶数——假。
+\end{solution}
+
+\begin{exercise}
+\item 判断以下是否为命题：
+(1) 雪是白的。\qquad (2) 你会游泳吗？\qquad (3) 今天是$5$月$25$日。
+\item $p$：$3<5$，$q$：$3>4$，判断$p\land q$，$p\lor q$，$\lnot p$的真假。
+\item 用日常语言各举一个$p\land q$为真、$p\lor q$为假的例子。
+\end{exercise}
+
+\sectiontitle{2.2\quad 逻辑与集合的对应}
+
+逻辑和集合有着惊人的对应关系。表面上看是两个不同的领域，实际上说的是同一回事。
+
+关键想法：每个命题$p(x)$都可以对应一个"使$p(x)$为真的$x$的集合"——我们称之为\textbf{真值集}。
+
+\begin{example}
+设全集$U=\{1,2,3,4,5,6\}$，$p(x)$：$x$是偶数，$q(x)$：$x>3$。写出$p(x)$和$q(x)$的真值集。
+\end{example}
+\begin{solution}
+$p(x)$的真值集$A=\{2,4,6\}$，$q(x)$的真值集$B=\{4,5,6\}$。
+\end{solution}
+
+有了真值集，逻辑运算和集合运算就对应上了：
+
+\begin{center}
+\begin{tabular}{c|c}
+逻辑 & 集合 \\ \hline
+$p(x)\land q(x)$ （且） & $A\cap B$（交集）\\
+$p(x)\lor q(x)$ （或） & $A\cup B$（并集）\\
+$\lnot p(x)$（非） & $\complement_U A$（补集）\\
+$p(x)\Rightarrow q(x)$（蕴含） & $A\subseteq B$（子集）
+\end{tabular}
+\end{center}
+
+用真值集来看，$p\land q$就是同时满足两个条件的元素——正好是$A$和$B$的公共部分。
+$p\lor q$是满足至少一个条件的元素——正好是$A$和$B$的并集。
+$\lnot p$是不满足条件的元素——正好是$A$的补集。
+
+这个对应最大的好处是：抽象的逻辑关系可以用Venn图画出来看。
+
+\begin{example}
+用集合的视角解释德摩根定律：$\lnot(p\land q)$等价于$(\lnot p)\lor(\lnot q)$。
+\end{example}
+\begin{solution}
+$\lnot(p\land q)$的真值集是$\complement_U(A\cap B)$。\\
+$(\lnot p)\lor(\lnot q)$的真值集是$(\complement_U A)\cup(\complement_U B)$。\\
+第一章已经验证了$\complement_U(A\cap B)=(\complement_U A)\cup(\complement_U B)$，所以两者等价。
+\end{solution}
+
+\begin{exercise}
+\item $U=\{1,2,3,4,5,6\}$，$p$：$x$是质数，$q$：$x\le4$。写出$p$和$q$的真值集。
+\item 用真值集验证：$\lnot(p\lor q)$等价于$(\lnot p)\land(\lnot q)$。
+\end{exercise}
+
+\sectiontitle{2.3\quad 量词与否定}
+
+有些命题中会出现"所有"或"存在"这样的词，它们叫\textbf{量词}。
+
+\begin{center}
+\begin{tabular}{c|c|c}
+量词 & 符号 & 含义 \\ \hline
+全称量词 & $\forall$ & "所有""任意""每一个" \\
+存在量词 & $\exists$ & "存在""有一个""至少有一个"
+\end{tabular}
+\end{center}
+
+\begin{example}
+把以下句子用符号表示：
+(1) 所有自然数都大于$0$。
+(2) 存在一个整数，它的平方等于$9$。
+\end{example}
+\begin{solution}
+(1) $\forall n\in\mathbb N$，$n>0$。\\
+(2) $\exists x\in\mathbb Z$，$x^2=9$。
+\end{solution}
+
+\textbf{量词的否定规则}：
+\begin{itemize}
+\item "$\forall x$，$p(x)$成立"的否定是"$\exists x$，$\lnot p(x)$成立"。
+\item "$\exists x$，$p(x)$成立"的否定是"$\forall x$，$\lnot p(x)$成立"。
+\end{itemize}
+
+通俗地说：否定"所有……都成立"等于"存在……不成立"；否定"存在……成立"等于"所有……都不成立"。
+
+\begin{example}
+写出以下命题的否定：
+(1) 班里所有同学都完成了作业。
+(2) 有些鸟不会飞。
+(3) $\forall x\in\mathbb R$，$x^2\ge0$。
+\end{example}
+\begin{solution}
+(1) 否定：班里存在一位同学没有完成作业。（$\forall$变$\exists$，谓语变否定）\\
+(2) 否定：所有鸟都会飞。（$\exists$变$\forall$，谓语变否定）\\
+(3) 否定：$\exists x\in\mathbb R$，$x^2<0$。
+\end{solution}
+
+\begin{exercise}
+\item 用符号表示：(1) 每个实数都有平方根。\qquad (2) 存在一个有理数等于$\sqrt2$。
+\item 写出以下命题的否定：
+(1) 所有人都喜欢数学。\qquad (2) $\exists x\in\mathbb N$，$x<0$。
+\end{exercise}
+
+\sectiontitle{2.4\quad 命题的四种形式与反证法}
+
+考虑一个命题："如果今天是周一，那么明天是周二。"把它写成"如果$p$则$q$"的形式。
+
+从"如果$p$则$q$"出发，可以构造三个相关命题：
+
+\begin{center}
+\begin{tabular}{c|c|c}
+名称 & 形式 & 举例 \\ \hline
+原命题 & 如果$p$则$q$ & 如果是周一，那么是周二 \\
+逆命题 & 如果$q$则$p$ & 如果是周二，那么是周一 \\
+否命题 & 如果$\lnot p$则$\lnot q$ & 如果不是周一，那么不是周二 \\
+逆否命题 & 如果$\lnot q$则$\lnot p$ & 如果不是周二，那么不是周一
+\end{tabular}
+\end{center}
+
+关键事实：\textbf{原命题和逆否命题是等价的}（同真同假）。逆命题和否命题等价，但它们与原来的命题不一定等价。
+
+\begin{example}
+判断"如果$x=1$，则$x^2=1$"的真假，并写出它的逆命题、否命题、逆否命题，判断它们的真假。
+\end{example}
+\begin{solution}
+原命题：真（$x=1$确实推出$x^2=1$）。\\
+逆命题"如果$x^2=1$，则$x=1$"：假（$x=-1$时$x^2=1$但$x\neq1$）。\\
+否命题"如果$x\neq1$，则$x^2\neq1$"：假（$x=-1$时$x\neq1$但$x^2=1$）。\\
+逆否命题"如果$x^2\neq1$，则$x\neq1$"：真。
+\end{solution}
+
+这就引出了一种重要的证明方法——\textbf{反证法}。你想要证明"如果$p$则$q$"，可以直接证明它的逆否命题"如果$\lnot q$则$\lnot p$"——也就是：假设结论$q$不成立，推出条件$p$也不成立（或者推出一个矛盾）。
+
+标准步骤：
+\begin{enumerate}
+\item 假设要证明的结论不成立。
+\item 从这个假设出发，进行推理。
+\item 推出与已知条件矛盾的结论（或推出$p$不成立）。
+\item 因此，原假设错误，原结论成立。
+\end{enumerate}
+
+\begin{example}
+用反证法证明：$\sqrt2$不是有理数。
+\end{example}
+\begin{solution}
+假设$\sqrt2$是有理数，则可写成最简分数$\sqrt2=\dfrac{p}{q}$（$p,q$互质）。\\
+两边平方得$2=\dfrac{p^2}{q^2}$，即$p^2=2q^2$。\\
+$p^2$是偶数，所以$p$是偶数，设$p=2k$。\\
+代入得$4k^2=2q^2$，$q^2=2k^2$，$q$也是偶数。\\
+$p$和$q$都是偶数，它们有公因数$2$，与$p,q$互质的假设矛盾。\\
+所以原假设不成立，$\sqrt2$不是有理数。
+\end{solution}
+
+\begin{example}
+用反证法证明：质数有无穷多个。
+\end{example}
+\begin{solution}
+假设质数只有有限个：$p_1,p_2,\dots,p_n$。考虑$N=p_1\times p_2\times\cdots\times p_n+1$。\\
+$N$除以任何一个$p_i$都余$1$，所以$N$不被任何已知质数整除。\\
+那么$N$要么本身是质数，要么有比$p_n$更大的质因子。\\
+无论哪种情况，都说明存在一个不在假设列表中的质数，矛盾。\\
+所以质数有无穷多个。
+\end{solution}
+
+\begin{exercise}
+\item 写出"如果$x>2$，则$x>1$"的逆命题、否命题、逆否命题，并判断真假。
+\item 用反证法证明：如果$a$是偶数，则$a^2$是偶数。
+\item 用反证法证明：$\sqrt3$不是有理数。
+\end{exercise}
+
+\sectiontitle{2.5\quad 数学归纳法}
+
+有些命题涉及"对于所有正整数$n$都成立"。数学归纳法就是处理这类命题的利器。
+
+想象一排多米诺骨牌。要让它全部倒下，需要做到两件事：
+\begin{enumerate}
+\item 第一块骨牌倒下（奠基）。
+\item 如果第$k$块倒下，那么第$k+1$块也会倒下（递推）。
+\end{enumerate}
+
+有了这两点，所有骨牌都会依次倒下。
+
+\textbf{第一数学归纳法}的步骤：
+\begin{enumerate}
+\item \textbf{奠基}：验证$n=1$时命题成立。
+\item \textbf{归纳假设}：假设$n=k$时命题成立。
+\item \textbf{归纳递推}：证明$n=k+1$时命题也成立。
+\end{enumerate}
+
+\begin{example}
+证明：$1+3+5+\cdots+(2n-1)=n^2$对所有正整数$n$成立。
+\end{example}
+\begin{solution}
+\textbf{奠基}：$n=1$时，左边$=2\times1-1=1$，右边$=1^2=1$，成立。\\
+\textbf{归纳假设}：设$n=k$时成立，即$1+3+\cdots+(2k-1)=k^2$。\\
+\textbf{归纳递推}：当$n=k+1$时，
+\[
+1+3+\cdots+(2k-1)+(2k+1) = k^2+(2k+1) = (k+1)^2
+\]
+成立。由数学归纳法，结论对所有正整数$n$成立。
+\end{solution}
+
+\begin{example}
+$n$条直线最多能把平面分成几个区域？先找规律再证明。
+\end{example}
+\begin{solution}
+先画几个图看看：
+\begin{itemize}
+\item $0$条直线：$1$块。
+\item $1$条直线：$2$块。
+\item $2$条直线（相交）：$4$块。
+\item $3$条直线（两两相交，无三线共点）：$7$块。
+\end{itemize}
+$n$条直线最多把平面分成$\dfrac{n^2+n+2}{2}$块。
+下面证明。
+
+\textbf{奠基}：$n=0$时，$\dfrac{0+0+2}{2}=1$，对。\\
+\textbf{归纳假设}：设$n=k$条直线最多分$\dfrac{k^2+k+2}{2}$块。\\
+\textbf{归纳递推}：加第$k+1$条直线，让它与前面$k$条直线都相交于不同点，它上面有$k$个交点，被分成$k+1$段。每段把所在的区域一分为二，所以多了$k+1$块。\\
+总数$=\dfrac{k^2+k+2}{2}+(k+1)=\dfrac{(k+1)^2+(k+1)+2}{2}$，成立。
+\end{solution}
+
+有时候只用$n=k$成立不够，需要假设$n=1,2,\dots,k$都成立来推$n=k+1$。这叫\textbf{强归纳法}（第二数学归纳法）。
+
+\begin{example}
+用强归纳法证明：每个大于$1$的整数都可以写成若干个质数的乘积。
+\end{example}
+\begin{solution}
+\textbf{奠基}：$n=2$是质数，写成$2$自身，成立。\\
+\textbf{归纳假设}：设$2,3,\dots,k$都能写成质数的乘积。\\
+\textbf{归纳递推}：看$n=k+1$。\\
+如果$k+1$是质数，已经写成自身。\\
+如果$k+1$是合数，则可分解为$k+1=a\times b$，其中$2\le a,b\le k$。由归纳假设，$a$和$b$都能写成质数乘积，把它们乘起来就是$k+1$的质因数分解。
+\end{solution}
+
+\begin{exercise}
+\item 用数学归纳法证明：$1+2+3+\cdots+n=\dfrac{n(n+1)}{2}$。
+\item 用数学归纳法证明：$1^2+2^2+\cdots+n^2=\dfrac{n(n+1)(2n+1)}{6}$。
+\item 数列$a_1=1,a_2=1$，$a_{n+2}=a_{n+1}+a_n$（斐波那契数列）。用强归纳法证明$a_n$是正整数。
+\end{exercise}
+
+\sectiontitle{2.6\quad 逻辑推理应用}
+
+逻辑不是只停留在课本上的抽象符号——它是解决实际问题的工具。
+
+\textbf{真假话推理}：几个人各说一句话，其中有人说真话有人说假话，通过逻辑分析判断谁在说谎。
+
+\begin{example}
+甲说："乙在说谎。"乙说："丙在说谎。"丙说："甲和乙都在说谎。"谁在说真话？
+\end{example}
+\begin{solution}
+逐一假设谁在说真话：
+\begin{itemize}
+\item 假设甲说真话。则乙在说谎，所以丙说真话。\\
+但丙说"甲和乙都在说谎"——此时甲说真话，与丙的陈述矛盾。所以甲不可能说真话。
+\item 假设甲在说谎。则乙说真话，所以丙在说谎。\\
+丙说"甲和乙都在说谎"——此时甲说谎、乙说真话，丙的话不成立，所以丙确实在说谎。一致。
+\end{itemize}
+结论：甲和丙在说谎，乙说真话。
+\end{solution}
+
+\textbf{列表推理}：通过条件约束逐项排除，常用表格辅助。
+
+\begin{example}
+甲、乙、丙三人各学一门特长：钢琴、围棋、游泳。已知：
+(1) 甲不学游泳。\qquad (2) 乙不学钢琴。\qquad (3) 学围棋的不是丙。
+他们各学什么？
+\end{example}
+\begin{solution}
+列一个$3\times3$表格，逐项排除：
+\begin{center}
+\begin{tabular}{c|c|c|c}
+ & 钢琴 & 围棋 & 游泳 \\ \hline
+甲 & ? & ? & $\times$（条件1）\\
+乙 & $\times$（条件2） & ? & ? \\
+丙 & ? & $\times$（条件3） & ?
+\end{tabular}
+\end{center}
+乙不学钢琴，学围棋的又不是丙——那么学围棋的就是甲。\\
+乙不学钢琴、围棋已经被甲学，所以乙学游泳。丙学钢琴。
+\end{solution}
+
+\textbf{条件推理}：从一组条件中推出隐含的结论。
+
+\begin{example}
+如果今天下雨，则运动会取消。如果运动会取消，则我们去图书馆。今天没有去图书馆。能否推出今天是否下雨？
+\end{example}
+\begin{solution}
+设$p$：下雨，$q$：运动会取消，$r$：去图书馆。\\
+条件：$p\Rightarrow q$，$q\Rightarrow r$，$\lnot r$。\\
+由$q\Rightarrow r$和$\lnot r$可得$\lnot q$（逆否命题）。\\
+再由$p\Rightarrow q$和$\lnot q$可得$\lnot p$（逆否命题）。\\
+所以今天没有下雨。
+\end{solution}
+
+\begin{exercise}
+\item 甲说："乙考了满分。"乙说："丙没考满分。"丙说："我没考满分。"已知只有一人说真话，谁考了满分？
+\item 四人各住一个房间：$101,102,103,104$。已知：(1) 甲不住$101$；(2) 乙和丙的房间相邻；(3) 丁住$104$。他们各住哪间？
+\item 如果今天是晴天，则小明去公园。如果小明去公园，则他会买冰淇淋。小明没有买冰淇淋。能否推出今天是晴天？
+\end{exercise}
+
+\sectiontitle{本章小结}
+
+本章从命题的基本概念出发，学习了逻辑联结词（且$\land$、或$\lor$、非$\lnot$）及其真值表，发现了逻辑与集合之间的深刻对应关系。量词（$\forall$、$\exists$）及其否定规则帮助我们处理"所有"和"存在"类问题。命题的四种形式和反证法提供了从假设到结论的推理工具。数学归纳法则给出了证明"对一切正整数成立"的标准框架。这些工具将在后续各章的计数与证明中反复使用。
+
+\sectiontitle{课后练习}
+
+\subsection*{A组\quad 基础巩固}
+
+\begin{exercise}
+\item 判断下列句子是否为命题：(1) $3+5=10$。\qquad (2) 回来吧。
+\item 写出"如果$a=b$，则$a^2=b^2$"的逆命题、否命题、逆否命题，判断真假。
+\item 写出以下命题的否定：(1) 所有鸟都会飞。\qquad (2) $\exists x\in\mathbb N$，$x^2<0$。
+\item 用数学归纳法证明：$1+4+9+\cdots+n^2=\dfrac{n(n+1)(2n+1)}{6}$。
+\item 甲说："乙是第一名。"乙说："丙是第一名。"丙说："我不是第一名。"已知只有一人说真话，谁是第一名？
+\end{exercise}
+
+\subsection*{B组\quad 挑战提升}
+
+\begin{exercise}
+\item 用反证法证明：如果$a$和$b$都是奇数，则$a^2+b^2$是偶数，但不是$4$的倍数。
+\item 用数学归纳法证明：$n$条直线最多把平面分成$\dfrac{n^2+n+2}{2}$个区域。
+\item 用真值表验证：$(p\land q)\Rightarrow r$等价于$(p\Rightarrow r)\lor(q\Rightarrow r)$吗？如果不，给出反例。
+\item 甲、乙、丙三人中一人做了一件好事。甲说："不是我。"乙说："是丙。"丙说："是甲。"已知只有一人说了真话。究竟是谁做的好事？
+\end{exercise}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}
+本章练习答案请参见书末附录。

@@ -5,6 +5,7 @@
 \usepackage{listings}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue!70!black}
+\linespread{1.35}
 
 \lstset{
   basicstyle=\ttfamily\small,
@@ -33,6 +34,14 @@
 现在，你要把所有知识串起来，做一个\textbf{真正的产品}。不是练习题，不是小游戏，而是一个能上线、能给别人用的项目。
 
 本模块不教新知识。它教你怎么\textbf{规划、执行、交付}一个完整的软件项目。
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 回顾之前学过的所有模块，列出你最感兴趣的技术方向（至少 3 个）。
+  \item 根据你的兴趣，在"选题推荐"表中选一个项目，写出你的理由。
+  \item \textbf{[需求分析]} 假设你要做一个"班级图书角管理系统"，写出它的目标用户、核心功能（至少 5 个）和扩展功能（至少 3 个）。
+\end{enumerate}
 
 \section*{第一课：项目规划——从想法到需求}
 
@@ -89,6 +98,14 @@ AI 图片分类器 & Flask + 预训练 CNN 模型 & ★★★★ \\ \hline
 - 数据库：SQLite
 - 版本控制：Git + GitHub
 \end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 使用课中的需求文档模板，为你选的 capstone 项目写一份完整的需求文档。
+  \item 评估你的项目难度：用 ★ 评级（参考课中的表格），并解释为什么是这个难度。
+  \item \textbf{[MVP 思维]} 从你的需求文档中区分出"核心功能（MVP）"和"扩展功能"。解释为什么 MVP 很重要。
+\end{enumerate}
 
 \section*{第二课：项目架构设计}
 
@@ -165,6 +182,14 @@ GET & /stats & 统计页面 \\ \hline
 \end{tabular}
 \end{center}
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 为你选的 capstone 项目画出完整的项目目录结构（参考课中的 \texttt{word-app/} 示例）。
+  \item 设计你的项目的数据库表结构：需要几张表？每张表有哪些列？写出 \texttt{CREATE TABLE} 语句。
+  \item \textbf{[API 设计]} 列出你的项目所需的所有路由（URL），标注每个路由的 HTTP 方法（GET/POST）和功能描述。
+\end{enumerate}
+
 \section*{第三课：分阶段开发——迭代交付}
 
 不要试图一次性写完所有功能。按以下顺序开发：
@@ -217,6 +242,14 @@ GET & /stats & 统计页面 \\ \hline
   \item 最终测试
 \end{itemize}
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 按照课中的五阶段规划，为你选的项目制定一个 4-6 周的开发计划。每个阶段列出要完成的具体任务。
+  \item 在第三课的阶段三（核心功能）中，每个功能完成后应该做什么？（提示：commit 和测试）
+  \item \textbf{[里程碑]} 为你的项目设定 3 个关键里程碑，每个里程碑对应一个可演示的阶段性成果。
+\end{enumerate}
+
 \section*{第四课：项目管理——怎么保证做完}
 
 \subsection*{使用 GitHub Projects 跟踪进度}
@@ -242,6 +275,14 @@ To Do（待办）  |  Doing（进行中）  |  Done（已完成）
   \item \texttt{git add . \&\& git commit -m "完成了xxx"}
   \item 把任务移到 Done
   \item 重复
+\end{enumerate}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 在 GitHub 上为你的项目创建一个仓库，初始化 \texttt{.gitignore} 和 \texttt{README.md}。
+  \item 创建一个 GitHub Projects 看板，添加你的所有任务到 To Do 列。
+  \item \textbf{[Git 工作流]} 描述你开发 capstone 时将使用的 Git 工作流：用分支吗？怎么 commit？多久 push 一次？
 \end{enumerate}
 
 \section*{第五课：测试——确保代码正确}
@@ -298,6 +339,14 @@ def test_register(client):
     assert rv.status_code == 200
 \end{lstlisting}
 
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 为你的项目的核心功能编写手动测试清单（至少 10 条测试用例），覆盖正常情况、错误情况和边界情况。
+  \item 什么是"边界条件"？以"登录功能"为例，列出至少 3 个边界条件测试用例。
+  \item \textbf{[测试思维]} 有人说"我写代码从来不出错，不用测试"。你对这种观点有什么看法？
+\end{enumerate}
+
 \section*{第六课：性能优化——让程序跑得更快}
 
 当你的项目数据变多时，可能会变慢。以下是常用的优化方法：
@@ -333,6 +382,14 @@ def get_word_count(user_id):
   \item 使用 CDN 加载公共库
   \item 懒加载（滚动到才加载）
 \end{itemize}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 当你的项目有 10000 条数据时，哪些查询可能会变慢？怎么验证你的猜测？
+  \item 数据库索引为什么能让查询变快？它的代价是什么？
+  \item \textbf{[优化思考]} 如果你要在首页显示"最近 10 篇文章"和"文章总数"，分别应该怎么设计数据库查询来保证性能？
+\end{enumerate}
 
 \section*{第七课：部署——让全世界看到你的作品}
 
@@ -408,6 +465,14 @@ https://my-word-app.onrender.com
 ## 项目截图
 （放几张截图）
 \end{lstlisting}
+
+\subsection*{练习}
+
+\begin{enumerate}
+  \item 选择一种部署方案（PythonAnywhere 或 Render），注册账号并按照课中步骤尝试部署一个简单的 Flask 应用（如 web-dev 模块的留言板）。
+  \item 列出部署前需要检查的所有事项（参照课中的"部署检查清单"），逐项确认你的项目是否满足。
+  \item \textbf{[部署挑战]} 部署过程中最常见的错误是什么？如果你遇到了"500 Internal Server Error"，你应该怎么排查？
+\end{enumerate}
 
 \section*{总结：六年的收获}
 
@@ -561,5 +626,63 @@ AI 入门 & （可选）集成 AI 模型 \\ \hline
 \end{center}
 
 这就是你六年来学到的全部——每一个模块都在这个最终项目中发挥作用。
+
+\section*{\textcolor{blue!70!black}{各课练习参考答案}}
+
+\subsection*{第一课：项目规划}
+\begin{enumerate}
+  \item 无标准答案——鼓励学生思考自己的技术兴趣点，如 Web 开发、AI、游戏开发等。
+  \item 无标准答案——选择理由应包括：兴趣匹配、难度适中、技术覆盖面合适。
+  \item 目标用户：班级同学和老师。核心功能：① 图书录入（书名、编号、捐赠人）② 借书登记 ③ 还书登记 ④ 图书搜索 ⑤ 借阅记录查询。扩展功能：① 逾期提醒 ② 热门图书排行 ③ 预约借书。
+\end{enumerate}
+
+\subsection*{第二课：项目架构设计}
+\begin{enumerate}
+  \item 无标准答案——鼓励写出清晰、完整的需求文档，参考课中模板。
+  \item 无标准答案——需合理论证难度评级，考虑技术难度和工作量。
+  \item MVP（最小可行产品）包含最核心的功能，能解决用户最基本的需求。先做 MVP 可以快速验证想法、获得反馈，避免在不需要的功能上浪费时间。
+\end{enumerate}
+
+\subsection*{第三课：分阶段开发——迭代交付}
+\begin{enumerate}
+  \item 无标准答案——参考 \texttt{word-app/} 的目录结构：包含 \texttt{app.py}、\texttt{models.py}、\texttt{templates/}、\texttt{static/}、\texttt{requirements.txt}、\texttt{.gitignore}、\texttt{README.md}。
+  \item 无标准答案——需合理设计数据库表、字段类型和外键关系。
+  \item 无标准答案——参考课中 API 设计表格，列出所有路由及其方法。
+\end{enumerate}
+
+\subsection*{第四课：项目管理}
+\begin{enumerate}
+  \item 无标准答案——示例：第 1 周（骨架）、第 2 周（用户系统）、第 3-4 周（核心功能）、第 5 周（打磨）、第 6 周（部署）。
+  \item 每个功能完成后应：① 手动测试功能是否正常 ② 处理边界情况 ③ \texttt{git add} 和 \texttt{git commit} ④ 把任务从 Doing 移到 Done。
+  \item 里程碑 1：用户系统完成（可注册登录）。里程碑 2：核心功能完成（可完成主要业务流程）。里程碑 3：部署上线（可公开访问）。
+\end{enumerate}
+
+\subsection*{第五课：测试}
+\begin{enumerate}
+  \item 无标准答案——GitHub 仓库应包括 \texttt{.gitignore}、\texttt{README.md}，并已完成初始 commit 和 push。
+  \item 无标准答案——GitHub Projects 看板应包含所有功能任务，分为 To Do / Doing / Done 三列。
+  \item 推荐工作流：每个功能开一个分支，开发完成后合并到 main。每次完成一个小功能（而非一天结束）就 commit。每天至少 push 一次到远程仓库备份。
+\end{enumerate}
+
+\subsection*{第六课：性能优化}
+\begin{enumerate}
+  \item 无标准答案——测试清单应覆盖核心功能的正常操作、非法输入、空数据处理等场景。
+  \item 边界条件示例：① 用户名为空字符串 ② 密码长度为 1 个字符 ③ 用户名包含特殊字符 ④ 用户名已存在 ⑤ 连续快速提交登录请求。
+  \item "不用测试"是错误的观点。人都会犯错，代码越复杂越容易出 bug。测试是保证代码质量和程序正确性的必要手段。即使很有经验的程序员也会写 bug。
+\end{enumerate}
+
+\subsection*{第七课：部署}
+\begin{enumerate}
+  \item 可能变慢的查询：\texttt{ORDER BY created\_at DESC}（需要全表排序）、\texttt{COUNT(*)} 统计。用 \texttt{EXPLAIN} 或 \texttt{EXPLAIN QUERY PLAN} 分析查询计划。
+  \item 索引就像书的目录——通过维护一个有序的数据结构（B树/哈希表），把全表扫描变成快速查找。代价：占用额外空间，写入数据（INSERT/UPDATE/DELETE）时需要更新索引，稍微变慢。
+  \item "最近 10 篇文章"：\texttt{SELECT * FROM posts ORDER BY created\_at DESC LIMIT 10}（加索引在 created\_at 上）。"文章总数"：\texttt{SELECT COUNT(*) FROM posts}（SQLite 会自动优化这个查询）。
+\end{enumerate}
+
+\subsection*{第八课：项目展示}
+\begin{enumerate}
+  \item 无标准答案——成功部署后应能通过公网 URL 访问应用。
+  \item 检查清单：debug=False、密钥用环境变量、静态文件路径正确、数据库路径正确、HTTPS 访问正常、移动端显示正常。
+  \item "500 Internal Server Error" 是服务器内部错误。排查步骤：① 查看服务器日志 ② 在本地开启 debug=True 重现问题 ③ 检查最近的代码修改 ④ 检查数据库连接和权限。
+\end{enumerate}
 
 \end{document}

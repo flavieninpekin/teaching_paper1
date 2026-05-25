@@ -1,32 +1,278 @@
 \documentclass[a4paper,12pt]{ctexart}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!70!black}
 \usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
 \usepackage{array}
 \linespread{1.35}
 
-\title{\textcolor{blue!70!black}{\Huge\textbf{地理初步}}}
-\author{}
+\definecolor{earthgreen}{RGB}{30,120,70}
+\definecolor{skyblue}{RGB}{0,100,180}
+\definecolor{thinkorange}{RGB}{230,120,20}
+
+\newenvironment{thinkbox}{
+  \vspace{0.25cm}
+  \noindent
+  \begin{minipage}{0.92\textwidth}
+  \colorbox{blue!4}{
+  \begin{minipage}{0.94\textwidth}
+  \vspace{0.1cm}
+  \textbf{\textcolor{thinkorange}{【想一想】}}
+}{
+  \vspace{0.1cm}
+  \end{minipage}}
+  \end{minipage}
+  \par
+  \vspace{0.25cm}
+}
+
+\newenvironment{knowbox}[1]{
+  \vspace{0.2cm}
+  \noindent\colorbox{green!5}{\parbox{\dimexpr\linewidth-2\fboxsep}{\textbf{\textcolor{earthgreen}{知识点：}} #1}}\par
+  \vspace{0.2cm}
+}
+
+\title{\textcolor{skyblue}{\Huge\textbf{地理初步}}}
+\author{地球与宇宙 $\cdot$ 地形与气候 $\cdot$ 中国与世界}
 \date{}
 
 \begin{document}
 \maketitle
 \thispagestyle{empty}
 
-\section*{\textcolor{blue!70!black}{说明}}
+\section*{\textcolor{skyblue}{给同学的话}}
 
-本模块涵盖自然地理与人文地理的基础内容，从地球的宇宙位置到气候、地形、人口等核心概念。为北京中考地理（等级考查）和高考地理选考打基础。
+地理是一门"上知天文、下知地理"的学科。它研究的是我们脚下的地球——它的形状、它的运动、它表面的山川河流、它头顶的大气层。
+
+你可能会问：这些知识有什么用？
+\begin{itemize}
+  \item 知道地球的形状和运动，你才能理解为什么有时差、为什么有四季
+  \item 知道气候的分布，你才能理解为什么有的地方是沙漠、有的地方是雨林
+  \item 知道地形特点，你才能理解为什么地震和火山集中在某些地区
+\end{itemize}
 
 \vspace{0.3cm}
 
-\textbf{主要内容（初拟）：}
-\begin{enumerate}
-  \item 地球与宇宙——地球的形状、自转与公转、经纬度
-  \item 地图的阅读——比例尺、方向、图例
-  \item 地形与地貌——山地、平原、高原、盆地、丘陵
-  \item 气候与天气——气温、降水、气候带
-  \item 世界地理概况——大洲与大洋、主要国家
-  \item 中国地理概况——行政区划、地形、气候分区
-  \item 人口与城市——人口分布、城市化
-\end{enumerate}
+\textbf{本模块分为两大部分：}
+\begin{itemize}
+  \item \textbf{自然地理}（分册一：自然地理基础）—— 地球、地图、地形、气候
+  \item \textbf{灾害与资源地理}（分册二：地貌、灾害与资源环境）—— 板块构造、内外力作用、自然灾害、自然资源
+\end{itemize}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第一课\quad 地球与宇宙}}
+
+\subsection*{1.1\quad 地球的形状和大小}
+
+古人以为天圆地方，后来人们发现地球其实是一个\textbf{球体}。最早证明这一点的是古希腊人——他们看到远航的船只先消失船身、再消失桅杆，说明海面是弯曲的。
+
+\begin{knowbox}{地球的基本数据}
+  \begin{itemize}
+    \item 赤道半径：约 6378 千米
+    \item 极半径：约 6357 千米（地球是略扁的椭球体）
+    \item 赤道周长：约 40076 千米
+    \item 表面积：约 5.1 亿平方公里
+  \end{itemize}
+\end{knowbox}
+
+\begin{thinkbox}
+地球为什么是"两头扁、中间鼓"的形状？回想一下我们学过的离心力——地球自转把赤道部分"甩"出去了。
+\end{thinkbox}
+
+\subsection*{1.2\quad 地球的自转与公转}
+
+\textbf{自转}：地球绕自身轴旋转。
+\begin{itemize}
+  \item 方向：自西向东
+  \item 周期：约 24 小时（一天）
+  \item 产生：昼夜交替、太阳东升西落
+\end{itemize}
+
+\textbf{公转}：地球绕太阳运行。
+\begin{itemize}
+  \item 方向：自西向东
+  \item 周期：约 365.25 天（一年）
+  \item 地轴倾斜：约 $23.5^\circ$——这是产生\textbf{四季}的原因
+\end{itemize}
+
+\subsection*{1.3\quad 经纬度}
+
+\begin{knowbox}{
+  \textbf{经线（子午线）}：连接南北两极的半圆，指示南北方向。\\
+  \textbf{纬线}：与赤道平行的圆圈，指示东西方向。\\
+  \textbf{赤道}：$0^\circ$纬线，把地球分为南北半球。\\
+  \textbf{本初子午线}：$0^\circ$经线，通过伦敦格林尼治天文台。}
+\end{knowbox}
+
+\begin{thinkbox}
+北京的位置大约是北纬 $40^\circ$、东经 $116^\circ$。你能在地球仪上找到这个位置吗？和你所在的城市相比，谁的纬度更高？
+\end{thinkbox}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第二课\quad 地图阅读}}
+
+地图不是现实的"照片"，而是现实的"简化模型"。地图有三大要素：
+
+\subsection*{2.1\quad 比例尺}
+
+比例尺 = 图上距离 $\div$ 实际距离。
+\begin{itemize}
+  \item 大比例尺（如 $1:10000$）：表示范围小，内容详细
+  \item 小比例尺（如 $1:10000000$）：表示范围大，内容简略
+\end{itemize}
+
+\subsection*{2.2\quad 方向}
+
+\begin{itemize}
+  \item 一般地图：上北下南、左西右东
+  \item 有指向标的地图：指向标箭头指向北
+  \item 有经纬网的地图：经线指示南北、纬线指示东西
+\end{itemize}
+
+\subsection*{2.3\quad 图例和注记}
+
+\begin{center}
+\begin{tabular}{|c|c||c|c|}
+\hline
+\textbf{图例} & \textbf{含义} & \textbf{图例} & \textbf{含义} \\ \hline
+$\bullet$ & 首都 & $\sim\sim\sim$ & 河流 \\
+$\bigcirc$ & 一般城市 & $\cdots\cdots$ & 国界 \\
+$\blacktriangle$ & 山峰 & $=$ & 铁路 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{thinkbox}
+现在你手机上随时都能打开电子地图，但电子地图和纸质地图有一个根本区别：纸质地图是一张"固定"的图，而电子地图可以根据需要放大缩小。你知道电子地图的"缩放"背后用的是什么技术吗？
+\end{thinkbox}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第三课\quad 地形与地貌}}
+
+地球表面高低起伏，主要有五种基本地形：
+
+\subsection*{五种地形类型}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{地形} & \textbf{海拔} & \textbf{起伏} & \textbf{例子} \\ \hline
+山地 & $>500$米 & 起伏很大 & 喜马拉雅山 \\
+高原 & $>500$米 & 起伏不大 & 青藏高原 \\
+平原 & $<200$米 & 平坦开阔 & 华北平原 \\
+丘陵 & $<500$米 & 起伏和缓 & 东南丘陵 \\
+盆地 & 四周高中间低 & — & 四川盆地 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{中国地形概览}
+
+中国的地形特征是"\textbf{西高东低，呈三级阶梯分布}"：
+\begin{itemize}
+  \item \textbf{第一级阶梯}：青藏高原（平均海拔 4000 米以上）
+  \item \textbf{第二级阶梯}：内蒙古高原、黄土高原、云贵高原、四川盆地（1000--2000 米）
+  \item \textbf{第三级阶梯}：东北平原、华北平原、长江中下游平原（500 米以下）
+\end{itemize}
+
+\begin{thinkbox}
+中国的地形"西高东低"对河流和气候有什么影响？想一想长江、黄河为什么都是自西向东流？
+\end{thinkbox}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第四课\quad 气候与天气}}
+
+\subsection*{4.1\quad 气温与降水}
+
+气温受\textbf{纬度}、\textbf{海陆位置}和\textbf{地形}三个因素影响：
+\begin{itemize}
+  \item 纬度越高气温越低（赤道热、两极冷）
+  \item 沿海地区温差小，内陆温差大
+  \item 海拔每升高 1000 米，气温下降约 $6^\circ$C
+\end{itemize}
+
+\subsection*{4.2\quad 世界气候类型}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{气候带} & \textbf{特点} & \textbf{分布} \\ \hline
+热带雨林气候 & 全年高温多雨 & 赤道附近（亚马孙、刚果盆地） \\
+热带沙漠气候 & 全年高温少雨 & 南北回归线附近（撒哈拉沙漠） \\
+温带季风气候 & 夏季高温多雨、冬季寒冷干燥 & 中国东部 \\
+地中海气候 & 夏季炎热干燥、冬季温和多雨 & 地中海沿岸 \\
+寒带气候 & 全年寒冷 & 极地地区 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{4.3\quad 中国气候}
+
+中国主要有\textbf{温带季风气候}、\textbf{亚热带季风气候}和\textbf{高原山地气候}。秦岭--淮河一线是重要的气候分界线：
+\begin{itemize}
+  \item 以北：温带季风气候，最冷月均温 $<0^\circ$C
+  \item 以南：亚热带季风气候，最冷月均温 $>0^\circ$C
+\end{itemize}
+
+\begin{thinkbox}
+"秦岭--淮河"线还是中国南方和北方的分界线。你能说出这条线以南和以北在饮食、住房、交通方面有什么不同吗？
+\end{thinkbox}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第五课\quad 世界与中国地理概览}}
+
+\subsection*{5.1\quad 大洲与大洋}
+
+七大洲：亚洲、非洲、北美洲、南美洲、南极洲、欧洲、大洋洲 \\
+四大洋：太平洋、大西洋、印度洋、北冰洋
+
+\subsection*{5.2\quad 中国地理}
+
+\begin{itemize}
+  \item 面积：约 960 万平方公里（世界第三）
+  \item 人口：约 14 亿
+  \item 行政区划：23 个省、5 个自治区、4 个直辖市、2 个特别行政区
+  \item 人口分布：东密西疏（胡焕庸线）
+\end{itemize}
+
+\begin{thinkbox}
+胡焕庸线是中国人口地理的一条分界线——从黑河到腾冲。这条线以东集中了约 96\% 的人口。想一想：为什么这条线以西人口这么少？和地形、气候有什么关系？
+\end{thinkbox}
+
+\newpage
+
+\section{\textcolor{orange!80!black}{第六课\quad 人口与城市}}
+
+\subsection*{6.1\quad 世界人口分布}
+
+世界人口主要集中在：
+\begin{itemize}
+  \item 东亚（中国东部、日本、韩国）
+  \item 南亚（印度、孟加拉国）
+  \item 欧洲西部
+  \item 北美东部
+\end{itemize}
+这些地区的共同特点：地形平坦、气候适宜、靠近水源。
+
+\subsection*{6.2\quad 城市化}
+
+城市化是指人口从农村向城市集中的过程。中国的城市化率从 1978 年的约 18\% 上升到现在的约 65\%。
+
+\begin{thinkbox}
+城市和农村相比，各有什么优缺点？你能说出三个"农村好"的理由和三个"城市好"的理由吗？
+\end{thinkbox}
+
+\vspace{0.5cm}
+
+\begin{center}
+\textcolor{blue!70!black}{\large\textbf{—— 地理初步 · 完 ——}}
+\end{center}
 
 \end{document}

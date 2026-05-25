@@ -1,0 +1,339 @@
+\chaptertitle{第二章\quad 寻找未知——等与不等}
+
+\sectiontitle{第4讲\quad 天平与等式}
+
+\subsection*{从算术到代数的最后一步}
+
+算数题是这样：$3+5=\boxed{\;8\;}$——算出来。
+代数题是这样：$3+\boxed{\;x\;}=7$——找出来。
+
+在算术里，未知数叫"问号"或"括号"；在代数里，它叫 $x$。但核心是同一个：\textbf{找那个缺了的数}。
+
+把 $\;3 + x = 7\;$ 叫做\textbf{方程}。因为它含有一个\textbf{未知数}，并且是一个\textbf{等式}。
+
+\subsection*{天平的比喻}
+
+方程 $3+x=7$ 就像一架天平：
+
+左边有 3 块砝码加 1 个未知重量的物体（$x$），右边有 7 块砝码。天平平衡——所以左边和右边一样重。
+
+你想知道 $x$ 是多重，就把天平一直保持平衡地操作，直到左边只剩 $x$。
+
+\begin{example}
+用天平思想解方程：$x+3=7$
+\end{example}
+\begin{solution}
+天平左边有 $x$ 和 3，右边有 7。要想左边只剩 $x$，就从两边各拿走 3：
+
+$x+3-3 = 7-3$\\
+$x = 4$
+
+验证：$4+3=7$，正确。
+\end{solution}
+
+\begin{example}
+解方程：$x-5=12$
+\end{example}
+\begin{solution}
+$x-5+5 = 12+5$\\
+$x = 17$
+验证：$17-5=12$，正确。
+\end{solution}
+
+\begin{example}
+解方程：$4x = 20$
+\end{example}
+\begin{solution}
+两边同时除以 4：$\dfrac{4x}{4} = \dfrac{20}{4}$\\
+$x = 5$
+验证：$4\times5=20$，正确。
+\end{solution}
+
+\subsection*{等式的两个性质}
+
+刚才的操作背后是两条基本规则：
+
+\begin{itemize}
+  \item \textbf{性质 1}：等式两边同时加上（或减去）同一个数，等式仍然成立。
+  \item \textbf{性质 2}：等式两边同时乘以（或除以）同一个非零数，等式仍然成立。
+\end{itemize}
+
+这就是解方程的全部工具。任何复杂的方程，最终都可以化到 $x=$ 的形式。
+
+\begin{example}
+解方程：$3x+5=20$
+\end{example}
+\begin{solution}
+两边减 5：$3x = 15$\\
+两边除以 3：$x = 5$\\
+验证：$3\times5+5=15+5=20$，正确。
+\end{solution}
+
+\begin{example}
+解方程：$\dfrac{x}{4}-3=2$
+\end{example}
+\begin{solution}
+两边加 3：$\dfrac{x}{4} = 5$\\
+两边乘以 4：$x = 20$\\
+验证：$\dfrac{20}{4}-3=5-3=2$，正确。
+\end{solution}
+
+\begin{exercise}
+\item 用等式的性质解方程（写清每一步做了什么）：
+  \begin{subexercise}
+    \item $x+7=15$
+    \item $x-12=28$
+    \item $5x=45$
+    \item $\dfrac{x}{6}=12$
+    \item $2x+3=11$
+    \item $3x-4=14$
+  \end{subexercise}
+
+\item 解方程：
+  \begin{subexercise}
+    \item $\dfrac{x}{3}+5=8$
+    \item $4x-7=25$
+    \item $6x+1=19$
+    \item $\dfrac{x}{5}-2=3$
+    \item $2x-9=5$
+    \item $\dfrac{x}{2}+7=15$
+  \end{subexercise}
+
+\item 列方程并求解：
+  \begin{subexercise}
+    \item 一个数的 3 倍加 5 等于 26，求这个数。
+    \item 某数的一半减 7 等于 3，求这个数。
+    \item 一个数的 4 倍比 25 大 7，求这个数。
+  \end{subexercise}
+
+\item 先判断正误，再改正：
+  \begin{subexercise}
+    \item $x+5=12$ 的解是 $x=7$。
+    \item $3x=15$ 的解是 $x=5$。
+    \item $\dfrac{x}{2}=8$ 的解是 $x=4$。
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第5讲\quad 解方程——从一步到多步}
+
+\subsection*{移项——等式的快捷操作}
+
+$3x+5=20$ → 先两边减 5，再两边除以 3。但熟练的人会这样写：
+
+\[
+3x+5=20 \quad\Longrightarrow\quad 3x=20-5 \quad\Longrightarrow\quad 3x=15 \quad\Longrightarrow\quad x=5
+\]
+
+把 "+5" 从左边移到右边变成 "-5"，这叫\textbf{移项}。
+
+\textbf{移项的本质就是两边同加/同减}，只是写起来更快。把一项从等号一边移到另一边，一定要变号。
+
+\begin{example}
+解方程：$5x-7=3x+9$
+\end{example}
+\begin{solution}
+把含 $x$ 的项移到左边，常数项移到右边：
+$5x-3x=9+7$\\
+$2x=16$\\
+$x=8$\\
+验证：左边 $=5\times8-7=33$，右边 $=3\times8+9=33$，正确。
+\end{solution}
+
+\subsection*{去括号与去分母}
+
+方程里如果有括号，和第一章一样——先去括号再移项。
+
+\begin{example}
+解方程：$2(3x-1)-3(2x+1)=4x-5$
+\end{example}
+\begin{solution}
+去括号：$6x-2-6x-3=4x-5$\\
+合并：$-5=4x-5$\\
+移项：$4x=0$\\
+$x=0$\\
+验证：左边 $2(-1)-3(1)=-2-3=-5$，右边 $-5$，正确。
+\end{solution}
+
+\begin{example}
+解方程：$\dfrac{2x-1}{3}-\dfrac{3x-4}{4}=1$
+\end{example}
+\begin{solution}
+先去分母，两边同乘 12（3和4的最小公倍数）：
+$4(2x-1)-3(3x-4)=12$\\
+去括号：$8x-4-9x+12=12$\\
+合并：$-x+8=12$\\
+移项：$-x=4$\\
+$x=-4$\\
+验证：左边 $\dfrac{-8-1}{3}-\dfrac{-12-4}{4}=\dfrac{-9}{3}-\dfrac{-16}{4}=-3+4=1$，正确。
+\end{solution}
+
+\subsection*{列方程解应用}
+
+列方程的步骤：
+\begin{enumerate}
+  \item 设未知数（通常用 $x$）
+  \item 找等量关系（"什么等于什么"）
+  \item 根据等量关系列方程
+  \item 解方程
+  \item 检验并作答
+\end{enumerate}
+
+\begin{example}
+甲、乙两地相距 300 千米。一辆汽车从甲地开往乙地，每小时行 60 千米；另一辆从乙地开往甲地，每小时行 40 千米。两车同时出发，几小时后相遇？
+\end{example}
+\begin{solution}
+设 $x$ 小时后相遇。
+等量关系：甲车路程 + 乙车路程 = 300\\
+$60x + 40x = 300$\\
+$100x = 300$\\
+$x = 3$\\
+答：3 小时后相遇。
+\end{solution}
+
+\begin{exercise}
+\item 解方程（用移项法）：
+  \begin{subexercise}
+    \item $2x+5=3x-1$
+    \item $4x-3=2x+7$
+    \item $5x+12=2x+30$
+    \item $7x-8=3x+16$
+  \end{subexercise}
+
+\item 解方程（去括号）：
+  \begin{subexercise}
+    \item $3(x+2)-2(x-1)=10$
+    \item $4(2x-1)-3(x+2)=7$
+    \item $5(2x-3)-2(3x-1)=5$
+    \item $2(x-3)-3(x+1)=4(x-2)$
+  \end{subexercise}
+
+\item 解方程（去分母）：
+  \begin{subexercise}
+    \item $\dfrac{x}{2}-\dfrac{x}{3}=5$
+    \item $\dfrac{2x+1}{3}-\dfrac{x-1}{6}=2$
+    \item $\dfrac{3x-2}{4}-\dfrac{2x+1}{3}=1$
+    \item $\dfrac{x+4}{5}-\dfrac{x-1}{2}=1$
+  \end{subexercise}
+
+\item 列方程解应用：
+  \begin{subexercise}
+    \item 一个数的 $\dfrac{2}{3}$ 比它的 $\dfrac{1}{2}$ 大 5，求这个数。
+    \item 把 140 本书分给两个班，甲班比乙班的 2 倍还多 20 本，两班各得多少本？
+    \item 甲乙两人共存款 3600 元，甲存款是乙的 1.4 倍，甲乙各存款多少元？
+    \item 甲比乙大 6 岁，5 年前甲的年龄是乙的 2 倍，甲乙现在各几岁？
+  \end{subexercise}
+\end{exercise}
+
+\sectiontitle{第6讲\quad 不等式——从"等于"到"范围"}
+
+\subsection*{什么时候用"不等于"}
+
+到现在为止，我们一直在问同一个问题："这个数等于多少？"但生活中还有很多问题是问"在什么范围内"：
+
+\begin{itemize}
+  \item 要及格，得分至少多少？→ 得分 $\ge 60$
+  \item 行李不超重，不能超过多少千克？→ 重量 $\le 20$
+  \item 存够多少钱才能买这台电脑？→ 钱数 $\ge 3999$
+\end{itemize}
+
+用不等式来描述这些"范围"问题。
+
+\subsection*{不等式的性质——与方程相同与不同}
+
+大部分性质和等式一样，但有一条很关键的不同：
+
+\begin{itemize}
+  \item 两边加/减同一个数，不等号方向不变。
+  \item 两边乘以/除以同一个\textbf{正数}，不等号方向不变。
+  \item 两边乘以/除以同一个\textbf{负数}，不等号方向\textbf{改变}！
+\end{itemize}
+
+\begin{example}
+解不等式：$3x+5<20$
+\end{example}
+\begin{solution}
+两边减 5：$3x < 15$\\
+两边除以 3（正数，不变号）：$x < 5$\\
+在数轴上表示：$-\!\!\!-\!\!\!-\!\!\!\circ\!\!-\!\!\!-\!\!\!-\!\!-\!\!\!-$（在5处画空心圈，向左画线）。
+\end{solution}
+
+\begin{example}
+解不等式：$-2x+7\ge 1$
+\end{example}
+\begin{solution}
+两边减 7：$-2x \ge -6$\\
+两边除以 -2：{\color{exred}$x \le 3$}（除以负数，不等号翻转！）
+\end{solution}
+
+\subsection*{不等式的数轴表示}
+
+$x > 3$：在 3 处画空心圈，向右画线。\\
+$x \le -1$：在 -1 处画实心点，向左画线。\\
+$-2 < x \le 4$：在 -2 处画空心圈，4 处画实心点，中间连起来。
+
+\subsection*{初次暗示三位一体}
+
+先想一个关系：$y = 2x + 1$。
+
+现在问三个不同的问题：
+
+\begin{example}
+对于 $y=2x+1$，分别求满足下列条件的 $x$：
+\end{example}
+\begin{solution}
+(1) $y=7$ → $2x+1=7$ → $x=3$（\textbf{方程}，一个精确值）
+
+(2) $y>7$ → $2x+1>7$ → $x>3$（\textbf{不等式}，一个范围）
+
+(3) $y<7$ → $2x+1<7$ → $x<3$（\textbf{不等式}，另一个范围）
+\end{solution}
+
+注意：方程、不等式用的是同一个关系式 $y=2x+1$，只是问法不同。这个视角后一章会展开。
+
+\begin{exercise}
+\item 解不等式（在数轴上表示解集）：
+  \begin{subexercise}
+    \item $3x+5<2x+8$
+    \item $4(x-2)>3(x-1)$
+    \item $2(x+1)-3(x-2)\ge 6$
+    \item $\dfrac{x}{2}-\dfrac{x-1}{3} \ge 1$
+  \end{subexercise}
+
+\item 解不等式（注意变号）：
+  \begin{subexercise}
+    \item $-3x+5 > 2$
+    \item $4-2x \le 6$
+    \item $5-3x \ge 2x$
+    \item $2x-7 \le -3x+8$
+  \end{subexercise}
+
+\item 根据条件列不等式（不解）：
+  \begin{subexercise}
+    \item 某数 $x$ 的 3 倍减 5 不小于 10。
+    \item 小明有 $x$ 元，买一本 25 元的书后至少还剩 15 元。
+    \item 某商品进价 40 元，售价 $x$ 元，利润率不低于 20\%。
+  \end{subexercise}
+
+\item 对于 $y = 3x - 2$，求：
+  \begin{subexercise}
+    \item 当 $y=7$ 时 $x$ 的值
+    \item 当 $y>7$ 时 $x$ 的范围
+    \item 当 $y\le-2$ 时 $x$ 的范围
+  \end{subexercise}
+
+\item 想一想：不等式的性质为什么乘除负数要变号？
+  提示：数轴上 $-3$ 和 $3$ 分别在 0 的两边。两边同时乘以 -1，想想它们在数轴上的位置发生了什么变化。
+\end{exercise}
+
+\sectiontitle{章末小结}
+
+这一章我们做了两件平行的事：
+
+\begin{enumerate}
+  \item \textbf{方程}：问"等于多少"，用等式的性质解，得到精确值。
+  \item \textbf{不等式}：问"在什么范围"，用不等式的性质解，得到区间。
+\end{enumerate}
+
+关键是：它们源自同一个关系式。$y = 2x+1$ 不是方程也不是不等式——它是一个\textbf{关系}。方程和不等式是问这个关系的两种方式。
+
+下一章我们会扩展这个视角：两个关系同时成立会怎样？并且引入第三种问法——\textbf{函数}。

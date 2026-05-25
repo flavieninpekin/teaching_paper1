@@ -1,0 +1,459 @@
+\chaptertitle{第五章\quad 指数对数——实数运算的完成}
+
+\sectiontitle{第16讲\quad 从"几个2相乘"到指数增长的直觉}
+
+\subsection*{观察一个规律}
+
+$2^1=2$（1个2）\\
+$2^2=2\times2=4$（2个2相乘）\\
+$2^3=2\times2\times2=8$（3个2相乘）\\
+$2^4=2\times2\times2\times2=16$（4个2相乘）\\
+$2^5=2\times2\times2\times2\times2=32$（5个2相乘）
+
+你发现了吗？每多乘一个2，结果就翻一倍。
+
+这就是\textbf{指数增长}的雏形——不是"每次加一个固定数"，而是"每次翻倍"。
+
+\subsection*{棋盘上的麦粒}
+
+现在来讲那个经典的故事。
+
+传说国际象棋的发明人向国王要赏赐。棋盘有64格，他提出的要求是：第一格放1粒麦子，第二格放2粒，第三格放4粒，以此类推，每格翻一倍。
+
+国王一口答应了——这个要求看起来太简单了。
+
+让我们算一算第64格需要多少粒麦子：
+
+第一格：$1 = 2^0$\\
+第二格：$2 = 2^1$\\
+第三格：$4 = 2^2$\\
+第四格：$8 = 2^3$\\
+$\vdots$\\
+第64格：$2^{63}$
+
+$2^{63}$ 是多少？大约 9,220,000,000,000,000,000（92亿亿）。全世界所有的麦田加起来都不够。
+
+这就是指数增长的力量：\textbf{开始慢到你看不出来，后面快到你想不到}。
+
+\begin{example}
+$2^6$ 是 $2^5$ 的几倍？
+\end{example}
+\begin{solution}
+$2^5=32$，$2^6=64$。$64\div32=2$，所以刚好是2倍。每次指数加1，值翻一倍。
+\end{solution}
+
+\begin{example}
+从 $2^1$ 开始，写到 $2^{10}$，看看2的幂的个位有什么规律。
+\end{example}
+\begin{solution}
+$2^1=2$，$2^2=4$，$2^3=8$，$2^4=16$，$2^5=32$，$2^6=64$，$2^7=128$，$2^8=256$，$2^9=512$，$2^{10}=1024$。
+个位依次是：2,4,8,6,2,4,8,6,2,4——每4个一循环！
+\end{solution}
+
+\begin{example}
+$3^4$ 比 $3^3$ 大多少？
+\end{example}
+\begin{solution}
+$3^3=27$，$3^4=81$。$81-27=54$，相差54倍。不对——应该是 $81\div27=3$，是3倍的关系。指数增加1，比值固定的（这里是乘以3），但差值不是固定的。
+\end{solution}
+
+\subsection*{10的幂的规律}
+
+$10^1=10$\\
+$10^2=100$\\
+$10^3=1000$\\
+$10^4=10000$
+
+规律很简单：10的n次方，就是1后面跟n个0。
+
+那反过来呢？$10^0=1$（1后面跟0个0）。$10^{-1}=0.1$。$10^{-2}=0.01$。
+
+指数可以是0，也可以是负数——这是指数概念向两端的扩展。
+
+\begin{exercise}
+\item 计算下列乘方，观察规律：
+  \begin{subexercise}
+    \item $2^0,\;2^1,\;2^2,\;2^3,\;2^4,\;2^5,\;2^6$
+    \item 每次后一个数是前一个数的几倍？
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $2^6$
+    \item $2^7$
+    \item $2^8$
+    \item $2^9$
+    \item $2^{10}$
+  \end{subexercise}
+
+\item 10的幂：
+  \begin{subexercise}
+    \item $10^1$
+    \item $10^3$
+    \item $10^5$
+    \item $10^0$
+    \item $10^{-1}$
+    \item $10^{-2}$
+  \end{subexercise}
+
+\item 一张纸对折1次变成2层，对折2次变成4层$\ldots$ 对折多少次后层数超过1000？
+  （提示：$2^{10}=1024$）
+
+\item 假如你今天存1元，第二天2元，第三天4元，每天翻一倍。
+  \begin{subexercise}
+    \item 第10天你要存多少元？
+    \item 第20天呢？
+    \item 第30天呢？（$2^{30}\approx10.7亿$）
+  \end{subexercise}
+
+\item 观察 $10^3=1000$，$10^2=100$，$10^1=10$，$10^0=1$，$10^{-1}=0.1$。\\
+  指数和结果的小数点位置有什么关系？
+\end{exercise}
+
+\sectiontitle{第17讲\quad 对数的登场——"几次方"的问题}
+
+\subsection*{把问题反过来}
+
+我们知道 $2^3=8$。现在反过来问：\textbf{2的几次方等于8？}
+
+答案是3。因为 $2^3=8$。
+
+这个问题在数学上有一个专门的符号：
+
+\[
+\log_2 8 = 3
+\]
+
+读作"以2为底8的对数等于3"。\textbf{对数的本质就是问"几次方"}。
+
+每一次乘方 $a^b=c$ 都有三个角色：底数 $a$、指数 $b$、幂 $c$。
+\begin{itemize}
+  \item 开方问的是：已知幂和指数，求底数（$\sqrt[b]{c}=a$）
+  \item 对数问的是：已知幂和底数，求指数（$\log_a c = b$）
+\end{itemize}
+
+\begin{example}
+$\log_2 4$ 等于多少？
+\end{example}
+\begin{solution}
+2的几次方等于4？$2^2=4$，所以 $\log_2 4 = 2$。
+\end{solution}
+
+\begin{example}
+$\log_3 81$ 等于多少？
+\end{example}
+\begin{solution}
+3的几次方等于81？$3^4=81$，所以 $\log_3 81 = 4$。
+\end{solution}
+
+\subsection*{对数是"找指数"的运算}
+
+你也许觉得对数符号奇怪，但它做的事情你已经会了——只是换个问法：
+
+"2的几次方等于8？" → "$\log_2 8$"
+
+"3的几次方等于9？" → "$\log_3 9$"
+
+"10的几次方等于1000？" → "$\log_{10} 1000$"
+
+每道题你都可以先在心里想"$?$ 的几次方"，然后把问号写在 $\log$ 的右下角。
+
+\begin{example}
+$\log_5 25$ 等于多少？
+\end{example}
+\begin{solution}
+在心里想：5的几次方等于25？5的2次方。所以 $\log_5 25 = 2$。
+\end{solution}
+
+\begin{example}
+$\log_2 1$ 等于多少？
+\end{example}
+\begin{solution}
+2的几次方等于1？任何非零数的0次方等于1，$2^0=1$。所以 $\log_2 1 = 0$。
+\end{solution}
+
+\begin{exercise}
+\item 口算（想"几的几次方"）：
+  \begin{subexercise}
+    \item $\log_2 4$
+    \item $\log_2 8$
+    \item $\log_2 16$
+    \item $\log_2 32$
+    \item $\log_2 64$
+    \item $\log_2 1$
+    \item $\log_2 2$
+    \item $\log_2 128$
+  \end{subexercise}
+
+\item 口算：
+  \begin{subexercise}
+    \item $\log_3 9$
+    \item $\log_3 27$
+    \item $\log_3 81$
+    \item $\log_5 25$
+    \item $\log_4 16$
+    \item $\log_4 64$
+    \item $\log_7 7$
+    \item $\log_8 1$
+  \end{subexercise}
+
+\item 把指数式改写成对数式：
+  \begin{subexercise}
+    \item $2^5=32$
+    \item $3^3=27$
+    \item $10^4=10000$
+    \item $5^2=25$
+    \item $2^{10}=1024$
+    \item $4^3=64$
+  \end{subexercise}
+
+\item 把对数式改写成指数式：
+  \begin{subexercise}
+    \item $\log_2 64 = 6$
+    \item $\log_3 81 = 4$
+    \item $\log_{10} 100 = 2$
+    \item $\log_5 125 = 3$
+    \item $\log_7 49 = 2$
+    \item $\log_4 256 = 4$
+  \end{subexercise}
+
+\item 填空并说说规律：
+  \begin{subexercise}
+    \item $\log_a 1 = \underline{\qquad}$（任何 $a>0$ 且 $a\neq1$）
+    \item $\log_a a = \underline{\qquad}$
+  \end{subexercise}
+
+\item 思考：$\log_2 3$ 大概是多少？
+  （提示：$2^1=2$，$2^2=4$，所以 $\log_2 3$ 在1和2之间。）
+\end{exercise}
+
+\sectiontitle{第18讲\quad 常用对数——以10为底的对数}
+
+\subsection*{为什么以10为底特别重要？}
+
+我们用的数字是十进制。所以在很多实际问题中，以10为底的对数最方便。它有一个专属简写：$\lg$。
+
+\[
+\log_{10} x = \lg x
+\]
+
+\begin{example}
+$\lg 10 = 1$（因为 $10^1=10$）\\
+$\lg 100 = 2$（因为 $10^2=100$）\\
+$\lg 1000 = 3$（因为 $10^3=1000$）\\
+$\lg 1 = 0$（因为 $10^0=1$）\\
+$\lg 0.1 = -1$（因为 $10^{-1}=0.1$）
+\end{example}
+
+规律：$\lg$ 告诉你的就是这个数有几位。
+
+\subsection*{生活中的对数}
+
+你可能已经用过对数，只是不自知：
+
+\textbf{声音——分贝（dB）：}
+\begin{itemize}
+  \item 耳语约 20dB → 能量是基准的 $10^2=100$ 倍
+  \item 正常交谈约 60dB → 能量是基准的 $10^6=100万$ 倍
+  \item 摇滚演唱会约 120dB → 能量是基准的 $10^{12}=1万亿$ 倍
+\end{itemize}
+
+把巨大的能量范围（1到1万亿），压缩成了好读的小数字（0到120）——这就是对数的力量。
+
+\textbf{地震——里氏震级：}
+\begin{itemize}
+  \item 5级地震的能量大约是4级的10倍
+  \item 5级和7级差多少？$10^{7-5}=100$倍
+\end{itemize}
+
+\textbf{酸碱度——pH值：}
+\[
+pH = -\lg[H^+]
+\]
+pH=7是中性，pH=6的酸性是pH=7的10倍。
+
+\begin{example}
+一个声音的强度是基准的 $10^8$ 倍，它是多少分贝？
+\end{example}
+\begin{solution}
+$10^8$ 倍 → $\lg(10^8) = 8$，但分贝的定义要乘以10，所以是 80dB。
+\end{solution}
+
+\begin{example}
+$\lg 5000$ 大概在多少到多少之间？
+\end{example}
+\begin{solution}
+$1000 < 5000 < 10000$，所以 $\lg 1000 < \lg 5000 < \lg 10000$。
+$\lg 1000 = 3$，$\lg 10000 = 4$，所以 $\lg 5000$ 在3到4之间。
+\end{solution}
+
+\begin{example}
+如果 $\lg x = 2.5$，那么 $x$ 大概是多少？
+\end{example}
+\begin{solution}
+$\lg x = 2.5$ 的意思是 $10^{2.5} = x$。$10^2 = 100$，$10^3 = 1000$，所以 $x$ 应该在100到1000之间。
+$10^{2.5} = 10^{2} \times 10^{0.5} \approx 100 \times 3.16 = 316$。
+\end{solution}
+
+\begin{example}
+一个6级地震的能量是4级地震的多少倍？
+\end{example}
+\begin{solution}
+每升1级能量变为10倍。从4级到6级升了2级，所以是 $10^2 = 100$倍。
+\end{solution}
+
+\begin{exercise}
+\item 口算 $\lg$：
+  \begin{subexercise}
+    \item $\lg 10$
+    \item $\lg 100$
+    \item $\lg 10000$
+    \item $\lg 100000$
+    \item $\lg 1$
+    \item $\lg 0.1$
+    \item $\lg 0.01$
+    \item $\lg 0.001$
+  \end{subexercise}
+
+\item 填空：
+  \begin{subexercise}
+    \item $\lg 10^3 = \underline{\qquad}$
+    \item $\lg 10^5 = \underline{\qquad}$
+    \item $\lg 10^{-2} = \underline{\qquad}$
+    \item $\lg 10^n = \underline{\qquad}$
+  \end{subexercise}
+
+\item 一个声音的强度是基准的 $10^5$ 倍，有多少分贝？
+
+\item 地震震级每升1级，能量变为原来的10倍。
+  \begin{subexercise}
+    \item 4级地震的能量是3级的多少倍？
+    \item 6级地震的能量是3级的多少倍？
+    \item 8级地震的能量是5级的多少倍？
+  \end{subexercise}
+
+\item 已知 $\lg 2 \approx 0.3010$，$\lg 3 \approx 0.4771$。
+  \begin{subexercise}
+    \item 你猜 $\lg 6$ 大概是多少？（提示：$6=2\times3$）
+    \item $\lg 5$ 呢？（提示：$5=10\div2$）
+  \end{subexercise}
+
+\item 判断题：$\lg$ 的结果如果是整数，那么原数一定是10的整数次幂。对吗？
+\end{exercise}
+
+\sectiontitle{第19讲\quad 对数的魔法——化乘为加}
+
+\subsection*{做一个发现}
+
+先算几道简单的：
+
+$\lg 10 = 1$，$\lg 100 = 2$，$\lg(10\times100) = \lg 1000 = 3$。
+
+现在看：$\lg 10 + \lg 100 = 1 + 2 = 3$。
+
+$\lg(10\times100)$ 和 $\lg 10 + \lg 100$ 相等！
+
+再来一个：$\lg(100\times1000) = \lg 100000 = 5$；$\lg 100 + \lg 1000 = 2 + 3 = 5$。
+
+\textbf{这不是巧合！}
+
+\subsection*{对数的核心性质}
+
+\[
+\log_a (M\times N) = \log_a M + \log_a N
+\]
+
+\[
+\log_a \left(\frac{M}{N}\right) = \log_a M - \log_a N
+\]
+
+**对数把乘法变成加法，把除法变成减法。**
+
+如果你觉得这没什么了不起，想象一下：在500年前没有计算器的时代，天文学家要计算两个很大的数相乘，需要算整整一天。但有了对数表，他们只需要查表找到这两个数的对数，做一次加法，再查表把结果变回去——几分钟就完成了。
+
+法国数学家拉普拉斯说过：**"对数的发明，延长了天文学家的寿命。"**
+
+\begin{example}
+已知 $\lg 2\approx0.3010$，$\lg 3\approx0.4771$，求 $\lg 6$ 和 $\lg 1.5$。
+\end{example}
+\begin{solution}
+$\lg 6 = \lg(2\times3) = \lg 2 + \lg 3 \approx 0.3010+0.4771 = 0.7781$。\\
+$\lg 1.5 = \lg(3\div2) = \lg 3 - \lg 2 \approx 0.4771-0.3010 = 0.1761$。
+\end{solution}
+
+\begin{example}
+计算：$\lg 5 + \lg 2$
+\end{example}
+\begin{solution}
+$\lg 5 + \lg 2 = \lg(5\times2) = \lg 10 = 1$。
+\end{solution}
+
+\subsection*{指数和对数——互逆运算的最后一块拼图}
+
+现在我们可以回头看看乘方的两个逆运算了：
+
+\[
+a^b = c \quad\Longrightarrow\quad
+\begin{cases}
+\sqrt[b]{c} = a & \text{开方——已知幂和指数，求底数}\\
+\log_a c = b & \text{对数——已知幂和底数，求指数}
+\end{cases}
+\]
+
+开方和对数，一个是乘方的第一个逆运算，一个是第二个逆运算。两者合在一起，才构成了乘方的完整逆运算。
+
+\begin{exercise}
+\item 用对数的性质计算：
+  \begin{subexercise}
+    \item $\lg 2 + \lg 5$
+    \item $\lg 25 + \lg 4$
+    \item $\lg 1000 - \lg 100$
+    \item $\lg 0.1 + \lg 100$
+    \item $\lg 50 + \lg 2$
+    \item $\lg 8 - \lg 2$
+  \end{subexercise}
+
+\item 已知 $\lg 2 \approx 0.3010$，$\lg 3 \approx 0.4771$，求：
+  \begin{subexercise}
+    \item $\lg 12$（提示：$12=3\times4=3\times2^2$）
+    \item $\lg 18$
+    \item $\lg 30$
+    \item $\lg 5$
+    \item $\lg 1.5$
+    \item $\lg 0.5$
+  \end{subexercise}
+
+\item 为什么 $\lg 25 + \lg 4 = 2$？写出推理过程。
+
+\item 用文字解释：为什么对数能把乘法变成加法？
+
+\item 如果 $\log_a M = 3$，$\log_a N = 4$，那么 $\log_a (MN) = \underline{\qquad}$。
+
+\item 思考题：$\log_a a^n = \underline{\qquad}$？（用一句话回答）
+
+\item 查表题（感受一下古代天文学家的工具）：\\
+  下表是 $\lg$ 的简表：
+  \[
+  \begin{array}{c|c}
+  x & \lg x \\ \hline
+  1 & 0.0000 \\
+  2 & 0.3010 \\
+  3 & 0.4771 \\
+  4 & 0.6021 \\
+  5 & 0.6990 \\
+  6 & 0.7782 \\
+  7 & 0.8451 \\
+  8 & 0.9031 \\
+  9 & 0.9542 \\
+  10 & 1.0000
+  \end{array}
+  \]
+  用这张表计算 $2\times3$：
+  \begin{enumerate}
+    \item 查 $\lg 2$ 和 $\lg 3$，相加
+    \item 和是 0.7781，在表中对应哪个数？
+    \item $2\times3$ 等于多少？
+  \end{enumerate}
+  这就是对数的原始用法。
+\end{exercise}
+\end{parameter>

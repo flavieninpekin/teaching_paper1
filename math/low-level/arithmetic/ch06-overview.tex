@@ -1,0 +1,114 @@
+\chaptertitle{第六章\quad 运算总览}
+
+\sectiontitle{第20讲\quad 一张图讲完所有运算}
+
+现在我们已经走完了整条路。从 1+1 到对数，这本书里全部的运算你都已经见过了。这一讲我们不做新概念，只做一件事：把整条路线画成一张图。
+
+\subsection*{运算树}
+
+运算就像一棵树——每层生长出一种新运算，而新运算总来自两个动作：**重复**和**逆**。
+
+\[
+\begin{array}{c}
+\textbf{加法} \quad a+b \\
+\quad\downarrow\quad \text{逆运算}\\
+\textbf{减法} \quad a-b \quad\text{——不够减？→ 负数} \\
+\quad\downarrow\quad \text{重复}\\
+\textbf{乘法} \quad a\times b \quad\text{——连加的简写} \\
+\quad\downarrow\quad \text{逆运算}\\
+\textbf{除法} \quad a\div b \quad\text{——除不尽？→ 分数} \\
+\quad\downarrow\quad \text{重复}\\
+\textbf{乘方} \quad a^b \quad\text{——连乘的简写} \\
+\swarrow \quad\quad\quad\quad \searrow \\
+\textbf{开方} \quad \sqrt[b]{a} \qquad\qquad \textbf{对数} \quad \log_a c \\
+\text{开不尽？→ 无理数} \qquad\qquad \text{问"几次方"}
+\end{array}
+\]
+
+\subsection*{数系阶梯}
+
+每一次逆运算"不够用"，数系就扩张一次：
+
+\[
+\begin{array}{c}
+\mathbb{N}\text{（自然数）} \\
+\downarrow\quad \text{减法不够} \\
+\mathbb{Z}\text{（整数）} \\
+\downarrow\quad \text{除法不够} \\
+\mathbb{Q}\text{（有理数）} \\
+\downarrow\quad \text{开方不够} \\
+\mathbb{R}\text{（实数）}
+\end{array}
+\]
+
+\subsection*{运算关系总表}
+
+\[
+\begin{array}{c|c|c|c}
+\text{运算} & \text{直接运算} & \text{逆运算①} & \text{逆运算②} \\ \hline
+\text{加法} & a+b=c & c-b=a,\;c-a=b & — \\
+\text{乘法} & a\times b=c & c\div b=a,\;c\div a=b & — \\
+\text{乘方} & a^b=c & \sqrt[b]{c}=a\text{（开方）} & \log_a c=b\text{（对数）}
+\end{array}
+\]
+
+\subsection*{综合闯关}
+
+以下题目混合了全部六章的内容。按顺序做，看看你能做对多少。
+
+\begin{exercise}
+\item $29+35+11$
+\item $48+57+52$
+\item $275+347+25$
+\item $1000-345-655$
+\item $735-199$
+\item $(-15)+(-23)+34$
+\item $(-12)-(-15)+(-8)-(-20)$
+\item $|{-5}|+|{-3}|$
+\item $25\times17\times4$
+\item $48\times101$
+\item $36\times34+36\times66$
+\item $36\times99$
+\item $400\div25$
+\item $\dfrac{2}{5}+\dfrac{1}{5}$
+\item $\dfrac{1}{2}+\dfrac{1}{3}$
+\item $2\dfrac{1}{3}+1\dfrac{1}{4}$
+\item $\dfrac{2}{3}\times\dfrac{3}{4}$
+\item $\dfrac{5}{6}\div\dfrac{5}{12}$
+\item $\dfrac{5}{7}\times\dfrac{3}{8}+\dfrac{5}{7}\times\dfrac{5}{8}$
+\item $\left(\dfrac{1}{2}+\dfrac{1}{3}\right)\times6$
+\item $0.25\times\dfrac{3}{7}\times4$
+\item $\sqrt{81}+\sqrt{25}$
+\item $\sqrt{169}-\sqrt[3]{125}$
+\item $\sqrt{8}+\sqrt{18}-\sqrt{32}$
+\item $(\sqrt{3}+2)(\sqrt{3}-2)$
+\item $\dfrac{1}{\sqrt{3}}$
+\item $2^5$
+\item $10^4$
+\item $\log_2 16$
+\item $\log_3 81$
+\item $\lg 1000$
+\item $\lg 2 + \lg 5$
+\item 已知 $\lg 2\approx0.3010$，$\lg 3\approx0.4771$，求 $\lg 6$ 和 $\lg 1.5$。
+\item $85-199+115$
+\item $25\times125\times4\times8$
+\item $2\dfrac{1}{2}\times\dfrac{2}{5}$
+\item $\sqrt{12}-3\sqrt{\dfrac{1}{3}}+2\sqrt{48}$
+\item $(\sqrt{2}+1)^2$
+\item $\log_4 16$
+\item $\lg 0.01$
+\item $3.6+4.8-2.5$
+\item $(5.6+4.4)\times0.25$
+\end{exercise}
+
+\sectiontitle{写在最后}
+
+你不是从公式开始背的。
+
+你是从 1+1 开始的——数了无数的格子，凑了无数的整，算了无数的竖式。然后你碰到了减法不够用，于是认识了负数。碰到了除法除不尽，于是认识了分数。碰到了开方开不尽，于是认识了无理数。最后，你发现乘方还有一个叫对数的逆运算。
+
+每一步"不够用"都不是死路——数学家把这些"不够用"变成了引入新数的机会。这个模式还会在以后的学习中出现很多次。等你学一元二次方程时发现判别式小于0"算不出"的时候——没错，又该引入新数了（复数）。但同时你也已经完全理解了这背后的逻辑：**新数不是从天而降的，是从旧数的"不够用"里生长出来的**。
+
+从1+1到对数这一步一步，你已经看到了整个运算世界是怎么搭建起来的。
+
+恭喜你走完了这条路。

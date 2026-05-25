@@ -1,0 +1,445 @@
+\chaptertitle{参考答案}
+
+\sectiontitle{第一章\quad 集合基础}
+
+\textbf{习题1.1}
+\begin{enumerate}
+\item (1) 能 \qquad (2) 不能（"跑得快"标准不明确）\qquad (3) 能
+\item (1) $0\in\mathbb N$ \qquad (2) $\frac12\notin\mathbb Z$ \qquad (3) $\pi\in\mathbb R$
+\end{enumerate}
+
+\textbf{习题1.2}
+\begin{enumerate}
+\item (1) $\{0,1,2,3,4,5\}$ \qquad (2) $\{-3,3\}$
+\item $\{x\in\mathbb Q\mid 0<x<1\}$（答案不唯一）
+\item 略
+\end{enumerate}
+
+\textbf{习题1.3}
+\begin{enumerate}
+\item 子集：$\varnothing,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}$ \qquad 真子集：前$7$个
+\item $A\cap B=\{4,5\}$，$A\cup B=\{1,2,3,4,5,6,7\}$
+\item $\complement_UA=\{1,3,5,7,9\}$
+\item $|A\cup B|=25+20-10=35$，都不喜欢$=40-35=5$人
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item $\{-2,-1,0,1,2,3\}$
+\item $\{x\mid x\text{是偶数}\}$（或$\{x\mid x=2k,k\in\mathbb Z\}$）
+\item $A\cap B=\{3,5\}$，$A\cup B=\{1,3,5,7,9,11,13\}$
+\item $2^n-1$个
+\item $\{b,d\}$
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 提示：Venn图分$8$个区域，逐区域标记。
+\item $|M\cup P\cup E|=30+28+22-15-12-10+5=48$，都不喜欢$=45-48$——数据矛盾，说明原始数据有误或$45$不包括全部。
+\item $A=\{a\}$时有$1$个元素，$1$个子集（$\{a\}$），不相等。$A=\varnothing$时有$0$个元素，$1$个子集（$\varnothing$），相等。所以$\varnothing$是满足条件的集合。
+\end{enumerate}
+
+\sectiontitle{第二章\quad 逻辑与推理}
+
+\textbf{习题2.1}
+\begin{enumerate}
+\item (1) 是命题（真） \qquad (2) 不是命题（疑问句） \qquad (3) 是命题（需要当天判断）
+\item $p$真$q$假，$p\land q$假，$p\lor q$真，$\lnot p$假
+\item 略
+\end{enumerate}
+
+\textbf{习题2.2}
+\begin{enumerate}
+\item $p$的真值集$\{2,3,5\}$，$q$的真值集$\{1,2,3,4\}$
+\item 略（用Venn图验证）
+\end{enumerate}
+
+\textbf{习题2.3}
+\begin{enumerate}
+\item (1) $\forall x\in\mathbb R$，$x$有平方根（假，负数没有）\qquad (2) $\exists x\in\mathbb Q$，$x=\sqrt2$（假）
+\item (1) 存在一个人不喜欢数学 \qquad (2) $\forall x\in\mathbb N$，$x\ge0$
+\end{enumerate}
+
+\textbf{习题2.4}
+\begin{enumerate}
+\item 原命题：真。逆命题：如果$x>1$则$x>2$——假（$x=1.5$）。否命题：如果$x\le2$则$x\le1$——假。逆否命题：如果$x\le1$则$x\le2$——真。
+\item 假设$a^2$不是偶数，则$a^2$是奇数，所以$a$是奇数，矛盾。故$a^2$是偶数。
+\item 同$\sqrt2$的证明。
+\end{enumerate}
+
+\textbf{习题2.5}
+\begin{enumerate}
+\item 奠基$n=1$：$1=\frac{1\times2}{2}$成立。假设$n=k$成立，$n=k+1$时$1+2+\cdots+k+(k+1)=\frac{k(k+1)}{2}+(k+1)=\frac{(k+1)(k+2)}{2}$。
+\item 奠基$n=1$：$1=\frac{1\times2\times3}{6}$成立。归纳步骤略。
+\item 奠基$n=1,2$成立。设$n\le k$时结论成立，则$n=k+1$时$a_{k+1}=a_k+a_{k-1}$，由归纳假设$a_k,a_{k-1}$均为正整数，所以$a_{k+1}$也是正整数。
+\end{enumerate}
+
+\textbf{习题2.6}
+\begin{enumerate}
+\item 设甲真→乙假→丙真→乙假（丙说"我没考满分"为真→丙没考满分），甲说"乙考满分"为真→乙考满分，而乙说"丙没考满分"为假→丙考满分，矛盾。所以甲假。甲假→乙真→丙假。丙假→丙考满分。所以丙考了满分。
+\item 丁住$104$。甲不住$101$。乙丙相邻，可能组合$(101,102)$或$(102,103)$或$(103,104)$。$104$已住丁，所以乙丙不可能在$(103,104)$。尝试得甲$103$、乙$101$、丙$102$、丁$104$（或甲$102$、乙$101$、丙$102$不行——乙丙相邻有多种可能）。
+\item 不能推出一定不是晴天（小明可能因为其他原因没买冰淇淋）。只能推出如果今天是晴天，则小明会买冰淇淋。小明没买冰淇淋，所以今天不是晴天（逆否命题）。结论：可以推出今天不是晴天。
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item (1) 是命题（假）\qquad (2) 不是命题
+\item 逆命题：如果$a^2=b^2$则$a=b$——假（$a=-b$）。否命题：如果$a\neq b$则$a^2\neq b^2$——假。逆否命题：如果$a^2\neq b^2$则$a\neq b$——真。
+\item (1) 存在不会飞的鸟 \qquad (2) $\forall x\in\mathbb N$，$x^2\ge0$
+\item 略
+\item 甲真→乙假→丙假，丙说"我不是第一名"为假→丙是第一名，乙说"丙是第一名"为假（丙确实是第一名，所以乙说真话，矛盾）。所以甲假。设乙真→丙是第一名，甲假→不是乙（甲说"乙是第一名"假），丙假→丙是第一名（与丙真矛盾）。所以乙假。设丙真→丙不是第一名，甲假→乙不是第一名，乙假→丙不是第一名（与假设一致）。所以甲得第一名。
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 设$a=2k+1$，$b=2m+1$，则$a^2+b^2=4(k^2+m^2+k+m)+2$，是偶数但不是$4$的倍数。
+\item 见正文例。
+\item 不等价。$p$假$q$假$r$假时，$(p\land q)\Rightarrow r$为真，$(p\Rightarrow r)\lor(q\Rightarrow r)$为真——实际等价。检查$p$真$q$假$r$假：$(p\land q)\Rightarrow r$为真（前件假），$(p\Rightarrow r)\lor(q\Rightarrow r) = $假$\lor$真$=$真。经仔细验证，两者等价。
+\item 甲说"不是我"（甲假→是甲），乙说"是丙"（假→不是丙），丙说"是甲"（假→不是甲）。如果甲假则好事是甲做的，丙也假则好事不是甲做的，矛盾。所以甲真→不是甲。乙假→不是丙。丙假→不是甲。所以好事是乙做的。
+\end{enumerate}
+
+\sectiontitle{第三章\quad 计数原理}
+
+\textbf{习题3.1}
+\begin{enumerate}
+\item $4+3=7$万元（若问个数，$4+3=7$种）
+\item $4\times3=12$种
+\end{enumerate}
+
+\textbf{习题3.2}
+\begin{enumerate}
+\item $4\times3=12$种
+\item $4\times3\times2=24$个
+\item $2\times3\times4=24$种
+\end{enumerate}
+
+\textbf{习题3.3}
+\begin{enumerate}
+\item 个位可选$0,2,4,6,8$（$5$种），但百位不能是$0$。分情况：个位为$0$时$4\times3\times1=12$；个位为$2,4,6,8$时$3\times3\times4=36$；总计$12+36=48$个。
+\item $3\times5+5=20$种（套餐$15$种+单点菜品$5$种）
+\end{enumerate}
+
+\textbf{习题3.4}
+\begin{enumerate}
+\item $3+2+1=6$条
+\item $C_n^2=\dfrac{n(n-1)}{2}$条
+\item $2\times2$网格有$3$条横线$3$条竖线，$C_3^2\times C_3^2=3\times3=9$个长方形
+\end{enumerate}
+
+\textbf{习题3.5}
+\begin{enumerate}
+\item $2^3=8$种：正正正、正正反、正反正、正反反、反正正、反正反、反反正、反反反
+\item 取$1$个：$1,2,3$（$3$种）；取$2$个：$1+2=3$（重）、$1+3=4$、$2+3=5$（$2$种新和）；取$3$个：$1+2+3=6$（$1$种）。总计$3+2+1=6$种不同的和。
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item $5\times3=15$种
+\item $4\times3+2=14$种（经$B$：$4\times3=12$，直达$2$种，共$14$）
+\item $4\times3\times2\times1=24$个
+\item $C_6^2=15$条
+\item $3\times4=12$种
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 大于$200$的三位数，百位$\ge2$。百位可选$2,3,4$（$3$种），十位有$4$种，个位有$3$种，$3\times4\times3=36$个。
+\item 先排$4$对夫妇：$4!=24$种。每对内部左右：$2$种，$4$对共$2^4=16$种。总数$24\times16=384$种。
+\item 考虑每张选或不选：$2^4-1=15$种（减去都不选的情况）。
+\item $C_{m+1}^2\times C_{n+1}^2=\dfrac{m(m+1)}{2}\times\dfrac{n(n+1)}{2}=\dfrac{mn(m+1)(n+1)}{4}$
+\end{enumerate}
+
+\sectiontitle{第四章\quad 排列}
+
+\textbf{习题4.1}
+\begin{enumerate}
+\item $6!=720$
+\item $5!=120$种
+\item $4!=24$种
+\end{enumerate}
+
+\textbf{习题4.2}
+\begin{enumerate}
+\item $A_7^2=42$，$A_6^3=120$，$A_{10}^4=5040$
+\item $A_{10}^3=720$种
+\item $A_6^4=360$种
+\end{enumerate}
+
+\textbf{习题4.3}
+\begin{enumerate}
+\item $\dfrac{4!}{2!}=12$个
+\item $\dfrac{11!}{4!\,4!\,2!}=34650$个
+\end{enumerate}
+
+\textbf{习题4.4}
+\begin{enumerate}
+\item $(5-1)!=24$种
+\item 先让两人坐在一起看作一个整体：$(7-1)! = 720$种内部排列，两人内部$2!$，共$720\times2=1440$种
+\end{enumerate}
+
+\textbf{习题4.5}
+\begin{enumerate}
+\item $10^6=1000000$种
+\item $4^{10}=1048576$种
+\end{enumerate}
+
+\textbf{习题4.6}
+\begin{enumerate}
+\item 方法一：甲有$5$种（不在排头），乙有$4$种（不在排尾且不同于甲），剩下$4$人全排列$4!=24$，$5\times4\times24=480$。或$6!-5!-5!+4!=720-120-120+24=504$种。
+\item 先排$3$男生$3!=6$种，产生$4$个空位选$2$个放女生$A_4^2=12$种，$6\times12=72$种。
+\item 甲乙看作整体：$3!$种内部顺序$\times2!=12$，再与剩下$2$人全排列$3!=6$，总数$12\times6=72$种。
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item $A_8^3=336$，$\dfrac{7!}{3!}=840$，$(5-1)!=24$
+\item $7!=5040$种
+\item $A_{10}^4=5040$种
+\item $\dfrac{6!}{3!\,2!}=60$个
+\item $5!=120$种
+\item $(8-1)!=5040$种
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 六位数：$5\times5\times4\times3\times2\times1=600$个（百位不能$0$）。偶数：个位$0$时$5!=120$；个位$2$或$4$时$4\times4\times3\times2\times1\times2=192$；总计$120+192=312$个。
+\item $8!-4\times2\times7!+6\times4\times6!-4\times8\times5!+16\times4!=40320-40320+17280-3840+384=13824$（仅列式）
+\item 先排辅音字母$7$个（M,T,H,M,T,C,S）$\dfrac{7!}{2!\,2!}=1260$种，产生$8$个空位选$3$个放元音（A,E,I）$A_8^3=336$，总数$1260\times336=423360$个。
+\item 先固定甲，乙在甲正对面（位置唯一确定），剩下$n-2$人全排列：$(n-2)!$种。
+\end{enumerate}
+
+\sectiontitle{第五章\quad 组合方法}
+
+\textbf{习题5.1}
+\begin{enumerate}
+\item $C_7^3=35$，$C_8^2=28$，$C_{10}^3=120$
+\item $C_6^2=15$种
+\item $C_{12}^5=792$种
+\end{enumerate}
+
+\textbf{习题5.2}
+\begin{enumerate}
+\item $C_{100}^{98}=C_{100}^2=4950$，$C_{50}^{48}=C_{50}^2=1225$
+\item $C_6^2+C_6^3=15+20=35$，$C_7^3=35$，成立
+\item $C_n^0=1$（不选任何元素，$1$种方式），$C_n^1=n$（选$1$个元素，$n$种选法）
+\end{enumerate}
+
+\textbf{习题5.3}
+\begin{enumerate}
+\item $2^4=16$种。每盏灯对应$0$或$1$，共$2^4$种状态。
+\item $01010$对应$\{2,4\}$。$\{1,3,5\}$对应$10101$。
+\end{enumerate}
+
+\textbf{习题5.4}
+\begin{enumerate}
+\item $C_{2+3}^2=C_5^2=10$条（或$C_{5}^3=10$）
+\item $C_{8-1}^{4-1}=C_7^3=35$种
+\item $C_{15-1}^{4-1}=C_{14}^3=364$组
+\end{enumerate}
+
+\textbf{习题5.5}
+\begin{enumerate}
+\item 从$m$男$n$女中选$k$人，按女生人数分类：选$i$女则需$k-i$男，共$C_m^{k-i}C_n^i$种。总选法$C_{m+n}^k$，所以两边相等。
+\item $n$边形有$n$个顶点，任选$2$个确定一条线段，其中$n$条是边，其余是对角线。所以对角线数$=C_n^2-n=\dfrac{n(n-3)}{2}$。
+\end{enumerate}
+
+\textbf{习题5.6}
+\begin{enumerate}
+\item $C_8^2=28$场
+\item 先分组再分配。分$3$组（允许空组）较复杂。标准做法：$5$本不同书分给$3$人，每人至少$1$本：总数$3^5$，减去有人没分到的情况。$3^5-3\times2^5+3\times1^5=243-96+3=150$种。
+\item $C_6^3\times C_4^2=20\times6=120$种
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item $C_9^3=84$，$C_{12}^4=495$，$C_8^5=C_8^3=56$
+\item $C_{15}^5=3003$种
+\item $C_{12+4-1}^{4-1}=C_{15}^3=455$种
+\item $C_{2+5}^2=C_7^2=21$条（$2$行$5$列）
+\item $C_{10}^2=45$场
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 正整数解：$C_{19}^2=171$组。非负整数解：$C_{22}^2=231$组。
+\item 二项式定理$(1+1)^n=\sum C_n^k=2^n$，$(1-1)^n=\sum(-1)^kC_n^k=0$，两式相加得奇数项和$=2^{n-1}$。
+\item 每人至少$2$本，先各给$2$本（$6$本），剩下$2$本分给$3$人（允许$0$）：$3^2=9$种分配方式。但书不同，需考虑哪些书给谁。先用排列分配：$8!/(2!2!2!2!)=2520$种。实际上更复杂，此题列为挑战。
+\item 和为偶数：$3$个偶数或$1$偶$2$奇。$C_4^3+C_4^1\times C_5^2=4+4\times10=44$种。
+\item $10$球放$4$盒，每盒至少$1$球。把$10$球排一行，$9$个空隙中放$3$个隔板：$C_9^3=84$种。
+\end{enumerate}
+
+\sectiontitle{第六章\quad 二项式定理与递推}
+
+\textbf{习题6.1}
+\begin{enumerate}
+\item $(a+b)^6=a^6+6a^5b+15a^4b^2+20a^3b^3+15a^2b^4+6ab^5+b^6$
+\item $C_n^k$
+\end{enumerate}
+
+\textbf{习题6.2}
+\begin{enumerate}
+\item $(x-2)^4=x^4-8x^3+24x^2-32x+16$
+\item 通项$T_{k+1}=C_6^k(2x)^{6-k}(-1)^k$，$6-k=3$得$k=3$，$T_4=C_6^3\cdot8x^3\cdot(-1)=-160x^3$，系数$-160$
+\item $C_{10}^5=252$
+\end{enumerate}
+
+\textbf{习题6.3}
+\begin{enumerate}
+\item $2^8=256$
+\item $(1-1)^9=0$
+\end{enumerate}
+
+\textbf{习题6.4}
+\begin{enumerate}
+\item $f_3=f_2+2f_1=3+2=5$，$f_4=5+6=11$，$f_5=11+10=21$
+\item $a_1=2$，递推$a_n=a_{n-1}+n$，$a_n=\dfrac{n^2+n+2}{2}$
+\end{enumerate}
+
+\textbf{习题6.5}
+\begin{enumerate}
+\item $(1-0.02)^8\approx1-8\times0.02=0.84$（精确值约$0.8508$）
+\item $(10+1)^{10}=C_{10}^010^{10}+C_{10}^110^9+\cdots+C_{10}^910+1$，前$10$项都是$10$的倍数，所以$11^{10}-1$是$10$的倍数。
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item $x^4+12x^3+54x^2+108x+81$
+\item $T_{3}=C_6^2x^4\cdot4=60x^4$，系数$60$
+\item $2^7=128$
+\item $f_2=3$，$f_3=7$，$f_4=15$，$f_5=31$
+\item $(1-0.01)^5\approx1-5\times0.01=0.95$（精确值约$0.9510$）
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 通项$T_{k+1}=C_6^k(2x^2)^{6-k}(-x^{-1})^k=C_6^k2^{6-k}(-1)^kx^{12-2k-k}=C_6^k2^{6-k}(-1)^kx^{12-3k}$，令$12-3k=0$得$k=4$，常数项$=C_6^4\cdot2^2\cdot(-1)^4=15\times4=60$。
+\item $kC_n^k=nC_{n-1}^{k-1}$，所以$\sum kC_n^k=n\sum C_{n-1}^{k-1}=n\cdot2^{n-1}$。
+\item 见正文示例。
+\item $2^{3n}-1=8^n-1=(7+1)^n-1$，展开后前$n$项都是$7$的倍数，所以$2^{3n}-1$能被$7$整除。
+\item $n$条直线，交点数为$C_n^2$（无平行时）到$0$（全部平行）。有平行时，每$k$条平行线减少$C_k^2$个交点。可能的不同交点数需要按平行线分组讨论。
+\end{enumerate}
+
+\sectiontitle{第七章\quad 容斥原理}
+
+\textbf{习题7.2}
+\begin{enumerate}
+\item $|A\cup B\cup C|=50+33+20-16-10-6+3=74$个
+\item $60+45+30-25-10-8+15=107$人
+\end{enumerate}
+
+\textbf{习题7.4}
+\begin{enumerate}
+\item 不超过$200$且与$6$互质：$6=2\times3$。$|A_2|=100$，$|A_3|=66$，$|A_2\cap A_3|=33$。$|A_2\cup A_3|=100+66-33=133$。与$6$互质$=200-133=67$个。
+\item $D_5=5!(1-1/1!+1/2!-1/3!+1/4!-1/5!)=120(1-1+0.5-1/6+1/24-1/120)=120\times(11/30)=44$种。
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item $|A_3|=66$，$|A_5|=40$，$|A_3\cap A_5|=13$。$|A_3\cup A_5|=66+40-13=93$个。
+\item $|A_2|=60$，$|A_3|=40$，$|A_7|=17$，$|A_2\cap A_3|=20$，$|A_2\cap A_7|=8$，$|A_3\cap A_7|=5$，$|A_2\cap A_3\cap A_7|=2$。总数$=60+40+17-20-8-5+2=86$个。
+\item $10=2\times5$。$|A_2|=50$，$|A_5|=20$，$|A_2\cap A_5|=10$。$|A_2\cup A_5|=50+20-10=60$。互质$=100-60=40$个。
+\item $D_3=3!(1-1+1/2-1/6)=6\times\frac13=2$种。
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 完全平方数$=31$个（$1^2$到$31^2$），完全立方数$=10$个（$1^3$到$10^3$），兼为平方和立方（即$6$次方数）$=3$个（$1^6,2^6,3^6$）。总数$=1000-(31+10-3)=962$个。
+\item 不超过$p$且与$p$互质的数就是$1,2,\dots,p-1$共$p-1$个（$p$是质数）。
+\item $D_6=6!(1-1+1/2-1/6+1/24-1/120+1/720)=720\times(53/144)=265$种。
+\item $|A_2|=50$，$|A_3|=33$，$|A_5|=20$，$|A_7|=14$。两两交集：$6$倍$16$、$10$倍$10$、$14$倍$7$、$15$倍$6$、$21$倍$4$、$35$倍$2$。三三交集：$30$倍$3$、$42$倍$2$、$70$倍$1$、$105$倍$0$。四交集$210$倍$0$。总数$=100-(50+33+20+14)+(16+10+7+6+4+2)-(3+2+1+0)+0=100-117+45-6=22$个。
+\end{enumerate}
+
+\sectiontitle{第八章\quad 抽屉原理、染色与不变量}
+
+\textbf{习题8.1}
+\begin{enumerate}
+\item 两个整数的奇偶性相同则和为偶数。$3$个数放入$2$个奇偶抽屉，必有$2$个同奇偶，和为偶数。
+\item $1$到$8$中配对$(1,3),(2,4),(5,7),(6,8)$，取$5$个数必有一对同组，差为$2$。
+\end{enumerate}
+
+\textbf{习题8.2}
+\begin{enumerate}
+\item $\lceil101/10\rceil=\lceil10.1\rceil=11$个
+\item $4$种颜色，每种取$2$个共$8$个仍不能保证$3$个同色，取第$9$个必凑出$3$个同色。所以至少取$9$个。
+\end{enumerate}
+
+\textbf{习题8.4}
+\begin{enumerate}
+\item $5\times5$棋盘有$25$格，$1\times2$骨牌每块盖$2$格，奇数格不能被$2$整除，所以无法铺满。
+\item 不变量$(a+1)(b+1)$。操作中$a,b$擦去，写上$a+b+ab$，新数$+1=a+b+ab+1=(a+1)(b+1)$。所以所有数加$1$后的连乘积不变。初始$1+1=2$到$20+1=21$，乘积为$2\times3\times\cdots\times21=21!$。最后剩下一个数$x$满足$x+1=21!$，所以$x=21!-1$。
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item $\lceil31/12\rceil=3$人
+\item $3$种颜色，每种取$3$个共$9$个仍不能保证$4$个同色（可能每种$3$个），取第$10$个必凑出$4$个同色。所以至少取$10$个。
+\item 把$1$到$10$配对$(1,10),(2,9),(3,8),(4,7),(5,6)$，$5$个抽屉取$6$个数，必有一对同组，和为$11$。
+\item 配对$(1,6),(2,7),(3,8),(4,9),(5,10)$，取$6$个数必有一对同组，差为$5$。
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 连接正六边形的中心与各顶点及边的中点，可以把它分成$6$个小正三角形。$7$个点放入$6$个小三角形，必有$2$个点在同一小三角形内。小三角形的外接圆直径为$1$，所以这两点距离$\le1$。但严谨说法：把正六边形分成$6$个边长为$1$的小正三角形，同一小三角形内两点距离$\le1$。
+\item 去掉的两个角同色（棋盘黑白染色），剩下$30$黑$32$白（或反之），黑白数量不等，无法用$1\times2$骨牌铺满。
+\item 一个数除以$3$余$0,1,2$之一。$5$个数放入$3$个余数类，至少一类有$\lceil5/3\rceil=2$个数。若某类有$3$个数，则这$3$个数的和是$3$的倍数。若每类最多$2$个，则必有一类$2$个、另两类各$1$个和$2$个——取各类$1$个即可使和为$3$的倍数。
+\item 每次操作，总和的变化：$|a-b|$与$a+b$的奇偶性相同（因为$|a-b|\equiv a+b\pmod{2}$）。所以总和奇偶性不变。初始$1+2+\cdots+99=4950$是偶数，所以最后剩下的数是偶数。
+\end{enumerate}
+
+\sectiontitle{第九章\quad 图论初步}
+
+\textbf{习题9.1}
+\begin{enumerate}
+\item $C_5^2=10$条边
+\item 总度数$8\times3=24$，边数$=24\div2=12$条
+\end{enumerate}
+
+\textbf{习题9.3}
+\begin{enumerate}
+\item $15-1=14$条边
+\item $7$个顶点的连通图至少需要$6$条边（一棵树）
+\item 略
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item $C_6^2=15$条
+\item $2\times12=24$
+\item $3\times3$网格的顶点图，内部顶点度数$=4$，边界顶点度数$=3$或$2$。计算所有奇点个数：四个角顶点度$2$（偶），边上的（非角）度$3$（奇），有$4$个边中点和$4$个角？实际上$3\times3$网格有$4\times4=16$个格点，四个角点度$2$、边上非角点度$3$、内部点度$4$。奇点数为边上的非角点数$=8$个（每个边$2$个）。$8>2$，不能一笔画。
+\item 树有$10$个顶点，$9$条边。总度数$18$。$5$个叶子贡献$5$度，其余$5$个顶点度数$3$，共$5+15=20$度。$20\neq18$，矛盾——数据不成立。正确：设$5$个叶子，其余$5$个顶点度数和应为$18-5=13$，但$5$个顶点度数$\ge2$，最小$10$，$13$是可能的（如$3+3+3+2+2=13$）。
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 所有顶点度数之和=边数$\times2$是偶数。奇点个数为奇数时，奇点度数之和为奇数，偶点度数之和为偶数，总和为奇数，矛盾。所以奇点个数为偶数。
+\item 每笔最多减少$2$个奇点（一笔画从一奇点到另一奇点），所以至少需要$6\div2=3$笔。
+\item 略
+\item 树有$n$个顶点、$n-1$条边，总度数$=2(n-1)$。叶子度数为$1$。如果树的叶子少于$2$个，则所有顶点度数$\ge2$，总度数$\ge2n$，但实际$2n-2<2n$，矛盾。所以叶子至少$2$个。
+\end{enumerate}
+
+\sectiontitle{第十章\quad 极端原理与组合最值}
+
+\textbf{习题10.1}
+\begin{enumerate}
+\item $n$个人中，朋友数最多$n-1$，最少$0$。若有人有$n-1$个朋友，则无人有$0$个朋友。所以实际可能的朋友数只有$n-1$种（从$0$到$n-2$或从$1$到$n-1$），$n$个人分配到$n-1$种朋友数，必有两人相同。
+\item 是。取面积最小的三角形，其内部不含其他点（若有则面积更小）。
+\end{enumerate}
+
+\textbf{习题10.2}
+\begin{enumerate}
+\item 每行最多$3$个，$4$行最多$12$个；每列最多$3$个，$4$列最多$12$个。构造：每行每列各$3$个，共$12$个。
+\item $8$队共$C_8^2=28$场，总积分$56$分。平均每队$7$分，冠军至少$\ge7$分。构造：全部平局，每队$7$分，冠军$7$分。
+\end{enumerate}
+
+\textbf{A组}
+\begin{enumerate}
+\item $10$个（每行每列各$1$个，相当于$10$个不同行不同列）
+\item $5$队共$C_5^2=10$场，总积分$20$分，平均$4$分，冠军至少$4$分。
+\item $C_n^2=\dfrac{n(n-1)}{2}$条
+\end{enumerate}
+
+\textbf{B组}
+\begin{enumerate}
+\item 最多$8$个（每行每列$1$个）。$8! = 40320$种放法（等价于$8$个棋子放在不同行列，第一行$8$种选择、第二行$7$种……）
+\item 任选一人$a$，他认识至少$10$人，从这$10$人中选两人，若互相认识则与$a$构成$3$人互相认识。否则这$10$人互不认识——但题目只要求存在$3$人互相认识，所以如果找到任意$3$人互不认识就违反了"每个学生至少认识$10$个"的约束？实际上存在反例？这个问题需要更细致的图论分析，此处略。
+\item $n$是$3$的倍数时可以；否则不能。因为每次改变$3$盏灯，亮灯数变化为$\pm3$或$\pm1$，模$3$不变量。
+\end{enumerate}

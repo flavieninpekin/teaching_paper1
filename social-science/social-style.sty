@@ -1,0 +1,87 @@
+\ProvidesPackage{social-style}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{needspace}
+\hypersetup{colorlinks=true,linkcolor=socialblue}
+\linespread{1.35}
+
+% 颜色
+\definecolor{socialblue}{RGB}{0, 80, 160}
+\definecolor{socialorange}{RGB}{200, 100, 20}
+\definecolor{socialgreen}{RGB}{30, 130, 70}
+\definecolor{socialpurple}{RGB}{120, 50, 140}
+\definecolor{boxbg}{RGB}{245, 248, 252}
+
+% 注音（如 \ruby{贝}{bèi}）
+\newcommand{\ruby}[2]{#1\textsuperscript{#2}}
+
+% 侧边栏：史海拾遗 / 地理笔记（橙色框）
+% 用法：\shihai{标题}{内容}
+\newcommand{\shihai}[2]{%
+  \vspace{0.35cm}
+  \noindent
+  \fcolorbox{socialorange!80!black}{socialorange!8}{%
+    \begin{minipage}{0.915\textwidth}
+    \textbf{\textcolor{socialorange!80!black}{#1}} \\[0.1cm]
+    {\small #2}
+    \end{minipage}%
+  }
+  \vspace{0.35cm}
+}
+
+% 学海拾遗：深度知识小讲座（蓝色框）
+% 用法：\xuehai{标题}{内容}
+\newcommand{\xuehai}[2]{%
+  \vspace{0.35cm}
+  \noindent
+  \fcolorbox{socialblue!60!black}{socialblue!4}{%
+    \begin{minipage}{0.915\textwidth}
+    \textbf{\textcolor{socialblue}{学海拾遗} · #1} \\[0.1cm]
+    {\small #2}
+    \end{minipage}%
+  }
+  \vspace{0.35cm}
+}
+
+% 想一想 框
+\newenvironment{thinkbox}{
+  \vspace{0.3cm}
+  \noindent
+  \fcolorbox{socialgreen!60!black}{socialgreen!4}{%
+    \begin{minipage}{0.915\textwidth}
+    \textbf{\textcolor{socialgreen}{想一想}}
+    \vspace{0.1cm}
+}{
+    \end{minipage}%
+  }
+  \vspace{0.3cm}
+}
+
+% 要点总结环境
+\newcommand{\summarybox}[1]{%
+  \vspace{0.3cm}
+  \noindent
+  \fcolorbox{socialblue!40!black}{socialblue!2}{%
+    \begin{minipage}{0.915\textwidth}
+    \textbf{\textcolor{socialblue}{要点总结}} \\[0.1cm]
+    {\small #1}
+    \end{minipage}%
+  }
+  \vspace{0.3cm}
+}
+
+% 讨论题环境
+\newenvironment{discussion}{
+  \vspace{0.3cm}
+  \noindent
+  \textbf{\textcolor{socialpurple}{讨论题}}
+  \vspace{0.1cm}
+  \begin{enumerate}
+}{
+  \end{enumerate}
+  \vspace{0.3cm}
+}

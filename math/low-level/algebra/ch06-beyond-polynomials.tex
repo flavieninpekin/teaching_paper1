@@ -1,0 +1,190 @@
+\chaptertitle{第六章\quad 超越多项式——方程类型的扩张}
+
+\sectiontitle{第16讲\quad 分式方程与根式方程}
+
+\subsection*{分母里有了未知数}
+
+方程 $\dfrac{2}{x-1} - \dfrac{3}{x} = 1$ 的分母里含有 $x$，这叫\textbf{分式方程}。
+
+怎么解？和分数四则一样——两边同乘公分母，把分式变成整式。
+
+\begin{example}
+解方程：$\dfrac{2}{x-1} - \dfrac{3}{x} = 1$
+\end{example}
+\begin{solution}
+两边同乘 $x(x-1)$：\\
+$2x - 3(x-1) = x(x-1)$\\
+$2x - 3x + 3 = x^2 - x$\\
+$-x + 3 = x^2 - x$\\
+$3 = x^2$\\
+$x = \pm\sqrt{3}$。
+
+验根：代入 $x=\sqrt{3}$，分母不为0，成立。\\
+代入 $x=-\sqrt{3}$，分母也不为0，成立。\\
+所以 $x = \pm\sqrt{3}$ 都是原方程的解。
+\end{solution}
+
+\subsection*{增根——为什么必须验根}
+
+\xknow{
+方程两边同时乘以整式（去分母）时，如果这个整式的值为0，两边乘0后会得到 $0=0$——任何数都成立。所以乘以含未知数的式子后，有可能产生"假的根"，需要检验。
+}
+
+\begin{example}
+解方程：$\dfrac{2}{x+1} - \dfrac{1}{x} = 1$
+\end{example}
+\begin{solution}
+两边同乘 $x(x+1)$：\\
+$2x - (x+1) = x(x+1)$\\
+$2x - x - 1 = x^2 + x$\\
+$x - 1 = x^2 + x$\\
+$-1 = x^2$
+
+无实数解。经检验，确实没有 $x$ 能使原方程成立。
+\end{solution}
+
+\begin{example}
+解方程：$\dfrac{1}{x-2} + 3 = \dfrac{2-x}{x-2}$
+\end{example}
+\begin{solution}
+两边同乘 $(x-2)$：\\
+$1 + 3(x-2) = 2-x$\\
+$1 + 3x - 6 = 2 - x$\\
+$3x - 5 = 2 - x$\\
+$4x = 7$\\
+$x = \dfrac{7}{4}$。
+
+验根：代入 $x=\dfrac{7}{4}$，分母 $x-2\neq0$，成立。所以 $x=\dfrac{7}{4}$ 是解。
+\end{solution}
+
+\subsection*{根式方程——根号里有未知数}
+
+根号里含有未知数的方程叫\textbf{根式方程}。解法：两边平方去掉根号。
+
+\begin{example}
+解方程：$\sqrt{x+2} = x$
+\end{example}
+\begin{solution}
+两边平方：$x+2 = x^2$\\
+整理：$x^2 - x - 2 = 0$，$(x-2)(x+1)=0$\\
+$x=2$ 或 $x=-1$。
+
+验根：\\
+$x=2$：左边 $\sqrt{4}=2$，右边 $2$，成立。\\
+$x=-1$：左边 $\sqrt{1}=1$，右边 $-1$，$1\neq-1$——\textbf{增根}，舍去。
+
+所以原方程的解是 $x=2$。
+
+注意：平方会引入增根，因为 $\sqrt{a}$ 总是非负的。
+\end{solution}
+
+\begin{exercise}
+\item 解分式方程：
+  \begin{subexercise}
+    \item $\dfrac{3}{x} = \dfrac{2}{x-1}$
+    \item $\dfrac{2}{x+1} - \dfrac{1}{x} = 1$
+    \item $\dfrac{x}{x-1} - \dfrac{2}{x+1} = 1$
+    \item $\dfrac{1}{x-2} + 3 = \dfrac{2-x}{x-2}$
+  \end{subexercise}
+
+\item 解根式方程：
+  \begin{subexercise}
+    \item $\sqrt{x-1} = 2$
+    \item $\sqrt{2x+3} = x$
+    \item $\sqrt{x+6} = x$
+    \item $\sqrt{x+5} - \sqrt{x} = 1$
+  \end{subexercise}
+
+\item 为什么分式方程和根式方程都需要验根？两者的原因一样吗？
+\end{exercise}
+
+\sectiontitle{第17讲\quad 一张图讲完所有方程类型}
+
+\subsection*{方程家族树}
+
+把到目前为止遇到的所有方程类型画成一棵树：
+
+\[
+\begin{array}{c}
+\text{整式方程} \\
+\downarrow \\
+\text{一次方程}\quad ax+b=0 \quad(x=1\text{个}) \\
+\downarrow \\
+\text{二次方程}\quad ax^2+bx+c=0 \quad(x\text{最多2个}) \\
+\downarrow \\
+\text{可化为二次的高次方程}\quad(\text{如 }x^4-5x^2+4=0) \\
+\\
+\text{分式方程}\quad(\text{去分母→整式方程}) \\
+\\
+\text{根式方程}\quad(\text{两边平方→整式方程})
+\end{array}
+\]
+
+\subsection*{核心策略：化归}
+
+"化归"是一个很好听的词，意思就是\textbf{把不熟悉的问题变成熟悉的问题}。
+
+\begin{itemize}
+  \item 方程组 → 消元 → 一元方程
+  \item 分式方程 → 去分母 → 整式方程
+  \item 根式方程 → 两边平方 → 整式方程
+  \item 高次方程 → 因式分解 → 降次
+\end{itemize}
+
+所有的路，最终都通向一次或二次方程。
+
+\subsection*{一张表看三位一体在各类关系中的应用}
+
+\[
+\begin{array}{c|c|c|c}
+\text{关系类型} & \text{方程问题} & \text{不等式问题} & \text{函数问题} \\ \hline
+\text{一次} & kx+b=0 & kx+b>0 & y=kx+b \\
+\text{二次} & ax^2+bx+c=0 & ax^2+bx+c>0 & y=ax^2+bx+c \\
+\text{分式} & \dfrac{A}{B}=0 & \dfrac{A}{B}>0 & y=\dfrac{A}{B} \\
+\text{根式} & \sqrt{A}=0 & \sqrt{A}>0 & y=\sqrt{A}
+\end{array}
+\]
+
+无论哪种关系，问的问题始终是那三个。区别只是关系本身变得复杂了。
+
+\begin{exercise}
+\item 解方程：
+  \begin{subexercise}
+    \item $3(2x-1)-2(3x-5)=7$
+    \item $\dfrac{3x+1}{2} - \dfrac{2x-3}{3} = 5$
+    \item $\begin{cases}2x+3y=8\\3x-2y=-1\end{cases}$
+    \item $x^2 - 6x - 7 = 0$
+  \end{subexercise}
+
+\item 解不等式组：
+  \begin{subexercise}
+    \item $\begin{cases}2x-1>5\\3x-7\le 8\end{cases}$
+  \end{subexercise}
+
+\item 解分式/根式方程：
+  \begin{subexercise}
+    \item $\dfrac{2}{x+1} + \dfrac{3}{x-1} = 2$
+    \item $\sqrt{2x+1} - \sqrt{x} = 1$
+  \end{subexercise}
+
+\item 应用：
+  \begin{subexercise}
+    \item 一个两位数，十位数字与个位数字之和为 9。将这个两位数对调后，新数比原数小 9。求原数。
+    \item 某种商品进价 80 元，标价 120 元。为了促销，商店决定打折销售但要保证利润率不低于 20\%，则最多打几折？
+    \item 甲乙两车分别从相距 360 千米的 A、B 两城同时出发相向而行，2.4 小时后相遇。已知甲车速度是乙车的 1.2 倍，求两车速度。
+  \end{subexercise}
+
+\item 思考：为什么所有方程最终都可以归结为一次或二次方程？
+\end{exercise}
+
+\sectiontitle{章末小结}
+
+这一章我们看到了方程的"家族扩张"：
+
+\begin{enumerate}
+  \item \textbf{分式方程}——去分母 → 整式方程，注意增根。
+  \item \textbf{根式方程}——两边平方 → 整式方程，注意增根。
+  \item \textbf{化归思想}——所有陌生问题都转化为熟悉问题。
+\end{enumerate}
+
+经过这一章，我们已经把"找未知"这件事从最简单的 $x+3=7$ 做到了带根号的方程。但还有一个问题没解决：\textbf{$\Delta<0$ 的二次方程怎么办？}

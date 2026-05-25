@@ -1,0 +1,253 @@
+\chaptertitle{第七章\quad 复数的诞生——最后一次不够用}
+
+\sectiontitle{第18讲\quad 三次方程的困境}
+
+\subsection*{一个古老的疑问}
+
+我们在第14讲遇到了判别式 $\Delta = b^2 - 4ac$。当 $\Delta < 0$ 时，二次方程 $ax^2+bx+c=0$ 没有实数根。
+
+当时我们说："到了复数范围内就有根了。"
+
+为什么会有人想到发明一种"平方等于负数"的数？不是因为无聊，而是因为\textbf{二次方程不够格}——二次方程 $\Delta<0$ 时直接说"无解"就好了，没人觉得需要新数。
+
+真正逼出复数的是\textbf{三次方程}。
+
+\subsection*{16世纪意大利的数学决斗}
+
+故事要从 500 年前说起。
+
+当时的意大利，数学竞赛是一种流行的"运动"。两个数学家各出 30 道题给对方解，谁解得多谁赢。输的人要请客吃饭，有时还要赔钱。
+
+1545年，意大利数学家卡尔达诺（Cardano）出版了一本书《大术》（Ars Magna），书中公布了解三次方程的一般方法。这个公式现在叫做\textbf{卡尔达诺公式}。
+
+对于三次方程 $x^3 = px + q$（已经通过变换去掉了二次项），解是：
+
+\[
+x = \sqrt[3]{\frac{q}{2} + \sqrt{\left(\frac{q}{2}\right)^2 - \left(\frac{p}{3}\right)^3}} +
+     \sqrt[3]{\frac{q}{2} - \sqrt{\left(\frac{q}{2}\right)^2 - \left(\frac{p}{3}\right)^3}}
+\]
+
+\subsection*{明明有三个实根，公式里却出现了负数开平方}
+
+看一个关键的例子：$x^3 - 3x + 1 = 0$，即 $x^3 = 3x - 1$。
+
+$p=3$，$q=-1$。代入卡尔达诺公式中的判别部分：
+
+$\left(\frac{q}{2}\right)^2 - \left(\frac{p}{3}\right)^3 = \left(-\frac12\right)^2 - 1^3 = \frac14 - 1 = -\frac34 < 0$
+
+\textbf{出现了负数开平方！}
+
+但这个方程有没有实根？试试几个值：
+$x=2$：$8-6+1=3>0$\\
+$x=1$：$1-3+1=-1<0$\\
+$x=0$：$0-0+1=1>0$\\
+$x=-1$：$-1+3+1=3>0$
+
+函数值从正变负又从负变正——\textbf{实际上这个方程有三个实根！}
+
+\textbf{三个实根的方程，用公式算却要开负数的平方。}
+
+这就是历史上著名的\textbf{不可约情况}（casus irreducibilis）。不是卡尔达诺的错，是数还不够用。
+
+\subsection*{邦贝利的突破}
+
+意大利数学家邦贝利（Bombelli）在 1572 年做了一个大胆的假设：既然 $\sqrt{-1}$ 出现在公式里，那就\textbf{把它当作一个数来算}，看看能不能算出实根。
+
+他把 $\sqrt{-1}$ 记为 $i$（imaginary，想象的），定义 $i^2 = -1$，然后硬算。
+
+经过复杂的运算，邦贝利发现：那个带着 $\sqrt{-1}$ 的表达式，算出来恰好就是一个实数！
+
+\textbf{不是巧合}。$\sqrt{-1}$ 不是"不存在"——它是一种新数，只是我们以前没见过它。
+
+\subsection*{不是"x²=-1无聊"，而是三次方程逼出了i}
+
+$x^2 = -1$ 没有实根。但一个二次方程无解，大家都能接受——跳过就好了。
+
+三次方程不一样。三次方程\textbf{一定有实根}（因为奇次多项式必过零点）。但求根公式里 \textbf{必然出现} $\sqrt{-1}$，你跳不过去。要想用公式解三次方程，你就得接受 $i$。
+
+这就是为什么真正逼出复数的是三次方程，不是二次方程。
+
+\begin{example}
+理解 $i$ 的基本运算：
+\end{example}
+\begin{solution}
+$i$ 的定义：$i^2 = -1$。
+
+$i^1 = i$\\
+$i^2 = -1$\\
+$i^3 = i^2 \times i = -i$\\
+$i^4 = i^2 \times i^2 = (-1)(-1) = 1$\\
+$i^5 = i^4 \times i = i$（开始循环了！）
+\end{solution}
+
+\begin{exercise}
+\item 计算 $i$ 的各次幂：
+  \begin{subexercise}
+    \item $i^6$
+    \item $i^7$
+    \item $i^8$
+    \item $i^{10}$
+    \item $i^{25}$
+    \item $i^{100}$
+  \end{subexercise}
+
+\item 计算：
+  \begin{subexercise}
+    \item $i + i^2 + i^3 + i^4$
+    \item $i \times (-i)$
+    \item $(i^3)^2$
+  \end{subexercise}
+
+\item 判断正误：
+  \begin{subexercise}
+    \item $i$ 是一个实数。
+    \item $\sqrt{-1}$ 没有意义。
+    \item $i^2$ 是一个实数。
+    \item 三次方程一定有实根。
+  \end{subexercise}
+
+\item 思考：为什么说"三次方程逼出了复数，二次方程没有"？
+  提示：判别式小于0时，二次方程直接说无解就行，但三次方程不行。为什么？
+\end{exercise}
+
+\sectiontitle{第19讲\quad 复数运算与复平面}
+
+\subsection*{复数的形式}
+
+一个\textbf{复数}写成 $a + bi$，其中 $a$ 和 $b$ 是实数。$a$ 叫\textbf{实部}，$b$ 叫\textbf{虚部}。
+
+当 $b=0$ 时，就是实数。所以\textbf{实数是复数的特例}。
+
+\subsection*{复数的加减乘除}
+
+\begin{example}
+计算：$(3+2i)+(1-4i)$
+\end{example}
+\begin{solution}
+实部加实部，虚部加虚部：$(3+1)+(2i-4i) = 4-2i$。
+\end{solution}
+
+\begin{example}
+计算：$(2+3i)\times(1-i)$
+\end{example}
+\begin{solution}
+逐项相乘：$2\times1 + 2\times(-i) + 3i\times 1 + 3i\times(-i)$\\
+$= 2 - 2i + 3i - 3i^2$\\
+$= 2 + i - 3(-1)$（因为 $i^2=-1$）\\
+$= 2 + i + 3 = 5 + i$。
+\end{solution}
+
+\subsection*{共轭复数}
+
+$z = a+bi$ 的\textbf{共轭复数}是 $\bar{z} = a-bi$。实部不变，虚部变号。
+
+共轭的一个重要性质：$z \times \bar{z} = a^2 + b^2$是一个实数。
+
+\begin{example}
+计算 $(2+3i)+(2-3i)$ 和 $(2+3i)(2-3i)$。
+\end{example}
+\begin{solution}
+和：$2+3i+2-3i = 4$（实数）。\\
+积：$(2+3i)(2-3i) = 4 - 9i^2 = 4 + 9 = 13$（实数）。
+\end{solution}
+
+\subsection*{复平面}
+
+把复数 $a+bi$ 对应到平面上的点 $(a,b)$。横轴是实轴（实数），纵轴是虚轴（纯虚数）。
+
+\begin{itemize}
+  \item $3+2i$ → 点 $(3,2)$
+  \item $-1+i$ → 点 $(-1,1)$
+  \item $4-3i$ → 点 $(4,-3)$
+\end{itemize}
+
+复数的加减在复平面上就是向量的加减。
+
+\subsection*{代数基本定理——"不够用"终于到头了}
+
+\textbf{代数基本定理}说：\textbf{任何一个 $n$ 次多项式方程，在复数范围内恰好有 $n$ 个根（重根按重数算）。}
+
+\begin{itemize}
+  \item 一次方程：$ax+b=0$，正好 1 个根。
+  \item 二次方程：$ax^2+bx+c=0$，正好 2 个根。
+  \item 三次方程：正好 3 个根。
+  \item $n$ 次方程：正好 $n$ 个根。
+\end{itemize}
+
+回顾整个数系扩张的历程：
+
+\[
+\mathbb{N} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{R} \to \mathbb{C}
+\]
+
+每一步都是因为一种运算"不够用"：
+
+\begin{itemize}
+  \item $3-5$ 不够减 → 负数（整数）
+  \item $1\div3$ 除不尽 → 分数（有理数）
+  \item $\sqrt{2}$ 开不尽 → 无理数（实数）
+  \item $\sqrt{-1}$ 需要意义 → 复数
+\end{itemize}
+
+有了复数之后，代数方程在任何情况下都有解了。\textbf{数系扩张到了终点。}
+
+\begin{exercise}
+\item 计算：
+  \begin{subexercise}
+    \item $(2+3i)+(4-5i)$
+    \item $(1-2i)-(3+4i)$
+    \item $(2+i)\times(3-2i)$
+    \item $(1+2i)(1-2i)$
+    \item $(3+i)^2$
+    \item $(1+i)(1-i)$
+  \end{subexercise}
+
+\item 写出下列复数的共轭：
+  \begin{subexercise}
+    \item $3+4i$
+    \item $2-i$
+    \item $5i$
+    \item $-1-2i$
+  \end{subexercise}
+
+\item 计算 $z+\bar{z}$ 和 $z-\bar{z}$，并说明结果分别是什么数（实数还是纯虚数）。
+
+\item 在复平面上标出下列复数对应的点：
+  \begin{subexercise}
+    \item $2+3i$
+    \item $-1+2i$
+    \item $3-i$
+    \item $-2-2i$
+  \end{subexercise}
+
+\item 解下列方程（在复数范围内）：
+  \begin{subexercise}
+    \item $x^2+1=0$
+    \item $x^2+4=0$
+    \item $x^2-2x+2=0$
+    \item $x^2+2x+5=0$
+  \end{subexercise}
+
+\item 完整画出数系扩张路线图：$\mathbb{N} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{R} \to \mathbb{C}$，并写出每一步是因为什么"不够用"。
+\end{exercise}
+
+\sectiontitle{章末小结}
+
+这一章我们走完了代数之路的最后一公里：
+
+\begin{enumerate}
+  \item \textbf{三次方程的困境}——卡尔达诺公式中出现了 $\sqrt{-1}$，不是因为二次方程无聊，而是因为三次方程非用不可。
+  \item \textbf{复数的诞生}——$i = \sqrt{-1}$，复数 $a+bi$。
+  \item \textbf{复数的运算和复平面}——加减乘除、共轭，复平面上的点。
+  \item \textbf{代数基本定理}——$n$ 次方程在复数范围内恰好有 $n$ 个根。
+\end{enumerate}
+
+\subsection*{整本书的回顾}
+
+在《算术》里，我们从 $1+1$ 走到了对数，看到了数的扩张：$\mathbb{N}\to\mathbb{Z}\to\mathbb{Q}\to\mathbb{R}$。
+
+在这本书里，我们从 $x$ 代替 $?$ 开始，走到了复数，建起了代数式、方程、不等式、函数的统一视角。
+
+两本书合在一起，就是一条完整的路：\textbf{从 1+1 到 $a+bi$，从具体数字到抽象符号，从已知算式的算术到寻找未知的代数}。
+
+这个"不够用→新东西"的模式，在以后的学习中还会出现很多次——但代数方程这一脉，到这里就完整了。
